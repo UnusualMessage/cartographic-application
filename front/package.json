@@ -11,8 +11,10 @@
     "build-dev": "npx webpack --config config/webpack.entry.config.js --env state=dev",
     "start": "npx webpack serve --config config/webpack.entry.config.js --env state=dev",
     "lint": "npx eslint . --ext .ts,.tsx",
-    "lint:fix": "npx eslint . --ext .ts,.tsx --fix"
+    "lint:fix": "npx eslint . --ext .ts,.tsx --fix",
+    "prettier": "npx prettier . --write"
   },
+
   "devDependencies": {
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
@@ -25,8 +27,6 @@
     "eslint-plugin-react": "^7.31.6",
     "eslint-plugin-react-hooks": "^4.6.0",
     "html-webpack-plugin": "^5.5.0",
-    "husky": "^8.0.1",
-    "lint-staged": "^13.0.3",
     "mini-css-extract-plugin": "^2.6.1",
     "prettier": "^2.7.1",
     "sass": "^1.54.8",
