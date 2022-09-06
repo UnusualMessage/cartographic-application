@@ -14,17 +14,11 @@
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
 
-    "lib": [
-      "dom",
-      "dom.iterable",
-    ],
+    "lib": ["dom", "dom.iterable"],
 
     "skipLibCheck": true,
-    "noEmit": false,
+    "noEmit": false
   },
 
-  "include": [
-    "src",
-    "declarations.d.ts"
-  ]
+  "include": ["src", "declarations.d.ts"]
 }

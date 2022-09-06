@@ -1,5 +1,5 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
+const path = require("path");
+const { merge } = require("webpack-merge");
 
 const commonConfig = require(path.resolve(__dirname, "webpack.common.config.js"));
 

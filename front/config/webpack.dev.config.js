@@ -1,46 +1,46 @@
-const path = require('path');
+const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, '../build-dev'),
-    publicPath: "/"
+    filename: "[name].js",
+    path: path.resolve(__dirname, "../build-dev"),
+    publicPath: "/",
   },
-  
+
   mode: "development",
-  
+
   devtool: "eval-source-map",
-  
+
   performance: {
-    hints: 'warning',
+    hints: "warning",
   },
-  
+
   devServer: {
     port: 3000,
-    
+
     static: {
-      directory: path.resolve(__dirname, '../build-dev'),
+      directory: path.resolve(__dirname, "../build-dev"),
     },
-    
+
     proxy: {
-      '/api': 'http://localhost:19621'
+      "/api": "http://localhost:19621",
     },
-    
+
     client: {
-      logging: 'error',
+      logging: "error",
       overlay: {
         errors: true,
         warnings: false,
       },
     },
-    
+
     compress: true,
     historyApiFallback: true,
     open: true,
-    hot: true
+    hot: true,
   },
-  
+
   plugins: [
     new CopyWebpackPlugin({
       patterns: [
@@ -51,13 +51,13 @@ module.exports = {
           globOptions: {
             dot: true,
             gitignore: true,
-            ignore: ["**.html"]
-          }
+            ignore: ["**.html"],
+          },
         },
-      ]
+      ],
     }),
   ],
-  
+
   module: {
     rules: [
       {
@@ -65,7 +65,7 @@ module.exports = {
         use: ["style-loader", "css-loader", "sass-loader"],
         exclude: /\.module\.(css|scss|sass)$/i,
       },
-      
+
       {
         test: /\.(css|sass|scss)$/i,
         use: [
@@ -76,14 +76,14 @@ module.exports = {
               importLoaders: 1,
               modules: {
                 mode: "local",
-                localIdentName: '[name]__[local]__[hash:base64:5]',
+                localIdentName: "[name]__[local]__[hash:base64:5]",
               },
             },
           },
-          "sass-loader"
+          "sass-loader",
         ],
         include: /\.module\.(css|scss|sass)$/i,
       },
-    ]
-  }
+    ],
+  },
 };
