@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  width: 100px;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+
+  background-color: white;
+}
