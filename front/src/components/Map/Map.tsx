@@ -5,12 +5,17 @@ import { debounce } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { OSM } from "ol/source";
+import VectorSource from "ol/source/Vector";
+import { GeoJSON } from "ol/format";
 
 import css from "./map.module.scss";
 
 import MapStore from "../../stores/MapStore";
 import LayersStore from "../../stores/LayersStore";
 import ViewStore from "../../stores/ViewStore";
+import TileLayer from "ol/layer/Tile";
+import VectorLayer from "ol/layer/Vector";
+import { getRenderPixel } from "ol/render";
 
 const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -21,9 +26,24 @@ const Map = ({ children }: PropsWithChildren) => {
     const y = viewParams.get("y") ?? "0";
     const zoom = viewParams.get("z") ?? "1";
 
-    ViewStore.createView(Number(zoom), [Number(x), Number(y)]);
-    LayersStore.createLayer(new OSM(), "base");
+    const baseSource = new OSM();
 
+    const vectorSource = new VectorSource({
+      format: new GeoJSON(),
+    });
+
+    const baseLayer = new TileLayer({
+      source: baseSource,
+    });
+
+    const vectorLayer = new VectorLayer({
+      source: vectorSource,
+    });
+
+    ViewStore.createView(Number(zoom), [Number(x), Number(y)]);
+    LayersStore.createLayer(baseLayer, "base");
+    LayersStore.createLayer(vectorLayer, "draw");
+    
     const view = ViewStore.getView;
     const layers = LayersStore.getLayers;
 
@@ -32,6 +52,7 @@ const Map = ({ children }: PropsWithChildren) => {
     }
 
     MapStore.initMap(view, layers, mapRef.current);
+    MapStore.initInteractions(vectorSource);
 
     const onViewChange = debounce(() => {
       const center = view.getCenter();

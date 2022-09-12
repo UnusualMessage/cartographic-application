@@ -1,7 +1,5 @@
 import BaseLayer from "ol/layer/Base";
 import { makeAutoObservable } from "mobx";
-import TileSource from "ol/source/Tile";
-import TileLayer from "ol/layer/Tile";
 
 class LayersStore {
   private readonly _layers: BaseLayer[];
@@ -12,16 +10,12 @@ class LayersStore {
     makeAutoObservable(this);
   }
   
-  public createLayer(source: TileSource, name: string) {
-    const newLayer = new TileLayer({
-      source: source,
-    });
+  public createLayer(layer: BaseLayer, name: string) {
+    layer.set("name", name);
     
-    newLayer.set("name", name);
+    this._layers.push(layer);
     
-    this._layers.push(newLayer);
-    
-    return newLayer;
+    return layer;
   }
   
   public get getLayers() {
