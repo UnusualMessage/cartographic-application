@@ -1,5 +1,7 @@
+import Map from "../components/Map";
+
 const App = () => {
-  return <div>Hello</div>;
+  return <Map/>;
 };
 
 export default App;

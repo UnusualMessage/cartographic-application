@@ -1,7 +1,17 @@
 import { createRoot } from "react-dom/client";
-import App from "./pages/App";
+import { lazy } from "react";
+import { BrowserRouter } from "react-router-dom";
+
+const App = lazy(() => import("./pages/App"));
+
+import "./index.scss";
+import "ol/ol.css";
 
 const element = document.getElementById("root") as HTMLDivElement;
 const root = createRoot(element);
 
-root.render(<App />);
+root.render(
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+);
