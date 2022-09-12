@@ -15,6 +15,7 @@
     "prettier": "npx prettier . --write"
   },
   "devDependencies": {
+    "@types/lodash": "^4.14.184",
     "@types/react": "^18.0.18",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.36.1",
@@ -41,9 +42,9 @@
   "dependencies": {
     "@turf/turf": "^6.5.0",
     "classnames": "^2.3.1",
+    "lodash": "^4.17.21",
     "mobx": "^6.6.2",
     "mobx-react-lite": "^3.4.0",
-    "mobx-state-tree": "^5.1.6",
     "ol": "^7.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
