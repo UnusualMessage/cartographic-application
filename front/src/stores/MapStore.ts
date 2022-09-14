@@ -1,16 +1,23 @@
-import { makeAutoObservable } from "mobx";
-import { Map, View } from "ol";
+import { makeAutoObservable, runInAction } from "mobx";
+import { Feature, Map, View } from "ol";
 import BaseLayer from "ol/layer/Base";
 import { Draw, Modify, Select, Snap } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
 import LayersStore from "./LayersStore";
+import { DrawType } from "../types/DrawType";
+import { Type } from "ol/geom/Geometry";
 
 class MapStore {
   private _map: Map | null;
 
+  private _activeFeature: Feature | null;
+  private _draw: Draw | null;
+
   constructor() {
     this._map = null;
+    this._activeFeature = null;
+    this._draw = null;
 
     makeAutoObservable(this);
   }
@@ -23,19 +30,36 @@ class MapStore {
     });
   }
 
+  public get getActiveFeature() {
+    return this._activeFeature;
+  }
+
   public addSelect() {
     const select = new Select();
+
+    select.on("select", () => {
+      runInAction(() => {
+        this._activeFeature = select.getFeatures().item(0);
+      });
+    });
 
     this._map?.addInteraction(select);
   }
 
-  public addDraw(source: VectorSource) {
+  public addDraw(source: VectorSource, drawType: DrawType) {
     const draw = new Draw({
-      type: "Polygon",
+      type: drawType as Type,
       source: source,
     });
 
     this._map?.addInteraction(draw);
+    this._draw = draw;
+  }
+
+  public removeDraw() {
+    if (this._draw) {
+      this._map?.removeInteraction(this._draw);
+    }
   }
 
   public addModify(source: VectorSource) {

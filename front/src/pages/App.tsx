@@ -1,3 +1,5 @@
+import { observer } from "mobx-react-lite";
+
 import Map from "../components/Map";
 import Controls from "../components/Controls";
 import { TileLayer, VectorLayer } from "../components/Layer";
@@ -21,4 +23,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default observer(App);

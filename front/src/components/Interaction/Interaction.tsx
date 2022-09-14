@@ -1,9 +1,11 @@
 import VectorSource from "ol/source/Vector";
+import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
 
 import { InteractionType } from "../../types/InteractionType";
 import MapStore from "../../stores/MapStore";
 import { SourceContext } from "../Layer/VectorLayer";
+import InteractionsStore from "../../stores/InteractionsStore";
 
 interface Props {
   type: InteractionType;
@@ -38,36 +40,42 @@ interface ChildrenProps {
   source: VectorSource;
 }
 
-const Snap = ({ source }: ChildrenProps) => {
+const Snap = observer(({ source }: ChildrenProps) => {
   useEffect(() => {
     MapStore.addSnap(source);
-  });
+  }, []);
 
   return <></>;
-};
+});
 
-const Select = () => {
+const Select = observer(() => {
   useEffect(() => {
     MapStore.addSelect();
-  });
+  }, []);
 
   return <></>;
-};
+});
 
-const Modify = ({ source }: ChildrenProps) => {
+const Modify = observer(({ source }: ChildrenProps) => {
   useEffect(() => {
     MapStore.addModify(source);
-  });
+  }, []);
 
   return <></>;
-};
+});
 
-const Draw = ({ source }: ChildrenProps) => {
+const Draw = observer(({ source }: ChildrenProps) => {
+  const drawType = InteractionsStore.getDrawType;
+
   useEffect(() => {
-    MapStore.addDraw(source);
-  });
+    MapStore.addDraw(source, drawType);
+
+    return () => {
+      MapStore.removeDraw();
+    };
+  }, [drawType]);
 
   return <></>;
-};
+});
 
-export default Interaction;
+export default observer(Interaction);

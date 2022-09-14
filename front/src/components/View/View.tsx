@@ -1,6 +1,7 @@
 import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { debounce } from "lodash";
+import { observer } from "mobx-react-lite";
 
 import ViewStore from "../../stores/ViewStore";
 import MapStore from "../../stores/MapStore";
@@ -44,4 +45,4 @@ const View = () => {
   return <></>;
 };
 
-export default View;
+export default observer(View);
