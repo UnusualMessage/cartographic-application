@@ -6,12 +6,6 @@ import VectorSource from "ol/source/Vector";
 
 import LayersStore from "./LayersStore";
 
-enum Interaction {
-  modify,
-  draw,
-  snap,
-}
-
 class MapStore {
   private _map: Map | null;
 
@@ -29,45 +23,35 @@ class MapStore {
     });
   }
 
-  public initInteractions(source: VectorSource) {
-    this.addInteraction(Interaction.modify, source);
-    this.addInteraction(Interaction.draw, source);
-    this.addInteraction(Interaction.snap, source);
+  public addSelect() {
+    const select = new Select();
+
+    this._map?.addInteraction(select);
   }
 
-  public addInteraction(interactionType: Interaction, source: VectorSource) {
-    switch (interactionType) {
-      case Interaction.modify:
-        const select = new Select();
+  public addDraw(source: VectorSource) {
+    const draw = new Draw({
+      type: "Polygon",
+      source: source,
+    });
 
-        const modify = new Modify({
-          features: select.getFeatures(),
-        });
+    this._map?.addInteraction(draw);
+  }
 
-        this._map?.addInteraction(select);
-        this._map?.addInteraction(modify);
+  public addModify(source: VectorSource) {
+    const modify = new Modify({
+      source: source,
+    });
 
-        break;
+    this._map?.addInteraction(modify);
+  }
 
-      case Interaction.draw:
-        const draw = new Draw({
-          type: "Polygon",
-          source: source,
-        });
+  public addSnap(source: VectorSource) {
+    const snap = new Snap({
+      source: source,
+    });
 
-        this._map?.addInteraction(draw);
-
-        break;
-
-      case Interaction.snap:
-        const snap = new Snap({
-          source: source,
-        });
-
-        this._map?.addInteraction(snap);
-
-        break;
-    }
+    this._map?.addInteraction(snap);
   }
 
   public addView(view: View) {

@@ -1,30 +1,32 @@
 import VectorSource from "ol/source/Vector";
 import { GeoJSON } from "ol/format";
 import { default as OLVectorLayer } from "ol/layer/Vector";
-import { useEffect } from "react";
+import { createContext, PropsWithChildren, useEffect } from "react";
 
 import LayersStore from "../../stores/LayersStore";
 import MapStore from "../../stores/MapStore";
 
-interface Props {
+interface Props extends PropsWithChildren {
   name: string;
 }
 
-const VectorLayer = ({ name }: Props) => {
+export const SourceContext = createContext<VectorSource | undefined>(undefined);
+
+const VectorLayer = ({ name, children }: Props) => {
+  const vectorSource = new VectorSource({
+    format: new GeoJSON(),
+  });
+
+  const vectorLayer = new OLVectorLayer({
+    source: vectorSource,
+  });
+
   useEffect(() => {
-    const vectorSource = new VectorSource({
-      format: new GeoJSON(),
-    });
-
-    const vectorLayer = new OLVectorLayer({
-      source: vectorSource,
-    });
-
     const createdLayer = LayersStore.createLayer(vectorLayer, name);
     MapStore.addLayer(createdLayer);
   }, []);
 
-  return <></>;
+  return <SourceContext.Provider value={vectorSource}>{children}</SourceContext.Provider>;
 };
 
 export default VectorLayer;
