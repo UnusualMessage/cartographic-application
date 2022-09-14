@@ -1,4 +1,4 @@
-import { makeAutoObservable, toJS } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
 import BaseLayer from "ol/layer/Base";
 import { Draw, Modify, Select, Snap } from "ol/interaction";
@@ -21,21 +21,20 @@ class MapStore {
     makeAutoObservable(this);
   }
 
-  public initMap(view: View, layers: BaseLayer[], target: HTMLDivElement) {
-    console.log(toJS(layers));
+  public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {
     this._map = new Map({
       target: target,
       view: view,
       layers: layers,
     });
   }
-  
+
   public initInteractions(source: VectorSource) {
     this.addInteraction(Interaction.modify, source);
     this.addInteraction(Interaction.draw, source);
     this.addInteraction(Interaction.snap, source);
   }
-  
+
   public addInteraction(interactionType: Interaction, source: VectorSource) {
     switch (interactionType) {
       case Interaction.modify:
@@ -47,7 +46,7 @@ class MapStore {
 
         this._map?.addInteraction(select);
         this._map?.addInteraction(modify);
-        
+
         break;
 
       case Interaction.draw:
@@ -55,21 +54,24 @@ class MapStore {
           type: "Polygon",
           source: source,
         });
-        
+
         this._map?.addInteraction(draw);
-        
+
         break;
-        
+
       case Interaction.snap:
         const snap = new Snap({
           source: source,
         });
-        
+
         this._map?.addInteraction(snap);
-        
+
         break;
-        
     }
+  }
+
+  public addView(view: View) {
+    this._map?.setView(view);
   }
 
   public addLayer(layer: BaseLayer) {

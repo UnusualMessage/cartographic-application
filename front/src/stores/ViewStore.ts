@@ -16,6 +16,8 @@ class ViewStore {
       zoom: zoom,
       center: center,
     });
+
+    return this._view;
   }
 
   public get getView() {
