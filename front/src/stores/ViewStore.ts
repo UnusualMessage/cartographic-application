@@ -15,6 +15,7 @@ class ViewStore {
     this._view = new View({
       zoom: zoom,
       center: center,
+      multiWorld: false,
     });
 
     return this._view;

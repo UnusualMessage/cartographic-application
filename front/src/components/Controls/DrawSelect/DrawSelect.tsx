@@ -16,8 +16,9 @@ const DrawSelect = () => {
       <select
         className={classNames(css.select)}
         onChange={onSelect}
-        defaultValue={"Point"}
+        defaultValue={"Polygon"}
       >
+        <option value={"None"} label={"Курсор"} />
         <option value={"Polygon"} label={"Полигон"} />
         <option value={"Circle"} label={"Круг"} />
         <option value={"LineString"} label={"Линия"} />

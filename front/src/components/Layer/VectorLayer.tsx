@@ -1,7 +1,7 @@
 import VectorSource from "ol/source/Vector";
 import { GeoJSON } from "ol/format";
 import { default as OLVectorLayer } from "ol/layer/Vector";
-import { createContext, PropsWithChildren, useEffect } from "react";
+import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 
 import LayersStore from "../../stores/LayersStore";
@@ -14,13 +14,24 @@ interface Props extends PropsWithChildren {
 export const SourceContext = createContext<VectorSource | undefined>(undefined);
 
 const VectorLayer = ({ name, children }: Props) => {
-  const vectorSource = new VectorSource({
-    format: new GeoJSON(),
-  });
+  const vectorSource = useMemo(() => {
+    return new VectorSource({
+      format: new GeoJSON(),
+    });
+  }, []);
 
-  const vectorLayer = new OLVectorLayer({
-    source: vectorSource,
-  });
+  const vectorLayer = useMemo(() => {
+    return new OLVectorLayer({
+      source: vectorSource,
+      style: {
+        "fill-color": "rgba(255, 255, 255, 0.2)",
+        "stroke-color": "#ffcc33",
+        "stroke-width": 2,
+        "circle-radius": 7,
+        "circle-fill-color": "#ffcc33",
+      },
+    });
+  }, []);
 
   useEffect(() => {
     const createdLayer = LayersStore.createLayer(vectorLayer, name);

@@ -4,9 +4,7 @@ import Map from "../components/Map";
 import Controls from "../components/Controls";
 import { TileLayer, VectorLayer } from "../components/Layer";
 import View from "../components/View";
-import Interaction from "../components/Interaction/Interaction";
-import { InteractionType } from "../types/InteractionType";
-import Overlay from "../components/Overlay";
+import Interactions from "../components/Interaction/Interactions";
 
 const App = () => {
   return (
@@ -15,10 +13,7 @@ const App = () => {
       <View />
       <TileLayer name={"base"} />
       <VectorLayer name={"draw"}>
-        <Interaction type={InteractionType.draw} />
-        <Interaction type={InteractionType.select} />
-        <Interaction type={InteractionType.modify} />
-        <Interaction type={InteractionType.snap} />
+        <Interactions />
       </VectorLayer>
       {/*<Overlay />*/}
     </Map>
