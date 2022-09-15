@@ -1,12 +1,14 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { Feature, Map, View } from "ol";
+import { Feature, Map, Overlay, View } from "ol";
 import BaseLayer from "ol/layer/Base";
 import { Draw, Modify, Select, Snap } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
+import { Type } from "ol/geom/Geometry";
+import { get } from "ol/proj/projections";
 
 import LayersStore from "./LayersStore";
 import { DrawType } from "../types/DrawType";
-import { Type } from "ol/geom/Geometry";
+import { overlayId } from "../assets/config";
 
 class MapStore {
   private _map: Map | null;
@@ -23,11 +25,28 @@ class MapStore {
   }
 
   public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {
+    const extent = get("EPSG:3857").getExtent().slice();
+    extent[0] += extent[0];
+    extent[2] += extent[2];
+
     this._map = new Map({
       target: target,
       view: view,
       layers: layers,
     });
+
+    this._map.on("click", (e) => {
+      const pixel = this._map?.getEventPixel(e.originalEvent);
+      const overlay = this._map?.getOverlayById(overlayId);
+
+      if (overlay && pixel) {
+        overlay.setPosition(this._map?.getCoordinateFromPixel(pixel));
+      }
+    });
+  }
+
+  public getOverlayById(id: number) {
+    return this._map?.getOverlayById(id);
   }
 
   public get getActiveFeature() {
@@ -62,6 +81,18 @@ class MapStore {
     }
   }
 
+  public removeLayerByName(name: string) {
+    LayersStore.getLayers.forEach((layer) => {
+      if (layer.get("name") === name) {
+        this._map?.removeLayer(layer);
+      }
+    });
+  }
+
+  addOverlay = (overlay: Overlay) => {
+    this._map?.addOverlay(overlay);
+  };
+
   public addModify(source: VectorSource) {
     const modify = new Modify({
       source: source,
@@ -84,14 +115,6 @@ class MapStore {
 
   public addLayer(layer: BaseLayer) {
     this._map?.addLayer(layer);
-  }
-
-  public removeLayerByName(name: string) {
-    LayersStore.getLayers.forEach((layer) => {
-      if (layer.get("name") === name) {
-        this._map?.removeLayer(layer);
-      }
-    });
   }
 }
 

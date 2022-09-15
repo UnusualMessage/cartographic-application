@@ -6,6 +6,7 @@ import { TileLayer, VectorLayer } from "../components/Layer";
 import View from "../components/View";
 import Interaction from "../components/Interaction/Interaction";
 import { InteractionType } from "../types/InteractionType";
+import Overlay from "../components/Overlay";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Interaction type={InteractionType.modify} />
         <Interaction type={InteractionType.snap} />
       </VectorLayer>
+      <Overlay />
     </Map>
   );
 };
