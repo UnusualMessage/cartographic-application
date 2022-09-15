@@ -27,7 +27,11 @@ const VectorLayer = ({ name, children }: Props) => {
     MapStore.addLayer(createdLayer);
   }, []);
 
-  return <SourceContext.Provider value={vectorSource}>{children}</SourceContext.Provider>;
+  return (
+    <SourceContext.Provider value={vectorSource}>
+      {children}
+    </SourceContext.Provider>
+  );
 };
 
 export default observer(VectorLayer);

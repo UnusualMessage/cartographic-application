@@ -13,7 +13,11 @@ const DrawSelect = () => {
 
   return (
     <div className={classNames(css.wrapper)}>
-      <select onChange={onSelect} defaultValue={"Point"}>
+      <select
+        className={classNames(css.select)}
+        onChange={onSelect}
+        defaultValue={"Point"}
+      >
         <option value={"Polygon"} label={"Полигон"} />
         <option value={"Circle"} label={"Круг"} />
         <option value={"LineString"} label={"Линия"} />

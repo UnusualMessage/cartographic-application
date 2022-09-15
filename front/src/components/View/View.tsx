@@ -14,7 +14,10 @@ const View = () => {
     const y = viewParams.get("y") ?? "0";
     const zoom = viewParams.get("z") ?? "1";
 
-    const createdView = ViewStore.createView(Number(zoom), [Number(x), Number(y)]);
+    const createdView = ViewStore.createView(Number(zoom), [
+      Number(x),
+      Number(y),
+    ]);
 
     const onViewChange = debounce(() => {
       const center = createdView.getCenter();
