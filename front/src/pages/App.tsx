@@ -20,7 +20,7 @@ const App = () => {
         <Interaction type={InteractionType.modify} />
         <Interaction type={InteractionType.snap} />
       </VectorLayer>
-      <Overlay />
+      {/*<Overlay />*/}
     </Map>
   );
 };

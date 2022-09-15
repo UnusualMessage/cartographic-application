@@ -1,4 +1,4 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { Feature, Map, Overlay, View } from "ol";
 import BaseLayer from "ol/layer/Base";
 import { Draw, Modify, Select, Snap } from "ol/interaction";
@@ -9,26 +9,21 @@ import { get } from "ol/proj/projections";
 import LayersStore from "./LayersStore";
 import { DrawType } from "../types/DrawType";
 import { overlayId } from "../assets/config";
+import { altKeyOnly } from "ol/events/condition";
 
 class MapStore {
   private _map: Map | null;
 
-  private _activeFeature: Feature | null;
   private _draw: Draw | null;
 
   constructor() {
     this._map = null;
-    this._activeFeature = null;
     this._draw = null;
 
     makeAutoObservable(this);
   }
 
   public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {
-    const extent = get("EPSG:3857").getExtent().slice();
-    extent[0] += extent[0];
-    extent[2] += extent[2];
-
     this._map = new Map({
       target: target,
       view: view,
@@ -49,19 +44,8 @@ class MapStore {
     return this._map?.getOverlayById(id);
   }
 
-  public get getActiveFeature() {
-    return this._activeFeature;
-  }
-
   public addSelect() {
     const select = new Select();
-
-    select.on("select", () => {
-      runInAction(() => {
-        this._activeFeature = select.getFeatures().item(0);
-      });
-    });
-
     this._map?.addInteraction(select);
   }
 
@@ -96,6 +80,7 @@ class MapStore {
   public addModify(source: VectorSource) {
     const modify = new Modify({
       source: source,
+      condition: altKeyOnly,
     });
 
     this._map?.addInteraction(modify);
