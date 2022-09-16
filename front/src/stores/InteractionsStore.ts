@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { Draw, Modify, Select, Snap, Translate } from "ol/interaction";
-import { altKeyOnly } from "ol/events/condition";
+import { altKeyOnly, altShiftKeysOnly, doubleClick } from "ol/events/condition";
 import { Type } from "ol/geom/Geometry";
 
 import { DrawType } from "../types/DrawType";
@@ -76,8 +76,25 @@ class InteractionsStore {
       features: select.getFeatures(),
     });
 
+    map.addInteraction(select);
+    map.addInteraction(translate);
+
     this._interactions.select = select;
     this._interactions.translate = translate;
+
+    const toDeleteSelect = new Select({
+      condition: altShiftKeysOnly,
+    });
+
+    toDeleteSelect.on("select", (e) => {
+      const selected = e.selected.at(0);
+
+      if (selected) {
+        source.removeFeature(selected);
+      }
+    });
+
+    map.addInteraction(toDeleteSelect);
   }
 
   public addModify(source: VectorSource, map: Map) {
