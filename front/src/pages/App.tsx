@@ -6,6 +6,7 @@ import { TileLayer, VectorLayer } from "../components/Layer";
 import View from "../components/View";
 import Interactions from "../components/Interaction/Interactions";
 import Overlay from "../components/Overlay";
+import ContextMenu from "../components/ContextMenu";
 
 const App = () => {
   return (
@@ -16,7 +17,8 @@ const App = () => {
       <VectorLayer name={"draw"}>
         <Interactions />
       </VectorLayer>
-      {/*<Overlay />*/}
+      <Overlay />
+      <ContextMenu />
     </Map>
   );
 };

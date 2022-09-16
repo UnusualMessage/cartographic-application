@@ -14,6 +14,10 @@ const Interactions = () => {
     if (map && source) {
       InteractionsStore.addInteractions(source, map);
     }
+
+    return () => {
+      InteractionsStore.removeInteractions(map);
+    };
   }, [map, drawType]);
 
   return <></>;

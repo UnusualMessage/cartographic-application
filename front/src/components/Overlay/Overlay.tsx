@@ -1,42 +1,40 @@
 import { useEffect, useRef } from "react";
-import { Overlay as OLOverlay } from "ol";
+import { Paper } from "@mui/material";
+import { observer } from "mobx-react-lite";
 
 import css from "./overlay.module.scss";
 
 import MapStore from "../../stores/MapStore";
-import { overlayId, overlayOffset } from "../../assets/config";
-import { Paper } from "@mui/material";
+import OverlaysStore from "../../stores/OverlaysStore";
 
 const Overlay = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
-
-  const onClick = () => {
-    const overlay = MapStore.getOverlayById(overlayId);
-    overlay?.setPosition(undefined);
-  };
+  const map = MapStore.getMap;
+  const active = OverlaysStore.isFeatureInfoActive;
 
   useEffect(() => {
-    const element = overlayRef.current as HTMLDivElement;
+    const element = overlayRef.current;
 
-    const overlay = new OLOverlay({
-      element: element,
-      offset: overlayOffset,
-      id: overlayId,
-    });
+    if (element && map) {
+      OverlaysStore.initFeatureOverlay(element, map);
+    }
+  }, [map]);
 
-    MapStore.addOverlay(overlay);
-  }, []);
+  let position = "absolute";
+  if (active) {
+    position = "static";
+  }
 
   return (
     <Paper
+      sx={{ position: position }}
       elevation={24}
       className={css.wrapper}
       ref={overlayRef}
-      onClick={onClick}
     >
-      <span>112421412412421412412414</span>
+      <span>Информация о Feature:</span>
     </Paper>
   );
 };
 
-export default Overlay;
+export default observer(Overlay);

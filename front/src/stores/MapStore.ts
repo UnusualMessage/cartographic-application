@@ -1,9 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { Map, Overlay, View } from "ol";
+import { Map, View } from "ol";
 import BaseLayer from "ol/layer/Base";
-
-import LayersStore from "./LayersStore";
-import { overlayId } from "../assets/config";
 
 class MapStore {
   private _map: Map | null;
@@ -19,37 +16,13 @@ class MapStore {
       target: target,
       view: view,
       layers: layers,
-    });
-
-    this._map.on("click", (e) => {
-      const pixel = this._map?.getEventPixel(e.originalEvent);
-      const overlay = this._map?.getOverlayById(overlayId);
-
-      if (overlay && pixel) {
-        overlay.setPosition(this._map?.getCoordinateFromPixel(pixel));
-      }
+      controls: [],
     });
   }
 
   public get getMap() {
     return this._map;
   }
-
-  public getOverlayById(id: number) {
-    return this._map?.getOverlayById(id);
-  }
-
-  public removeLayerByName(name: string) {
-    LayersStore.getLayers.forEach((layer) => {
-      if (layer.get("name") === name) {
-        this._map?.removeLayer(layer);
-      }
-    });
-  }
-
-  addOverlay = (overlay: Overlay) => {
-    this._map?.addOverlay(overlay);
-  };
 
   public addView(view: View) {
     this._map?.setView(view);
