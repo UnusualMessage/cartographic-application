@@ -2,11 +2,10 @@ import { makeAutoObservable } from "mobx";
 import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { Draw, Modify, Select, Snap, Translate } from "ol/interaction";
-
-import { DrawType } from "../types/DrawType";
-import MapStore from "./MapStore";
 import { altKeyOnly } from "ol/events/condition";
 import { Type } from "ol/geom/Geometry";
+
+import { DrawType } from "../types/DrawType";
 
 interface Interactions {
   select: Select | null;
@@ -40,44 +39,35 @@ class InteractionsStore {
   }
 
   public changeDrawType(newDrawType: DrawType) {
-    if (newDrawType === "None") {
-      this.removeDraw();
-      return;
-    }
-
     this._currentDrawType = newDrawType;
   }
 
-  public removeDraw() {
-    const map = MapStore.getMap;
-    const draw = this._interactions.draw;
-
-    if (map && draw) {
-      map.removeInteraction(draw);
+  public addDraw(source: VectorSource, map: Map, drawType: DrawType) {
+    if (this._interactions.draw) {
+      map.removeInteraction(this._interactions.draw);
     }
 
-    this._interactions.draw = null;
+    if (drawType === "None") {
+      return;
+    }
+
+    const draw = new Draw({
+      type: this.getDrawType as Type,
+      source: source,
+    });
+
+    map.addInteraction(draw);
+
+    this._interactions.draw = draw;
   }
 
-  public addInteractions(source: VectorSource, map: Map | null) {
+  public addSelectAndTranslate(source: VectorSource, map: Map) {
     if (this._interactions.select) {
-      map?.removeInteraction(this._interactions.select);
-    }
-
-    if (this._interactions.modify) {
-      map?.removeInteraction(this._interactions.modify);
+      map.removeInteraction(this._interactions.select);
     }
 
     if (this._interactions.translate) {
-      map?.removeInteraction(this._interactions.translate);
-    }
-
-    if (this._interactions.snap) {
-      map?.removeInteraction(this._interactions.snap);
-    }
-
-    if (this._interactions.draw) {
-      map?.removeInteraction(this._interactions.draw);
+      map.removeInteraction(this._interactions.translate);
     }
 
     const select = new Select();
@@ -86,33 +76,48 @@ class InteractionsStore {
       features: select.getFeatures(),
     });
 
-    const draw = new Draw({
-      type: this.getDrawType as Type,
-      source: source,
-    });
+    this._interactions.select = select;
+    this._interactions.translate = translate;
+  }
+
+  public addModify(source: VectorSource, map: Map) {
+    if (this._interactions.modify) {
+      map.removeInteraction(this._interactions.modify);
+    }
 
     const modify = new Modify({
       source: source,
       condition: altKeyOnly,
     });
 
+    map.addInteraction(modify);
+
+    this._interactions.modify = modify;
+  }
+
+  public addSnap(source: VectorSource, map: Map) {
+    if (this._interactions.snap) {
+      map.removeInteraction(this._interactions.snap);
+    }
+
     const snap = new Snap({
       source: source,
     });
 
-    map?.addInteraction(select);
-    map?.addInteraction(translate);
-    map?.addInteraction(draw);
-    map?.addInteraction(modify);
-    map?.addInteraction(snap);
+    map.addInteraction(snap);
 
-    this._interactions = {
-      select: select,
-      translate: translate,
-      draw: draw,
-      snap: snap,
-      modify: modify,
-    };
+    this._interactions.snap = snap;
+  }
+
+  public addInteractions(source: VectorSource, map: Map | null) {
+    if (!map) {
+      return;
+    }
+
+    this.addSelectAndTranslate(source, map);
+    this.addDraw(source, map, this._currentDrawType);
+    this.addModify(source, map);
+    this.addSnap(source, map);
   }
 }
 
