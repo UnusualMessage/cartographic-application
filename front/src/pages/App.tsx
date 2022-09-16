@@ -5,6 +5,7 @@ import Controls from "../components/Controls";
 import { TileLayer, VectorLayer } from "../components/Layer";
 import View from "../components/View";
 import Interactions from "../components/Interaction/Interactions";
+import Overlay from "../components/Overlay";
 
 const App = () => {
   return (

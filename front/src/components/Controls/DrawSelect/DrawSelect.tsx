@@ -1,31 +1,38 @@
-import classNames from "classnames";
-import { ChangeEventHandler } from "react";
-
-import css from "./select.module.scss";
+import {
+  FormControl,
+  InputLabel,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
+} from "@mui/material";
+import { observer } from "mobx-react-lite";
 
 import InteractionsStore from "../../../stores/InteractionsStore";
 import { DrawType } from "../../../types/DrawType";
 
 const DrawSelect = () => {
-  const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
+  const onSelect = (e: SelectChangeEvent<DrawType>) => {
     InteractionsStore.changeDrawType(e.target.value as DrawType);
   };
 
   return (
-    <div className={classNames(css.wrapper)}>
-      <select
-        className={classNames(css.select)}
+    <FormControl size="small">
+      <InputLabel id="draw-label">Тип</InputLabel>
+      <Select
+        labelId="draw-label"
+        id="draw-select"
+        value={InteractionsStore.getDrawType}
+        label="Тип"
         onChange={onSelect}
-        defaultValue={"Polygon"}
       >
-        <option value={"None"} label={"Курсор"} />
-        <option value={"Polygon"} label={"Полигон"} />
-        <option value={"Circle"} label={"Круг"} />
-        <option value={"LineString"} label={"Линия"} />
-        <option value={"Point"} label={"Точка"} />
-      </select>
-    </div>
+        <MenuItem value={"None"}>Курсор</MenuItem>
+        <MenuItem value={"Polygon"}>Полигон</MenuItem>
+        <MenuItem value={"Circle"}>Круг</MenuItem>
+        <MenuItem value={"LineString"}>Линия</MenuItem>
+        <MenuItem value={"Point"}>Точка</MenuItem>
+      </Select>
+    </FormControl>
   );
 };
 
-export default DrawSelect;
+export default observer(DrawSelect);

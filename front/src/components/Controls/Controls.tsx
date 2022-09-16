@@ -1,14 +1,20 @@
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
+import { Stack } from "@mui/material";
 
 import css from "./controls.module.scss";
+
 import DrawSelect from "./DrawSelect";
 
 const Controls = () => {
   return (
-    <div className={classNames(css.wrapper)}>
+    <Stack
+      className={classNames(css.wrapper)}
+      flexDirection={"column"}
+      spacing={3}
+    >
       <DrawSelect />
-    </div>
+    </Stack>
   );
 };
 

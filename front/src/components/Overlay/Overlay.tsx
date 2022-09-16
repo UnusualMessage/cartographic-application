@@ -5,6 +5,7 @@ import css from "./overlay.module.scss";
 
 import MapStore from "../../stores/MapStore";
 import { overlayId, overlayOffset } from "../../assets/config";
+import { Paper } from "@mui/material";
 
 const Overlay = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
@@ -27,9 +28,14 @@ const Overlay = () => {
   }, []);
 
   return (
-    <div className={css.wrapper} ref={overlayRef} onClick={onClick}>
+    <Paper
+      elevation={24}
+      className={css.wrapper}
+      ref={overlayRef}
+      onClick={onClick}
+    >
       <span>112421412412421412412414</span>
-    </div>
+    </Paper>
   );
 };
 
