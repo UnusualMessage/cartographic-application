@@ -30,13 +30,12 @@ const ContextMenu = () => {
 
   const copy = useCallback(() => {
     OverlaysStore.copy();
+    OverlaysStore.hideContextMenu();
   }, [selectedFeatures]);
 
   const insert = useCallback(() => {
     const layer = LayersStore.drawLayer;
-    const source = layer.getSource();
-
-    const features = source?.getFeatures();
+    OverlaysStore.insert(layer);
   }, [copiedFeatures]);
 
   useEffect(() => {

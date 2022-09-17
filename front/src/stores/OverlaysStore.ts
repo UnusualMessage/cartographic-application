@@ -1,10 +1,15 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { Map, Overlay } from "ol";
+import { Feature, Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
 import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
 import { Pixel } from "ol/pixel";
 import { FeatureLike } from "ol/Feature";
+import VectorLayer from "ol/layer/Vector";
+import VectorSource from "ol/source/Vector";
+import { Circle, Geometry } from "ol/geom";
+import { GeoJSON } from "ol/format";
+import { AllGeoJSON, center } from "@turf/turf";
 
 interface CustomOverlay {
   element: HTMLDivElement;
@@ -19,12 +24,16 @@ class OverlaysStore {
   private _selectedFeatures: FeatureLike[];
   private _copiedFeatures: FeatureLike[];
 
+  private _cursorPosition: Coordinate | null;
+
   constructor() {
     this._featureInfo = null;
     this._contextMenu = null;
 
     this._selectedFeatures = [];
     this._copiedFeatures = [];
+
+    this._cursorPosition = null;
 
     makeAutoObservable(this);
   }
@@ -85,14 +94,16 @@ class OverlaysStore {
 
     canvas?.addEventListener("contextmenu", (e) => {
       const pixel: Pixel = map.getEventPixel(e);
+      const cursor: Coordinate = map.getCoordinateFromPixel(pixel);
 
-      this.showOverlay(this._contextMenu, map.getCoordinateFromPixel(pixel));
+      this.showOverlay(this._contextMenu, cursor);
       this.hideOverlay(this._featureInfo);
 
       const features = map.getFeaturesAtPixel(pixel);
 
       runInAction(() => {
         this._selectedFeatures = features;
+        this._cursorPosition = cursor;
       });
     });
 
@@ -121,6 +132,45 @@ class OverlaysStore {
     this._copiedFeatures = this._selectedFeatures.slice();
   }
 
+  public insert(targetLayer: VectorLayer<VectorSource>) {
+    const source = targetLayer.getSource();
+
+    this.copiedFeatures.forEach((feature) => {
+      const geometry = (feature.getGeometry() as Geometry).clone();
+      const cursor = this.cursorPosition;
+
+      if (!cursor) {
+        return;
+      }
+
+      if (geometry.getType() === "Circle") {
+        const initial = geometry as Circle;
+        const circle = new Circle(cursor);
+
+        circle.setRadius(initial.getRadius());
+
+        const newFeature = new Feature(circle);
+        source?.addFeature(newFeature);
+      } else {
+        const format = new GeoJSON();
+
+        const formattedGeometry = format.writeGeometryObject(geometry);
+        const featureCenter = center(formattedGeometry as AllGeoJSON).geometry
+          .coordinates;
+
+        geometry.translate(
+          cursor[0] - featureCenter[0],
+          cursor[1] - featureCenter[1]
+        );
+
+        const newFeature = new Feature(geometry);
+        source?.addFeature(newFeature);
+      }
+    });
+
+    this.hideContextMenu();
+  }
+
   public get isFeatureInfoActive() {
     return this._featureInfo?.active;
   }
@@ -135,6 +185,10 @@ class OverlaysStore {
 
   public get copiedFeatures() {
     return this._copiedFeatures;
+  }
+
+  public get cursorPosition() {
+    return this._cursorPosition;
   }
 }
 
