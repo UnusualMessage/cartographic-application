@@ -1,8 +1,10 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
 import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
+import { Pixel } from "ol/pixel";
+import { FeatureLike } from "ol/Feature";
 
 interface CustomOverlay {
   element: HTMLDivElement;
@@ -14,9 +16,15 @@ class OverlaysStore {
   private _featureInfo: CustomOverlay | null;
   private _contextMenu: CustomOverlay | null;
 
+  private _selectedFeatures: FeatureLike[];
+  private _copiedFeatures: FeatureLike[];
+
   constructor() {
     this._featureInfo = null;
     this._contextMenu = null;
+
+    this._selectedFeatures = [];
+    this._copiedFeatures = [];
 
     makeAutoObservable(this);
   }
@@ -76,12 +84,16 @@ class OverlaysStore {
     const canvas = el.getElementsByTagName("canvas").item(0);
 
     canvas?.addEventListener("contextmenu", (e) => {
-      this.showOverlay(
-        this._contextMenu,
-        map.getCoordinateFromPixel([e.x, e.y])
-      );
+      const pixel: Pixel = map.getEventPixel(e);
 
+      this.showOverlay(this._contextMenu, map.getCoordinateFromPixel(pixel));
       this.hideOverlay(this._featureInfo);
+
+      const features = map.getFeaturesAtPixel(pixel);
+
+      runInAction(() => {
+        this._selectedFeatures = features;
+      });
     });
 
     map.addOverlay(overlay);
@@ -105,12 +117,24 @@ class OverlaysStore {
     }
   }
 
+  public copy() {
+    this._copiedFeatures = this._selectedFeatures.slice();
+  }
+
   public get isFeatureInfoActive() {
     return this._featureInfo?.active;
   }
 
   public get isContextMenuActive() {
     return this._contextMenu?.active;
+  }
+
+  public get selectedFeatures() {
+    return this._selectedFeatures;
+  }
+
+  public get copiedFeatures() {
+    return this._copiedFeatures;
   }
 }
 
