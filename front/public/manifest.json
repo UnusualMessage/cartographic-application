@@ -1,0 +1,18 @@
+{
+  "lang": "ru",
+  "dir": "ltr",
+  "name": "Картографический сервис",
+  "description": "Картографический сервис для управления и контроля сельскоземельных участкой",
+  "short_name": "Карта",
+
+  "icons": [
+    {
+      "src": "favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    }
+  ],
+
+  "display": "fullscreen",
+  "orientation": "landscape"
+}
