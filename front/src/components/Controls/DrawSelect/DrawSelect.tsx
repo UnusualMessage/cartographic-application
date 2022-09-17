@@ -24,6 +24,7 @@ const DrawSelect = () => {
         value={InteractionsStore.getDrawType}
         label="Тип"
         onChange={onSelect}
+        disabled={InteractionsStore.readonly}
       >
         <MenuItem value={"None"}>Курсор</MenuItem>
         <MenuItem value={"Polygon"}>Полигон</MenuItem>

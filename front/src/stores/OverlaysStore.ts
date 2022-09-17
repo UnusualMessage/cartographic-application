@@ -1,9 +1,8 @@
 import { makeAutoObservable } from "mobx";
 import { Map, Overlay } from "ol";
+import { Coordinate } from "ol/coordinate";
 
 import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
-import { Coordinate } from "ol/coordinate";
-import { Pixel } from "ol/pixel";
 
 interface CustomOverlay {
   element: HTMLDivElement;
@@ -20,6 +19,14 @@ class OverlaysStore {
     this._contextMenu = null;
 
     makeAutoObservable(this);
+  }
+
+  public removeFeatureOverlay(map: Map) {
+    if (this._featureInfo) {
+      this.hideOverlay(this._featureInfo);
+      map.removeOverlay(this._featureInfo.overlay);
+      this._featureInfo = null;
+    }
   }
 
   public initFeatureOverlay(element: HTMLDivElement, map: Map) {
@@ -85,6 +92,10 @@ class OverlaysStore {
       overlay.active = false;
       overlay.overlay.setPosition(undefined);
     }
+  }
+
+  public hideContextMenu() {
+    this.hideOverlay(this._contextMenu);
   }
 
   private showOverlay(overlay: CustomOverlay | null, coordinates: Coordinate) {

@@ -8,6 +8,9 @@ import {
 } from "@mui/material";
 import { useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
+import classNames from "classnames";
+
+import css from "./menu.module.scss";
 
 import OverlaysStore from "../../stores/OverlaysStore";
 import MapStore from "../../stores/MapStore";
@@ -16,6 +19,10 @@ const ContextMenu = () => {
   const contextMenuRef = useRef<HTMLDivElement>(null);
   const map = MapStore.getMap;
   const active = OverlaysStore.isContextMenuActive;
+  
+  const onClick = () => {
+    OverlaysStore.hideContextMenu();
+  };
 
   useEffect(() => {
     const element = contextMenuRef.current;
@@ -25,38 +32,32 @@ const ContextMenu = () => {
     }
   }, [map]);
 
-  let position = "absolute";
-  if (active) {
-    position = "static";
-  }
-
+  const classes = classNames({
+    [css.hidden]: !active,
+    [css.wrapper]: active
+  });
+  
   return (
     <Paper
-      sx={{ width: 320, maxWidth: "100%", position: position }}
+      className={classes}
       ref={contextMenuRef}
     >
       <MenuList>
         <MenuItem>
-          <ListItemText>Cut</ListItemText>
-          <Typography variant="body2" color="text.secondary">
-            ⌘X
-          </Typography>
-        </MenuItem>
-        <MenuItem>
-          <ListItemText>Copy</ListItemText>
-          <Typography variant="body2" color="text.secondary">
+          <ListItemText>Копировать</ListItemText>
+          <Typography variant="body1" color="text.secondary">
             ⌘C
           </Typography>
         </MenuItem>
         <MenuItem>
-          <ListItemText>Paste</ListItemText>
-          <Typography variant="body2" color="text.secondary">
+          <ListItemText>Вставить</ListItemText>
+          <Typography variant="body1" color="text.secondary">
             ⌘V
           </Typography>
         </MenuItem>
         <Divider />
-        <MenuItem>
-          <ListItemText>Web Clipboard</ListItemText>
+        <MenuItem onClick={onClick}>
+          <ListItemText>Закрыть</ListItemText>
         </MenuItem>
       </MenuList>
     </Paper>

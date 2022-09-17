@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Paper } from "@mui/material";
 import { observer } from "mobx-react-lite";
+import classNames from "classnames";
 
 import css from "./overlay.module.scss";
 
@@ -18,20 +19,21 @@ const Overlay = () => {
     if (element && map) {
       OverlaysStore.initFeatureOverlay(element, map);
     }
+
+    return () => {
+      if (map) {
+        OverlaysStore.removeFeatureOverlay(map);
+      }
+    };
   }, [map]);
 
-  let position = "absolute";
-  if (active) {
-    position = "static";
-  }
+  const classes = classNames({
+    [css.wrapper]: active,
+    [css.hidden]: !active,
+  });
 
   return (
-    <Paper
-      sx={{ position: position }}
-      elevation={24}
-      className={css.wrapper}
-      ref={overlayRef}
-    >
+    <Paper elevation={24} className={classes} ref={overlayRef}>
       <span>Информация о Feature:</span>
     </Paper>
   );

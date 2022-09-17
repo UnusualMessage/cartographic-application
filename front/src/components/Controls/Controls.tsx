@@ -5,6 +5,7 @@ import { Stack } from "@mui/material";
 import css from "./controls.module.scss";
 
 import DrawSelect from "./DrawSelect";
+import DrawSwitch from "./DrawSwitch";
 
 const Controls = () => {
   return (
@@ -14,6 +15,7 @@ const Controls = () => {
       spacing={3}
     >
       <DrawSelect />
+      <DrawSwitch />
     </Stack>
   );
 };
