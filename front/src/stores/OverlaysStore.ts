@@ -63,7 +63,7 @@ class OverlaysStore {
       const pixel = map.getEventPixel(e.originalEvent);
       const features = map.getFeaturesAtPixel(pixel);
 
-      this.hideOverlay(this._contextMenu);
+      this.hideContextMenu();
 
       if (!features.length) {
         this.hideOverlay(this._featureInfo);
@@ -130,6 +130,7 @@ class OverlaysStore {
 
   public copy() {
     this._copiedFeatures = this._selectedFeatures.slice();
+    this.hideContextMenu();
   }
 
   public insert(targetLayer: VectorLayer<VectorSource>) {
@@ -166,6 +167,16 @@ class OverlaysStore {
         const newFeature = new Feature(geometry);
         source?.addFeature(newFeature);
       }
+    });
+
+    this.hideContextMenu();
+  }
+
+  public delete(targetLayer: VectorLayer<VectorSource>) {
+    const source = targetLayer.getSource();
+
+    this.selectedFeatures.forEach((feature) => {
+      source?.removeFeature(feature as Feature);
     });
 
     this.hideContextMenu();

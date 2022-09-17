@@ -30,13 +30,23 @@ const ContextMenu = () => {
 
   const copy = useCallback(() => {
     OverlaysStore.copy();
-    OverlaysStore.hideContextMenu();
   }, [selectedFeatures]);
 
   const insert = useCallback(() => {
     const layer = LayersStore.drawLayer;
-    OverlaysStore.insert(layer);
+
+    if (layer) {
+      OverlaysStore.insert(layer);
+    }
   }, [copiedFeatures]);
+
+  const remove = useCallback(() => {
+    const layer = LayersStore.drawLayer;
+
+    if (layer) {
+      OverlaysStore.delete(layer);
+    }
+  }, [selectedFeatures]);
 
   useEffect(() => {
     const element = contextMenuRef.current;
@@ -60,12 +70,21 @@ const ContextMenu = () => {
             ⌘C
           </Typography>
         </MenuItem>
+
         <MenuItem onClick={insert}>
           <ListItemText>Вставить</ListItemText>
           <Typography variant="body1" color="text.secondary">
             ⌘V
           </Typography>
         </MenuItem>
+
+        <MenuItem onClick={remove}>
+          <ListItemText>Удалить</ListItemText>
+          <Typography variant="body1" color="text.secondary">
+            ⌘D
+          </Typography>
+        </MenuItem>
+
         <Divider />
         <MenuItem onClick={onClick}>
           <ListItemText>Закрыть</ListItemText>
