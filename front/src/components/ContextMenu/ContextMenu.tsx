@@ -6,7 +6,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { useCallback, useEffect, useRef } from "react";
+import { MouseEvent, useCallback, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
 
