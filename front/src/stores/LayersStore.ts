@@ -21,6 +21,12 @@ class LayersStore {
     return this._drawLayer;
   }
 
+  public clearDrawLayer() {
+    const layer = this.drawLayer;
+
+    layer?.getSource()?.clear();
+  }
+
   public createLayer(layer: BaseLayer, name: string) {
     layer.set("name", name);
 
@@ -31,7 +37,6 @@ class LayersStore {
 
   public createFeatureLayer(layer: VectorLayer<VectorSource>, name: string) {
     layer.set("name", name);
-
     this._layers.push(layer);
 
     return layer;

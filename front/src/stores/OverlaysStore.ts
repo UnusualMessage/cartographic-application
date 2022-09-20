@@ -1,15 +1,15 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { Feature, Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
-
-import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
 import { Pixel } from "ol/pixel";
 import { FeatureLike } from "ol/Feature";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import { Circle, Geometry, Point } from "ol/geom";
+import { Circle, Geometry } from "ol/geom";
 import { GeoJSON } from "ol/format";
 import { AllGeoJSON, centerOfMass, lineString } from "@turf/turf";
+
+import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
 
 interface CustomOverlay {
   element: HTMLDivElement;

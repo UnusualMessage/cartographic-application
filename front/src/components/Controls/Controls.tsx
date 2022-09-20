@@ -6,6 +6,7 @@ import css from "./controls.module.scss";
 
 import DrawSelect from "./DrawSelect";
 import DrawSwitch from "./DrawSwitch";
+import DrawClear from "./DrawClear/DrawClear";
 
 const Controls = () => {
   return (
@@ -16,6 +17,7 @@ const Controls = () => {
     >
       <DrawSelect />
       <DrawSwitch />
+      <DrawClear />
     </Stack>
   );
 };
