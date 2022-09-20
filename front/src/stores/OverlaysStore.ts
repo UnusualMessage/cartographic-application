@@ -7,9 +7,9 @@ import { Pixel } from "ol/pixel";
 import { FeatureLike } from "ol/Feature";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
-import { Circle, Geometry } from "ol/geom";
+import { Circle, Geometry, Point } from "ol/geom";
 import { GeoJSON } from "ol/format";
-import { AllGeoJSON, center } from "@turf/turf";
+import { AllGeoJSON, centerOfMass, lineString } from "@turf/turf";
 
 interface CustomOverlay {
   element: HTMLDivElement;
@@ -133,40 +133,49 @@ class OverlaysStore {
     this.hideContextMenu();
   }
 
-  public insert(targetLayer: VectorLayer<VectorSource>) {
-    const source = targetLayer.getSource();
+  private getFeaturesCenter(features: FeatureLike[]) {
+    const centers: Coordinate[] = [];
 
-    this.copiedFeatures.forEach((feature) => {
+    features.forEach((feature) => {
       const geometry = (feature.getGeometry() as Geometry).clone();
-      const cursor = this.cursorPosition;
-
-      if (!cursor) {
-        return;
-      }
 
       if (geometry.getType() === "Circle") {
-        const initial = geometry as Circle;
-        const circle = new Circle(cursor);
-
-        circle.setRadius(initial.getRadius());
-
-        const newFeature = new Feature(circle);
-        source?.addFeature(newFeature);
+        const circle = geometry as Circle;
+        centers.push(circle.getCenter());
       } else {
         const format = new GeoJSON();
 
         const formattedGeometry = format.writeGeometryObject(geometry);
-        const featureCenter = center(formattedGeometry as AllGeoJSON).geometry
-          .coordinates;
+        const featureCenter = centerOfMass(formattedGeometry as AllGeoJSON)
+          .geometry.coordinates;
 
-        geometry.translate(
-          cursor[0] - featureCenter[0],
-          cursor[1] - featureCenter[1]
-        );
-
-        const newFeature = new Feature(geometry);
-        source?.addFeature(newFeature);
+        centers.push(featureCenter);
       }
+    });
+
+    return centerOfMass(lineString(centers)).geometry.coordinates;
+  }
+
+  public insert(targetLayer: VectorLayer<VectorSource>) {
+    const source = targetLayer.getSource();
+    const cursor = this.cursorPosition;
+
+    if (!cursor) {
+      return;
+    }
+
+    const featuresCenter = this.getFeaturesCenter(this.copiedFeatures);
+
+    this.copiedFeatures.forEach((feature) => {
+      const geometry = (feature.getGeometry() as Geometry).clone();
+
+      geometry.translate(
+        cursor[0] - featuresCenter[0],
+        cursor[1] - featuresCenter[1]
+      );
+
+      const newFeature = new Feature(geometry);
+      source?.addFeature(newFeature);
     });
 
     this.hideContextMenu();
