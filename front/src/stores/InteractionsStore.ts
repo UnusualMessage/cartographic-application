@@ -2,10 +2,11 @@ import { makeAutoObservable } from "mobx";
 import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { Draw, Modify, Select, Snap, Translate } from "ol/interaction";
-import { altKeyOnly } from "ol/events/condition";
+import { altKeyOnly, primaryAction } from "ol/events/condition";
 import { Type } from "ol/geom/Geometry";
 
 import { DrawType } from "../types/DrawType";
+import FeaturesStore from "./FeaturesStore";
 
 interface Interactions {
   select: Select | null;
@@ -18,12 +19,14 @@ interface Interactions {
 class InteractionsStore {
   private _currentDrawType: DrawType;
   private _readonly: boolean;
+  private _drawing: boolean;
 
   private _interactions: Interactions;
 
   constructor() {
     this._currentDrawType = "Polygon";
     this._readonly = false;
+    this._drawing = false;
 
     this._interactions = {
       select: null,
@@ -66,6 +69,14 @@ class InteractionsStore {
       source: source,
     });
 
+    draw.on("drawstart", () => {
+      this._drawing = true;
+    });
+
+    draw.on(["drawend", "drawabort"], () => {
+      this._drawing = false;
+    });
+
     map.addInteraction(draw);
 
     this._interactions.draw = draw;
@@ -80,10 +91,19 @@ class InteractionsStore {
       map.removeInteraction(this._interactions.translate);
     }
 
-    const select = new Select();
+    const select = new Select({
+      multi: true,
+    });
+
+    select.on("select", () => {
+      FeaturesStore.selectedFeatures = select.getFeatures().getArray();
+    });
 
     const translate = new Translate({
       features: select.getFeatures(),
+      condition: (event) => {
+        return primaryAction(event) && !this._drawing;
+      },
     });
 
     map.addInteraction(select);

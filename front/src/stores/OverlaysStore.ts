@@ -21,17 +21,11 @@ class OverlaysStore {
   private _featureInfo: CustomOverlay | null;
   private _contextMenu: CustomOverlay | null;
 
-  private _selectedFeatures: FeatureLike[];
-  private _copiedFeatures: FeatureLike[];
-
   private _cursorPosition: Coordinate | null;
 
   constructor() {
     this._featureInfo = null;
     this._contextMenu = null;
-
-    this._selectedFeatures = [];
-    this._copiedFeatures = [];
 
     this._cursorPosition = null;
 
@@ -99,10 +93,7 @@ class OverlaysStore {
       this.showOverlay(this._contextMenu, cursor);
       this.hideOverlay(this._featureInfo);
 
-      const features = map.getFeaturesAtPixel(pixel);
-
       runInAction(() => {
-        this._selectedFeatures = features;
         this._cursorPosition = cursor;
       });
     });
@@ -128,11 +119,6 @@ class OverlaysStore {
     }
   }
 
-  public copy() {
-    this._copiedFeatures = this._selectedFeatures.slice();
-    this.hideContextMenu();
-  }
-
   private getFeaturesCenter(features: FeatureLike[]) {
     const centers: Coordinate[] = [];
 
@@ -153,10 +139,17 @@ class OverlaysStore {
       }
     });
 
-    return centerOfMass(lineString(centers)).geometry.coordinates;
+    if (centers.length > 1) {
+      return centerOfMass(lineString(centers)).geometry.coordinates;
+    } else {
+      return centers[0];
+    }
   }
 
-  public insert(targetLayer: VectorLayer<VectorSource>) {
+  public insert(
+    targetLayer: VectorLayer<VectorSource>,
+    copiedFeatures: FeatureLike[]
+  ) {
     const source = targetLayer.getSource();
     const cursor = this.cursorPosition;
 
@@ -164,9 +157,9 @@ class OverlaysStore {
       return;
     }
 
-    const featuresCenter = this.getFeaturesCenter(this.copiedFeatures);
+    const featuresCenter = this.getFeaturesCenter(copiedFeatures);
 
-    this.copiedFeatures.forEach((feature) => {
+    copiedFeatures.forEach((feature) => {
       const geometry = (feature.getGeometry() as Geometry).clone();
 
       geometry.translate(
@@ -181,10 +174,13 @@ class OverlaysStore {
     this.hideContextMenu();
   }
 
-  public delete(targetLayer: VectorLayer<VectorSource>) {
+  public delete(
+    targetLayer: VectorLayer<VectorSource>,
+    selectedFeatures: FeatureLike[]
+  ) {
     const source = targetLayer.getSource();
 
-    this.selectedFeatures.forEach((feature) => {
+    selectedFeatures.forEach((feature) => {
       source?.removeFeature(feature as Feature);
     });
 
@@ -197,14 +193,6 @@ class OverlaysStore {
 
   public get isContextMenuActive() {
     return this._contextMenu?.active;
-  }
-
-  public get selectedFeatures() {
-    return this._selectedFeatures;
-  }
-
-  public get copiedFeatures() {
-    return this._copiedFeatures;
   }
 
   public get cursorPosition() {

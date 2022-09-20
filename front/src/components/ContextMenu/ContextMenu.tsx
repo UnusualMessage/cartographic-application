@@ -6,7 +6,7 @@ import {
   Paper,
   Typography,
 } from "@mui/material";
-import { MouseEvent, useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
 
@@ -15,28 +15,30 @@ import css from "./menu.module.scss";
 import OverlaysStore from "../../stores/OverlaysStore";
 import MapStore from "../../stores/MapStore";
 import LayersStore from "../../stores/LayersStore";
+import FeaturesStore from "../../stores/FeaturesStore";
 
 const ContextMenu = () => {
   const contextMenuRef = useRef<HTMLDivElement>(null);
   const map = MapStore.getMap;
   const active = OverlaysStore.isContextMenuActive;
 
-  const selectedFeatures = OverlaysStore.selectedFeatures;
-  const copiedFeatures = OverlaysStore.copiedFeatures;
+  const selectedFeatures = FeaturesStore.selectedFeatures;
+  const copiedFeatures = FeaturesStore.copiedFeatures;
 
   const onClick = () => {
     OverlaysStore.hideContextMenu();
   };
 
   const copy = useCallback(() => {
-    OverlaysStore.copy();
+    FeaturesStore.copiedFeatures = selectedFeatures;
+    OverlaysStore.hideContextMenu();
   }, [selectedFeatures]);
 
   const insert = useCallback(() => {
     const layer = LayersStore.drawLayer;
 
     if (layer) {
-      OverlaysStore.insert(layer);
+      OverlaysStore.insert(layer, copiedFeatures);
     }
   }, [copiedFeatures]);
 
@@ -44,7 +46,7 @@ const ContextMenu = () => {
     const layer = LayersStore.drawLayer;
 
     if (layer) {
-      OverlaysStore.delete(layer);
+      OverlaysStore.delete(layer, selectedFeatures);
     }
   }, [selectedFeatures]);
 
