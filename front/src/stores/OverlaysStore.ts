@@ -53,20 +53,6 @@ class OverlaysStore {
       active: false,
     };
 
-    map.on("click", (e) => {
-      const pixel = map.getEventPixel(e.originalEvent);
-      const features = map.getFeaturesAtPixel(pixel);
-
-      this.hideContextMenu();
-
-      if (!features.length) {
-        this.hideOverlay(this._featureInfo);
-        return;
-      }
-
-      this.showOverlay(this._featureInfo, map.getCoordinateFromPixel(pixel));
-    });
-
     map.addOverlay(overlay);
   }
 
@@ -82,6 +68,20 @@ class OverlaysStore {
       element: element,
       active: false,
     };
+
+    map.on("click", (e) => {
+      const pixel = map.getEventPixel(e.originalEvent);
+      const features = map.getFeaturesAtPixel(pixel);
+
+      this.hideContextMenu();
+
+      if (!features.length) {
+        this.hideOverlay(this._featureInfo);
+        return;
+      }
+
+      this.showOverlay(this._featureInfo, map.getCoordinateFromPixel(pixel));
+    });
 
     const el = map.getViewport();
     const canvas = el.getElementsByTagName("canvas").item(0);

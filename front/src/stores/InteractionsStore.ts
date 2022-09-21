@@ -120,30 +120,8 @@ class InteractionsStore {
         .getFeaturesInExtent(extent)
         .filter((feature) => feature.getGeometry()?.intersectsExtent(extent));
 
-      const rotation = map.getView().getRotation();
-      const oblique = rotation % (Math.PI / 2) !== 0;
-
-      if (oblique) {
-        const anchor = [0, 0];
-        const geometry = dragBox.getGeometry().clone();
-        geometry.rotate(-rotation, anchor);
-        const extent = geometry.getExtent();
-
-        boxFeatures.forEach((feature) => {
-          const geometry = feature.getGeometry()?.clone();
-
-          if (geometry) {
-            geometry.rotate(-rotation, anchor);
-            if (geometry.intersectsExtent(extent)) {
-              FeaturesStore.selectedFeatures.push(feature);
-              select.getFeatures().push(feature);
-            }
-          }
-        });
-      } else {
-        FeaturesStore.selectedFeatures = boxFeatures;
-        select.getFeatures().extend(boxFeatures);
-      }
+      FeaturesStore.selectedFeatures = boxFeatures;
+      select.getFeatures().extend(boxFeatures);
     });
 
     const translate = new Translate({
