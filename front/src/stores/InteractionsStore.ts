@@ -1,8 +1,12 @@
 import { makeAutoObservable } from "mobx";
 import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
-import { Draw, Modify, Select, Snap, Translate } from "ol/interaction";
-import { altKeyOnly, primaryAction } from "ol/events/condition";
+import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
+import {
+  altKeyOnly,
+  platformModifierKeyOnly,
+  primaryAction,
+} from "ol/events/condition";
 import { Type } from "ol/geom/Geometry";
 
 import { DrawType } from "../types/DrawType";
@@ -14,6 +18,7 @@ interface Interactions {
   draw: Draw | null;
   snap: Snap | null;
   modify: Modify | null;
+  dragBox: DragBox | null;
 }
 
 class InteractionsStore {
@@ -34,6 +39,7 @@ class InteractionsStore {
       draw: null,
       snap: null,
       modify: null,
+      dragBox: null,
     };
 
     makeAutoObservable(this);
@@ -99,6 +105,47 @@ class InteractionsStore {
       FeaturesStore.selectedFeatures = select.getFeatures().getArray();
     });
 
+    const dragBox = new DragBox({
+      condition: platformModifierKeyOnly,
+    });
+
+    dragBox.on("boxstart", () => {
+      select.getFeatures().clear();
+      FeaturesStore.selectedFeatures = [];
+    });
+
+    dragBox.on("boxend", () => {
+      const extent = dragBox.getGeometry().getExtent();
+      const boxFeatures = source
+        .getFeaturesInExtent(extent)
+        .filter((feature) => feature.getGeometry()?.intersectsExtent(extent));
+
+      const rotation = map.getView().getRotation();
+      const oblique = rotation % (Math.PI / 2) !== 0;
+
+      if (oblique) {
+        const anchor = [0, 0];
+        const geometry = dragBox.getGeometry().clone();
+        geometry.rotate(-rotation, anchor);
+        const extent = geometry.getExtent();
+
+        boxFeatures.forEach((feature) => {
+          const geometry = feature.getGeometry()?.clone();
+
+          if (geometry) {
+            geometry.rotate(-rotation, anchor);
+            if (geometry.intersectsExtent(extent)) {
+              FeaturesStore.selectedFeatures.push(feature);
+              select.getFeatures().push(feature);
+            }
+          }
+        });
+      } else {
+        FeaturesStore.selectedFeatures = boxFeatures;
+        select.getFeatures().extend(boxFeatures);
+      }
+    });
+
     const translate = new Translate({
       features: select.getFeatures(),
       condition: (event) => {
@@ -108,9 +155,11 @@ class InteractionsStore {
 
     map.addInteraction(select);
     map.addInteraction(translate);
+    map.addInteraction(dragBox);
 
     this._interactions.select = select;
     this._interactions.translate = translate;
+    this._interactions.dragBox = dragBox;
   }
 
   public addModify(source: VectorSource, map: Map) {
@@ -176,6 +225,10 @@ class InteractionsStore {
 
     if (this._interactions.snap) {
       map.removeInteraction(this._interactions.snap);
+    }
+
+    if (this._interactions.dragBox) {
+      map.removeInteraction(this._interactions.dragBox);
     }
   }
 }
