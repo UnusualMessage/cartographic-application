@@ -41,10 +41,6 @@ class LayersStore {
 
     return layer;
   }
-
-  public get getLayers() {
-    return this._layers;
-  }
 }
 
 export default new LayersStore();

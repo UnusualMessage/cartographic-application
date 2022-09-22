@@ -1,4 +1,6 @@
 import { Button } from "@mui/material";
+import { observer } from "mobx-react-lite";
+
 import LayersStore from "../../../stores/LayersStore";
 
 const DrawClear = () => {
@@ -9,4 +11,4 @@ const DrawClear = () => {
   return <Button onClick={onButtonClick}>Очистить</Button>;
 };
 
-export default DrawClear;
+export default observer(DrawClear);

@@ -6,7 +6,9 @@ import css from "./controls.module.scss";
 
 import DrawSelect from "./DrawSelect";
 import DrawSwitch from "./DrawSwitch";
-import DrawClear from "./DrawClear/DrawClear";
+import DrawClear from "./DrawClear";
+import FillPicker from "./FillPicker";
+import StrokePicker from "./StrokePicker";
 
 const Controls = () => {
   return (
@@ -18,6 +20,8 @@ const Controls = () => {
       <DrawSelect />
       <DrawSwitch />
       <DrawClear />
+      <FillPicker />
+      <StrokePicker />
     </Stack>
   );
 };
