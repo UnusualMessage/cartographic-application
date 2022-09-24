@@ -10,7 +10,15 @@ import {
 import { Type } from "ol/geom/Geometry";
 
 import { DrawType } from "../types/DrawType";
-import FeaturesStore from "./FeaturesStore";
+import {
+  DragBoxInjector,
+  SelectInjector,
+  DragBoxEvent,
+  SelectEvent,
+  ListenersInjector,
+  DrawEvent,
+  DrawInjector,
+} from "../services/listeners";
 
 interface Interactions {
   select: Select | null;
@@ -61,6 +69,10 @@ class InteractionsStore {
     this._readonly = readonly;
   }
 
+  public set isDrawing(isDrawing: boolean) {
+    this._drawing = isDrawing;
+  }
+
   public addDraw(source: VectorSource, map: Map, drawType: DrawType) {
     if (this._interactions.draw) {
       map.removeInteraction(this._interactions.draw);
@@ -75,13 +87,11 @@ class InteractionsStore {
       source: source,
     });
 
-    draw.on("drawstart", () => {
-      this._drawing = true;
-    });
+    const drawInjector: ListenersInjector<DrawEvent> = new DrawInjector(draw);
 
-    draw.on(["drawend", "drawabort"], () => {
-      this._drawing = false;
-    });
+    drawInjector.addEventListener("drawstart");
+    drawInjector.addEventListener("drawend");
+    drawInjector.addEventListener("drawabort");
 
     map.addInteraction(draw);
 
@@ -97,32 +107,22 @@ class InteractionsStore {
       map.removeInteraction(this._interactions.translate);
     }
 
-    const select = new Select({
-      multi: true,
-    });
-
-    select.on("select", () => {
-      FeaturesStore.selectedFeatures = select.getFeatures().getArray();
-    });
+    const select = new Select();
 
     const dragBox = new DragBox({
       condition: platformModifierKeyOnly,
     });
 
-    dragBox.on("boxstart", () => {
-      select.getFeatures().clear();
-      FeaturesStore.selectedFeatures = [];
-    });
+    const dragBoxInjector: ListenersInjector<DragBoxEvent> =
+      new DragBoxInjector(dragBox, select, source);
 
-    dragBox.on("boxend", () => {
-      const extent = dragBox.getGeometry().getExtent();
-      const boxFeatures = source
-        .getFeaturesInExtent(extent)
-        .filter((feature) => feature.getGeometry()?.intersectsExtent(extent));
+    const selectInjector: ListenersInjector<SelectEvent> = new SelectInjector(
+      select
+    );
 
-      FeaturesStore.selectedFeatures = boxFeatures;
-      select.getFeatures().extend(boxFeatures);
-    });
+    selectInjector.addEventListener("select");
+    dragBoxInjector.addEventListener("boxstart");
+    dragBoxInjector.addEventListener("boxend");
 
     const translate = new Translate({
       features: select.getFeatures(),

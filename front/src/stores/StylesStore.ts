@@ -5,7 +5,7 @@ class StylesStore {
   private _strokeColor: string;
 
   constructor() {
-    this._fillColor = "white";
+    this._fillColor = "black";
     this._strokeColor = "black";
 
     makeAutoObservable(this);

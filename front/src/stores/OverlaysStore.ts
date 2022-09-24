@@ -1,7 +1,6 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { Feature, Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
-import { Pixel } from "ol/pixel";
 import { FeatureLike } from "ol/Feature";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
@@ -10,6 +9,8 @@ import { GeoJSON } from "ol/format";
 import { AllGeoJSON, centerOfMass, lineString } from "@turf/turf";
 
 import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
+import { CommonEvent, ListenersInjector } from "../services/listeners";
+import MapInjector from "../services/listeners/MapInjector";
 
 interface CustomOverlay {
   element: HTMLDivElement;
@@ -69,34 +70,20 @@ class OverlaysStore {
       active: false,
     };
 
-    map.on("click", (e) => {
-      const pixel = map.getEventPixel(e.originalEvent);
-      const features = map.getFeaturesAtPixel(pixel);
-
-      this.hideContextMenu();
-
-      if (!features.length) {
-        this.hideOverlay(this._featureInfo);
-        return;
-      }
-
-      this.showOverlay(this._featureInfo, map.getCoordinateFromPixel(pixel));
-    });
-
     const el = map.getViewport();
     const canvas = el.getElementsByTagName("canvas").item(0);
 
-    canvas?.addEventListener("contextmenu", (e) => {
-      const pixel: Pixel = map.getEventPixel(e);
-      const cursor: Coordinate = map.getCoordinateFromPixel(pixel);
+    if (!canvas) {
+      return;
+    }
 
-      this.showOverlay(this._contextMenu, cursor);
-      this.hideOverlay(this._featureInfo);
+    const mapInjector: ListenersInjector<CommonEvent> = new MapInjector(
+      map,
+      canvas
+    );
 
-      runInAction(() => {
-        this._cursorPosition = cursor;
-      });
-    });
+    mapInjector.addEventListener("click");
+    mapInjector.addEventListener("contextmenu");
 
     map.addOverlay(overlay);
   }
@@ -108,15 +95,27 @@ class OverlaysStore {
     }
   }
 
-  public hideContextMenu() {
-    this.hideOverlay(this._contextMenu);
-  }
-
   private showOverlay(overlay: CustomOverlay | null, coordinates: Coordinate) {
     if (overlay) {
       overlay.active = true;
       overlay.overlay.setPosition(coordinates);
     }
+  }
+
+  public hideContextMenu() {
+    this.hideOverlay(this._contextMenu);
+  }
+
+  public hideFeatureInfo() {
+    this.hideOverlay(this._featureInfo);
+  }
+
+  public showContextMenu(coordinates: Coordinate) {
+    this.showOverlay(this._contextMenu, coordinates);
+  }
+
+  public showFeatureInfo(coordinates: Coordinate) {
+    this.showOverlay(this._featureInfo, coordinates);
   }
 
   private getFeaturesCenter(features: FeatureLike[]) {
@@ -187,16 +186,20 @@ class OverlaysStore {
     this.hideContextMenu();
   }
 
+  public set cursorPosition(position) {
+    this._cursorPosition = position;
+  }
+
+  public get cursorPosition() {
+    return this._cursorPosition;
+  }
+
   public get isFeatureInfoActive() {
     return this._featureInfo?.active;
   }
 
   public get isContextMenuActive() {
     return this._contextMenu?.active;
-  }
-
-  public get cursorPosition() {
-    return this._cursorPosition;
   }
 }
 
