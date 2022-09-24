@@ -1,8 +1,7 @@
-import classNames from "classnames";
 import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 
-import css from "./map.module.scss";
+import { wrapper } from "./map.module.scss";
 
 import MapStore from "../../stores/MapStore";
 
@@ -25,7 +24,7 @@ const Map = ({ children }: PropsWithChildren) => {
   }, [map]);
 
   return (
-    <div className={classNames(css.wrapper)} ref={mapRef}>
+    <div className={wrapper} ref={mapRef}>
       {children}
     </div>
   );

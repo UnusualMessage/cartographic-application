@@ -3,7 +3,7 @@ import { Paper } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
 
-import css from "./overlay.module.scss";
+import { wrapper, hidden } from "./overlay.module.scss";
 
 import MapStore from "../../stores/MapStore";
 import OverlaysStore from "../../stores/OverlaysStore";
@@ -28,8 +28,8 @@ const Overlay = () => {
   }, [map]);
 
   const classes = classNames({
-    [css.wrapper]: active,
-    [css.hidden]: !active,
+    [wrapper]: active,
+    [hidden]: !active,
   });
 
   return (

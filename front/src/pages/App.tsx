@@ -22,12 +22,13 @@ const App = () => {
         {readonly ? <></> : <Interactions />}
       </VectorLayer>
 
-      <ContextMenu />
+      <div>
+        <ContextMenu />
+      </div>
 
       {readonly ? (
         <div>
-          {" "}
-          <Overlay />{" "}
+          <Overlay />
         </div>
       ) : (
         <></>

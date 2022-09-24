@@ -10,7 +10,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
 
-import css from "./menu.module.scss";
+import { wrapper, hidden } from "./menu.module.scss";
 
 import OverlaysStore from "../../stores/OverlaysStore";
 import MapStore from "../../stores/MapStore";
@@ -59,8 +59,8 @@ const ContextMenu = () => {
   }, [map]);
 
   const classes = classNames({
-    [css.hidden]: !active,
-    [css.wrapper]: active,
+    [hidden]: !active,
+    [wrapper]: active,
   });
 
   return (
