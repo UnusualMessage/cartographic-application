@@ -13,12 +13,13 @@ class LayersStore {
 
     makeAutoObservable(this);
   }
-  public set drawLayer(layer: VectorLayer<VectorSource> | null) {
-    this._drawLayer = layer;
-  }
 
   public get drawLayer() {
     return this._drawLayer;
+  }
+
+  public set drawLayer(layer: VectorLayer<VectorSource> | null) {
+    this._drawLayer = layer;
   }
 
   public clearDrawLayer() {

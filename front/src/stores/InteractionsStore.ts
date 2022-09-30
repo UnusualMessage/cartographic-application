@@ -11,13 +11,13 @@ import { Type } from "ol/geom/Geometry";
 
 import { DrawType } from "../types/DrawType";
 import {
-  DragBoxInjector,
-  SelectInjector,
   DragBoxEvent,
-  SelectEvent,
-  ListenersInjector,
+  DragBoxInjector,
   DrawEvent,
   DrawInjector,
+  ListenersInjector,
+  SelectEvent,
+  SelectInjector,
 } from "../services/listeners";
 
 interface Interactions {
@@ -57,10 +57,6 @@ class InteractionsStore {
     return this._currentDrawType;
   }
 
-  public changeDrawType(newDrawType: DrawType) {
-    this._currentDrawType = newDrawType;
-  }
-
   public get readonly() {
     return this._readonly;
   }
@@ -71,6 +67,10 @@ class InteractionsStore {
 
   public set isDrawing(isDrawing: boolean) {
     this._drawing = isDrawing;
+  }
+
+  public changeDrawType(newDrawType: DrawType) {
+    this._currentDrawType = newDrawType;
   }
 
   public addDraw(source: VectorSource, map: Map, drawType: DrawType) {

@@ -33,6 +33,22 @@ class OverlaysStore {
     makeAutoObservable(this);
   }
 
+  public get cursorPosition() {
+    return this._cursorPosition;
+  }
+
+  public set cursorPosition(position) {
+    this._cursorPosition = position;
+  }
+
+  public get isFeatureInfoActive() {
+    return this._featureInfo?.active;
+  }
+
+  public get isContextMenuActive() {
+    return this._contextMenu?.active;
+  }
+
   public removeFeatureOverlay(map: Map) {
     if (this._featureInfo) {
       this.hideOverlay(this._featureInfo);
@@ -88,20 +104,6 @@ class OverlaysStore {
     map.addOverlay(overlay);
   }
 
-  private hideOverlay(overlay: CustomOverlay | null) {
-    if (overlay) {
-      overlay.active = false;
-      overlay.overlay.setPosition(undefined);
-    }
-  }
-
-  private showOverlay(overlay: CustomOverlay | null, coordinates: Coordinate) {
-    if (overlay) {
-      overlay.active = true;
-      overlay.overlay.setPosition(coordinates);
-    }
-  }
-
   public hideContextMenu() {
     this.hideOverlay(this._contextMenu);
   }
@@ -116,33 +118,6 @@ class OverlaysStore {
 
   public showFeatureInfo(coordinates: Coordinate) {
     this.showOverlay(this._featureInfo, coordinates);
-  }
-
-  private getFeaturesCenter(features: FeatureLike[]) {
-    const centers: Coordinate[] = [];
-
-    features.forEach((feature) => {
-      const geometry = (feature.getGeometry() as Geometry).clone();
-
-      if (geometry.getType() === "Circle") {
-        const circle = geometry as Circle;
-        centers.push(circle.getCenter());
-      } else {
-        const format = new GeoJSON();
-
-        const formattedGeometry = format.writeGeometryObject(geometry);
-        const featureCenter = centerOfMass(formattedGeometry as AllGeoJSON)
-          .geometry.coordinates;
-
-        centers.push(featureCenter);
-      }
-    });
-
-    if (centers.length > 1) {
-      return centerOfMass(lineString(centers)).geometry.coordinates;
-    } else {
-      return centers[0];
-    }
   }
 
   public insert(
@@ -186,20 +161,45 @@ class OverlaysStore {
     this.hideContextMenu();
   }
 
-  public set cursorPosition(position) {
-    this._cursorPosition = position;
+  private hideOverlay(overlay: CustomOverlay | null) {
+    if (overlay) {
+      overlay.active = false;
+      overlay.overlay.setPosition(undefined);
+    }
   }
 
-  public get cursorPosition() {
-    return this._cursorPosition;
+  private showOverlay(overlay: CustomOverlay | null, coordinates: Coordinate) {
+    if (overlay) {
+      overlay.active = true;
+      overlay.overlay.setPosition(coordinates);
+    }
   }
 
-  public get isFeatureInfoActive() {
-    return this._featureInfo?.active;
-  }
+  private getFeaturesCenter(features: FeatureLike[]) {
+    const centers: Coordinate[] = [];
 
-  public get isContextMenuActive() {
-    return this._contextMenu?.active;
+    features.forEach((feature) => {
+      const geometry = (feature.getGeometry() as Geometry).clone();
+
+      if (geometry.getType() === "Circle") {
+        const circle = geometry as Circle;
+        centers.push(circle.getCenter());
+      } else {
+        const format = new GeoJSON();
+
+        const formattedGeometry = format.writeGeometryObject(geometry);
+        const featureCenter = centerOfMass(formattedGeometry as AllGeoJSON)
+          .geometry.coordinates;
+
+        centers.push(featureCenter);
+      }
+    });
+
+    if (centers.length > 1) {
+      return centerOfMass(lineString(centers)).geometry.coordinates;
+    } else {
+      return centers[0];
+    }
   }
 }
 

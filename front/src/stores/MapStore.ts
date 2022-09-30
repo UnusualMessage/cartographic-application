@@ -11,6 +11,10 @@ class MapStore {
     makeAutoObservable(this);
   }
 
+  public get getMap() {
+    return this._map;
+  }
+
   public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {
     this._map = new Map({
       target: target,
@@ -18,10 +22,6 @@ class MapStore {
       layers: layers,
       controls: [],
     });
-  }
-
-  public get getMap() {
-    return this._map;
   }
 
   public addView(view: View) {

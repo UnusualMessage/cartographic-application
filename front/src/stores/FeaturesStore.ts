@@ -12,20 +12,20 @@ class FeaturesStore {
     makeAutoObservable(this);
   }
 
-  public get copiedFeatures() {
-    return this._copiedFeatures;
-  }
-
-  public set copiedFeatures(copiedFeatures) {
-    this._copiedFeatures = copiedFeatures;
-  }
-
   public get selectedFeatures() {
     return this._selectedFeatures;
   }
 
   public set selectedFeatures(selectedFeatures) {
     this._selectedFeatures = selectedFeatures;
+  }
+
+  public get copiedFeatures() {
+    return this._copiedFeatures;
+  }
+
+  public set copiedFeatures(copiedFeatures) {
+    this._copiedFeatures = copiedFeatures;
   }
 }
 
