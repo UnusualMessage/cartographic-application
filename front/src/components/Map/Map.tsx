@@ -12,7 +12,7 @@ interface Props extends PropsWithChildren {
 
 const Map = ({ children, width, height }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
-  const map = MapStore.getMap;
+  const map = MapStore.map;
 
   useLayoutEffect(() => {
     if (mapRef.current) {

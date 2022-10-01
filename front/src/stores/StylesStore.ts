@@ -5,7 +5,7 @@ class StylesStore {
   private _strokeColor: string;
 
   constructor() {
-    this._fillColor = "#000000";
+    this._fillColor = "#FFFFFF";
     this._strokeColor = "#000000";
 
     makeAutoObservable(this);
@@ -15,7 +15,7 @@ class StylesStore {
     return this._fillColor;
   }
 
-  public set fillColor(fillColor) {
+  public set fillColor(fillColor: string) {
     this._fillColor = fillColor;
   }
 
@@ -23,7 +23,7 @@ class StylesStore {
     return this._strokeColor;
   }
 
-  public set strokeColor(strokeColor) {
+  public set strokeColor(strokeColor: string) {
     this._strokeColor = strokeColor;
   }
 }

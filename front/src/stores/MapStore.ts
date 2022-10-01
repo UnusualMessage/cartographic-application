@@ -11,7 +11,7 @@ class MapStore {
     makeAutoObservable(this);
   }
 
-  public get getMap() {
+  public get map() {
     return this._map;
   }
 

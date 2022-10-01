@@ -7,8 +7,8 @@ import InteractionsStore from "../../stores/InteractionsStore";
 
 const Interactions = () => {
   const source = useContext(SourceContext);
-  const map = MapStore.getMap;
-  const drawType = InteractionsStore.getDrawType;
+  const map = MapStore.map;
+  const drawType = InteractionsStore.drawType;
 
   useEffect(() => {
     if (map && source) {

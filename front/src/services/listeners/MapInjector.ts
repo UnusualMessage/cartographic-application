@@ -45,6 +45,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       OverlaysStore.hideContextMenu();
 
       if (!features.length) {
+        FeaturesStore.clickedFeature = null;
         OverlaysStore.hideFeatureInfo();
         return;
       }

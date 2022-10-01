@@ -7,13 +7,13 @@ import { DrawType } from "../../../types/DrawType";
 
 const DrawSelect = () => {
   const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    InteractionsStore.changeDrawType(e.target.value as DrawType);
+    InteractionsStore.drawType = e.target.value as DrawType;
   };
 
   return (
     <HTMLSelect
       fill
-      value={InteractionsStore.getDrawType}
+      value={InteractionsStore.drawType}
       onChange={onSelect}
       disabled={InteractionsStore.readonly}
     >

@@ -34,8 +34,7 @@ const VectorLayer = ({ name, children }: Props) => {
   }, []);
 
   useEffect(() => {
-    const createdLayer = LayersStore.createFeatureLayer(vectorLayer, name);
-    LayersStore.drawLayer = createdLayer;
+    const createdLayer = LayersStore.createLayer(vectorLayer, name);
     MapStore.addLayer(createdLayer);
   }, []);
 

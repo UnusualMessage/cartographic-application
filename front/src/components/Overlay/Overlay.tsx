@@ -9,7 +9,7 @@ import OverlaysStore from "../../stores/OverlaysStore";
 
 const Overlay = () => {
   const overlayRef = useRef<HTMLDivElement>(null);
-  const map = MapStore.getMap;
+  const map = MapStore.map;
   const active = OverlaysStore.isFeatureInfoActive;
 
   useEffect(() => {

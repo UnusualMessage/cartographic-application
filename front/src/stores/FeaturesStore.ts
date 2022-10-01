@@ -18,7 +18,7 @@ class FeaturesStore {
     return this._clickedFeature;
   }
 
-  public set clickedFeature(clickedFeature) {
+  public set clickedFeature(clickedFeature: FeatureLike | null) {
     this._clickedFeature = clickedFeature;
   }
 
@@ -26,7 +26,7 @@ class FeaturesStore {
     return this._selectedFeatures;
   }
 
-  public set selectedFeatures(selectedFeatures) {
+  public set selectedFeatures(selectedFeatures: FeatureLike[]) {
     this._selectedFeatures = selectedFeatures;
   }
 
@@ -34,7 +34,7 @@ class FeaturesStore {
     return this._copiedFeatures;
   }
 
-  public set copiedFeatures(copiedFeatures) {
+  public set copiedFeatures(copiedFeatures: FeatureLike[]) {
     this._copiedFeatures = copiedFeatures;
   }
 }

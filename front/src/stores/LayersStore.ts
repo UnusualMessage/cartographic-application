@@ -5,42 +5,25 @@ import VectorSource from "ol/source/Vector";
 
 class LayersStore {
   private readonly _layers: BaseLayer[];
-  private _drawLayer: VectorLayer<VectorSource> | null;
 
   constructor() {
     this._layers = [];
-    this._drawLayer = null;
 
     makeAutoObservable(this);
   }
 
   public get drawLayer() {
-    return this._drawLayer;
-  }
-
-  public set drawLayer(layer: VectorLayer<VectorSource> | null) {
-    this._drawLayer = layer;
-  }
-
-  public get drawLayerFeatures() {
-    return this.drawLayer?.getSource()?.getFeatures();
+    const drawLayer = this._layers.find(
+      (layer) => layer.get("name") === "draw"
+    );
+    return drawLayer as VectorLayer<VectorSource>;
   }
 
   public clearDrawLayer() {
-    const layer = this.drawLayer;
-
-    layer?.getSource()?.clear();
+    this.drawLayer.getSource()?.clear();
   }
 
   public createLayer(layer: BaseLayer, name: string) {
-    layer.set("name", name);
-
-    this._layers.push(layer);
-
-    return layer;
-  }
-
-  public createFeatureLayer(layer: VectorLayer<VectorSource>, name: string) {
     layer.set("name", name);
     this._layers.push(layer);
 

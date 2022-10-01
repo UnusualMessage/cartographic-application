@@ -12,7 +12,7 @@ import FeaturesStore from "../../stores/FeaturesStore";
 
 const ContextMenu = () => {
   const contextMenuRef = useRef<HTMLUListElement>(null);
-  const map = MapStore.getMap;
+  const map = MapStore.map;
   const active = OverlaysStore.isContextMenuActive;
 
   const selectedFeatures = FeaturesStore.selectedFeatures;
@@ -29,18 +29,12 @@ const ContextMenu = () => {
 
   const insert = useCallback(() => {
     const layer = LayersStore.drawLayer;
-
-    if (layer) {
-      OverlaysStore.insert(layer, copiedFeatures);
-    }
+    OverlaysStore.insert(layer, copiedFeatures);
   }, [copiedFeatures]);
 
   const remove = useCallback(() => {
     const layer = LayersStore.drawLayer;
-
-    if (layer) {
-      OverlaysStore.delete(layer, selectedFeatures);
-    }
+    OverlaysStore.delete(layer, selectedFeatures);
   }, [selectedFeatures]);
 
   useEffect(() => {

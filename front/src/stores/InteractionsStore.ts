@@ -30,14 +30,14 @@ interface Interactions {
 }
 
 class InteractionsStore {
-  private _currentDrawType: DrawType;
+  private _drawType: DrawType;
   private _readonly: boolean;
   private _drawing: boolean;
 
   private _interactions: Interactions;
 
   constructor() {
-    this._currentDrawType = "Polygon";
+    this._drawType = "Polygon";
     this._readonly = false;
     this._drawing = false;
 
@@ -53,8 +53,12 @@ class InteractionsStore {
     makeAutoObservable(this);
   }
 
-  public get getDrawType() {
-    return this._currentDrawType;
+  public get drawType() {
+    return this._drawType;
+  }
+
+  public set drawType(drawType: DrawType) {
+    this._drawType = drawType;
   }
 
   public get readonly() {
@@ -69,10 +73,6 @@ class InteractionsStore {
     this._drawing = isDrawing;
   }
 
-  public changeDrawType(newDrawType: DrawType) {
-    this._currentDrawType = newDrawType;
-  }
-
   public addDraw(source: VectorSource, map: Map, drawType: DrawType) {
     if (this._interactions.draw) {
       map.removeInteraction(this._interactions.draw);
@@ -83,7 +83,7 @@ class InteractionsStore {
     }
 
     const draw = new Draw({
-      type: this.getDrawType as Type,
+      type: this.drawType as Type,
       source: source,
     });
 
@@ -175,7 +175,7 @@ class InteractionsStore {
     }
 
     this.addSelectAndTranslate(source, map);
-    this.addDraw(source, map, this._currentDrawType);
+    this.addDraw(source, map, this.drawType);
     this.addModify(source, map);
     this.addSnap(source, map);
   }
