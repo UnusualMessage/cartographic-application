@@ -4,6 +4,7 @@ import { Pixel } from "ol/pixel";
 import { Coordinate } from "ol/coordinate";
 
 import OverlaysStore from "../../stores/OverlaysStore";
+import FeaturesStore from "../../stores/FeaturesStore";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
   private _map: Map;
@@ -48,6 +49,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
         return;
       }
 
+      FeaturesStore.clickedFeature = features[0];
       OverlaysStore.showFeatureInfo(this._map.getCoordinateFromPixel(pixel));
     });
   }
