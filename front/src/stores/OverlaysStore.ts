@@ -13,7 +13,7 @@ import { CommonEvent, ListenersInjector } from "../services/listeners";
 import MapInjector from "../services/listeners/MapInjector";
 
 interface CustomOverlay {
-  element: HTMLDivElement;
+  element: HTMLElement;
   overlay: Overlay;
   active: boolean;
 }
@@ -73,7 +73,7 @@ class OverlaysStore {
     map.addOverlay(overlay);
   }
 
-  public initContextMenu(element: HTMLDivElement, map: Map) {
+  public initContextMenu(element: HTMLElement, map: Map) {
     const overlay = new Overlay({
       element: element,
       offset: menuOffset,

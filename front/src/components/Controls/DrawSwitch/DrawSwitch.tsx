@@ -1,5 +1,6 @@
-import { FormControlLabel, Switch } from "@mui/material";
 import { observer } from "mobx-react-lite";
+import { Switch } from "@blueprintjs/core";
+
 import InteractionsStore from "../../../stores/InteractionsStore";
 
 const DrawSwitch = () => {
@@ -8,11 +9,9 @@ const DrawSwitch = () => {
   };
 
   return (
-    <FormControlLabel
-      control={
-        <Switch checked={!InteractionsStore.readonly} onChange={onSwitch} />
-      }
-      label="Редактирование"
+    <Switch
+      labelElement={<strong>Редактирование</strong>}
+      onChange={onSwitch}
     />
   );
 };

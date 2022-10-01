@@ -1,5 +1,4 @@
 import { observer } from "mobx-react-lite";
-import { Stack } from "@mui/material";
 
 import { wrapper } from "./controls.module.scss";
 
@@ -11,13 +10,13 @@ import StrokePicker from "./StrokePicker";
 
 const Controls = () => {
   return (
-    <Stack className={wrapper} flexDirection={"column"} spacing={3}>
+    <div className={wrapper}>
       <DrawSelect />
       <DrawSwitch />
       <DrawClear />
       <FillPicker />
       <StrokePicker />
-    </Stack>
+    </div>
   );
 };
 

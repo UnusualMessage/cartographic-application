@@ -1,16 +1,9 @@
-import {
-  Divider,
-  ListItemText,
-  MenuItem,
-  MenuList,
-  Paper,
-  Typography,
-} from "@mui/material";
 import { useCallback, useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
+import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
 
-import { wrapper, hidden } from "./menu.module.scss";
+import { hidden, wrapper } from "./menu.module.scss";
 
 import OverlaysStore from "../../stores/OverlaysStore";
 import MapStore from "../../stores/MapStore";
@@ -18,14 +11,14 @@ import LayersStore from "../../stores/LayersStore";
 import FeaturesStore from "../../stores/FeaturesStore";
 
 const ContextMenu = () => {
-  const contextMenuRef = useRef<HTMLDivElement>(null);
+  const contextMenuRef = useRef<HTMLUListElement>(null);
   const map = MapStore.getMap;
   const active = OverlaysStore.isContextMenuActive;
 
   const selectedFeatures = FeaturesStore.selectedFeatures;
   const copiedFeatures = FeaturesStore.copiedFeatures;
 
-  const onClick = () => {
+  const close = () => {
     OverlaysStore.hideContextMenu();
   };
 
@@ -64,35 +57,14 @@ const ContextMenu = () => {
   });
 
   return (
-    <Paper className={classes} ref={contextMenuRef}>
-      <MenuList>
-        <MenuItem onClick={copy}>
-          <ListItemText>Копировать</ListItemText>
-          <Typography variant="body1" color="text.secondary">
-            ⌘C
-          </Typography>
-        </MenuItem>
-
-        <MenuItem onClick={insert}>
-          <ListItemText>Вставить</ListItemText>
-          <Typography variant="body1" color="text.secondary">
-            ⌘V
-          </Typography>
-        </MenuItem>
-
-        <MenuItem onClick={remove}>
-          <ListItemText>Удалить</ListItemText>
-          <Typography variant="body1" color="text.secondary">
-            ⌘D
-          </Typography>
-        </MenuItem>
-
-        <Divider />
-        <MenuItem onClick={onClick}>
-          <ListItemText>Закрыть</ListItemText>
-        </MenuItem>
-      </MenuList>
-    </Paper>
+    <Menu className={classes} ulRef={contextMenuRef}>
+      <MenuDivider title="Редактирование" />
+      <MenuItem icon="duplicate" text="Копировать" label="⌘C" onClick={copy} />
+      <MenuItem icon="clipboard" text="Вставить" label="⌘V" onClick={insert} />
+      <MenuItem icon="delete" text="Удалить" label="⌘D" onClick={remove} />
+      <MenuDivider title="Другое" />
+      <MenuItem icon="cross" text="Закрыть" label="⌘R" onClick={close} />
+    </Menu>
   );
 };
 

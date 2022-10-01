@@ -1,4 +1,3 @@
-import { Stack } from "@mui/material";
 import { ChangeEventHandler } from "react";
 
 interface Props {
@@ -11,7 +10,7 @@ const ColorPicker = ({ setColor }: Props) => {
   };
 
   return (
-    <Stack spacing={2} direction={"row"} alignItems={"center"}>
+    <div>
       <label htmlFor={"fill-color"}>Выберите цвет:</label>
       <input
         name={"fill-color"}
@@ -19,7 +18,7 @@ const ColorPicker = ({ setColor }: Props) => {
         type={"color"}
         onChange={pickColor}
       />
-    </Stack>
+    </div>
   );
 };
 

@@ -1,5 +1,5 @@
-import { Button } from "@mui/material";
 import { observer } from "mobx-react-lite";
+import { Button } from "@blueprintjs/core";
 
 import LayersStore from "../../../stores/LayersStore";
 
@@ -8,7 +8,7 @@ const DrawClear = () => {
     LayersStore.clearDrawLayer();
   };
 
-  return <Button onClick={onButtonClick}>Очистить</Button>;
+  return <Button onClick={onButtonClick} text={"Очистить"} />;
 };
 
 export default observer(DrawClear);

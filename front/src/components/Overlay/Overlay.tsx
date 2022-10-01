@@ -1,9 +1,8 @@
 import { useEffect, useRef } from "react";
-import { Paper } from "@mui/material";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
 
-import { wrapper, hidden } from "./overlay.module.scss";
+import { hidden, wrapper } from "./overlay.module.scss";
 
 import MapStore from "../../stores/MapStore";
 import OverlaysStore from "../../stores/OverlaysStore";
@@ -33,9 +32,9 @@ const Overlay = () => {
   });
 
   return (
-    <Paper elevation={24} className={classes} ref={overlayRef}>
+    <div className={classes} ref={overlayRef}>
       <span>Информация о Feature:</span>
-    </Paper>
+    </div>
   );
 };
 
