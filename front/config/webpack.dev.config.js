@@ -59,6 +59,8 @@ module.exports = {
   ],
 
   module: {
+    strictExportPresence: true,
+
     rules: [
       {
         test: /\.(css|sass|scss)$/i,

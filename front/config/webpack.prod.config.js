@@ -52,6 +52,8 @@ module.exports = {
   ],
 
   module: {
+    strictExportPresence: true,
+
     rules: [
       {
         test: /\.(css|sass|scss)$/i,
@@ -67,7 +69,9 @@ module.exports = {
             loader: "css-loader",
             options: {
               importLoaders: 1,
+              esModule: true,
               modules: {
+                namedExport: true,
                 mode: "local",
                 localIdentName: "[hash:base64:5]",
               },
