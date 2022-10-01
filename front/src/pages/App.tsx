@@ -12,8 +12,24 @@ import InteractionsStore from "../stores/InteractionsStore";
 const App = () => {
   const readonly = InteractionsStore.readonly;
 
+  const contextMenu = (
+    <div>
+      <ContextMenu />
+    </div>
+  );
+
+  let overlay = <></>;
+
+  if (readonly) {
+    overlay = (
+      <div>
+        <Overlay />
+      </div>
+    );
+  }
+
   return (
-    <Map>
+    <Map width={"100%"} height={"50%"}>
       <Controls />
       <View />
       <TileLayer name={"base"} />
@@ -22,17 +38,8 @@ const App = () => {
         {readonly ? <></> : <Interactions />}
       </VectorLayer>
 
-      <div>
-        <ContextMenu />
-      </div>
-
-      {readonly ? (
-        <div>
-          <Overlay />
-        </div>
-      ) : (
-        <></>
-      )}
+      {contextMenu}
+      {overlay}
     </Map>
   );
 };

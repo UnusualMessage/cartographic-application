@@ -1,5 +1,7 @@
 import { ChangeEventHandler } from "react";
 
+import { wrapper } from "./picker.module.scss";
+
 interface Props {
   setColor: (color: string) => void;
 }
@@ -10,7 +12,7 @@ const ColorPicker = ({ setColor }: Props) => {
   };
 
   return (
-    <div>
+    <div className={wrapper}>
       <label htmlFor={"fill-color"}>Выберите цвет:</label>
       <input
         name={"fill-color"}

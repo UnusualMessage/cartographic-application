@@ -12,6 +12,7 @@ const DrawSwitch = () => {
     <Switch
       labelElement={<strong>Редактирование</strong>}
       onChange={onSwitch}
+      checked={!InteractionsStore.readonly}
     />
   );
 };

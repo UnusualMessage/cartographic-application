@@ -5,7 +5,12 @@ import { wrapper } from "./map.module.scss";
 
 import MapStore from "../../stores/MapStore";
 
-const Map = ({ children }: PropsWithChildren) => {
+interface Props extends PropsWithChildren {
+  width?: string;
+  height?: string;
+}
+
+const Map = ({ children, width, height }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.getMap;
 
@@ -23,8 +28,13 @@ const Map = ({ children }: PropsWithChildren) => {
     }
   }, [map]);
 
+  const mapStyle = {
+    width,
+    height,
+  };
+
   return (
-    <div className={wrapper} ref={mapRef}>
+    <div className={wrapper} ref={mapRef} style={mapStyle}>
       {children}
     </div>
   );
