@@ -8,7 +8,13 @@ const FillPicker = () => {
     StylesStore.fillColor = color;
   };
 
-  return <ColorPicker setColor={setColor} />;
+  return (
+    <ColorPicker
+      setColor={setColor}
+      color={StylesStore.fillColor}
+      label={"Цвет заливки: "}
+    />
+  );
 };
 
 export default observer(FillPicker);

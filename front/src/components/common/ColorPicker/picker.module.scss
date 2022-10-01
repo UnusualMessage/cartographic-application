@@ -2,5 +2,15 @@
   display: flex;
   gap: 5px;
   align-items: center;
-  justify-content: flex-start;
+
+  .label {
+    flex-basis: 35%;
+  }
+
+  .color {
+    flex-basis: 15%;
+
+    background: white;
+    border: none;
+  }
 }

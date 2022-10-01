@@ -1,3 +1,5 @@
+import { observer } from "mobx-react-lite";
+
 import StylesStore from "../../../stores/StylesStore";
 import ColorPicker from "../../common/ColorPicker";
 
@@ -6,7 +8,13 @@ const StrokePicker = () => {
     StylesStore.strokeColor = color;
   };
 
-  return <ColorPicker setColor={setColor} />;
+  return (
+    <ColorPicker
+      setColor={setColor}
+      color={StylesStore.strokeColor}
+      label={"Цвет границы: "}
+    />
+  );
 };
 
-export default StrokePicker;
+export default observer(StrokePicker);

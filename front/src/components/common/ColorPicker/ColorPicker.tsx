@@ -1,22 +1,27 @@
 import { ChangeEventHandler } from "react";
 
-import { wrapper } from "./picker.module.scss";
+import * as css from "./picker.module.scss";
 
 interface Props {
+  color: string;
   setColor: (color: string) => void;
+  label: string;
 }
 
-const ColorPicker = ({ setColor }: Props) => {
+const ColorPicker = ({ color, setColor, label }: Props) => {
   const pickColor: ChangeEventHandler<HTMLInputElement> = (e) => {
     setColor(e.target.value);
   };
 
   return (
-    <div className={wrapper}>
-      <label htmlFor={"fill-color"}>Выберите цвет:</label>
+    <div className={css.wrapper}>
+      <label className={css.label} htmlFor={"fill-color"}>
+        {label}
+      </label>
       <input
+        value={color}
+        className={css.color}
         name={"fill-color"}
-        id={"fill-color"}
         type={"color"}
         onChange={pickColor}
       />
