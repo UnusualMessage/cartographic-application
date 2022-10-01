@@ -19,7 +19,10 @@ class SelectInjector implements ListenersInjector<SelectEvent> {
 
   private addSelect() {
     this._select.on("select", () => {
-      FeaturesStore.selectedFeatures = this._select.getFeatures().getArray();
+      FeaturesStore.selectedFeatures = this._select
+        .getFeatures()
+        .getArray()
+        .slice();
     });
   }
 }

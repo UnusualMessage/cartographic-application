@@ -22,6 +22,10 @@ class LayersStore {
     this._drawLayer = layer;
   }
 
+  public get drawLayerFeatures() {
+    return this.drawLayer?.getSource()?.getFeatures();
+  }
+
   public clearDrawLayer() {
     const layer = this.drawLayer;
 
