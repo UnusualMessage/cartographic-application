@@ -1,4 +1,4 @@
-import Table from "../components/Table/Table";
+import Table from "../components/Table";
 import Tab from "../types/Tab";
 
 export const tabsComponents: Tab[] = [

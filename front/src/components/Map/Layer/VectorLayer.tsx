@@ -4,8 +4,8 @@ import { default as OLVectorLayer } from "ol/layer/Vector";
 import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 
-import LayersStore from "../../stores/LayersStore";
-import MapStore from "../../stores/MapStore";
+import LayersStore from "../../../stores/LayersStore";
+import MapStore from "../../../stores/MapStore";
 
 interface Props extends PropsWithChildren {
   name: string;

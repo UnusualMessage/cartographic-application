@@ -4,7 +4,7 @@ import { useState } from "react";
 import { wrapper } from "./tabs.module.scss";
 
 import TableTabsStore from "../../stores/TableTabsStore";
-import Table from "../Table/Table";
+import Table from "../Table";
 
 const TableTabs = () => {
   const [currentTab, setCurrentTab] = useState<string | number>("");

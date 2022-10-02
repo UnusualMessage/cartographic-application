@@ -2,8 +2,8 @@ import { observer } from "mobx-react-lite";
 import { HTMLSelect } from "@blueprintjs/core";
 import { ChangeEventHandler } from "react";
 
-import InteractionsStore from "../../../stores/InteractionsStore";
-import { DrawType } from "../../../types/DrawType";
+import InteractionsStore from "../../../../stores/InteractionsStore";
+import { DrawType } from "../../../../types/DrawType";
 
 const DrawSelect = () => {
   const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {

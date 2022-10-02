@@ -5,10 +5,10 @@ import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
 
 import { hidden, wrapper } from "./menu.module.scss";
 
-import OverlaysStore from "../../stores/OverlaysStore";
-import MapStore from "../../stores/MapStore";
-import LayersStore from "../../stores/LayersStore";
-import FeaturesStore from "../../stores/FeaturesStore";
+import OverlaysStore from "../../../stores/OverlaysStore";
+import MapStore from "../../../stores/MapStore";
+import LayersStore from "../../../stores/LayersStore";
+import FeaturesStore from "../../../stores/FeaturesStore";
 
 const ContextMenu = () => {
   const contextMenuRef = useRef<HTMLUListElement>(null);

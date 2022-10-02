@@ -3,8 +3,8 @@ import { useEffect } from "react";
 import { debounce } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import ViewStore from "../../stores/ViewStore";
-import MapStore from "../../stores/MapStore";
+import ViewStore from "../../../stores/ViewStore";
+import MapStore from "../../../stores/MapStore";
 
 const View = () => {
   const [viewParams, setViewParams] = useSearchParams();
