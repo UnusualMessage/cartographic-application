@@ -13,6 +13,9 @@ img, embed, iframe, object, audio, video {
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
+
   overflow: hidden;
   min-width: 320px;
   width: 100%;
@@ -179,8 +182,8 @@ textarea {
 }
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
+  -webkit-appearance: button;
+  font: inherit;
 }
 
 details {

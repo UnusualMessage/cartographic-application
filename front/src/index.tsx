@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client";
 import React, { lazy } from "react";
 import { BrowserRouter } from "react-router-dom";
-import { HotkeysProvider } from "@blueprintjs/core";
+import { FocusStyleManager, HotkeysProvider } from "@blueprintjs/core";
 
 import "./index.scss";
 import "ol/ol.css";
@@ -10,6 +10,8 @@ import "@blueprintjs/icons/lib/css/blueprint-icons.css";
 import "@blueprintjs/select/lib/css/blueprint-select.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import "@blueprintjs/table/lib/css/table.css";
+
+FocusStyleManager.onlyShowFocusOnTabs();
 
 const App = lazy(() => import("./pages/App"));
 

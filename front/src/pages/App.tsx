@@ -1,7 +1,5 @@
 import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./app.module.scss";
-
 import Map from "../components/Map";
 import Controls from "../components/Map/Controls";
 import { TileLayer, VectorLayer } from "../components/Map/Layer";
@@ -11,6 +9,7 @@ import Overlay from "../components/Map/Overlay";
 import ContextMenu from "../components/Map/ContextMenu";
 import InteractionsStore from "../stores/InteractionsStore";
 import TableTabs from "../components/Tabs/TableTabs";
+import Header from "../components/Header";
 
 const App = () => {
   const readonly = InteractionsStore.readonly;
@@ -32,7 +31,9 @@ const App = () => {
   }
 
   return (
-    <div className={wrapper}>
+    <>
+      <Header />
+
       <Map>
         <Controls />
         <View />
@@ -47,7 +48,7 @@ const App = () => {
       </Map>
 
       <TableTabs />
-    </div>
+    </>
   );
 };
 
