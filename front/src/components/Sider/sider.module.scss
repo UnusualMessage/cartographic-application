@@ -1,0 +1,10 @@
+.wrapper {
+  width: 20%;
+  height: 100%;
+
+  z-index: 1;
+  overflow-y: scroll;
+  -ms-overflow-y: scroll;
+
+  box-shadow: 0 0 0 1px rgb(17 20 24 / 10%);
+}
