@@ -1,17 +1,10 @@
-import {
-  Classes,
-  Icon,
-  Intent,
-  TreeNode,
-  TreeNodeInfo,
-} from "@blueprintjs/core";
-import { ContextMenu2 } from "@blueprintjs/popover2";
+import { TreeNode, TreeNodeInfo } from "@blueprintjs/core";
 
 export const treeNodes: TreeNodeInfo<TreeNode>[] = [
   {
     id: 0,
     icon: "folder-close",
-    label: <ContextMenu2 content={<div>Hello there!</div>}>Поля</ContextMenu2>,
+    label: "Поля",
     isExpanded: false,
     childNodes: [
       {
@@ -21,13 +14,7 @@ export const treeNodes: TreeNodeInfo<TreeNode>[] = [
       },
       {
         id: 2,
-        icon: (
-          <Icon
-            icon="tag"
-            intent={Intent.PRIMARY}
-            className={Classes.TREE_NODE_ICON}
-          />
-        ),
+        icon: "tag",
         label:
           "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
       },
@@ -37,9 +24,7 @@ export const treeNodes: TreeNodeInfo<TreeNode>[] = [
   {
     id: 3,
     icon: "folder-close",
-    label: (
-      <ContextMenu2 content={<div>Hello there!</div>}>Сотрудники</ContextMenu2>
-    ),
+    label: "Сотрудники",
     isExpanded: false,
     childNodes: [
       {
@@ -49,13 +34,7 @@ export const treeNodes: TreeNodeInfo<TreeNode>[] = [
       },
       {
         id: 5,
-        icon: (
-          <Icon
-            icon="tag"
-            intent={Intent.PRIMARY}
-            className={Classes.TREE_NODE_ICON}
-          />
-        ),
+        icon: "tag",
         label:
           "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
       },
@@ -65,9 +44,7 @@ export const treeNodes: TreeNodeInfo<TreeNode>[] = [
   {
     id: 6,
     icon: "folder-close",
-    label: (
-      <ContextMenu2 content={<div>Hello there!</div>}>Машины</ContextMenu2>
-    ),
+    label: "Машины",
     isExpanded: false,
     childNodes: [
       {
@@ -77,13 +54,7 @@ export const treeNodes: TreeNodeInfo<TreeNode>[] = [
       },
       {
         id: 8,
-        icon: (
-          <Icon
-            icon="tag"
-            intent={Intent.PRIMARY}
-            className={Classes.TREE_NODE_ICON}
-          />
-        ),
+        icon: "tag",
         label:
           "Organic meditation gluten-free, sriracha VHS drinking vinegar beard man.",
       },

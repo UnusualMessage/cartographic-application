@@ -1,30 +1,20 @@
 import { Tree, TreeNodeInfo } from "@blueprintjs/core";
-import { useCallback, useState } from "react";
-import { cloneDeep } from "lodash";
+import { useCallback } from "react";
+import { observer } from "mobx-react-lite";
 
 import { wrapper } from "./sider.module.scss";
 
-import { treeNodes } from "../../assets/treeNodes";
+import TreeNodesStore from "../../stores/TreeNodesStore";
 
 type NodePath = number[];
 
-const forNodeAtPath = (
-  nodes: TreeNodeInfo[],
-  path: NodePath,
-  callback: (node: TreeNodeInfo) => void
-) => {
-  callback(Tree.nodeFromPath(path, nodes));
-};
-
 const Sider = () => {
-  const [nodes, setNodes] = useState(treeNodes);
+  const nodes = TreeNodesStore.nodes;
 
   const handleNodeCollapse = useCallback(
     (_node: TreeNodeInfo, nodePath: NodePath) => {
-      setNodes((nodes) => {
-        const newNodes = cloneDeep(nodes);
-        forNodeAtPath(newNodes, nodePath, (node) => (node.isExpanded = false));
-        return newNodes;
+      TreeNodesStore.applyCallbackToNode(nodePath, (node) => {
+        node.isExpanded = false;
       });
     },
     [nodes]
@@ -32,20 +22,18 @@ const Sider = () => {
 
   const handleNodeExpand = useCallback(
     (_node: TreeNodeInfo, nodePath: NodePath) => {
-      setNodes((nodes) => {
-        const newNodes = cloneDeep(nodes);
-        forNodeAtPath(newNodes, nodePath, (node) => (node.isExpanded = true));
-        return newNodes;
+      TreeNodesStore.applyCallbackToNode(nodePath, (node) => {
+        node.isExpanded = true;
       });
     },
-    []
+    [nodes]
   );
 
   const handleNodeClick = useCallback(
     (_node: TreeNodeInfo, nodePath: NodePath) => {
       console.log(nodePath);
     },
-    []
+    [nodes]
   );
 
   return (
@@ -59,4 +47,4 @@ const Sider = () => {
   );
 };
 
-export default Sider;
+export default observer(Sider);
