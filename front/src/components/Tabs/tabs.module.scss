@@ -1,0 +1,10 @@
+@use "@blueprintjs/core/lib/scss/variables" as *;
+
+.wrapper {
+  padding: 5px;
+  height: 5%;
+  box-sizing: border-box;
+
+  box-shadow: 0 -2px 5px $black;
+  z-index: 1;
+}
