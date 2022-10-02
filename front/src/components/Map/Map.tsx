@@ -4,6 +4,7 @@ import { observer } from "mobx-react-lite";
 import { wrapper } from "./map.module.scss";
 
 import MapStore from "../../stores/MapStore";
+import TableTabsStore from "../../stores/TableTabsStore";
 
 interface Props extends PropsWithChildren {
   width?: string;
@@ -13,6 +14,8 @@ interface Props extends PropsWithChildren {
 const Map = ({ children, width, height }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
+
+  const tableActive = TableTabsStore.active;
 
   useLayoutEffect(() => {
     if (mapRef.current) {
@@ -32,6 +35,10 @@ const Map = ({ children, width, height }: Props) => {
     width,
     height,
   };
+
+  if (tableActive) {
+    mapStyle.height = "60%";
+  }
 
   return (
     <div className={wrapper} ref={mapRef} style={mapStyle}>

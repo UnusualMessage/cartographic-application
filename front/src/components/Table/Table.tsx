@@ -1,18 +1,20 @@
 import { Cell, Column, Table2 } from "@blueprintjs/table";
 import { observer } from "mobx-react-lite";
-
-import { hidden, wrapper } from "./table.module.scss";
-
-import FeaturesStore from "../../stores/FeaturesStore";
-import InteractionsStore from "../../stores/InteractionsStore";
 import classNames from "classnames";
 
-const Table = () => {
+import * as css from "./table.module.scss";
+
+import FeaturesStore from "../../stores/FeaturesStore";
+
+interface Props {
+  hidden?: boolean;
+}
+
+const Table = ({ hidden }: Props) => {
   const clickedFeature = FeaturesStore.clickedFeature;
-  const readonly = InteractionsStore.readonly;
 
   const typeRenderer = () => {
-    if (!readonly) {
+    if (hidden) {
       return undefined;
     }
 
@@ -24,17 +26,21 @@ const Table = () => {
   };
 
   const indexRenderer = (rowIndex: number) => {
-    if (!readonly) {
+    if (!hidden) {
       return undefined;
     }
 
-    return <Cell>{rowIndex + 1}</Cell>;
+    if (clickedFeature) {
+      return <Cell>{rowIndex + 1}</Cell>;
+    }
+
+    return undefined;
   };
 
   return (
     <Table2
       numRows={1}
-      className={classNames(wrapper, { [hidden]: !readonly })}
+      className={classNames(css.wrapper, { [css.hidden]: hidden })}
       cellRendererDependencies={[clickedFeature]}
     >
       <Column cellRenderer={indexRenderer} name={"Номер"} />

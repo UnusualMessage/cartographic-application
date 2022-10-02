@@ -10,7 +10,7 @@ import Interactions from "../components/Interactions";
 import Overlay from "../components/Overlay";
 import ContextMenu from "../components/ContextMenu";
 import InteractionsStore from "../stores/InteractionsStore";
-import Table from "../components/Table/Table";
+import TableTabs from "../components/Tabs/TableTabs";
 
 const App = () => {
   const readonly = InteractionsStore.readonly;
@@ -31,23 +31,9 @@ const App = () => {
     );
   }
 
-  let mapSize;
-
-  if (InteractionsStore.readonly) {
-    mapSize = {
-      width: "100%",
-      height: "70%",
-    };
-  } else {
-    mapSize = {
-      width: "100%",
-      height: "100%",
-    };
-  }
-
   return (
     <div className={wrapper}>
-      <Map width={mapSize.width} height={mapSize.height}>
+      <Map>
         <Controls />
         <View />
         <TileLayer name={"base"} />
@@ -60,7 +46,7 @@ const App = () => {
         {overlay}
       </Map>
 
-      <Table />
+      <TableTabs />
     </div>
   );
 };
