@@ -1,0 +1,14 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  height: 94%;
+  width: 100%;
+
+  .map {
+    height: 100%;
+    width: 80%;
+  }
+}
