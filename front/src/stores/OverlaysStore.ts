@@ -13,20 +13,29 @@ import { CommonEvent, ListenersInjector } from "../services/listeners";
 import MapInjector from "../services/listeners/MapInjector";
 
 interface CustomOverlay {
-  element: HTMLElement;
-  overlay: Overlay;
+  element: HTMLElement | null;
+  overlay: Overlay | null;
   active: boolean;
 }
 
 class OverlaysStore {
-  private _featureInfo: CustomOverlay | null;
-  private _contextMenu: CustomOverlay | null;
+  private _featureInfo: CustomOverlay;
+  private _contextMenu: CustomOverlay;
 
   private _cursorPosition: Coordinate | null;
 
   constructor() {
-    this._featureInfo = null;
-    this._contextMenu = null;
+    this._featureInfo = {
+      element: null,
+      overlay: null,
+      active: false,
+    };
+
+    this._contextMenu = {
+      element: null,
+      overlay: null,
+      active: false,
+    };
 
     this._cursorPosition = null;
 
@@ -42,18 +51,19 @@ class OverlaysStore {
   }
 
   public get isFeatureInfoActive() {
-    return this._featureInfo?.active;
+    return this._featureInfo.active;
   }
 
   public get isContextMenuActive() {
-    return this._contextMenu?.active;
+    return this._contextMenu.active;
   }
 
   public removeFeatureOverlay(map: Map) {
-    if (this._featureInfo) {
-      this.hideOverlay(this._featureInfo);
+    this.hideOverlay(this._featureInfo);
+
+    if (this._featureInfo.overlay) {
       map.removeOverlay(this._featureInfo.overlay);
-      this._featureInfo = null;
+      this.resetOverlay(this._featureInfo);
     }
   }
 
@@ -161,18 +171,20 @@ class OverlaysStore {
     this.hideContextMenu();
   }
 
-  private hideOverlay(overlay: CustomOverlay | null) {
-    if (overlay) {
-      overlay.active = false;
-      overlay.overlay.setPosition(undefined);
-    }
+  private hideOverlay(overlay: CustomOverlay) {
+    overlay.active = false;
+    overlay.overlay?.setPosition(undefined);
   }
 
-  private showOverlay(overlay: CustomOverlay | null, coordinates: Coordinate) {
-    if (overlay) {
-      overlay.active = true;
-      overlay.overlay.setPosition(coordinates);
-    }
+  private showOverlay(overlay: CustomOverlay, coordinates: Coordinate) {
+    overlay.active = true;
+    overlay.overlay?.setPosition(coordinates);
+  }
+
+  private resetOverlay(overlay: CustomOverlay) {
+    overlay.overlay = null;
+    overlay.element = null;
+    overlay.active = false;
   }
 
   private getFeaturesCenter(features: FeatureLike[]) {
