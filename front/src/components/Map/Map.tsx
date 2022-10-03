@@ -41,7 +41,7 @@ const Map = ({ children, width, height }: Props) => {
   }
 
   return (
-    <div className={wrapper} ref={mapRef} style={mapStyle}>
+    <div className={wrapper} ref={mapRef}>
       {children}
     </div>
   );

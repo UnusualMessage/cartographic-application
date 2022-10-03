@@ -30,8 +30,8 @@ const TableTabs = () => {
       {tabs.map((tab) => {
         return (
           <Tab
-            key={`table-tab-${tab.id}`}
             id={tab.id}
+            key={`table-tab-${tab.id}`}
             title={tab.title}
             panel={<Table hidden={!active} />}
           />

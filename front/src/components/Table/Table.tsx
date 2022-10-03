@@ -39,7 +39,7 @@ const Table = ({ hidden }: Props) => {
 
   return (
     <Table2
-      numRows={1}
+      numRows={20}
       className={classNames(css.wrapper, { [css.hidden]: hidden })}
       cellRendererDependencies={[clickedFeature]}
     >
