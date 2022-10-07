@@ -1,12 +1,12 @@
 import { Route, Routes } from "react-router-dom";
 import Layout from "./Layout";
-import Main from "../../components/Main";
+import Content from "./Content/Content";
 
 const User = () => {
   return (
     <Routes>
       <Route path={"*"} element={<Layout />}>
-        <Route path={"*"} element={<Main />} />
+        <Route path={"*"} element={<Content />} />
       </Route>
     </Routes>
   );

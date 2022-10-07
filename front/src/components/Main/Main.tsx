@@ -1,22 +1,10 @@
 import { observer } from "mobx-react-lite";
+import { PropsWithChildren } from "react";
 
-import { map, wrapper } from "./main.module.scss";
+import { wrapper } from "./main.module.scss";
 
-import TableTabs from "../Tabs/TableTabs";
-import Sider from "../Sider";
-import Map from "../Map";
-
-const Main = () => {
-  return (
-    <div className={wrapper}>
-      <Sider />
-
-      <div className={map}>
-        <Map />
-        <TableTabs />
-      </div>
-    </div>
-  );
+const Main = ({ children }: PropsWithChildren) => {
+  return <div className={wrapper}>{children}</div>;
 };
 
 export default observer(Main);
