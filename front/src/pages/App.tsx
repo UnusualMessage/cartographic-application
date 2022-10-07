@@ -1,4 +1,3 @@
-import { observer } from "mobx-react-lite";
 import { Route, Routes } from "react-router-dom";
 
 import User from "./User";
@@ -13,4 +12,4 @@ const App = () => {
   );
 };
 
-export default observer(App);
+export default App;

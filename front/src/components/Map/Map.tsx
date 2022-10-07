@@ -1,49 +1,46 @@
-import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./map.module.scss";
+import Controls from "./Controls";
+import View from "./View";
+import { TileLayer, VectorLayer } from "./Layer";
+import Interactions from "./Interactions";
+import MapWrapper from "./MapWrapper";
+import InteractionsStore from "../../stores/InteractionsStore";
+import ContextMenu from "./ContextMenu";
+import Overlay from "./Overlay";
 
-import MapStore from "../../stores/MapStore";
-import TableTabsStore from "../../stores/TableTabsStore";
+const Map = () => {
+  const readonly = InteractionsStore.readonly;
 
-interface Props extends PropsWithChildren {
-  width?: string;
-  height?: string;
-}
+  const contextMenu = (
+    <div>
+      <ContextMenu />
+    </div>
+  );
 
-const Map = ({ children, width, height }: Props) => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const map = MapStore.map;
+  let overlay = <></>;
 
-  const tableActive = TableTabsStore.active;
-
-  useLayoutEffect(() => {
-    if (mapRef.current) {
-      MapStore.initMap([], mapRef.current);
-    }
-  }, []);
-
-  useEffect(() => {
-    if (mapRef.current) {
-      mapRef.current.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-      });
-    }
-  }, [map]);
-
-  const mapStyle = {
-    width,
-    height,
-  };
-
-  if (tableActive) {
-    mapStyle.height = "60%";
+  if (readonly) {
+    overlay = (
+      <div>
+        <Overlay />
+      </div>
+    );
   }
 
   return (
-    <div className={wrapper} ref={mapRef}>
-      {children}
-    </div>
+    <MapWrapper>
+      <Controls />
+      <View />
+      <TileLayer name={"base"} />
+
+      <VectorLayer name={"draw"}>
+        {readonly ? <></> : <Interactions />}
+      </VectorLayer>
+
+      {contextMenu}
+      {overlay}
+    </MapWrapper>
   );
 };
 
