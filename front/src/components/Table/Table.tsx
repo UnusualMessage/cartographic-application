@@ -6,18 +6,10 @@ import * as css from "./table.module.scss";
 
 import FeaturesStore from "../../stores/FeaturesStore";
 
-interface Props {
-  hidden?: boolean;
-}
-
-const Table = ({ hidden }: Props) => {
+const Table = () => {
   const clickedFeature = FeaturesStore.clickedFeature;
 
   const typeRenderer = () => {
-    if (hidden) {
-      return undefined;
-    }
-
     if (clickedFeature) {
       return <Cell>{clickedFeature.getGeometry()?.getType()}</Cell>;
     }
@@ -26,10 +18,6 @@ const Table = ({ hidden }: Props) => {
   };
 
   const indexRenderer = (rowIndex: number) => {
-    if (!hidden) {
-      return undefined;
-    }
-
     if (clickedFeature) {
       return <Cell>{rowIndex + 1}</Cell>;
     }
@@ -40,7 +28,7 @@ const Table = ({ hidden }: Props) => {
   return (
     <Table2
       numRows={20}
-      className={classNames(css.wrapper, { [css.hidden]: hidden })}
+      className={classNames(css.wrapper)}
       cellRendererDependencies={[clickedFeature]}
     >
       <Column cellRenderer={indexRenderer} name={"Номер"} />

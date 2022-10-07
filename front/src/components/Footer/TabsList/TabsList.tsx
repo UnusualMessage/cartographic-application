@@ -8,6 +8,7 @@ import { collapsed, wrapper } from "./tabs.module.scss";
 import TabsStore from "../../../stores/TabsStore";
 import { Tab as TabType } from "../../../types/Tab";
 import { tabs } from "../../../assets/tabs";
+import TabPage from "../TabPage";
 
 const tabsRenderer = (tab: TabType) => {
   return (
@@ -15,7 +16,7 @@ const tabsRenderer = (tab: TabType) => {
       id={tab.id}
       key={`table-tab-${tab.id}`}
       title={tab.title}
-      panel={tab.component}
+      panel={<TabPage>{tab.component}</TabPage>}
     />
   );
 };
