@@ -1,7 +1,12 @@
 import { TabId } from "@blueprintjs/core";
 
-export default interface Tab {
+export interface Tab {
   id: TabId;
   title: string;
   component: JSX.Element;
+}
+
+export interface TabsList {
+  id: string;
+  tabs: Tab[];
 }
