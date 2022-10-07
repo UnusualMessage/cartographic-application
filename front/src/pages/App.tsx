@@ -1,14 +1,15 @@
 import { observer } from "mobx-react-lite";
+import { Route, Routes } from "react-router-dom";
 
-import Header from "../components/Header";
-import Main from "../components/Main";
+import User from "./User";
+import Admin from "./Admin";
 
 const App = () => {
   return (
-    <>
-      <Header />
-      <Main />
-    </>
+    <Routes>
+      <Route path={"/*"} element={<User />} />
+      <Route path={"/admin"} element={<Admin />} />
+    </Routes>
   );
 };
 
