@@ -1,5 +1,5 @@
-import { TreeNode, TreeNodeInfo } from "@blueprintjs/core";
+import { TreeNodeInfo } from "@blueprintjs/core";
 
-export type Node = TreeNodeInfo<TreeNode>;
+export type Node = TreeNodeInfo<any>;
 
 export type NodeCallback = (node: Node) => void;

@@ -17,9 +17,9 @@ const Table = () => {
     return undefined;
   };
 
-  const indexRenderer = (rowIndex: number) => {
+  const indexRenderer = () => {
     if (clickedFeature) {
-      return <Cell>{rowIndex + 1}</Cell>;
+      return <Cell>{clickedFeature.getId()}</Cell>;
     }
 
     return undefined;
@@ -27,11 +27,11 @@ const Table = () => {
 
   return (
     <Table2
-      numRows={20}
+      numRows={1}
       className={classNames(css.wrapper)}
       cellRendererDependencies={[clickedFeature]}
     >
-      <Column cellRenderer={indexRenderer} name={"Номер"} />
+      <Column cellRenderer={indexRenderer} name={"Идентификационный номер"} />
       <Column cellRenderer={typeRenderer} name={"Тип примитива"} />
     </Table2>
   );

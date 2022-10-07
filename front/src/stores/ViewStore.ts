@@ -19,6 +19,24 @@ class ViewStore {
 
     return this._view;
   }
+
+  public translateTo(coordinate: Coordinate) {
+    this.stopAnimation();
+
+    this._view?.animate({
+      center: coordinate,
+      zoom: this._view.getZoom(),
+      duration: 1000,
+    });
+  }
+
+  private stopAnimation() {
+    const zoom = this._view?.getZoom();
+
+    if (zoom) {
+      this._view?.setZoom(zoom);
+    }
+  }
 }
 
 export default new ViewStore();
