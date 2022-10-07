@@ -4,16 +4,16 @@ import { observer } from "mobx-react-lite";
 
 import { wrapper } from "./sider.module.scss";
 
-import TreeNodesStore from "../../stores/TreeNodesStore";
+import TreeStore from "../../stores/TreeStore";
 
 type NodePath = number[];
 
 const Sider = () => {
-  const nodes = TreeNodesStore.nodes;
+  const nodes = TreeStore.nodes;
 
   const handleNodeCollapse = useCallback(
     (_node: TreeNodeInfo, nodePath: NodePath) => {
-      TreeNodesStore.applyCallbackToNode(nodePath, (node) => {
+      TreeStore.applyCallbackToNode(nodePath, (node) => {
         node.isExpanded = false;
       });
     },
@@ -22,7 +22,7 @@ const Sider = () => {
 
   const handleNodeExpand = useCallback(
     (_node: TreeNodeInfo, nodePath: NodePath) => {
-      TreeNodesStore.applyCallbackToNode(nodePath, (node) => {
+      TreeStore.applyCallbackToNode(nodePath, (node) => {
         node.isExpanded = true;
       });
     },
@@ -31,7 +31,13 @@ const Sider = () => {
 
   const handleNodeClick = useCallback(
     (_node: TreeNodeInfo, nodePath: NodePath) => {
-      console.log(nodePath);
+      TreeStore.applyCallbackToNodes(nodes, (node) => {
+        node.isSelected = false;
+      });
+
+      TreeStore.applyCallbackToNodesInFolder(nodePath, (node) => {
+        node.isSelected = !node.isSelected;
+      });
     },
     [nodes]
   );
