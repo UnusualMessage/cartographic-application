@@ -29,12 +29,18 @@ const ContextMenu = () => {
 
   const insert = useCallback(() => {
     const layer = LayersStore.drawLayer;
-    OverlaysStore.insert(layer, copiedFeatures);
+    const cursor = OverlaysStore.cursorPosition;
+
+    if (cursor) {
+      FeaturesStore.insertCopiedFeatures(layer, cursor);
+    }
+    OverlaysStore.hideContextMenu();
   }, [copiedFeatures]);
 
   const remove = useCallback(() => {
     const layer = LayersStore.drawLayer;
-    OverlaysStore.delete(layer, selectedFeatures);
+    FeaturesStore.removeSelectedFeatures(layer);
+    OverlaysStore.hideContextMenu();
   }, [selectedFeatures]);
 
   useEffect(() => {

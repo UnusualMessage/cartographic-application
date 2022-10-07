@@ -1,12 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { Feature, Map, Overlay } from "ol";
+import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
-import { FeatureLike } from "ol/Feature";
-import VectorLayer from "ol/layer/Vector";
-import VectorSource from "ol/source/Vector";
-import { Circle, Geometry } from "ol/geom";
-import { GeoJSON } from "ol/format";
-import { AllGeoJSON, centerOfMass, lineString } from "@turf/turf";
 
 import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
 import { CommonEvent, ListenersInjector } from "../services/listeners";
@@ -130,47 +124,6 @@ class OverlaysStore {
     this.showOverlay(this._featureInfo, coordinates);
   }
 
-  public insert(
-    targetLayer: VectorLayer<VectorSource>,
-    copiedFeatures: FeatureLike[]
-  ) {
-    const source = targetLayer.getSource();
-    const cursor = this.cursorPosition;
-
-    if (!cursor) {
-      return;
-    }
-
-    const featuresCenter = this.getFeaturesCenter(copiedFeatures);
-
-    copiedFeatures.forEach((feature) => {
-      const geometry = (feature.getGeometry() as Geometry).clone();
-
-      geometry.translate(
-        cursor[0] - featuresCenter[0],
-        cursor[1] - featuresCenter[1]
-      );
-
-      const newFeature = new Feature(geometry);
-      source?.addFeature(newFeature);
-    });
-
-    this.hideContextMenu();
-  }
-
-  public delete(
-    targetLayer: VectorLayer<VectorSource>,
-    selectedFeatures: FeatureLike[]
-  ) {
-    const source = targetLayer.getSource();
-
-    selectedFeatures.forEach((feature) => {
-      source?.removeFeature(feature as Feature);
-    });
-
-    this.hideContextMenu();
-  }
-
   private hideOverlay(overlay: CustomOverlay) {
     overlay.active = false;
     overlay.overlay?.setPosition(undefined);
@@ -185,33 +138,6 @@ class OverlaysStore {
     overlay.overlay = null;
     overlay.element = null;
     overlay.active = false;
-  }
-
-  private getFeaturesCenter(features: FeatureLike[]) {
-    const centers: Coordinate[] = [];
-
-    features.forEach((feature) => {
-      const geometry = (feature.getGeometry() as Geometry).clone();
-
-      if (geometry.getType() === "Circle") {
-        const circle = geometry as Circle;
-        centers.push(circle.getCenter());
-      } else {
-        const format = new GeoJSON();
-
-        const formattedGeometry = format.writeGeometryObject(geometry);
-        const featureCenter = centerOfMass(formattedGeometry as AllGeoJSON)
-          .geometry.coordinates;
-
-        centers.push(featureCenter);
-      }
-    });
-
-    if (centers.length > 1) {
-      return centerOfMass(lineString(centers)).geometry.coordinates;
-    } else {
-      return centers[0];
-    }
   }
 }
 
