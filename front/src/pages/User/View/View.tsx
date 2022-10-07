@@ -1,10 +1,10 @@
-import { wrapper } from "./content.module.scss";
+import { wrapper } from "./view.module.scss";
 
 import Sider from "../../../components/Sider";
 import Map from "../../../components/Map";
 import Footer from "../../../components/Footer";
 
-const Content = () => {
+const View = () => {
   return (
     <>
       <div className={wrapper}>
@@ -17,4 +17,4 @@ const Content = () => {
   );
 };
 
-export default Content;
+export default View;

@@ -16,12 +16,16 @@ class MapStore {
   }
 
   public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {
-    this._map = new Map({
-      target: target,
-      view: view,
-      layers: layers,
-      controls: [],
-    });
+    if (this._map) {
+      this._map.setTarget(target);
+    } else {
+      this._map = new Map({
+        target: target,
+        view: view,
+        layers: layers,
+        controls: [],
+      });
+    }
   }
 
   public addView(view: View) {

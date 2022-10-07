@@ -10,7 +10,7 @@ const MapWrapper = ({ children }: PropsWithChildren) => {
   const map = MapStore.map;
 
   useLayoutEffect(() => {
-    if (mapRef.current && !map) {
+    if (mapRef.current) {
       MapStore.initMap([], mapRef.current);
     }
   }, []);

@@ -6,6 +6,8 @@ import {
   NavbarGroup,
   NavbarHeading,
 } from "@blueprintjs/core";
+import { observer } from "mobx-react-lite";
+import { Link } from "react-router-dom";
 
 import { wrapper } from "./header.module.scss";
 
@@ -18,20 +20,36 @@ const Header = () => {
         </NavbarHeading>
         <NavbarDivider />
 
-        <Button icon="home" text="Главная" minimal large />
-        <Button icon="map" text="Карта" minimal large />
-        <Button icon="archive" text="Архив" minimal large />
+        <Link to={"/"}>
+          <Button icon="path-search" text="Просмотр" minimal large />
+        </Link>
+
+        <Link to={"/edit"}>
+          <Button icon="send-to-map" text="Редактирование" minimal large />
+        </Link>
+
+        <Link to={"/archive"}>
+          <Button icon="archive" text="Архив" minimal large />
+        </Link>
+
         <NavbarDivider />
       </NavbarGroup>
 
       <NavbarGroup>
         <NavbarDivider />
-        <Button icon="cog" text="Настройки" minimal large />
-        <Button icon="user" text="Аккаунт" minimal large />
+
+        <Link to={"/settings"}>
+          <Button icon="cog" text="Настройки" minimal large />
+        </Link>
+
+        <Link to={"/account"}>
+          <Button icon="user" text="Аккаунт" minimal large />
+        </Link>
+
         <Button icon="log-out" minimal large />
       </NavbarGroup>
     </Navbar>
   );
 };
 
-export default Header;
+export default observer(Header);
