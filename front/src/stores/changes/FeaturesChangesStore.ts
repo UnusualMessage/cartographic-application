@@ -1,11 +1,10 @@
 import { FeatureLike } from "ol/Feature";
 import { makeAutoObservable } from "mobx";
-import { Feature } from "ol";
 
-import Change, { Action, Undo } from "../../types/Change";
+import Change from "../../types/Change";
 
 class FeaturesChangesStore {
-  private _featuresHistory: Change<FeatureLike>[];
+  private _featuresHistory: Change<FeatureLike[]>[];
 
   constructor() {
     this._featuresHistory = [];
@@ -29,18 +28,14 @@ class FeaturesChangesStore {
     const lastChange = this._featuresHistory.pop();
 
     if (lastChange) {
-      lastChange.undo();
+      lastChange.undo(lastChange.oldValue, lastChange.newValue);
     }
   }
 
-  public push(action: Action, feature: Feature, undo: Undo) {
+  public push(change: Change<FeatureLike[]>) {
     const copy = this._featuresHistory.slice();
 
-    copy.push({
-      action: action,
-      target: feature,
-      undo: undo,
-    });
+    copy.push(change);
 
     this._featuresHistory = copy;
   }

@@ -16,6 +16,8 @@ import {
   DrawEvent,
   DrawInjector,
   ListenersInjector,
+  ModifyEvent,
+  ModifyInjector,
   SelectEvent,
   SelectInjector,
 } from "../services/listeners";
@@ -155,6 +157,11 @@ class InteractionsStore {
       source: source,
       condition: altKeyOnly,
     });
+
+    const modifyInjector: ListenersInjector<ModifyEvent> = new ModifyInjector(
+      modify
+    );
+    modifyInjector.addEventListener("modifystart");
 
     map.addInteraction(modify);
 

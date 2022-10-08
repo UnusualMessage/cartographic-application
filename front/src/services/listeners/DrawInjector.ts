@@ -6,6 +6,8 @@ import InteractionsStore from "../../stores/InteractionsStore";
 import FeaturesStore from "../../stores/FeaturesStore";
 import { FeaturesChangesStore } from "../../stores/changes";
 import LayersStore from "../../stores/LayersStore";
+import Change, { Undo } from "../../types/Change";
+import { FeatureLike } from "ol/Feature";
 
 class DrawInjector implements ListenersInjector<DrawEvent> {
   private _draw: Draw;
@@ -43,12 +45,23 @@ class DrawInjector implements ListenersInjector<DrawEvent> {
 
       FeaturesStore.addFeature(event.feature);
 
-      const undo = () => {
-        FeaturesStore.removeFeature(feature);
-        LayersStore.removeFeature(feature);
+      const undo: Undo<FeatureLike[]> = (oldValue, newValue) => {
+        const feature = newValue.at(0);
+
+        if (feature) {
+          FeaturesStore.removeFeature(feature);
+          LayersStore.removeFeature(feature);
+        }
       };
 
-      FeaturesChangesStore.push("createFeature", feature, undo);
+      const change: Change<FeatureLike[]> = {
+        action: "createFeature",
+        oldValue: [],
+        newValue: [feature],
+        undo: undo,
+      };
+
+      FeaturesChangesStore.push(change);
     });
   }
 
