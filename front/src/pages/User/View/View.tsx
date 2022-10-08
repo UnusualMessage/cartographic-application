@@ -6,7 +6,7 @@ import { wrapper } from "./view.module.scss";
 import Sider from "../../../components/Sider";
 import Map from "../../../components/Map";
 import Footer from "../../../components/Footer";
-import InteractionsStore from "../../../stores/InteractionsStore";
+import { FeaturesChangesStore } from "../../../stores/changes";
 
 const View = () => {
   const ref = useRef<Toaster>(null);
@@ -18,10 +18,28 @@ const View = () => {
         global: true,
         label: "Save changes",
         onKeyDown: () => {
-          if (!InteractionsStore.saved) {
-            ref.current?.show({ message: "Изменения сохранены" });
-            InteractionsStore.saveChanges();
-          }
+          ref.current?.show({
+            message: "Изменения сохранены",
+            timeout: 1000,
+            intent: "success",
+          });
+
+          FeaturesChangesStore.save();
+        },
+      },
+
+      {
+        combo: "Shift+Z",
+        global: true,
+        label: "Undo changes",
+        onKeyDown: () => {
+          ref.current?.show({
+            message: "Изменение отменено",
+            timeout: 1000,
+            intent: "success",
+          });
+
+          FeaturesChangesStore.undo();
         },
       },
     ],

@@ -2,6 +2,8 @@ import BaseLayer from "ol/layer/Base";
 import { makeAutoObservable } from "mobx";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
+import { FeatureLike } from "ol/Feature";
+import { Feature } from "ol";
 
 class LayersStore {
   private readonly _layers: BaseLayer[];
@@ -34,6 +36,10 @@ class LayersStore {
     this._layers.filter(
       (currentLayer) => currentLayer.get("name") !== layer.get("name")
     );
+  }
+
+  public removeFeature(feature: FeatureLike) {
+    this.drawLayer.getSource()?.removeFeature(feature as Feature);
   }
 }
 

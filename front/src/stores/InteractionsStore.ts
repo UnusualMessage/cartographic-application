@@ -33,7 +33,6 @@ class InteractionsStore {
   private _drawType: DrawType;
   private _readonly: boolean;
   private _drawing: boolean;
-  private _saved: boolean;
 
   private _interactions: Interactions;
 
@@ -41,7 +40,6 @@ class InteractionsStore {
     this._drawType = "Polygon";
     this._readonly = false;
     this._drawing = false;
-    this._saved = true;
 
     this._interactions = {
       select: null,
@@ -53,10 +51,6 @@ class InteractionsStore {
     };
 
     makeAutoObservable(this);
-  }
-
-  public get saved() {
-    return this._saved;
   }
 
   public get drawType() {
@@ -77,14 +71,6 @@ class InteractionsStore {
 
   public set isDrawing(isDrawing: boolean) {
     this._drawing = isDrawing;
-  }
-
-  public markAsChanged() {
-    this._saved = false;
-  }
-
-  public saveChanges() {
-    this._saved = true;
   }
 
   public addDraw(source: VectorSource, map: Map, drawType: DrawType) {

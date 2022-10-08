@@ -4,7 +4,10 @@ export type Action =
   | "removeFeature"
   | "modifyFeature";
 
+export type Undo = () => void;
+
 export default interface Change<T> {
   action: Action;
   target: T;
+  undo: Undo;
 }

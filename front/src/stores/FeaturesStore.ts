@@ -104,6 +104,12 @@ class FeaturesStore {
     this.features = copy;
   }
 
+  public removeFeature(feature: FeatureLike) {
+    this.features = this.features.filter(
+      (currentFeature) => currentFeature.getId() !== feature.getId()
+    );
+  }
+
   public addFeature(feature: FeatureLike) {
     const copy = this.features.slice();
     copy.push(feature);

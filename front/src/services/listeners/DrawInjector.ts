@@ -4,6 +4,8 @@ import { v4 as uuid } from "uuid";
 import ListenersInjector, { DrawEvent } from "./ListenersInjector";
 import InteractionsStore from "../../stores/InteractionsStore";
 import FeaturesStore from "../../stores/FeaturesStore";
+import { FeaturesChangesStore } from "../../stores/changes";
+import LayersStore from "../../stores/LayersStore";
 
 class DrawInjector implements ListenersInjector<DrawEvent> {
   private _draw: Draw;
@@ -40,7 +42,13 @@ class DrawInjector implements ListenersInjector<DrawEvent> {
       feature.setId(uuid());
 
       FeaturesStore.addFeature(event.feature);
-      InteractionsStore.markAsChanged();
+
+      const undo = () => {
+        FeaturesStore.removeFeature(feature);
+        LayersStore.removeFeature(feature);
+      };
+
+      FeaturesChangesStore.push("createFeature", feature, undo);
     });
   }
 

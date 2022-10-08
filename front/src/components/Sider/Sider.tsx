@@ -12,7 +12,7 @@ import { Node, NodePath } from "../../types/Node";
 import { getFeatureCenter } from "../../utils/getFeatureCenter";
 import ViewStore from "../../stores/ViewStore";
 import { emptyNodes } from "../../assets/emptyNodes";
-import InteractionsStore from "../../stores/InteractionsStore";
+import { FeaturesChangesStore } from "../../stores/changes";
 
 const fillNodes = (fields: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(emptyNodes);
@@ -31,15 +31,13 @@ const fillNodes = (fields: FeatureLike[]) => {
 
 const Sider = () => {
   const features = FeaturesStore.features;
-  const saved = InteractionsStore.saved;
+  const lastChange = FeaturesChangesStore.lastChange;
 
   const [nodes, setNodes] = useState(() => fillNodes(features));
 
   useEffect(() => {
-    if (saved) {
-      setNodes(fillNodes(features));
-    }
-  }, [saved]);
+    setNodes(fillNodes(features));
+  }, [lastChange]);
 
   const handleNodeCollapse = useCallback(
     (_node: Node, nodePath: NodePath) => {

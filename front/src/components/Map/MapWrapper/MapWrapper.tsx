@@ -1,15 +1,16 @@
 import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
+import classNames from "classnames";
 
 import { changed, wrapper } from "./map.module.scss";
 
 import MapStore from "../../../stores/MapStore";
-import classNames from "classnames";
-import InteractionsStore from "../../../stores/InteractionsStore";
+import { FeaturesChangesStore } from "../../../stores/changes";
 
 const MapWrapper = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
+  const changesCount = FeaturesChangesStore.changesCount;
 
   useLayoutEffect(() => {
     if (mapRef.current) {
@@ -35,7 +36,7 @@ const MapWrapper = ({ children }: PropsWithChildren) => {
 
   const classes = classNames({
     [wrapper]: true,
-    [changed]: !InteractionsStore.saved,
+    [changed]: changesCount,
   });
 
   return (
