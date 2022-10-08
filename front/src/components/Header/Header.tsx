@@ -2,7 +2,6 @@ import {
   Button,
   H2,
   Navbar,
-  NavbarDivider,
   NavbarGroup,
   NavbarHeading,
 } from "@blueprintjs/core";
@@ -18,7 +17,6 @@ const Header = () => {
         <NavbarHeading>
           <H2>АгрОруэлл</H2>
         </NavbarHeading>
-        <NavbarDivider />
 
         <Link to={"/"}>
           <Button icon="path-search" text="Просмотр" minimal large />
@@ -31,13 +29,9 @@ const Header = () => {
         <Link to={"/archive"}>
           <Button icon="archive" text="Архив" minimal large />
         </Link>
-
-        <NavbarDivider />
       </NavbarGroup>
 
       <NavbarGroup>
-        <NavbarDivider />
-
         <Link to={"/settings"}>
           <Button icon="cog" text="Настройки" minimal large />
         </Link>

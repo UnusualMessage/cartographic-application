@@ -1,7 +1,9 @@
 .wrapper {
   display: flex;
   justify-content: space-between;
+  flex-basis: 50px;
 
   width: 100%;
-  flex-basis: 50px;
+  overflow-y: hidden;
+  overflow-x: auto;
 }

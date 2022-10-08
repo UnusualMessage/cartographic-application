@@ -7,12 +7,10 @@ import { cloneDeep } from "lodash";
 import { wrapper } from "./sider.module.scss";
 import FeaturesStore from "../../stores/FeaturesStore";
 import { forNode } from "../../utils/forNode";
-import { Node } from "../../types/Node";
+import { Node, NodePath } from "../../types/Node";
 import { getFeatureCenter } from "../../utils/getFeatureCenter";
 import ViewStore from "../../stores/ViewStore";
 import { emptyNodes } from "../../assets/emptyNodes";
-
-type NodePath = number[];
 
 const fillNodes = (fields: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(emptyNodes);
