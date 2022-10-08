@@ -5,6 +5,7 @@ import { Coordinate } from "ol/coordinate";
 
 import OverlaysStore from "../../stores/OverlaysStore";
 import FeaturesStore from "../../stores/FeaturesStore";
+import InteractionsStore from "../../stores/InteractionsStore";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
   private _map: Map;
@@ -34,6 +35,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       OverlaysStore.showContextMenu(cursor);
       OverlaysStore.hideFeatureInfo();
       OverlaysStore.cursorPosition = cursor;
+      InteractionsStore.stopDrawing();
     });
   }
 

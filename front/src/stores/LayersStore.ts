@@ -29,6 +29,12 @@ class LayersStore {
 
     return layer;
   }
+
+  public removeLayer(layer: BaseLayer) {
+    this._layers.filter(
+      (currentLayer) => currentLayer.get("name") !== layer.get("name")
+    );
+  }
 }
 
 export default new LayersStore();

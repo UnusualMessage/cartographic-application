@@ -42,6 +42,7 @@ const View = () => {
 
     return () => {
       createdView.un("change:center", onViewChange);
+      ViewStore.disposeView();
     };
   }, []);
 

@@ -15,6 +15,10 @@ const MapWrapper = ({ children }: PropsWithChildren) => {
     if (mapRef.current) {
       MapStore.initMap([], mapRef.current);
     }
+
+    return () => {
+      MapStore.dispose();
+    };
   }, []);
 
   useEffect(() => {

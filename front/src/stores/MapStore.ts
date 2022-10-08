@@ -15,6 +15,10 @@ class MapStore {
     return this._map;
   }
 
+  public dispose() {
+    this._map?.dispose();
+  }
+
   public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {
     if (this._map) {
       this._map.setTarget(target);
@@ -34,6 +38,10 @@ class MapStore {
 
   public addLayer(layer: BaseLayer) {
     this._map?.addLayer(layer);
+  }
+
+  public removeLayer(layer: BaseLayer) {
+    this._map?.removeLayer(layer);
   }
 }
 

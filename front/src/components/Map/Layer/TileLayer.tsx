@@ -3,23 +3,25 @@ import { default as OLTileLayer } from "ol/layer/Tile";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
-import LayersStore from "../../../stores/LayersStore";
-import MapStore from "../../../stores/MapStore";
+import LayersService from "../../../services/map/LayersService";
 
 interface Props {
   name: string;
 }
 
 const TileLayer = ({ name }: Props) => {
+  const source = new OSM();
+
+  const tileLayer = new OLTileLayer({
+    source: source,
+  });
+
   useEffect(() => {
-    const source = new OSM();
+    const createdLayer = LayersService.createLayer(tileLayer, name);
 
-    const baseLayer = new OLTileLayer({
-      source: source,
-    });
-
-    const createdLayer = LayersStore.createLayer(baseLayer, name);
-    MapStore.addLayer(createdLayer);
+    return () => {
+      LayersService.removeLayer(createdLayer);
+    };
   }, []);
 
   return <></>;

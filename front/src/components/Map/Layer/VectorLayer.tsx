@@ -4,8 +4,7 @@ import { default as OLVectorLayer } from "ol/layer/Vector";
 import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 
-import LayersStore from "../../../stores/LayersStore";
-import MapStore from "../../../stores/MapStore";
+import LayersService from "../../../services/map/LayersService";
 
 interface Props extends PropsWithChildren {
   name: string;
@@ -34,8 +33,11 @@ const VectorLayer = ({ name, children }: Props) => {
   }, []);
 
   useEffect(() => {
-    const createdLayer = LayersStore.createLayer(vectorLayer, name);
-    MapStore.addLayer(createdLayer);
+    const createdLayer = LayersService.createLayer(vectorLayer, name);
+
+    return () => {
+      LayersService.removeLayer(createdLayer);
+    };
   }, []);
 
   return (

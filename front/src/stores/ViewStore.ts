@@ -20,6 +20,10 @@ class ViewStore {
     return this._view;
   }
 
+  public disposeView() {
+    this._view?.dispose();
+  }
+
   public translateTo(coordinate: Coordinate) {
     this.stopAnimation();
 

@@ -112,6 +112,12 @@ class InteractionsStore {
     this._interactions.draw = draw;
   }
 
+  public stopDrawing() {
+    if (this._interactions.draw) {
+      this._interactions.draw.abortDrawing();
+    }
+  }
+
   public addSelectAndTranslate(source: VectorSource, map: Map) {
     if (this._interactions.select) {
       map.removeInteraction(this._interactions.select);
