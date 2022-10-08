@@ -24,7 +24,7 @@ class ViewStore {
     this._view?.dispose();
   }
 
-  public translateTo(coordinate: Coordinate) {
+  public centerTo(coordinate: Coordinate) {
     this.stopAnimation();
 
     this._view?.animate({

@@ -20,6 +20,8 @@ import {
   ModifyInjector,
   SelectEvent,
   SelectInjector,
+  TranslateEvent,
+  TranslateInjector,
 } from "../services/listeners";
 
 interface Interactions {
@@ -121,6 +123,13 @@ class InteractionsStore {
       condition: platformModifierKeyOnly,
     });
 
+    const translate = new Translate({
+      features: select.getFeatures(),
+      condition: (event) => {
+        return primaryAction(event) && !this._drawing;
+      },
+    });
+
     const dragBoxInjector: ListenersInjector<DragBoxEvent> =
       new DragBoxInjector(dragBox, select, source);
 
@@ -128,16 +137,13 @@ class InteractionsStore {
       select
     );
 
+    const translateInjector: ListenersInjector<TranslateEvent> =
+      new TranslateInjector(translate);
+
     selectInjector.addEventListener("select");
     dragBoxInjector.addEventListener("boxstart");
     dragBoxInjector.addEventListener("boxend");
-
-    const translate = new Translate({
-      features: select.getFeatures(),
-      condition: (event) => {
-        return primaryAction(event) && !this._drawing;
-      },
-    });
+    translateInjector.addEventListener("translatestart");
 
     map.addInteraction(select);
     map.addInteraction(translate);

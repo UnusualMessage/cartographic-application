@@ -15,7 +15,9 @@ const Header = () => {
     <Navbar className={wrapper}>
       <NavbarGroup>
         <NavbarHeading>
-          <H2>АгрОруэлл</H2>
+          <Link to={"/"}>
+            <H2>АгрОруэлл</H2>
+          </Link>
         </NavbarHeading>
 
         <Link to={"/"}>

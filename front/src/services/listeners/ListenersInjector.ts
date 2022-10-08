@@ -3,8 +3,15 @@ export type CommonEvent = "click" | "contextmenu";
 export type SelectEvent = "select";
 export type DrawEvent = "drawstart" | "drawend" | "drawabort";
 export type ModifyEvent = "modifyend" | "modifystart";
+export type TranslateEvent = "translatestart" | "translateend";
 
-type Event = DragBoxEvent | CommonEvent | SelectEvent | DrawEvent | ModifyEvent;
+type Event =
+  | DragBoxEvent
+  | CommonEvent
+  | SelectEvent
+  | DrawEvent
+  | ModifyEvent
+  | TranslateEvent;
 
 export default interface ListenersInjector<T extends Event> {
   addEventListener: (event: T) => void;

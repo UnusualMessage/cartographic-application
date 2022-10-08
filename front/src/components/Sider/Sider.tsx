@@ -37,7 +37,7 @@ const Sider = () => {
 
   useEffect(() => {
     setNodes(fillNodes(features));
-  }, [lastChange]);
+  }, [features, lastChange]);
 
   const handleNodeCollapse = useCallback(
     (_node: Node, nodePath: NodePath) => {
@@ -68,7 +68,7 @@ const Sider = () => {
   const handleNodeClick = useCallback(
     (_node: Node) => {
       if (_node.nodeData) {
-        ViewStore.translateTo(getFeatureCenter(_node.nodeData));
+        ViewStore.centerTo(getFeatureCenter(_node.nodeData));
       }
     },
     [nodes]
