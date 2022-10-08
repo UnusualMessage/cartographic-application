@@ -11,6 +11,8 @@ import "@blueprintjs/select/lib/css/blueprint-select.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import "@blueprintjs/table/lib/css/table.css";
 
+import Loader from "./components/common/Loader";
+
 FocusStyleManager.onlyShowFocusOnTabs();
 
 const App = lazy(() => import("./pages/App"));
@@ -21,7 +23,9 @@ const root = createRoot(element);
 root.render(
   <BrowserRouter>
     <HotkeysProvider>
-      <App />
+      <React.Suspense fallback={<Loader />}>
+        <App />
+      </React.Suspense>
     </HotkeysProvider>
   </BrowserRouter>
 );
