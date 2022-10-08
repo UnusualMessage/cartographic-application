@@ -1,11 +1,12 @@
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   flex-basis: 320px;
 
   height: 100%;
 
   z-index: 2;
-  overflow-y: scroll;
-  -ms-overflow-y: scroll;
 
   box-shadow: 0 -1px 0 1px rgb(17 20 24 / 10%);
 }

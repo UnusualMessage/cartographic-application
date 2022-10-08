@@ -20,6 +20,10 @@ class FeaturesChangesStore {
     return this._featuresHistory[this._featuresHistory.length - 1];
   }
 
+  public get featuresHistory() {
+    return this._featuresHistory;
+  }
+
   public save() {
     this._featuresHistory = [];
   }
