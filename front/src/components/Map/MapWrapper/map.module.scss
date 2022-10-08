@@ -4,4 +4,9 @@
   position: relative;
 
   transition: height 1s ease-in-out;
+  border: 2px solid white;
+}
+
+.changed {
+  border: 2px solid #4C90F0;
 }

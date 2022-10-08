@@ -59,6 +59,12 @@ class FeaturesStore {
     return this.features.find((feature) => feature.getId() === id);
   }
 
+  public clearBuffer() {
+    this._clickedFeature = null;
+    this._copiedFeatures = [];
+    this._selectedFeatures = [];
+  }
+
   public removeSelectedFeatures(targetLayer: VectorLayer<VectorSource>) {
     const source = targetLayer.getSource();
 

@@ -40,6 +40,7 @@ class DrawInjector implements ListenersInjector<DrawEvent> {
       feature.setId(uuid());
 
       FeaturesStore.addFeature(event.feature);
+      InteractionsStore.markAsChanged();
     });
   }
 

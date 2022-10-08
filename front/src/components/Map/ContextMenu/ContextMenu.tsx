@@ -9,6 +9,7 @@ import OverlaysStore from "../../../stores/OverlaysStore";
 import MapStore from "../../../stores/MapStore";
 import LayersStore from "../../../stores/LayersStore";
 import FeaturesStore from "../../../stores/FeaturesStore";
+import InteractionsStore from "../../../stores/InteractionsStore";
 
 const ContextMenu = () => {
   const contextMenuRef = useRef<HTMLUListElement>(null);
@@ -20,6 +21,8 @@ const ContextMenu = () => {
 
   const close = () => {
     OverlaysStore.hideContextMenu();
+    FeaturesStore.clearBuffer();
+    InteractionsStore.clearSelectBuffer();
   };
 
   const copy = useCallback(() => {

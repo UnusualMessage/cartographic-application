@@ -1,9 +1,11 @@
 import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./map.module.scss";
+import { changed, wrapper } from "./map.module.scss";
 
 import MapStore from "../../../stores/MapStore";
+import classNames from "classnames";
+import InteractionsStore from "../../../stores/InteractionsStore";
 
 const MapWrapper = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -27,8 +29,13 @@ const MapWrapper = ({ children }: PropsWithChildren) => {
     };
   }, [map]);
 
+  const classes = classNames({
+    [wrapper]: true,
+    [changed]: !InteractionsStore.saved,
+  });
+
   return (
-    <div className={wrapper} ref={mapRef}>
+    <div className={classes} ref={mapRef}>
       {children}
     </div>
   );

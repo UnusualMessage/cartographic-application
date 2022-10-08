@@ -5,12 +5,14 @@ import { FeatureLike } from "ol/Feature";
 import { cloneDeep } from "lodash";
 
 import { wrapper } from "./sider.module.scss";
+
 import FeaturesStore from "../../stores/FeaturesStore";
 import { forNode } from "../../utils/forNode";
 import { Node, NodePath } from "../../types/Node";
 import { getFeatureCenter } from "../../utils/getFeatureCenter";
 import ViewStore from "../../stores/ViewStore";
 import { emptyNodes } from "../../assets/emptyNodes";
+import InteractionsStore from "../../stores/InteractionsStore";
 
 const fillNodes = (fields: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(emptyNodes);
@@ -20,7 +22,7 @@ const fillNodes = (fields: FeatureLike[]) => {
       id: field.getId() ?? "",
       label: field.getId()?.toString() ?? "",
       icon: "document",
-      nodeData: getFeatureCenter(field),
+      nodeData: field,
     });
   });
 
@@ -29,11 +31,15 @@ const fillNodes = (fields: FeatureLike[]) => {
 
 const Sider = () => {
   const features = FeaturesStore.features;
+  const saved = InteractionsStore.saved;
+
   const [nodes, setNodes] = useState(() => fillNodes(features));
 
   useEffect(() => {
-    setNodes(fillNodes(features));
-  }, [features]);
+    if (saved) {
+      setNodes(fillNodes(features));
+    }
+  }, [saved]);
 
   const handleNodeCollapse = useCallback(
     (_node: Node, nodePath: NodePath) => {
@@ -64,7 +70,7 @@ const Sider = () => {
   const handleNodeClick = useCallback(
     (_node: Node) => {
       if (_node.nodeData) {
-        ViewStore.translateTo(_node.nodeData);
+        ViewStore.translateTo(getFeatureCenter(_node.nodeData));
       }
     },
     [nodes]
