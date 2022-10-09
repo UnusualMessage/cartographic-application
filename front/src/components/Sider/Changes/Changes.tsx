@@ -1,9 +1,9 @@
-import { Tag } from "@blueprintjs/core";
+import { Button, Tag } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { FeatureLike } from "ol/Feature";
 import { v4 as uuid } from "uuid";
 
-import { wrapper } from "./changes.module.scss";
+import { tools, wrapper } from "./changes.module.scss";
 
 import Change from "../../../types/Change";
 import { FeaturesChangesStore } from "../../../stores/changes";
@@ -36,7 +36,38 @@ const historyRenderer = (change: Change<FeatureLike[]>) => {
 const Changes = () => {
   const history = FeaturesChangesStore.featuresHistory;
 
-  return <div className={wrapper}>{history.map(historyRenderer)}</div>;
+  const save = () => {
+    FeaturesChangesStore.save();
+  };
+
+  const undo = () => {
+    FeaturesChangesStore.undo();
+  };
+
+  return (
+    <div className={wrapper}>
+      <div className={tools}>
+        <Button
+          text={"Сохранить"}
+          intent={"success"}
+          onClick={save}
+          icon={"confirm"}
+          fill
+          small
+        />
+
+        <Button
+          text={"Отменить"}
+          intent={"warning"}
+          onClick={undo}
+          icon={"undo"}
+          fill
+          small
+        />
+      </div>
+      {history.map(historyRenderer)}
+    </div>
+  );
 };
 
 export default observer(Changes);
