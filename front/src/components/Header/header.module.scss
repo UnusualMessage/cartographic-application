@@ -1,7 +1,9 @@
+@use "/src/styles/constants" as *;
+
 .wrapper {
   display: flex;
   justify-content: space-between;
-  flex-basis: 50px;
+  flex-basis: $header-height;
 
   width: 100%;
   overflow-y: hidden;

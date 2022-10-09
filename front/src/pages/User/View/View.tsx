@@ -51,12 +51,11 @@ const View = () => {
     <>
       <Toaster position={Position.TOP} ref={ref} />
 
+      <Sider />
       <div className={wrapper} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
-        <Sider />
         <Map />
+        <Footer />
       </div>
-
-      <Footer />
     </>
   );
 };

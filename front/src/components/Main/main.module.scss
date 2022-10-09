@@ -1,7 +1,9 @@
+@use "/src/styles/constants.scss" as *;
+
 .wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 
-  height: calc(100% - 50px);
+  height: calc(100% - $header-height);
   width: 100%;
 }

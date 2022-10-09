@@ -5,10 +5,10 @@ import {
   NavbarGroup,
   NavbarHeading,
 } from "@blueprintjs/core";
-import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
+import { memo } from "react";
 
-import { wrapper } from "./header.module.scss";
+import { wrapper } from "header.module.scss";
 
 const Header = () => {
   return (
@@ -48,4 +48,4 @@ const Header = () => {
   );
 };
 
-export default observer(Header);
+export default memo(Header);
