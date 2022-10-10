@@ -4,7 +4,7 @@ import { default as OLVectorLayer } from "ol/layer/Vector";
 import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 
-import LayersService from "../../../services/map/LayersService";
+import { LayersService } from "../../../services/map";
 
 interface Props extends PropsWithChildren {
   name: string;

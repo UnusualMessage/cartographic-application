@@ -65,6 +65,10 @@ class FeaturesStore {
     this._selectedFeatures = [];
   }
 
+  public copySelectedFeatures() {
+    this.copiedFeatures = this.selectedFeatures;
+  }
+
   public removeSelectedFeatures(targetLayer: VectorLayer<VectorSource>) {
     const source = targetLayer.getSource();
 

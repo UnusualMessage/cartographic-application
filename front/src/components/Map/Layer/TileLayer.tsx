@@ -3,7 +3,7 @@ import { default as OLTileLayer } from "ol/layer/Tile";
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
-import LayersService from "../../../services/map/LayersService";
+import { LayersService } from "../../../services/map";
 
 interface Props {
   name: string;

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
 import classNames from "classnames";
 import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
@@ -7,44 +7,28 @@ import { hidden, wrapper } from "./menu.module.scss";
 
 import OverlaysStore from "../../../stores/OverlaysStore";
 import MapStore from "../../../stores/MapStore";
-import LayersStore from "../../../stores/LayersStore";
-import FeaturesStore from "../../../stores/FeaturesStore";
-import InteractionsStore from "../../../stores/InteractionsStore";
+import { FeaturesService } from "../../../services/map";
 
 const ContextMenu = () => {
   const contextMenuRef = useRef<HTMLUListElement>(null);
   const map = MapStore.map;
   const active = OverlaysStore.isContextMenuActive;
 
-  const selectedFeatures = FeaturesStore.selectedFeatures;
-  const copiedFeatures = FeaturesStore.copiedFeatures;
-
   const close = () => {
-    OverlaysStore.hideContextMenu();
-    FeaturesStore.clearBuffer();
-    InteractionsStore.clearSelectBuffer();
+    FeaturesService.close();
   };
 
-  const copy = useCallback(() => {
-    FeaturesStore.copiedFeatures = selectedFeatures;
-    OverlaysStore.hideContextMenu();
-  }, [selectedFeatures]);
+  const copy = () => {
+    FeaturesService.copy();
+  };
 
-  const insert = useCallback(() => {
-    const layer = LayersStore.drawLayer;
-    const cursor = OverlaysStore.cursorPosition;
+  const insert = () => {
+    FeaturesService.insert();
+  };
 
-    if (cursor) {
-      FeaturesStore.insertCopiedFeatures(layer, cursor);
-    }
-    OverlaysStore.hideContextMenu();
-  }, [copiedFeatures]);
-
-  const remove = useCallback(() => {
-    const layer = LayersStore.drawLayer;
-    FeaturesStore.removeSelectedFeatures(layer);
-    OverlaysStore.hideContextMenu();
-  }, [selectedFeatures]);
+  const remove = () => {
+    FeaturesService.remove();
+  };
 
   useEffect(() => {
     const element = contextMenuRef.current;

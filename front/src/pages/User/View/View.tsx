@@ -6,7 +6,7 @@ import { wrapper } from "./view.module.scss";
 import Sider from "../../../components/Sider";
 import Map from "../../../components/Map";
 import Footer from "../../../components/Footer";
-import HistoryService from "../../../services/history/HistoryService";
+import { HistoryService } from "../../../services/history";
 
 const View = () => {
   const ref = useRef<Toaster>(null);
