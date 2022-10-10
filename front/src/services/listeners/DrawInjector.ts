@@ -1,13 +1,13 @@
 import { Draw } from "ol/interaction";
 import { v4 as uuid } from "uuid";
+import { FeatureLike } from "ol/Feature";
 
 import ListenersInjector, { DrawEvent } from "./ListenersInjector";
 import InteractionsStore from "../../stores/InteractionsStore";
 import FeaturesStore from "../../stores/FeaturesStore";
 import { FeaturesChangesStore } from "../../stores/changes";
-import LayersStore from "../../stores/LayersStore";
 import Change, { Undo } from "../../types/Change";
-import { FeatureLike } from "ol/Feature";
+import { LayersService } from "../map";
 
 class DrawInjector implements ListenersInjector<DrawEvent> {
   private _draw: Draw;
@@ -49,8 +49,7 @@ class DrawInjector implements ListenersInjector<DrawEvent> {
         const feature = newValue.at(0);
 
         if (feature) {
-          FeaturesStore.removeFeature(feature);
-          LayersStore.removeFeature(feature);
+          LayersService.removeFeature(feature);
         }
       };
 

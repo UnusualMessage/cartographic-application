@@ -14,7 +14,7 @@ class ModifyInjector implements ListenersInjector<ModifyEvent> {
     this._modify = modify;
   }
 
-  addEventListener(event: ModifyEvent) {
+  addEventListener() {
     this.addModify();
   }
 

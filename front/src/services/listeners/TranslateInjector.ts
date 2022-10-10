@@ -14,7 +14,7 @@ class TranslateInjector implements ListenersInjector<TranslateEvent> {
     this._translate = translate;
   }
 
-  public addEventListener(event: TranslateEvent) {
+  public addEventListener() {
     this.addTranslate();
   }
 
