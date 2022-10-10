@@ -1,15 +1,19 @@
 import { Position, Toaster, useHotkeys } from "@blueprintjs/core";
-import { useMemo, useRef } from "react";
+import { useLayoutEffect, useMemo, useRef } from "react";
 
 import { wrapper } from "./view.module.scss";
 
 import Sider from "../../../components/Sider";
 import Map from "../../../components/Map";
 import Footer from "../../../components/Footer";
-import { FeaturesChangesStore } from "../../../stores/changes";
+import HistoryService from "../../../services/history/HistoryService";
 
 const View = () => {
   const ref = useRef<Toaster>(null);
+
+  useLayoutEffect(() => {
+    HistoryService.toaster = ref.current;
+  }, []);
 
   const hotkeys = useMemo(
     () => [
@@ -18,13 +22,7 @@ const View = () => {
         global: true,
         label: "Save changes",
         onKeyDown: () => {
-          ref.current?.show({
-            message: "Изменения сохранены",
-            timeout: 1000,
-            intent: "success",
-          });
-
-          FeaturesChangesStore.save();
+          HistoryService.save();
         },
       },
 
@@ -33,13 +31,7 @@ const View = () => {
         global: true,
         label: "Undo changes",
         onKeyDown: () => {
-          ref.current?.show({
-            message: "Изменение отменено",
-            timeout: 1000,
-            intent: "success",
-          });
-
-          FeaturesChangesStore.undo();
+          HistoryService.undo();
         },
       },
     ],

@@ -8,7 +8,7 @@ import {
 import { Link } from "react-router-dom";
 import { memo } from "react";
 
-import { wrapper } from "header.module.scss";
+import { wrapper } from "./header.module.scss";
 
 const Header = () => {
   return (
