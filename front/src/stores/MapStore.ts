@@ -17,6 +17,7 @@ class MapStore {
 
   public dispose() {
     this._map?.dispose();
+    this._map = null;
   }
 
   public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {

@@ -1,3 +1,4 @@
 import Map from "./Map";
+import ReadonlyMap from "./ReadonlyMap";
 
-export default Map;
+export { Map, ReadonlyMap };

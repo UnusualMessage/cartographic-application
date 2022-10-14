@@ -22,6 +22,7 @@ class ViewStore {
 
   public disposeView() {
     this._view?.dispose();
+    this._view = null;
   }
 
   public centerTo(coordinate: Coordinate) {
