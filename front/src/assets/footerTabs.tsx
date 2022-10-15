@@ -1,7 +1,7 @@
 import { TabsList } from "../types/Tab";
 import Table from "../components/Table";
 
-export const tabs: TabsList[] = [
+export const footerTabs: TabsList[] = [
   {
     id: "feature",
     tabs: [

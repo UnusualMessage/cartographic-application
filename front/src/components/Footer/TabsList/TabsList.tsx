@@ -7,7 +7,7 @@ import { collapsed, wrapper } from "./tabs.module.scss";
 
 import { TabsStore } from "../../../stores";
 import { Tab as TabType } from "../../../types/Tab";
-import { tabs } from "../../../assets/tabs";
+import { footerTabs } from "../../../assets/footerTabs";
 import TabPage from "../TabPage";
 
 const tabsRenderer = (tab: TabType) => {
@@ -24,7 +24,7 @@ const tabsRenderer = (tab: TabType) => {
 const TabsList = () => {
   const [currentTab, setCurrentTab] = useState<string | number>("");
 
-  const currentTabs = tabs.find(
+  const currentTabs = footerTabs.find(
     (list) => list.id === TabsStore.tabsListId
   )?.tabs;
 
