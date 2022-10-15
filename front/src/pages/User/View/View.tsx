@@ -6,13 +6,13 @@ import Sider from "../../../components/Sider";
 import { ViewMap } from "../../../components/Map";
 import Footer from "../../../components/Footer";
 import Loader from "../../../components/common/Loader";
-import FeaturesTree from "../../../components/Sider/FeaturesTree";
+import Categories from "../../../components/Sider/Categories";
 
 const View = () => {
   return (
     <React.Suspense fallback={<Loader />}>
       <Sider>
-        <FeaturesTree fill />
+        <Categories fill />
       </Sider>
       <div className={wrapper}>
         <ViewMap />

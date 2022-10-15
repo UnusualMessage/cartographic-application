@@ -9,8 +9,8 @@ import { EditMap } from "../../../components/Map";
 import Footer from "../../../components/Footer";
 import { HistoryService } from "../../../services/history";
 import Loader from "../../../components/common/Loader";
-import FeaturesTree from "../../../components/Sider/FeaturesTree";
 import Changes from "../../../components/Sider/Changes";
+import Categories from "../../../components/Sider/Categories";
 
 const Edit = () => {
   const ref = useRef<Toaster>(null);
@@ -48,7 +48,7 @@ const Edit = () => {
       <Toaster position={Position.TOP} ref={ref} />
 
       <Sider>
-        <FeaturesTree />
+        <Categories />
         <Changes />
       </Sider>
       <div className={wrapper} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>

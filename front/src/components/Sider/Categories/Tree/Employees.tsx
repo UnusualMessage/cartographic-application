@@ -1,26 +1,25 @@
-import { Tree } from "@blueprintjs/core";
-import { useCallback, useEffect, useState } from "react";
+import { Divider, Tree } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { FeatureLike } from "ol/Feature";
 import { cloneDeep } from "lodash";
-import classNames from "classnames";
+import { useCallback, useEffect, useState } from "react";
 
-import { fullSize, wrapper } from "./tree.module.scss";
+import { wrapper } from "./tree.module.scss";
 
-import { forNode } from "../../../utils/forNode";
-import { Node, NodePath } from "../../../types/Node";
-import { getFeatureCenter } from "../../../utils/getFeatureCenter";
+import { Node, NodePath } from "../../../../types/Node";
+import { forNode } from "../../../../utils/forNode";
+import { getFeatureCenter } from "../../../../utils/getFeatureCenter";
 import {
   FeaturesChangesStore,
   FeaturesStore,
   ViewStore,
-} from "../../../stores";
-import { emptyNodes } from "../../../assets/emptyNodes";
+} from "../../../../stores";
+import { employees } from "../../../../assets/nodes";
 
-const fillNodes = (fields: FeatureLike[]) => {
-  const initial: Node[] = cloneDeep(emptyNodes);
+const fillNodes = (nodes: FeatureLike[]) => {
+  const initial: Node[] = cloneDeep(employees);
 
-  fields.forEach((field) => {
+  nodes.forEach((field) => {
     initial[0].childNodes?.push({
       id: field.getId() ?? "",
       label: field.getId()?.toString() ?? "",
@@ -32,11 +31,7 @@ const fillNodes = (fields: FeatureLike[]) => {
   return initial;
 };
 
-interface Props {
-  fill?: boolean;
-}
-
-const FeaturesTree = ({ fill }: Props) => {
+const Employees = () => {
   const features = FeaturesStore.features;
   const lastChange = FeaturesChangesStore.lastChange;
 
@@ -81,20 +76,18 @@ const FeaturesTree = ({ fill }: Props) => {
     [nodes]
   );
 
-  const classes = classNames({
-    [wrapper]: true,
-    [fullSize]: fill,
-  });
-
   return (
-    <Tree
-      className={classes}
-      contents={nodes}
-      onNodeCollapse={handleNodeCollapse}
-      onNodeExpand={handleNodeExpand}
-      onNodeClick={handleNodeClick}
-    />
+    <>
+      <Divider />
+      <Tree
+        className={wrapper}
+        contents={nodes}
+        onNodeCollapse={handleNodeCollapse}
+        onNodeExpand={handleNodeExpand}
+        onNodeClick={handleNodeClick}
+      />
+    </>
   );
 };
 
-export default observer(FeaturesTree);
+export default observer(Employees);
