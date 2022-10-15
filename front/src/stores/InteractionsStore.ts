@@ -35,14 +35,12 @@ interface Interactions {
 
 class InteractionsStore {
   private _drawType: DrawType;
-  private _readonly: boolean;
   private _drawing: boolean;
 
   private _interactions: Interactions;
 
   constructor() {
     this._drawType = "Polygon";
-    this._readonly = false;
     this._drawing = false;
 
     this._interactions = {
@@ -63,14 +61,6 @@ class InteractionsStore {
 
   public set drawType(drawType: DrawType) {
     this._drawType = drawType;
-  }
-
-  public get readonly() {
-    return this._readonly;
-  }
-
-  public set readonly(readonly: boolean) {
-    this._readonly = readonly;
   }
 
   public set isDrawing(isDrawing: boolean) {
@@ -189,7 +179,7 @@ class InteractionsStore {
   }
 
   public addInteractions(source: VectorSource, map: Map | null) {
-    if (!map || this._readonly) {
+    if (!map) {
       return;
     }
 

@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import { wrapper } from "./edit.module.scss";
 
 import Sider from "../../../components/Sider";
-import { Map } from "../../../components/Map";
+import { EditMap } from "../../../components/Map";
 import Footer from "../../../components/Footer";
 import { HistoryService } from "../../../services/history";
 
@@ -46,7 +46,7 @@ const Edit = () => {
 
       <Sider />
       <div className={wrapper} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
-        <Map />
+        <EditMap />
         <Footer />
       </div>
     </>

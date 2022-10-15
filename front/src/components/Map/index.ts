@@ -1,4 +1,4 @@
-import Map from "./Map";
-import ReadonlyMap from "./ReadonlyMap";
+import EditMap from "./EditMap";
+import ViewMap from "./ViewMap";
 
-export { Map, ReadonlyMap };
+export { ViewMap, EditMap };

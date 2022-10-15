@@ -1,7 +1,7 @@
 import { wrapper } from "./view.module.scss";
 
 import Sider from "../../../components/Sider";
-import { ReadonlyMap } from "../../../components/Map";
+import { ViewMap } from "../../../components/Map";
 import Footer from "../../../components/Footer";
 
 const View = () => {
@@ -9,7 +9,7 @@ const View = () => {
     <>
       <Sider />
       <div className={wrapper}>
-        <ReadonlyMap />
+        <ViewMap />
         <Footer />
       </div>
     </>
