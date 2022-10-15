@@ -41,6 +41,10 @@ class LayersStore {
   public removeFeature(feature: FeatureLike) {
     this.drawLayer.getSource()?.removeFeature(feature as Feature);
   }
+
+  public chooseBaseLayer(type: string) {
+    return;
+  }
 }
 
 export default new LayersStore();

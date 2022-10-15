@@ -6,8 +6,7 @@ import { useCallback, useEffect, useState } from "react";
 
 import { wrapper } from "./tree.module.scss";
 
-import { Node, NodePath } from "../../../../types/Node";
-import { forNode } from "../../../../utils/forNode";
+import { Node } from "../../../../types/Node";
 import { getFeatureCenter } from "../../../../utils/getFeatureCenter";
 import {
   FeaturesChangesStore,
@@ -15,6 +14,7 @@ import {
   ViewStore,
 } from "../../../../stores";
 import { fields } from "../../../../assets/nodes";
+import useTreeActions from "../../../../hooks/useTreeActions";
 
 const fillNodes = (nodes: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(fields);
@@ -41,31 +41,10 @@ const Fields = () => {
     setNodes(fillNodes(features));
   }, [features, lastChange]);
 
-  const handleNodeCollapse = useCallback(
-    (_node: Node, nodePath: NodePath) => {
-      const newNodes = forNode(nodePath, nodes, (node) => {
-        node.isExpanded = false;
-      });
-
-      if (newNodes) {
-        setNodes(newNodes);
-      }
-    },
-    [nodes]
-  );
-
-  const handleNodeExpand = useCallback(
-    (_node: Node, nodePath: NodePath) => {
-      const newNodes = forNode(nodePath, nodes, (node) => {
-        node.isExpanded = true;
-      });
-
-      if (newNodes) {
-        setNodes(newNodes);
-      }
-    },
-    [nodes]
-  );
+  const { handleNodeCollapse, handleNodeExpand } = useTreeActions({
+    nodes,
+    setNodes,
+  });
 
   const handleNodeClick = useCallback(
     (_node: Node) => {

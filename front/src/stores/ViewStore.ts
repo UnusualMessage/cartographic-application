@@ -35,6 +35,14 @@ class ViewStore {
     });
   }
 
+  public zoomIn() {
+    this._view?.adjustZoom(1);
+  }
+
+  public zoomOut() {
+    this._view?.adjustZoom(-1);
+  }
+
   private stopAnimation() {
     const zoom = this._view?.getZoom();
 
