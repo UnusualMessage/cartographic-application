@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 
-import User from "./User";
-import Admin from "./Admin";
+const User = lazy(() => import("./User"));
+const Admin = lazy(() => import("./Admin"));
 
 const App = () => {
   return (

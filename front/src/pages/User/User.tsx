@@ -1,8 +1,10 @@
 import { Route, Routes } from "react-router-dom";
+import { lazy } from "react";
 
 import Layout from "./Layout";
-import View from "./View";
-import Edit from "./Edit";
+
+const View = lazy(() => import("./View"));
+const Edit = lazy(() => import("./Edit"));
 
 const User = () => {
   return (

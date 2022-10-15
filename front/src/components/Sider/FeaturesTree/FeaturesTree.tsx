@@ -3,8 +3,9 @@ import { useCallback, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { FeatureLike } from "ol/Feature";
 import { cloneDeep } from "lodash";
+import classNames from "classnames";
 
-import { wrapper } from "./tree.module.scss";
+import { fullSize, wrapper } from "./tree.module.scss";
 
 import { forNode } from "../../../utils/forNode";
 import { Node, NodePath } from "../../../types/Node";
@@ -31,7 +32,11 @@ const fillNodes = (fields: FeatureLike[]) => {
   return initial;
 };
 
-const FeaturesTree = () => {
+interface Props {
+  fill?: boolean;
+}
+
+const FeaturesTree = ({ fill }: Props) => {
   const features = FeaturesStore.features;
   const lastChange = FeaturesChangesStore.lastChange;
 
@@ -76,9 +81,14 @@ const FeaturesTree = () => {
     [nodes]
   );
 
+  const classes = classNames({
+    [wrapper]: true,
+    [fullSize]: fill,
+  });
+
   return (
     <Tree
-      className={wrapper}
+      className={classes}
       contents={nodes}
       onNodeCollapse={handleNodeCollapse}
       onNodeExpand={handleNodeExpand}
