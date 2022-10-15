@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import * as css from "./table.module.scss";
 
-import FeaturesStore from "../../stores/FeaturesStore";
+import { FeaturesStore } from "../../stores";
 
 const Table = () => {
   const clickedFeature = FeaturesStore.clickedFeature;

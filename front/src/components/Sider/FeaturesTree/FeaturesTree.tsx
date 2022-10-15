@@ -6,13 +6,15 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import FeaturesStore from "../../../stores/FeaturesStore";
 import { forNode } from "../../../utils/forNode";
 import { Node, NodePath } from "../../../types/Node";
 import { getFeatureCenter } from "../../../utils/getFeatureCenter";
-import ViewStore from "../../../stores/ViewStore";
+import {
+  FeaturesChangesStore,
+  FeaturesStore,
+  ViewStore,
+} from "../../../stores";
 import { emptyNodes } from "../../../assets/emptyNodes";
-import { FeaturesChangesStore } from "../../../stores/changes";
 
 const fillNodes = (fields: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(emptyNodes);

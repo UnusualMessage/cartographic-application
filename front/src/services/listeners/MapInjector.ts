@@ -3,9 +3,7 @@ import { Map } from "ol";
 import { Pixel } from "ol/pixel";
 import { Coordinate } from "ol/coordinate";
 
-import OverlaysStore from "../../stores/OverlaysStore";
-import FeaturesStore from "../../stores/FeaturesStore";
-import InteractionsStore from "../../stores/InteractionsStore";
+import { FeaturesStore, InteractionsStore, OverlaysStore } from "../../stores";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
   private _map: Map;

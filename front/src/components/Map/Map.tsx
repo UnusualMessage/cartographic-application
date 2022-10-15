@@ -5,7 +5,7 @@ import View from "./View";
 import { TileLayer, VectorLayer } from "./Layer";
 import Interactions from "./Interactions";
 import MapWrapper from "./MapWrapper";
-import InteractionsStore from "../../stores/InteractionsStore";
+import { InteractionsStore } from "../../stores";
 import ContextMenu from "./ContextMenu";
 import Overlay from "./Overlay";
 

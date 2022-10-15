@@ -1,5 +1,5 @@
 import { Intent, Toaster } from "@blueprintjs/core";
-import { FeaturesChangesStore } from "../../stores/changes";
+import { FeaturesChangesStore } from "../../stores";
 
 class HistoryService {
   private _toaster: Toaster | null;

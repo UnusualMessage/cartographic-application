@@ -6,8 +6,8 @@ import { v4 as uuid } from "uuid";
 import { tools, wrapper } from "./changes.module.scss";
 
 import Change from "../../../types/Change";
-import { FeaturesChangesStore } from "../../../stores/changes";
-import HistoryService from "../../../services/history/HistoryService";
+import { FeaturesChangesStore } from "../../../stores";
+import { HistoryService } from "../../../services/history";
 
 const historyRenderer = (change: Change<FeatureLike[]>) => {
   switch (change.action) {

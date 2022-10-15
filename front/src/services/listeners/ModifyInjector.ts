@@ -5,7 +5,7 @@ import { FeatureLike } from "ol/Feature";
 
 import Change, { Undo } from "../../types/Change";
 import ListenersInjector, { ModifyEvent } from "./ListenersInjector";
-import { FeaturesChangesStore } from "../../stores/changes";
+import { FeaturesChangesStore } from "../../stores";
 
 class ModifyInjector implements ListenersInjector<ModifyEvent> {
   private _modify: Modify;

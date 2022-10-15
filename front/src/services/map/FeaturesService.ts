@@ -1,7 +1,9 @@
-import FeaturesStore from "../../stores/FeaturesStore";
-import OverlaysStore from "../../stores/OverlaysStore";
-import InteractionsStore from "../../stores/InteractionsStore";
-import LayersStore from "../../stores/LayersStore";
+import {
+  FeaturesStore,
+  InteractionsStore,
+  LayersStore,
+  OverlaysStore,
+} from "../../stores";
 
 class FeaturesService {
   public copy() {

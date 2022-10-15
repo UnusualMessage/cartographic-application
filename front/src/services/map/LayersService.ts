@@ -1,9 +1,7 @@
 import BaseLayer from "ol/layer/Base";
 import { FeatureLike } from "ol/Feature";
 
-import MapStore from "../../stores/MapStore";
-import LayersStore from "../../stores/LayersStore";
-import FeaturesStore from "../../stores/FeaturesStore";
+import { FeaturesStore, LayersStore, MapStore } from "../../stores";
 
 class LayersService {
   public removeLayer(layer: BaseLayer) {

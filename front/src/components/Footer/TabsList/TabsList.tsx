@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 
 import { collapsed, wrapper } from "./tabs.module.scss";
 
-import TabsStore from "../../../stores/TabsStore";
+import { TabsStore } from "../../../stores";
 import { Tab as TabType } from "../../../types/Tab";
 import { tabs } from "../../../assets/tabs";
 import TabPage from "../TabPage";

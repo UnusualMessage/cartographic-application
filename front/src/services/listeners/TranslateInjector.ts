@@ -5,7 +5,7 @@ import { FeatureLike } from "ol/Feature";
 
 import Change, { Undo } from "../../types/Change";
 import ListenersInjector, { TranslateEvent } from "./ListenersInjector";
-import { FeaturesChangesStore } from "../../stores/changes";
+import { FeaturesChangesStore } from "../../stores";
 
 class TranslateInjector implements ListenersInjector<TranslateEvent> {
   private _translate: Translate;
