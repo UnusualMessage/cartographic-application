@@ -11,12 +11,7 @@ const DrawSelect = () => {
   };
 
   return (
-    <HTMLSelect
-      fill
-      value={InteractionsStore.drawType}
-      onChange={onSelect}
-      disabled={InteractionsStore.readonly}
-    >
+    <HTMLSelect fill value={InteractionsStore.drawType} onChange={onSelect}>
       <option value={"None"}>Курсор</option>
       <option value={"Polygon"}>Полигон</option>
       <option value={"Circle"}>Круг</option>

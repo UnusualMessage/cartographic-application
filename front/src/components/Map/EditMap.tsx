@@ -4,7 +4,6 @@ import { TileLayer, VectorLayer } from "./Layer";
 import Interactions from "./Interactions";
 import MapWrapper from "./MapWrapper";
 import ContextMenu from "./ContextMenu";
-import Overlay from "./Overlay";
 
 const EditMap = () => {
   return (
@@ -18,7 +17,6 @@ const EditMap = () => {
       </VectorLayer>
 
       <ContextMenu />
-      <Overlay />
     </MapWrapper>
   );
 };

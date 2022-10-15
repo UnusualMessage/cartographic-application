@@ -3,7 +3,7 @@ import { Node } from "../../types/Node";
 export const equipment: Node[] = [
   {
     id: "tree-equipment",
-    icon: "folder-close",
+    icon: "tractor",
     label: "Техника",
     isExpanded: false,
     childNodes: [],

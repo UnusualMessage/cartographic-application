@@ -3,7 +3,7 @@ import { Node } from "../../types/Node";
 export const fields: Node[] = [
   {
     id: "tree-fields",
-    icon: "folder-close",
+    icon: "layers",
     label: "Поля",
     isExpanded: false,
     childNodes: [],
