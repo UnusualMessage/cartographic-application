@@ -2,6 +2,8 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 import { debounce } from "lodash";
 import { observer } from "mobx-react-lite";
+import { toFixed } from "ol/math";
+import { fromLonLat, toLonLat } from "ol/proj";
 
 import { MapStore, ViewStore } from "../../../stores";
 
@@ -13,34 +15,33 @@ const View = () => {
     const y = viewParams.get("y") ?? "0";
     const zoom = viewParams.get("z") ?? "1";
 
-    const createdView = ViewStore.createView(Number(zoom), [
-      Number(x),
-      Number(y),
-    ]);
+    const center = fromLonLat([Number(x), Number(y)]);
+    const createdView = ViewStore.createView(Number(zoom), center);
 
     const onViewChange = debounce(() => {
-      const center = createdView.getCenter();
+      let center = createdView.getCenter();
       const zoom = createdView.getZoom();
 
       if (!center || !zoom) {
         return;
       }
 
+      center = toLonLat(center);
       const searchParams = new URLSearchParams();
 
-      searchParams.append("x", center[0].toString());
-      searchParams.append("y", center[1].toString());
-      searchParams.append("z", zoom.toString());
+      searchParams.append("x", toFixed(center[0], 2).toString());
+      searchParams.append("y", toFixed(center[1], 2).toString());
+      searchParams.append("z", toFixed(zoom, 2).toString());
 
       setViewParams(searchParams);
     }, 100);
 
-    createdView.on("change:center", onViewChange);
+    createdView.on(["change:center", "change:resolution"], onViewChange);
 
     MapStore.addView(createdView);
 
     return () => {
-      createdView.un("change:center", onViewChange);
+      createdView.un(["change:center", "change:resolution"], onViewChange);
       ViewStore.disposeView();
     };
   }, []);

@@ -1,11 +1,18 @@
 import { Button, ButtonGroup, Tree } from "@blueprintjs/core";
 import { useState } from "react";
+import classNames from "classnames";
 
-import { leftButtons, rightButtons, wrapper } from "./controls.module.scss";
+import {
+  leftButtons,
+  offset,
+  rightButtons,
+  wrapper,
+} from "./controls.module.scss";
 
 import { Node } from "../../../types/Node";
 import useTreeActions from "../../../hooks/useTreeActions";
 import { ViewStore } from "../../../stores";
+import { FullScreenHandle } from "react-full-screen";
 
 const initialNodes: Node[] = [
   {
@@ -55,7 +62,11 @@ const initialNodes: Node[] = [
   },
 ];
 
-const ViewControls = () => {
+interface Props {
+  handle: FullScreenHandle;
+}
+
+const ViewControls = ({ handle }: Props) => {
   const [visible, setVisible] = useState(false);
   const [nodes, setNodes] = useState<Node[]>(initialNodes);
 
@@ -79,7 +90,7 @@ const ViewControls = () => {
   return (
     <>
       {visible ? (
-        <div className={wrapper}>
+        <div className={classNames(wrapper, offset)}>
           <Tree
             contents={nodes}
             onNodeCollapse={handleNodeCollapse}
@@ -97,7 +108,7 @@ const ViewControls = () => {
           onClick={handleVisibility}
         />
         <Button icon="wrench" intent={"none"} />
-        <Button icon="fullscreen" intent={"none"} />
+        <Button icon="fullscreen" intent={"none"} onClick={handle.enter} />
         <Button icon="print" intent={"none"} />
       </ButtonGroup>
 
