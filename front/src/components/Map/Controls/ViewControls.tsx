@@ -101,7 +101,6 @@ const ViewControls = ({ handle }: Props) => {
 
   const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
     LayersStore.currentBaseLayer = e.currentTarget.value as BaseLayerType;
-    console.log(MapStore.map?.getLayers());
   };
 
   return (
@@ -118,9 +117,13 @@ const ViewControls = ({ handle }: Props) => {
             onChange={handleChoose}
             selectedValue={LayersStore.currentBaseLayer}
           >
-            <Radio label="OSM" value="osm" />
+            <Radio label="OpenStreetMap" value="osm" />
+            <Radio label="OpenTopoMap" value="otm" />
             <Radio label="Bing.Карты" value="bing-road" />
             <Radio label="Bing.Спутник" value="bing-satellite" />
+            <Radio label="Google.Карты" value="google-road" />
+            <Radio label="Google.Спутник" value="google-satellite" />
+            <Radio label="Google.Гибрид" value="google-hybrid" />
           </RadioGroup>
         </div>
       ) : (

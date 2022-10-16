@@ -5,7 +5,7 @@ import { FeatureLike } from "ol/Feature";
 import { Feature } from "ol";
 
 import { BaseLayerType } from "../types/BaseLayerType";
-import { BingMaps, OSM } from "ol/source";
+import { BingMaps, OSM, XYZ } from "ol/source";
 import { default as OLTileLayer } from "ol/layer/Tile";
 
 class LayersStore {
@@ -51,10 +51,21 @@ class LayersStore {
 
   public createBaseLayer(type: BaseLayerType) {
     let source;
+    const maxSourceZoom = 19;
 
     switch (type) {
+      case "otm":
+        return new OLTileLayer({
+          source: new XYZ({
+            url: "https://tile.opentopomap.org/{z}/{x}/{y}.png",
+            maxZoom: maxSourceZoom,
+          }),
+        });
+
       case "osm":
-        source = new OSM();
+        source = new OSM({
+          maxZoom: maxSourceZoom,
+        });
 
         return new OLTileLayer({
           source: source,
@@ -64,24 +75,47 @@ class LayersStore {
         source = new BingMaps({
           key: "AjQ9qFMMmfL8LMJ-Bp6a8Ut49IzFK-npLmsUcRWyFaGNvOG-uVgSu3kwHKLY-j8I",
           imagerySet: "Aerial",
-          maxZoom: 19,
+          maxZoom: maxSourceZoom,
         });
 
         return new OLTileLayer({
-          preload: Infinity,
           source: source,
         });
       case "bing-road":
         source = new BingMaps({
           key: "AjQ9qFMMmfL8LMJ-Bp6a8Ut49IzFK-npLmsUcRWyFaGNvOG-uVgSu3kwHKLY-j8I",
           imagerySet: "RoadOnDemand",
-          maxZoom: 19,
+          maxZoom: maxSourceZoom,
         });
 
         return new OLTileLayer({
-          preload: Infinity,
           source: source,
         });
+
+      case "google-road":
+        return new OLTileLayer({
+          source: new XYZ({
+            url: "https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}",
+            maxZoom: maxSourceZoom,
+          }),
+        });
+
+      case "google-satellite":
+        return new OLTileLayer({
+          source: new XYZ({
+            url: "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
+            maxZoom: maxSourceZoom,
+          }),
+        });
+
+      case "google-hybrid":
+        return new OLTileLayer({
+          source: new XYZ({
+            url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
+            maxZoom: maxSourceZoom,
+          }),
+        });
+
       default:
         return;
     }
