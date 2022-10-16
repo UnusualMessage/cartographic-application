@@ -7,13 +7,14 @@ import VectorLayer from "ol/layer/Vector";
 import { BaseLayerType } from "../../types/BaseLayerType";
 
 class LayersService {
-  public removeVectorLayer(layer: VectorLayer<VectorSource>) {
-    MapStore.removeLayer(layer);
-    LayersStore.removeVectorLayer();
-  }
-
   public createVectorLayer(source: VectorSource) {
     const layer = LayersStore.createVectorLayer(source);
+    MapStore.addLayer(layer);
+    return layer;
+  }
+
+  public createAuxLayer(source: VectorSource) {
+    const layer = LayersStore.createAuxLayer(source);
     MapStore.addLayer(layer);
     return layer;
   }
@@ -26,6 +27,16 @@ class LayersService {
     }
 
     return layer;
+  }
+
+  public removeVectorLayer(layer: VectorLayer<VectorSource>) {
+    MapStore.removeLayer(layer);
+    LayersStore.removeVectorLayer();
+  }
+
+  public removeAuxLayer(layer: VectorLayer<VectorSource>) {
+    MapStore.removeLayer(layer);
+    LayersStore.removeAuxLayer();
   }
 
   public removeBaseLayer(layer: BaseLayer) {

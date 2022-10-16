@@ -11,7 +11,12 @@ import {
   wrapper,
 } from "./controls.module.scss";
 
-import { LayersStore, MapStore, ViewStore } from "../../../stores";
+import {
+  InteractionsStore,
+  LayersStore,
+  MapStore,
+  ViewStore,
+} from "../../../stores";
 import { BaseLayerType } from "../../../types/BaseLayerType";
 
 interface Props {
@@ -20,6 +25,8 @@ interface Props {
 
 const ViewControls = ({ handle }: Props) => {
   const [visible, setVisible] = useState(false);
+
+  const measurementActive = InteractionsStore.measurementActive;
 
   const handleVisibility = () => {
     setVisible(!visible);
@@ -39,6 +46,10 @@ const ViewControls = ({ handle }: Props) => {
 
   const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
     LayersStore.currentBaseLayer = e.currentTarget.value as BaseLayerType;
+  };
+
+  const switchMeasurement = () => {
+    InteractionsStore.measurementActive = !measurementActive;
   };
 
   return (
@@ -69,12 +80,19 @@ const ViewControls = ({ handle }: Props) => {
           intent={visible ? "primary" : "none"}
           onClick={handleVisibility}
         />
-        <Button icon="wrench" intent={"none"} />
+
+        <Button
+          icon="wrench"
+          intent={measurementActive ? "primary" : "none"}
+          onClick={switchMeasurement}
+        />
+
         <Button
           icon="fullscreen"
           intent={handle.active ? "primary" : "none"}
           onClick={handle.active ? handle.exit : handle.enter}
         />
+
         <Button icon="print" intent={"none"} onClick={print} />
       </ButtonGroup>
 
