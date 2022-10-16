@@ -1,10 +1,4 @@
-import {
-  Button,
-  ButtonGroup,
-  Radio,
-  RadioGroup,
-  Tree,
-} from "@blueprintjs/core";
+import { Button, ButtonGroup, Radio, RadioGroup } from "@blueprintjs/core";
 import { FormEventHandler, useState } from "react";
 import classNames from "classnames";
 import { FullScreenHandle } from "react-full-screen";
@@ -12,63 +6,13 @@ import { observer } from "mobx-react-lite";
 
 import {
   leftButtons,
-  offset,
   rightButtons,
+  view,
   wrapper,
 } from "./controls.module.scss";
 
-import { Node } from "../../../types/Node";
-import useTreeActions from "../../../hooks/useTreeActions";
 import { LayersStore, MapStore, ViewStore } from "../../../stores";
 import { BaseLayerType } from "../../../types/BaseLayerType";
-
-const initialNodes: Node[] = [
-  {
-    id: "controls-layers",
-    icon: "globe",
-    label: "Вид карты",
-    isExpanded: true,
-    childNodes: [],
-  },
-
-  {
-    id: "controls-weather",
-    icon: "rain",
-    label: "Погода",
-    isExpanded: true,
-    childNodes: [],
-  },
-
-  {
-    id: "controls-equipment",
-    icon: "tractor",
-    label: "Техника",
-    isExpanded: false,
-    childNodes: [],
-  },
-
-  {
-    id: "controls-fields",
-    icon: "layers",
-    label: "Поля",
-    isExpanded: false,
-    childNodes: [],
-  },
-  {
-    id: "controls-govern",
-    icon: "map",
-    label: "Кадастровые зоны",
-    isExpanded: false,
-    childNodes: [],
-  },
-  {
-    id: "controls-unused",
-    icon: "layer-outline",
-    label: "Неиспользуемые территории",
-    isExpanded: false,
-    childNodes: [],
-  },
-];
 
 interface Props {
   handle: FullScreenHandle;
@@ -76,12 +20,6 @@ interface Props {
 
 const ViewControls = ({ handle }: Props) => {
   const [visible, setVisible] = useState(false);
-  const [nodes, setNodes] = useState<Node[]>(initialNodes);
-
-  const { handleNodeCollapse, handleNodeExpand } = useTreeActions({
-    nodes,
-    setNodes,
-  });
 
   const handleVisibility = () => {
     setVisible(!visible);
@@ -106,16 +44,11 @@ const ViewControls = ({ handle }: Props) => {
   return (
     <>
       {visible ? (
-        <div className={classNames(wrapper, offset)}>
-          <Tree
-            contents={nodes}
-            onNodeCollapse={handleNodeCollapse}
-            onNodeExpand={handleNodeExpand}
-          />
-
+        <div className={classNames(wrapper, view)}>
           <RadioGroup
             onChange={handleChoose}
             selectedValue={LayersStore.currentBaseLayer}
+            label={"Вид карты"}
           >
             <Radio label="OpenStreetMap" value="osm" />
             <Radio label="OpenTopoMap" value="otm" />

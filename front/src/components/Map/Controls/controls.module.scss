@@ -17,8 +17,16 @@
   box-shadow: 2px 2px 10px $black;
 }
 
-.offset {
+.view {
   right: 60px;
+  max-height: 300px;
+  min-height: 0;
+
+  overflow-y: auto;
+
+  .input {
+    margin-bottom: 0;
+  }
 }
 
 .right-buttons {
