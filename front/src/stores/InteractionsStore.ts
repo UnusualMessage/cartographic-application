@@ -23,6 +23,7 @@ import {
   TranslateEvent,
   TranslateInjector,
 } from "../services/listeners";
+import { measureStyleFunction } from "../utils/styles/measureStyleFunction";
 
 interface Interactions {
   select: Select | null;
@@ -37,11 +38,15 @@ class InteractionsStore {
   private _drawType: DrawType;
   private _drawing: boolean;
 
+  private _measurementActive: boolean;
+
   private _interactions: Interactions;
 
   constructor() {
     this._drawType = "Polygon";
     this._drawing = false;
+
+    this._measurementActive = false;
 
     this._interactions = {
       select: null,
@@ -65,6 +70,34 @@ class InteractionsStore {
 
   public set isDrawing(isDrawing: boolean) {
     this._drawing = isDrawing;
+  }
+
+  public get measurementActive() {
+    return this._measurementActive;
+  }
+
+  public set measurementActive(active: boolean) {
+    this._measurementActive = active;
+  }
+
+  public setupMeasurementTool(source: VectorSource, map: Map) {
+    const drawType = "Polygon";
+
+    const draw = new Draw({
+      source: source,
+      type: drawType,
+      style: function (feature) {
+        return measureStyleFunction(feature, 0);
+      },
+    });
+
+    draw.on("drawstart", () => {
+      source.clear();
+    });
+
+    this._interactions.draw = draw;
+
+    map.addInteraction(draw);
   }
 
   public addDraw(source: VectorSource, map: Map, drawType: DrawType) {

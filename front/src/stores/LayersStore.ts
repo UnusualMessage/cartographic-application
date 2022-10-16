@@ -1,19 +1,22 @@
 import { makeAutoObservable } from "mobx";
-import VectorLayer, { default as OLVectorLayer } from "ol/layer/Vector";
+import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { FeatureLike } from "ol/Feature";
 import { Feature } from "ol";
-
-import { BaseLayerType } from "../types/BaseLayerType";
 import { BingMaps, OSM, XYZ } from "ol/source";
 import { default as OLTileLayer } from "ol/layer/Tile";
 
+import { BaseLayerType } from "../types/BaseLayerType";
+import { measureStyleFunction } from "../utils/styles/measureStyleFunction";
+
 class LayersStore {
   private _vectorLayer: VectorLayer<VectorSource> | null;
+  private _auxLayer: VectorLayer<VectorSource> | null;
   private _currentBaseLayer: BaseLayerType;
 
   constructor() {
     this._vectorLayer = null;
+    this._auxLayer = null;
     this._currentBaseLayer = "osm";
 
     makeAutoObservable(this);
@@ -31,8 +34,22 @@ class LayersStore {
     return this._vectorLayer;
   }
 
+  public createAuxLayer(source: VectorSource) {
+    return new VectorLayer({
+      source: source,
+      style: (feature) => {
+        return measureStyleFunction(feature, 0);
+      },
+    });
+  }
+
+  public removeAuxLayer() {
+    this._auxLayer?.dispose();
+    this._auxLayer = null;
+  }
+
   public createVectorLayer(source: VectorSource) {
-    return new OLVectorLayer({
+    return new VectorLayer({
       source: source,
       style: {
         "fill-color": "rgba(255, 255, 255, 0.2)",
@@ -60,6 +77,7 @@ class LayersStore {
             url: "https://tile.opentopomap.org/{z}/{x}/{y}.png",
             maxZoom: maxSourceZoom,
           }),
+          zIndex: -1,
         });
 
       case "osm":
@@ -69,6 +87,7 @@ class LayersStore {
 
         return new OLTileLayer({
           source: source,
+          zIndex: -1,
         });
 
       case "bing-satellite":
@@ -80,6 +99,7 @@ class LayersStore {
 
         return new OLTileLayer({
           source: source,
+          zIndex: -1,
         });
       case "bing-road":
         source = new BingMaps({
@@ -90,6 +110,7 @@ class LayersStore {
 
         return new OLTileLayer({
           source: source,
+          zIndex: -1,
         });
 
       case "google-road":
@@ -106,6 +127,7 @@ class LayersStore {
             url: "https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}",
             maxZoom: maxSourceZoom,
           }),
+          zIndex: -1,
         });
 
       case "google-hybrid":
@@ -114,6 +136,7 @@ class LayersStore {
             url: "https://mt1.google.com/vt/lyrs=y&x={x}&y={y}&z={z}",
             maxZoom: maxSourceZoom,
           }),
+          zIndex: -1,
         });
 
       default:
