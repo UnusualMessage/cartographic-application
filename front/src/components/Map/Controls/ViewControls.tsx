@@ -1,24 +1,9 @@
-import { Button, ButtonGroup, Radio, RadioGroup } from "@blueprintjs/core";
-import { FormEventHandler, useState } from "react";
-import classNames from "classnames";
+import { useState } from "react";
 import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 
-import {
-  leftButtons,
-  rightButtons,
-  view,
-  wrapper,
-} from "./controls.module.scss";
-
-import {
-  InteractionsStore,
-  LayersStore,
-  MapStore,
-  ViewStore,
-} from "../../../stores";
-import { BaseLayerType } from "../../../types/BaseLayerType";
-import { MeasurementMode } from "../../../stores/InteractionsStore";
+import { LeftButtonGroup, RightButtonGroup } from "./ButtonGroup";
+import LayersSwitcher from "./LayersSwitcher";
 
 interface Props {
   handle: FullScreenHandle;
@@ -27,92 +12,16 @@ interface Props {
 const ViewControls = ({ handle }: Props) => {
   const [visible, setVisible] = useState(false);
 
-  const measurementMode = InteractionsStore.measurementMode;
-
-  const handleVisibility = () => {
-    setVisible(!visible);
-  };
-
-  const zoomIn = () => {
-    ViewStore.zoomIn();
-  };
-
-  const zoomOut = () => {
-    ViewStore.zoomOut();
-  };
-
-  const print = () => {
-    MapStore.printMap();
-  };
-
-  const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
-    LayersStore.currentBaseLayer = e.currentTarget.value as BaseLayerType;
-  };
-
-  const switchMeasurementMode = (mode: MeasurementMode) => {
-    LayersStore.clearAuxLayer();
-
-    if (measurementMode === mode) {
-      InteractionsStore.measurementMode = "none";
-    } else {
-      InteractionsStore.measurementMode = mode;
-    }
-  };
-
   return (
     <>
-      {visible ? (
-        <div className={classNames(wrapper, view)}>
-          <RadioGroup
-            onChange={handleChoose}
-            selectedValue={LayersStore.currentBaseLayer}
-            label={"Вид карты"}
-          >
-            <Radio label="OpenStreetMap" value="osm" />
-            <Radio label="OpenTopoMap" value="otm" />
-            <Radio label="Bing.Карты" value="bing-road" />
-            <Radio label="Bing.Спутник" value="bing-satellite" />
-            <Radio label="Google.Карты" value="google-road" />
-            <Radio label="Google.Спутник" value="google-satellite" />
-            <Radio label="Google.Гибрид" value="google-hybrid" />
-          </RadioGroup>
-        </div>
-      ) : (
-        <></>
-      )}
+      {visible ? <LayersSwitcher /> : <></>}
 
-      <ButtonGroup vertical large className={rightButtons}>
-        <Button
-          icon="layers"
-          intent={visible ? "primary" : "none"}
-          onClick={handleVisibility}
-        />
-
-        <Button
-          icon="one-to-one"
-          intent={measurementMode == "length" ? "primary" : "none"}
-          onClick={() => switchMeasurementMode("length")}
-        />
-
-        <Button
-          icon="polygon-filter"
-          intent={measurementMode == "area" ? "primary" : "none"}
-          onClick={() => switchMeasurementMode("area")}
-        />
-
-        <Button
-          icon="fullscreen"
-          intent={handle.active ? "primary" : "none"}
-          onClick={handle.active ? handle.exit : handle.enter}
-        />
-
-        <Button icon="print" intent={"none"} onClick={print} />
-      </ButtonGroup>
-
-      <ButtonGroup vertical className={leftButtons}>
-        <Button icon="zoom-in" onClick={zoomIn} />
-        <Button icon="zoom-out" onClick={zoomOut} />
-      </ButtonGroup>
+      <LeftButtonGroup />
+      <RightButtonGroup
+        panelVisible={visible}
+        setPanelVisible={setVisible}
+        handlePrint={handle}
+      />
     </>
   );
 };

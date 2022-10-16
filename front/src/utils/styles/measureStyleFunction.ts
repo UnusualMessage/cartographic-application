@@ -1,3 +1,5 @@
+// noinspection SpellCheckingInspection
+
 import { Geometry, LineString, Point, Polygon } from "ol/geom";
 import { formatArea, formatLength } from "../format";
 import { FeatureLike } from "ol/Feature";
@@ -49,7 +51,7 @@ const labelStyle = new Style({
   }),
 });
 
-const tipStyle = new Style({
+new Style({
   text: new Text({
     font: "12px Calibri,sans-serif",
     fill: new Fill({

@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 
 class TabsStore {
   private _active: boolean;
-  private _tabsListId: string;
+  private readonly _tabsListId: string;
 
   constructor() {
     this._tabsListId = "feature";
@@ -14,10 +14,6 @@ class TabsStore {
 
   public get tabsListId() {
     return this._tabsListId;
-  }
-
-  public set tabsListId(id) {
-    this._tabsListId = id;
   }
 
   public get active() {

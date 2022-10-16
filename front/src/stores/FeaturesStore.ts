@@ -55,10 +55,6 @@ class FeaturesStore {
     this._copiedFeatures = copiedFeatures;
   }
 
-  public getFeatureById(id: string) {
-    return this.features.find((feature) => feature.getId() === id);
-  }
-
   public clearBuffer() {
     this._clickedFeature = null;
     this._copiedFeatures = [];

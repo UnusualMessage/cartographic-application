@@ -8,10 +8,6 @@ class HistoryService {
     this._toaster = null;
   }
 
-  public get toaster() {
-    return this._toaster;
-  }
-
   public set toaster(value: Toaster | null) {
     this._toaster = value;
   }
