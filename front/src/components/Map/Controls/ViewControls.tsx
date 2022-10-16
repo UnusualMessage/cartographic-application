@@ -1,7 +1,14 @@
-import { Button, ButtonGroup, Tree } from "@blueprintjs/core";
-import { useState } from "react";
+import {
+  Button,
+  ButtonGroup,
+  Radio,
+  RadioGroup,
+  Tree,
+} from "@blueprintjs/core";
+import { FormEventHandler, useState } from "react";
 import classNames from "classnames";
 import { FullScreenHandle } from "react-full-screen";
+import { observer } from "mobx-react-lite";
 
 import {
   leftButtons,
@@ -12,7 +19,8 @@ import {
 
 import { Node } from "../../../types/Node";
 import useTreeActions from "../../../hooks/useTreeActions";
-import { MapStore, ViewStore } from "../../../stores";
+import { LayersStore, MapStore, ViewStore } from "../../../stores";
+import { BaseLayerType } from "../../../types/BaseLayerType";
 
 const initialNodes: Node[] = [
   {
@@ -91,6 +99,11 @@ const ViewControls = ({ handle }: Props) => {
     MapStore.printMap();
   };
 
+  const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
+    LayersStore.currentBaseLayer = e.currentTarget.value as BaseLayerType;
+    console.log(MapStore.map?.getLayers());
+  };
+
   return (
     <>
       {visible ? (
@@ -100,6 +113,15 @@ const ViewControls = ({ handle }: Props) => {
             onNodeCollapse={handleNodeCollapse}
             onNodeExpand={handleNodeExpand}
           />
+
+          <RadioGroup
+            onChange={handleChoose}
+            selectedValue={LayersStore.currentBaseLayer}
+          >
+            <Radio label="OSM" value="osm" />
+            <Radio label="Bing.Карты" value="bing-road" />
+            <Radio label="Bing.Спутник" value="bing-satellite" />
+          </RadioGroup>
         </div>
       ) : (
         <></>
@@ -128,4 +150,4 @@ const ViewControls = ({ handle }: Props) => {
   );
 };
 
-export default ViewControls;
+export default observer(ViewControls);

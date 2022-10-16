@@ -1,49 +1,96 @@
-import BaseLayer from "ol/layer/Base";
 import { makeAutoObservable } from "mobx";
-import VectorLayer from "ol/layer/Vector";
+import VectorLayer, { default as OLVectorLayer } from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { FeatureLike } from "ol/Feature";
 import { Feature } from "ol";
 
+import { BaseLayerType } from "../types/BaseLayerType";
+import { BingMaps, OSM } from "ol/source";
+import { default as OLTileLayer } from "ol/layer/Tile";
+
 class LayersStore {
-  private readonly _layers: BaseLayer[];
+  private _vectorLayer: VectorLayer<VectorSource> | null;
+  private _currentBaseLayer: BaseLayerType;
 
   constructor() {
-    this._layers = [];
+    this._vectorLayer = null;
+    this._currentBaseLayer = "osm";
 
     makeAutoObservable(this);
   }
 
-  public get drawLayer() {
-    const drawLayer = this._layers.find(
-      (layer) => layer.get("name") === "draw"
-    );
-    return drawLayer as VectorLayer<VectorSource>;
+  public get currentBaseLayer() {
+    return this._currentBaseLayer;
   }
 
-  public clearDrawLayer() {
-    this.drawLayer.getSource()?.clear();
+  public set currentBaseLayer(type: BaseLayerType) {
+    this._currentBaseLayer = type;
   }
 
-  public createLayer(layer: BaseLayer, name: string) {
-    layer.set("name", name);
-    this._layers.push(layer);
-
-    return layer;
+  public get vectorLayer() {
+    return this._vectorLayer;
   }
 
-  public removeLayer(layer: BaseLayer) {
-    this._layers.filter(
-      (currentLayer) => currentLayer.get("name") !== layer.get("name")
-    );
+  public createVectorLayer(source: VectorSource) {
+    return new OLVectorLayer({
+      source: source,
+      style: {
+        "fill-color": "rgba(255, 255, 255, 0.2)",
+        "stroke-color": "#ffcc33",
+        "stroke-width": 2,
+        "circle-radius": 7,
+        "circle-fill-color": "#ffcc33",
+      },
+    });
+  }
+
+  public removeVectorLayer() {
+    this._vectorLayer?.dispose();
+    this._vectorLayer = null;
+  }
+
+  public createBaseLayer(type: BaseLayerType) {
+    let source;
+
+    switch (type) {
+      case "osm":
+        source = new OSM();
+
+        return new OLTileLayer({
+          source: source,
+        });
+
+      case "bing-satellite":
+        source = new BingMaps({
+          key: "AjQ9qFMMmfL8LMJ-Bp6a8Ut49IzFK-npLmsUcRWyFaGNvOG-uVgSu3kwHKLY-j8I",
+          imagerySet: "Aerial",
+          maxZoom: 19,
+        });
+
+        return new OLTileLayer({
+          preload: Infinity,
+          source: source,
+        });
+      case "bing-road":
+        source = new BingMaps({
+          key: "AjQ9qFMMmfL8LMJ-Bp6a8Ut49IzFK-npLmsUcRWyFaGNvOG-uVgSu3kwHKLY-j8I",
+          imagerySet: "RoadOnDemand",
+          maxZoom: 19,
+        });
+
+        return new OLTileLayer({
+          preload: Infinity,
+          source: source,
+        });
+      default:
+        return;
+    }
   }
 
   public removeFeature(feature: FeatureLike) {
-    this.drawLayer.getSource()?.removeFeature(feature as Feature);
-  }
-
-  public chooseBaseLayer(type: string) {
-    return;
+    if (this.vectorLayer) {
+      this.vectorLayer.getSource()?.removeFeature(feature as Feature);
+    }
   }
 }
 

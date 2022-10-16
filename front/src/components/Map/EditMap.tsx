@@ -10,9 +10,9 @@ const EditMap = () => {
     <MapWrapper>
       <EditControls />
       <View />
-      <TileLayer name={"base"} />
+      <TileLayer />
 
-      <VectorLayer name={"draw"}>
+      <VectorLayer>
         <Interactions />
       </VectorLayer>
 

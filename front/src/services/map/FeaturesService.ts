@@ -18,10 +18,10 @@ class FeaturesService {
   }
 
   public insert() {
-    const layer = LayersStore.drawLayer;
+    const layer = LayersStore.vectorLayer;
     const cursor = OverlaysStore.cursorPosition;
 
-    if (cursor) {
+    if (cursor && layer) {
       FeaturesStore.insertCopiedFeatures(layer, cursor);
     }
 
@@ -29,8 +29,12 @@ class FeaturesService {
   }
 
   public remove() {
-    const layer = LayersStore.drawLayer;
-    FeaturesStore.removeSelectedFeatures(layer);
+    const layer = LayersStore.vectorLayer;
+
+    if (layer) {
+      FeaturesStore.removeSelectedFeatures(layer);
+    }
+
     OverlaysStore.hideContextMenu();
   }
 }

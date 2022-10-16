@@ -14,8 +14,8 @@ const ViewMap = () => {
     <FullScreen handle={handle} className={wrapper}>
       <MapWrapper>
         <View />
-        <TileLayer name={"base"} />
-        <VectorLayer name={"draw"} />
+        <TileLayer />
+        <VectorLayer />
         <ViewControls handle={handle} />
       </MapWrapper>
     </FullScreen>
