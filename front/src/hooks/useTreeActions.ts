@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { Node, NodePath } from "../types/Node";
-import { forNode } from "../utils/forNode";
+import { forNode } from "../utils/nodes/forNode";
 
 interface Props {
   nodes: Node[];

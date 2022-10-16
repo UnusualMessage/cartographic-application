@@ -1,4 +1,4 @@
-import { Node, NodeCallback, NodePath } from "../types/Node";
+import { Node, NodeCallback, NodePath } from "../../types/Node";
 import { Tree } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 
