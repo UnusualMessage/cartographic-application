@@ -1,6 +1,7 @@
 import { Button, ButtonGroup, Tree } from "@blueprintjs/core";
 import { useState } from "react";
 import classNames from "classnames";
+import { FullScreenHandle } from "react-full-screen";
 
 import {
   leftButtons,
@@ -11,8 +12,7 @@ import {
 
 import { Node } from "../../../types/Node";
 import useTreeActions from "../../../hooks/useTreeActions";
-import { ViewStore } from "../../../stores";
-import { FullScreenHandle } from "react-full-screen";
+import { MapStore, ViewStore } from "../../../stores";
 
 const initialNodes: Node[] = [
   {
@@ -87,6 +87,10 @@ const ViewControls = ({ handle }: Props) => {
     ViewStore.zoomOut();
   };
 
+  const print = () => {
+    MapStore.printMap();
+  };
+
   return (
     <>
       {visible ? (
@@ -108,8 +112,12 @@ const ViewControls = ({ handle }: Props) => {
           onClick={handleVisibility}
         />
         <Button icon="wrench" intent={"none"} />
-        <Button icon="fullscreen" intent={"none"} onClick={handle.enter} />
-        <Button icon="print" intent={"none"} />
+        <Button
+          icon="fullscreen"
+          intent={handle.active ? "primary" : "none"}
+          onClick={handle.active ? handle.exit : handle.enter}
+        />
+        <Button icon="print" intent={"none"} onClick={print} />
       </ButtonGroup>
 
       <ButtonGroup vertical className={leftButtons}>
