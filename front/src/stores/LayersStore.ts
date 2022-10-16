@@ -35,12 +35,18 @@ class LayersStore {
   }
 
   public createAuxLayer(source: VectorSource) {
-    return new VectorLayer({
+    this._auxLayer = new VectorLayer({
       source: source,
       style: (feature) => {
         return measureStyleFunction(feature, 0);
       },
     });
+
+    return this._auxLayer;
+  }
+
+  public clearAuxLayer() {
+    this._auxLayer?.getSource()?.clear();
   }
 
   public removeAuxLayer() {
@@ -49,7 +55,7 @@ class LayersStore {
   }
 
   public createVectorLayer(source: VectorSource) {
-    return new VectorLayer({
+    this._vectorLayer = new VectorLayer({
       source: source,
       style: {
         "fill-color": "rgba(255, 255, 255, 0.2)",
@@ -59,6 +65,8 @@ class LayersStore {
         "circle-fill-color": "#ffcc33",
       },
     });
+
+    return this._vectorLayer;
   }
 
   public removeVectorLayer() {

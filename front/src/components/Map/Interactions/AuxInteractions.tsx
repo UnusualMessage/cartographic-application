@@ -7,16 +7,17 @@ import { InteractionsStore, MapStore } from "../../../stores";
 const AuxInteractions = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
+  const mode = InteractionsStore.measurementMode;
 
   useEffect(() => {
     if (map && source) {
-      InteractionsStore.setupMeasurementTool(source, map);
+      InteractionsStore.setupMeasurementTool(source, map, mode);
     }
 
     return () => {
       InteractionsStore.removeInteractions(map);
     };
-  }, [map]);
+  }, [map, mode]);
 
   return <></>;
 };

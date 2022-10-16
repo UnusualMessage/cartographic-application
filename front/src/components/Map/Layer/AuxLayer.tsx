@@ -1,7 +1,6 @@
 import VectorSource from "ol/source/Vector";
 import { GeoJSON } from "ol/format";
 import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
-import { observer } from "mobx-react-lite";
 
 import { LayersService } from "../../../services/map";
 
@@ -29,4 +28,4 @@ const AuxLayer = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default observer(AuxLayer);
+export default AuxLayer;

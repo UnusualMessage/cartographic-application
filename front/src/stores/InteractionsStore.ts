@@ -34,11 +34,13 @@ interface Interactions {
   dragBox: DragBox | null;
 }
 
+export type MeasurementMode = "none" | "length" | "area";
+
 class InteractionsStore {
   private _drawType: DrawType;
   private _drawing: boolean;
 
-  private _measurementActive: boolean;
+  private _measurementMode: MeasurementMode;
 
   private _interactions: Interactions;
 
@@ -46,7 +48,7 @@ class InteractionsStore {
     this._drawType = "Polygon";
     this._drawing = false;
 
-    this._measurementActive = false;
+    this._measurementMode = "none";
 
     this._interactions = {
       select: null,
@@ -72,27 +74,31 @@ class InteractionsStore {
     this._drawing = isDrawing;
   }
 
-  public get measurementActive() {
-    return this._measurementActive;
+  public get measurementMode() {
+    return this._measurementMode;
   }
 
-  public set measurementActive(active: boolean) {
-    this._measurementActive = active;
+  public set measurementMode(mode: MeasurementMode) {
+    this._measurementMode = mode;
   }
 
-  public setupMeasurementTool(source: VectorSource, map: Map) {
-    const drawType = "Polygon";
+  public setupMeasurementTool(
+    source: VectorSource,
+    map: Map,
+    mode: MeasurementMode
+  ) {
+    if (mode === "none") {
+      return;
+    }
+
+    const drawType = mode === "area" ? "Polygon" : "LineString";
 
     const draw = new Draw({
       source: source,
       type: drawType,
-      style: function (feature) {
+      style: (feature) => {
         return measureStyleFunction(feature, 0);
       },
-    });
-
-    draw.on("drawstart", () => {
-      source.clear();
     });
 
     this._interactions.draw = draw;

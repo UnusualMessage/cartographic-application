@@ -18,6 +18,7 @@ import {
   ViewStore,
 } from "../../../stores";
 import { BaseLayerType } from "../../../types/BaseLayerType";
+import { MeasurementMode } from "../../../stores/InteractionsStore";
 
 interface Props {
   handle: FullScreenHandle;
@@ -26,7 +27,7 @@ interface Props {
 const ViewControls = ({ handle }: Props) => {
   const [visible, setVisible] = useState(false);
 
-  const measurementActive = InteractionsStore.measurementActive;
+  const measurementMode = InteractionsStore.measurementMode;
 
   const handleVisibility = () => {
     setVisible(!visible);
@@ -48,8 +49,14 @@ const ViewControls = ({ handle }: Props) => {
     LayersStore.currentBaseLayer = e.currentTarget.value as BaseLayerType;
   };
 
-  const switchMeasurement = () => {
-    InteractionsStore.measurementActive = !measurementActive;
+  const switchMeasurementMode = (mode: MeasurementMode) => {
+    LayersStore.clearAuxLayer();
+
+    if (measurementMode === mode) {
+      InteractionsStore.measurementMode = "none";
+    } else {
+      InteractionsStore.measurementMode = mode;
+    }
   };
 
   return (
@@ -82,9 +89,15 @@ const ViewControls = ({ handle }: Props) => {
         />
 
         <Button
-          icon="wrench"
-          intent={measurementActive ? "primary" : "none"}
-          onClick={switchMeasurement}
+          icon="one-to-one"
+          intent={measurementMode == "length" ? "primary" : "none"}
+          onClick={() => switchMeasurementMode("length")}
+        />
+
+        <Button
+          icon="polygon-filter"
+          intent={measurementMode == "area" ? "primary" : "none"}
+          onClick={() => switchMeasurementMode("area")}
         />
 
         <Button
