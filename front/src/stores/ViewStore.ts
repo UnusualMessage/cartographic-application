@@ -30,8 +30,8 @@ class ViewStore {
 
     this._view?.animate({
       center: coordinate,
-      zoom: this._view.getZoom(),
-      duration: 1000,
+      zoom: 10,
+      duration: 2000,
     });
   }
 
