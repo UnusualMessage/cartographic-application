@@ -7,7 +7,7 @@ import { useCallback, useEffect, useState } from "react";
 import { wrapper } from "./tree.module.scss";
 
 import { Node } from "../../../../types/Node";
-import { getFeatureCenter } from "../../../../utils/getFeatureCenter";
+import { getFeatureCenter } from "../../../../utils/features/getFeatureCenter";
 import {
   FeaturesChangesStore,
   FeaturesStore,

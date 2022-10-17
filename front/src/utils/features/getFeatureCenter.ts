@@ -7,9 +7,7 @@ export const getFeatureCenter = (feature: FeatureLike) => {
   const geometry = (feature.getGeometry() as Geometry).clone();
 
   if (geometry.getType() === "Circle") {
-    const circle = geometry as Circle;
-
-    return circle.getCenter();
+    return (geometry as Circle).getCenter();
   } else {
     const format = new GeoJSON();
 

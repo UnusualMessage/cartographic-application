@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FullScreenHandle } from "react-full-screen";
-import { observer } from "mobx-react-lite";
 
 import { LeftButtonGroup, RightButtonGroup } from "./ButtonGroup";
 import LayersSwitcher from "./LayersSwitcher";
@@ -10,20 +9,20 @@ interface Props {
 }
 
 const ViewControls = ({ handle }: Props) => {
-  const [visible, setVisible] = useState(false);
+  const [isPanelOpen, setIsPanelOpen] = useState(false);
 
   return (
     <>
-      {visible ? <LayersSwitcher /> : <></>}
+      {isPanelOpen ? <LayersSwitcher /> : <></>}
 
       <LeftButtonGroup />
       <RightButtonGroup
-        panelVisible={visible}
-        setPanelVisible={setVisible}
+        isPanelOpen={isPanelOpen}
+        setIsPanelOpen={setIsPanelOpen}
         handlePrint={handle}
       />
     </>
   );
 };
 
-export default observer(ViewControls);
+export default ViewControls;

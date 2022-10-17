@@ -1,2 +1,4 @@
 import Interactions from "./Interactions";
-export default Interactions;
+import AuxInteractions from "./AuxInteractions";
+
+export { Interactions, AuxInteractions };

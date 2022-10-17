@@ -3,8 +3,11 @@ import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
 import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
-import { CommonEvent, ListenersInjector } from "../services/listeners";
-import MapInjector from "../services/listeners/MapInjector";
+import {
+  CommonEvent,
+  ListenersInjector,
+  MapInjector,
+} from "../services/listeners";
 
 interface CustomOverlay {
   element: HTMLElement | null;

@@ -1,5 +1,3 @@
-// noinspection SpellCheckingInspection
-
 import { Geometry, LineString, Point, Polygon } from "ol/geom";
 import { formatArea, formatLength } from "../format";
 import { FeatureLike } from "ol/Feature";
@@ -119,15 +117,18 @@ export const measureStyleFunction: StyleFunction = (
 
   if (segments && line) {
     let count = 0;
-    line.forEachSegment((a, b) => {
-      const segment = new LineString([a, b]);
+    line.forEachSegment((first, second) => {
+      const segment = new LineString([first, second]);
       const label = formatLength(segment);
+
       if (segmentStyles.length - 1 < count) {
         segmentStyles.push(segmentStyle.clone());
       }
+
       const segmentPoint = new Point(segment.getCoordinateAt(0.5));
       segmentStyles[count].setGeometry(segmentPoint);
       segmentStyles[count].getText().setText(label);
+
       styles.push(segmentStyles[count]);
       count++;
     });

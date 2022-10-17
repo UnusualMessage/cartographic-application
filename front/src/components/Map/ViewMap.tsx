@@ -6,7 +6,7 @@ import View from "./View";
 import { AuxLayer, TileLayer, VectorLayer } from "./Layer";
 import MapWrapper from "./MapWrapper";
 import { ViewControls } from "./Controls";
-import AuxInteractions from "./Interactions/AuxInteractions";
+import { AuxInteractions } from "./Interactions";
 
 const ViewMap = () => {
   const handle = useFullScreenHandle();

@@ -10,14 +10,14 @@ import { InteractionsStore, LayersStore, MapStore } from "../../../../stores";
 import Geocoder from "../Geocoder";
 
 interface Props {
-  panelVisible: boolean;
-  setPanelVisible: (value: boolean) => void;
+  isPanelOpen: boolean;
+  setIsPanelOpen: (value: boolean) => void;
   handlePrint: FullScreenHandle;
 }
 
 const RightButtonGroup = ({
-  panelVisible,
-  setPanelVisible,
+  isPanelOpen,
+  setIsPanelOpen,
   handlePrint,
 }: Props) => {
   const measurementMode = InteractionsStore.measurementMode;
@@ -34,7 +34,7 @@ const RightButtonGroup = ({
   };
 
   const handlePanel = () => {
-    setPanelVisible(!panelVisible);
+    setIsPanelOpen(!isPanelOpen);
   };
 
   const switchMeasurementMode = (mode: MeasurementMode) => {
@@ -66,7 +66,7 @@ const RightButtonGroup = ({
         <ButtonGroup vertical large>
           <Button
             icon="layers"
-            intent={panelVisible ? "primary" : "none"}
+            intent={isPanelOpen ? "primary" : "none"}
             onClick={handlePanel}
           />
 

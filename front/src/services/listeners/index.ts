@@ -3,6 +3,8 @@ import DragBoxInjector from "./DragBoxInjector";
 import DrawInjector from "./DrawInjector";
 import ModifyInjector from "./ModifyInjector";
 import TranslateInjector from "./TranslateInjector";
+import MapInjector from "./MapInjector";
+
 import ListenersInjector, {
   CommonEvent,
   DragBoxEvent,
@@ -18,6 +20,7 @@ export {
   DrawInjector,
   ModifyInjector,
   TranslateInjector,
+  MapInjector,
 };
 
 export type {
