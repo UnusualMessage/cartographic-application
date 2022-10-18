@@ -10,13 +10,26 @@ import GeocoderService from "../../../../api/GeocoderService";
 import { ViewStore } from "../../../../stores";
 import GeocoderFeature from "../../../../types/GeocoderFeature";
 
-const itemRenderer: ItemRenderer<GeocoderFeature> = (feature) => {
+const itemRenderer: ItemRenderer<GeocoderFeature> = (
+  feature,
+  { handleClick }
+) => {
   return (
-    <MenuItem role={"listitem"} text={feature.place_name} key={feature.id} />
+    <MenuItem
+      role={"listoption"}
+      text={feature.place_name}
+      key={feature.id}
+      onClick={handleClick}
+    />
   );
 };
 
+const inputValueRenderer = (feature: GeocoderFeature) => {
+  return feature.place_name;
+};
+
 const onItemSelect = (feature: GeocoderFeature) => {
+  console.log(feature);
   if (feature.geometry.type === "Point") {
     ViewStore.centerTo(fromLonLat((feature.geometry as Point).coordinates));
   }
@@ -54,9 +67,14 @@ const Geocoder = () => {
     <Suggest2<GeocoderFeature>
       className={wrapper}
       items={features}
+      inputValueRenderer={inputValueRenderer}
       itemRenderer={itemRenderer}
       onQueryChange={onQueryChange}
       onItemSelect={onItemSelect}
+      noResults={"Пустота..."}
+      resetOnClose
+      resetOnSelect
+      closeOnSelect
     />
   );
 };
