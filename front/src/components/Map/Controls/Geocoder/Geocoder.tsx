@@ -1,17 +1,14 @@
-import { ItemRenderer, Omnibar } from "@blueprintjs/select";
-import { ChangeEvent, ChangeEventHandler, useState } from "react";
+import { ItemRenderer, Suggest2 } from "@blueprintjs/select";
+import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 import { fromLonLat } from "ol/proj";
 import { Point } from "@turf/turf";
 import { MenuItem } from "@blueprintjs/core";
 
+import { wrapper } from "./geocoder.module.scss";
+
 import GeocoderService from "../../../../api/GeocoderService";
 import { ViewStore } from "../../../../stores";
 import GeocoderFeature from "../../../../types/GeocoderFeature";
-
-interface Props {
-  isOpen: boolean;
-  onClose: () => void;
-}
 
 const itemRenderer: ItemRenderer<GeocoderFeature> = (feature) => {
   return (
@@ -25,7 +22,7 @@ const onItemSelect = (feature: GeocoderFeature) => {
   }
 };
 
-const Geocoder = ({ isOpen, onClose }: Props) => {
+const Geocoder = () => {
   const [features, setFeatures] = useState<GeocoderFeature[]>([]);
 
   const handleInput: ChangeEventHandler<HTMLInputElement> = (event) => {
@@ -39,6 +36,11 @@ const Geocoder = ({ isOpen, onClose }: Props) => {
     void getFeatures();
   };
 
+  useEffect(() => {
+    const input = document.querySelector(".bp4-input") as HTMLInputElement;
+    input.placeholder = "Поиск...";
+  }, []);
+
   const onQueryChange = (
     query: string,
     event: ChangeEvent<HTMLInputElement> | undefined
@@ -49,14 +51,12 @@ const Geocoder = ({ isOpen, onClose }: Props) => {
   };
 
   return (
-    <Omnibar<GeocoderFeature>
-      isOpen={isOpen}
+    <Suggest2<GeocoderFeature>
+      className={wrapper}
       items={features}
       itemRenderer={itemRenderer}
-      onClose={onClose}
       onQueryChange={onQueryChange}
       onItemSelect={onItemSelect}
-      resetOnSelect
     />
   );
 };

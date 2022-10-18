@@ -7,23 +7,25 @@ import { right } from "./group.module.scss";
 
 import { MeasurementMode } from "../../../../stores/InteractionsStore";
 import { InteractionsStore, LayersStore, MapStore } from "../../../../stores";
-import Geocoder from "../Geocoder";
 
 interface Props {
   isPanelOpen: boolean;
   setIsPanelOpen: (value: boolean) => void;
+  isGeocoderOpen: boolean;
+  setIsGeocoderOpen: (value: boolean) => void;
   handlePrint: FullScreenHandle;
 }
 
 const RightButtonGroup = ({
   isPanelOpen,
   setIsPanelOpen,
+  isGeocoderOpen,
+  setIsGeocoderOpen,
   handlePrint,
 }: Props) => {
   const measurementMode = InteractionsStore.measurementMode;
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
-  const [isGeocoderOpen, setIsGeocoderOpen] = useState(false);
 
   const handleCollapse = () => {
     setIsCollapseOpen(!isCollapseOpen);
@@ -60,8 +62,6 @@ const RightButtonGroup = ({
         large
       />
 
-      <Geocoder isOpen={isGeocoderOpen} onClose={handleGeocoder} />
-
       <Collapse isOpen={isCollapseOpen} keepChildrenMounted>
         <ButtonGroup vertical large>
           <Button
@@ -70,7 +70,11 @@ const RightButtonGroup = ({
             onClick={handlePanel}
           />
 
-          <Button icon={"geosearch"} intent={"none"} onClick={handleGeocoder} />
+          <Button
+            icon={"geosearch"}
+            intent={isGeocoderOpen ? "primary" : "none"}
+            onClick={handleGeocoder}
+          />
 
           <Button
             icon="one-to-one"

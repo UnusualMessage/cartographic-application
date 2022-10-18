@@ -1,9 +1,8 @@
-import classNames from "classnames";
 import { FormEventHandler } from "react";
 import { Radio, RadioGroup } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { view, wrapper } from "../controls.module.scss";
+import { wrapper } from "./switcher.module.scss";
 
 import { LayersStore } from "../../../../stores";
 import { baseLayers } from "../../../../assets/baseLayers";
@@ -15,23 +14,22 @@ const LayersSwitcher = () => {
   };
 
   return (
-    <div className={classNames(wrapper, view)}>
-      <RadioGroup
-        onChange={handleChoose}
-        selectedValue={LayersStore.currentBaseLayer}
-        label={"Вид карты"}
-      >
-        {baseLayers.map((layer) => {
-          return (
-            <Radio
-              label={layer.label}
-              value={layer.value}
-              key={`radio-${layer.value}`}
-            />
-          );
-        })}
-      </RadioGroup>
-    </div>
+    <RadioGroup
+      className={wrapper}
+      onChange={handleChoose}
+      selectedValue={LayersStore.currentBaseLayer}
+      label={"Вид карты"}
+    >
+      {baseLayers.map((layer) => {
+        return (
+          <Radio
+            label={layer.label}
+            value={layer.value}
+            key={`radio-${layer.value}`}
+          />
+        );
+      })}
+    </RadioGroup>
   );
 };
 

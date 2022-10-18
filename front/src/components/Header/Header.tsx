@@ -16,7 +16,7 @@ const Header = () => {
       <NavbarGroup>
         <NavbarHeading>
           <Link to={"/"}>
-            <H2>АгрОруэлл</H2>
+            <H2></H2>
           </Link>
         </NavbarHeading>
 
