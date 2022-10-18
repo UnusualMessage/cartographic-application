@@ -72,6 +72,7 @@ const Geocoder = () => {
       onQueryChange={onQueryChange}
       onItemSelect={onItemSelect}
       noResults={"Пустота..."}
+      popoverProps={{ minimal: true, matchTargetWidth: true }}
       resetOnClose
       resetOnSelect
       closeOnSelect
