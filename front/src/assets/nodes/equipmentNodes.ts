@@ -7,7 +7,7 @@ export const equipmentNodes: Node[] = [
     id: "tree-equipment",
     icon: "tractor",
     label: "Техника",
-    isExpanded: false,
+    isExpanded: true,
     childNodes: types.map((type) => {
       return {
         id: uuid(),

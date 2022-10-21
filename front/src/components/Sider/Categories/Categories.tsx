@@ -26,6 +26,7 @@ const Categories = ({ fill }: Props) => {
       id="sider-tabs"
       className={classes}
       selectedTabId={currentTab}
+      renderActiveTabPanelOnly
       onChange={(newTabId) => {
         setCurrentTab(newTabId);
       }}
