@@ -1,4 +1,4 @@
-export { employees } from "./employees";
+export { employeeNodes } from "./employeeNodes";
 export { fields } from "./fields";
-export { plans } from "./plans";
-export { equipment } from "./equipment";
+export { planNodes } from "./planNodes";
+export { equipmentNodes } from "./equipmentNodes";

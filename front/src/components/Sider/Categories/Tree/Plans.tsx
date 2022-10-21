@@ -4,16 +4,16 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import { Node } from "../../../../types/Node";
-import { plans } from "../../../../assets/nodes";
 import EntitiesTree from "../../../EntitiesTree";
-import Plan from "../../../../types/entities/Plan";
-import PlansStore from "../../../../stores/PlansStore";
+import { Node } from "../../../../types/Node";
+import { planNodes } from "../../../../assets/nodes";
+import { Plan } from "../../../../types/entities";
+import { PlansStore } from "../../../../stores/entities";
 
-const fillNodes = (nodes: Plan[]) => {
-  const initial: Node[] = cloneDeep(plans);
+const fillNodes = (plans: Plan[]) => {
+  const initial: Node[] = cloneDeep(planNodes);
 
-  nodes.forEach((plan) => {
+  plans.forEach((plan) => {
     const yearNode = initial[0].childNodes?.find(
       (node) => node.nodeData === plan.year
     );

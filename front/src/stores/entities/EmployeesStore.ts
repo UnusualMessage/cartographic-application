@@ -1,5 +1,5 @@
-import { Employee } from "../types/entities";
-import { employees } from "../assets/data/employees";
+import { Employee } from "../../types/entities";
+import { employees } from "../../assets/data";
 
 class EmployeesStore {
   private _employees: Employee[];

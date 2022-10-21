@@ -1,6 +1,8 @@
 import Area from "./Area";
 import Employee from "./Employee";
 import Plan from "./Plan";
-import Role from "./Role";
+import EmployeeRole from "./EmployeeRole";
+import Equipment from "./Equipment";
+import EquipmentType from "./EquipmentType";
 
-export type { Area, Employee, Plan, Role };
+export type { Area, Plan, Employee, EmployeeRole, Equipment, EquipmentType };

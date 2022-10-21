@@ -1,9 +1,9 @@
 import { v4 as uuid } from "uuid";
 
 import { Node } from "../../types/Node";
-import { areas } from "../data/areas";
+import { areas } from "../data";
 
-export const employees: Node[] = [
+export const employeeNodes: Node[] = [
   {
     id: "tree-employees",
     icon: "people",

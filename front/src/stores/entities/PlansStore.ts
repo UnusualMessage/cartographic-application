@@ -1,5 +1,5 @@
-import Plan from "../types/entities/Plan";
-import { plans } from "../assets/data/plans";
+import { Plan } from "../../types/entities";
+import { plans } from "../../assets/data";
 
 class PlansStore {
   private _plans: Plan[];
