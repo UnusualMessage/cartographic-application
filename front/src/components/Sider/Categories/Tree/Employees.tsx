@@ -1,39 +1,45 @@
 import { Divider } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
-import { FeatureLike } from "ol/Feature";
 import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
 import { Node } from "../../../../types/Node";
-import { FeaturesStore } from "../../../../stores";
 import { employees } from "../../../../assets/nodes";
 import EntitiesTree from "../../../EntitiesTree";
+import { Employee } from "../../../../types/entities";
+import EmployeesStore from "../../../../stores/EmployeesStore";
 
-const fillNodes = (nodes: FeatureLike[]) => {
+const fillNodes = (nodes: Employee[]) => {
   const initial: Node[] = cloneDeep(employees);
 
-  nodes.forEach((field) => {
-    initial[0].childNodes?.push({
-      id: field.getId() ?? "",
-      label: field.getId()?.toString() ?? "",
-      icon: "document",
-      nodeData: field,
-    });
+  nodes.forEach((employee) => {
+    const area = initial[0].childNodes?.find(
+      (node) => node.nodeData === employee.area.id
+    );
+
+    if (area) {
+      area.childNodes?.push({
+        id: employee.id,
+        label: employee.fullName,
+        icon: "person",
+        nodeData: employee,
+      });
+    }
   });
 
   return initial;
 };
 
 const Employees = () => {
-  const features = FeaturesStore.features;
+  const employees = EmployeesStore.employees;
 
   return (
     <>
       <Divider />
-      <EntitiesTree<FeatureLike>
+      <EntitiesTree<Employee>
         fillNodes={fillNodes}
-        source={features}
+        source={employees}
         className={wrapper}
       />
     </>
