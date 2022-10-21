@@ -1,39 +1,45 @@
 import { Divider } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
-import { FeatureLike } from "ol/Feature";
 import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
 import { Node } from "../../../../types/Node";
-import { FeaturesStore } from "../../../../stores";
 import { plans } from "../../../../assets/nodes";
 import EntitiesTree from "../../../EntitiesTree";
+import Plan from "../../../../types/entities/Plan";
+import PlansStore from "../../../../stores/PlansStore";
 
-const fillNodes = (nodes: FeatureLike[]) => {
+const fillNodes = (nodes: Plan[]) => {
   const initial: Node[] = cloneDeep(plans);
 
-  nodes.forEach((field) => {
-    initial[0].childNodes?.push({
-      id: field.getId() ?? "",
-      label: field.getId()?.toString() ?? "",
-      icon: "document",
-      nodeData: field,
-    });
+  nodes.forEach((plan) => {
+    const yearNode = initial[0].childNodes?.find(
+      (node) => node.nodeData === plan.year
+    );
+
+    if (yearNode) {
+      yearNode.childNodes?.push({
+        id: plan.id,
+        label: plan.title,
+        icon: "document",
+        nodeData: plan,
+      });
+    }
   });
 
   return initial;
 };
 
 const Plans = () => {
-  const features = FeaturesStore.features;
+  const plans = PlansStore.plans;
 
   return (
     <>
       <Divider />
-      <EntitiesTree<FeatureLike>
+      <EntitiesTree<Plan>
         fillNodes={fillNodes}
-        source={features}
+        source={plans}
         className={wrapper}
       />
     </>
