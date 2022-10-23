@@ -1,6 +1,7 @@
 import { useCallback } from "react";
+
 import { Node, NodePath } from "../types/Node";
-import { forNode } from "../utils/nodes";
+import { forEachNode, forNode } from "../utils/nodes";
 
 interface Props {
   nodes: Node[];
@@ -8,7 +9,7 @@ interface Props {
 }
 
 const useTreeActions = ({ nodes, setNodes }: Props) => {
-  const handleNodeCollapse = useCallback(
+  const collapse = useCallback(
     (_node: Node, nodePath: NodePath) => {
       const newNodes = forNode(nodePath, nodes, (node) => {
         node.isExpanded = false;
@@ -21,7 +22,7 @@ const useTreeActions = ({ nodes, setNodes }: Props) => {
     [nodes]
   );
 
-  const handleNodeExpand = useCallback(
+  const expand = useCallback(
     (_node: Node, nodePath: NodePath) => {
       const newNodes = forNode(nodePath, nodes, (node) => {
         node.isExpanded = true;
@@ -34,7 +35,20 @@ const useTreeActions = ({ nodes, setNodes }: Props) => {
     [nodes]
   );
 
-  return { handleNodeCollapse, handleNodeExpand };
+  const select = useCallback(
+    (_node: Node) => {
+      const newNodes = forEachNode(nodes, (node) => {
+        node.isSelected = node.id === _node.id;
+      });
+
+      if (newNodes) {
+        setNodes(newNodes);
+      }
+    },
+    [nodes]
+  );
+
+  return { collapse, expand, select };
 };
 
 export default useTreeActions;

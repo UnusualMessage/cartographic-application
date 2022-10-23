@@ -13,7 +13,7 @@ export const forEachNode = (
 
     for (const node of nodes) {
       callback(node);
-      forEachNode(node.childNodes, callback);
+      recursiveCall(node.childNodes, callback);
     }
   };
 
@@ -23,7 +23,7 @@ export const forEachNode = (
 
   const newNodes = cloneDeep(nodes);
 
-  recursiveCall(nodes, callback);
+  recursiveCall(newNodes, callback);
 
   return newNodes;
 };

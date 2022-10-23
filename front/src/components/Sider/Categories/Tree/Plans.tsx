@@ -1,4 +1,4 @@
-import { Divider } from "@blueprintjs/core";
+import { Divider, TreeEventHandler } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { cloneDeep } from "lodash";
 
@@ -9,6 +9,7 @@ import { Node } from "../../../../types/Node";
 import { planNodes } from "../../../../assets/nodes";
 import { Plan } from "../../../../types/entities";
 import { PlansStore } from "../../../../stores/entities";
+import { TabsStore } from "../../../../stores";
 
 const fillNodes = (plans: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);
@@ -31,6 +32,14 @@ const fillNodes = (plans: Plan[]) => {
   return initial;
 };
 
+const handleClick: TreeEventHandler = (node) => {
+  if (node.childNodes) {
+    TabsStore.tabsListId = "footer-plans";
+  } else {
+    TabsStore.tabsListId = "footer-plan";
+  }
+};
+
 const Plans = () => {
   const plans = PlansStore.plans;
 
@@ -41,6 +50,7 @@ const Plans = () => {
         fillNodes={fillNodes}
         source={plans}
         className={wrapper}
+        handleClick={handleClick}
       />
     </>
   );

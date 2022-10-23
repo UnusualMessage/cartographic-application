@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Tree, TreeEventHandler } from "@blueprintjs/core";
 
 import { Node } from "../../types/Node";
@@ -27,18 +27,29 @@ const EntitiesTree = <T,>({
     setNodes(fillNodes(source));
   }, [source]);
 
-  const { handleNodeCollapse, handleNodeExpand } = useTreeActions({
+  const { collapse, expand, select } = useTreeActions({
     nodes,
     setNodes,
   });
+
+  const handleCombinedClick: TreeEventHandler = useCallback(
+    (node, nodePath, e) => {
+      if (handleClick) {
+        handleClick(node, nodePath, e);
+      }
+
+      select(node);
+    },
+    [nodes]
+  );
 
   return (
     <Tree
       className={className}
       contents={nodes}
-      onNodeCollapse={handleCollapse ? handleCollapse : handleNodeCollapse}
-      onNodeExpand={handleExpand ? handleExpand : handleNodeExpand}
-      onNodeClick={handleClick}
+      onNodeCollapse={handleCollapse ? handleCollapse : collapse}
+      onNodeExpand={handleExpand ? handleExpand : expand}
+      onNodeClick={handleCombinedClick}
     />
   );
 };

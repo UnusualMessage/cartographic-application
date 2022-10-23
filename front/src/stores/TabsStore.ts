@@ -2,10 +2,10 @@ import { makeAutoObservable } from "mobx";
 
 class TabsStore {
   private _active: boolean;
-  private readonly _tabsListId: string;
+  private _tabsListId: string;
 
   constructor() {
-    this._tabsListId = "feature";
+    this._tabsListId = "footer-plans";
 
     this._active = false;
 
@@ -14,6 +14,10 @@ class TabsStore {
 
   public get tabsListId() {
     return this._tabsListId;
+  }
+
+  public set tabsListId(id: string) {
+    this._tabsListId = id;
   }
 
   public get active() {

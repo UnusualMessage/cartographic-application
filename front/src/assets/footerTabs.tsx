@@ -1,24 +1,34 @@
+import { v4 as uuid } from "uuid";
+
 import { TabsList } from "../types/Tab";
 import Table from "../components/Table";
 
 export const footerTabs: TabsList[] = [
   {
-    id: "feature",
+    id: "footer-plans",
+
     tabs: [
       {
-        id: "1",
-        title: "Таблица",
+        id: uuid(),
+        title: "Список планов",
+        component: <Table />,
+      },
+
+      {
+        id: uuid(),
+        title: "Распределение планов",
         component: <Table />,
       },
     ],
   },
 
   {
-    id: "features",
+    id: "footer-plan",
+
     tabs: [
       {
-        id: "1",
-        title: "Таблица",
+        id: uuid(),
+        title: "План",
         component: <Table />,
       },
     ],
