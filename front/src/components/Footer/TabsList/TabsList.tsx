@@ -30,10 +30,9 @@ const handleSelectedTab = (current: string | number, list: TabType[]) => {
 
 const TabsList = () => {
   const currentTab = TabsStore.footerTabId;
+  const currentTabList = TabsStore.tabsListId;
 
-  let currentTabs = footerTabs.find(
-    (list) => list.id === TabsStore.tabsListId
-  )?.tabs;
+  let currentTabs = footerTabs.find((list) => list.id === currentTabList)?.tabs;
 
   if (!currentTabs) {
     currentTabs = footerTabs[0].tabs;
@@ -44,7 +43,7 @@ const TabsList = () => {
   return (
     <Tabs
       className={classNames(wrapper, { [collapsed]: !active })}
-      id="tabs"
+      id="footer-tabs"
       selectedTabId={handleSelectedTab(currentTab, currentTabs)}
       onChange={(newTabId, prevTabId) => {
         if (newTabId === prevTabId) {

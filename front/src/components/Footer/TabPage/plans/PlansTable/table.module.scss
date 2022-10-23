@@ -1,9 +1,7 @@
-.wrapper {
-  min-height: 0;
+.table {
+  max-width: 60%;
   min-width: 0;
-  width: 99%;
-
-  transition: height 1s ease-in-out;
+  min-height: 0;
 
   .cell {
     display: flex;

@@ -35,7 +35,13 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Распределение планов",
-        component: <></>,
+        component: (
+          <NonIdealState
+            icon={"search"}
+            layout={"horizontal"}
+            title={"А тут пусто!"}
+          />
+        ),
       },
     ],
   },

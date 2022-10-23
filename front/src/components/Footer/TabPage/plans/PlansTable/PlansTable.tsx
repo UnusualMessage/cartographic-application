@@ -1,8 +1,8 @@
 import { Cell, CellRenderer, Column, Table2 } from "@blueprintjs/table";
-import classNames from "classnames";
 import { observer } from "mobx-react-lite";
+import { LabelList, Pie, PieChart, ResponsiveContainer } from "recharts";
 
-import { cell, wrapper } from "./table.module.scss";
+import { cell, table } from "./table.module.scss";
 
 import { PlansStore } from "../../../../../stores/entities";
 
@@ -27,17 +27,34 @@ const PlansTable = () => {
   };
 
   return (
-    <Table2
-      numRows={plans.length}
-      className={classNames(wrapper)}
-      cellRendererDependencies={[currentYear]}
-      defaultRowHeight={40}
-      columnWidths={[500, 300, 100]}
-    >
-      <Column cellRenderer={typeRenderer} name={"Культура"} />
-      <Column cellRenderer={areaRenderer} name={"Площадь, Га"} />
-      <Column cellRenderer={yearRenderer} name={"Год"} />
-    </Table2>
+    <>
+      <Table2
+        numRows={plans.length}
+        className={table}
+        cellRendererDependencies={[currentYear]}
+        defaultRowHeight={40}
+        columnWidths={[500, 300, 100]}
+      >
+        <Column cellRenderer={typeRenderer} name={"Культура"} />
+        <Column cellRenderer={areaRenderer} name={"Площадь, Га"} />
+        <Column cellRenderer={yearRenderer} name={"Год"} />
+      </Table2>
+
+      <ResponsiveContainer width="30%" height="100%">
+        <PieChart>
+          <Pie
+            dataKey="target"
+            data={plans}
+            cx="50%"
+            cy="50%"
+            fill="#8884d8"
+            label
+          >
+            <LabelList dataKey={"type"} position={"inside"} />
+          </Pie>
+        </PieChart>
+      </ResponsiveContainer>
+    </>
   );
 };
 
