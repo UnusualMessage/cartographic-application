@@ -7,11 +7,11 @@ import { wrapper } from "./tree.module.scss";
 
 import { Node } from "../../../../types/Node";
 import { FeaturesStore } from "../../../../stores";
-import { fields } from "../../../../assets/nodes";
+import { fieldNodes } from "../../../../assets/nodes";
 import EntitiesTree from "../../../EntitiesTree";
 
 const fillNodes = (nodes: FeatureLike[]) => {
-  const initial: Node[] = cloneDeep(fields);
+  const initial: Node[] = cloneDeep(fieldNodes);
 
   nodes.forEach((field) => {
     initial[0].childNodes?.push({

@@ -1,5 +1,4 @@
 import { Tab, Tabs } from "@blueprintjs/core";
-import { useState } from "react";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
@@ -21,12 +20,24 @@ const tabsRenderer = (tab: TabType) => {
   );
 };
 
-const TabsList = () => {
-  const [currentTab, setCurrentTab] = useState<string | number>("");
+const handleSelectedTab = (current: string | number, list: TabType[]) => {
+  if (current === "") {
+    return list[0].id;
+  } else {
+    return current;
+  }
+};
 
-  const currentTabs = footerTabs.find(
+const TabsList = () => {
+  const currentTab = TabsStore.footerTabId;
+
+  let currentTabs = footerTabs.find(
     (list) => list.id === TabsStore.tabsListId
   )?.tabs;
+
+  if (!currentTabs) {
+    currentTabs = footerTabs[0].tabs;
+  }
 
   const active = TabsStore.active;
 
@@ -34,17 +45,17 @@ const TabsList = () => {
     <Tabs
       className={classNames(wrapper, { [collapsed]: !active })}
       id="tabs"
-      selectedTabId={currentTab}
+      selectedTabId={handleSelectedTab(currentTab, currentTabs)}
       onChange={(newTabId, prevTabId) => {
         if (newTabId === prevTabId) {
           TabsStore.active = !active;
         } else {
           TabsStore.active = true;
-          setCurrentTab(newTabId);
+          TabsStore.footerTabId = newTabId;
         }
       }}
     >
-      {currentTabs?.map(tabsRenderer)}
+      {currentTabs.map(tabsRenderer)}
     </Tabs>
   );
 };

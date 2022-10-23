@@ -1,10 +1,12 @@
 import { Tab, Tabs } from "@blueprintjs/core";
 import classNames from "classnames";
 import { useMemo, useState } from "react";
+import { observer } from "mobx-react-lite";
 
 import { fullSize, panel, wrapper } from "./categories.module.scss";
 
 import { siderTabs } from "../../../assets/siderTabs";
+import { TabsStore } from "../../../stores";
 
 interface Props {
   fill?: boolean;
@@ -28,6 +30,25 @@ const Categories = ({ fill }: Props) => {
       selectedTabId={currentTab}
       renderActiveTabPanelOnly
       onChange={(newTabId) => {
+        switch (newTabId) {
+          case "sider-fields":
+            TabsStore.tabsListId = "footer-fields";
+            break;
+
+          case "sider-equipment":
+            TabsStore.tabsListId = "footer-equipment";
+            break;
+
+          case "sider-employees":
+            TabsStore.tabsListId = "footer-employees";
+            break;
+
+          case "sider-plans":
+            TabsStore.tabsListId = "footer-plans";
+            break;
+        }
+        TabsStore.active = true;
+        TabsStore.footerTabId = "";
         setCurrentTab(newTabId);
       }}
     >
@@ -46,4 +67,4 @@ const Categories = ({ fill }: Props) => {
   );
 };
 
-export default Categories;
+export default observer(Categories);

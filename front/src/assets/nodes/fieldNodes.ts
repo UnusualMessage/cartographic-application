@@ -1,11 +1,13 @@
 import { Node } from "../../types/Node";
 
-export const fields: Node[] = [
+export const fieldNodes: Node[] = [
   {
     id: "tree-fields",
     icon: "layers",
     label: "Поля",
-    isExpanded: false,
+    isExpanded: true,
+    isSelected: true,
+
     childNodes: [],
   },
 ];

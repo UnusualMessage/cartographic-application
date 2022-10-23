@@ -8,6 +8,8 @@ export const planNodes: Node[] = [
     icon: "timeline-events",
     label: "Планы и цели",
     isExpanded: true,
+    isSelected: true,
+
     childNodes: [
       {
         id: uuid(),

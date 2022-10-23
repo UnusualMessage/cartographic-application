@@ -8,6 +8,8 @@ export const equipmentNodes: Node[] = [
     icon: "tractor",
     label: "Техника",
     isExpanded: true,
+    isSelected: true,
+
     childNodes: types.map((type) => {
       return {
         id: uuid(),

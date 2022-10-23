@@ -9,6 +9,8 @@ export const employeeNodes: Node[] = [
     icon: "people",
     label: "Сотрудники",
     isExpanded: true,
+    isSelected: true,
+
     childNodes: areas.map((area) => {
       return {
         id: uuid(),
