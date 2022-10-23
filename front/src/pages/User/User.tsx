@@ -1,7 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import { lazy } from "react";
 
-import Layout from "./Layout";
+import Layout from "../../components/Layout";
 
 const View = lazy(() => import("./View"));
 const Edit = lazy(() => import("./Edit"));

@@ -8,7 +8,7 @@ import { wrapper } from "./tree.module.scss";
 import { Node } from "../../../../types/Node";
 import { FeaturesStore } from "../../../../stores";
 import { fieldNodes } from "../../../../assets/nodes";
-import EntitiesTree from "../../../EntitiesTree";
+import EntitiesTree from "../../../common/EntitiesTree";
 
 const fillNodes = (nodes: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(fieldNodes);

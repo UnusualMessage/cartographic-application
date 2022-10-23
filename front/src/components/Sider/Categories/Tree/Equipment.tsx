@@ -4,7 +4,7 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import EntitiesTree from "../../../EntitiesTree";
+import EntitiesTree from "../../../common/EntitiesTree";
 import { Node } from "../../../../types/Node";
 import { equipmentNodes } from "../../../../assets/nodes";
 import { Equipment } from "../../../../types/entities";

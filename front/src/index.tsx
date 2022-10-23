@@ -15,7 +15,7 @@ import Loader from "./components/common/Loader";
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
-const App = lazy(() => import("./pages/App"));
+const App = lazy(() => import("./pages"));
 
 const element = document.getElementById("root") as HTMLDivElement;
 const root = createRoot(element);

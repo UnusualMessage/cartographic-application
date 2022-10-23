@@ -6,7 +6,7 @@ import { MenuItem } from "@blueprintjs/core";
 
 import { wrapper } from "./geocoder.module.scss";
 
-import GeocoderService from "../../../../api/GeocoderService";
+import GeocoderService from "../../../../services/api/GeocoderService";
 import { ViewStore } from "../../../../stores";
 import GeocoderFeature from "../../../../types/GeocoderFeature";
 

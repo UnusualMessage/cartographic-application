@@ -16,7 +16,7 @@ const Header = () => {
       <NavbarGroup>
         <NavbarHeading>
           <Link to={"/"}>
-            <H2></H2>
+            <H2>Агро</H2>
           </Link>
         </NavbarHeading>
 
@@ -28,8 +28,12 @@ const Header = () => {
           <Button icon="send-to-map" text="Редактирование" minimal large />
         </Link>
 
-        <Link to={"/archive"}>
-          <Button icon="archive" text="Архив" minimal large />
+        <Link to={"/notes"}>
+          <Button icon="clipboard" text="Справочники" minimal large />
+        </Link>
+
+        <Link to={"/info"}>
+          <Button icon="export" text="Отчеты" minimal large />
         </Link>
       </NavbarGroup>
 
