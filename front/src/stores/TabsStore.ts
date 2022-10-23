@@ -10,7 +10,7 @@ class TabsStore {
     this._tabsListId = "";
     this._footerTabId = "";
 
-    this._active = false;
+    this._active = true;
 
     makeAutoObservable(this);
   }

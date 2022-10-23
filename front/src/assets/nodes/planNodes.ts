@@ -9,6 +9,7 @@ export const planNodes: Node[] = [
     label: "Планы и цели",
     isExpanded: true,
     isSelected: true,
+    nodeData: undefined,
 
     childNodes: [
       {

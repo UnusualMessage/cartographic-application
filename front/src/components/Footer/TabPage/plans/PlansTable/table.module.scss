@@ -1,0 +1,15 @@
+.wrapper {
+  min-height: 0;
+  min-width: 0;
+  width: 99%;
+
+  transition: height 1s ease-in-out;
+
+  .cell {
+    display: flex;
+    align-items: center;
+
+    font-size: 16px;
+    line-height: 2;
+  }
+}

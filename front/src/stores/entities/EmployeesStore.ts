@@ -1,3 +1,5 @@
+import { makeAutoObservable } from "mobx";
+
 import { Employee } from "../../types/entities";
 import { employees } from "../../assets/data";
 
@@ -6,6 +8,8 @@ class EmployeesStore {
 
   constructor() {
     this._employees = employees;
+
+    makeAutoObservable(this);
   }
 
   public get employees() {

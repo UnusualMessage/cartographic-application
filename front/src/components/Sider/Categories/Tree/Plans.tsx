@@ -32,10 +32,22 @@ const fillNodes = (plans: Plan[]) => {
   return initial;
 };
 
-const handleClick: TreeEventHandler = (node) => {
+const handleClick: TreeEventHandler<any> = (node) => {
+  const plansTabsListId = "footer-plans";
+  const planTabsListId = "footer-plan";
+
+  const switchTabsList = (id: string) => {
+    if (TabsStore.tabsListId !== id) {
+      TabsStore.tabsListId = id;
+      TabsStore.footerTabId = "";
+    }
+  };
+
   if (node.childNodes) {
-    TabsStore.tabsListId = "footer-plans";
+    switchTabsList(plansTabsListId);
+    PlansStore.chosenYear = node.nodeData;
   } else {
+    switchTabsList(planTabsListId);
     TabsStore.tabsListId = "footer-plan";
   }
 };
