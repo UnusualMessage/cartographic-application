@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 import { NonIdealState } from "@blueprintjs/core";
 
 import { TabsList } from "../types/Tab";
-import PlansTable from "../components/Footer/TabPage/plans/PlansTable/PlansTable";
+import PlansTable from "../components/tables/PlansTable";
 
 export const footerTabs: TabsList[] = [
   {
