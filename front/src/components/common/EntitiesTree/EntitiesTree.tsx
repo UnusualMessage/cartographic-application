@@ -5,8 +5,8 @@ import { Node } from "../../../types/Node";
 import useTreeActions from "../../../hooks/useTreeActions";
 
 interface Props<T> {
-  fillNodes: (source: T[]) => Node[];
-  source: T[];
+  fillNodes: (source?: T[]) => Node[];
+  source?: T[];
   handleCollapse?: TreeEventHandler;
   handleExpand?: TreeEventHandler;
   handleClick?: TreeEventHandler;

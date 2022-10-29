@@ -5,7 +5,7 @@ import Layout from "../../components/Layout";
 
 const View = lazy(() => import("./View"));
 const Edit = lazy(() => import("./Edit"));
-const Notes = lazy(() => import("./Notes"));
+const References = lazy(() => import("./References"));
 
 const User = () => {
   return (
@@ -13,7 +13,7 @@ const User = () => {
       <Route path={"*"} element={<Layout />}>
         <Route path={"*"} element={<View />} />
         <Route path={"edit"} element={<Edit />} />
-        <Route path={"notes"} element={<Notes />} />
+        <Route path={"references"} element={<References />} />
       </Route>
     </Routes>
   );
