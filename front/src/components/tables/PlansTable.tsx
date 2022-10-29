@@ -5,11 +5,15 @@ import { cell, table } from "./table.module.scss";
 
 import { PlansStore } from "../../stores/entities";
 import Progress from "../common/Progress";
+import { Plan } from "../../types/entities";
 
-const PlansTable = () => {
+interface Props {
+  plans: Plan[];
+}
+
+const PlansTable = ({ plans }: Props) => {
   const currentYear = PlansStore.chosenYear;
 
-  let plans = PlansStore.plans;
   if (currentYear) {
     plans = PlansStore.plans.filter((plan) => plan.year === currentYear);
   }
@@ -40,7 +44,7 @@ const PlansTable = () => {
       className={table}
       cellRendererDependencies={[currentYear]}
       defaultRowHeight={40}
-      columnWidths={[500, 300, 100, 100]}
+      columnWidths={[500, 300, 100, 150]}
       enableColumnResizing={false}
     >
       <Column cellRenderer={typeRenderer} name={"Культура"} />

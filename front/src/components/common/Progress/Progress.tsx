@@ -1,6 +1,6 @@
-import { Intent, ProgressBar } from "@blueprintjs/core";
+import { Intent, ProgressBar, Text } from "@blueprintjs/core";
 
-import { wrapper } from "./progress.module.scss";
+import { bar, text, wrapper } from "./progress.module.scss";
 
 interface Props {
   value: number;
@@ -19,7 +19,12 @@ const Progress = ({ value }: Props) => {
     intent = "success";
   }
 
-  return <ProgressBar className={wrapper} value={value} intent={intent} />;
+  return (
+    <div className={wrapper}>
+      <ProgressBar className={bar} value={value} intent={intent} />
+      <Text className={text}>{`${(value * 100).toFixed(0)}%`}</Text>
+    </div>
+  );
 };
 
 export default Progress;

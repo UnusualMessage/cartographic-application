@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 import { NonIdealState } from "@blueprintjs/core";
 
 import { TabsList } from "../types/Tab";
-import PlansTable from "../components/tables/PlansTable";
+import PlansTab from "../components/tabs/PlansTab";
 
 export const footerTabs: TabsList[] = [
   {
@@ -29,7 +29,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Список планов",
-        component: <PlansTable />,
+        component: <PlansTab />,
       },
 
       {
