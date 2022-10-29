@@ -2,13 +2,21 @@ import { observer } from "mobx-react-lite";
 
 import { PlansTable } from "../tables";
 import { PlansStore } from "../../stores/entities";
+import PlansChart from "../charts";
 
 const PlansTab = () => {
-  const plans = PlansStore.plans;
+  let plans = PlansStore.plans;
+
+  const currentYear = PlansStore.chosenYear;
+
+  if (currentYear) {
+    plans = PlansStore.plans.filter((plan) => plan.year === currentYear);
+  }
 
   return (
     <>
       <PlansTable plans={plans} />
+      <PlansChart plans={plans} />
     </>
   );
 };

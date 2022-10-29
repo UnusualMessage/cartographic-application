@@ -3,7 +3,6 @@ import { observer } from "mobx-react-lite";
 
 import { cell, table } from "./table.module.scss";
 
-import { PlansStore } from "../../stores/entities";
 import Progress from "../common/Progress";
 import { Plan } from "../../types/entities";
 
@@ -12,12 +11,6 @@ interface Props {
 }
 
 const PlansTable = ({ plans }: Props) => {
-  const currentYear = PlansStore.chosenYear;
-
-  if (currentYear) {
-    plans = PlansStore.plans.filter((plan) => plan.year === currentYear);
-  }
-
   const typeRenderer: CellRenderer = (rowIndex) => {
     return <Cell className={cell}>{plans[rowIndex].type}</Cell>;
   };
@@ -42,7 +35,7 @@ const PlansTable = ({ plans }: Props) => {
     <Table2
       numRows={plans.length}
       className={table}
-      cellRendererDependencies={[currentYear]}
+      cellRendererDependencies={[plans]}
       defaultRowHeight={40}
       columnWidths={[500, 300, 100, 150]}
       enableColumnResizing={false}
