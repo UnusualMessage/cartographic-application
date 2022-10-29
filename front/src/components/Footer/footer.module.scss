@@ -1,16 +1,29 @@
 .wrapper {
   padding: 5px 5px 5px 10px;
 
-  height: 320px;
   width: 100%;
 
   z-index: 1;
 
   background: white;
   box-shadow: 1px 0 0 1px rgb(17 20 24 / 10%);
-  transition: height 1s ease-in-out;
+
+  .tabs {
+    height: 100%;
+
+    .panel {
+      height: 100%;
+    }
+  }
 }
 
-.collapsed {
-  height: 40px;
+.collapse {
+  width: 100%;
+  height: 3px;
+  background: rgb(17 20 24 / 10%);
+  cursor: row-resize;
+
+  &:hover {
+    background: #4C90F0;
+  }
 }

@@ -10,8 +10,12 @@ import { Employee } from "../../types/entities";
 import { EmployeesStore } from "../../stores/entities";
 import { employeeNodes } from "../../assets/nodes";
 
-const fillNodes = (employees: Employee[]) => {
+const fillNodes = (employees?: Employee[]) => {
   const initial: Node[] = cloneDeep(employeeNodes);
+
+  if (!employees) {
+    return initial;
+  }
 
   employees.forEach((employee) => {
     const area = initial[0].childNodes?.find(

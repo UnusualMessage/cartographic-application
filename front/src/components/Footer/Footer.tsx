@@ -1,13 +1,13 @@
 import { Tab, Tabs } from "@blueprintjs/core";
-import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
-import { collapsed, wrapper } from "./footer.module.scss";
+import { collapse, panel, tabs, wrapper } from "./footer.module.scss";
 
 import { TabsStore } from "../../stores";
 import { Tab as TabType } from "../../types/Tab";
 import { footerTabs } from "../../assets/footerTabs";
 import TabPage from "./TabPage";
+import { Resize, useResizing } from "../../hooks";
 
 const tabsRenderer = (tab: TabType) => {
   return (
@@ -16,6 +16,7 @@ const tabsRenderer = (tab: TabType) => {
       key={`table-tab-${tab.id}`}
       title={tab.title}
       panel={<TabPage>{tab.component}</TabPage>}
+      panelClassName={panel}
     />
   );
 };
@@ -29,6 +30,15 @@ const handleSelectedTab = (current: string | number, list: TabType[]) => {
 };
 
 const Footer = () => {
+  const { size, start } = useResizing({
+    initial: 240,
+    type: Resize.height,
+    limit: {
+      top: 1080,
+      bottom: 240,
+    },
+  });
+
   const currentTab = TabsStore.footerTabId;
   const currentTabList = TabsStore.tabsListId;
 
@@ -38,24 +48,23 @@ const Footer = () => {
     currentTabs = footerTabs[0].tabs;
   }
 
-  const active = TabsStore.active;
-
   return (
-    <Tabs
-      className={classNames(wrapper, { [collapsed]: !active })}
-      id="footer-tabs"
-      selectedTabId={handleSelectedTab(currentTab, currentTabs)}
-      onChange={(newTabId, prevTabId) => {
-        if (newTabId === prevTabId) {
-          TabsStore.active = !active;
-        } else {
-          TabsStore.active = true;
-          TabsStore.footerTabId = newTabId;
-        }
-      }}
-    >
-      {currentTabs.map(tabsRenderer)}
-    </Tabs>
+    <>
+      <div className={collapse} onMouseDown={start} />
+
+      <div className={wrapper} style={{ height: `${size}px` }}>
+        <Tabs
+          className={tabs}
+          id="footer-tabs"
+          selectedTabId={handleSelectedTab(currentTab, currentTabs)}
+          onChange={(newTabId) => {
+            TabsStore.footerTabId = newTabId;
+          }}
+        >
+          {currentTabs.map(tabsRenderer)}
+        </Tabs>
+      </div>
+    </>
   );
 };
 

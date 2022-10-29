@@ -10,8 +10,12 @@ import { FeaturesStore } from "../../stores";
 import { fieldNodes } from "../../assets/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 
-const fillNodes = (nodes: FeatureLike[]) => {
+const fillNodes = (nodes?: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(fieldNodes);
+
+  if (!nodes) {
+    return initial;
+  }
 
   nodes.forEach((field) => {
     initial[0].childNodes?.push({

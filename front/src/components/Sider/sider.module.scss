@@ -1,12 +1,22 @@
 .wrapper {
   display: flex;
-  flex-direction: column;
-  flex-basis: 370px;
-  min-width: 370px;
+  flex-direction: row;
+  width: 370px;
 
   height: 100%;
 
   z-index: 2;
 
   box-shadow: 0 -1px 0 1px rgb(17 20 24 / 10%);
+
+  .collapse {
+    height: 100%;
+    width: 3px;
+    background: rgb(17 20 24 / 10%);
+    cursor: col-resize;
+
+    &:hover {
+      background: #4C90F0;
+    }
+  }
 }

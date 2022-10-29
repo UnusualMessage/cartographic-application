@@ -10,8 +10,12 @@ import { equipmentNodes } from "../../assets/nodes";
 import { Equipment } from "../../types/entities";
 import { EquipmentStore } from "../../stores/entities";
 
-const fillNodes = (equipment: Equipment[]) => {
+const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);
+
+  if (!equipment) {
+    return initial;
+  }
 
   equipment.forEach((item) => {
     const equipType = initial[0].childNodes?.find(

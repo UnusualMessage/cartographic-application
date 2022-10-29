@@ -11,8 +11,12 @@ import { Plan } from "../../types/entities";
 import { PlansStore } from "../../stores/entities";
 import { TabsStore } from "../../stores";
 
-const fillNodes = (plans: Plan[]) => {
+const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);
+
+  if (!plans) {
+    return initial;
+  }
 
   plans.forEach((plan) => {
     const yearNode = initial[0].childNodes?.find(
