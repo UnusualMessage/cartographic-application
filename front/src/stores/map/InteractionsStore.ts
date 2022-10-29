@@ -9,7 +9,7 @@ import {
 } from "ol/events/condition";
 import { Type } from "ol/geom/Geometry";
 
-import { DrawType } from "../types/DrawType";
+import { DrawType } from "../../types/DrawType";
 import {
   DragBoxEvent,
   DragBoxInjector,
@@ -22,8 +22,8 @@ import {
   SelectInjector,
   TranslateEvent,
   TranslateInjector,
-} from "../services/listeners";
-import { measureStyleFunction } from "../utils/styles/measureStyleFunction";
+} from "../../services/listeners";
+import { measureStyleFunction } from "../../utils/styles/measureStyleFunction";
 
 interface Interactions {
   select: Select | null;

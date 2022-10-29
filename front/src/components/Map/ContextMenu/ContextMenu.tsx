@@ -5,7 +5,7 @@ import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
 
 import { hidden, wrapper } from "./menu.module.scss";
 
-import { MapStore, OverlaysStore } from "../../../stores";
+import { MapStore, OverlaysStore } from "../../../stores/map";
 import { FeaturesService } from "../../../services/map";
 
 const ContextMenu = () => {

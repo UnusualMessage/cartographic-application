@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 
 import { fullSize, panel, wrapper } from "./categories.module.scss";
 
-import { siderTabs } from "../../../assets/siderTabs";
+import { siderTabs } from "../../../assets/tabs";
 import { TabsStore } from "../../../stores";
 
 interface Props {

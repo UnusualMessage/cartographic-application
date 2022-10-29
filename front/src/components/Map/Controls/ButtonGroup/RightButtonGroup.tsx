@@ -5,8 +5,12 @@ import { useState } from "react";
 
 import { right } from "./group.module.scss";
 
-import { MeasurementMode } from "../../../../stores/InteractionsStore";
-import { InteractionsStore, LayersStore, MapStore } from "../../../../stores";
+import { MeasurementMode } from "../../../../stores/map/InteractionsStore";
+import {
+  InteractionsStore,
+  LayersStore,
+  MapStore,
+} from "../../../../stores/map";
 
 interface Props {
   isPanelOpen: boolean;

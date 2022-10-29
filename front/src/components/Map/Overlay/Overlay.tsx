@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import { hidden, wrapper } from "./overlay.module.scss";
 
-import { MapStore, OverlaysStore } from "../../../stores";
+import { MapStore, OverlaysStore } from "../../../stores/map";
 
 const Overlay = () => {
   const overlayRef = useRef<HTMLDivElement>(null);

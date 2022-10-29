@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
 
 import { SourceContext } from "../Layer/AuxLayer";
-import { InteractionsStore, MapStore } from "../../../stores";
+import { InteractionsStore, MapStore } from "../../../stores/map";
 
 const AuxInteractions = () => {
   const source = useContext(SourceContext);

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 
 import ColorPicker from "../../../common/ColorPicker/ColorPicker";
-import { StylesStore } from "../../../../stores";
+import { StylesStore } from "../../../../stores/map";
 
 const FillPicker = () => {
   const setColor = (color: string) => {

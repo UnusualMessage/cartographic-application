@@ -5,7 +5,7 @@ import { collapse, panel, tabs, wrapper } from "./footer.module.scss";
 
 import { TabsStore } from "../../stores";
 import { Tab as TabType } from "../../types/Tab";
-import { footerTabs } from "../../assets/footerTabs";
+import { footerTabs } from "../../assets/tabs";
 import TabPage from "./TabPage";
 import { Resize, useResizing } from "../../hooks";
 

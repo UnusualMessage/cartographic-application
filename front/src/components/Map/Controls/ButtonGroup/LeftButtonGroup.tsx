@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 import { left } from "./group.module.scss";
 
-import { ViewStore } from "../../../../stores";
+import { ViewStore } from "../../../../stores/map";
 
 const LeftButtonGroup = () => {
   const zoomIn = () => {

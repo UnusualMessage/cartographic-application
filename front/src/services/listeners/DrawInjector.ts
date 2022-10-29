@@ -3,11 +3,8 @@ import { v4 as uuid } from "uuid";
 import { FeatureLike } from "ol/Feature";
 
 import ListenersInjector, { DrawEvent } from "./ListenersInjector";
-import {
-  FeaturesChangesStore,
-  FeaturesStore,
-  InteractionsStore,
-} from "../../stores";
+import { FeaturesChangesStore, FeaturesStore } from "../../stores";
+import { InteractionsStore } from "../../stores/map";
 import Change, { Undo } from "../../types/Change";
 import { LayersService } from "../map";
 

@@ -6,9 +6,9 @@ import { Feature } from "ol";
 import { BingMaps, OSM, XYZ } from "ol/source";
 import { default as OLTileLayer } from "ol/layer/Tile";
 
-import { BaseLayerType } from "../types/BaseLayerType";
-import { measureStyleFunction } from "../utils/styles/measureStyleFunction";
-import { baseLayers } from "../assets/baseLayers";
+import { BaseLayerType } from "../../types/BaseLayerType";
+import { measureStyleFunction } from "../../utils/styles/measureStyleFunction";
+import { baseLayers } from "../../assets/map";
 
 class LayersStore {
   private _vectorLayer: VectorLayer<VectorSource> | null;

@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import { toFixed } from "ol/math";
 import { fromLonLat, toLonLat } from "ol/proj";
 
-import { MapStore, ViewStore } from "../../../stores";
+import { MapStore, ViewStore } from "../../../stores/map";
 
 const View = () => {
   const [viewParams, setViewParams] = useSearchParams();

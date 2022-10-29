@@ -15,10 +15,6 @@ class EmployeesStore {
   public get employees() {
     return this._employees;
   }
-
-  public set employees(employees: Employee[]) {
-    this._employees = employees;
-  }
 }
 
 export default new EmployeesStore();

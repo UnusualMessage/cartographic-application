@@ -1,9 +1,10 @@
+import { FeaturesStore } from "../../stores";
+
 import {
-  FeaturesStore,
   InteractionsStore,
   LayersStore,
   OverlaysStore,
-} from "../../stores";
+} from "../../stores/map";
 
 class FeaturesService {
   public copy() {

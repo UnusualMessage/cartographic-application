@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { StylesStore } from "../../../../stores";
+import { StylesStore } from "../../../../stores/map";
 import ColorPicker from "../../../common/ColorPicker";
 
 const StrokePicker = () => {

@@ -15,10 +15,6 @@ class EquipmentStore {
   public get equipment() {
     return this._equipment;
   }
-
-  public set equipment(equipment: Equipment[]) {
-    this._equipment = equipment;
-  }
 }
 
 export default new EquipmentStore();

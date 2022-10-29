@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 import { wrapper } from "./map.module.scss";
 
-import { MapStore } from "../../../stores";
+import { MapStore } from "../../../stores/map";
 
 const MapWrapper = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);

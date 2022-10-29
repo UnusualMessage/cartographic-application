@@ -31,10 +31,6 @@ class TabsStore {
     this._footerTabId = id;
   }
 
-  public get active() {
-    return this._active;
-  }
-
   public set active(active: boolean) {
     this._active = active;
   }

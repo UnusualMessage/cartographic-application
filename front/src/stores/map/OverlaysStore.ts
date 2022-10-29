@@ -2,12 +2,12 @@ import { makeAutoObservable } from "mobx";
 import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
-import { menuId, menuOffset, overlayId, overlayOffset } from "../assets/config";
+import { menuId, menuOffset, overlayId, overlayOffset } from "../../assets/map";
 import {
   CommonEvent,
   ListenersInjector,
   MapInjector,
-} from "../services/listeners";
+} from "../../services/listeners";
 
 interface CustomOverlay {
   element: HTMLElement | null;

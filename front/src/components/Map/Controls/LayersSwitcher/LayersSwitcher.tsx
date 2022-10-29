@@ -4,8 +4,8 @@ import { observer } from "mobx-react-lite";
 
 import { wrapper } from "./switcher.module.scss";
 
-import { LayersStore } from "../../../../stores";
-import { baseLayers } from "../../../../assets/baseLayers";
+import { LayersStore } from "../../../../stores/map";
+import { baseLayers } from "../../../../assets/map";
 import { BaseLayerType } from "../../../../types/BaseLayerType";
 
 const LayersSwitcher = () => {

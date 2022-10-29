@@ -31,10 +31,6 @@ class FeaturesStore {
     this._features = features;
   }
 
-  public get clickedFeature() {
-    return this._clickedFeature;
-  }
-
   public set clickedFeature(clickedFeature: FeatureLike | null) {
     this._clickedFeature = clickedFeature;
   }
