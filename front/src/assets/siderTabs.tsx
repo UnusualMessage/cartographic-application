@@ -1,10 +1,10 @@
 import { TabsList } from "../types/Tab";
 import {
-  Employees,
-  Equipment,
-  Fields,
-  Plans,
-} from "../components/Sider/Categories/Tree";
+  EmployeesTree,
+  EquipmentTree,
+  FieldsTree,
+  PlansTree,
+} from "../components/trees";
 
 export const siderTabs: TabsList = {
   id: "sider-tabs",
@@ -12,25 +12,25 @@ export const siderTabs: TabsList = {
     {
       id: "sider-fields",
       title: "Поля",
-      component: <Fields />,
+      component: <FieldsTree />,
     },
 
     {
       id: "sider-equipment",
       title: "Техника",
-      component: <Equipment />,
+      component: <EquipmentTree />,
     },
 
     {
       id: "sider-employees",
       title: "Сотрудники",
-      component: <Employees />,
+      component: <EmployeesTree />,
     },
 
     {
       id: "sider-plans",
       title: "Планы",
-      component: <Plans />,
+      component: <PlansTree />,
     },
   ],
 };

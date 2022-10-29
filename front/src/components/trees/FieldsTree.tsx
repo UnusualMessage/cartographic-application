@@ -5,10 +5,10 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import { Node } from "../../../../types/Node";
-import { FeaturesStore } from "../../../../stores";
-import { fieldNodes } from "../../../../assets/nodes";
-import EntitiesTree from "../../../common/EntitiesTree";
+import { Node } from "../../types/Node";
+import { FeaturesStore } from "../../stores";
+import { fieldNodes } from "../../assets/nodes";
+import EntitiesTree from "../common/EntitiesTree";
 
 const fillNodes = (nodes: FeatureLike[]) => {
   const initial: Node[] = cloneDeep(fieldNodes);
@@ -25,7 +25,7 @@ const fillNodes = (nodes: FeatureLike[]) => {
   return initial;
 };
 
-const Fields = () => {
+const FieldsTree = () => {
   const features = FeaturesStore.features;
 
   return (
@@ -40,4 +40,4 @@ const Fields = () => {
   );
 };
 
-export default observer(Fields);
+export default observer(FieldsTree);

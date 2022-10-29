@@ -4,12 +4,12 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import EntitiesTree from "../../../common/EntitiesTree";
-import { Node } from "../../../../types/Node";
-import { planNodes } from "../../../../assets/nodes";
-import { Plan } from "../../../../types/entities";
-import { PlansStore } from "../../../../stores/entities";
-import { TabsStore } from "../../../../stores";
+import EntitiesTree from "../common/EntitiesTree";
+import { Node } from "../../types/Node";
+import { planNodes } from "../../assets/nodes";
+import { Plan } from "../../types/entities";
+import { PlansStore } from "../../stores/entities";
+import { TabsStore } from "../../stores";
 
 const fillNodes = (plans: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);
@@ -52,7 +52,7 @@ const handleClick: TreeEventHandler<any> = (node) => {
   }
 };
 
-const Plans = () => {
+const PlansTree = () => {
   const plans = PlansStore.plans;
 
   return (
@@ -68,4 +68,4 @@ const Plans = () => {
   );
 };
 
-export default observer(Plans);
+export default observer(PlansTree);

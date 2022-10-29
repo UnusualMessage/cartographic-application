@@ -4,11 +4,11 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import EntitiesTree from "../../../common/EntitiesTree";
-import { Node } from "../../../../types/Node";
-import { Employee } from "../../../../types/entities";
-import { EmployeesStore } from "../../../../stores/entities";
-import { employeeNodes } from "../../../../assets/nodes";
+import EntitiesTree from "../common/EntitiesTree";
+import { Node } from "../../types/Node";
+import { Employee } from "../../types/entities";
+import { EmployeesStore } from "../../stores/entities";
+import { employeeNodes } from "../../assets/nodes";
 
 const fillNodes = (employees: Employee[]) => {
   const initial: Node[] = cloneDeep(employeeNodes);
@@ -40,7 +40,7 @@ const fillNodes = (employees: Employee[]) => {
   return initial;
 };
 
-const Employees = () => {
+const EmployeesTree = () => {
   const employees = EmployeesStore.employees;
 
   return (
@@ -55,4 +55,4 @@ const Employees = () => {
   );
 };
 
-export default observer(Employees);
+export default observer(EmployeesTree);
