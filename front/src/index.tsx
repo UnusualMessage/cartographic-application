@@ -17,12 +17,13 @@ import "@blueprintjs/table/lib/css/table.css";
 
 import Loader from "./components/common/Loader";
 import Layout from "./components/Layout";
+import { references } from "./assets/data/references";
 
 const Admin = lazy(() => import("./pages/Admin"));
 const View = lazy(() => import("./pages/User/View"));
 const Edit = lazy(() => import("./pages/User/Edit"));
+
 const References = lazy(() => import("./pages/User/References"));
-const Partners = lazy(() => import("./pages/User/References/pages"));
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -51,12 +52,12 @@ const browserRouter = createBrowserRouter([
         path: "references",
         element: <References />,
 
-        children: [
-          {
-            path: "partners",
-            element: <Partners />,
-          },
-        ],
+        children: references.map((reference) => {
+          return {
+            element: reference.component,
+            path: reference.link,
+          };
+        }),
       },
     ],
   },
