@@ -1,7 +1,8 @@
 import { Tab, Tabs } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
+import classNames from "classnames";
 
-import { collapse, panel, tabs, wrapper } from "./footer.module.scss";
+import { active, collapse, panel, tabs, wrapper } from "./footer.module.scss";
 
 import { TabsStore } from "../../stores";
 import { Tab as TabType } from "../../types/Tab";
@@ -30,7 +31,7 @@ const handleSelectedTab = (current: string | number, list: TabType[]) => {
 };
 
 const Footer = () => {
-  const { size, start } = useResizing({
+  const { size, start, isResizing } = useResizing({
     initial: 240,
     type: Resize.height,
     limit: {
@@ -50,7 +51,10 @@ const Footer = () => {
 
   return (
     <>
-      <div className={collapse} onMouseDown={start} />
+      <div
+        className={classNames({ [collapse]: true, [active]: isResizing })}
+        onMouseDown={start}
+      />
 
       <div className={wrapper} style={{ height: `${size}px` }}>
         <Tabs

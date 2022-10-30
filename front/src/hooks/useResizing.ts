@@ -73,7 +73,7 @@ const useResizing = ({ initial, type, limit }: Props) => {
     };
   }, [isResizing]);
 
-  return { size, start: onMouseDown };
+  return { size, start: onMouseDown, isResizing };
 };
 
 export default useResizing;
