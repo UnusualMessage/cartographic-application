@@ -18,6 +18,7 @@ import "@blueprintjs/table/lib/css/table.css";
 import Loader from "./components/common/Loader";
 import Layout from "./components/Layout";
 import { references } from "./assets/data/references";
+import EmptyPage from "./components/common/EmptyPage";
 
 const Admin = lazy(() => import("./pages/Admin"));
 const View = lazy(() => import("./pages/User/View"));
@@ -34,9 +35,7 @@ const browserRouter = createBrowserRouter([
   {
     path: "/",
     element: <Layout />,
-    errorElement: (
-      <NonIdealState icon={"search"} title={"Страницы не существует!"} />
-    ),
+    errorElement: <EmptyPage />,
     children: [
       {
         path: "",

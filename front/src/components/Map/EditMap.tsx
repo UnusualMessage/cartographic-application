@@ -1,3 +1,7 @@
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
+
+import { wrapper } from "./map.module.scss";
+
 import { EditControls } from "./Controls";
 import View from "./View";
 import { TileLayer, VectorLayer } from "./Layer";
@@ -6,18 +10,22 @@ import MapWrapper from "./MapWrapper";
 import ContextMenu from "./ContextMenu";
 
 const EditMap = () => {
+  const handle = useFullScreenHandle();
+
   return (
-    <MapWrapper>
-      <EditControls />
-      <View />
-      <TileLayer />
+    <FullScreen className={wrapper} handle={handle}>
+      <MapWrapper>
+        <EditControls />
+        <View />
+        <TileLayer />
 
-      <VectorLayer>
-        <Interactions />
-      </VectorLayer>
+        <VectorLayer>
+          <Interactions />
+        </VectorLayer>
 
-      <ContextMenu />
-    </MapWrapper>
+        <ContextMenu />
+      </MapWrapper>
+    </FullScreen>
   );
 };
 
