@@ -11,6 +11,7 @@ import { HistoryService } from "../../../services/history";
 import Loader from "../../../components/common/Loader";
 import Changes from "../../../components/Sider/Changes";
 import Categories from "../../../components/Sider/Categories";
+import Toolbar from "../../../components/Sider/Toolbar";
 
 const Edit = () => {
   const ref = useRef<Toaster>(null);
@@ -49,6 +50,7 @@ const Edit = () => {
 
       <Sider>
         <Categories />
+        <Toolbar />
         <Changes />
       </Sider>
       <div className={wrapper} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>

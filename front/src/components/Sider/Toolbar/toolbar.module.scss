@@ -1,0 +1,13 @@
+.wrapper {
+  width: 100%;
+  flex-basis: 3%;
+
+  padding: 5px;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 5px;
+
+  background: #EDEFF2;
+}
