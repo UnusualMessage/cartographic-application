@@ -7,20 +7,21 @@ import { fullHeight, wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../common/EntitiesTree";
 import { referenceNodes } from "../../assets/nodes/referenceNodes";
-import ReferencesStore from "../../stores/ReferencesStore";
-import Reference from "../../types/Reference";
+import { useNavigate } from "react-router-dom";
 
 const fillNodes = () => {
   return cloneDeep(referenceNodes);
 };
 
-const handleClick: TreeEventHandler = (node) => {
-  if (node.nodeData) {
-    ReferencesStore.currentReference = node.nodeData as Reference;
-  }
-};
-
 const ReferencesTree = () => {
+  const navigate = useNavigate();
+
+  const handleClick: TreeEventHandler<any> = (node) => {
+    if (node.nodeData) {
+      navigate(node.nodeData);
+    }
+  };
+
   return (
     <EntitiesTree
       fillNodes={fillNodes}

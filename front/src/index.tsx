@@ -22,6 +22,7 @@ const Admin = lazy(() => import("./pages/Admin"));
 const View = lazy(() => import("./pages/User/View"));
 const Edit = lazy(() => import("./pages/User/Edit"));
 const References = lazy(() => import("./pages/User/References"));
+const Partners = lazy(() => import("./pages/User/References/pages"));
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -37,7 +38,7 @@ const browserRouter = createBrowserRouter([
     ),
     children: [
       {
-        path: "/",
+        path: "",
         element: <View />,
       },
 
@@ -49,6 +50,13 @@ const browserRouter = createBrowserRouter([
       {
         path: "references",
         element: <References />,
+
+        children: [
+          {
+            path: "partners",
+            element: <Partners />,
+          },
+        ],
       },
     ],
   },
