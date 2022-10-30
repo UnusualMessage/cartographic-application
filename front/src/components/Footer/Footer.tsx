@@ -33,11 +33,8 @@ const handleSelectedTab = (current: string | number, list: TabType[]) => {
 const Footer = () => {
   const { size, start, isResizing } = useResizing({
     initial: 240,
+    bottomBorder: 240,
     type: Resize.height,
-    limit: {
-      top: 1080,
-      bottom: 240,
-    },
   });
 
   const currentTab = TabsStore.footerTabId;

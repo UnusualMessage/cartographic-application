@@ -5,18 +5,13 @@ export enum Resize {
   height,
 }
 
-export interface Limit {
-  top: number;
-  bottom: number;
-}
-
 interface Props {
   initial: number;
   type: Resize;
-  limit: Limit;
+  bottomBorder: number;
 }
 
-const useResizing = ({ initial, type, limit }: Props) => {
+const useResizing = ({ initial, type, bottomBorder }: Props) => {
   const [size, setSize] = useState(initial);
   const [isResizing, setIsResizing] = useState(false);
 
@@ -27,33 +22,29 @@ const useResizing = ({ initial, type, limit }: Props) => {
   const onMouseMove = useCallback(
     (event: MouseEvent) => {
       if (isResizing) {
-        switch (type) {
-          case Resize.height:
-            setSize((size) => {
-              const newSize = size - event.movementY;
+        setSize((size) => {
+          let newSize: number = size;
 
-              if (newSize < limit.bottom || newSize > limit.top) {
-                return size;
-              } else {
-                return newSize;
-              }
-            });
+          if (type === Resize.width) {
+            newSize = size + event.movementX;
 
-            break;
+            if (newSize > window.innerWidth) {
+              newSize = size;
+            }
+          } else {
+            newSize = size - event.movementY;
 
-          case Resize.width:
-            setSize((size) => {
-              const newSize = size + event.movementX;
+            if (newSize > window.innerHeight) {
+              newSize = size;
+            }
+          }
 
-              if (newSize < limit.bottom || newSize > limit.top) {
-                return size;
-              } else {
-                return newSize;
-              }
-            });
-
-            break;
-        }
+          if (newSize < bottomBorder) {
+            return size;
+          } else {
+            return newSize;
+          }
+        });
       }
     },
     [isResizing]

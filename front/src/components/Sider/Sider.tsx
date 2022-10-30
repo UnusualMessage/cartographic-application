@@ -8,11 +8,8 @@ import { Resize, useResizing } from "../../hooks";
 const Sider = ({ children }: PropsWithChildren) => {
   const { size, start, isResizing } = useResizing({
     initial: 370,
+    bottomBorder: 370,
     type: Resize.width,
-    limit: {
-      top: 1920,
-      bottom: 370,
-    },
   });
 
   return (

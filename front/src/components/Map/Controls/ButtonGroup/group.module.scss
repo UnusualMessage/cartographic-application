@@ -1,23 +1,19 @@
-.right {
+.wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
 
   position: absolute;
   top: 5px;
-  right: 5px;
 
   z-index: 2;
+}
+
+.right {
+  right: 5px;
 }
 
 .left {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-
-  position: absolute;
-  top: 5px;
   left: 5px;
-
-  z-index: 2;
 }
+

@@ -3,7 +3,7 @@ import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
-import { right } from "./group.module.scss";
+import { right, wrapper } from "./group.module.scss";
 
 import { MeasurementMode } from "../../../../stores/map/InteractionsStore";
 import {
@@ -11,6 +11,7 @@ import {
   LayersStore,
   MapStore,
 } from "../../../../stores/map";
+import classNames from "classnames";
 
 interface Props {
   isPanelOpen: boolean;
@@ -58,7 +59,7 @@ const RightButtonGroup = ({
   };
 
   return (
-    <div className={right}>
+    <div className={classNames(wrapper, right)}>
       <Button
         icon={"wrench"}
         intent={isCollapseOpen ? "primary" : "none"}
