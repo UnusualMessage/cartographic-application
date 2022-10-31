@@ -11,7 +11,7 @@ const Footer = ({ children }: PropsWithChildren) => {
   const props = {
     type: type,
     initial: 240,
-    bottomBorder: 240,
+    bottomBorder: 13,
   };
 
   const { size, start, isResizing } = useResizing(props);

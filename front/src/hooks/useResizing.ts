@@ -1,6 +1,7 @@
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 import { ResizeType } from "../types/common";
+import { MapStore } from "../stores/map";
 
 interface Props {
   initial: number;
@@ -11,6 +12,7 @@ interface Props {
 const useResizing = ({ initial, type, bottomBorder }: Props) => {
   const [size, setSize] = useState(initial);
   const [isResizing, setIsResizing] = useState(false);
+  const map = MapStore.map;
 
   const onMouseDown: MouseEventHandler = () => {
     setIsResizing(true);
@@ -42,6 +44,8 @@ const useResizing = ({ initial, type, bottomBorder }: Props) => {
             return newSize;
           }
         });
+
+        map?.updateSize();
       }
     },
     [isResizing]

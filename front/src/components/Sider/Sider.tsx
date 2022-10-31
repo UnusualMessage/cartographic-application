@@ -12,7 +12,7 @@ const Sider = ({ children }: PropsWithChildren) => {
   const props = {
     type: type,
     initial: 370,
-    bottomBorder: 370,
+    bottomBorder: 3,
   };
 
   const { size, start, isResizing } = useResizing(props);
