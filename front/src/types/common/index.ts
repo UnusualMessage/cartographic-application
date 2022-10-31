@@ -1,3 +1,5 @@
-import { ResizeType } from "./ResizeType";
+import GeocoderFeature from "./GeocoderFeature";
 
-export { ResizeType };
+export { ResizeType } from "./ResizeType";
+export type { BaseLayerType } from "./BaseLayerType";
+export type { GeocoderFeature };

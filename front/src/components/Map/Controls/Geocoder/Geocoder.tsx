@@ -8,7 +8,7 @@ import { wrapper } from "./geocoder.module.scss";
 
 import GeocoderService from "../../../../services/api/GeocoderService";
 import { ViewStore } from "../../../../stores/map";
-import GeocoderFeature from "../../../../types/GeocoderFeature";
+import { GeocoderFeature } from "../../../../types/common";
 
 const itemRenderer: ItemRenderer<GeocoderFeature> = (
   feature,

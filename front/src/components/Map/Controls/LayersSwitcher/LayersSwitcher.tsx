@@ -6,7 +6,7 @@ import { wrapper } from "./switcher.module.scss";
 
 import { LayersStore } from "../../../../stores/map";
 import { baseLayers } from "../../../../assets/map";
-import { BaseLayerType } from "../../../../types/BaseLayerType";
+import { BaseLayerType } from "../../../../types/common/BaseLayerType";
 
 const LayersSwitcher = () => {
   const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
