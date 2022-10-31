@@ -1,13 +1,10 @@
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
-export enum Resize {
-  width,
-  height,
-}
+import { ResizeType } from "../types/common";
 
 interface Props {
   initial: number;
-  type: Resize;
+  type: ResizeType;
   bottomBorder: number;
 }
 
@@ -23,9 +20,9 @@ const useResizing = ({ initial, type, bottomBorder }: Props) => {
     (event: MouseEvent) => {
       if (isResizing) {
         setSize((size) => {
-          let newSize: number = size;
+          let newSize: number;
 
-          if (type === Resize.width) {
+          if (type === ResizeType.width) {
             newSize = size + event.movementX;
 
             if (newSize > window.innerWidth) {

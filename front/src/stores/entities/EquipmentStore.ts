@@ -4,7 +4,7 @@ import { equipment } from "../../assets/data";
 import { Equipment } from "../../types/entities";
 
 class EquipmentStore {
-  private _equipment: Equipment[];
+  private readonly _equipment: Equipment[];
 
   constructor() {
     this._equipment = equipment;

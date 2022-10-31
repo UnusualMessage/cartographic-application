@@ -1,4 +1,11 @@
-import { Cell, CellRenderer, Column, Table2 } from "@blueprintjs/table";
+import {
+  Cell,
+  CellRenderer,
+  Column,
+  RowHeaderCell2,
+  RowHeaderRenderer,
+  Table2,
+} from "@blueprintjs/table";
 import { observer } from "mobx-react-lite";
 
 import { cell, table } from "./table.module.scss";
@@ -31,6 +38,16 @@ const PlansTable = ({ plans }: Props) => {
     );
   };
 
+  const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
+    return (
+      <RowHeaderCell2
+        index={rowIndex}
+        name={(rowIndex + 1).toString()}
+        className={cell}
+      />
+    );
+  };
+
   return (
     <Table2
       numRows={plans.length}
@@ -39,6 +56,7 @@ const PlansTable = ({ plans }: Props) => {
       defaultRowHeight={40}
       columnWidths={[500, 300, 100, 150]}
       enableColumnResizing={false}
+      rowHeaderCellRenderer={rowHeaderRenderer}
     >
       <Column cellRenderer={typeRenderer} name={"Культура"} />
       <Column cellRenderer={areaRenderer} name={"Площадь, Га"} />

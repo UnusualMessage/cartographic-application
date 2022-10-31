@@ -1,17 +1,17 @@
-import { Position, Toaster, useHotkeys } from "@blueprintjs/core";
-import React, { useLayoutEffect, useMemo, useRef } from "react";
+import { Position, Toaster } from "@blueprintjs/core";
+import React, { useLayoutEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
-
-import { wrapper } from "./edit.module.scss";
 
 import Sider from "../../../components/Sider";
 import { EditMap } from "../../../components/Map";
 import Footer from "../../../components/Footer";
-import { HistoryService } from "../../../services/history";
 import Loader from "../../../components/common/Loader";
 import Changes from "../../../components/Sider/Changes";
 import Categories from "../../../components/Sider/Categories";
 import Toolbar from "../../../components/Sider/Toolbar";
+import Content from "../../../components/Content";
+import TabsList from "../../../components/Footer/TabsList";
+import { HistoryService } from "../../../services/history";
 
 const Edit = () => {
   const ref = useRef<Toaster>(null);
@@ -19,30 +19,6 @@ const Edit = () => {
   useLayoutEffect(() => {
     HistoryService.toaster = ref.current;
   }, []);
-
-  const hotkeys = useMemo(
-    () => [
-      {
-        combo: "Shift+Q",
-        global: true,
-        label: "Save changes",
-        onKeyDown: () => {
-          HistoryService.save();
-        },
-      },
-
-      {
-        combo: "Shift+Z",
-        global: true,
-        label: "Undo changes",
-        onKeyDown: () => {
-          HistoryService.undo();
-        },
-      },
-    ],
-    []
-  );
-  const { handleKeyDown, handleKeyUp } = useHotkeys(hotkeys);
 
   return (
     <React.Suspense fallback={<Loader />}>
@@ -53,10 +29,12 @@ const Edit = () => {
         <Toolbar />
         <Changes />
       </Sider>
-      <div className={wrapper} onKeyDown={handleKeyDown} onKeyUp={handleKeyUp}>
+      <Content>
         <EditMap />
-        <Footer />
-      </div>
+        <Footer>
+          <TabsList />
+        </Footer>
+      </Content>
     </React.Suspense>
   );
 };

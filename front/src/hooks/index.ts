@@ -1,4 +1,4 @@
-import useResizing, { Resize } from "./useResizing";
+import useResizing from "./useResizing";
 import useTreeActions from "./useTreeActions";
 
-export { useResizing, useTreeActions, Resize };
+export { useResizing, useTreeActions };
