@@ -6,11 +6,9 @@ import {
   RowHeaderRenderer,
   Table2,
 } from "@blueprintjs/table";
-import { observer } from "mobx-react-lite";
+import classNames from "classnames";
 
-import { cell, table } from "./table.module.scss";
-
-import Progress from "../common/Progress";
+import { cell, custom, table } from "./table.module.scss";
 import { Plan } from "../../types/entities";
 
 interface Props {
@@ -30,14 +28,6 @@ const PlansTable = ({ plans }: Props) => {
     return <Cell className={cell}>{plans[rowIndex].year}</Cell>;
   };
 
-  const progressRenderer: CellRenderer = (rowIndex) => {
-    return (
-      <Cell className={cell}>
-        <Progress value={rowIndex * 0.05} />
-      </Cell>
-    );
-  };
-
   const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
     return (
       <RowHeaderCell2
@@ -51,19 +41,18 @@ const PlansTable = ({ plans }: Props) => {
   return (
     <Table2
       numRows={plans.length}
-      className={table}
+      className={classNames(table, custom)}
       cellRendererDependencies={[plans]}
       defaultRowHeight={40}
-      columnWidths={[500, 300, 100, 150]}
+      columnWidths={[500, 300, 100]}
       enableColumnResizing={false}
       rowHeaderCellRenderer={rowHeaderRenderer}
     >
       <Column cellRenderer={typeRenderer} name={"Культура"} />
       <Column cellRenderer={areaRenderer} name={"Площадь, Га"} />
       <Column cellRenderer={yearRenderer} name={"Год"} />
-      <Column cellRenderer={progressRenderer} name={"Прогресс"} />
     </Table2>
   );
 };
 
-export default observer(PlansTable);
+export default PlansTable;

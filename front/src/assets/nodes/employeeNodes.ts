@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { Node } from "../../types/Node";
-import { areas } from "../data";
+import { organizations } from "../data";
 
 export const employeeNodes: Node[] = [
   {
@@ -11,7 +11,7 @@ export const employeeNodes: Node[] = [
     isExpanded: true,
     isSelected: true,
 
-    childNodes: areas.map((area) => {
+    childNodes: organizations.map((area) => {
       return {
         id: uuid(),
         icon: "folder-close",

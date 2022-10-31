@@ -1,26 +1,21 @@
 import { v4 as uuid } from "uuid";
 
 import { Employee } from "../../types/entities";
-import { areas } from "./areas";
+import { organizations } from "./organizations";
+import { posts } from "./posts";
 
 export const employees: Employee[] = [
   {
     id: uuid(),
     fullName: "Котенко Никита Алексеевич",
-    role: {
-      id: uuid(),
-      name: "Водитель",
-    },
-    area: areas[0],
+    post: posts[0],
+    organization: organizations[0],
   },
 
   {
     id: uuid(),
     fullName: "Котенко Алексей Николаевич",
-    role: {
-      id: uuid(),
-      name: "Водитель",
-    },
-    area: areas[1],
+    post: posts[0],
+    organization: organizations[0],
   },
 ];

@@ -1,6 +1,7 @@
 .table {
   width: 100%;
-  min-width: 70%;
+  height: 100%;
+
   min-height: 0;
 
   .cell {
@@ -10,4 +11,8 @@
     font-size: 16px;
     line-height: 2;
   }
+}
+
+.custom {
+  min-width: 70%;
 }

@@ -1,9 +1,9 @@
-import EmployeeRole from "./EmployeeRole";
-import Area from "./Area";
+import Organization from "./Organization";
+import Post from "./Post";
 
 export default interface Employee {
   id: string;
   fullName: string;
-  role: EmployeeRole;
-  area: Area;
+  post: Post;
+  organization: Organization;
 }

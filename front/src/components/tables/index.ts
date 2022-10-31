@@ -1,3 +1,4 @@
 import PlansTable from "./PlansTable";
+import PostsTable from "./PostsTable";
 
-export { PlansTable };
+export { PlansTable, PostsTable };

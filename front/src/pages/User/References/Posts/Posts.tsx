@@ -1,5 +1,12 @@
+import { observer } from "mobx-react-lite";
+
+import { PostsTable } from "../../../../components/tables";
+import PostsStore from "../../../../stores/entities/PostsStore";
+
 const Posts = () => {
-  return <div>{"Должности"}</div>;
+  const posts = PostsStore.posts;
+
+  return <PostsTable posts={posts} />;
 };
 
-export default Posts;
+export default observer(Posts);
