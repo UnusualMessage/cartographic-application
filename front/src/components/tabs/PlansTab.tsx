@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 
 import { PlansTable } from "../tables";
 import { PlansStore } from "../../stores/entities";
-import PlansChart from "../charts";
+import { PlansChart } from "../charts";
 
 const PlansTab = () => {
   let plans = PlansStore.plans;

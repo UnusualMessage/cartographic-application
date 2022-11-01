@@ -4,7 +4,7 @@ import { Employee } from "../../types/entities";
 import { employees } from "../../assets/data";
 
 class EmployeesStore {
-  private readonly _employees: Employee[];
+  private _employees: Employee[];
 
   constructor() {
     this._employees = employees;
@@ -14,6 +14,10 @@ class EmployeesStore {
 
   public get employees() {
     return this._employees;
+  }
+
+  public remove(id: string) {
+    this._employees = this._employees.filter((employee) => employee.id !== id);
   }
 }
 

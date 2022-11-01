@@ -7,14 +7,19 @@ import { posts } from "./posts";
 export const employees: Employee[] = [
   {
     id: uuid(),
-    fullName: "Котенко Никита Алексеевич",
+    firstName: "Никита",
+    secondName: "Котенко",
+    patronymic: "Алексеевич",
+    phone: "8 (953) 972-31-06",
     post: posts[0],
     organization: organizations[0],
   },
 
   {
     id: uuid(),
-    fullName: "Котенко Алексей Николаевич",
+    firstName: "Алексей",
+    secondName: "Котенко",
+    patronymic: "Николаевич",
     post: posts[0],
     organization: organizations[0],
   },

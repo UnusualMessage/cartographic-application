@@ -1,57 +1,48 @@
-import {
-  Cell,
-  CellRenderer,
-  Column,
-  RowHeaderCell2,
-  RowHeaderRenderer,
-  Table2,
-} from "@blueprintjs/table";
+import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
+import { observer } from "mobx-react-lite";
 
-import { cell, table } from "./table.module.scss";
+import { cell } from "../Table/table.module.scss";
+
 import { Post } from "../../types/entities";
+import { ColumnProps, Table } from "../Table";
+import { PostsStore } from "../../stores/entities";
 
-interface Props {
-  posts: Post[];
-}
+const PlansTable = () => {
+  const posts = PostsStore.posts;
 
-const PostsTable = ({ posts }: Props) => {
-  const titleRenderer: CellRenderer = (rowIndex) => {
-    return <Cell className={cell}>{posts[rowIndex].title}</Cell>;
-  };
+  const columns: ColumnProps[] = [
+    {
+      renderer: (rowIndex) => {
+        return <Cell className={cell}>{posts[rowIndex].title}</Cell>;
+      },
 
-  const numberRenderer: CellRenderer = (rowIndex) => {
-    return <Cell className={cell}>{posts[rowIndex].number}</Cell>;
-  };
+      name: "Название",
+    },
 
-  const organizationRenderer: CellRenderer = (rowIndex) => {
-    return <Cell className={cell}>{posts[rowIndex].organization.title}</Cell>;
-  };
+    {
+      renderer: (rowIndex) => {
+        return <Cell className={cell}>{posts[rowIndex].number}</Cell>;
+      },
 
-  const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
-    return (
-      <RowHeaderCell2
-        index={rowIndex}
-        name={(rowIndex + 1).toString()}
-        className={cell}
-      />
-    );
-  };
+      name: "Номер",
+    },
 
-  return (
-    <Table2
-      numRows={posts.length}
-      className={table}
-      cellRendererDependencies={[posts]}
-      defaultRowHeight={40}
-      columnWidths={[500, 500, 500]}
-      enableColumnResizing={false}
-      rowHeaderCellRenderer={rowHeaderRenderer}
-    >
-      <Column cellRenderer={titleRenderer} name={"Должность"} />
-      <Column cellRenderer={numberRenderer} name={"Номер"} />
-      <Column cellRenderer={organizationRenderer} name={"Организация"} />
-    </Table2>
-  );
+    {
+      renderer: (rowIndex) => {
+        return (
+          <Cell className={cell}>
+            <TruncatedFormat2 detectTruncation>
+              {posts[rowIndex].organization.title}
+            </TruncatedFormat2>
+          </Cell>
+        );
+      },
+
+      name: "Организация",
+    },
+  ];
+
+  return <Table<Post> items={posts} columns={columns} />;
 };
 
-export default PostsTable;
+export default observer(PlansTable);
