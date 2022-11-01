@@ -1,12 +1,12 @@
 import React from "react";
 
-import Sider from "../../../components/Sider";
-import { ViewMap } from "../../../components/Map";
-import Footer from "../../../components/Footer";
-import Loader from "../../../components/common/Loader";
-import Categories from "../../../components/Sider/Categories";
-import TabsList from "../../../components/Footer/TabsList";
-import Content from "../../../components/Content";
+import Sider from "../../../components/common/Sider";
+import { ViewMap } from "../../../components/common/Map";
+import Footer from "../../../components/common/Footer";
+import Loader from "../../../components/auxiliary/Loader";
+import Categories from "../../../components/common/Sider/Categories";
+import TabsList from "../../../components/common/Footer/TabsList";
+import Content from "../../../components/common/Content";
 
 const View = () => {
   return (

@@ -19,13 +19,13 @@ const fillNodes = (employees?: Employee[]) => {
 
   employees.forEach((employee) => {
     const area = initial[0].childNodes?.find(
-      (node) => node.nodeData === employee.area.id
+      (node) => node.nodeData === employee.organization.id
     );
 
     if (area) {
       area.childNodes?.push({
         id: employee.id,
-        label: employee.fullName,
+        label: `${employee.secondName} ${employee.firstName} ${employee.patronymic}`,
         icon: "person",
         nodeData: employee,
       });

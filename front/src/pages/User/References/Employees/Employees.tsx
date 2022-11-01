@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 
 import { EmployeesTable } from "../../../../components/tables";
-import TableButtons from "../../../../components/common/TableButtons";
+import TableButtons from "../../../../components/auxiliary/TableButtons";
 import { EmployeesStore } from "../../../../stores/entities";
 
 const Employees = () => {

@@ -11,13 +11,13 @@ export const employeeNodes: Node[] = [
     isExpanded: true,
     isSelected: true,
 
-    childNodes: organizations.map((area) => {
+    childNodes: organizations.map((organization) => {
       return {
         id: uuid(),
         icon: "folder-close",
-        label: area.title,
+        label: organization.title,
         isExpanded: true,
-        nodeData: area.id,
+        nodeData: organization.id,
         childNodes: [],
       };
     }),

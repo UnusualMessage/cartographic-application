@@ -1,9 +1,9 @@
 import { Cell } from "@blueprintjs/table";
 
-import { cell } from "../Table/table.module.scss";
+import { cell } from "../common/Table/table.module.scss";
 
 import { Plan } from "../../types/entities";
-import { ColumnProps, Table } from "../Table";
+import { ColumnProps, Table } from "../common/Table";
 
 interface Props {
   plans: Plan[];

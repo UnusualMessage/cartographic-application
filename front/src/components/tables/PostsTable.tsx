@@ -1,9 +1,9 @@
 import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 
-import { cell } from "../Table/table.module.scss";
+import { cell } from "../common/Table/table.module.scss";
 
 import { Post } from "../../types/entities";
-import { ColumnProps, Table } from "../Table";
+import { ColumnProps, Table } from "../common/Table";
 
 interface Props {
   posts: Post[];

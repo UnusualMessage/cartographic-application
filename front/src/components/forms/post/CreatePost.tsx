@@ -1,7 +1,7 @@
 import { Classes, Icon } from "@blueprintjs/core";
 
-import Empty from "../../common/Empty";
-import DialogForm from "../../DialogForm";
+import Empty from "../../auxiliary/Empty";
+import DialogForm from "../../auxiliary/DialogForm";
 
 const CreatePost = () => {
   return (

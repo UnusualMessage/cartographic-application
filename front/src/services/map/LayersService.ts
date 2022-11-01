@@ -5,7 +5,7 @@ import { FeaturesStore } from "../../stores";
 import { LayersStore, MapStore } from "../../stores/map";
 import VectorSource from "ol/source/Vector";
 import VectorLayer from "ol/layer/Vector";
-import { BaseLayerType } from "../../types/common/BaseLayerType";
+import { BaseLayerType } from "../../types/common";
 
 class LayersService {
   public createVectorLayer(source: VectorSource) {
