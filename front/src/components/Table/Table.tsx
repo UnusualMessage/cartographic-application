@@ -8,8 +8,6 @@ import {
 
 import { cell, wrapper } from "./table.module.scss";
 
-import TableButtons from "../common/TableButtons";
-
 export interface ColumnProps {
   renderer: CellRenderer;
   name: string;
@@ -51,7 +49,6 @@ const Table = <T,>({ items, columns }: Props<T>) => {
           );
         })}
       </Table2>
-      <TableButtons />
     </>
   );
 };

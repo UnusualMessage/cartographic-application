@@ -1,15 +1,15 @@
 import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
-import { observer } from "mobx-react-lite";
 
 import { cell } from "../Table/table.module.scss";
 
 import { Post } from "../../types/entities";
 import { ColumnProps, Table } from "../Table";
-import { PostsStore } from "../../stores/entities";
 
-const PlansTable = () => {
-  const posts = PostsStore.posts;
+interface Props {
+  posts: Post[];
+}
 
+const PostsTable = ({ posts }: Props) => {
   const columns: ColumnProps[] = [
     {
       renderer: (rowIndex) => {
@@ -45,4 +45,4 @@ const PlansTable = () => {
   return <Table<Post> items={posts} columns={columns} />;
 };
 
-export default observer(PlansTable);
+export default PostsTable;

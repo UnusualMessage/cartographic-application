@@ -1,31 +1,12 @@
 import { ButtonGroup } from "@blueprintjs/core";
 
 import { wrapper } from "./buttons.module.scss";
+import { PropsWithChildren } from "react";
 
-import Create from "./Create";
-import Update from "./Update";
-import Remove from "./Remove";
-import Duplicate from "./Duplicate";
-
-interface Props {
-  createForm?: JSX.Element;
-  updateForm?: JSX.Element;
-  removeForm?: JSX.Element;
-  duplicateForm?: JSX.Element;
-}
-
-const TableButtons = ({
-  createForm,
-  updateForm,
-  removeForm,
-  duplicateForm,
-}: Props) => {
+const TableButtons = ({ children }: PropsWithChildren) => {
   return (
     <ButtonGroup className={wrapper} minimal large>
-      <Create>{createForm}</Create>
-      <Update>{updateForm}</Update>
-      <Remove>{removeForm}</Remove>
-      <Duplicate>{duplicateForm}</Duplicate>
+      {children}
     </ButtonGroup>
   );
 };

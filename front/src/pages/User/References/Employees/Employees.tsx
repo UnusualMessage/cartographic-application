@@ -1,7 +1,18 @@
+import { observer } from "mobx-react-lite";
+
 import { EmployeesTable } from "../../../../components/tables";
+import TableButtons from "../../../../components/common/TableButtons";
+import { EmployeesStore } from "../../../../stores/entities";
 
 const Employees = () => {
-  return <EmployeesTable />;
+  const employees = EmployeesStore.employees;
+
+  return (
+    <>
+      <EmployeesTable employees={employees} />
+      <TableButtons />
+    </>
+  );
 };
 
-export default Employees;
+export default observer(Employees);
