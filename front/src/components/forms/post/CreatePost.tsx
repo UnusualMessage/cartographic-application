@@ -3,13 +3,16 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/DialogForm";
 import { TextInput } from "../../inputs";
-import { PostsStore } from "../../../stores/entities";
-import { organizations } from "../../../assets/data";
+import { OrganizationsStore, PostsStore } from "../../../stores/entities";
 import SelectInput from "../../inputs/SelectInput";
 import { CreatePost } from "../../../types/entities/Post";
 
 const CreatePost = () => {
-  const { register, handleSubmit } = useForm<CreatePost>({
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<CreatePost>({
     defaultValues: {
       title: "",
       number: "",
@@ -21,6 +24,8 @@ const CreatePost = () => {
     await PostsStore.add(data);
   };
 
+  const organizations = OrganizationsStore.organizations;
+
   return (
     <DialogForm
       title={"Создание записи (должность)"}
@@ -28,8 +33,17 @@ const CreatePost = () => {
       icon={<Icon icon={"add"} />}
       onAccept={handleSubmit(onSubmit)}
     >
-      <TextInput label={"Название"} required {...register("title")} />
-      <TextInput label={"Номер"} required {...register("number")} />
+      <TextInput
+        label={"Название"}
+        invalid={!!errors.title}
+        required
+        {...register("title", { required: true })}
+      />
+      <TextInput
+        label={"Номер"}
+        {...register("number")}
+        invalid={!!errors.number}
+      />
       <SelectInput
         options={organizations.map((organization) => {
           return {
@@ -38,7 +52,9 @@ const CreatePost = () => {
           };
         })}
         label={"Организация"}
-        {...register("organizationId")}
+        invalid={!!errors.organizationId}
+        required
+        {...register("organizationId", { required: true })}
       />
     </DialogForm>
   );

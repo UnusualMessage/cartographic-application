@@ -36,8 +36,6 @@ const DialogForm = ({
     if (onAccept) {
       onAccept();
     }
-
-    handleClose();
   };
 
   const handleSubmit: FormEventHandler = (event) => {
