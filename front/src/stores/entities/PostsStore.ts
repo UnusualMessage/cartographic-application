@@ -1,7 +1,10 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { v4 as uuid } from "uuid";
 
 import { posts } from "../../assets/data/posts";
 import { Post } from "../../types/entities";
+import { CreatePost } from "../../types/entities/Post";
+import { organizations } from "../../assets/data";
 
 class PostsStore {
   private _posts: Post[];
@@ -38,9 +41,23 @@ class PostsStore {
     return this._post;
   }
 
-  public async add(post: Post) {
+  public async add(post: CreatePost) {
     const posts = this._posts.slice();
-    posts.push(post);
+
+    const organization = organizations.find(
+      (organization) => post.organizationId === organization.id
+    );
+
+    if (organization) {
+      const newPost: Post = {
+        id: uuid(),
+        title: post.title,
+        number: post.number,
+        organization: organization,
+      };
+
+      posts.push(newPost);
+    }
 
     runInAction(() => {
       this._posts = posts;

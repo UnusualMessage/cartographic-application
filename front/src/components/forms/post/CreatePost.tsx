@@ -1,24 +1,23 @@
 import { Icon } from "@blueprintjs/core";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import { v4 as uuid } from "uuid";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/DialogForm";
 import { TextInput } from "../../inputs";
-import { Post } from "../../../types/entities";
 import { PostsStore } from "../../../stores/entities";
 import { organizations } from "../../../assets/data";
+import SelectInput from "../../inputs/SelectInput";
+import { CreatePost } from "../../../types/entities/Post";
 
 const CreatePost = () => {
-  const { control, handleSubmit } = useForm<Post>({
+  const { register, handleSubmit } = useForm<CreatePost>({
     defaultValues: {
       title: "",
       number: "",
+      organizationId: "",
     },
   });
 
-  const onSubmit: SubmitHandler<Post> = async (data) => {
-    data.organization = organizations[0];
-    data.id = uuid();
+  const onSubmit: SubmitHandler<CreatePost> = async (data) => {
     await PostsStore.add(data);
   };
 
@@ -29,20 +28,17 @@ const CreatePost = () => {
       icon={<Icon icon={"add"} />}
       onAccept={handleSubmit(onSubmit)}
     >
-      <Controller
-        name="title"
-        control={control}
-        render={({ field }) => (
-          <TextInput label={"Название"} required {...field} />
-        )}
-      />
-
-      <Controller
-        name="number"
-        control={control}
-        render={({ field }) => (
-          <TextInput label={"Номер"} required {...field} />
-        )}
+      <TextInput label={"Название"} required {...register("title")} />
+      <TextInput label={"Номер"} required {...register("number")} />
+      <SelectInput
+        options={organizations.map((organization) => {
+          return {
+            label: organization.title,
+            value: organization.id,
+          };
+        })}
+        label={"Организация"}
+        {...register("organizationId")}
       />
     </DialogForm>
   );

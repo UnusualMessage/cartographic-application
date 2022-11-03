@@ -6,3 +6,9 @@ export default interface Post {
   number?: string;
   organization: Organization;
 }
+
+export interface CreatePost {
+  title: string;
+  number?: string;
+  organizationId: string;
+}

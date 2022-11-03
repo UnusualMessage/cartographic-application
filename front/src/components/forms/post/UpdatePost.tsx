@@ -1,7 +1,7 @@
 import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/DialogForm";
 import { PostsStore } from "../../../stores/entities";
@@ -16,7 +16,7 @@ interface Props {
 const UpdatePost = ({ id }: Props) => {
   const post = PostsStore.post;
 
-  const { control, reset, handleSubmit } = useForm<Post>({
+  const { register, reset, handleSubmit } = useForm<Post>({
     defaultValues: useMemo(() => {
       return {
         title: post?.title,
@@ -44,21 +44,8 @@ const UpdatePost = ({ id }: Props) => {
       onAccept={id ? handleSubmit(onSubmit) : undefined}
       disabled={!id}
     >
-      <Controller
-        name="title"
-        control={control}
-        render={({ field }) => (
-          <TextInput label={"Название"} required {...field} />
-        )}
-      />
-
-      <Controller
-        name="number"
-        control={control}
-        render={({ field }) => (
-          <TextInput label={"Номер"} required {...field} />
-        )}
-      />
+      <TextInput label={"Название"} required {...register("title")} />
+      <TextInput label={"Номер"} required {...register("number")} />
     </DialogForm>
   );
 };
