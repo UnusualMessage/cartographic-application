@@ -1,4 +1,6 @@
 import { observer } from "mobx-react-lite";
+import { Region } from "@blueprintjs/table";
+import { useState } from "react";
 
 import { PostsTable } from "../../../../components/tables";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
@@ -11,6 +13,8 @@ import {
 } from "../../../../components/forms/post";
 
 const Posts = () => {
+  const [regions, setRegions] = useState<Region[]>([]);
+
   const posts = PostsStore.posts;
 
   return (

@@ -11,13 +11,13 @@ import Categories from "../../../components/common/Sider/Categories";
 import Toolbar from "../../../components/common/Sider/Toolbar";
 import Content from "../../../components/common/Content";
 import TabsList from "../../../components/common/Footer/TabsList";
-import { HistoryService } from "../../../services/history";
+import { NotificationsService } from "../../../services/ui";
 
 const Edit = () => {
   const ref = useRef<Toaster>(null);
 
   useLayoutEffect(() => {
-    HistoryService.toaster = ref.current;
+    NotificationsService.toaster = ref.current;
   }, []);
 
   return (

@@ -1,12 +1,15 @@
 import {
   CellRenderer,
   Column,
+  Region,
   RowHeaderCell2,
   RowHeaderRenderer,
   Table2,
 } from "@blueprintjs/table";
 
 import { cell, wrapper } from "./table.module.scss";
+
+export type OnSelection = (selectedRegions: Region[]) => void;
 
 export interface ColumnProps {
   renderer: CellRenderer;
@@ -16,9 +19,10 @@ export interface ColumnProps {
 interface Props<T> {
   items: T[];
   columns: ColumnProps[];
+  onSelection?: OnSelection;
 }
 
-const Table = <T,>({ items, columns }: Props<T>) => {
+const Table = <T,>({ items, columns, onSelection }: Props<T>) => {
   const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
     return (
       <RowHeaderCell2
@@ -35,9 +39,11 @@ const Table = <T,>({ items, columns }: Props<T>) => {
         numRows={items.length}
         className={wrapper}
         cellRendererDependencies={[items]}
-        defaultRowHeight={40}
-        enableColumnResizing={false}
         rowHeaderCellRenderer={rowHeaderRenderer}
+        onSelection={onSelection}
+        defaultRowHeight={40}
+        enableMultipleSelection={false}
+        enableColumnResizing={false}
       >
         {columns.map((column) => {
           return (
