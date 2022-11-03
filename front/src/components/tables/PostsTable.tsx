@@ -3,13 +3,14 @@ import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 import { cell } from "../common/Table/table.module.scss";
 
 import { Post } from "../../types/entities";
-import { ColumnProps, Table } from "../common/Table";
+import { ColumnProps, OnSelection, Table } from "../common/Table";
 
 interface Props {
   posts: Post[];
+  onSelection?: OnSelection;
 }
 
-const PostsTable = ({ posts }: Props) => {
+const PostsTable = ({ posts, onSelection }: Props) => {
   const columns: ColumnProps[] = [
     {
       renderer: (rowIndex) => {
@@ -42,7 +43,9 @@ const PostsTable = ({ posts }: Props) => {
     },
   ];
 
-  return <Table<Post> items={posts} columns={columns} />;
+  return (
+    <Table<Post> items={posts} columns={columns} onSelection={onSelection} />
+  );
 };
 
 export default PostsTable;
