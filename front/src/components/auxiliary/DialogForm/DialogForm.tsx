@@ -1,5 +1,5 @@
 import { Button, Classes, Dialog, MaybeElement } from "@blueprintjs/core";
-import { PropsWithChildren, useState } from "react";
+import { FormEventHandler, PropsWithChildren, useState } from "react";
 
 interface Props extends PropsWithChildren {
   text: string;
@@ -40,6 +40,11 @@ const DialogForm = ({
     handleClose();
   };
 
+  const handleSubmit: FormEventHandler = (event) => {
+    event.preventDefault();
+    handleAccept();
+  };
+
   return (
     <>
       <Button
@@ -49,22 +54,24 @@ const DialogForm = ({
         disabled={disabled}
       />
       <Dialog isOpen={isOpen} onClose={handleClose} title={title} usePortal>
-        <div className={Classes.DIALOG_BODY}>{children}</div>
+        <form onSubmit={handleSubmit}>
+          <div className={Classes.DIALOG_BODY}>{children}</div>
 
-        {onAccept ? (
-          <div className={Classes.DIALOG_FOOTER}>
-            <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-              <Button intent={"success"} onClick={handleAccept}>
-                Подтвердить
-              </Button>
-              <Button intent={"danger"} onClick={handleDeny}>
-                Отменить
-              </Button>
+          {onAccept ? (
+            <div className={Classes.DIALOG_FOOTER}>
+              <div className={Classes.DIALOG_FOOTER_ACTIONS}>
+                <Button intent={"success"} type={"submit"}>
+                  Подтвердить
+                </Button>
+                <Button intent={"danger"} onClick={handleDeny}>
+                  Отменить
+                </Button>
+              </div>
             </div>
-          </div>
-        ) : (
-          <></>
-        )}
+          ) : (
+            <></>
+          )}
+        </form>
       </Dialog>
     </>
   );

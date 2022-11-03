@@ -34,6 +34,8 @@ class PostsStore {
     runInAction(() => {
       this._post = this._posts.find((post) => post.id === id);
     });
+
+    return this._post;
   }
 
   public async add(post: Post) {
