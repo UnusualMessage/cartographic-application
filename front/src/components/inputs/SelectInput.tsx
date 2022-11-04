@@ -1,22 +1,19 @@
 import { FormGroup, HTMLSelect } from "@blueprintjs/core";
 import { ChangeEvent, forwardRef } from "react";
 import { v4 as uuid } from "uuid";
+import { FieldError } from "react-hook-form";
 
-interface Option {
-  label: string;
-  value: string;
-}
+import { SelectOption } from "../../types/common";
 
 interface Props {
-  options: Option[];
+  options: SelectOption[];
   label: string;
-  required?: boolean;
-  invalid?: boolean;
+  required?: boolean | string;
   value?: string;
   defaultValue?: string;
   onChange: (event: ChangeEvent) => void;
   name: string;
-  message?: string;
+  error?: FieldError;
 }
 
 const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
@@ -24,12 +21,11 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
     options,
     label,
     required,
-    invalid,
     onChange,
     name,
     value,
     defaultValue,
-    message,
+    error,
   } = props;
 
   const id = uuid();
@@ -38,9 +34,9 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
     <FormGroup
       label={label}
       labelFor={id}
-      helperText={invalid ? message : undefined}
+      helperText={error ? error.message : undefined}
       labelInfo={required ? "(обязательно для заполнения)" : undefined}
-      intent={invalid ? "danger" : "primary"}
+      intent={error ? "danger" : "primary"}
     >
       <HTMLSelect
         id={id}

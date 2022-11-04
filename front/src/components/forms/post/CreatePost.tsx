@@ -2,10 +2,10 @@ import { Icon } from "@blueprintjs/core";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/DialogForm";
-import { TextInput } from "../../inputs";
 import { OrganizationsStore, PostsStore } from "../../../stores/entities";
-import SelectInput from "../../inputs/SelectInput";
 import { CreatePost } from "../../../types/entities/Post";
+import { formRenderer, getSelectOptions } from "../../../utils/forms";
+import { createPost } from "../../../assets/forms";
 
 const CreatePost = () => {
   const {
@@ -41,32 +41,11 @@ const CreatePost = () => {
       onDeny={onDeny}
       successful={isSubmitSuccessful}
     >
-      <TextInput
-        label={"Название"}
-        invalid={!!errors.title}
-        message={errors.title?.message}
-        required
-        {...register("title", { required: "Заполните поле!" })}
-      />
-      <TextInput
-        label={"Номер"}
-        invalid={!!errors.number}
-        message={errors.number?.message}
-        {...register("number")}
-      />
-      <SelectInput
-        options={organizations.map((organization) => {
-          return {
-            label: organization.title,
-            value: organization.id,
-          };
-        })}
-        label={"Организация"}
-        invalid={!!errors.organizationId}
-        message={errors.organizationId?.message}
-        required
-        {...register("organizationId", { required: "Заполните поле!" })}
-      />
+      {formRenderer(
+        createPost(getSelectOptions(organizations)),
+        register,
+        errors
+      )}
     </DialogForm>
   );
 };
