@@ -21,20 +21,21 @@ export const formRenderer = <T extends FieldValues>(
           case "text":
             return (
               <TextInput
+                key={`input-${field.label}`}
                 label={field.label}
                 required={field.required}
                 error={error}
-                key={`input-${field.label}`}
                 {...register(field.name, { required: field.required })}
               />
             );
           case "select":
             return (
               <SelectInput
+                key={`input-${field.label}`}
                 options={field.options ?? []}
                 label={field.label}
+                required={field.required}
                 error={error}
-                required
                 {...register(field.name, { required: field.required })}
               />
             );
