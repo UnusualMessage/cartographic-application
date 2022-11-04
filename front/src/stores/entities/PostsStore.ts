@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 
 import { posts } from "../../assets/data/posts";
 import { Post } from "../../types/entities";
-import { CreatePost } from "../../types/entities/Post";
+import { CreatePost, UpdatePost } from "../../types/entities/Post";
 import { organizations } from "../../assets/data";
 
 class PostsStore {
@@ -80,13 +80,26 @@ class PostsStore {
     }
   }
 
-  public async update(post: Post) {
-    runInAction(() => {
-      this._posts = this.posts.map((item) =>
-        item.id === post.id ? post : item
+  public async update(post: UpdatePost) {
+    const posts = this._posts.slice();
+
+    const updatedPost = this.posts.find((item) => item.id === post.id);
+
+    if (updatedPost) {
+      const organization = organizations.find(
+        (organization) => organization.id === post.organizationId
       );
-      this._post = post;
-    });
+
+      if (organization) {
+        updatedPost.title = post.title;
+        updatedPost.number = post.number;
+        updatedPost.organization = organization;
+
+        runInAction(() => {
+          this._posts = posts;
+        });
+      }
+    }
   }
 
   public async remove(id: string) {

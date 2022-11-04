@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { Icon } from "@blueprintjs/core";
+import { useState } from "react";
 
 import DialogForm from "../../auxiliary/DialogForm";
 import { PostsStore } from "../../../stores/entities";
 import { useFetch } from "../../../hooks";
-import { useState } from "react";
 import { Post } from "../../../types/entities";
 
 interface Props {
@@ -30,12 +30,13 @@ const DuplicatePost = ({ id }: Props) => {
 
   return (
     <DialogForm
-      title={"Дублирование должности"}
-      text={"Дублировать"}
-      icon={<Icon icon={"duplicate"} />}
+      title={"Дублирование записи (должность)"}
+      buttonText={"Дублировать"}
+      buttonIcon={<Icon icon={"duplicate"} />}
+      buttonDisabled={!id}
       onAccept={id ? handleDuplicate : undefined}
-      disabled={!id}
       successful={successful}
+      setSuccessful={setSuccessful}
     >
       {`Подтвердите дублирование записи ${post?.title} - ${post?.id}`}
     </DialogForm>

@@ -4,10 +4,11 @@ import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/DialogForm";
-import { PostsStore } from "../../../stores/entities";
+import { OrganizationsStore, PostsStore } from "../../../stores/entities";
 import { useFetch } from "../../../hooks";
-import { TextInput } from "../../inputs";
+import { SelectInput, TextInput } from "../../inputs";
 import { Post } from "../../../types/entities";
+import { UpdatePost } from "../../../types/entities/Post";
 
 interface Props {
   id?: string;
@@ -16,12 +17,19 @@ interface Props {
 const UpdatePost = ({ id }: Props) => {
   const [successful, setSuccessful] = useState(false);
   const [post, setPost] = useState<Post | undefined>(undefined);
+  const organizations = OrganizationsStore.organizations;
 
-  const { register, reset, handleSubmit } = useForm<Post>({
+  const {
+    register,
+    reset,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<UpdatePost>({
     defaultValues: useMemo(() => {
       return {
         title: post?.title,
         number: post?.number,
+        organizationId: post?.organization.id,
       };
     }, [post]),
   });
@@ -34,22 +42,47 @@ const UpdatePost = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<Post> = async (data) => {
+  const onSubmit: SubmitHandler<UpdatePost> = async (data) => {
     await PostsStore.update(data);
     setSuccessful(true);
   };
 
   return (
     <DialogForm
-      title={"Редактирование должности"}
-      text={"Редактировать"}
-      icon={<Icon icon={"edit"} />}
+      title={"Редактирование записи (должность)"}
+      buttonText={"Редактировать"}
+      buttonIcon={<Icon icon={"edit"} />}
+      buttonDisabled={!id}
       onAccept={id ? handleSubmit(onSubmit) : undefined}
-      disabled={!id}
       successful={successful}
+      setSuccessful={setSuccessful}
     >
-      <TextInput label={"Название"} required {...register("title")} />
-      <TextInput label={"Номер"} required {...register("number")} />
+      <TextInput
+        label={"Название"}
+        invalid={!!errors.title}
+        message={errors.title?.message}
+        required
+        {...register("title", { required: "Заполните поле!" })}
+      />
+      <TextInput
+        label={"Номер"}
+        invalid={!!errors.number}
+        message={errors.number?.message}
+        {...register("number")}
+      />
+      <SelectInput
+        options={organizations.map((organization) => {
+          return {
+            label: organization.title,
+            value: organization.id,
+          };
+        })}
+        label={"Организация"}
+        invalid={!!errors.organizationId}
+        message={errors.organizationId?.message}
+        required
+        {...register("organizationId", { required: "Заполните поле!" })}
+      />
     </DialogForm>
   );
 };

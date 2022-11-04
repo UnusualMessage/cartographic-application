@@ -31,11 +31,12 @@ const RemovePost = ({ id }: Props) => {
   return (
     <DialogForm
       title={"Удаление записи (должность)"}
-      text={"Удалить"}
-      icon={<Icon icon={"remove"} />}
+      buttonText={"Удалить"}
+      buttonIcon={<Icon icon={"remove"} />}
+      buttonDisabled={!id}
       onAccept={id ? handleRemove : undefined}
-      disabled={!id}
       successful={successful}
+      setSuccessful={setSuccessful}
     >
       {`Подтвердите удаление записи ${post?.title} - ${post?.id}`}
     </DialogForm>

@@ -12,3 +12,10 @@ export interface CreatePost {
   number?: string;
   organizationId: string;
 }
+
+export interface UpdatePost {
+  id: string;
+  title: string;
+  number?: string;
+  organizationId: string;
+}

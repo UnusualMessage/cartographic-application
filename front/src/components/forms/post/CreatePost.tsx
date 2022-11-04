@@ -35,8 +35,8 @@ const CreatePost = () => {
   return (
     <DialogForm
       title={"Создание записи (должность)"}
-      text={"Создать"}
-      icon={<Icon icon={"add"} />}
+      buttonText={"Создать"}
+      buttonIcon={<Icon icon={"add"} />}
       onAccept={handleSubmit(onSubmit)}
       onDeny={onDeny}
       successful={isSubmitSuccessful}

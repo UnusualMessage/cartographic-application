@@ -8,26 +8,34 @@ import {
 } from "react";
 
 interface Props extends PropsWithChildren {
-  text: string;
+  buttonText: string;
+  buttonIcon: MaybeElement;
+  buttonDisabled?: boolean;
   title: string;
-  icon: MaybeElement;
-  disabled?: boolean;
   onAccept?: () => void;
   onDeny?: () => void;
   successful?: boolean;
+  setSuccessful?: (value: boolean) => void;
 }
 
 const DialogForm = ({
   children,
-  text,
+  buttonDisabled,
+  buttonIcon,
+  buttonText,
   title,
-  icon,
   onAccept,
   onDeny,
-  disabled,
   successful,
+  setSuccessful,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
+
+  const resetSuccess = () => {
+    if (setSuccessful) {
+      setSuccessful(false);
+    }
+  };
 
   const handleClick = () => setIsOpen(!isOpen);
   const handleClose = () => setIsOpen(false);
@@ -61,14 +69,16 @@ const DialogForm = ({
     <>
       <Button
         onClick={handleClick}
-        text={text}
-        icon={icon}
-        disabled={disabled}
+        text={buttonText}
+        icon={buttonIcon}
+        disabled={buttonDisabled}
       />
       <Dialog
         isOpen={isOpen}
         onClose={handleClose}
         title={title}
+        onClosed={resetSuccess}
+        onOpened={resetSuccess}
         usePortal
         lazy
       >
