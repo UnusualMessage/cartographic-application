@@ -10,19 +10,30 @@ interface Props {
   defaultValue?: string;
   onChange: (event: ChangeEvent) => void;
   name: string;
+  message?: string;
 }
 
 const TextInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
   const id = uuid();
 
-  const { label, required, invalid, value, defaultValue, name, onChange } =
-    props;
+  const {
+    label,
+    required,
+    invalid,
+    value,
+    defaultValue,
+    name,
+    onChange,
+    message,
+  } = props;
 
   return (
     <FormGroup
       label={label}
       labelFor={id}
       labelInfo={required ? "(обязательно для заполнения)" : undefined}
+      intent={invalid ? "danger" : "primary"}
+      helperText={invalid ? message : undefined}
     >
       <InputGroup
         id={id}

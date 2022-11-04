@@ -1,30 +1,30 @@
 import { observer } from "mobx-react-lite";
 import { Icon } from "@blueprintjs/core";
-import { v4 as uuid } from "uuid";
 
 import DialogForm from "../../auxiliary/DialogForm";
 import { PostsStore } from "../../../stores/entities";
 import { useFetch } from "../../../hooks";
+import { useState } from "react";
+import { Post } from "../../../types/entities";
 
 interface Props {
   id?: string;
 }
 
 const DuplicatePost = ({ id }: Props) => {
-  const post = PostsStore.post;
+  const [post, setPost] = useState<Post | undefined>(undefined);
+  const [successful, setSuccessful] = useState(false);
 
   useFetch(async () => {
     if (id) {
-      await PostsStore.getById(id);
+      setPost(await PostsStore.getById(id));
     }
   }, [id]);
 
   const handleDuplicate = async () => {
     if (post) {
-      const duplicatedPost = { ...post };
-      duplicatedPost.id = uuid();
-
-      await PostsStore.add(duplicatedPost);
+      await PostsStore.duplicate(post.id);
+      setSuccessful(true);
     }
   };
 
@@ -35,6 +35,7 @@ const DuplicatePost = ({ id }: Props) => {
       icon={<Icon icon={"duplicate"} />}
       onAccept={id ? handleDuplicate : undefined}
       disabled={!id}
+      successful={successful}
     >
       {`Подтвердите дублирование записи ${post?.title} - ${post?.id}`}
     </DialogForm>

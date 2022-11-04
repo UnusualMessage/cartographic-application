@@ -64,6 +64,22 @@ class PostsStore {
     });
   }
 
+  public async duplicate(id: string) {
+    const post = this.posts.find((post) => post.id === id);
+    const posts = this._posts.slice();
+
+    if (post) {
+      const copy = { ...post };
+      copy.id = uuid();
+
+      posts.push(copy);
+
+      runInAction(() => {
+        this._posts = posts;
+      });
+    }
+  }
+
   public async update(post: Post) {
     runInAction(() => {
       this._posts = this.posts.map((item) =>

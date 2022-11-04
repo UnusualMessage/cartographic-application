@@ -1,5 +1,11 @@
 import { Button, Classes, Dialog, MaybeElement } from "@blueprintjs/core";
-import { FormEventHandler, PropsWithChildren, useState } from "react";
+import {
+  FormEventHandler,
+  memo,
+  PropsWithChildren,
+  useEffect,
+  useState,
+} from "react";
 
 interface Props extends PropsWithChildren {
   text: string;
@@ -8,6 +14,7 @@ interface Props extends PropsWithChildren {
   disabled?: boolean;
   onAccept?: () => void;
   onDeny?: () => void;
+  successful?: boolean;
 }
 
 const DialogForm = ({
@@ -18,6 +25,7 @@ const DialogForm = ({
   onAccept,
   onDeny,
   disabled,
+  successful,
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -43,6 +51,12 @@ const DialogForm = ({
     handleAccept();
   };
 
+  useEffect(() => {
+    if (successful) {
+      handleClose();
+    }
+  }, [successful]);
+
   return (
     <>
       <Button
@@ -51,7 +65,13 @@ const DialogForm = ({
         icon={icon}
         disabled={disabled}
       />
-      <Dialog isOpen={isOpen} onClose={handleClose} title={title} usePortal>
+      <Dialog
+        isOpen={isOpen}
+        onClose={handleClose}
+        title={title}
+        usePortal
+        lazy
+      >
         <form onSubmit={handleSubmit}>
           <div className={Classes.DIALOG_BODY}>{children}</div>
 
@@ -75,4 +95,4 @@ const DialogForm = ({
   );
 };
 
-export default DialogForm;
+export default memo(DialogForm);

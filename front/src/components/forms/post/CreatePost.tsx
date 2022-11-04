@@ -11,7 +11,8 @@ const CreatePost = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    reset,
+    formState: { errors, isSubmitSuccessful },
   } = useForm<CreatePost>({
     defaultValues: {
       title: "",
@@ -22,6 +23,11 @@ const CreatePost = () => {
 
   const onSubmit: SubmitHandler<CreatePost> = async (data) => {
     await PostsStore.add(data);
+    reset();
+  };
+
+  const onDeny = () => {
+    reset();
   };
 
   const organizations = OrganizationsStore.organizations;
@@ -32,17 +38,21 @@ const CreatePost = () => {
       text={"Создать"}
       icon={<Icon icon={"add"} />}
       onAccept={handleSubmit(onSubmit)}
+      onDeny={onDeny}
+      successful={isSubmitSuccessful}
     >
       <TextInput
         label={"Название"}
         invalid={!!errors.title}
+        message={errors.title?.message}
         required
-        {...register("title", { required: true })}
+        {...register("title", { required: "Заполните поле!" })}
       />
       <TextInput
         label={"Номер"}
-        {...register("number")}
         invalid={!!errors.number}
+        message={errors.number?.message}
+        {...register("number")}
       />
       <SelectInput
         options={organizations.map((organization) => {
@@ -53,8 +63,9 @@ const CreatePost = () => {
         })}
         label={"Организация"}
         invalid={!!errors.organizationId}
+        message={errors.organizationId?.message}
         required
-        {...register("organizationId", { required: true })}
+        {...register("organizationId", { required: "Заполните поле!" })}
       />
     </DialogForm>
   );

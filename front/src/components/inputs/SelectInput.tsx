@@ -16,6 +16,7 @@ interface Props {
   defaultValue?: string;
   onChange: (event: ChangeEvent) => void;
   name: string;
+  message?: string;
 }
 
 const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
@@ -28,6 +29,7 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
     name,
     value,
     defaultValue,
+    message,
   } = props;
 
   const id = uuid();
@@ -36,6 +38,7 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
     <FormGroup
       label={label}
       labelFor={id}
+      helperText={invalid ? message : undefined}
       labelInfo={required ? "(обязательно для заполнения)" : undefined}
       intent={invalid ? "danger" : "primary"}
     >

@@ -29,7 +29,6 @@ const inputValueRenderer = (feature: GeocoderFeature) => {
 };
 
 const onItemSelect = (feature: GeocoderFeature) => {
-  console.log(feature);
   if (feature.geometry.type === "Point") {
     ViewStore.centerTo(fromLonLat((feature.geometry as Point).coordinates));
   }

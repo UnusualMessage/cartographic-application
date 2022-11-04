@@ -1,6 +1,6 @@
 import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/DialogForm";
@@ -14,7 +14,8 @@ interface Props {
 }
 
 const UpdatePost = ({ id }: Props) => {
-  const post = PostsStore.post;
+  const [successful, setSuccessful] = useState(false);
+  const [post, setPost] = useState<Post | undefined>(undefined);
 
   const { register, reset, handleSubmit } = useForm<Post>({
     defaultValues: useMemo(() => {
@@ -28,12 +29,14 @@ const UpdatePost = ({ id }: Props) => {
   useFetch(async () => {
     if (id) {
       const post = await PostsStore.getById(id);
+      setPost(post);
       reset(post);
     }
   }, [id]);
 
   const onSubmit: SubmitHandler<Post> = async (data) => {
     await PostsStore.update(data);
+    setSuccessful(true);
   };
 
   return (
@@ -43,6 +46,7 @@ const UpdatePost = ({ id }: Props) => {
       icon={<Icon icon={"edit"} />}
       onAccept={id ? handleSubmit(onSubmit) : undefined}
       disabled={!id}
+      successful={successful}
     >
       <TextInput label={"Название"} required {...register("title")} />
       <TextInput label={"Номер"} required {...register("number")} />
