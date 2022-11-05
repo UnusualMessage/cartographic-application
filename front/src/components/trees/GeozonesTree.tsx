@@ -5,7 +5,7 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import { Node } from "../../types/Node";
+import { Node } from "../../types/nodes";
 import { fieldNodes } from "../../assets/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { GeozonesStore } from "../../stores/entities";

@@ -5,7 +5,7 @@ import { v4 as uuid } from "uuid";
 
 import { wrapper } from "./changes.module.scss";
 
-import Change from "../../../../types/Change";
+import Change from "../../../../types/map/Change";
 import { FeaturesChangesStore } from "../../../../stores";
 
 const historyRenderer = (change: Change<FeatureLike[]>) => {

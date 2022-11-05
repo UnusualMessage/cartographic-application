@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { Tree, TreeEventHandler } from "@blueprintjs/core";
 
-import { Node } from "../../../types/Node";
+import { Node } from "../../../types/nodes";
 import { useTreeActions } from "../../../hooks";
 
 interface Props<T> {

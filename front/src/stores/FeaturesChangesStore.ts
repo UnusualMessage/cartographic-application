@@ -1,7 +1,7 @@
 import { FeatureLike } from "ol/Feature";
 import { makeAutoObservable } from "mobx";
 
-import Change from "../types/Change";
+import Change from "../types/map/Change";
 
 class FeaturesChangesStore {
   private _featuresHistory: Change<FeatureLike[]>[];

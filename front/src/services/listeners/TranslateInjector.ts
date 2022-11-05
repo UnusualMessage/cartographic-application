@@ -3,7 +3,7 @@ import { Feature } from "ol";
 import { cloneDeep } from "lodash";
 import { FeatureLike } from "ol/Feature";
 
-import Change, { Undo } from "../../types/Change";
+import Change, { Undo } from "../../types/map/Change";
 import ListenersInjector, { TranslateEvent } from "./ListenersInjector";
 import { FeaturesChangesStore } from "../../stores";
 

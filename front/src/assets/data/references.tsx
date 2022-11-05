@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import Reference from "../../types/Reference";
+import Reference from "../../types/common/Reference";
 import { lazy } from "react";
 
 const Partners = lazy(() => import("../../pages/User/References/Partners"));

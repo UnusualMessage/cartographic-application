@@ -3,7 +3,7 @@ import { HTMLSelect } from "@blueprintjs/core";
 import { ChangeEventHandler } from "react";
 
 import { InteractionsStore } from "../../../../../stores/map";
-import { InteractionType } from "../../../../../types/map/InteractionType";
+import { InteractionType } from "../../../../../types/map";
 
 const DrawSelect = () => {
   const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {

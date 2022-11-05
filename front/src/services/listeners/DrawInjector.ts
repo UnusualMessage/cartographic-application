@@ -5,7 +5,7 @@ import { FeatureLike } from "ol/Feature";
 import ListenersInjector, { DrawEvent } from "./ListenersInjector";
 import { FeaturesChangesStore } from "../../stores";
 import { InteractionsStore } from "../../stores/map";
-import Change, { Undo } from "../../types/Change";
+import Change, { Undo } from "../../types/map/Change";
 import { LayersService } from "../map";
 import { geozonesLayerId } from "../../assets/map/config";
 import { GeozonesStore } from "../../stores/entities";

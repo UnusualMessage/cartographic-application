@@ -1,4 +1,4 @@
-import { TabsList } from "../../types/Tab";
+import { TabsList } from "../../types/tabs";
 import {
   EmployeesTree,
   EquipmentTree,

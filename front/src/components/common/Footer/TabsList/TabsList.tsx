@@ -5,7 +5,7 @@ import { panel, wrapper } from "./tabs.module.scss";
 
 import { TabsStore } from "../../../../stores";
 import { footerTabs } from "../../../../assets/tabs";
-import { Tab as TabType } from "../../../../types/Tab";
+import { Tab as TabType } from "../../../../types/tabs/Tab";
 import TabPage from "../TabPage";
 
 const tabsRenderer = (tab: TabType) => {

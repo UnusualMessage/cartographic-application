@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Node } from "../../types/Node";
+import { Node } from "../../types/nodes";
 
 export const planNodes: Node[] = [
   {

@@ -1,4 +1,4 @@
-import { Node } from "../../types/Node";
+import { Node } from "../../types/nodes";
 
 export const fieldNodes: Node[] = [
   {

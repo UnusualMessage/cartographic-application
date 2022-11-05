@@ -23,7 +23,7 @@ import {
   TranslateInjector,
 } from "../../services/listeners";
 import { measureStyleFunction } from "../../utils/styles/measureStyleFunction";
-import { InteractionType } from "../../types/map/InteractionType";
+import { InteractionType } from "../../types/map";
 
 interface Interactions {
   select: Select | null;

@@ -1,4 +1,4 @@
-import { Node } from "../../types/Node";
+import { Node } from "../../types/nodes";
 import { types } from "../data";
 import { v4 as uuid } from "uuid";
 
