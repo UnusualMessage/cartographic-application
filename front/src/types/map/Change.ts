@@ -6,7 +6,9 @@ export type Action =
 
 export type Undo<T> = (oldValue: T, newValue: T) => void;
 
-export default interface Change<T> {
+export type ChangeSet<T> = Change<T>[];
+
+export interface Change<T> {
   action: Action;
   undo: Undo<T>;
   oldValue: T;

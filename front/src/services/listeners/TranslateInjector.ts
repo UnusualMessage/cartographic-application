@@ -3,9 +3,10 @@ import { Feature } from "ol";
 import { cloneDeep } from "lodash";
 import { FeatureLike } from "ol/Feature";
 
-import Change, { Undo } from "../../types/map/Change";
+import { Change, ChangeSet, Undo } from "../../types/map";
 import ListenersInjector, { TranslateEvent } from "./ListenersInjector";
-import { FeaturesChangesStore } from "../../stores";
+import { GeozonesStore } from "../../stores/entities";
+import { InteractionsStore } from "../../stores/map";
 
 class TranslateInjector implements ListenersInjector<TranslateEvent> {
   private _translate: Translate;
@@ -28,25 +29,39 @@ class TranslateInjector implements ListenersInjector<TranslateEvent> {
     this._translate.on("translateend", (event) => {
       const modifiedFeatures = event.features.getArray() as Feature[];
 
-      const undo: Undo<FeatureLike[]> = (
-        oldFeatures: FeatureLike[],
-        newFeatures: FeatureLike[]
-      ) => {
-        for (let i = 0; i < oldFeatures.length; ++i) {
-          (newFeatures[i] as Feature).setGeometry(
-            (oldFeatures[i] as Feature).getGeometry()
+      const type = InteractionsStore.interactionType;
+
+      const set: ChangeSet<FeatureLike> = [];
+
+      for (const newFeature of modifiedFeatures) {
+        const undo: Undo<FeatureLike> = (
+          oldFeature: FeatureLike,
+          newFeature: FeatureLike
+        ) => {
+          (newFeature as Feature).setGeometry(
+            (oldFeature as Feature).getGeometry()
           );
+        };
+
+        const oldFeature = initialFeatures.at(
+          modifiedFeatures.indexOf(newFeature)
+        );
+
+        if (oldFeature) {
+          const change: Change<FeatureLike> = {
+            action: "modifyFeature",
+            newValue: newFeature,
+            oldValue: oldFeature,
+            undo: undo,
+          };
+
+          set.push(change);
         }
-      };
+      }
 
-      const change: Change<FeatureLike[]> = {
-        action: "translateFeature",
-        newValue: modifiedFeatures,
-        oldValue: initialFeatures,
-        undo: undo,
-      };
-
-      FeaturesChangesStore.push(change);
+      if (type === "geozones" || type === "cursor") {
+        GeozonesStore.push(set);
+      }
     });
   }
 }

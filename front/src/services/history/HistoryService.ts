@@ -1,7 +1,7 @@
 import { Toaster } from "@blueprintjs/core";
 
-import { FeaturesChangesStore } from "../../stores";
 import { NotificationsService } from "../ui";
+import { GeozonesStore } from "../../stores/entities";
 
 class HistoryService {
   private _toaster: Toaster | null;
@@ -11,15 +11,15 @@ class HistoryService {
   }
 
   public save() {
-    if (FeaturesChangesStore.changesCount) {
-      FeaturesChangesStore.save();
+    if (GeozonesStore.changesCount) {
+      GeozonesStore.save();
       NotificationsService.showNotification("Изменения сохранены", "success");
     }
   }
 
   public undo() {
-    if (FeaturesChangesStore.changesCount) {
-      FeaturesChangesStore.undo();
+    if (GeozonesStore.changesCount) {
+      GeozonesStore.undo();
       NotificationsService.showNotification("Изменение отменено", "success");
     }
   }

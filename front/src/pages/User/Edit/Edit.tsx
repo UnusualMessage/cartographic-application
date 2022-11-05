@@ -6,12 +6,12 @@ import Sider from "../../../components/common/Sider";
 import { EditMap } from "../../../components/common/Map";
 import Footer from "../../../components/common/Footer";
 import Loader from "../../../components/auxiliary/Loader";
-import Changes from "../../../components/common/Sider/Changes";
 import Categories from "../../../components/common/Sider/Categories";
 import Toolbar from "../../../components/common/Sider/Toolbar";
 import Content from "../../../components/common/Content";
 import TabsList from "../../../components/common/Footer/TabsList";
 import { NotificationsService } from "../../../services/ui";
+import ChangeSets from "../../../components/common/Sider/ChangeSets";
 
 const Edit = () => {
   const ref = useRef<Toaster>(null);
@@ -27,7 +27,7 @@ const Edit = () => {
       <Sider>
         <Categories />
         <Toolbar />
-        <Changes />
+        <ChangeSets />
       </Sider>
       <Content>
         <EditMap />

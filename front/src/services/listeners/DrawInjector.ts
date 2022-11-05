@@ -3,9 +3,8 @@ import { v4 as uuid } from "uuid";
 import { FeatureLike } from "ol/Feature";
 
 import ListenersInjector, { DrawEvent } from "./ListenersInjector";
-import { FeaturesChangesStore } from "../../stores";
 import { InteractionsStore } from "../../stores/map";
-import Change, { Undo } from "../../types/map/Change";
+import { Change, ChangeSet, Undo } from "../../types/map";
 import { LayersService } from "../map";
 import { geozonesLayerId } from "../../assets/map/config";
 import { GeozonesStore } from "../../stores/entities";
@@ -48,23 +47,23 @@ class DrawInjector implements ListenersInjector<DrawEvent> {
       if (interactionType === "geozones") {
         GeozonesStore.add(feature);
 
-        const undo: Undo<FeatureLike[]> = (oldValue, newValue) => {
-          const feature = newValue.at(0);
-
-          if (feature) {
-            LayersService.removeFeatureFromLayer(feature, geozonesLayerId);
-            GeozonesStore.remove(feature);
-          }
+        const undo: Undo<FeatureLike> = (oldValue, newValue) => {
+          LayersService.removeFeatureFromLayer(newValue, geozonesLayerId);
+          GeozonesStore.remove(newValue);
         };
 
-        const change: Change<FeatureLike[]> = {
+        const set: ChangeSet<FeatureLike> = [];
+
+        const change: Change<FeatureLike> = {
           action: "createFeature",
-          oldValue: [],
-          newValue: [feature],
+          oldValue: feature,
+          newValue: feature,
           undo: undo,
         };
 
-        FeaturesChangesStore.push(change);
+        set.push(change);
+
+        GeozonesStore.push(set);
       }
     });
   }
