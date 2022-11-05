@@ -13,9 +13,6 @@ export interface CreatePost {
   organizationId: string;
 }
 
-export interface UpdatePost {
+export interface UpdatePost extends CreatePost {
   id: string;
-  title: string;
-  number?: string;
-  organizationId: string;
 }

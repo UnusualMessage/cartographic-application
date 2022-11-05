@@ -3,13 +3,14 @@ import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 import { cell } from "../common/Table/table.module.scss";
 
 import { Employee } from "../../types/entities";
-import { ColumnProps, Table } from "../common/Table";
+import { ColumnProps, OnSelection, Table } from "../common/Table";
 
 interface Props {
   employees: Employee[];
+  onSelection?: OnSelection;
 }
 
-const EmployeesTable = ({ employees }: Props) => {
+const EmployeesTable = ({ employees, onSelection }: Props) => {
   const columns: ColumnProps[] = [
     {
       renderer: (rowIndex) => {
@@ -66,7 +67,13 @@ const EmployeesTable = ({ employees }: Props) => {
     },
   ];
 
-  return <Table<Employee> items={employees} columns={columns} />;
+  return (
+    <Table<Employee>
+      items={employees}
+      columns={columns}
+      onSelection={onSelection}
+    />
+  );
 };
 
 export default EmployeesTable;

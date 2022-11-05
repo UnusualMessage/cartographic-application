@@ -6,6 +6,7 @@ import {
   FieldValues,
   UseFormRegister,
 } from "react-hook-form";
+import NumberInput from "../../components/inputs/NumberInput";
 
 export const formRenderer = <T extends FieldValues>(
   form: Form<T>,
@@ -33,6 +34,16 @@ export const formRenderer = <T extends FieldValues>(
               <SelectInput
                 key={`input-${field.label}`}
                 options={field.options ?? []}
+                label={field.label}
+                required={field.required}
+                error={error}
+                {...register(field.name, { required: field.required })}
+              />
+            );
+          case "numeric":
+            return (
+              <NumberInput
+                key={`input-${field.label}`}
                 label={field.label}
                 required={field.required}
                 error={error}
