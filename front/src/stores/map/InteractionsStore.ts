@@ -9,7 +9,6 @@ import {
 } from "ol/events/condition";
 import { Type } from "ol/geom/Geometry";
 
-import { DrawType } from "../../types/DrawType";
 import {
   DragBoxEvent,
   DragBoxInjector,
@@ -24,6 +23,7 @@ import {
   TranslateInjector,
 } from "../../services/listeners";
 import { measureStyleFunction } from "../../utils/styles/measureStyleFunction";
+import { InteractionType } from "../../types/map/InteractionType";
 
 interface Interactions {
   select: Select | null;
@@ -37,7 +37,7 @@ interface Interactions {
 export type MeasurementMode = "none" | "length" | "area";
 
 class InteractionsStore {
-  private _drawType: DrawType;
+  private _interactionType: InteractionType;
   private _drawing: boolean;
 
   private _measurementMode: MeasurementMode;
@@ -45,7 +45,7 @@ class InteractionsStore {
   private _interactions: Interactions;
 
   constructor() {
-    this._drawType = "Polygon";
+    this._interactionType = "cursor";
     this._drawing = false;
 
     this._measurementMode = "none";
@@ -62,12 +62,12 @@ class InteractionsStore {
     makeAutoObservable(this);
   }
 
-  public get drawType() {
-    return this._drawType;
+  public get interactionType() {
+    return this._interactionType;
   }
 
-  public set drawType(drawType: DrawType) {
-    this._drawType = drawType;
+  public set interactionType(value) {
+    this._interactionType = value;
   }
 
   public set isDrawing(isDrawing: boolean) {
@@ -106,17 +106,19 @@ class InteractionsStore {
     map.addInteraction(draw);
   }
 
-  public addDraw(source: VectorSource, map: Map, drawType: DrawType) {
+  public addDraw(source: VectorSource, map: Map, type: InteractionType) {
     if (this._interactions.draw) {
       map.removeInteraction(this._interactions.draw);
     }
 
-    if (drawType === "None") {
+    if (type === "cursor") {
       return;
     }
 
+    const drawType: Type = type === "geozones" ? "Polygon" : "Point";
+
     const draw = new Draw({
-      type: this.drawType as Type,
+      type: drawType,
       source: source,
     });
 
@@ -223,7 +225,7 @@ class InteractionsStore {
     }
 
     this.addSelectAndTranslate(source, map);
-    this.addDraw(source, map, this.drawType);
+    this.addDraw(source, map, this.interactionType);
     this.addModify(source, map);
     this.addSnap(source, map);
   }

@@ -2,7 +2,7 @@ import { TabsList } from "../../types/Tab";
 import {
   EmployeesTree,
   EquipmentTree,
-  FieldsTree,
+  GeozonesTree,
   PlansTree,
 } from "../../components/trees";
 
@@ -12,7 +12,7 @@ export const siderTabs: TabsList = {
     {
       id: "sider-fields",
       title: "Поля",
-      component: <FieldsTree />,
+      component: <GeozonesTree />,
     },
 
     {

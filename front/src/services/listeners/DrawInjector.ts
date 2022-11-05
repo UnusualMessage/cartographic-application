@@ -3,11 +3,12 @@ import { v4 as uuid } from "uuid";
 import { FeatureLike } from "ol/Feature";
 
 import ListenersInjector, { DrawEvent } from "./ListenersInjector";
-import { FeaturesChangesStore, FeaturesStore } from "../../stores";
+import { FeaturesChangesStore } from "../../stores";
 import { InteractionsStore } from "../../stores/map";
 import Change, { Undo } from "../../types/Change";
 import { LayersService } from "../map";
 import { geozonesLayerId } from "../../assets/map/config";
+import { GeozonesStore } from "../../stores/entities";
 
 class DrawInjector implements ListenersInjector<DrawEvent> {
   private _draw: Draw;
@@ -39,28 +40,32 @@ class DrawInjector implements ListenersInjector<DrawEvent> {
   private addDrawEnd() {
     this._draw.on("drawend", (event) => {
       InteractionsStore.isDrawing = false;
+      const interactionType = InteractionsStore.interactionType;
 
       const feature = event.feature;
       feature.setId(uuid());
 
-      FeaturesStore.addFeature(event.feature);
+      if (interactionType === "geozones") {
+        GeozonesStore.add(feature);
 
-      const undo: Undo<FeatureLike[]> = (oldValue, newValue) => {
-        const feature = newValue.at(0);
+        const undo: Undo<FeatureLike[]> = (oldValue, newValue) => {
+          const feature = newValue.at(0);
 
-        if (feature) {
-          LayersService.removeFeatureFromLayer(feature, geozonesLayerId);
-        }
-      };
+          if (feature) {
+            LayersService.removeFeatureFromLayer(feature, geozonesLayerId);
+            GeozonesStore.remove(feature);
+          }
+        };
 
-      const change: Change<FeatureLike[]> = {
-        action: "createFeature",
-        oldValue: [],
-        newValue: [feature],
-        undo: undo,
-      };
+        const change: Change<FeatureLike[]> = {
+          action: "createFeature",
+          oldValue: [],
+          newValue: [feature],
+          undo: undo,
+        };
 
-      FeaturesChangesStore.push(change);
+        FeaturesChangesStore.push(change);
+      }
     });
   }
 

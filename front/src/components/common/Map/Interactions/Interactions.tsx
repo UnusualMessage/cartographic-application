@@ -7,7 +7,7 @@ import { InteractionsStore, MapStore } from "../../../../stores/map";
 const Interactions = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
-  const drawType = InteractionsStore.drawType;
+  const type = InteractionsStore.interactionType;
 
   useEffect(() => {
     if (map && source) {
@@ -17,7 +17,7 @@ const Interactions = () => {
     return () => {
       InteractionsStore.removeInteractions(map);
     };
-  }, [map, drawType]);
+  }, [map, type]);
 
   return <></>;
 };

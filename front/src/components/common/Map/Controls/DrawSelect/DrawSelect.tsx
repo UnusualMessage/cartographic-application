@@ -3,20 +3,22 @@ import { HTMLSelect } from "@blueprintjs/core";
 import { ChangeEventHandler } from "react";
 
 import { InteractionsStore } from "../../../../../stores/map";
-import { DrawType } from "../../../../../types/DrawType";
+import { InteractionType } from "../../../../../types/map/InteractionType";
 
 const DrawSelect = () => {
   const onSelect: ChangeEventHandler<HTMLSelectElement> = (e) => {
-    InteractionsStore.drawType = e.target.value as DrawType;
+    InteractionsStore.interactionType = e.target.value as InteractionType;
   };
 
   return (
-    <HTMLSelect fill value={InteractionsStore.drawType} onChange={onSelect}>
-      <option value={"None"}>Курсор</option>
-      <option value={"Polygon"}>Полигон</option>
-      <option value={"Circle"}>Круг</option>
-      <option value={"LineString"}>Линия</option>
-      <option value={"Point"}>Точка</option>
+    <HTMLSelect
+      fill
+      value={InteractionsStore.interactionType}
+      onChange={onSelect}
+    >
+      <option value={"cursor"}>Курсор</option>
+      <option value={"geozones"}>Геозоны</option>
+      <option value={"equipment"}>Техника</option>
     </HTMLSelect>
   );
 };
