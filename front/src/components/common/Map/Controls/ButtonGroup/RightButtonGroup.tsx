@@ -12,6 +12,7 @@ import {
   MapStore,
 } from "../../../../../stores/map";
 import classNames from "classnames";
+import { auxLayerId } from "../../../../../assets/map/config";
 
 interface Props {
   isPanelOpen: boolean;
@@ -45,7 +46,7 @@ const RightButtonGroup = ({
   };
 
   const switchMeasurementMode = (mode: MeasurementMode) => {
-    LayersStore.clearAuxLayer();
+    LayersStore.clearVectorLayer(auxLayerId);
 
     if (measurementMode === mode) {
       InteractionsStore.measurementMode = "none";

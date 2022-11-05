@@ -7,6 +7,7 @@ import { FeaturesChangesStore, FeaturesStore } from "../../stores";
 import { InteractionsStore } from "../../stores/map";
 import Change, { Undo } from "../../types/Change";
 import { LayersService } from "../map";
+import { geozonesLayerId } from "../../assets/map/config";
 
 class DrawInjector implements ListenersInjector<DrawEvent> {
   private _draw: Draw;
@@ -48,7 +49,7 @@ class DrawInjector implements ListenersInjector<DrawEvent> {
         const feature = newValue.at(0);
 
         if (feature) {
-          LayersService.removeFeature(feature);
+          LayersService.removeFeatureFromLayer(feature, geozonesLayerId);
         }
       };
 

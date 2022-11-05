@@ -4,18 +4,16 @@ import { FeatureLike } from "ol/Feature";
 import { FeaturesStore } from "../../stores";
 import { LayersStore, MapStore } from "../../stores/map";
 import VectorSource from "ol/source/Vector";
-import VectorLayer from "ol/layer/Vector";
 import { BaseLayerType } from "../../types/common";
+import { StyleLike } from "ol/style/Style";
 
 class LayersService {
-  public createVectorLayer(source: VectorSource) {
-    const layer = LayersStore.createVectorLayer(source);
-    MapStore.addLayer(layer);
-    return layer;
-  }
-
-  public createAuxLayer(source: VectorSource) {
-    const layer = LayersStore.createAuxLayer(source);
+  public createVectorLayer(
+    source: VectorSource,
+    id: string,
+    style?: StyleLike
+  ) {
+    const layer = LayersStore.createVectorLayer(source, id, style);
     MapStore.addLayer(layer);
     return layer;
   }
@@ -30,23 +28,22 @@ class LayersService {
     return layer;
   }
 
-  public removeVectorLayer(layer: VectorLayer<VectorSource>) {
-    MapStore.removeLayer(layer);
-    LayersStore.removeVectorLayer();
-  }
+  public removeVectorLayer(id: string) {
+    const layer = LayersStore.getVectorLayerById(id);
 
-  public removeAuxLayer(layer: VectorLayer<VectorSource>) {
-    MapStore.removeLayer(layer);
-    LayersStore.removeAuxLayer();
+    if (layer) {
+      MapStore.removeLayer(layer);
+      LayersStore.removeVectorLayer(id);
+    }
   }
 
   public removeBaseLayer(layer: BaseLayer) {
     MapStore.removeLayer(layer);
   }
 
-  public removeFeature(feature: FeatureLike) {
+  public removeFeatureFromLayer(feature: FeatureLike, id: string) {
     FeaturesStore.removeFeature(feature);
-    LayersStore.removeFeature(feature);
+    LayersStore.removeFeatureFromLayer(feature, id);
   }
 }
 

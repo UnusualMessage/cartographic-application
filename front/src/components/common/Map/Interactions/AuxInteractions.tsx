@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useContext, useEffect } from "react";
 
-import { SourceContext } from "../Layer/AuxLayer";
+import { SourceContext } from "../Layer/VectorLayer";
 import { InteractionsStore, MapStore } from "../../../../stores/map";
 
 const AuxInteractions = () => {

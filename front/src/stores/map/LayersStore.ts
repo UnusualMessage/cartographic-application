@@ -7,65 +7,63 @@ import { BingMaps, OSM, XYZ } from "ol/source";
 import { default as OLTileLayer } from "ol/layer/Tile";
 
 import { BaseLayerType } from "../../types/common";
-import { measureStyleFunction } from "../../utils/styles/measureStyleFunction";
 import { baseLayers } from "../../assets/map";
+import { StyleLike } from "ol/style/Style";
 
 class LayersStore {
-  private _vectorLayer: VectorLayer<VectorSource> | null;
-  private _auxLayer: VectorLayer<VectorSource> | null;
-  private _currentBaseLayer: BaseLayerType;
+  private _vectorLayers: VectorLayer<VectorSource>[];
+  private _baseLayer: BaseLayerType;
 
   constructor() {
-    this._vectorLayer = null;
-    this._auxLayer = null;
-    this._currentBaseLayer = "osm";
+    this._vectorLayers = [];
+
+    this._baseLayer = "osm";
 
     makeAutoObservable(this);
   }
 
-  public get currentBaseLayer() {
-    return this._currentBaseLayer;
+  public get baseLayer() {
+    return this._baseLayer;
   }
 
-  public set currentBaseLayer(type: BaseLayerType) {
-    this._currentBaseLayer = type;
+  public set baseLayer(type: BaseLayerType) {
+    this._baseLayer = type;
   }
 
-  public get vectorLayer() {
-    return this._vectorLayer;
+  public clearVectorLayer(id: string) {
+    this.getVectorLayerById(id)?.getSource()?.clear();
   }
 
-  public createAuxLayer(source: VectorSource) {
-    this._auxLayer = new VectorLayer({
+  public getVectorLayerById(id: string) {
+    return this._vectorLayers.find((layer) => layer.get("id") === id);
+  }
+
+  public createVectorLayer(
+    source: VectorSource,
+    id: string,
+    style?: StyleLike
+  ) {
+    const layer = new VectorLayer({
       source: source,
-      style: (feature) => {
-        return measureStyleFunction(feature, 0);
-      },
+      style: style,
     });
 
-    return this._auxLayer;
+    layer.set("id", id);
+
+    this._vectorLayers.push(layer);
+
+    return layer;
   }
 
-  public clearAuxLayer() {
-    this._auxLayer?.getSource()?.clear();
-  }
-
-  public removeAuxLayer() {
-    this._auxLayer?.dispose();
-    this._auxLayer = null;
-  }
-
-  public createVectorLayer(source: VectorSource) {
-    this._vectorLayer = new VectorLayer({
-      source: source,
+  public removeVectorLayer(id: string) {
+    this._vectorLayers = this._vectorLayers.filter((layer) => {
+      if (layer.get("id") === id) {
+        return layer;
+      } else {
+        layer.dispose();
+        return;
+      }
     });
-
-    return this._vectorLayer;
-  }
-
-  public removeVectorLayer() {
-    this._vectorLayer?.dispose();
-    this._vectorLayer = null;
   }
 
   public createBaseLayer(type: BaseLayerType) {
@@ -141,9 +139,11 @@ class LayersStore {
     });
   }
 
-  public removeFeature(feature: FeatureLike) {
-    if (this.vectorLayer) {
-      this.vectorLayer.getSource()?.removeFeature(feature as Feature);
+  public removeFeatureFromLayer(feature: FeatureLike, id: string) {
+    const layer = this._vectorLayers.find((layer) => layer.get("id") === id);
+
+    if (layer) {
+      layer.getSource()?.removeFeature(feature as Feature);
     }
   }
 }

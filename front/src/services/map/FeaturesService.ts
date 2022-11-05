@@ -5,6 +5,7 @@ import {
   LayersStore,
   OverlaysStore,
 } from "../../stores/map";
+import { geozonesLayerId } from "../../assets/map/config";
 
 class FeaturesService {
   public copy() {
@@ -19,7 +20,7 @@ class FeaturesService {
   }
 
   public insert() {
-    const layer = LayersStore.vectorLayer;
+    const layer = LayersStore.getVectorLayerById(geozonesLayerId);
     const cursor = OverlaysStore.cursorPosition;
 
     if (cursor && layer) {
@@ -30,7 +31,7 @@ class FeaturesService {
   }
 
   public remove() {
-    const layer = LayersStore.vectorLayer;
+    const layer = LayersStore.getVectorLayerById(geozonesLayerId);
 
     if (layer) {
       FeaturesStore.removeSelectedFeatures(layer);

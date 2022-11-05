@@ -5,7 +5,7 @@ import { LayersService } from "../../../../services/map";
 import { LayersStore } from "../../../../stores/map";
 
 const TileLayer = () => {
-  const type = LayersStore.currentBaseLayer;
+  const type = LayersStore.baseLayer;
 
   useEffect(() => {
     const createdLayer = LayersService.createBaseLayer(type);

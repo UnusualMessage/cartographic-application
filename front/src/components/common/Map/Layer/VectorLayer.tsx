@@ -4,10 +4,16 @@ import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
 import { observer } from "mobx-react-lite";
 
 import { LayersService } from "../../../../services/map";
+import { StyleLike } from "ol/style/Style";
 
 export const SourceContext = createContext<VectorSource | undefined>(undefined);
 
-const VectorLayer = ({ children }: PropsWithChildren) => {
+interface Props extends PropsWithChildren {
+  id: string;
+  style?: StyleLike;
+}
+
+const VectorLayer = ({ children, id, style }: Props) => {
   const vectorSource = useMemo(() => {
     return new VectorSource({
       format: new GeoJSON(),
@@ -15,10 +21,10 @@ const VectorLayer = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    const createdLayer = LayersService.createVectorLayer(vectorSource);
+    LayersService.createVectorLayer(vectorSource, id, style);
 
     return () => {
-      LayersService.removeVectorLayer(createdLayer);
+      LayersService.removeVectorLayer(id);
     };
   }, []);
 

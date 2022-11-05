@@ -38,13 +38,17 @@ const Header = () => {
       </NavbarGroup>
 
       <NavbarGroup>
+        <Button icon="pause" minimal large />
+        <Button icon="stop" minimal large />
+        <Button icon="step-forward" minimal large />
+      </NavbarGroup>
+
+      <NavbarGroup>
         <Link to={"/settings"}>
           <Button icon="cog" text="Настройки" minimal large />
         </Link>
 
-        <Link to={"/account"}>
-          <Button icon="user" text="Аккаунт" minimal large />
-        </Link>
+        <Button icon="notifications" text="Уведомления" minimal large />
 
         <Button icon="log-out" minimal large />
       </NavbarGroup>

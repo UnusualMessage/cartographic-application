@@ -1,4 +1,4 @@
-import { Form } from "../../assets/forms/post";
+import { Form } from "../../types/forms";
 import { SelectInput, TextInput } from "../../components/inputs";
 import {
   FieldError,

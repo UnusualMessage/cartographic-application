@@ -10,14 +10,14 @@ import { BaseLayerType } from "../../../../../types/common";
 
 const LayersSwitcher = () => {
   const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
-    LayersStore.currentBaseLayer = e.currentTarget.value as BaseLayerType;
+    LayersStore.baseLayer = e.currentTarget.value as BaseLayerType;
   };
 
   return (
     <RadioGroup
       className={wrapper}
       onChange={handleChoose}
-      selectedValue={LayersStore.currentBaseLayer}
+      selectedValue={LayersStore.baseLayer}
       label={"Вид карты"}
     >
       {baseLayers.map((layer) => {

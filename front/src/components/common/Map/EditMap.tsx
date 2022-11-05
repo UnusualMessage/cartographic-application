@@ -8,6 +8,7 @@ import { TileLayer, VectorLayer } from "./Layer";
 import { Interactions } from "./Interactions";
 import MapWrapper from "./MapWrapper";
 import ContextMenu from "./ContextMenu";
+import { geozonesLayerId } from "../../../assets/map/config";
 
 const EditMap = () => {
   const handle = useFullScreenHandle();
@@ -19,7 +20,7 @@ const EditMap = () => {
         <View />
         <TileLayer />
 
-        <VectorLayer>
+        <VectorLayer id={geozonesLayerId}>
           <Interactions />
         </VectorLayer>
 
