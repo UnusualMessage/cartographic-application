@@ -1,0 +1,71 @@
+﻿using Entry.API.Extensions;
+using Entry.API.Middlewares;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Entry.API;
+
+public class Startup
+{
+    public Startup(IConfiguration configuration)
+    {
+        Configuration = configuration;
+    }
+
+    private IConfiguration Configuration { get; }
+
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddCors();
+        
+        services.ConfigureSwagger();
+        
+        services.AddSpaStaticFiles(configuration =>
+        {
+            configuration.RootPath = "wwwroot";
+        });
+
+        services.AddControllers(options =>
+        {
+            options.Filters.Add(new ProducesAttribute("application/json"));
+        });
+
+    }
+
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+        if (env.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+            app.UseSwagger();
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
+
+            app.UseCors(builder => builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
+        }
+        else
+        {
+            app.UseHsts();
+        }
+
+        app.UseHttpsRedirection();
+        app.UseMiddleware<ExceptionMiddleware>();
+
+        app.UseDefaultFiles();
+        app.UseStaticFiles();
+        app.UseSpaStaticFiles();
+
+        app.UseRouting();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+
+        app.UseSpa(spa => {  });
+    }
+}
