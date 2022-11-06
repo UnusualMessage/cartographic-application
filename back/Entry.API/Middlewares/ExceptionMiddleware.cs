@@ -1,6 +1,6 @@
 ﻿using System.Net;
 using Common.Core.Exceptions;
-using Entry.Application.Responses.Base;
+using Common.Core.Responses;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 

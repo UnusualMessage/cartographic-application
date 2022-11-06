@@ -16,8 +16,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Common.Core\Common.Core.csproj" />
-      <ProjectReference Include="..\Entry.Application\Entry.Application.csproj" />
-      <ProjectReference Include="..\Entry.Core\Entry.Core.csproj" />
     </ItemGroup>
 
 </Project>

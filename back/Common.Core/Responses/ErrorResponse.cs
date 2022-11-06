@@ -1,4 +1,4 @@
-﻿namespace Entry.Application.Responses.Base;
+﻿namespace Common.Core.Responses;
 
 public class ErrorResponse
 {
