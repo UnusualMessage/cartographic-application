@@ -9,6 +9,10 @@ public static class Program
 
     private static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((_, config) =>
+            {
+                config.AddJsonFile("ocelot.json");
+            })
             .ConfigureWebHostDefaults(webBuilder =>
             {
                 webBuilder.UseStartup<Startup>();

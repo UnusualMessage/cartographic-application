@@ -1,6 +1,8 @@
 ﻿using Entry.API.Extensions;
 using Entry.API.Middlewares;
 using Microsoft.AspNetCore.Mvc;
+using Ocelot.DependencyInjection;
+using Ocelot.Middleware;
 
 namespace Entry.API;
 
@@ -16,13 +18,15 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddCors();
-        
+        services.AddOcelot(Configuration);
+        services.AddSwaggerForOcelot(Configuration);
+
         services.ConfigureSwagger();
         
-        services.AddSpaStaticFiles(configuration =>
+        /*services.AddSpaStaticFiles(configuration =>
         {
-            configuration.RootPath = "wwwroot";
-        });
+            configuration.RootPath = "wwwroot/";
+        });*/
 
         services.AddControllers(options =>
         {
@@ -54,9 +58,10 @@ public class Startup
 
         app.UseDefaultFiles();
         app.UseStaticFiles();
-        app.UseSpaStaticFiles();
+        /*app.UseSpaStaticFiles();*/
 
         app.UseRouting();
+        app.UseOcelot();
 
         app.UseAuthentication();
         app.UseAuthorization();
@@ -66,6 +71,6 @@ public class Startup
             endpoints.MapControllers();
         });
 
-        app.UseSpa(spa => {  });
+        /*app.UseSpa(spa => {  });*/
     }
 }
