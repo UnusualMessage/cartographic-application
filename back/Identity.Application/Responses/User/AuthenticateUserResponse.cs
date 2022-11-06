@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using System.Text.Json.Serialization;
 
-namespace Identity.Application.Responses.UserResponses;
+namespace Identity.Application.Responses.User;
 
 public class AuthenticateUserResponse
 {

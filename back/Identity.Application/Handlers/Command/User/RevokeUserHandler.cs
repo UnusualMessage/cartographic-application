@@ -1,9 +1,9 @@
-﻿using Identity.Application.Requests.Commands.UserCommands;
-using Identity.Application.Responses.UserResponses;
+﻿using Identity.Application.Requests.Commands.User;
+using Identity.Application.Responses.User;
 using Identity.Core.Interfaces.Repositories;
 using MediatR;
 
-namespace Identity.Application.Handlers.CommandHandlers.UserCommandHandlers;
+namespace Identity.Application.Handlers.Command.User;
 
 public class RevokeUserHandler : IRequestHandler<RevokeUser, RevokeUserResponse>
 {

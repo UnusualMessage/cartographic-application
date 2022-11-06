@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Identity.Application.Responses.UserResponses;
+using Identity.Application.Responses.User;
 using MediatR;
 
-namespace Identity.Application.Requests.Commands.UserCommands;
+namespace Identity.Application.Requests.Commands.User;
 
 public class RegisterUser : IRequest<AuthenticateUserResponse>
 {

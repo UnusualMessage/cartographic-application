@@ -1,13 +1,12 @@
 ﻿using AutoMapper;
 using Common.Core.Exceptions;
-using Identity.Application.Requests.Commands.UserCommands;
-using Identity.Application.Responses.UserResponses;
-using Identity.Core.Entities;
+using Identity.Application.Requests.Commands.User;
+using Identity.Application.Responses.User;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MediatR;
 
-namespace Identity.Application.Handlers.CommandHandlers.UserCommandHandlers;
+namespace Identity.Application.Handlers.Command.User;
 
 public class RegisterUserHandler : IRequestHandler<RegisterUser, AuthenticateUserResponse>
 {
@@ -34,7 +33,7 @@ public class RegisterUserHandler : IRequestHandler<RegisterUser, AuthenticateUse
             return FailRegistration();
         }
 
-        var newUser = _mapper.Map<User>(request);
+        var newUser = _mapper.Map<Core.Entities.User>(request);
         var refreshToken = _tokenService.GetGeneratedRefreshToken(request.IpAddress ?? "");
 
         newUser.RefreshTokens.Add(refreshToken);

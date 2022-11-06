@@ -1,11 +1,11 @@
 ﻿using Common.Core.Exceptions;
-using Identity.Application.Requests.Commands.UserCommands;
-using Identity.Application.Responses.UserResponses;
+using Identity.Application.Requests.Commands.User;
+using Identity.Application.Responses.User;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MediatR;
 
-namespace Identity.Application.Handlers.CommandHandlers.UserCommandHandlers;
+namespace Identity.Application.Handlers.Command.User;
 
 public class AuthenticateUserHandler : IRequestHandler<AuthenticateUser, AuthenticateUserResponse>
 {

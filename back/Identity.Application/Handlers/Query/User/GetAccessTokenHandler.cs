@@ -1,11 +1,11 @@
 ﻿using Common.Core.Exceptions;
-using Identity.Application.Requests.Queries.UserQueries;
-using Identity.Application.Responses.UserResponses;
+using Identity.Application.Requests.Queries.User;
+using Identity.Application.Responses.User;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MediatR;
 
-namespace Identity.Application.Handlers.QueryHandlers.UserQueryHandlers;
+namespace Identity.Application.Handlers.Query.User;
 
 public class GetAccessTokenHandler : IRequestHandler<GetAccessToken, AuthenticateUserResponse>
 {

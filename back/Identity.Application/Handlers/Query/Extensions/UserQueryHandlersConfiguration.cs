@@ -1,10 +1,10 @@
-﻿using Identity.Application.Handlers.QueryHandlers.UserQueryHandlers;
-using Identity.Application.Requests.Queries.UserQueries;
-using Identity.Application.Responses.UserResponses;
+﻿using Identity.Application.Handlers.Query.User;
+using Identity.Application.Requests.Queries.User;
+using Identity.Application.Responses.User;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Identity.Application.Handlers.QueryHandlers.Extensions;
+namespace Identity.Application.Handlers.Query.Extensions;
 
 public static class UserQueryHandlersConfiguration
 {

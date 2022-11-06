@@ -1,5 +1,4 @@
-﻿using Entry.API.Extensions;
-using Entry.API.Middlewares;
+﻿using Entry.API.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
@@ -19,10 +18,7 @@ public class Startup
     {
         services.AddCors();
         services.AddOcelot(Configuration);
-        services.AddSwaggerForOcelot(Configuration);
 
-        services.ConfigureSwagger();
-        
         /*services.AddSpaStaticFiles(configuration =>
         {
             configuration.RootPath = "wwwroot/";
@@ -40,8 +36,6 @@ public class Startup
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API v1"));
 
             app.UseCors(builder => builder
                 .AllowAnyOrigin()

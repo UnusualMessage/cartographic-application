@@ -1,5 +1,5 @@
-﻿using Identity.Application.Requests.Commands.UserCommands;
-using Identity.Application.Requests.Queries.UserQueries;
+﻿using Identity.Application.Requests.Commands.User;
+using Identity.Application.Requests.Queries.User;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;

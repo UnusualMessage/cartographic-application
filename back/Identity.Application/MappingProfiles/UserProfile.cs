@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Identity.Application.Requests.Commands.UserCommands;
-using Identity.Application.Responses.UserResponses;
+using Identity.Application.Requests.Commands.User;
+using Identity.Application.Responses.User;
 using Identity.Core.Entities;
 
 namespace Identity.Application.MappingProfiles;

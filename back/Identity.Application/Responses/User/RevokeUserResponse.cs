@@ -1,4 +1,4 @@
-﻿namespace Identity.Application.Responses.UserResponses;
+﻿namespace Identity.Application.Responses.User;
 
 public class RevokeUserResponse
 {

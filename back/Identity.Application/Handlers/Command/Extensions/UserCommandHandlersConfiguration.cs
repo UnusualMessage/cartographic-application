@@ -1,10 +1,10 @@
-﻿using Identity.Application.Handlers.CommandHandlers.UserCommandHandlers;
-using Identity.Application.Requests.Commands.UserCommands;
-using Identity.Application.Responses.UserResponses;
+﻿using Identity.Application.Handlers.Command.User;
+using Identity.Application.Requests.Commands.User;
+using Identity.Application.Responses.User;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Identity.Application.Handlers.CommandHandlers.Extensions;
+namespace Identity.Application.Handlers.Command.Extensions;
 
 public static class UserCommandHandlersConfiguration
 {

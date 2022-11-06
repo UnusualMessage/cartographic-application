@@ -1,5 +1,5 @@
-﻿using Identity.Application.Handlers.CommandHandlers.Extensions;
-using Identity.Application.Handlers.QueryHandlers.Extensions;
+﻿using Identity.Application.Handlers.Command.Extensions;
+using Identity.Application.Handlers.Query.Extensions;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Identity.Application.Handlers.Extensions;
