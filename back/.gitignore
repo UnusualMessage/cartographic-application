@@ -1,5 +1,6 @@
-﻿*/obj
-*/bin
-*.DotSettings.user
+﻿obj
+bin
+.DotSettings.user
 .idea
-API/wwwroot
+wwwroot
+Migrations
