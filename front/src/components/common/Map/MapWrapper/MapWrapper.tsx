@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 import { wrapper } from "./map.module.scss";
 
-import { MapStore } from "../../../../stores/map";
+import { LayersStore, MapStore } from "../../../../stores/map";
 
 const MapWrapper = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -13,6 +13,8 @@ const MapWrapper = ({ children }: PropsWithChildren) => {
     if (mapRef.current) {
       MapStore.initMap([], mapRef.current);
     }
+
+    LayersStore.resetVectorLayers();
 
     return () => {
       MapStore.dispose();

@@ -38,6 +38,14 @@ class LayersStore {
     return this._vectorLayers.find((layer) => layer.get("id") === id);
   }
 
+  public resetVectorLayers() {
+    for (const layer of this._vectorLayers) {
+      layer.dispose();
+    }
+
+    this._vectorLayers = [];
+  }
+
   public createVectorLayer(
     source: VectorSource,
     id: string,

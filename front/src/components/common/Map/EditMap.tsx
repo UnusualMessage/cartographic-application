@@ -18,8 +18,8 @@ const EditMap = () => {
       <MapWrapper>
         <EditControls />
         <View />
-        <TileLayer />
 
+        <TileLayer />
         <VectorLayer id={geozonesLayerId}>
           <Interactions />
         </VectorLayer>

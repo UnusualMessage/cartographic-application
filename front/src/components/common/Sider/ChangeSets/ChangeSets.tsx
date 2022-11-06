@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { FeatureLike } from "ol/Feature";
+import { v4 as uuid } from "uuid";
 
 import { wrapper } from "./sets.module.scss";
 
@@ -8,7 +9,7 @@ import { ChangeSet } from "../../../../types/map";
 import Changes from "../../../auxiliary/Changes";
 
 const historyRenderer = (set: ChangeSet<FeatureLike>) => {
-  return <Changes set={set} />;
+  return <Changes set={set} key={`changes-${uuid()}`} />;
 };
 
 const ChangeSets = () => {

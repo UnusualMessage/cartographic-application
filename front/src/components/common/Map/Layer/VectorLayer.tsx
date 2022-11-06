@@ -1,10 +1,9 @@
 import VectorSource from "ol/source/Vector";
 import { GeoJSON } from "ol/format";
 import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
-import { observer } from "mobx-react-lite";
+import { StyleLike } from "ol/style/Style";
 
 import { LayersService } from "../../../../services/map";
-import { StyleLike } from "ol/style/Style";
 
 export const SourceContext = createContext<VectorSource | undefined>(undefined);
 
@@ -35,4 +34,4 @@ const VectorLayer = ({ children, id, style }: Props) => {
   );
 };
 
-export default observer(VectorLayer);
+export default VectorLayer;
