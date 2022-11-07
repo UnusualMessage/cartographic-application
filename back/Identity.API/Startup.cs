@@ -50,6 +50,11 @@ public class Startup
             options.Filters.Add(new ProducesAttribute("application/json"));
         });
 
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = "localhost:6379";
+        });
+
         services.AddMediatR(typeof(Startup));
         services.ConfigureApplicationLayer();
 
