@@ -45,6 +45,7 @@
     "@blueprintjs/popover2": "^1.6.7",
     "@blueprintjs/select": "^4.7.0",
     "@blueprintjs/table": "^4.6.8",
+    "@microsoft/signalr": "^6.0.10",
     "@turf/turf": "^6.5.0",
     "classnames": "^2.3.1",
     "html2canvas": "^1.4.1",
