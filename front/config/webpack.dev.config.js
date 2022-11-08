@@ -24,7 +24,12 @@ module.exports = {
     },
 
     proxy: {
-      "/api": "http://localhost:19621",
+      '/api': {
+        target: 'https://localhost:5443',
+        pathRewrite: { '^/api': '' },
+        secure: false,
+        changeOrigin: true
+      },
     },
 
     client: {
