@@ -11,8 +11,7 @@
       ],
 
       "UpstreamPathTemplate": "/Auth/access",
-      "UpstreamHttpMethod": [ "GET" ],
-      "SwaggerKey": "access"
+      "UpstreamHttpMethod": [ "GET" ]
     },
 
     {
@@ -26,8 +25,7 @@
       ],
 
       "UpstreamPathTemplate": "/Auth/register",
-      "UpstreamHttpMethod": [ "POST" ],
-      "SwaggerKey": "register"
+      "UpstreamHttpMethod": [ "POST" ]
     },
 
     {
@@ -41,8 +39,7 @@
       ],
 
       "UpstreamPathTemplate": "/Auth/refresh",
-      "UpstreamHttpMethod": [ "POST" ],
-      "SwaggerKey": "refresh"
+      "UpstreamHttpMethod": [ "POST" ]
     },
 
     {
@@ -56,8 +53,7 @@
       ],
 
       "UpstreamPathTemplate": "/Auth/revoke",
-      "UpstreamHttpMethod": [ "POST" ],
-      "SwaggerKey": "revoke"
+      "UpstreamHttpMethod": [ "POST" ]
     },
 
     {
@@ -71,8 +67,21 @@
       ],
 
       "UpstreamPathTemplate": "/Auth/authenticate",
-      "UpstreamHttpMethod": [ "POST" ],
-      "SwaggerKey": "revoke"
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+
+    {
+      "DownstreamPathTemplate":"/hubs/{catchAll}",
+      "DownstreamScheme":"wss",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 50443
+        }
+      ],
+
+      "UpstreamPathTemplate": "/hubs/{catchAll}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
     }
   ]
 }
