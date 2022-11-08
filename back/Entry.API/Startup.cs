@@ -38,9 +38,11 @@ public class Startup
             app.UseDeveloperExceptionPage();
 
             app.UseCors(builder => builder
-                .AllowAnyOrigin()
+                .WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .AllowCredentials()
+            );
         }
         else
         {
@@ -55,6 +57,7 @@ public class Startup
         /*app.UseSpaStaticFiles();*/
 
         app.UseRouting();
+        app.UseWebSockets();
         app.UseOcelot();
 
         app.UseAuthentication();

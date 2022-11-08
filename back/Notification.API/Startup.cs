@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Notification.API.Hubs;
+﻿using Notification.API.Hubs;
 
 namespace Notification.API;
 
@@ -16,11 +15,6 @@ public class Startup
     {
         services.AddCors();
         services.AddSignalR();
-
-        services.AddControllers(options =>
-        {
-            options.Filters.Add(new ProducesAttribute("application/json"));
-        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -28,32 +22,19 @@ public class Startup
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Notification APIv1"));
             
             app.UseCors(builder => builder
-                .AllowAnyOrigin()
+                .WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
-                .AllowAnyHeader());
-        }
-        else
-        {
-            app.UseHsts();
+                .AllowAnyHeader()
+                .AllowCredentials()
+            );
         }
 
-        app.UseHttpsRedirection();
-
-        app.UseDefaultFiles();
-        app.UseStaticFiles();
-        
         app.UseRouting();
-
-        app.UseAuthentication();
-        app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllers();
             endpoints.MapHub<NotificationHub>("/hubs/notification");
         });
     }

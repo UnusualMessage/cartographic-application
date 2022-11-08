@@ -71,8 +71,8 @@
     },
 
     {
-      "DownstreamPathTemplate":"/hubs/notification",
-      "DownstreamScheme":"ws",
+      "DownstreamPathTemplate":"/hubs/{catchAll}",
+      "DownstreamScheme":"wss",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -80,13 +80,8 @@
         }
       ],
 
-      "QoSOptions": {
-        "TimeoutValue": 320000
-      },
-      "Priority": 50,
-
-      "UpstreamPathTemplate": "/notification",
-      "UpstreamHttpMethod": [ "GET", "POST" ]
+      "UpstreamPathTemplate": "/hubs/{catchAll}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
     }
   ]
 }
