@@ -4,6 +4,7 @@ import PlansStore from "./PlansStore";
 import PostsStore from "./PostsStore";
 import OrganizationsStore from "./OrganizationsStore";
 import GeozonesStore from "./GeozonesStore";
+import AuthStore from "./AuthStore";
 
 export {
   EquipmentStore,
@@ -12,4 +13,5 @@ export {
   PostsStore,
   OrganizationsStore,
   GeozonesStore,
+  AuthStore,
 };

@@ -19,9 +19,8 @@ import Loader from "./components/auxiliary/Loader";
 import Layout from "./components/common/Layout";
 import { references } from "./assets/data/references";
 import EmptyPage from "./components/auxiliary/EmptyPage";
-import { HubConnectionBuilder } from "@microsoft/signalr";
+import Authorization from "./pages/Admin/Authorization";
 
-const Admin = lazy(() => import("./pages/Admin"));
 const View = lazy(() => import("./pages/User/View"));
 const Edit = lazy(() => import("./pages/User/Edit"));
 
@@ -64,28 +63,12 @@ const browserRouter = createBrowserRouter([
 
   {
     path: "/admin",
-    element: <Admin />,
+    element: <Authorization />,
     errorElement: (
       <NonIdealState icon={"search"} title={"Страницы не существует!"} />
     ),
   },
 ]);
-
-const connection = new HubConnectionBuilder()
-  .withUrl("https://localhost:5443/hubs/notification")
-  .build();
-connection.on("ReceiveMessageHandler", (message) => {
-  connection.invoke("SendMessage", "", message).catch(function (err) {
-    return console.error(err.toString());
-  });
-  alert(message);
-});
-
-void connection.start().then(() => {
-  connection.invoke("SendMessage", "", "Hello").catch(function (err) {
-    return console.error(err.toString());
-  });
-});
 
 root.render(
   <HotkeysProvider>
