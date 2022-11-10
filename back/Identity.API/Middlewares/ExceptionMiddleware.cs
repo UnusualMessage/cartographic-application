@@ -4,7 +4,7 @@ using Common.Core.Responses;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace Entry.API.Middlewares;
+namespace Identity.API.Middlewares;
 
 public class ExceptionMiddleware
 {

@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using Identity.API.Extensions;
+using Identity.API.Middlewares;
 using Identity.Core.Settings;
 using Identity.Infrastructure.Extensions;
 using MediatR;
@@ -81,6 +82,7 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
+        app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseDefaultFiles();
         app.UseStaticFiles();
