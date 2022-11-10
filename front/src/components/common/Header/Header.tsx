@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { memo } from "react";
 
 import { wrapper } from "./header.module.scss";
+import RequireAuth from "../../auxiliary/RequireAuth/RequireAuth";
 
 const Header = () => {
   return (
@@ -50,7 +51,9 @@ const Header = () => {
 
         <Button icon="notifications" text="Уведомления" minimal large />
 
-        <Button icon="log-out" minimal large />
+        <RequireAuth>
+          <Button icon="log-out" minimal large />
+        </RequireAuth>
       </NavbarGroup>
     </Navbar>
   );
