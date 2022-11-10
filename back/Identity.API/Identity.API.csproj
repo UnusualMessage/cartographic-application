@@ -13,12 +13,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Reference Include="Microsoft.AspNetCore.Authentication.JwtBearer">
-        <HintPath>..\..\..\..\..\Users\nikit\.nuget\packages\microsoft.aspnetcore.authentication.jwtbearer\6.0.10\lib\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll</HintPath>
-      </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Identity.Application\Identity.Application.csproj" />
       <ProjectReference Include="..\Identity.Infrastructure\Identity.Infrastructure.csproj" />
     </ItemGroup>

@@ -35,7 +35,7 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapHub<NotificationHub>("/hubs/notification");
+            endpoints.MapHub<NotificationHub>("/api/Notification");
         });
     }
 }

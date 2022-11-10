@@ -1,7 +1,4 @@
-﻿using Entry.API.Middlewares;
-using Microsoft.AspNetCore.Mvc;
-using Ocelot.DependencyInjection;
-using Ocelot.Middleware;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Entry.API;
 
@@ -17,12 +14,14 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddCors();
-        services.AddOcelot(Configuration);
 
         /*services.AddSpaStaticFiles(configuration =>
         {
             configuration.RootPath = "wwwroot/";
         });*/
+        
+        services.AddReverseProxy()
+            .LoadFromConfig(Configuration.GetSection("ReverseProxy"));
 
         services.AddControllers(options =>
         {
@@ -50,7 +49,6 @@ public class Startup
         }
 
         app.UseHttpsRedirection();
-        app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseDefaultFiles();
         app.UseStaticFiles();
@@ -58,7 +56,6 @@ public class Startup
 
         app.UseRouting();
         app.UseWebSockets();
-        app.UseOcelot();
 
         app.UseAuthentication();
         app.UseAuthorization();
@@ -66,6 +63,7 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapReverseProxy();
         });
 
         /*app.UseSpa(spa => {  });*/
