@@ -1,4 +1,4 @@
-namespace Entry.API;
+namespace Notification.API;
 
 public static class Program
 {

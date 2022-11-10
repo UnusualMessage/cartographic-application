@@ -1,9 +1,13 @@
-export const get = async (url: string, route: string, query: string) => {
-  const options = {
+export const get = async (url: string, route: string, query?: string) => {
+  const options: RequestInit = {
     method: "GET",
+    mode: "cors",
+    credentials: "include",
   };
 
-  const request = new Request(`${url}/${route}?${query}`, options);
+  query = query ? "?" + query : "";
+
+  const request = new Request(`${url}/${route}/${query}`, options);
   const response = await fetch(request);
 
   return response.json();

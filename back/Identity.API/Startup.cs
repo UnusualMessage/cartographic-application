@@ -1,9 +1,11 @@
 ﻿using System.Text;
 using Identity.API.Extensions;
+using Identity.API.Middlewares;
 using Identity.Core.Settings;
 using Identity.Infrastructure.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
@@ -50,6 +52,11 @@ public class Startup
             options.Filters.Add(new ProducesAttribute("application/json"));
         });
 
+        services.AddStackExchangeRedisCache(options =>
+        {
+            options.Configuration = "localhost:6379";
+        });
+
         services.AddMediatR(typeof(Startup));
         services.ConfigureApplicationLayer();
 
@@ -66,16 +73,26 @@ public class Startup
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Identity APIv1"));
             
             app.UseCors(builder => builder
-                .AllowAnyOrigin()
+                .WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
-                .AllowAnyHeader());
+                .AllowAnyHeader()
+                .AllowCredentials()
+            );
         }
         else
         {
             app.UseHsts();
         }
+        
+        app.UseCookiePolicy(new CookiePolicyOptions
+        {
+            MinimumSameSitePolicy = SameSiteMode.None,
+            HttpOnly = HttpOnlyPolicy.Always,
+            Secure = CookieSecurePolicy.Always,
+        });
 
         app.UseHttpsRedirection();
+        app.UseMiddleware<ExceptionMiddleware>();
 
         app.UseDefaultFiles();
         app.UseStaticFiles();

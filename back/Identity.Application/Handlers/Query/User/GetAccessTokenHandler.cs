@@ -1,7 +1,6 @@
 ﻿using Common.Core.Exceptions;
 using Identity.Application.Requests.Queries.User;
 using Identity.Application.Responses.User;
-using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MediatR;
 
@@ -9,19 +8,20 @@ namespace Identity.Application.Handlers.Query.User;
 
 public class GetAccessTokenHandler : IRequestHandler<GetAccessToken, AuthenticateUserResponse>
 {
-    private readonly IUserRepository _userRepository;
     private readonly ITokenService _tokenService;
+    private readonly ICachingService<Core.Entities.User> _cachingService;
 
-    public GetAccessTokenHandler(IUserRepository userRepository, ITokenService tokenService)
+    public GetAccessTokenHandler(ITokenService tokenService, ICachingService<Core.Entities.User> cachingService)
     {
-        _userRepository = userRepository;
         _tokenService = tokenService;
+        _cachingService = cachingService;
     }
     
     public async Task<AuthenticateUserResponse> Handle(GetAccessToken request, CancellationToken cancellationToken)
     {
-        var user = await _userRepository.GetUserByTokenAsync(request.RefreshToken ?? "");
-        
+        var cacheKey = request.RefreshToken;
+        var user = await _cachingService.Cache(cacheKey ?? "");
+
         if (user is null)
         {
             return FailToAccessToken();

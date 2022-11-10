@@ -9,8 +9,10 @@ export const post = async (
   headers.append("Content-Type", "application/json");
   headers.append("Authorization", `Bearer ${token}`);
 
-  const options = {
+  const options: RequestInit = {
     method: "POST",
+    credentials: "include",
+    mode: "cors",
     headers,
     body: JSON.stringify(model),
   };

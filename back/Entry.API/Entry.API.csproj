@@ -11,11 +11,15 @@
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.10" />
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-        <PackageReference Include="Ocelot" Version="18.0.0" />
+        <PackageReference Include="Yarp.ReverseProxy" Version="1.1.1" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Common.Core\Common.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Middlewares" />
     </ItemGroup>
 
 </Project>
