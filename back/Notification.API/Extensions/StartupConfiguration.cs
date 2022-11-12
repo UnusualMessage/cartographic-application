@@ -1,7 +1,7 @@
 ﻿using MassTransit;
 using MassTransit.SignalR;
-using Notification.API.Consumers;
 using Notification.API.Hubs;
+using Shared.Core.Contracts;
 
 namespace Notification.API.Extensions;
 
@@ -17,7 +17,7 @@ public static class StartupConfiguration
             x.AddDelayedMessageScheduler();
             x.SetKebabCaseEndpointNameFormatter();
 
-            x.AddSignalRHub<UserNotificationHub>();
+            x.AddSignalRHub<NotificationsHub>();
 
             x.UsingRabbitMq((context, cfg) =>
             {
@@ -30,8 +30,7 @@ public static class StartupConfiguration
                 cfg.ConfigureEndpoints(context);
             });
             
-            x.AddConsumersFromNamespaceContaining<UserNotificationConsumer>();
+            x.AddConsumersFromNamespaceContaining<Message>();
         });
-        
     }
 }

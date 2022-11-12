@@ -1,10 +1,8 @@
 ﻿using Identity.Application.Requests.Commands.User;
 using Identity.Application.Requests.Queries.User;
-using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.Core.Entities;
 
 namespace Identity.API.Controllers;
 
@@ -20,8 +18,7 @@ namespace Identity.API.Controllers;
         }
 
         [AllowAnonymous]
-        [Route("access")]
-        [HttpGet]
+        [HttpGet("access")]
         public async Task<IActionResult> GetAccessToken()
         {
             var request = new GetAccessToken();
@@ -32,32 +29,13 @@ namespace Identity.API.Controllers;
 
             var response = await _mediator.Send(request);
             
-            var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
-            {
-                cfg.Host(new Uri("rabbitmq://localhost"), h =>
-                {
-                    h.Username("guest");
-                    h.Password("guest");
-                });
-            });
-            
-            await busControl.StartAsync();
-            
-            await busControl.Publish(new LoginNotification
-            {
-                Message = "Hello"
-            });
-            
-            await busControl.StopAsync();
-
             SetTokenCookie(response.RefreshToken ?? "");
             
             return Ok(response);
         }
 
-        [AllowAnonymous]
-        [Route("register")]
-        [HttpPost]
+        [Authorize]
+        [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterUser request)
         {
             request.IpAddress = GetIpAddress();
@@ -71,8 +49,7 @@ namespace Identity.API.Controllers;
         }
 
         [AllowAnonymous]
-        [Route("authenticate")]
-        [HttpPost]
+        [HttpPost("authenticate")]
         public async Task<IActionResult> Authenticate([FromBody] AuthenticateUser request)
         {
             request.IpAddress = GetIpAddress();

@@ -94,9 +94,6 @@ public class Startup
         app.UseHttpsRedirection();
         app.UseMiddleware<ExceptionMiddleware>();
 
-        app.UseDefaultFiles();
-        app.UseStaticFiles();
-        
         app.UseRouting();
 
         app.UseAuthentication();
