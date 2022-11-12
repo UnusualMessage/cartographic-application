@@ -1,4 +1,4 @@
-﻿namespace Common.Core.Responses;
+﻿namespace Shared.Core.Responses;
 
 public class ErrorResponse
 {

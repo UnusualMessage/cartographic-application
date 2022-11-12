@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Common.Core.Exceptions;
+using Shared.Core.Exceptions;
 using Identity.Application.Requests.Commands.User;
 using Identity.Application.Responses.User;
 using Identity.Core.Interfaces.Repositories;

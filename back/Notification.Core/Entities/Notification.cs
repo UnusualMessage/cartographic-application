@@ -1,4 +1,4 @@
-﻿using Common.Core.Entites;
+﻿using Shared.Core.Entities;
 using Notification.Core.Interfaces;
 
 namespace Notification.Core.Entities;

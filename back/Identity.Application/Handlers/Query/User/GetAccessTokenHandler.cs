@@ -1,4 +1,4 @@
-﻿using Common.Core.Exceptions;
+﻿using Shared.Core.Exceptions;
 using Identity.Application.Requests.Queries.User;
 using Identity.Application.Responses.User;
 using Identity.Core.Interfaces.Services;

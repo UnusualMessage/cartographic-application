@@ -1,4 +1,6 @@
-﻿using Notification.API.Hubs;
+﻿using MassTransit;
+using MassTransit.SignalR;
+using Notification.API.Hubs;
 
 namespace Notification.API;
 
@@ -15,6 +17,22 @@ public class Startup
     {
         services.AddCors();
         services.AddSignalR();
+        
+        services.AddMassTransit(x =>
+        {
+            x.AddSignalRHub<NotificationHub>();
+
+            x.UsingRabbitMq((context, cfg) =>
+            {
+                cfg.Host("localhost", "/", h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+                
+                cfg.ConfigureEndpoints(context);
+            });
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

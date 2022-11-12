@@ -4,15 +4,8 @@ namespace Notification.API.Hubs;
 
 public class NotificationHub : Hub
 {
-    public async Task SendMessage(string user, string message)
+    public async Task SendMessage(string message)
     {
-        if (string.IsNullOrEmpty(user))
-        {
-            await Clients.All.SendAsync("ReceiveMessageHandler", message);
-        }
-        else
-        {
-            await Clients.User(user).SendAsync("ReceiveMessageHandler", message);
-        }
+        await Clients.All.SendAsync("broadcastMessage", message);
     }
 }

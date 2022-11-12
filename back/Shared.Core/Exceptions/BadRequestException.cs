@@ -1,4 +1,4 @@
-﻿namespace Common.Core.Exceptions;
+﻿namespace Shared.Core.Exceptions;
 
 public class BadRequestException : Exception
 {

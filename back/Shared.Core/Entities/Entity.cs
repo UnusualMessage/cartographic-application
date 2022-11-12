@@ -1,6 +1,6 @@
-﻿using Common.Core.Interfaces;
+﻿using Shared.Core.Interfaces;
 
-namespace Common.Core.Entites;
+namespace Shared.Core.Entities;
 
 public abstract class Entity<T> : IUpdatable<T> where T : Entity<T>
 {

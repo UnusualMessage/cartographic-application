@@ -1,4 +1,4 @@
-﻿using Common.Core.Interfaces;
+﻿using Shared.Core.Interfaces;
 using Identity.Core.Entities;
 
 namespace Identity.Core.Interfaces.Repositories;

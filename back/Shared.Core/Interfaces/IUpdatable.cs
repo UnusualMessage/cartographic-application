@@ -1,6 +1,6 @@
-﻿using Common.Core.Entites;
+﻿using Shared.Core.Entities;
 
-namespace Common.Core.Interfaces;
+namespace Shared.Core.Interfaces;
 
 public interface IUpdatable<in T> where T : Entity<T>
 {
