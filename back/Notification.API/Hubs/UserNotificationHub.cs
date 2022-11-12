@@ -2,7 +2,7 @@
 
 namespace Notification.API.Hubs;
 
-public class NotificationHub : Hub
+public class UserNotificationHub : Hub
 {
     public async Task SendMessage(string message)
     {

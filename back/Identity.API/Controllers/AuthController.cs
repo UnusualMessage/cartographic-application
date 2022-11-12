@@ -1,8 +1,10 @@
 ﻿using Identity.Application.Requests.Commands.User;
 using Identity.Application.Requests.Queries.User;
+using MassTransit;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Core.Entities;
 
 namespace Identity.API.Controllers;
 
@@ -29,6 +31,24 @@ namespace Identity.API.Controllers;
             request.RefreshToken = refreshToken;
 
             var response = await _mediator.Send(request);
+            
+            var busControl = Bus.Factory.CreateUsingRabbitMq(cfg =>
+            {
+                cfg.Host(new Uri("rabbitmq://localhost"), h =>
+                {
+                    h.Username("guest");
+                    h.Password("guest");
+                });
+            });
+            
+            await busControl.StartAsync();
+            
+            await busControl.Publish(new LoginNotification
+            {
+                Message = "Hello"
+            });
+            
+            await busControl.StopAsync();
 
             SetTokenCookie(response.RefreshToken ?? "");
             
