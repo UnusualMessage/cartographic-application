@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace Identity.Application.Responses.User;
+namespace Identity.Application.Responses.Auth;
 
 public class AuthenticateUserResponse
 {

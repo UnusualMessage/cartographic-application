@@ -1,7 +1,7 @@
-﻿using Identity.Application.Responses.User;
+﻿using Identity.Application.Responses.Auth;
 using MediatR;
 
-namespace Identity.Application.Requests.Queries.User;
+namespace Identity.Application.Requests.Queries.Auth;
 
 public class GetAccessToken : IRequest<AuthenticateUserResponse>
 {

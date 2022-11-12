@@ -1,6 +1,6 @@
 ﻿using Identity.Application.Handlers.Query.User;
-using Identity.Application.Requests.Queries.User;
-using Identity.Application.Responses.User;
+using Identity.Application.Requests.Queries.Auth;
+using Identity.Application.Responses.Auth;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,6 +1,6 @@
-﻿using Shared.Core.Exceptions;
-using Identity.Application.Requests.Queries.User;
-using Identity.Application.Responses.User;
+﻿using Identity.Application.Requests.Queries.Auth;
+using Shared.Core.Exceptions;
+using Identity.Application.Responses.Auth;
 using Identity.Core.Interfaces.Services;
 using MediatR;
 

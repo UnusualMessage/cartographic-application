@@ -1,5 +1,5 @@
-﻿using Identity.Application.Requests.Commands.User;
-using Identity.Application.Responses.User;
+﻿using Identity.Application.Requests.Commands.Auth;
+using Identity.Application.Responses.Auth;
 using Identity.Core.Interfaces.Repositories;
 using MediatR;
 

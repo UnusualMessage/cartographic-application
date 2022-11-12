@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
+using Identity.Application.Requests.Commands.Auth;
 using Shared.Core.Exceptions;
-using Identity.Application.Requests.Commands.User;
-using Identity.Application.Responses.User;
+using Identity.Application.Responses.Auth;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MediatR;
