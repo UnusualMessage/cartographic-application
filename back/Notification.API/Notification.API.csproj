@@ -14,7 +14,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Notification.Application\Notification.Application.csproj" />
+      <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
     </ItemGroup>
 
 </Project>

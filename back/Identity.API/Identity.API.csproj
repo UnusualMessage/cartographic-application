@@ -15,6 +15,7 @@
     <ItemGroup>
       <ProjectReference Include="..\Identity.Application\Identity.Application.csproj" />
       <ProjectReference Include="..\Identity.Infrastructure\Identity.Infrastructure.csproj" />
+      <ProjectReference Include="..\Shared.API\Shared.API.csproj" />
     </ItemGroup>
 
 </Project>

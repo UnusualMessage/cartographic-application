@@ -8,7 +8,6 @@
 
     <ItemGroup>
       <ProjectReference Include="..\Identity.Core\Identity.Core.csproj" />
-      <ProjectReference Include="..\Shared.API\Shared.API.csproj" />
     </ItemGroup>
 
     <ItemGroup>
