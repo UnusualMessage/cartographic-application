@@ -1,5 +1,5 @@
-﻿using Identity.Application.Requests.Commands.Auth;
-using Identity.Application.Responses.Auth;
+﻿using Identity.Application.Requests.Commands;
+using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
 using MediatR;
 
@@ -29,17 +29,11 @@ public class RevokeUserHandler : IRequestHandler<RevokeUser, RevokeUserResponse>
 
         await _userRepository.UpdateAsync(user);
 
-        return new RevokeUserResponse
-        {
-            Revoked = true
-        };
+        return new RevokeUserResponse(true);
     }
 
     private RevokeUserResponse FailRevoke()
     {
-        return new RevokeUserResponse
-        {
-            Revoked = false
-        };
+        return new RevokeUserResponse(true);
     }
 }

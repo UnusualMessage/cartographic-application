@@ -1,5 +1,5 @@
-﻿using Identity.Application.Requests.Queries.Auth;
-using Identity.Application.Responses.Auth;
+﻿using Identity.Application.Requests.Queries;
+using Identity.Application.Responses;
 using Identity.Core.Interfaces.Services;
 using MediatR;
 using Shared.Core.Exceptions;

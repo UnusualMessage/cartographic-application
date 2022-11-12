@@ -1,9 +1,7 @@
 ﻿using Identity.Application.Handlers.Command.Auth;
 using Identity.Application.Handlers.Command.User;
-using Identity.Application.Requests.Commands.Auth;
-using Identity.Application.Requests.Commands.User;
-using Identity.Application.Responses.Auth;
-using Identity.Application.Responses.User;
+using Identity.Application.Requests.Commands;
+using Identity.Application.Responses;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -1,5 +1,5 @@
-﻿using Identity.Application.Requests.Commands.Auth;
-using Identity.Application.Requests.Queries.Auth;
+﻿using Identity.Application.Requests.Commands;
+using Identity.Application.Requests.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,11 +21,8 @@ public class AuthController : ControllerBase
     [HttpGet("access")]
     public async Task<IActionResult> GetAccessToken()
     {
-        var request = new GetAccessToken();
         var refreshToken = Request.Cookies["refreshToken"];
-
-        request.IpAddress = GetIpAddress();
-        request.RefreshToken = refreshToken;
+        var request = new GetAccessToken(refreshToken);
 
         var response = await _mediator.Send(request);
 
@@ -38,9 +35,7 @@ public class AuthController : ControllerBase
     [HttpPost("authenticate")]
     public async Task<IActionResult> Authenticate([FromBody] AuthenticateUser request)
     {
-        request.IpAddress = GetIpAddress();
-
-        var response = await _mediator.Send(request);
+        var response = await _mediator.Send(request with { IpAddress = GetIpAddress() });
 
         SetTokenCookie(response.RefreshToken ?? "");
 
@@ -49,12 +44,10 @@ public class AuthController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("refresh")]
-    public async Task<IActionResult> Refresh([FromBody] RefreshUser request)
+    public async Task<IActionResult> Refresh()
     {
         var refreshToken = Request.Cookies["refreshToken"];
-        request.IpAddress = GetIpAddress();
-
-        request.RefreshToken = refreshToken;
+        var request = new RefreshUser(IpAddress: GetIpAddress(), RefreshToken: refreshToken);
 
         var response = await _mediator.Send(request);
 
@@ -65,24 +58,22 @@ public class AuthController : ControllerBase
 
     [AllowAnonymous]
     [HttpPost("revoke")]
-    public async Task<IActionResult> Revoke([FromBody] RevokeUser request)
+    public async Task<IActionResult> Revoke()
     {
         var refreshToken = Request.Cookies["refreshToken"];
-        request.IpAddress = GetIpAddress();
-
-        request.RefreshToken = refreshToken;
+        var request = new RevokeUser(IpAddress: GetIpAddress(), RefreshToken: refreshToken);
 
         return Ok(await _mediator.Send(request));
     }
 
-    protected string? GetIpAddress()
+    private string? GetIpAddress()
     {
         if (Request.Headers.ContainsKey("X-Forwarded-For")) return Request.Headers["X-Forwarded-For"];
 
         return HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
     }
 
-    protected void SetTokenCookie(string token)
+    private void SetTokenCookie(string token)
     {
         var cookieOptions = new CookieOptions
         {

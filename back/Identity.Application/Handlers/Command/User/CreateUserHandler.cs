@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
-using Identity.Application.Requests.Commands.User;
-using Identity.Application.Responses.User;
+using Identity.Application.Requests.Commands;
+using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MediatR;
