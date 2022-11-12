@@ -1,4 +1,5 @@
-﻿using Identity.Application.Requests.Commands.User;
+﻿using Identity.API.Controllers.Base;
+using Identity.Application.Requests.Commands.User;
 using Identity.Application.Requests.Queries.User;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -7,8 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Identity.API.Controllers;
 
     [Route("api/[controller]")]
-    [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController : AuthControllerBase
     {
         private readonly IMediator _mediator;
 
@@ -32,20 +32,6 @@ namespace Identity.API.Controllers;
             SetTokenCookie(response.RefreshToken ?? "");
             
             return Ok(response);
-        }
-
-        [Authorize]
-        [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterUser request)
-        {
-            request.IpAddress = GetIpAddress();
-
-            var response = await _mediator.Send(request);
-
-            SetTokenCookie(response.RefreshToken ?? "");
-
-            return Ok(response);
-
         }
 
         [AllowAnonymous]
@@ -87,26 +73,5 @@ namespace Identity.API.Controllers;
             request.RefreshToken = refreshToken;
 
             return Ok(await _mediator.Send(request));
-        }
-
-        private string? GetIpAddress()
-        {
-            if (Request.Headers.ContainsKey("X-Forwarded-For"))
-            {
-                return Request.Headers["X-Forwarded-For"];
-            }
-
-            return HttpContext.Connection.RemoteIpAddress?.MapToIPv4().ToString();
-        }
-
-        private void SetTokenCookie(string token)
-        {
-            var cookieOptions = new CookieOptions
-            {
-                Expires = DateTime.UtcNow.AddDays(7),
-                IsEssential = true
-            };
-
-            Response.Cookies.Append("refreshToken", token, cookieOptions);
         }
     }
