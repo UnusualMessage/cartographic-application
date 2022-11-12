@@ -1,6 +1,9 @@
-﻿namespace Identity.Application.Requests.Queries.User;
+﻿using Identity.Application.Responses.User;
+using MediatR;
 
-public class GetUsers
+namespace Identity.Application.Requests.Queries.User;
+
+public class GetUsers : IRequest<IEnumerable<UserResponse>>
 {
     
 }

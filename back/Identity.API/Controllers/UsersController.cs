@@ -1,41 +1,33 @@
-﻿using Identity.API.Controllers.Base;
-using Identity.Application.Requests.Commands.Auth;
+﻿using Identity.Application.Requests.Commands.User;
+using Identity.Application.Requests.Queries.User;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Identity.API.Controllers;
 
-    [Route("api/[controller]")]
-    public class UsersController : AuthControllerBase
+[ApiController]
+[Route("api/[controller]")]
+public class UsersController : ControllerBase
+{
+    private readonly IMediator _mediator;
+
+    public UsersController(IMediator mediator)
     {
-        private readonly IMediator _mediator;
-
-        public UsersController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
-        [Authorize]
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            var response = await _mediator.Send(null);
-
-            return Ok(response);
-        }
-
-        [Authorize]
-        [HttpPost]
-        public async Task<IActionResult> Register([FromBody] RegisterUser request)
-        {
-            request.IpAddress = GetIpAddress();
-
-            var response = await _mediator.Send(request);
-
-            SetTokenCookie(response.RefreshToken ?? "");
-
-            return Ok(response);
-
-        }
+        _mediator = mediator;
     }
+
+    [Authorize]
+    [HttpGet]
+    public async Task<IActionResult> Get()
+    {
+        return Ok(await _mediator.Send(new GetUsers()));
+    }
+
+    [Authorize]
+    [HttpPost]
+    public async Task<IActionResult> Register([FromBody] CreateUser request)
+    {
+        return Ok(await _mediator.Send(request));
+    }
+}

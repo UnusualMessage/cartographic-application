@@ -1,6 +1,8 @@
 ﻿using Identity.Application.Handlers.Query.User;
 using Identity.Application.Requests.Queries.Auth;
+using Identity.Application.Requests.Queries.User;
 using Identity.Application.Responses.Auth;
+using Identity.Application.Responses.User;
 using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -12,5 +14,7 @@ public static class UserQueryHandlersConfiguration
     {
         services
             .AddScoped<IRequestHandler<GetAccessToken, AuthenticateUserResponse>, GetAccessTokenHandler>();
+
+        services.AddScoped<IRequestHandler<GetUsers, IEnumerable<UserResponse>>, GetUsersHandler>();
     }
 }

@@ -3,7 +3,7 @@ using Identity.Application.Responses.Auth;
 using Identity.Core.Interfaces.Repositories;
 using MediatR;
 
-namespace Identity.Application.Handlers.Command.User;
+namespace Identity.Application.Handlers.Command.Auth;
 
 public class RevokeUserHandler : IRequestHandler<RevokeUser, RevokeUserResponse>
 {
@@ -18,24 +18,18 @@ public class RevokeUserHandler : IRequestHandler<RevokeUser, RevokeUserResponse>
     {
         var user = await _userRepository.GetUserByTokenAsync(request.RefreshToken ?? "");
 
-        if (user is null)
-        {
-            return FailRevoke();
-        }
+        if (user is null) return FailRevoke();
 
         var refreshToken = user.RefreshTokens.Single(x => x.Token == request.RefreshToken);
 
-        if (refreshToken.IsActive == false)
-        {
-            return FailRevoke();
-        }
+        if (refreshToken.IsActive == false) return FailRevoke();
 
         refreshToken.Revoked = DateTime.UtcNow;
         refreshToken.RevokedByIp = request.IpAddress;
 
         await _userRepository.UpdateAsync(user);
 
-        return new RevokeUserResponse()
+        return new RevokeUserResponse
         {
             Revoked = true
         };
@@ -43,7 +37,7 @@ public class RevokeUserHandler : IRequestHandler<RevokeUser, RevokeUserResponse>
 
     private RevokeUserResponse FailRevoke()
     {
-        return new RevokeUserResponse()
+        return new RevokeUserResponse
         {
             Revoked = false
         };
