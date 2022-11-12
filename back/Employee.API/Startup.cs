@@ -1,15 +1,13 @@
 ﻿using System.Text;
-using Identity.API.Extensions;
-using Identity.Core.Settings;
-using Identity.Infrastructure.Extensions;
+using Employee.API.Extensions;
+using Employee.Infrastructure.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.CookiePolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Shared.API.Middlewares;
 
-namespace Identity.API;
+namespace Employee.API;
 
 public class Startup
 {
@@ -22,8 +20,6 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.Configure<JwtSettings>(Configuration.GetSection("JwtSettings"));
-
         services.ConfigureSwagger();
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
@@ -78,13 +74,6 @@ public class Startup
         {
             app.UseHsts();
         }
-
-        app.UseCookiePolicy(new CookiePolicyOptions
-        {
-            MinimumSameSitePolicy = SameSiteMode.None,
-            HttpOnly = HttpOnlyPolicy.Always,
-            Secure = CookieSecurePolicy.Always
-        });
 
         app.UseHttpsRedirection();
         app.UseMiddleware<ExceptionMiddleware>();

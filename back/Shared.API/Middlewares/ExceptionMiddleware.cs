@@ -1,20 +1,21 @@
 ﻿using System.Net;
-using Shared.Core.Exceptions;
-using Shared.Core.Responses;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using Shared.Core.Exceptions;
+using Shared.Core.Responses;
 
-namespace Identity.API.Middlewares;
+namespace Shared.API.Middlewares;
 
 public class ExceptionMiddleware
 {
     private readonly RequestDelegate _next;
-    
+
     public ExceptionMiddleware(RequestDelegate next)
     {
         _next = next;
     }
-    
+
     public async Task InvokeAsync(HttpContext httpContext)
     {
         try
@@ -34,7 +35,7 @@ public class ExceptionMiddleware
             await HandleExceptionAsync(httpContext, ex);
         }
     }
-    
+
     private async Task HandleExceptionAsync(HttpContext context, Exception exception)
     {
         context.Response.ContentType = "application/json; charset=utf-8";
@@ -45,11 +46,11 @@ public class ExceptionMiddleware
             BadRequestException => (int)HttpStatusCode.BadRequest,
             _ => (int)HttpStatusCode.InternalServerError
         };
-        
-        var response = new ErrorResponse(exception.Message);  
+
+        var response = new ErrorResponse(exception.Message);
         await context.Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings
         {
-            ContractResolver = new CamelCasePropertyNamesContractResolver(),     	
+            ContractResolver = new CamelCasePropertyNamesContractResolver(),
             Formatting = Formatting.Indented
         }));
     }
