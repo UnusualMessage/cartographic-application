@@ -8,7 +8,7 @@ public class UserConfiguration : IEntityTypeConfiguration<User>
 {
     public void Configure(EntityTypeBuilder<User> builder)
     {
-        builder.ToTable("USERS");
+        builder.ToTable("users");
 
         builder
             .HasIndex(e => e.Login)

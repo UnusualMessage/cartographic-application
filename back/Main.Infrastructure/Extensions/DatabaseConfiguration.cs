@@ -1,4 +1,6 @@
-﻿using Main.Infrastructure.Context;
+﻿using Main.Core.Interfaces.Repositories;
+using Main.Infrastructure.Context;
+using Main.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,5 +17,8 @@ public static class DatabaseConfiguration
 
     public static void AddRepositories(this IServiceCollection services)
     {
+        services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+        services.AddScoped<IPostRepository, PostRepository>();
+        services.AddScoped<IOrganizationRepository, OrganizationRepository>();
     }
 }

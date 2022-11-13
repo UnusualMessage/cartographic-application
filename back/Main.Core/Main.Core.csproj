@@ -8,8 +8,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Entities" />
-      <Folder Include="Interfaces\Repositories" />
+      <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
     </ItemGroup>
 
 </Project>
