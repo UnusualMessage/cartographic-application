@@ -1,12 +1,13 @@
 ﻿using AutoMapper;
 using Identity.Application.Requests.Commands;
 using Identity.Application.Responses;
+using Identity.Core.Entities;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MassTransit.Mediator;
 using Shared.Core.Exceptions;
 
-namespace Identity.Application.Consumers.Command.User;
+namespace Identity.Application.Handlers.Commands.Users;
 
 public class CreateUserHandler : MediatorRequestHandler<CreateUser, UserResponse>
 {
@@ -27,7 +28,7 @@ public class CreateUserHandler : MediatorRequestHandler<CreateUser, UserResponse
 
         if (user is not null) return FailRegistration();
 
-        var newUser = _mapper.Map<Core.Entities.User>(request);
+        var newUser = _mapper.Map<User>(request);
         newUser.Password = _passwordHasher.HashPassword(request.Password);
 
         user = await _userRepository.AddAsync(newUser);

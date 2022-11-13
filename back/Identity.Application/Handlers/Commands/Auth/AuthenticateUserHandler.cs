@@ -5,7 +5,7 @@ using Identity.Core.Interfaces.Services;
 using MassTransit.Mediator;
 using Shared.Core.Exceptions;
 
-namespace Identity.Application.Consumers.Command.Auth;
+namespace Identity.Application.Handlers.Commands.Auth;
 
 public class AuthenticateUserHandler : MediatorRequestHandler<AuthenticateUser, AuthenticateUserResponse>
 {
@@ -20,7 +20,8 @@ public class AuthenticateUserHandler : MediatorRequestHandler<AuthenticateUser, 
         _passwordHasher = hasher;
     }
 
-    protected override async Task<AuthenticateUserResponse> Handle(AuthenticateUser request, CancellationToken cancellationToken)
+    protected override async Task<AuthenticateUserResponse> Handle(AuthenticateUser request,
+        CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetUserByLoginAsync(request.Login);
 
@@ -35,7 +36,7 @@ public class AuthenticateUserHandler : MediatorRequestHandler<AuthenticateUser, 
 
         await _userRepository.UpdateAsync(user);
 
-        var accessToken = _tokenService.GetGeneratedAccessToken(user).Token; 
+        var accessToken = _tokenService.GetGeneratedAccessToken(user).Token;
         return new AuthenticateUserResponse(accessToken, refreshToken.Token);
     }
 

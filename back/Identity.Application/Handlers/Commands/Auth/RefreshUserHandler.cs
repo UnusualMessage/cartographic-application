@@ -5,7 +5,7 @@ using Identity.Core.Interfaces.Services;
 using MassTransit.Mediator;
 using Shared.Core.Exceptions;
 
-namespace Identity.Application.Consumers.Command.Auth;
+namespace Identity.Application.Handlers.Commands.Auth;
 
 public class RefreshUserHandler : MediatorRequestHandler<RefreshUser, AuthenticateUserResponse>
 {
@@ -18,7 +18,8 @@ public class RefreshUserHandler : MediatorRequestHandler<RefreshUser, Authentica
         _tokenService = service;
     }
 
-    protected override async Task<AuthenticateUserResponse> Handle(RefreshUser request, CancellationToken cancellationToken)
+    protected override async Task<AuthenticateUserResponse> Handle(RefreshUser request,
+        CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetUserByTokenAsync(request.RefreshToken ?? "");
 

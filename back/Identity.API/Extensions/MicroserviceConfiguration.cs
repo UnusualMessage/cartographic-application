@@ -1,6 +1,6 @@
-﻿using Identity.Application.Consumers.Command;
-using Identity.Application.Consumers.Query;
-using Identity.Application.Extensions;
+﻿using Identity.Application.Extensions;
+using Identity.Application.Handlers.Commands;
+using Identity.Application.Handlers.Query;
 using Identity.Infrastructure.Extensions;
 using MassTransit;
 using Shared.Configuration.Extensions;
@@ -18,7 +18,7 @@ public static class MicroserviceConfiguration
         services.AddControllers();
 
         services.AddStackExchangeRedisCache(options => { options.Configuration = "localhost:6379"; });
-        
+
         services.AddHealthChecks();
         services.AddMediator(x =>
         {
@@ -26,7 +26,7 @@ public static class MicroserviceConfiguration
             x.AddConsumersFromNamespaceContaining<Queries>();
         });
     }
-    
+
     public static void AddApplication(this IServiceCollection services)
     {
         services.AddApplicationServices();

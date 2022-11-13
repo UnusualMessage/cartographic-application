@@ -4,7 +4,7 @@ using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
 using MassTransit.Mediator;
 
-namespace Identity.Application.Consumers.Query.User;
+namespace Identity.Application.Handlers.Query.Users;
 
 public class GetUsersHandler : MediatorRequestHandler<GetUsers, UsersResponse>
 {

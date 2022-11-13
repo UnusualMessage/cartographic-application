@@ -3,7 +3,7 @@ using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
 using MassTransit.Mediator;
 
-namespace Identity.Application.Consumers.Command.Auth;
+namespace Identity.Application.Handlers.Commands.Auth;
 
 public class RevokeUserHandler : MediatorRequestHandler<RevokeUser, RevokeUserResponse>
 {
