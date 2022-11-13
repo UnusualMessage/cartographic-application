@@ -3,12 +3,12 @@ using Identity.Application.Requests.Commands;
 using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
-using MediatR;
+using MassTransit.Mediator;
 using Shared.Core.Exceptions;
 
-namespace Identity.Application.Handlers.Command.User;
+namespace Identity.Application.Consumers.Command.User;
 
-public class CreateUserHandler : IRequestHandler<CreateUser, UserResponse>
+public class CreateUserHandler : MediatorRequestHandler<CreateUser, UserResponse>
 {
     private readonly IMapper _mapper;
     private readonly IPasswordHasher _passwordHasher;
@@ -21,7 +21,7 @@ public class CreateUserHandler : IRequestHandler<CreateUser, UserResponse>
         _passwordHasher = hasher;
     }
 
-    public async Task<UserResponse> Handle(CreateUser request, CancellationToken cancellationToken)
+    protected override async Task<UserResponse> Handle(CreateUser request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetUserByLoginAsync(request.Login);
 
@@ -32,9 +32,7 @@ public class CreateUserHandler : IRequestHandler<CreateUser, UserResponse>
 
         user = await _userRepository.AddAsync(newUser);
 
-        if (user is null) return FailRegistration();
-
-        return _mapper.Map<UserResponse>(user);
+        return user is null ? FailRegistration() : _mapper.Map<UserResponse>(user);
     }
 
     private static UserResponse FailRegistration()

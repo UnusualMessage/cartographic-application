@@ -1,6 +1,7 @@
 ﻿using Identity.Application.Requests.Commands;
 using Identity.Application.Requests.Queries;
-using MediatR;
+using MassTransit;
+using MassTransit.Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,7 @@ public class AuthController : ControllerBase
         var refreshToken = Request.Cookies["refreshToken"];
         var request = new GetAccessToken(refreshToken);
 
-        var response = await _mediator.Send(request);
+        var response = await _mediator.SendRequest(request);
 
         SetTokenCookie(response.RefreshToken ?? "");
 
@@ -35,7 +36,7 @@ public class AuthController : ControllerBase
     [HttpPost("authenticate")]
     public async Task<IActionResult> Authenticate([FromBody] AuthenticateUser request)
     {
-        var response = await _mediator.Send(request with { IpAddress = GetIpAddress() });
+        var response = await _mediator.SendRequest(request with { IpAddress = GetIpAddress() });
 
         SetTokenCookie(response.RefreshToken ?? "");
 
@@ -49,7 +50,7 @@ public class AuthController : ControllerBase
         var refreshToken = Request.Cookies["refreshToken"];
         var request = new RefreshUser(IpAddress: GetIpAddress(), RefreshToken: refreshToken);
 
-        var response = await _mediator.Send(request);
+        var response = await _mediator.SendRequest(request);
 
         SetTokenCookie(response.RefreshToken ?? "");
 
@@ -63,7 +64,7 @@ public class AuthController : ControllerBase
         var refreshToken = Request.Cookies["refreshToken"];
         var request = new RevokeUser(IpAddress: GetIpAddress(), RefreshToken: refreshToken);
 
-        return Ok(await _mediator.Send(request));
+        return Ok(await _mediator.SendRequest(request));
     }
 
     private string? GetIpAddress()

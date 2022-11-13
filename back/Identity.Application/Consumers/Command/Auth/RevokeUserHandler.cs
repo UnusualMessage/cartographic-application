@@ -1,11 +1,11 @@
 ﻿using Identity.Application.Requests.Commands;
 using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
-using MediatR;
+using MassTransit.Mediator;
 
-namespace Identity.Application.Handlers.Command.Auth;
+namespace Identity.Application.Consumers.Command.Auth;
 
-public class RevokeUserHandler : IRequestHandler<RevokeUser, RevokeUserResponse>
+public class RevokeUserHandler : MediatorRequestHandler<RevokeUser, RevokeUserResponse>
 {
     private readonly IUserRepository _userRepository;
 
@@ -14,7 +14,7 @@ public class RevokeUserHandler : IRequestHandler<RevokeUser, RevokeUserResponse>
         _userRepository = userRepository;
     }
 
-    public async Task<RevokeUserResponse> Handle(RevokeUser request, CancellationToken cancellationToken)
+    protected override async Task<RevokeUserResponse> Handle(RevokeUser request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetUserByTokenAsync(request.RefreshToken ?? "");
 

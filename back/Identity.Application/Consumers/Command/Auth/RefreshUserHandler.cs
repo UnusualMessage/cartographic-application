@@ -2,12 +2,12 @@
 using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
-using MediatR;
+using MassTransit.Mediator;
 using Shared.Core.Exceptions;
 
-namespace Identity.Application.Handlers.Command.Auth;
+namespace Identity.Application.Consumers.Command.Auth;
 
-public class RefreshUserHandler : IRequestHandler<RefreshUser, AuthenticateUserResponse>
+public class RefreshUserHandler : MediatorRequestHandler<RefreshUser, AuthenticateUserResponse>
 {
     private readonly ITokenService _tokenService;
     private readonly IUserRepository _userRepository;
@@ -18,7 +18,7 @@ public class RefreshUserHandler : IRequestHandler<RefreshUser, AuthenticateUserR
         _tokenService = service;
     }
 
-    public async Task<AuthenticateUserResponse> Handle(RefreshUser request, CancellationToken cancellationToken)
+    protected override async Task<AuthenticateUserResponse> Handle(RefreshUser request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetUserByTokenAsync(request.RefreshToken ?? "");
 
@@ -38,7 +38,7 @@ public class RefreshUserHandler : IRequestHandler<RefreshUser, AuthenticateUserR
         await _userRepository.UpdateAsync(user);
 
         var jwt = _tokenService.GetGeneratedAccessToken(user);
-        return new AuthenticateUserResponse(refreshToken.Token, jwt.Token);
+        return new AuthenticateUserResponse(jwt.Token, refreshToken.Token);
     }
 
     private static AuthenticateUserResponse FailAuthentication()

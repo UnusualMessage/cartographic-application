@@ -1,6 +1,6 @@
 ﻿using Identity.Application.Responses;
-using MediatR;
+using MassTransit.Mediator;
 
 namespace Identity.Application.Requests.Queries;
 
-public record GetAccessToken(string? RefreshToken) : IRequest<AuthenticateUserResponse>;
+public record GetAccessToken(string? RefreshToken) : Request<AuthenticateUserResponse>;

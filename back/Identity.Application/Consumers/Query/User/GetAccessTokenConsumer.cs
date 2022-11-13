@@ -1,12 +1,12 @@
 ﻿using Identity.Application.Requests.Queries;
 using Identity.Application.Responses;
 using Identity.Core.Interfaces.Services;
-using MediatR;
+using MassTransit.Mediator;
 using Shared.Core.Exceptions;
 
-namespace Identity.Application.Handlers.Query.User;
+namespace Identity.Application.Consumers.Query.User;
 
-public class GetAccessTokenHandler : IRequestHandler<GetAccessToken, AuthenticateUserResponse>
+public class GetAccessTokenHandler : MediatorRequestHandler<GetAccessToken, AuthenticateUserResponse>
 {
     private readonly ICachingService<Core.Entities.User> _cachingService;
     private readonly ITokenService _tokenService;
@@ -17,7 +17,7 @@ public class GetAccessTokenHandler : IRequestHandler<GetAccessToken, Authenticat
         _cachingService = cachingService;
     }
 
-    public async Task<AuthenticateUserResponse> Handle(GetAccessToken request, CancellationToken cancellationToken)
+    protected override async Task<AuthenticateUserResponse> Handle(GetAccessToken request, CancellationToken cancellationToken)
     {
         var cacheKey = request.RefreshToken;
         var user = await _cachingService.Cache(cacheKey ?? "");
@@ -29,7 +29,7 @@ public class GetAccessTokenHandler : IRequestHandler<GetAccessToken, Authenticat
         if (refreshToken.IsActive == false) return FailToAccessToken();
 
         var jwt = _tokenService.GetGeneratedAccessToken(user);
-        return new AuthenticateUserResponse(refreshToken.Token, jwt.Token);
+        return new AuthenticateUserResponse(jwt.Token, refreshToken.Token);
     }
 
     private AuthenticateUserResponse FailToAccessToken()

@@ -1,11 +1,9 @@
-﻿using Identity.Application.Extensions;
-using Identity.Infrastructure.Extensions;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 
 namespace Identity.API.Extensions;
 
-public static class StartupConfiguration
+public static class SwaggerConfiguration
 {
     public static void ConfigureSwagger(this IServiceCollection services)
     {
@@ -38,17 +36,5 @@ public static class StartupConfiguration
                 }
             });
         });
-    }
-    
-    public static void ConfigureApplicationLayer(this IServiceCollection services)
-    {
-        services.AddApplicationServices();
-        services.AddMappingProfiles();
-        services.AddHandlers();
-    }
-
-    public static void ConfigureInfrastructureLayer(this IServiceCollection services)
-    {
-        services.AddRepositories();
     }
 }

@@ -2,12 +2,12 @@
 using Identity.Application.Responses;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
-using MediatR;
+using MassTransit.Mediator;
 using Shared.Core.Exceptions;
 
-namespace Identity.Application.Handlers.Command.Auth;
+namespace Identity.Application.Consumers.Command.Auth;
 
-public class AuthenticateUserHandler : IRequestHandler<AuthenticateUser, AuthenticateUserResponse>
+public class AuthenticateUserHandler : MediatorRequestHandler<AuthenticateUser, AuthenticateUserResponse>
 {
     private readonly IPasswordHasher _passwordHasher;
     private readonly ITokenService _tokenService;
@@ -20,7 +20,7 @@ public class AuthenticateUserHandler : IRequestHandler<AuthenticateUser, Authent
         _passwordHasher = hasher;
     }
 
-    public async Task<AuthenticateUserResponse> Handle(AuthenticateUser request, CancellationToken cancellationToken)
+    protected override async Task<AuthenticateUserResponse> Handle(AuthenticateUser request, CancellationToken cancellationToken)
     {
         var user = await _userRepository.GetUserByLoginAsync(request.Login);
 
@@ -36,7 +36,7 @@ public class AuthenticateUserHandler : IRequestHandler<AuthenticateUser, Authent
         await _userRepository.UpdateAsync(user);
 
         var accessToken = _tokenService.GetGeneratedAccessToken(user).Token; 
-        return new AuthenticateUserResponse(refreshToken.Token, accessToken);
+        return new AuthenticateUserResponse(accessToken, refreshToken.Token);
     }
 
     private static AuthenticateUserResponse FailAuthentication()

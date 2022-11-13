@@ -1,6 +1,7 @@
 ﻿using Identity.Application.Requests.Commands;
 using Identity.Application.Requests.Queries;
-using MediatR;
+using MassTransit;
+using MassTransit.Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,13 +22,14 @@ public class UsersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get()
     {
-        return Ok(await _mediator.Send(new GetUsers()));
+        var response = await _mediator.SendRequest(new GetUsers());
+        return Ok(response.Users);
     }
 
     [Authorize]
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] CreateUser request)
     {
-        return Ok(await _mediator.Send(request));
+        return Ok(await _mediator.SendRequest(request));
     }
 }

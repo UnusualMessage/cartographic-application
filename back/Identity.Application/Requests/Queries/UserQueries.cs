@@ -1,6 +1,6 @@
 ﻿using Identity.Application.Responses;
-using MediatR;
+using MassTransit.Mediator;
 
 namespace Identity.Application.Requests.Queries;
 
-public record GetUsers : IRequest<IEnumerable<UserResponse>>;
+public record GetUsers : Request<UsersResponse>;
