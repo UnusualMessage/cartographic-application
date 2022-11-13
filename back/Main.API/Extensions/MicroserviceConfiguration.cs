@@ -1,11 +1,11 @@
-﻿using Identity.Application.Consumers.Command;
-using Identity.Application.Consumers.Query;
-using Identity.Application.Extensions;
-using Identity.Infrastructure.Extensions;
+﻿using Main.Application.Consumers.Command;
+using Main.Application.Consumers.Query;
+using Main.Application.Extensions;
+using Main.Infrastructure.Extensions;
 using MassTransit;
 using Shared.Configuration.Extensions;
 
-namespace Identity.API.Extensions;
+namespace Main.API.Extensions;
 
 public static class MicroserviceConfiguration
 {

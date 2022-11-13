@@ -1,9 +1,11 @@
 ﻿using System.Text;
-using Identity.Core.Settings;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Core.Settings;
 
-namespace Identity.API.Extensions;
+namespace Shared.Configuration.Extensions;
 
 public static class AuthConfiguration
 {

@@ -1,10 +1,4 @@
-﻿using System.Text;
-using Main.API.Extensions;
-using Main.Infrastructure.Extensions;
-using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.IdentityModel.Tokens;
+﻿using Main.API.Extensions;
 using Shared.API.Middlewares;
 
 namespace Main.API;
@@ -20,39 +14,9 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.ConfigureSwagger();
-
-        services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = true;
-
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-
-                    ClockSkew = TimeSpan.Zero,
-                    ValidIssuer = Configuration["JwtSettings:Issuer"],
-                    ValidAudience = Configuration["JwtSettings:Audience"],
-                    IssuerSigningKey =
-                        new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JwtSettings:Key"]))
-                };
-            });
-
-        services.AddCors();
-
-        services.AddControllers(options => { options.Filters.Add(new ProducesAttribute("application/json")); });
-
-        services.AddStackExchangeRedisCache(options => { options.Configuration = "localhost:6379"; });
-
-        services.AddMediatR(typeof(Startup));
-        services.ConfigureApplicationLayer();
-
-        services.AddPostgresql(Configuration);
-        services.ConfigureInfrastructureLayer();
+        services.AddApi(Configuration);
+        services.AddApplication();
+        services.AddInfrastructure(Configuration);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

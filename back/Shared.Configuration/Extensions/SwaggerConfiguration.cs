@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.OpenApi.Models;
 
-namespace Identity.API.Extensions;
+namespace Shared.Configuration.Extensions;
 
 public static class SwaggerConfiguration
 {

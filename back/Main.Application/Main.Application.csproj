@@ -8,18 +8,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Folder Include="Handlers\Command\Extensions" />
-        <Folder Include="Handlers\Extensions" />
-        <Folder Include="Handlers\Query\Extensions" />
-        <Folder Include="MappingProfiles" />
-        <Folder Include="Requests\Commands" />
-        <Folder Include="Requests\Queries" />
-        <Folder Include="Responses" />
-        <Folder Include="Services" />
-    </ItemGroup>
-
-    <ItemGroup>
-        <PackageReference Include="MediatR" Version="11.0.0" />
+        <PackageReference Include="AutoMapper" Version="12.0.0" />
+        <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+        <PackageReference Include="MassTransit" Version="8.0.8" />
         <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     </ItemGroup>
 
