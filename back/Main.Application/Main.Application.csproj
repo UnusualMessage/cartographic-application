@@ -4,10 +4,12 @@
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>Main.Application</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
         <Folder Include="Handlers\Command\Extensions" />
+        <Folder Include="Handlers\Extensions" />
         <Folder Include="Handlers\Query\Extensions" />
         <Folder Include="MappingProfiles" />
         <Folder Include="Requests\Commands" />
@@ -22,7 +24,7 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Employee.Core\Employee.Core.csproj" />
+      <ProjectReference Include="..\Main.Core\Main.Core.csproj" />
     </ItemGroup>
 
 </Project>

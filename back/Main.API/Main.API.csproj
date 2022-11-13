@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
+        <RootNamespace>Main.API</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,8 +19,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Employee.Application\Employee.Application.csproj" />
-      <ProjectReference Include="..\Employee.Infrastructure\Employee.Infrastructure.csproj" />
+      <ProjectReference Include="..\Main.Application\Main.Application.csproj" />
+      <ProjectReference Include="..\Main.Infrastructure\Main.Infrastructure.csproj" />
       <ProjectReference Include="..\Shared.API\Shared.API.csproj" />
     </ItemGroup>
 

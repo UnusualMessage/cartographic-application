@@ -2,11 +2,6 @@
 
 namespace Identity.Application.Responses;
 
-public record AuthenticateUserResponse
-{
-    public string? AccessToken { get; set; }
-
-    [JsonIgnore] public string? RefreshToken { get; set; }
-}
+public record AuthenticateUserResponse(string? AccessToken, [property: JsonIgnore] string? RefreshToken);
 
 public record RevokeUserResponse(bool Revoked);

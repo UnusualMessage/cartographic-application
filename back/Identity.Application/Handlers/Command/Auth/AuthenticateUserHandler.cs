@@ -35,13 +35,8 @@ public class AuthenticateUserHandler : IRequestHandler<AuthenticateUser, Authent
 
         await _userRepository.UpdateAsync(user);
 
-        AuthenticateUserResponse response = new()
-        {
-            RefreshToken = refreshToken.Token,
-            AccessToken = _tokenService.GetGeneratedAccessToken(user).Token
-        };
-
-        return response;
+        var accessToken = _tokenService.GetGeneratedAccessToken(user).Token; 
+        return new AuthenticateUserResponse(refreshToken.Token, accessToken);
     }
 
     private static AuthenticateUserResponse FailAuthentication()

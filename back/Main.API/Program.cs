@@ -1,4 +1,4 @@
-namespace Employee.API;
+namespace Main.API;
 
 public static class Program
 {

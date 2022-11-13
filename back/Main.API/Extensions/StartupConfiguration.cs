@@ -1,9 +1,9 @@
-﻿using Employee.Application.Extensions;
-using Employee.Infrastructure.Extensions;
+﻿using Main.Application.Extensions;
+using Main.Infrastructure.Extensions;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.OpenApi.Models;
 
-namespace Employee.API.Extensions;
+namespace Main.API.Extensions;
 
 public static class StartupConfiguration
 {

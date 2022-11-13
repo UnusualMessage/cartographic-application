@@ -1,9 +1,9 @@
-﻿using Employee.Infrastructure.Context;
+﻿using Main.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Employee.Infrastructure.Extensions;
+namespace Main.Infrastructure.Extensions;
 
 public static class DatabaseConfiguration
 {

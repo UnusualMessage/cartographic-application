@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entry", "Entry", "{C696593C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{88112F70-45DC-4481-9777-AB62173131F9}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Aggregator", "Aggregator", "{90365872-B194-4D59-865E-929AB0A4D8F4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Workers", "Workers", "{90365872-B194-4D59-865E-929AB0A4D8F4}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{AD445323-DD39-4BCF-A8DC-983A1039628E}"
 EndProject
@@ -26,17 +26,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notificatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.API", "Notification.API\Notification.API.csproj", "{26389AF1-BCFB-423E-8530-79440ED314D4}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Employee", "Employee", "{41DC1BBF-4BA2-421C-B08B-283188EDDAF0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Main", "Main", "{41DC1BBF-4BA2-421C-B08B-283188EDDAF0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee.API", "Employee.API\Employee.API.csproj", "{590B6B62-D197-4D1F-B3CD-35B254763EEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main.API", "Main.API\Main.API.csproj", "{590B6B62-D197-4D1F-B3CD-35B254763EEF}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.API", "Shared.API\Shared.API.csproj", "{A26AF74A-4546-4CE7-AD29-DC7D266E33E0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee.Application", "Employee.Application\Employee.Application.csproj", "{3A47185D-8A17-4A1F-9F9E-55723CC49FD9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main.Application", "Main.Application\Main.Application.csproj", "{3A47185D-8A17-4A1F-9F9E-55723CC49FD9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee.Core", "Employee.Core\Employee.Core.csproj", "{618687B9-8F0C-4DAE-B023-A079DBB46C9B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main.Core", "Main.Core\Main.Core.csproj", "{618687B9-8F0C-4DAE-B023-A079DBB46C9B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Employee.Infrastructure", "Employee.Infrastructure\Employee.Infrastructure.csproj", "{2C00BBAC-5210-44EA-A271-16A26E704ACA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main.Infrastructure", "Main.Infrastructure\Main.Infrastructure.csproj", "{2C00BBAC-5210-44EA-A271-16A26E704ACA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

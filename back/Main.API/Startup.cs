@@ -1,13 +1,13 @@
 ﻿using System.Text;
-using Employee.API.Extensions;
-using Employee.Infrastructure.Extensions;
+using Main.API.Extensions;
+using Main.Infrastructure.Extensions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using Shared.API.Middlewares;
 
-namespace Employee.API;
+namespace Main.API;
 
 public class Startup
 {

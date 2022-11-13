@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Employee.Infrastructure.Context;
+namespace Main.Infrastructure.Context;
 
 public class IdentityContextFactory : IDesignTimeDbContextFactory<ApplicationContext>
 {

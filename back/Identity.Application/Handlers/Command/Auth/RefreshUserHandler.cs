@@ -38,12 +38,7 @@ public class RefreshUserHandler : IRequestHandler<RefreshUser, AuthenticateUserR
         await _userRepository.UpdateAsync(user);
 
         var jwt = _tokenService.GetGeneratedAccessToken(user);
-
-        return new AuthenticateUserResponse
-        {
-            RefreshToken = newRefreshToken.Token,
-            AccessToken = jwt.Token
-        };
+        return new AuthenticateUserResponse(refreshToken.Token, jwt.Token);
     }
 
     private static AuthenticateUserResponse FailAuthentication()

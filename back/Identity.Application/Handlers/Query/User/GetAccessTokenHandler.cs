@@ -29,12 +29,7 @@ public class GetAccessTokenHandler : IRequestHandler<GetAccessToken, Authenticat
         if (refreshToken.IsActive == false) return FailToAccessToken();
 
         var jwt = _tokenService.GetGeneratedAccessToken(user);
-
-        return new AuthenticateUserResponse
-        {
-            RefreshToken = request.RefreshToken,
-            AccessToken = jwt.Token
-        };
+        return new AuthenticateUserResponse(refreshToken.Token, jwt.Token);
     }
 
     private AuthenticateUserResponse FailToAccessToken()

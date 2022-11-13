@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 
-namespace Employee.Application.Extensions;
+namespace Main.Application.Extensions;
 
 public static class HandlersConfiguration
 {

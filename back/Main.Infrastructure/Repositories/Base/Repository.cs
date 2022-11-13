@@ -1,9 +1,9 @@
-﻿using Employee.Infrastructure.Context;
+﻿using Main.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 using Shared.Core.Entities;
 using Shared.Core.Interfaces;
 
-namespace Employee.Infrastructure.Repositories.Base;
+namespace Main.Infrastructure.Repositories.Base;
 
 public abstract class Repository<T> : IRepository<T> where T : Entity<T>
 {
