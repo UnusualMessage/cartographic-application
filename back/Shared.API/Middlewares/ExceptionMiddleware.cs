@@ -47,7 +47,7 @@ public class ExceptionMiddleware
             _ => (int)HttpStatusCode.InternalServerError
         };
 
-        var response = new ErrorResponse(exception.Message);
+        var response = new ErrorResponse(exception.StackTrace);
         await context.Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),

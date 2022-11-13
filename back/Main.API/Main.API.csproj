@@ -15,10 +15,6 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Controllers" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\Main.Application\Main.Application.csproj" />
       <ProjectReference Include="..\Main.Infrastructure\Main.Infrastructure.csproj" />
       <ProjectReference Include="..\Shared.API\Shared.API.csproj" />

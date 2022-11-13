@@ -1,5 +1,5 @@
-﻿using Main.Application.Consumers.Command;
-using Main.Application.Consumers.Query;
+﻿using Main.Application.Handlers.Commands;
+using Main.Application.Handlers.Queries;
 using Main.Application.Extensions;
 using Main.Infrastructure.Extensions;
 using MassTransit;
