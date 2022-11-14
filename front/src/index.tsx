@@ -20,6 +20,7 @@ import Layout from "./components/common/Layout";
 import { references } from "./assets/data/references";
 import EmptyPage from "./components/auxiliary/EmptyPage";
 import Authorization from "./pages/Admin/Authorization";
+import Organizations from "./pages/Admin/Organizations";
 
 const View = lazy(() => import("./pages/User/View"));
 const Edit = lazy(() => import("./pages/User/Edit"));
@@ -62,8 +63,16 @@ const browserRouter = createBrowserRouter([
   },
 
   {
-    path: "/admin",
+    path: "/authorization",
     element: <Authorization />,
+    errorElement: (
+      <NonIdealState icon={"search"} title={"Страницы не существует!"} />
+    ),
+  },
+
+  {
+    path: "/admin",
+    element: <Organizations />,
     errorElement: (
       <NonIdealState icon={"search"} title={"Страницы не существует!"} />
     ),
