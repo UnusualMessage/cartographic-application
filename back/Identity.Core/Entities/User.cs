@@ -1,4 +1,4 @@
-﻿using Common.Core.Entites;
+﻿using Shared.Core.Entities;
 
 namespace Identity.Core.Entities;
 

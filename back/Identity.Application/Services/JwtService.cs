@@ -4,9 +4,9 @@ using System.Security.Cryptography;
 using System.Text;
 using Identity.Core.Entities;
 using Identity.Core.Interfaces.Services;
-using Identity.Core.Settings;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Core.Settings;
 
 namespace Identity.Application.Services;
 

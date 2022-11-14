@@ -57,9 +57,6 @@ public class Startup
         app.UseRouting();
         app.UseWebSockets();
 
-        app.UseAuthentication();
-        app.UseAuthorization();
-
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();

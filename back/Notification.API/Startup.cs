@@ -1,4 +1,5 @@
-﻿using Notification.API.Hubs;
+﻿using Notification.API.Extensions;
+using Notification.API.Hubs;
 
 namespace Notification.API;
 
@@ -14,7 +15,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddCors();
-        services.AddSignalR();
+        services.AddMicroservice();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -35,7 +36,7 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapHub<NotificationHub>("/api/Notification");
+            endpoints.MapHub<NotificationsHub>("/api/notifications");
         });
     }
 }

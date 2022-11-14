@@ -10,16 +10,19 @@
     <ItemGroup>
         <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.10" />
         <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="6.0.10" />
-        <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
         <PackageReference Include="Yarp.ReverseProxy" Version="1.1.1" />
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\Common.Core\Common.Core.csproj" />
+      <ProjectReference Include="..\Shared.Core\Shared.Core.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Middlewares" />
+      <_ContentIncludedByDefault Remove="wwwroot\index.html" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="wwwroot" />
     </ItemGroup>
 
 </Project>

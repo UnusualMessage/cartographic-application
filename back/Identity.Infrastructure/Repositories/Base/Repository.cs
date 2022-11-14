@@ -1,5 +1,5 @@
-﻿using Common.Core.Entites;
-using Common.Core.Interfaces;
+﻿using Shared.Core.Entities;
+using Shared.Core.Interfaces;
 using Identity.Infrastructure.Context;
 using Microsoft.EntityFrameworkCore;
 
