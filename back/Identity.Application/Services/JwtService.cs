@@ -24,10 +24,29 @@ public class JwtService : ITokenService
         JwtSecurityTokenHandler tokenHandler = new();
         var key = Encoding.UTF8.GetBytes(_jwtSettings.Value.Key!);
 
+        var roleClaims = new List<Claim>();
+
+        if (user.Admin)
+        {
+            roleClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
+        }
+        
+        if (user.Moderator)
+        {
+            roleClaims.Add(new Claim(ClaimTypes.Role, "Moderator"));
+        }
+        
+        if (user.Monitor)
+        {
+            roleClaims.Add(new Claim(ClaimTypes.Role, "Monitor"));
+        }
+
         ClaimsIdentity claimsIdentity = new(new[]
         {
             new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
         });
+        
+        claimsIdentity.AddClaims(roleClaims);
 
         SigningCredentials signingCredentials = new(new SymmetricSecurityKey(key), 
             SecurityAlgorithms.HmacSha256Signature);
@@ -43,11 +62,10 @@ public class JwtService : ITokenService
 
         var token = tokenHandler.CreateToken(tokenDescriptor);
 
-        return new AccessToken()
+        return new AccessToken
         {
             Token = tokenHandler.WriteToken(token)
         };
-
     }
 
     public RefreshToken GetGeneratedRefreshToken(string ipAddress)
