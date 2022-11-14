@@ -9,7 +9,11 @@ public class UserProfile : Profile
 {
     public UserProfile()
     {
-        CreateMap<User, UserResponse>();
+        CreateMap<User, UserResponse>()
+            .ForMember(dest => dest.Roles, 
+                opt => opt.MapFrom(
+                    src => src.GetRoles()));
+        
         CreateMap<User, AuthenticateUserResponse>();
         CreateMap<CreateUser, User>();
         CreateMap<AuthenticateUser, User>();

@@ -1,5 +1,7 @@
-﻿namespace Identity.Application.Responses;
+﻿using Identity.Core.Interfaces.Enums;
 
-public record UserResponse(Guid Id, string? Login);
+namespace Identity.Application.Responses;
+
+public record UserResponse(Guid Id, string? Login, Roles Roles);
 
 public record UsersResponse(IEnumerable<UserResponse> Users);

@@ -26,7 +26,7 @@ public class UsersController : ControllerBase
         return Ok(response.Users);
     }
 
-    [Authorize]
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] CreateUser request)
     {
