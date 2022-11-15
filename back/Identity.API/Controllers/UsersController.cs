@@ -18,7 +18,7 @@ public class UsersController : ControllerBase
         _mediator = mediator;
     }
 
-    [Authorize(Roles = "Monitor")]
+    [Authorize(Roles = "Moderator")]
     [HttpGet]
     public async Task<IActionResult> Get()
     {
@@ -26,7 +26,7 @@ public class UsersController : ControllerBase
         return Ok(response.Users);
     }
 
-    [Authorize]
+    [AllowAnonymous]
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] CreateUser request)
     {

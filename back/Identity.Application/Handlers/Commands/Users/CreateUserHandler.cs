@@ -2,7 +2,6 @@
 using Identity.Application.Requests.Commands;
 using Identity.Application.Responses;
 using Identity.Core.Entities;
-using Identity.Core.Interfaces.Enums;
 using Identity.Core.Interfaces.Repositories;
 using Identity.Core.Interfaces.Services;
 using MassTransit.Mediator;
@@ -31,7 +30,6 @@ public class CreateUserHandler : MediatorRequestHandler<CreateUser, UserResponse
 
         var newUser = _mapper.Map<User>(request);
         newUser.Password = _passwordHasher.HashPassword(request.Password);
-        newUser.SetRoles(request.Roles);
 
         user = await _userRepository.AddAsync(newUser);
 

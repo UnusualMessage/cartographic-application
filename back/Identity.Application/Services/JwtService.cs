@@ -3,6 +3,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Identity.Core.Entities;
+using Identity.Core.Interfaces.Enums;
 using Identity.Core.Interfaces.Services;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -26,29 +27,18 @@ public class JwtService : ITokenService
 
         var roleClaims = new List<Claim>();
 
-        if (user.Admin)
-        {
-            roleClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
-        }
-        
-        if (user.Moderator)
-        {
-            roleClaims.Add(new Claim(ClaimTypes.Role, "Moderator"));
-        }
-        
-        if (user.Monitor)
-        {
-            roleClaims.Add(new Claim(ClaimTypes.Role, "Monitor"));
-        }
+        if (user.Roles.HasFlag(Roles.Admin)) roleClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
+        if (user.Roles.HasFlag(Roles.Moderator)) roleClaims.Add(new Claim(ClaimTypes.Role, "Moderator"));
+        if (user.Roles.HasFlag(Roles.Monitor)) roleClaims.Add(new Claim(ClaimTypes.Role, "Monitor"));
 
         ClaimsIdentity claimsIdentity = new(new[]
         {
-            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+            new Claim(ClaimTypes.NameIdentifier, user.Id.ToString())
         });
-        
+
         claimsIdentity.AddClaims(roleClaims);
 
-        SigningCredentials signingCredentials = new(new SymmetricSecurityKey(key), 
+        SigningCredentials signingCredentials = new(new SymmetricSecurityKey(key),
             SecurityAlgorithms.HmacSha256Signature);
 
         SecurityTokenDescriptor tokenDescriptor = new()
@@ -57,7 +47,7 @@ public class JwtService : ITokenService
             Issuer = _jwtSettings.Value.Issuer,
             Audience = _jwtSettings.Value.Audience,
             Expires = DateTime.Now.AddMinutes(_jwtSettings.Value.Expires),
-            SigningCredentials = signingCredentials,
+            SigningCredentials = signingCredentials
         };
 
         var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -72,7 +62,7 @@ public class JwtService : ITokenService
     {
         var randomBytes = new byte[64];
         string token;
-        
+
         using (var rng = RandomNumberGenerator.Create())
         {
             rng.GetBytes(randomBytes);
