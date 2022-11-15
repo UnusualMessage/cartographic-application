@@ -20,12 +20,14 @@ import Layout from "./components/common/Layout";
 import { references } from "./assets/data/references";
 import EmptyPage from "./components/auxiliary/EmptyPage";
 import Authorization from "./pages/Admin/Authorization";
-import Organizations from "./pages/Admin/Organizations";
 
 const View = lazy(() => import("./pages/User/View"));
 const Edit = lazy(() => import("./pages/User/Edit"));
 
 const References = lazy(() => import("./pages/User/References"));
+
+const Organizations = lazy(() => import("./pages/Admin/Organizations"));
+const Users = lazy(() => import("./pages/Admin/Users"));
 
 FocusStyleManager.onlyShowFocusOnTabs();
 
@@ -71,8 +73,16 @@ const browserRouter = createBrowserRouter([
   },
 
   {
-    path: "/admin",
+    path: "/admin/organizations",
     element: <Organizations />,
+    errorElement: (
+      <NonIdealState icon={"search"} title={"Страницы не существует!"} />
+    ),
+  },
+
+  {
+    path: "/admin/users",
+    element: <Users />,
     errorElement: (
       <NonIdealState icon={"search"} title={"Страницы не существует!"} />
     ),
