@@ -14,6 +14,7 @@ const Organizations = () => {
         return (
           <Organization
             key={organization.id}
+            id={organization.id}
             title={organization.title}
             text={organization.text}
           />

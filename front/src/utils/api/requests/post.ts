@@ -17,6 +17,8 @@ export const post = async (
     body: JSON.stringify(model),
   };
 
+  query = query ? "?" + query : "";
+
   const request = new Request(`${url}/${route}?${query}`, options);
   const response = await fetch(request);
 

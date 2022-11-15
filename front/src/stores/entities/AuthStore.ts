@@ -5,80 +5,80 @@ import { AuthenticateUser } from "../../types/entities/User";
 import { isError } from "../../utils/api/responses";
 
 class AuthStore {
-  private isLogin: boolean;
-  private accessToken: string;
-  private authService: AuthService;
-  private responseService: ResponseService;
+  private _isLogin: boolean;
+  private _accessToken: string;
+  private _authService: AuthService;
+  private _responseService: ResponseService;
 
   constructor() {
-    this.isLogin = false;
-    this.accessToken = "";
-    this.authService = new AuthService();
-    this.responseService = new ResponseService();
+    this._isLogin = false;
+    this._accessToken = "";
+    this._authService = new AuthService();
+    this._responseService = new ResponseService();
 
     makeAutoObservable(this);
   }
 
   public entered = () => {
-    return this.isLogin;
+    return this._isLogin;
   };
 
   public getAccessToken = () => {
-    return this.accessToken;
+    return this._accessToken;
   };
 
   public access = async () => {
-    const data = await this.authService.access();
+    const data = await this._authService.access();
 
     if (isError(data)) {
-      this.responseService.invokeError(data.message);
+      this._responseService.invokeError(data.message);
       return;
     }
 
-    this.responseService.invokeSuccess();
+    this._responseService.invokeSuccess();
     runInAction(() => {
       this.login(data.token);
     });
   };
 
   public authenticateUser = async (user: AuthenticateUser) => {
-    const data = await this.authService.authenticate(user);
+    const data = await this._authService.authenticate(user);
 
     if (isError(data)) {
-      this.responseService.invokeError(data.message);
+      this._responseService.invokeError(data.message);
       this.logout();
       return;
     }
 
-    this.responseService.invokeSuccess();
+    this._responseService.invokeSuccess();
     runInAction(() => {
       this.login(data.token);
     });
   };
 
   public refreshUser = async () => {
-    const data = await this.authService.refresh();
+    const data = await this._authService.refresh();
 
     if (isError(data)) {
-      this.responseService.invokeError(data.message);
+      this._responseService.invokeError(data.message);
       this.logout();
       return;
     }
 
-    this.responseService.invokeSuccess();
+    this._responseService.invokeSuccess();
     runInAction(() => {
       this.login(data.token);
     });
   };
 
   private login = (accessToken: string) => {
-    this.accessToken = accessToken;
-    this.isLogin = true;
+    this._accessToken = accessToken;
+    this._isLogin = true;
   };
 
   private logout = () => {
-    this.accessToken = "";
-    this.isLogin = false;
+    this._accessToken = "";
+    this._isLogin = false;
   };
 }
 

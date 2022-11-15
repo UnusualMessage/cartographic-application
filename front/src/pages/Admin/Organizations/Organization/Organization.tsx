@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 import { image, images, link, wrapper } from "./organization.module.scss";
 
 interface Props {
+  id: string;
   title: string;
   text?: string;
 }
 
-const Organization = ({ title, text }: Props) => {
+const Organization = ({ id, title, text }: Props) => {
   return (
     <Card className={wrapper}>
       <div className={images}>
@@ -19,7 +20,7 @@ const Organization = ({ title, text }: Props) => {
       <H5>{title}</H5>
       <p>{text}</p>
 
-      <Link to={"/"} className={link}>
+      <Link to={id} className={link}>
         <Button text="Перейти" />
       </Link>
     </Card>
