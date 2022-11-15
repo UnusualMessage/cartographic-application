@@ -2,9 +2,8 @@
 using Identity.Application.Requests.Queries;
 using MassTransit;
 using MassTransit.Mediator;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Shared.API.Filters;
+using Shared.API.Filters.Roles;
 
 namespace Identity.API.Controllers;
 
@@ -18,9 +17,8 @@ public class UsersController : ControllerBase
     {
         _mediator = mediator;
     }
-    
-    [Authorize]
-    [Role("Admin")]
+
+    [Admin]
     [HttpGet]
     public async Task<IActionResult> Get()
     {
@@ -28,8 +26,7 @@ public class UsersController : ControllerBase
         return Ok(response.Users);
     }
 
-    [Authorize]
-    [Role("Admin")]
+    [Admin]
     [HttpPost]
     public async Task<IActionResult> Register([FromBody] CreateUser request)
     {
