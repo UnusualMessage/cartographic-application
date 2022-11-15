@@ -30,7 +30,7 @@ public class GetAccessTokenHandler : MediatorRequestHandler<GetAccessToken, Auth
 
         if (refreshToken.IsActive == false) return FailToAccessToken();
 
-        var jwt = _tokenService.GetGeneratedAccessToken(user);
+        var jwt = _tokenService.GenerateAccessToken(user);
         return new AuthenticateUserResponse(jwt.Token, refreshToken.Token);
     }
 

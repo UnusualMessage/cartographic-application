@@ -30,6 +30,10 @@ public class ExceptionMiddleware
         {
             await HandleExceptionAsync(httpContext, badRequestException);
         }
+        catch (ForbiddenException forbiddenException)
+        {
+            await HandleExceptionAsync(httpContext, forbiddenException);
+        }
         catch (Exception ex)
         {
             await HandleExceptionAsync(httpContext, ex);
@@ -47,7 +51,7 @@ public class ExceptionMiddleware
             _ => (int)HttpStatusCode.InternalServerError
         };
 
-        var response = new ErrorResponse(exception.StackTrace);
+        var response = new ErrorResponse(exception.Message);
         await context.Response.WriteAsync(JsonConvert.SerializeObject(response, new JsonSerializerSettings
         {
             ContractResolver = new CamelCasePropertyNamesContractResolver(),

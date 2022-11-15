@@ -31,12 +31,12 @@ public class AuthenticateUserHandler : MediatorRequestHandler<AuthenticateUser, 
 
         if (passwordInvalid) return FailAuthentication();
 
-        var refreshToken = _tokenService.GetGeneratedRefreshToken(request.IpAddress ?? "0.0.0.0");
+        var refreshToken = _tokenService.GenerateRefreshToken(request.IpAddress ?? "0.0.0.0");
         user.RefreshTokens.Add(refreshToken);
 
         await _userRepository.UpdateAsync(user);
 
-        var accessToken = _tokenService.GetGeneratedAccessToken(user).Token;
+        var accessToken = _tokenService.GenerateAccessToken(user).Token;
         return new AuthenticateUserResponse(accessToken, refreshToken.Token);
     }
 

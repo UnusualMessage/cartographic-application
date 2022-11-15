@@ -3,7 +3,8 @@
 [Flags]
 public enum Roles : byte
 {
-    Monitor = 1,
-    Moderator = 2,
-    Admin = 4
+    Guest = 1,
+    Monitor = 2,
+    Moderator = 4,
+    Admin = 8,
 }

@@ -20,16 +20,17 @@ public class JwtService : ITokenService
         _jwtSettings = settings;
     }
 
-    public AccessToken GetGeneratedAccessToken(User user)
+    public AccessToken GenerateAccessToken(User user)
     {
         JwtSecurityTokenHandler tokenHandler = new();
         var key = Encoding.UTF8.GetBytes(_jwtSettings.Value.Key!);
 
         var roleClaims = new List<Claim>();
 
-        if (user.Roles.HasFlag(Roles.Admin)) roleClaims.Add(new Claim(ClaimTypes.Role, "Admin"));
-        if (user.Roles.HasFlag(Roles.Moderator)) roleClaims.Add(new Claim(ClaimTypes.Role, "Moderator"));
-        if (user.Roles.HasFlag(Roles.Monitor)) roleClaims.Add(new Claim(ClaimTypes.Role, "Monitor"));
+        if (user.Roles.HasFlag(Roles.Admin)) AddRoleClaim(roleClaims, "Admin");
+        if (user.Roles.HasFlag(Roles.Moderator)) AddRoleClaim(roleClaims, "Moderator");
+        if (user.Roles.HasFlag(Roles.Monitor)) AddRoleClaim(roleClaims, "Monitor");
+        if (user.Roles.HasFlag(Roles.Guest)) AddRoleClaim(roleClaims, "Guest");
 
         ClaimsIdentity claimsIdentity = new(new[]
         {
@@ -58,7 +59,7 @@ public class JwtService : ITokenService
         };
     }
 
-    public RefreshToken GetGeneratedRefreshToken(string ipAddress)
+    public RefreshToken GenerateRefreshToken(string ipAddress)
     {
         var randomBytes = new byte[64];
         string token;
@@ -76,5 +77,10 @@ public class JwtService : ITokenService
             Created = DateTime.UtcNow,
             CreatedByIp = ipAddress
         };
+    }
+
+    private static void AddRoleClaim(ICollection<Claim> claims, string name)
+    {
+        claims.Add(new Claim(ClaimTypes.Role, name));
     }
 }

@@ -29,7 +29,7 @@ public class RefreshUserHandler : MediatorRequestHandler<RefreshUser, Authentica
 
         if (refreshToken.IsActive == false) return FailAuthentication();
 
-        var newRefreshToken = _tokenService.GetGeneratedRefreshToken(request.IpAddress ?? "");
+        var newRefreshToken = _tokenService.GenerateRefreshToken(request.IpAddress ?? "");
 
         refreshToken.Revoked = DateTime.UtcNow;
         refreshToken.RevokedByIp = request.IpAddress;
@@ -38,7 +38,7 @@ public class RefreshUserHandler : MediatorRequestHandler<RefreshUser, Authentica
 
         await _userRepository.UpdateAsync(user);
 
-        var jwt = _tokenService.GetGeneratedAccessToken(user);
+        var jwt = _tokenService.GenerateAccessToken(user);
         return new AuthenticateUserResponse(jwt.Token, refreshToken.Token);
     }
 
