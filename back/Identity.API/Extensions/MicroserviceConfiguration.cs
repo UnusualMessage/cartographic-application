@@ -15,8 +15,8 @@ public static class MicroserviceConfiguration
         services.ConfigureAuthentication(configuration);
 
         services.AddCors();
-        services.AddODataControllers();
-        
+        services.AddControllers();
+
         services.AddStackExchangeRedisCache(options => { options.Configuration = "localhost:6379"; });
 
         services.AddHealthChecks();

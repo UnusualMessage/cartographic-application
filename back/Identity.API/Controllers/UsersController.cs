@@ -3,7 +3,6 @@ using Identity.Application.Requests.Queries;
 using MassTransit;
 using MassTransit.Mediator;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.OData.Query;
 using Shared.API.Filters.Roles;
 
 namespace Identity.API.Controllers;
@@ -20,7 +19,6 @@ public class UsersController : ControllerBase
     }
 
     [Admin]
-    [EnableQuery]
     [HttpGet]
     public async Task<IActionResult> Get()
     {
