@@ -4,6 +4,7 @@ using MassTransit;
 using MassTransit.Mediator;
 using Microsoft.AspNetCore.Mvc;
 using Shared.API.Filters.Roles;
+using Sieve.Models;
 
 namespace Identity.API.Controllers;
 
@@ -20,9 +21,9 @@ public class UsersController : ControllerBase
 
     [Admin]
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
-        var response = await _mediator.SendRequest(new GetUsers());
+        var response = await _mediator.SendRequest(new GetUsers(model));
         return Ok(response.Users);
     }
 
