@@ -46,6 +46,8 @@
     "@blueprintjs/select": "^4.7.0",
     "@blueprintjs/table": "^4.6.8",
     "@microsoft/signalr": "^6.0.10",
+    "@nivo/core": "^0.80.0",
+    "@nivo/pie": "^0.80.0",
     "@turf/turf": "^6.5.0",
     "classnames": "^2.3.1",
     "html2canvas": "^1.4.1",
@@ -59,7 +61,6 @@
     "react-full-screen": "^1.1.1",
     "react-hook-form": "^7.39.1",
     "react-router-dom": "^6.4.2",
-    "recharts": "^2.1.15",
     "uuid": "^9.0.0"
   }
 }

@@ -1,31 +1,32 @@
-import { Pie, PieChart, ResponsiveContainer } from "recharts";
-
-import { wrapper } from "./chart.module.scss";
-
 import { Plan } from "../../types/entities";
+import { ResponsivePie } from "@nivo/pie";
+
+import { chart, wrapper } from "./chart.module.scss";
 
 interface Props {
   plans: Plan[];
 }
 
 const PlansChart = ({ plans }: Props) => {
+  const data = plans.map((plan) => {
+    return {
+      id: `${plan.type}-${plan.year}`,
+      value: plan.target,
+      color: "hsl(81, 70%, 50%)",
+    };
+  });
+
   return (
-    <ResponsiveContainer width="30%" height="100%" className={wrapper}>
-      <PieChart width={400} height={400}>
-        <Pie
-          dataKey={"target"}
-          nameKey={"title"}
-          data={plans}
-          cx="50%"
-          cy="50%"
-          outerRadius={60}
-          fill="#8884d8"
-          isAnimationActive={false}
-          labelLine={false}
-          label
+    <div className={wrapper}>
+      <div className={chart}>
+        <ResponsivePie
+          data={data}
+          margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
+          startAngle={-180}
+          enableArcLabels={false}
         />
-      </PieChart>
-    </ResponsiveContainer>
+      </div>
+    </div>
   );
 };
 
