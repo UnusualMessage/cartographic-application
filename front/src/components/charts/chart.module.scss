@@ -1,4 +1,14 @@
 .wrapper {
-  overflow-x: auto;
-  overflow-y: hidden;
+  display: flex;
+
+  width: 40%;
+  height: 100%;
+  overflow: auto;
+
+  .chart {
+    margin: auto;
+
+    width: 500px;
+    height: 300px;
+  }
 }

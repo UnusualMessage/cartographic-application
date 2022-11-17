@@ -10,7 +10,7 @@ const Footer = ({ children }: PropsWithChildren) => {
 
   const props = {
     type: type,
-    initial: 240,
+    initial: 350,
     bottomBorder: 13,
   };
 
