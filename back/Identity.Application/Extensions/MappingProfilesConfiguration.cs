@@ -7,6 +7,8 @@ public static class MappingProfilesConfiguration
 {
     public static void AddMappingProfiles(this IServiceCollection services)
     {
-        services.AddAutoMapper(typeof(UserProfile));
+        services
+            .AddAutoMapper(typeof(UserProfile))
+            .AddAutoMapper(typeof(RefreshTokenProfile));
     }
 }
