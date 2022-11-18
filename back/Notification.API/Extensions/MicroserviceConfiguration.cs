@@ -5,10 +5,11 @@ using Shared.Core.Contracts;
 
 namespace Notification.API.Extensions;
 
-public static class StartupConfiguration
+public static class MicroserviceConfiguration
 {
     public static void AddMicroservice(this IServiceCollection services)
     {
+        services.AddCors();
         services.AddHealthChecks();
         services.AddSignalR();
         

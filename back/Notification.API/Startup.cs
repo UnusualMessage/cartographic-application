@@ -14,7 +14,6 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-        services.AddCors();
         services.AddMicroservice();
     }
 

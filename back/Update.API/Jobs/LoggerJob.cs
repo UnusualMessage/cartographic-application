@@ -18,7 +18,25 @@ public class LoggerJob : IJob
         _logger = logger;
     }
 
-    public async Task<AuthenticateUserResponse?> Authenticate()
+    public async Task Execute(IJobExecutionContext context)
+    {
+        var authenticationResult = await Authenticate();
+
+        if (authenticationResult is not null)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:5443/api/Users");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authenticationResult.AccessToken);
+
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            _logger.LogInformation(result);
+        }
+    }
+
+    private async Task<AuthenticateUserResponse?> Authenticate()
     {
         var message = new AuthenticateUser("Admin", "20102001", null);
 
@@ -38,23 +56,5 @@ public class LoggerJob : IJob
             JsonSerializer.Deserialize<AuthenticateUserResponse>(str,
                 new JsonSerializerOptions(JsonSerializerDefaults.Web));
         return result;
-    }
-
-    public async Task Execute(IJobExecutionContext context)
-    {
-        var authenticationResult = await Authenticate();
-
-        if (authenticationResult is not null)
-        {
-            var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:5443/api/Users");
-            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authenticationResult.AccessToken);
-
-            var response = await _client.SendAsync(request);
-            response.EnsureSuccessStatusCode();
-
-            var result = await response.Content.ReadAsStringAsync();
-
-            _logger.LogInformation(result);
-        }
     }
 }
