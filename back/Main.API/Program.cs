@@ -1,3 +1,5 @@
+using Serilog;
+
 namespace Main.API;
 
 public static class Program
@@ -10,6 +12,7 @@ public static class Program
     private static IHostBuilder CreateHostBuilder(string[] args)
     {
         return Host.CreateDefaultBuilder(args)
+            .UseSerilog()
             .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }
