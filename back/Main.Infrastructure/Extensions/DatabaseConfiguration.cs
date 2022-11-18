@@ -12,7 +12,8 @@ public static class DatabaseConfiguration
     public static void AddPostgresql(this IServiceCollection services, IConfiguration configuration)
     {
         var connection = configuration["ConnectionStrings:Connection"];
-        services.AddDbContext<ApplicationContext>(options => options.UseNpgsql(connection));
+        services.AddDbContext<ApplicationContext>(options =>
+            options.UseNpgsql(connection, builder => builder.UseNetTopologySuite()));
     }
 
     public static void AddRepositories(this IServiceCollection services)
@@ -20,5 +21,6 @@ public static class DatabaseConfiguration
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IOrganizationRepository, OrganizationRepository>();
+        services.AddScoped<IEquipmentRepository, EquipmentRepository>();
     }
 }

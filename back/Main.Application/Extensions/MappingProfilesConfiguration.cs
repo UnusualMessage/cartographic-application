@@ -7,8 +7,10 @@ public static class MappingProfilesConfiguration
 {
     public static void AddMappingProfiles(this IServiceCollection services)
     {
-       services.AddAutoMapper(typeof(EmployeeProfile));
-       services.AddAutoMapper(typeof(OrganizationProfile));
-       services.AddAutoMapper(typeof(PostProfile));
+        services
+            .AddAutoMapper(typeof(EmployeeProfile))
+            .AddAutoMapper(typeof(OrganizationProfile))
+            .AddAutoMapper(typeof(PostProfile))
+            .AddAutoMapper(typeof(EquipmentProfile));
     }
 }
