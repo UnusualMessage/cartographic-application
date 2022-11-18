@@ -6,7 +6,7 @@ import VectorSource from "ol/source/Vector";
 import { Geometry } from "ol/geom";
 import { v4 as uuid } from "uuid";
 
-import { getFeaturesCenter } from "../utils/features";
+import { getFeaturesCenter } from "../../utils/features";
 
 class FeaturesStore {
   private _features: FeatureLike[];
@@ -104,12 +104,6 @@ class FeaturesStore {
     this.features = this.features.filter(
       (currentFeature) => currentFeature.getId() !== feature.getId()
     );
-  }
-
-  public addFeature(feature: FeatureLike) {
-    const copy = this.features.slice();
-    copy.push(feature);
-    this.features = copy;
   }
 }
 

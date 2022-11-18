@@ -7,7 +7,7 @@ import View from "./View";
 import { TileLayer, VectorLayer } from "./Layer";
 import { Interactions } from "./Interactions";
 import MapWrapper from "./MapWrapper";
-import ContextMenu from "./ContextMenu";
+import { MapMenu } from "../../menus";
 import { geozonesLayerId } from "../../../assets/map/config";
 
 const EditMap = () => {
@@ -24,7 +24,7 @@ const EditMap = () => {
           <Interactions />
         </VectorLayer>
 
-        <ContextMenu />
+        <MapMenu />
       </MapWrapper>
     </FullScreen>
   );

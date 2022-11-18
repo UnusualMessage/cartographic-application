@@ -115,7 +115,7 @@ class InteractionsStore {
       return;
     }
 
-    const drawType: Type = type === "geozones" ? "Polygon" : "Point";
+    const drawType: Type = "Polygon";
 
     const draw = new Draw({
       type: drawType,

@@ -5,10 +5,10 @@ import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
 
 import { hidden, wrapper } from "./menu.module.scss";
 
-import { MapStore, OverlaysStore } from "../../../../stores/map";
-import { FeaturesService } from "../../../../services/map";
+import { MapStore, OverlaysStore } from "../../stores/map";
+import { FeaturesService } from "../../services/map";
 
-const ContextMenu = () => {
+const MapMenu = () => {
   const contextMenuRef = useRef<HTMLUListElement>(null);
   const map = MapStore.map;
   const active = OverlaysStore.isContextMenuActive;
@@ -54,4 +54,4 @@ const ContextMenu = () => {
   );
 };
 
-export default observer(ContextMenu);
+export default observer(MapMenu);

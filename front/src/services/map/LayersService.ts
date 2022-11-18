@@ -1,8 +1,7 @@
 import BaseLayer from "ol/layer/Base";
 import { FeatureLike } from "ol/Feature";
 
-import { FeaturesStore } from "../../stores";
-import { LayersStore, MapStore } from "../../stores/map";
+import { FeaturesStore, LayersStore, MapStore } from "../../stores/map";
 import VectorSource from "ol/source/Vector";
 import { BaseLayerType } from "../../types/common";
 import { StyleLike } from "ol/style/Style";

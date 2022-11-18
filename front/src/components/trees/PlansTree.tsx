@@ -9,7 +9,7 @@ import { Node } from "../../types/nodes";
 import { planNodes } from "../../assets/nodes";
 import { Plan } from "../../types/entities";
 import { PlansStore } from "../../stores/entities";
-import { TabsStore } from "../../stores";
+import { TabsStore } from "../../stores/ui";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);

@@ -9,6 +9,8 @@ import { Node } from "../../types/nodes";
 import { equipmentNodes } from "../../assets/nodes";
 import { Equipment } from "../../types/entities";
 import { EquipmentStore } from "../../stores/entities";
+import { EquipmentMenu } from "../menus";
+import { ContextMenu2 } from "@blueprintjs/popover2";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);
@@ -25,7 +27,9 @@ const fillNodes = (equipment?: Equipment[]) => {
     if (equipType) {
       equipType.childNodes?.push({
         id: item.id,
-        label: item.name,
+        label: (
+          <ContextMenu2 content={<EquipmentMenu />}>{item.name}</ContextMenu2>
+        ),
         icon: "document",
         nodeData: item,
       });
