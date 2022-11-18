@@ -4,6 +4,7 @@ import MapStore from "./MapStore";
 import OverlaysStore from "./OverlaysStore";
 import StylesStore from "./StylesStore";
 import ViewStore from "./ViewStore";
+import FeaturesStore from "./FeaturesStore";
 
 export {
   InteractionsStore,
@@ -12,4 +13,5 @@ export {
   OverlaysStore,
   StylesStore,
   ViewStore,
+  FeaturesStore,
 };

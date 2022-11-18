@@ -18,7 +18,6 @@ const DrawSelect = () => {
     >
       <option value={"cursor"}>Курсор</option>
       <option value={"geozones"}>Геозоны</option>
-      <option value={"equipment"}>Техника</option>
     </HTMLSelect>
   );
 };

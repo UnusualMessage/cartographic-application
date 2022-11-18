@@ -1,6 +1,5 @@
-import { FeaturesStore } from "../../stores";
-
 import {
+  FeaturesStore,
   InteractionsStore,
   LayersStore,
   OverlaysStore,

@@ -10,6 +10,7 @@ interface Props<T> {
   handleCollapse?: TreeEventHandler;
   handleExpand?: TreeEventHandler;
   handleClick?: TreeEventHandler;
+  handleContextMenu?: TreeEventHandler;
   className: string;
 }
 
@@ -19,6 +20,7 @@ const EntitiesTree = <T,>({
   handleCollapse,
   handleExpand,
   handleClick,
+  handleContextMenu,
   className,
 }: Props<T>) => {
   const [nodes, setNodes] = useState(() => fillNodes(source));
@@ -49,6 +51,7 @@ const EntitiesTree = <T,>({
       contents={nodes}
       onNodeCollapse={handleCollapse ? handleCollapse : collapse}
       onNodeExpand={handleExpand ? handleExpand : expand}
+      onNodeContextMenu={handleContextMenu}
       onNodeClick={handleCombinedClick}
     />
   );

@@ -1,1 +1,1 @@
-export type InteractionType = "equipment" | "geozones" | "cursor";
+export type InteractionType = "geozones" | "cursor";
