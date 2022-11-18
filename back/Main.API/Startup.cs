@@ -1,4 +1,5 @@
 ﻿using Main.API.Extensions;
+using Serilog;
 using Shared.API.Middlewares;
 
 namespace Main.API;
@@ -8,6 +9,10 @@ public class Startup
     public Startup(IConfiguration configuration)
     {
         Configuration = configuration;
+
+        Log.Logger = new LoggerConfiguration()
+            .ReadFrom.Configuration(configuration)
+            .CreateLogger();
     }
 
     private IConfiguration Configuration { get; }

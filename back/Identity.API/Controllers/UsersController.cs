@@ -2,7 +2,6 @@
 using Identity.Application.Requests.Queries;
 using MassTransit;
 using MassTransit.Mediator;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Shared.API.Filters.Roles;
 using Sieve.Models;

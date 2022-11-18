@@ -1,7 +1,6 @@
-﻿using Notification.API.Extensions;
-using Notification.API.Hubs;
+﻿using Update.API.Extensions;
 
-namespace Notification.API;
+namespace Update.API;
 
 public class Startup
 {
@@ -22,7 +21,7 @@ public class Startup
         if (env.IsDevelopment())
         {
             app.UseDeveloperExceptionPage();
-            
+
             app.UseCors(builder => builder
                 .WithOrigins("http://localhost:3000")
                 .AllowAnyMethod()
@@ -33,9 +32,6 @@ public class Startup
 
         app.UseRouting();
 
-        app.UseEndpoints(endpoints =>
-        {
-            endpoints.MapHub<NotificationsHub>("/api/notifications");
-        });
+        app.UseEndpoints(endpoints => { });
     }
 }
