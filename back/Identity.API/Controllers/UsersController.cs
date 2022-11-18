@@ -20,7 +20,7 @@ public class UsersController : ControllerBase
         _mediator = mediator;
     }
 
-    [Admin]
+    [AllowAnonymous]
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
