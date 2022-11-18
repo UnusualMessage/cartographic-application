@@ -20,12 +20,13 @@ public class HostedService : IHostedService
         _jobFactory = jobFactory;
     }
 
-    public IScheduler? Scheduler { get; set; }
+    private IScheduler Scheduler { get; set; } = default!;
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
         Scheduler = await _schedulerFactory.GetScheduler(cancellationToken);
         Scheduler.JobFactory = _jobFactory;
+        
         foreach (var jobSchedule in _jobSchedules)
         {
             var job = CreateJob(jobSchedule);
@@ -38,7 +39,7 @@ public class HostedService : IHostedService
 
     public async Task StopAsync(CancellationToken cancellationToken)
     {
-        await Scheduler?.Shutdown(cancellationToken);
+        await Scheduler.Shutdown(cancellationToken);
     }
 
     private static IJobDetail CreateJob(JobSchedule schedule)

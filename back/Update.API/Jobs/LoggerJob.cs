@@ -1,5 +1,8 @@
-﻿using System.Text;
+﻿using System.Net.Http.Headers;
+using System.Text;
 using System.Text.Json;
+using Identity.Application.Requests.Commands;
+using Identity.Application.Responses;
 using Quartz;
 
 namespace Update.API.Jobs;
@@ -8,30 +11,50 @@ namespace Update.API.Jobs;
 public class LoggerJob : IJob
 {
     private readonly ILogger<LoggerJob> _logger;
+    private readonly HttpClient _client = new();
 
     public LoggerJob(ILogger<LoggerJob> logger)
     {
         _logger = logger;
     }
 
-    public async Task Execute(IJobExecutionContext context)
+    public async Task<AuthenticateUserResponse?> Authenticate()
     {
-        var client = new HttpClient();
+        var message = new AuthenticateUser("Admin", "20102001", null);
 
-        var request = new
-        {
-            Login = "Hello",
-            Password = "20102001"
-        };
+        var serializedMessage = JsonSerializer.Serialize(message);
 
-        var serializedRequest = JsonSerializer.Serialize(request);
-        var requestContent = new StringContent(serializedRequest, Encoding.UTF8, "application/json");
+        var request = new HttpRequestMessage(HttpMethod.Post, "https://localhost:5443/api/Auth/authenticate");
 
-        var response = await client.GetAsync("https://localhost:5444/api/Users");
+        request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        request.Content = new StringContent(serializedMessage, Encoding.UTF8);
+        request.Content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
+
+        var response = await _client.SendAsync(request);
         response.EnsureSuccessStatusCode();
 
-        var content = await response.Content.ReadAsStringAsync();
+        var str = await response.Content.ReadAsStringAsync();
+        var result =
+            JsonSerializer.Deserialize<AuthenticateUserResponse>(str,
+                new JsonSerializerOptions(JsonSerializerDefaults.Web));
+        return result;
+    }
 
-        _logger.LogInformation(content);
+    public async Task Execute(IJobExecutionContext context)
+    {
+        var authenticationResult = await Authenticate();
+
+        if (authenticationResult is not null)
+        {
+            var request = new HttpRequestMessage(HttpMethod.Get, "https://localhost:5443/api/Users");
+            request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authenticationResult.AccessToken);
+
+            var response = await _client.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+
+            var result = await response.Content.ReadAsStringAsync();
+
+            _logger.LogInformation(result);
+        }
     }
 }

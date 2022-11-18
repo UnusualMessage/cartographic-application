@@ -12,7 +12,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Triggers" />
+      <ProjectReference Include="..\Identity.Application\Identity.Application.csproj" />
     </ItemGroup>
 
 </Project>
