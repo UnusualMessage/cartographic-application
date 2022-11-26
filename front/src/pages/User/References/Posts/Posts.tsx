@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
-import { useEffect, useState } from "react";
-import { Region, Regions } from "@blueprintjs/table";
+import { useEffect } from "react";
 
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import { PostsStore } from "../../../../stores/entities";
@@ -13,30 +12,20 @@ import {
 import { Table } from "../../../../components/common/Table";
 import { Post } from "../../../../types/entities";
 import { getPostColumns } from "../../../../utils/tables";
+import { useRegions } from "../../../../hooks";
 
 const Posts = () => {
-  const [regions, setRegions] = useState<Region[]>([]);
-
   const post = PostsStore.post;
   const posts = PostsStore.posts;
 
-  const onSelection = (regions: Region[]) => {
-    const row = regions[0].rows;
-
-    if (row) {
-      const rowIndex = row[0];
-      const region = Regions.row(rowIndex);
-
-      setRegions([region]);
-      PostsStore.post = posts[rowIndex];
-    }
-  };
+  const { regions, onSelection } = useRegions((rowIndex: number) => {
+    PostsStore.post = posts[rowIndex];
+  });
 
   const columns = getPostColumns(posts);
 
   useEffect(() => {
     PostsStore.post = undefined;
-    setRegions([]);
   }, []);
 
   return (

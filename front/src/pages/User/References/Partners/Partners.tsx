@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import { Region, Regions } from "@blueprintjs/table";
+import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 import { getPartnerColumns } from "../../../../utils/tables";
@@ -13,30 +12,20 @@ import {
   RemovePartner,
   UpdatePartner,
 } from "../../../../components/forms/partner";
+import { useRegions } from "../../../../hooks";
 
 const Partners = () => {
-  const [regions, setRegions] = useState<Region[]>([]);
-
   const partner = PartnersStore.partner;
   const partners = PartnersStore.partners;
 
-  const onSelection = (regions: Region[]) => {
-    const row = regions[0].rows;
-
-    if (row) {
-      const rowIndex = row[0];
-      const region = Regions.row(rowIndex);
-
-      setRegions([region]);
-      PartnersStore.partner = partners[rowIndex];
-    }
-  };
+  const { regions, onSelection } = useRegions((rowIndex: number) => {
+    PartnersStore.partner = partners[rowIndex];
+  });
 
   const columns = getPartnerColumns(partners);
 
   useEffect(() => {
     PartnersStore.partner = undefined;
-    setRegions([]);
   }, []);
 
   return (
