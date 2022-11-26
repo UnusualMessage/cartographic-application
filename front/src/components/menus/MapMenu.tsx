@@ -7,6 +7,7 @@ import { hidden, wrapper } from "./menu.module.scss";
 
 import { MapStore, OverlaysStore } from "../../stores/map";
 import { FeaturesService } from "../../services/map";
+import { Callback } from "../../services/listeners/ListenersInjector";
 
 const MapMenu = () => {
   const contextMenuRef = useRef<HTMLUListElement>(null);
@@ -32,9 +33,16 @@ const MapMenu = () => {
   useEffect(() => {
     const element = contextMenuRef.current;
 
+    let cleanups: Callback[] = [];
     if (element && map) {
-      OverlaysStore.initContextMenu(element, map);
+      cleanups = OverlaysStore.initContextMenu(element, map);
     }
+
+    return () => {
+      for (const cleanup of cleanups) {
+        cleanup();
+      }
+    };
   }, [map]);
 
   const classes = classNames({

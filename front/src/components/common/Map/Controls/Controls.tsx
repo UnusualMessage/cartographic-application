@@ -10,6 +10,7 @@ import LayersSwitcher from "./LayersSwitcher";
 import Geocoder from "./Geocoder";
 import DrawSelect from "./DrawSelect/DrawSelect";
 import { InteractionsStore } from "../../../../stores/map";
+import Location from "./Location";
 
 interface Props {
   handle: FullScreenHandle;
@@ -35,6 +36,8 @@ const Controls = ({ handle }: Props) => {
         setIsGeocoderOpen={setIsGeocoderOpen}
         handlePrint={handle}
       />
+
+      <Location />
     </>
   );
 };

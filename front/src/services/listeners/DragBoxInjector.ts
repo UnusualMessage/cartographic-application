@@ -15,28 +15,30 @@ class DragBoxInjector implements ListenersInjector<DragBoxEvent> {
     this._source = source;
   }
 
-  public addEventListener(event: DragBoxEvent): void {
+  public addEventListener(event: DragBoxEvent) {
     switch (event) {
       case "boxstart":
-        this.addDragBoxOnStart();
-        break;
+        return this.addDragBoxOnStart();
       case "boxend":
-        this.addDragBoxOnEnd();
-        break;
-      default:
-        break;
+        return this.addDragBoxOnEnd();
     }
   }
 
   private addDragBoxOnStart() {
-    this._dragBox.on("boxstart", () => {
+    const onBoxStart = () => {
       this._select.getFeatures().clear();
       FeaturesStore.selectedFeatures = [];
-    });
+    };
+
+    this._dragBox.on("boxstart", onBoxStart);
+
+    return () => {
+      this._dragBox.un("boxstart", onBoxStart);
+    };
   }
 
   private addDragBoxOnEnd() {
-    this._dragBox.on("boxend", () => {
+    const onBoxEnd = () => {
       const extent = this._dragBox.getGeometry().getExtent();
       const boxFeatures = this._source
         .getFeaturesInExtent(extent)
@@ -44,7 +46,13 @@ class DragBoxInjector implements ListenersInjector<DragBoxEvent> {
 
       FeaturesStore.selectedFeatures = boxFeatures;
       this._select.getFeatures().extend(boxFeatures);
-    });
+    };
+
+    this._dragBox.on("boxend", onBoxEnd);
+
+    return () => {
+      this._dragBox.un("boxend", onBoxEnd);
+    };
   }
 }
 

@@ -12,6 +12,7 @@ import { AuxInteractions, Interactions } from "./Interactions";
 import { auxLayerId, geozonesLayerId } from "../../../assets/map/config";
 import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
 import { InteractionsStore } from "../../../stores/map";
+import { MapMenu } from "../../menus";
 
 const Map = () => {
   const handle = useFullScreenHandle();
@@ -41,6 +42,8 @@ const Map = () => {
             <></>
           )}
         </VectorLayer>
+
+        <MapMenu />
 
         <Controls handle={handle} />
       </MapWrapper>
