@@ -22,7 +22,7 @@ const View = () => {
       <Toaster position={Position.TOP} ref={ref} />
 
       <Sider>
-        <Categories fill />
+        <Categories />
       </Sider>
       <Content>
         <Map />

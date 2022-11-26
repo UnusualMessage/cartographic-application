@@ -1,32 +1,22 @@
 import { Tab, Tabs } from "@blueprintjs/core";
-import classNames from "classnames";
 import { useMemo, useState } from "react";
 import { observer } from "mobx-react-lite";
 
-import { fullSize, panel, wrapper } from "./categories.module.scss";
+import { panel, wrapper } from "./categories.module.scss";
 
 import { siderTabs } from "../../../../assets/tabs";
 import { TabsStore } from "../../../../stores/ui";
 
-interface Props {
-  fill?: boolean;
-}
-
-const Categories = ({ fill }: Props) => {
+const Categories = () => {
   const [currentTab, setCurrentTab] = useState<string | number>("sider-fields");
   const currentTabs = useMemo(() => {
     return siderTabs.tabs;
   }, []);
 
-  const classes = classNames({
-    [wrapper]: true,
-    [fullSize]: fill,
-  });
-
   return (
     <Tabs
       id="sider-tabs"
-      className={classes}
+      className={wrapper}
       selectedTabId={currentTab}
       renderActiveTabPanelOnly
       onChange={(newTabId) => {
