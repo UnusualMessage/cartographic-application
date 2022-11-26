@@ -3,27 +3,31 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { observer } from "mobx-react-lite";
 
 import DialogForm from "../../auxiliary/DialogForm";
-import { OrganizationsStore, PostsStore } from "../../../stores/entities";
-import { CreatePost } from "../../../types/entities/Post";
+import { OrganizationsStore } from "../../../stores/entities";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import { createPost } from "../../../assets/forms";
+import { createPartner } from "../../../assets/forms";
+import { CreatePartner } from "../../../types/entities/Partner";
+import PartnersStore from "../../../stores/entities/PartnersStore";
 
-const CreatePost = () => {
+const CreatePartner = () => {
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors, isSubmitSuccessful },
-  } = useForm<CreatePost>({
+  } = useForm<CreatePartner>({
     defaultValues: {
       title: "",
       number: "",
       organizationId: "",
+      inn: "",
+      address: "",
+      phone: "",
     },
   });
 
-  const onSubmit: SubmitHandler<CreatePost> = async (data) => {
-    await PostsStore.add(data);
+  const onSubmit: SubmitHandler<CreatePartner> = async (data) => {
+    await PartnersStore.add(data);
     reset();
   };
 
@@ -35,7 +39,7 @@ const CreatePost = () => {
 
   return (
     <DialogForm
-      title={"Создание записи (должность)"}
+      title={"Создание записи (контрагент)"}
       buttonText={"Создать"}
       buttonIcon={<Icon icon={"add"} />}
       onAccept={handleSubmit(onSubmit)}
@@ -43,7 +47,7 @@ const CreatePost = () => {
       successful={isSubmitSuccessful}
     >
       {formRenderer(
-        createPost(getSelectOptions(organizations)),
+        createPartner(getSelectOptions(organizations)),
         register,
         errors
       )}
@@ -51,4 +55,4 @@ const CreatePost = () => {
   );
 };
 
-export default observer(CreatePost);
+export default observer(CreatePartner);
