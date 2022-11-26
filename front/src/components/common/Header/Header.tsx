@@ -9,9 +9,10 @@ import {
   Text,
 } from "@blueprintjs/core";
 import { Link } from "react-router-dom";
-import { memo } from "react";
+import { observer } from "mobx-react-lite";
 
 import { container, logo, user, wrapper } from "./header.module.scss";
+import { UpdateStore } from "../../../stores/api";
 
 const Header = () => {
   return (
@@ -38,9 +39,27 @@ const Header = () => {
       </NavbarGroup>
 
       <NavbarGroup className={container}>
-        <Button icon="pause" minimal large />
-        <Button icon="stop" minimal large />
-        <Button icon="step-forward" minimal large />
+        <Button
+          icon="pause"
+          intent={UpdateStore.paused ? "primary" : "none"}
+          minimal
+          large
+          onClick={() => UpdateStore.pause()}
+        />
+        <Button
+          icon="stop"
+          intent={UpdateStore.stopped ? "primary" : "none"}
+          minimal
+          large
+          onClick={() => UpdateStore.stop()}
+        />
+        <Button
+          icon="step-forward"
+          intent={UpdateStore.active ? "primary" : "none"}
+          minimal
+          large
+          onClick={() => UpdateStore.resume()}
+        />
       </NavbarGroup>
 
       <NavbarGroup className={container}>
@@ -61,4 +80,4 @@ const Header = () => {
   );
 };
 
-export default memo(Header);
+export default observer(Header);
