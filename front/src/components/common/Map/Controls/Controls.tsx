@@ -1,24 +1,28 @@
 import { useState } from "react";
 import { FullScreenHandle } from "react-full-screen";
+import { observer } from "mobx-react-lite";
+import classNames from "classnames";
 
 import { view, wrapper } from "./controls.module.scss";
 
 import { LeftButtonGroup, RightButtonGroup } from "./ButtonGroup";
 import LayersSwitcher from "./LayersSwitcher";
 import Geocoder from "./Geocoder";
-import classNames from "classnames";
+import DrawSelect from "./DrawSelect/DrawSelect";
+import { InteractionsStore } from "../../../../stores/map";
 
 interface Props {
   handle: FullScreenHandle;
 }
 
-const ViewControls = ({ handle }: Props) => {
+const Controls = ({ handle }: Props) => {
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [isGeocoderOpen, setIsGeocoderOpen] = useState(false);
 
   return (
     <>
       <div className={classNames(wrapper, view)}>
+        {InteractionsStore.isGeozoneInteractionsActive ? <DrawSelect /> : <></>}
         {isPanelOpen ? <LayersSwitcher /> : <></>}
         {isGeocoderOpen ? <Geocoder /> : <></>}
       </div>
@@ -35,4 +39,4 @@ const ViewControls = ({ handle }: Props) => {
   );
 };
 
-export default ViewControls;
+export default observer(Controls);

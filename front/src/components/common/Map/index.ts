@@ -1,4 +1,3 @@
-import EditMap from "./EditMap";
-import ViewMap from "./ViewMap";
+import Map from "./Map";
 
-export { ViewMap, EditMap };
+export { Map };

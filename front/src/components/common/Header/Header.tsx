@@ -24,10 +24,6 @@ const Header = () => {
           <Button icon="path-search" text="Просмотр" minimal large />
         </Link>
 
-        <Link to={"/edit"}>
-          <Button icon="send-to-map" text="Редактирование" minimal large />
-        </Link>
-
         <Link to={"/references"}>
           <Button icon="clipboard" text="Справочники" minimal large />
         </Link>

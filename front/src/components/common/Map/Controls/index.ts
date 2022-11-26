@@ -1,4 +1,3 @@
-import EditControls from "./EditControls";
-import ViewControls from "./ViewControls";
+import Controls from "./Controls";
 
-export { ViewControls, EditControls };
+export { Controls };

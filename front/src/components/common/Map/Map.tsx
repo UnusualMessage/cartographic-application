@@ -1,4 +1,5 @@
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
+import { observer } from "mobx-react-lite";
 import { StyleLike } from "ol/style/Style";
 
 import { wrapper } from "./map.module.scss";
@@ -6,12 +7,13 @@ import { wrapper } from "./map.module.scss";
 import View from "./View";
 import { TileLayer, VectorLayer } from "./Layer";
 import MapWrapper from "./MapWrapper";
-import { ViewControls } from "./Controls";
-import { AuxInteractions } from "./Interactions";
+import { Controls } from "./Controls";
+import { AuxInteractions, Interactions } from "./Interactions";
 import { auxLayerId, geozonesLayerId } from "../../../assets/map/config";
 import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
+import { InteractionsStore } from "../../../stores/map";
 
-const ViewMap = () => {
+const Map = () => {
   const handle = useFullScreenHandle();
 
   const styleFunction: StyleLike = (feature) => {
@@ -24,16 +26,26 @@ const ViewMap = () => {
         <View />
 
         <TileLayer />
-        <VectorLayer id={geozonesLayerId} />
-
-        <VectorLayer id={auxLayerId} style={styleFunction}>
-          <AuxInteractions />
+        <VectorLayer id={geozonesLayerId}>
+          {InteractionsStore.isGeozoneInteractionsActive ? (
+            <Interactions />
+          ) : (
+            <></>
+          )}
         </VectorLayer>
 
-        <ViewControls handle={handle} />
+        <VectorLayer id={auxLayerId} style={styleFunction}>
+          {InteractionsStore.isAuxInteractionsActive ? (
+            <AuxInteractions />
+          ) : (
+            <></>
+          )}
+        </VectorLayer>
+
+        <Controls handle={handle} />
       </MapWrapper>
     </FullScreen>
   );
 };
 
-export default ViewMap;
+export default observer(Map);
