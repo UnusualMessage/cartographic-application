@@ -60,7 +60,9 @@ class EmployeesStore {
   }
 
   public async remove(id: string) {
-    const employees = this._employees.slice();
+    const employees = this._employees
+      .slice()
+      .filter((employee) => employee.id !== id);
 
     runInAction(() => {
       this._employees = employees;

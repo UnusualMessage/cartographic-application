@@ -1,8 +1,10 @@
 import { observer } from "mobx-react-lite";
 
-import { PlansTable } from "../tables";
 import { PlansStore } from "../../stores/entities";
 import { PlansChart } from "../charts";
+import { Table } from "../common/Table";
+import { Plan } from "../../types/entities";
+import { getPlanColumns } from "../../utils/tables";
 
 const PlansTab = () => {
   let plans = PlansStore.plans;
@@ -13,9 +15,11 @@ const PlansTab = () => {
     plans = PlansStore.plans.filter((plan) => plan.year === currentYear);
   }
 
+  const columns = getPlanColumns(plans);
+
   return (
     <>
-      <PlansTable plans={plans} width={60} />
+      <Table<Plan> items={plans} width={60} columns={columns} />
       <PlansChart plans={plans} />
     </>
   );

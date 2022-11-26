@@ -22,9 +22,16 @@ interface Props<T> {
   items: T[];
   columns: ColumnProps[];
   onSelection?: OnSelection;
+  regions?: Region[];
 }
 
-const Table = <T,>({ width, items, columns, onSelection }: Props<T>) => {
+const Table = <T,>({
+  width,
+  items,
+  columns,
+  onSelection,
+  regions,
+}: Props<T>) => {
   const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
     return (
       <RowHeaderCell2
@@ -52,6 +59,7 @@ const Table = <T,>({ width, items, columns, onSelection }: Props<T>) => {
         defaultRowHeight={40}
         enableMultipleSelection={false}
         enableColumnResizing={false}
+        selectedRegions={regions}
       >
         {columns.map((column) => {
           return (

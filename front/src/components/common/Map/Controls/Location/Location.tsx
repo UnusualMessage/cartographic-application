@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { Text } from "@blueprintjs/core";
 
-import { wrapper } from "./location.module.scss";
+import { container, label, value, wrapper } from "./location.module.scss";
 
 import { MapStore } from "../../../../../stores/map";
 import { toLonLat } from "ol/proj";
@@ -11,8 +11,15 @@ const Location = () => {
 
   return (
     <div className={wrapper}>
-      <Text>{`Широта: ${coordinate[0].toFixed(2)}`}</Text>
-      <Text>{`Долгота: ${coordinate[1].toFixed(2)}`}</Text>
+      <div className={container}>
+        <Text className={label}>{"Широта: "}</Text>
+        <Text className={value}>{coordinate[0].toFixed(2)}</Text>
+      </div>
+
+      <div className={container}>
+        <Text className={label}>{"Долгота: "}</Text>
+        <Text className={value}>{coordinate[1].toFixed(2)}</Text>
+      </div>
     </div>
   );
 };

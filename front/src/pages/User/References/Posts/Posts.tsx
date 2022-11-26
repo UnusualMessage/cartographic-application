@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
-import { Region } from "@blueprintjs/table";
+import { useEffect, useState } from "react";
+import { Region, Regions } from "@blueprintjs/table";
 
-import { PostsTable } from "../../../../components/tables";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import { PostsStore } from "../../../../stores/entities";
 import {
@@ -10,8 +10,13 @@ import {
   RemovePost,
   UpdatePost,
 } from "../../../../components/forms/post";
+import { Table } from "../../../../components/common/Table";
+import { Post } from "../../../../types/entities";
+import { getPostColumns } from "../../../../utils/tables";
 
 const Posts = () => {
+  const [regions, setRegions] = useState<Region[]>([]);
+
   const post = PostsStore.post;
   const posts = PostsStore.posts;
 
@@ -19,13 +24,29 @@ const Posts = () => {
     const row = regions[0].rows;
 
     if (row) {
-      PostsStore.post = posts[row[0]];
+      const rowIndex = row[0];
+      const region = Regions.row(rowIndex);
+
+      setRegions([region]);
+      PostsStore.post = posts[rowIndex];
     }
   };
 
+  const columns = getPostColumns(posts);
+
+  useEffect(() => {
+    PostsStore.post = undefined;
+    setRegions([]);
+  }, []);
+
   return (
     <>
-      <PostsTable posts={posts} onSelection={onSelection} />
+      <Table<Post>
+        items={posts}
+        onSelection={onSelection}
+        regions={regions}
+        columns={columns}
+      />
       <TableButtons>
         <CreatePost />
         <UpdatePost id={post?.id} />
