@@ -6,10 +6,11 @@ import { Plan } from "../../types/entities";
 import { ColumnProps, Table } from "../common/Table";
 
 interface Props {
+  width?: number;
   plans: Plan[];
 }
 
-const PlansTable = ({ plans }: Props) => {
+const PlansTable = ({ plans, width }: Props) => {
   const columns: ColumnProps[] = [
     {
       renderer: (rowIndex) => {
@@ -36,7 +37,7 @@ const PlansTable = ({ plans }: Props) => {
     },
   ];
 
-  return <Table<Plan> items={plans} columns={columns} />;
+  return <Table<Plan> items={plans} columns={columns} width={width} />;
 };
 
 export default PlansTable;

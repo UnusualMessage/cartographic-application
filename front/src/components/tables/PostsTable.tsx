@@ -6,11 +6,12 @@ import { Post } from "../../types/entities";
 import { ColumnProps, OnSelection, Table } from "../common/Table";
 
 interface Props {
+  width?: number;
   posts: Post[];
   onSelection?: OnSelection;
 }
 
-const PostsTable = ({ posts, onSelection }: Props) => {
+const PostsTable = ({ posts, onSelection, width }: Props) => {
   const columns: ColumnProps[] = [
     {
       renderer: (rowIndex) => {
@@ -44,7 +45,12 @@ const PostsTable = ({ posts, onSelection }: Props) => {
   ];
 
   return (
-    <Table<Post> items={posts} columns={columns} onSelection={onSelection} />
+    <Table<Post>
+      items={posts}
+      columns={columns}
+      onSelection={onSelection}
+      width={width}
+    />
   );
 };
 

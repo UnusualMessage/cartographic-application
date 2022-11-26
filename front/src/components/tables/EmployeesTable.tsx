@@ -6,11 +6,12 @@ import { Employee } from "../../types/entities";
 import { ColumnProps, OnSelection, Table } from "../common/Table";
 
 interface Props {
+  width?: number;
   employees: Employee[];
   onSelection?: OnSelection;
 }
 
-const EmployeesTable = ({ employees, onSelection }: Props) => {
+const EmployeesTable = ({ employees, onSelection, width }: Props) => {
   const columns: ColumnProps[] = [
     {
       renderer: (rowIndex) => {
@@ -69,6 +70,7 @@ const EmployeesTable = ({ employees, onSelection }: Props) => {
 
   return (
     <Table<Employee>
+      width={width}
       items={employees}
       columns={columns}
       onSelection={onSelection}

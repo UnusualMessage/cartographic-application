@@ -15,7 +15,7 @@ const PlansTab = () => {
 
   return (
     <>
-      <PlansTable plans={plans} />
+      <PlansTable plans={plans} width={60} />
       <PlansChart plans={plans} />
     </>
   );

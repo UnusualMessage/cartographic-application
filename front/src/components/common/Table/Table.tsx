@@ -7,7 +7,8 @@ import {
   Table2,
 } from "@blueprintjs/table";
 
-import { cell, wrapper } from "./table.module.scss";
+import { cell, fill, width60, wrapper } from "./table.module.scss";
+import classNames from "classnames";
 
 export type OnSelection = (selectedRegions: Region[]) => void;
 
@@ -17,12 +18,13 @@ export interface ColumnProps {
 }
 
 interface Props<T> {
+  width?: number;
   items: T[];
   columns: ColumnProps[];
   onSelection?: OnSelection;
 }
 
-const Table = <T,>({ items, columns, onSelection }: Props<T>) => {
+const Table = <T,>({ width, items, columns, onSelection }: Props<T>) => {
   const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
     return (
       <RowHeaderCell2
@@ -33,11 +35,17 @@ const Table = <T,>({ items, columns, onSelection }: Props<T>) => {
     );
   };
 
+  const classes = classNames({
+    [wrapper]: true,
+    [fill]: width,
+    [width60]: width === 60,
+  });
+
   return (
     <>
       <Table2
         numRows={items.length}
-        className={wrapper}
+        className={classes}
         cellRendererDependencies={[items]}
         rowHeaderCellRenderer={rowHeaderRenderer}
         onSelection={onSelection}
