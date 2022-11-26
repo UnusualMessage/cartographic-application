@@ -22,7 +22,6 @@ import EmptyPage from "./components/auxiliary/EmptyPage";
 import Authorization from "./pages/Admin/Authorization";
 
 const View = lazy(() => import("./pages/User/View"));
-const Edit = lazy(() => import("./pages/User/Edit"));
 
 const References = lazy(() => import("./pages/User/References"));
 
@@ -43,11 +42,6 @@ const browserRouter = createBrowserRouter([
       {
         path: "",
         element: <View />,
-      },
-
-      {
-        path: "edit",
-        element: <Edit />,
       },
 
       {

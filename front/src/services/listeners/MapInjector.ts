@@ -1,36 +1,51 @@
 import ListenersInjector, { CommonEvent } from "./ListenersInjector";
-import { Map } from "ol";
+import { Map, MapBrowserEvent } from "ol";
 import { Pixel } from "ol/pixel";
 import { Coordinate } from "ol/coordinate";
 
 import {
   FeaturesStore,
   InteractionsStore,
+  MapStore,
   OverlaysStore,
 } from "../../stores/map";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
   private _map: Map;
-  private _canvas: HTMLCanvasElement;
+  private _canvas: HTMLCanvasElement | undefined;
 
-  constructor(map: Map, canvas: HTMLCanvasElement) {
+  constructor(map: Map, canvas?: HTMLCanvasElement) {
     this._map = map;
     this._canvas = canvas;
   }
 
-  public addEventListener(event: CommonEvent): void {
+  public addEventListener(event: CommonEvent) {
     switch (event) {
       case "click":
-        this.addMapClick();
-        break;
+        return this.addMapClick();
       case "contextmenu":
-        this.addMapContextMenu();
-        break;
+        return this.addMapContextMenu();
+      case "pointermove":
+        return this.addPointerMove();
     }
   }
 
+  public addPointerMove() {
+    const onPointerMove = (e: MapBrowserEvent<any>) => {
+      const event = e.originalEvent;
+      const pixel: Pixel = this._map.getEventPixel(event);
+      MapStore.cursorCoordinate = this._map.getCoordinateFromPixel(pixel);
+    };
+
+    this._map.on("pointermove", onPointerMove);
+
+    return () => {
+      this._map.un("pointermove", onPointerMove);
+    };
+  }
+
   private addMapContextMenu() {
-    this._canvas.addEventListener("contextmenu", (e) => {
+    const onContextMenu = (e: MouseEvent) => {
       const pixel: Pixel = this._map.getEventPixel(e);
       const cursor: Coordinate = this._map.getCoordinateFromPixel(pixel);
 
@@ -38,11 +53,17 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       OverlaysStore.hideFeatureInfo();
       OverlaysStore.cursorPosition = cursor;
       InteractionsStore.stopDrawing();
-    });
+    };
+
+    this._canvas?.addEventListener("contextmenu", onContextMenu);
+
+    return () => {
+      this._canvas?.removeEventListener("contextmenu", onContextMenu);
+    };
   }
 
   private addMapClick() {
-    this._map.on("click", (e) => {
+    const onClick = (e: MapBrowserEvent<any>) => {
       const pixel = this._map.getEventPixel(e.originalEvent);
       const features = this._map.getFeaturesAtPixel(pixel);
 
@@ -56,7 +77,13 @@ class MapInjector implements ListenersInjector<CommonEvent> {
 
       FeaturesStore.clickedFeature = features[0];
       OverlaysStore.showFeatureInfo(this._map.getCoordinateFromPixel(pixel));
-    });
+    };
+
+    this._map.on("click", onClick);
+
+    return () => {
+      this._map.un("click", onClick);
+    };
   }
 }
 

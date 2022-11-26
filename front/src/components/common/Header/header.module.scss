@@ -8,4 +8,19 @@
   width: 100%;
   overflow-y: hidden;
   overflow-x: auto;
+
+  .container {
+    gap: 5px;
+  }
+
+  .user {
+    padding-top: 10px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
 }

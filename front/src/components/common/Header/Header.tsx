@@ -1,31 +1,32 @@
 import {
   Button,
   H2,
+  H6,
+  Icon,
   Navbar,
   NavbarGroup,
   NavbarHeading,
+  Text,
 } from "@blueprintjs/core";
 import { Link } from "react-router-dom";
-import { memo } from "react";
+import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./header.module.scss";
+import { container, logo, user, wrapper } from "./header.module.scss";
+import { UpdateStore } from "../../../stores/api";
 
 const Header = () => {
   return (
     <Navbar className={wrapper}>
-      <NavbarGroup>
+      <NavbarGroup className={container}>
         <NavbarHeading>
-          <Link to={"/"}>
-            <H2>Агро</H2>
+          <Link className={logo} to={"/"}>
+            <Icon icon={"truck"} size={32} />
+            <H2>АгрОруэлл</H2>
           </Link>
         </NavbarHeading>
 
         <Link to={"/"}>
           <Button icon="path-search" text="Просмотр" minimal large />
-        </Link>
-
-        <Link to={"/edit"}>
-          <Button icon="send-to-map" text="Редактирование" minimal large />
         </Link>
 
         <Link to={"/references"}>
@@ -37,18 +38,41 @@ const Header = () => {
         </Link>
       </NavbarGroup>
 
-      <NavbarGroup>
-        <Button icon="pause" minimal large />
-        <Button icon="stop" minimal large />
-        <Button icon="step-forward" minimal large />
+      <NavbarGroup className={container}>
+        <Button
+          icon="pause"
+          intent={UpdateStore.paused ? "primary" : "none"}
+          minimal
+          large
+          onClick={() => UpdateStore.pause()}
+        />
+        <Button
+          icon="stop"
+          intent={UpdateStore.stopped ? "primary" : "none"}
+          minimal
+          large
+          onClick={() => UpdateStore.stop()}
+        />
+        <Button
+          icon="step-forward"
+          intent={UpdateStore.active ? "primary" : "none"}
+          minimal
+          large
+          onClick={() => UpdateStore.resume()}
+        />
       </NavbarGroup>
 
-      <NavbarGroup>
+      <NavbarGroup className={container}>
         <Link to={"/settings"}>
           <Button icon="cog" text="Настройки" minimal large />
         </Link>
 
-        <Button icon="notifications" text="Уведомления" minimal large />
+        <Button icon="notifications" minimal large />
+
+        <div className={user}>
+          <Text>{"Котенко Никита Алексеевич"}</Text>
+          <H6>{"ООО 'Рога и копыта'"}</H6>
+        </div>
 
         <Button icon="log-out" minimal large />
       </NavbarGroup>
@@ -56,4 +80,4 @@ const Header = () => {
   );
 };
 
-export default memo(Header);
+export default observer(Header);

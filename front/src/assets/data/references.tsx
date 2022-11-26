@@ -38,6 +38,7 @@ const Technologies = lazy(
 const Goods = lazy(() => import("../../pages/User/References/Goods"));
 const Posts = lazy(() => import("../../pages/User/References/Posts"));
 const Employees = lazy(() => import("../../pages/User/References/Employees"));
+const Speed = lazy(() => import("../../pages/User/References/Speed"));
 
 export const references: Reference[] = [
   {
@@ -157,5 +158,12 @@ export const references: Reference[] = [
     title: "Персонал",
     link: "employees",
     component: <Employees />,
+  },
+
+  {
+    id: uuid(),
+    title: "Скоростные режимы",
+    link: "speed",
+    component: <Speed />,
   },
 ];

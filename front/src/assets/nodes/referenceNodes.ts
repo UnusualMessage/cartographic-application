@@ -93,6 +93,13 @@ export const referenceNodes: Node[] = [
                 label: references[6].title,
                 nodeData: references[6].link,
               },
+
+              {
+                id: uuid(),
+                icon: "document",
+                label: references[17].title,
+                nodeData: references[17].link,
+              },
             ],
           },
 

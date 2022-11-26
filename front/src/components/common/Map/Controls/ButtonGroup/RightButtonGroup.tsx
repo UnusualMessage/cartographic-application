@@ -5,7 +5,6 @@ import { useState } from "react";
 
 import { right, wrapper } from "./group.module.scss";
 
-import { MeasurementMode } from "../../../../../stores/map/InteractionsStore";
 import {
   InteractionsStore,
   LayersStore,
@@ -13,6 +12,7 @@ import {
 } from "../../../../../stores/map";
 import classNames from "classnames";
 import { auxLayerId } from "../../../../../assets/map/config";
+import { InteractionType } from "../../../../../types/map";
 
 interface Props {
   isPanelOpen: boolean;
@@ -29,7 +29,7 @@ const RightButtonGroup = ({
   setIsGeocoderOpen,
   handlePrint,
 }: Props) => {
-  const measurementMode = InteractionsStore.measurementMode;
+  const interactionType = InteractionsStore.interactionType;
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
 
@@ -45,13 +45,13 @@ const RightButtonGroup = ({
     setIsPanelOpen(!isPanelOpen);
   };
 
-  const switchMeasurementMode = (mode: MeasurementMode) => {
+  const switchType = (type: InteractionType) => {
     LayersStore.clearVectorLayer(auxLayerId);
 
-    if (measurementMode === mode) {
-      InteractionsStore.measurementMode = "none";
+    if (interactionType === type) {
+      InteractionsStore.interactionType = "none";
     } else {
-      InteractionsStore.measurementMode = mode;
+      InteractionsStore.interactionType = type;
     }
   };
 
@@ -71,6 +71,20 @@ const RightButtonGroup = ({
       <Collapse isOpen={isCollapseOpen} keepChildrenMounted>
         <ButtonGroup vertical large>
           <Button
+            icon="draw"
+            intent={
+              InteractionsStore.isGeozoneInteractionsActive ? "primary" : "none"
+            }
+            onClick={() =>
+              switchType(
+                InteractionsStore.isGeozoneInteractionsActive
+                  ? "none"
+                  : "geozones"
+              )
+            }
+          />
+
+          <Button
             icon="layers"
             intent={isPanelOpen ? "primary" : "none"}
             onClick={handlePanel}
@@ -84,14 +98,14 @@ const RightButtonGroup = ({
 
           <Button
             icon="one-to-one"
-            intent={measurementMode == "length" ? "primary" : "none"}
-            onClick={() => switchMeasurementMode("length")}
+            intent={interactionType === "measure-length" ? "primary" : "none"}
+            onClick={() => switchType("measure-length")}
           />
 
           <Button
             icon="polygon-filter"
-            intent={measurementMode == "area" ? "primary" : "none"}
-            onClick={() => switchMeasurementMode("area")}
+            intent={interactionType === "measure-area" ? "primary" : "none"}
+            onClick={() => switchType("measure-area")}
           />
 
           <Button
