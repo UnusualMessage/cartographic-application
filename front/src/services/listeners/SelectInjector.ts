@@ -10,20 +10,26 @@ class SelectInjector implements ListenersInjector<SelectEvent> {
     this._select = select;
   }
 
-  public addEventListener(event: SelectEvent): void {
+  public addEventListener(event: SelectEvent) {
     switch (event) {
       case "select":
-        this.addSelect();
+        return this.addSelect();
     }
   }
 
   private addSelect() {
-    this._select.on("select", () => {
+    const onSelect = () => {
       FeaturesStore.selectedFeatures = this._select
         .getFeatures()
         .getArray()
         .slice();
-    });
+    };
+
+    this._select.on("select", onSelect);
+
+    return () => {
+      this._select.un("select", onSelect);
+    };
   }
 }
 

@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
-import { Region } from "@blueprintjs/table";
+import { useEffect } from "react";
 
-import { EmployeesTable } from "../../../../components/tables";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import { EmployeesStore } from "../../../../stores/entities";
 import {
@@ -10,22 +9,33 @@ import {
   RemoveEmployee,
   UpdateEmployee,
 } from "../../../../components/forms/employee";
+import { getEmployeeColumns } from "../../../../utils/tables";
+import { Table } from "../../../../components/common/Table";
+import { Employee } from "../../../../types/entities";
+import { useRegions } from "../../../../hooks";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;
   const employees = EmployeesStore.employees;
 
-  const onSelection = (regions: Region[]) => {
-    const row = regions[0].rows;
+  const { regions, onSelection } = useRegions((rowIndex: number) => {
+    EmployeesStore.employee = employees[rowIndex];
+  });
 
-    if (row) {
-      EmployeesStore.employee = employees[row[0]];
-    }
-  };
+  const columns = getEmployeeColumns(employees);
+
+  useEffect(() => {
+    EmployeesStore.employee = undefined;
+  }, []);
 
   return (
     <>
-      <EmployeesTable employees={employees} onSelection={onSelection} />
+      <Table<Employee>
+        items={employees}
+        onSelection={onSelection}
+        regions={regions}
+        columns={columns}
+      />
       <TableButtons>
         <CreateEmployee />
         <UpdateEmployee id={employee?.id} />

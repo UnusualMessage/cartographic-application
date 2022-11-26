@@ -23,7 +23,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
       label={label}
       labelFor={id}
       labelInfo={required ? "(обязательно для заполнения)" : undefined}
-      intent={error ? "danger" : "primary"}
+      intent={error ? "danger" : required ? "primary" : "none"}
       helperText={error ? error.message : undefined}
     >
       <InputGroup
@@ -34,7 +34,7 @@ const TextInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
         name={name}
         onChange={onChange}
         inputRef={ref}
-        intent={error ? "danger" : "primary"}
+        intent={error ? "danger" : required ? "primary" : "none"}
       />
     </FormGroup>
   );

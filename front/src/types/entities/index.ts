@@ -5,6 +5,8 @@ import Equipment from "./Equipment";
 import EquipmentType from "./EquipmentType";
 import Post from "./Post";
 import User from "./User";
+import Speed from "./Speed";
+import Partner from "./Partner";
 
 export type {
   Organization,
@@ -14,4 +16,6 @@ export type {
   EquipmentType,
   Post,
   User,
+  Speed,
+  Partner,
 };

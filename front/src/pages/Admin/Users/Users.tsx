@@ -1,10 +1,9 @@
 import { observer } from "mobx-react-lite";
-import { Tag } from "@blueprintjs/core";
 
 import { wrapper } from "./users.module.scss";
 
 import { UsersStore } from "../../../stores/entities";
-import { getRoleFromNumber } from "../../../utils/format";
+import User from "./User";
 
 const Users = () => {
   const users = UsersStore.users;
@@ -13,17 +12,11 @@ const Users = () => {
     <div className={wrapper}>
       {users.map((user) => {
         return (
-          <Tag
+          <User
             key={`users-${user.id}`}
-            onRemove={() => {
-              return;
-            }}
-            icon={"person"}
-            large
-            fill
-            interactive
-            intent={"primary"}
-          >{`${user.login} (${getRoleFromNumber(user.roles)})`}</Tag>
+            login={user.login}
+            roles={user.roles}
+          />
         );
       })}
     </div>

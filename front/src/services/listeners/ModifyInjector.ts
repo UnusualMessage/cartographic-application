@@ -1,12 +1,15 @@
 import { Modify } from "ol/interaction";
 import { Feature } from "ol";
 import { cloneDeep } from "lodash";
+import { ModifyEvent } from "ol/interaction/Modify";
 
-import ListenersInjector, { ModifyEvent } from "./ListenersInjector";
+import ListenersInjector, {
+  ModifyEvent as ModifyEventType,
+} from "./ListenersInjector";
 import { GeozonesStore } from "../../stores/entities";
 import { rememberFeaturesModifying } from "../../utils/features";
 
-class ModifyInjector implements ListenersInjector<ModifyEvent> {
+class ModifyInjector implements ListenersInjector<ModifyEventType> {
   private _modify: Modify;
 
   constructor(modify: Modify) {
@@ -14,24 +17,32 @@ class ModifyInjector implements ListenersInjector<ModifyEvent> {
   }
 
   addEventListener() {
-    this.addModify();
+    return this.addModify();
   }
 
   private addModify() {
     let initialFeatures: Feature[];
 
-    this._modify.on("modifystart", (event) => {
+    const onModifyStart = (event: ModifyEvent) => {
       initialFeatures = cloneDeep(event.features.getArray()) as Feature[];
-    });
+    };
 
-    this._modify.on("modifyend", (event) => {
+    const onModifyEnd = (event: ModifyEvent) => {
       const modifiedFeatures = event.features.getArray() as Feature[];
       const changes = rememberFeaturesModifying(
         initialFeatures,
         modifiedFeatures
       );
       GeozonesStore.push(changes);
-    });
+    };
+
+    this._modify.on("modifystart", onModifyStart);
+    this._modify.on("modifyend", onModifyEnd);
+
+    return () => {
+      this._modify.un("modifystart", onModifyStart);
+      this._modify.un("modifyend", onModifyEnd);
+    };
   }
 }
 

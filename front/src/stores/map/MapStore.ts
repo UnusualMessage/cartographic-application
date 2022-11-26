@@ -4,14 +4,25 @@ import BaseLayer from "ol/layer/Base";
 import * as jspdf from "jspdf";
 import html2canvas, { Options } from "html2canvas";
 import { getPointResolution } from "ol/proj";
+import { Coordinate } from "ol/coordinate";
 
 class MapStore {
   private _map: Map | null;
+  private _cursorCoordinate: Coordinate | null;
 
   constructor() {
     this._map = null;
+    this._cursorCoordinate = null;
 
     makeAutoObservable(this);
+  }
+
+  public get cursorCoordinate() {
+    return this._cursorCoordinate;
+  }
+
+  public set cursorCoordinate(coordinate: Coordinate | null) {
+    this._cursorCoordinate = coordinate;
   }
 
   public get map() {

@@ -1,0 +1,6 @@
+@use "../../../../../../node_modules/@blueprintjs/core/lib/scss/variables" as *;
+
+.wrapper {
+  background: $white;
+  box-shadow: 2px 2px 10px $black;
+}

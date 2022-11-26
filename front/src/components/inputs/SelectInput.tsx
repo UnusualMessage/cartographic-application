@@ -36,7 +36,7 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
       labelFor={id}
       helperText={error ? error.message : undefined}
       labelInfo={required ? "(обязательно для заполнения)" : undefined}
-      intent={error ? "danger" : "primary"}
+      intent={error ? "danger" : required ? "primary" : "none"}
     >
       <HTMLSelect
         id={id}

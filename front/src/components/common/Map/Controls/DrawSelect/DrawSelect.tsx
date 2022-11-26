@@ -2,6 +2,8 @@ import { observer } from "mobx-react-lite";
 import { HTMLSelect } from "@blueprintjs/core";
 import { ChangeEventHandler } from "react";
 
+import { wrapper } from "./draw.module.scss";
+
 import { InteractionsStore } from "../../../../../stores/map";
 import { InteractionType } from "../../../../../types/map";
 
@@ -13,6 +15,7 @@ const DrawSelect = () => {
   return (
     <HTMLSelect
       fill
+      className={wrapper}
       value={InteractionsStore.interactionType}
       onChange={onSelect}
     >

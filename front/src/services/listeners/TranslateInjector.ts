@@ -2,11 +2,14 @@ import { Translate } from "ol/interaction";
 import { Feature } from "ol";
 import { cloneDeep } from "lodash";
 
-import ListenersInjector, { TranslateEvent } from "./ListenersInjector";
+import ListenersInjector, {
+  TranslateEvent as TranslateEventType,
+} from "./ListenersInjector";
 import { GeozonesStore } from "../../stores/entities";
 import { rememberFeaturesModifying } from "../../utils/features";
+import { TranslateEvent } from "ol/interaction/Translate";
 
-class TranslateInjector implements ListenersInjector<TranslateEvent> {
+class TranslateInjector implements ListenersInjector<TranslateEventType> {
   private _translate: Translate;
 
   constructor(translate: Translate) {
@@ -14,24 +17,32 @@ class TranslateInjector implements ListenersInjector<TranslateEvent> {
   }
 
   public addEventListener() {
-    this.addTranslate();
+    return this.addTranslate();
   }
 
   private addTranslate() {
     let initialFeatures: Feature[];
 
-    this._translate.on("translatestart", (event) => {
+    const onTranslateStart = (event: TranslateEvent) => {
       initialFeatures = cloneDeep(event.features.getArray()) as Feature[];
-    });
+    };
 
-    this._translate.on("translateend", (event) => {
+    const onTranslateEnd = (event: TranslateEvent) => {
       const modifiedFeatures = event.features.getArray() as Feature[];
       const changes = rememberFeaturesModifying(
         initialFeatures,
         modifiedFeatures
       );
       GeozonesStore.push(changes);
-    });
+    };
+
+    this._translate.on("translatestart", onTranslateStart);
+    this._translate.on("translateend", onTranslateEnd);
+
+    return () => {
+      this._translate.un("translatestart", onTranslateStart);
+      this._translate.un("translateend", onTranslateEnd);
+    };
   }
 }
 

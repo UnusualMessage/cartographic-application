@@ -34,21 +34,15 @@ interface Interactions {
   dragBox: DragBox | null;
 }
 
-export type MeasurementMode = "none" | "length" | "area";
-
 class InteractionsStore {
   private _interactionType: InteractionType;
   private _drawing: boolean;
 
-  private _measurementMode: MeasurementMode;
-
   private _interactions: Interactions;
 
   constructor() {
-    this._interactionType = "cursor";
+    this._interactionType = "none";
     this._drawing = false;
-
-    this._measurementMode = "none";
 
     this._interactions = {
       select: null,
@@ -74,24 +68,29 @@ class InteractionsStore {
     this._drawing = isDrawing;
   }
 
-  public get measurementMode() {
-    return this._measurementMode;
+  public get isGeozoneInteractionsActive() {
+    return (
+      this._interactionType === "geozones" || this._interactionType === "cursor"
+    );
   }
 
-  public set measurementMode(mode: MeasurementMode) {
-    this._measurementMode = mode;
+  public get isAuxInteractionsActive() {
+    return (
+      this._interactionType === "measure-length" ||
+      this._interactionType === "measure-area"
+    );
   }
 
   public setupMeasurementTool(
     source: VectorSource,
     map: Map,
-    mode: MeasurementMode
+    type: InteractionType
   ) {
-    if (mode === "none") {
+    if (type !== "measure-area" && type !== "measure-length") {
       return;
     }
 
-    const drawType = mode === "area" ? "Polygon" : "LineString";
+    const drawType = type === "measure-area" ? "Polygon" : "LineString";
 
     const draw = new Draw({
       source: source,

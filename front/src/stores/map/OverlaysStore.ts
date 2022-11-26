@@ -97,7 +97,7 @@ class OverlaysStore {
     const canvas = el.getElementsByTagName("canvas").item(0);
 
     if (!canvas) {
-      return;
+      return [];
     }
 
     const mapInjector: ListenersInjector<CommonEvent> = new MapInjector(
@@ -105,10 +105,14 @@ class OverlaysStore {
       canvas
     );
 
-    mapInjector.addEventListener("click");
-    mapInjector.addEventListener("contextmenu");
+    const cleanups = [];
+
+    cleanups.push(mapInjector.addEventListener("click"));
+    cleanups.push(mapInjector.addEventListener("contextmenu"));
 
     map.addOverlay(overlay);
+
+    return cleanups;
   }
 
   public hideContextMenu() {
