@@ -2,13 +2,13 @@ import { Position, Toaster } from "@blueprintjs/core";
 import React, { useLayoutEffect, useRef } from "react";
 
 import Sider from "../../../components/common/Sider";
-import { Map } from "../../../components/common/Map";
+import Schema from "../../../components/common/Schema";
 import Footer from "../../../components/common/Footer";
 import Loader from "../../../components/auxiliary/Loader";
 import Categories from "../../../components/common/Sider/Categories";
-import TabsList from "../../../components/common/Footer/TabsList";
 import Content from "../../../components/common/Content";
 import { NotificationsService } from "../../../services/ui";
+import Information from "../../../components/common/Footer/Information";
 
 const View = () => {
   const ref = useRef<Toaster>(null);
@@ -25,9 +25,9 @@ const View = () => {
         <Categories />
       </Sider>
       <Content>
-        <Map />
+        <Schema />
         <Footer>
-          <TabsList />
+          <Information />
         </Footer>
       </Content>
     </React.Suspense>

@@ -7,6 +7,10 @@ import { panel, wrapper } from "./categories.module.scss";
 import { siderTabs } from "../../../../assets/tabs";
 import { TabsStore } from "../../../../stores/ui";
 
+const switchTabsList = (tabsListId: string) => {
+  TabsStore.tabsListId = tabsListId;
+};
+
 const Categories = () => {
   const [currentTab, setCurrentTab] = useState<string | number>("sider-fields");
   const currentTabs = useMemo(() => {
@@ -20,25 +24,11 @@ const Categories = () => {
       selectedTabId={currentTab}
       renderActiveTabPanelOnly
       onChange={(newTabId) => {
-        switch (newTabId) {
-          case "sider-fields":
-            TabsStore.tabsListId = "footer-fields";
-            break;
+        switchTabsList(newTabId.toString());
 
-          case "sider-equipment":
-            TabsStore.tabsListId = "footer-equipment";
-            break;
-
-          case "sider-employees":
-            TabsStore.tabsListId = "footer-employees";
-            break;
-
-          case "sider-plans":
-            TabsStore.tabsListId = "footer-plans";
-            break;
-        }
         TabsStore.active = true;
         TabsStore.footerTabId = "";
+
         setCurrentTab(newTabId);
       }}
     >
