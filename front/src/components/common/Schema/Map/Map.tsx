@@ -9,7 +9,6 @@ import {
   ListenersInjector,
   MapInjector,
 } from "../../../../services/listeners";
-import { Interactions } from "../Interactions";
 
 const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -56,7 +55,5 @@ const Map = ({ children }: PropsWithChildren) => {
     </div>
   );
 };
-
-Map.Interactions = Interactions;
 
 export default observer(Map);

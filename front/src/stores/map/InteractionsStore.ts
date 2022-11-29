@@ -81,11 +81,9 @@ class InteractionsStore {
     );
   }
 
-  public setupMeasurementTool(
-    source: VectorSource,
-    map: Map,
-    type: InteractionType
-  ) {
+  public setupMeasurementTool(source: VectorSource, map: Map) {
+    const type = this.interactionType;
+
     if (type !== "measure-area" && type !== "measure-length") {
       return;
     }
@@ -235,7 +233,7 @@ class InteractionsStore {
     this._interactions.select?.getFeatures().clear();
   }
 
-  public removeInteractions(map: Map | null) {
+  public removeDraw(map: Map | null) {
     if (!map) {
       return;
     }
@@ -243,26 +241,54 @@ class InteractionsStore {
     if (this._interactions.draw) {
       map.removeInteraction(this._interactions.draw);
     }
+  }
+
+  public removeSelect(map: Map | null) {
+    if (!map) {
+      return;
+    }
 
     if (this._interactions.select) {
       map.removeInteraction(this._interactions.select);
     }
+  }
 
-    if (this._interactions.translate) {
-      map.removeInteraction(this._interactions.translate);
-    }
-
-    if (this._interactions.modify) {
-      map.removeInteraction(this._interactions.modify);
+  public removeSnap(map: Map | null) {
+    if (!map) {
+      return;
     }
 
     if (this._interactions.snap) {
       map.removeInteraction(this._interactions.snap);
     }
+  }
 
-    if (this._interactions.dragBox) {
-      map.removeInteraction(this._interactions.dragBox);
+  public removeTranslate(map: Map | null) {
+    if (!map) {
+      return;
     }
+
+    if (this._interactions.translate) {
+      map.removeInteraction(this._interactions.translate);
+    }
+  }
+
+  public removeModify(map: Map | null) {
+    if (!map) {
+      return;
+    }
+
+    if (this._interactions.modify) {
+      map.removeInteraction(this._interactions.modify);
+    }
+  }
+
+  public removeInteractions(map: Map | null) {
+    this.removeSnap(map);
+    this.removeSelect(map);
+    this.removeTranslate(map);
+    this.removeDraw(map);
+    this.removeModify(map);
   }
 }
 

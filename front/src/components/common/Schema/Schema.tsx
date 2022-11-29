@@ -9,10 +9,9 @@ import { TileLayer, VectorLayer } from "./Layer";
 import MapWrapper from "./Map";
 import { Controls } from "./Controls";
 import { auxLayerId, geozonesLayerId } from "../../../assets/map/config";
+import { AuxInteractions, GeozonesInteractions } from "./Interactions";
+import Menu from "./Menu";
 import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
-import { InteractionsStore } from "../../../stores/map";
-import { MapMenu } from "../../menus";
-import { AuxInteractions, Interactions } from "./Interactions";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
@@ -25,27 +24,18 @@ const Schema = () => {
     <FullScreen handle={handle} className={wrapper}>
       <MapWrapper>
         <View />
+        <Menu />
+        <Controls handle={handle} />
 
         <TileLayer />
+
         <VectorLayer id={geozonesLayerId}>
-          {InteractionsStore.isGeozoneInteractionsActive ? (
-            <Interactions />
-          ) : (
-            <></>
-          )}
+          <GeozonesInteractions />
         </VectorLayer>
 
         <VectorLayer id={auxLayerId} style={styleFunction}>
-          {InteractionsStore.isAuxInteractionsActive ? (
-            <AuxInteractions />
-          ) : (
-            <></>
-          )}
+          <AuxInteractions />
         </VectorLayer>
-
-        <MapMenu />
-
-        <Controls handle={handle} />
       </MapWrapper>
     </FullScreen>
   );
