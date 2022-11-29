@@ -8,7 +8,6 @@ import View from "./View";
 import { TileLayer, VectorLayer } from "./Layer";
 import MapWrapper from "./MapWrapper";
 import { Controls } from "./Controls";
-import { AuxInteractions, Interactions } from "./Interactions";
 import { auxLayerId, geozonesLayerId } from "../../../assets/map/config";
 import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
 import { InteractionsStore } from "../../../stores/map";
@@ -29,7 +28,7 @@ const Map = () => {
         <TileLayer />
         <VectorLayer id={geozonesLayerId}>
           {InteractionsStore.isGeozoneInteractionsActive ? (
-            <Interactions />
+            <VectorLayer.Interactions />
           ) : (
             <></>
           )}
@@ -37,7 +36,7 @@ const Map = () => {
 
         <VectorLayer id={auxLayerId} style={styleFunction}>
           {InteractionsStore.isAuxInteractionsActive ? (
-            <AuxInteractions />
+            <VectorLayer.AuxInteractions />
           ) : (
             <></>
           )}
