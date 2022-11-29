@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid";
-import { NonIdealState } from "@blueprintjs/core";
 
 import { TabsList } from "../../types/tabs";
 import PlansTab from "../../components/tabs/PlansTab";
+import Empty from "../../components/auxiliary/Empty";
 
 export const footerTabs: TabsList[] = [
   {
@@ -11,13 +11,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Нет данных",
-        component: (
-          <NonIdealState
-            icon={"search"}
-            layout={"horizontal"}
-            title={"А тут пусто!"}
-          />
-        ),
+        component: <Empty />,
       },
     ],
   },
@@ -35,13 +29,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Распределение планов",
-        component: (
-          <NonIdealState
-            icon={"search"}
-            layout={"horizontal"}
-            title={"А тут пусто!"}
-          />
-        ),
+        component: <Empty />,
       },
     ],
   },
@@ -53,7 +41,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "План",
-        component: <></>,
+        component: <Empty />,
       },
     ],
   },

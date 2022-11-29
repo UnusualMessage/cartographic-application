@@ -18,38 +18,22 @@ export const formRenderer = <T extends FieldValues>(
       {form.map((field) => {
         const error = errors[field.name] as FieldError | undefined;
 
+        const props = {
+          key: `input-${field.label}`,
+          label: field.label,
+          options: field.options ?? [],
+          required: field.required,
+          error: error,
+          ...register(field.name, { required: field.required }),
+        };
+
         switch (field.type) {
           case "text":
-            return (
-              <TextInput
-                key={`input-${field.label}`}
-                label={field.label}
-                required={field.required}
-                error={error}
-                {...register(field.name, { required: field.required })}
-              />
-            );
+            return <TextInput {...props} />;
           case "select":
-            return (
-              <SelectInput
-                key={`input-${field.label}`}
-                options={field.options ?? []}
-                label={field.label}
-                required={field.required}
-                error={error}
-                {...register(field.name, { required: field.required })}
-              />
-            );
+            return <SelectInput {...props} />;
           case "numeric":
-            return (
-              <NumberInput
-                key={`input-${field.label}`}
-                label={field.label}
-                required={field.required}
-                error={error}
-                {...register(field.name, { required: field.required })}
-              />
-            );
+            return <NumberInput {...props} />;
           default:
             return <></>;
         }

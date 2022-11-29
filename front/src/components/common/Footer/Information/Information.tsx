@@ -1,12 +1,12 @@
 import { Tab, Tabs } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { panel, wrapper } from "./tabs.module.scss";
+import { panel, wrapper } from "./information.module.scss";
 
 import { TabsStore } from "../../../../stores/ui";
 import { footerTabs } from "../../../../assets/tabs";
 import { Tab as TabType } from "../../../../types/tabs/Tab";
-import TabPage from "../TabPage";
+import TabPage from "../../../auxiliary/TabPage";
 
 const tabsRenderer = (tab: TabType) => {
   return (
@@ -28,7 +28,7 @@ const handleSelectedTab = (current: string | number, list: TabType[]) => {
   }
 };
 
-const TabsList = () => {
+const Information = () => {
   const currentTab = TabsStore.footerTabId;
   const currentTabList = TabsStore.tabsListId;
 
@@ -52,4 +52,4 @@ const TabsList = () => {
   );
 };
 
-export default observer(TabsList);
+export default observer(Information);

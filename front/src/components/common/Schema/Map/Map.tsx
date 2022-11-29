@@ -10,7 +10,7 @@ import {
   MapInjector,
 } from "../../../../services/listeners";
 
-const MapWrapper = ({ children }: PropsWithChildren) => {
+const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
 
@@ -56,4 +56,4 @@ const MapWrapper = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default observer(MapWrapper);
+export default observer(Map);
