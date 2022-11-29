@@ -4,7 +4,6 @@ import { createContext, PropsWithChildren, useEffect, useMemo } from "react";
 import { StyleLike } from "ol/style/Style";
 
 import { LayersService } from "../../../../services/map";
-import { AuxInteractions, Interactions } from "../Interactions";
 
 export const SourceContext = createContext<VectorSource | undefined>(undefined);
 
@@ -34,8 +33,5 @@ const VectorLayer = ({ children, id, style }: Props) => {
     </SourceContext.Provider>
   );
 };
-
-VectorLayer.Interactions = Interactions;
-VectorLayer.AuxInteractions = AuxInteractions;
 
 export default VectorLayer;

@@ -105,10 +105,12 @@ class InteractionsStore {
     map.addInteraction(draw);
   }
 
-  public addDraw(source: VectorSource, map: Map, type: InteractionType) {
+  public addDraw(source: VectorSource, map: Map) {
     if (this._interactions.draw) {
       map.removeInteraction(this._interactions.draw);
     }
+
+    const type = this.interactionType;
 
     if (type === "cursor") {
       return;
@@ -224,7 +226,7 @@ class InteractionsStore {
     }
 
     this.addSelectAndTranslate(source, map);
-    this.addDraw(source, map, this.interactionType);
+    this.addDraw(source, map);
     this.addModify(source, map);
     this.addSnap(source, map);
   }

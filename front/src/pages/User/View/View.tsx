@@ -2,7 +2,7 @@ import { Position, Toaster } from "@blueprintjs/core";
 import React, { useLayoutEffect, useRef } from "react";
 
 import Sider from "../../../components/common/Sider";
-import { Map } from "../../../components/common/Map";
+import Schema from "../../../components/common/Schema";
 import Footer from "../../../components/common/Footer";
 import Loader from "../../../components/auxiliary/Loader";
 import Categories from "../../../components/common/Sider/Categories";
@@ -25,7 +25,7 @@ const View = () => {
         <Categories />
       </Sider>
       <Content>
-        <Map />
+        <Schema />
         <Footer>
           <Information />
         </Footer>

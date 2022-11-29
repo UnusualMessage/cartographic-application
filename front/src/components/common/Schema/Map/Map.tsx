@@ -11,7 +11,7 @@ import {
 } from "../../../../services/listeners";
 import { Interactions } from "../Interactions";
 
-const MapWrapper = ({ children }: PropsWithChildren) => {
+const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
 
@@ -57,6 +57,6 @@ const MapWrapper = ({ children }: PropsWithChildren) => {
   );
 };
 
-MapWrapper.Interactions = Interactions;
+Map.Interactions = Interactions;
 
-export default observer(MapWrapper);
+export default observer(Map);
