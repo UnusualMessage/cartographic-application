@@ -2,33 +2,54 @@ import { makeAutoObservable } from "mobx";
 import { TabId } from "@blueprintjs/core";
 
 class TabsStore {
+  private _footerTabActive: boolean;
+  private _siderTabActive: boolean;
+
   private _active: boolean;
-  private _tabsListId: string;
-  private _footerTabId: TabId;
+
+  private _siderTabsListId: string;
+  private _siderTabId?: TabId;
+
+  private _footerTabsListId: string;
+  private _footerTabId?: TabId;
 
   constructor() {
-    this._tabsListId = "";
-    this._footerTabId = "";
+    this._footerTabsListId = "";
+    this._footerTabId = undefined;
+
+    this._siderTabsListId = "sider-tabs";
+    this._siderTabId = "sider-fields";
+
+    this._footerTabActive = true;
+    this._siderTabActive = true;
 
     this._active = true;
 
     makeAutoObservable(this);
   }
 
-  public get tabsListId() {
-    return this._tabsListId;
+  public get footerTabsListId() {
+    return this._footerTabsListId;
   }
 
-  public set tabsListId(id: string) {
-    this._tabsListId = id;
+  public set footerTabsListId(id: string) {
+    this._footerTabsListId = id;
   }
 
   public get footerTabId() {
     return this._footerTabId;
   }
 
-  public set footerTabId(id: TabId) {
+  public set footerTabId(id: TabId | undefined) {
     this._footerTabId = id;
+  }
+
+  public get siderTabId() {
+    return this._siderTabId;
+  }
+
+  public set siderTabId(id: TabId | undefined) {
+    this._siderTabId = id;
   }
 
   public set active(active: boolean) {
