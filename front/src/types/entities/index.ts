@@ -7,6 +7,7 @@ import Post from "./Post";
 import User from "./User";
 import Speed from "./Speed";
 import Partner from "./Partner";
+import Department from "./Department";
 
 export type {
   Organization,
@@ -18,4 +19,5 @@ export type {
   User,
   Speed,
   Partner,
+  Department,
 };

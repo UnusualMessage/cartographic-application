@@ -8,7 +8,7 @@ export default interface Department {
 
 export interface CreateDepartment {
   title: string;
-  organization: Organization;
+  organizationId: string;
 }
 
 export interface UpdateDepartment extends CreateDepartment {
