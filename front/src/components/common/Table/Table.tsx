@@ -58,7 +58,6 @@ const Table = <T,>({
         onSelection={onSelection}
         defaultRowHeight={40}
         enableMultipleSelection={false}
-        enableColumnResizing={false}
         selectedRegions={regions}
       >
         {columns.map((column) => {

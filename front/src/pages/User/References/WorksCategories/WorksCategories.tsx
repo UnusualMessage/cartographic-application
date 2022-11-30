@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const WorksCategories = () => {
-  return <div>{"Виды работ"}</div>;
+  return <EmptyInformation />;
 };
 
 export default WorksCategories;

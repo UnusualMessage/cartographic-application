@@ -15,11 +15,10 @@ import "@blueprintjs/select/lib/css/blueprint-select.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import "@blueprintjs/table/lib/css/table.css";
 
-import Loader from "./components/auxiliary/Loader";
 import Layout from "./components/common/Layout";
 import { references } from "./assets/data/references";
-import EmptyPage from "./components/auxiliary/EmptyPage";
 import Authorization from "./pages/Admin/Authorization";
+import { EmptyPage, Loader } from "./components/auxiliary/placeholders";
 
 const View = lazy(() => import("./pages/User/View"));
 

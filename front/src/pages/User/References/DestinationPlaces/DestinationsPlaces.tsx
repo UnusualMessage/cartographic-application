@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const DestinationsPlaces = () => {
-  return <div>{"Места назначения"}</div>;
+  return <EmptyInformation />;
 };
 
 export default DestinationsPlaces;

@@ -29,7 +29,7 @@ const Header = () => {
           <Button icon="path-search" text="Просмотр" minimal large />
         </Link>
 
-        <Link to={"/references"}>
+        <Link to={"/references/select"}>
           <Button icon="clipboard" text="Справочники" minimal large />
         </Link>
 

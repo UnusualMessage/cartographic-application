@@ -1,12 +1,14 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { Organization } from "../../types/entities";
 import { organizations } from "../../assets/data";
 
 class OrganizationsStore {
   private _organizations: Organization[];
+  private _organization: Organization | undefined;
 
   constructor() {
     this._organizations = organizations;
+    this._organization = undefined;
 
     makeAutoObservable(this);
   }
@@ -17,6 +19,14 @@ class OrganizationsStore {
 
   set organizations(value: Organization[]) {
     this._organizations = value;
+  }
+
+  public async getById(id: string) {
+    runInAction(() => {
+      this._organization = this._organizations.find((item) => item.id === id);
+    });
+
+    return this._organization;
   }
 }
 

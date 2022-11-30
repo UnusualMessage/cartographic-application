@@ -41,9 +41,9 @@ const handleClick: TreeEventHandler<any> = (node) => {
   const planTabsListId = "footer-plan";
 
   const switchTabsList = (id: string) => {
-    if (TabsStore.tabsListId !== id) {
-      TabsStore.tabsListId = id;
-      TabsStore.footerTabId = "";
+    if (TabsStore.footerTabsListId !== id) {
+      TabsStore.footerTabsListId = id;
+      TabsStore.footerTabId = undefined;
     }
   };
 
@@ -52,7 +52,7 @@ const handleClick: TreeEventHandler<any> = (node) => {
     PlansStore.chosenYear = node.nodeData;
   } else {
     switchTabsList(planTabsListId);
-    TabsStore.tabsListId = "footer-plan";
+    TabsStore.footerTabsListId = "footer-plan";
   }
 };
 

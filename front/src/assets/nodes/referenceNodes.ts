@@ -192,6 +192,38 @@ export const referenceNodes: Node[] = [
           },
         ],
       },
+
+      {
+        id: uuid(),
+        icon: "folder-close",
+        label: "Техника и оборудование",
+        isExpanded: true,
+        nodeData: undefined,
+        childNodes: [
+          {
+            id: uuid(),
+            icon: "folder-close",
+            label: "Прицепы и навесное оборудование",
+            isExpanded: true,
+            nodeData: undefined,
+            childNodes: [
+              {
+                id: uuid(),
+                icon: "document",
+                label: references[19].title,
+                nodeData: references[19].link,
+              },
+
+              {
+                id: uuid(),
+                icon: "document",
+                label: references[20].title,
+                nodeData: references[20].link,
+              },
+            ],
+          },
+        ],
+      },
     ],
   },
 ];
