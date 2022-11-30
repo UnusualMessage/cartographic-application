@@ -1,7 +1,7 @@
 import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
 
-const Organizations = () => {
+const Departments = () => {
   return <EmptyInformation />;
 };
 
-export default Organizations;
+export default Departments;

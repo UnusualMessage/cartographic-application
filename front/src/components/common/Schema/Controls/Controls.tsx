@@ -11,6 +11,7 @@ import Geocoder from "./Geocoder";
 import DrawSelect from "./DrawSelect/DrawSelect";
 import { InteractionsStore } from "../../../../stores/map";
 import Location from "./Location";
+import Condition from "../../../auxiliary/Condition";
 
 interface Props {
   handle: FullScreenHandle;
@@ -23,9 +24,17 @@ const Controls = ({ handle }: Props) => {
   return (
     <>
       <div className={classNames(wrapper, view)}>
-        {isPanelOpen ? <LayersSwitcher /> : <></>}
-        {InteractionsStore.isGeozoneInteractionsActive ? <DrawSelect /> : <></>}
-        {isGeocoderOpen ? <Geocoder /> : <></>}
+        <Condition truthy={isPanelOpen}>
+          <LayersSwitcher />
+        </Condition>
+
+        <Condition truthy={InteractionsStore.isGeozoneInteractionsActive}>
+          <DrawSelect />
+        </Condition>
+
+        <Condition truthy={isGeocoderOpen}>
+          <Geocoder />
+        </Condition>
       </div>
 
       <LeftButtonGroup />
