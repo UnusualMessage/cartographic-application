@@ -23,8 +23,8 @@ const Controls = ({ handle }: Props) => {
   return (
     <>
       <div className={classNames(wrapper, view)}>
-        {InteractionsStore.isGeozoneInteractionsActive ? <DrawSelect /> : <></>}
         {isPanelOpen ? <LayersSwitcher /> : <></>}
+        {InteractionsStore.isGeozoneInteractionsActive ? <DrawSelect /> : <></>}
         {isGeocoderOpen ? <Geocoder /> : <></>}
       </div>
 
