@@ -8,7 +8,7 @@ import { Form } from "../../../../types/forms";
 
 interface Props<T, CreateT> {
   name: string;
-  store: ApiStore<T, CreateT>;
+  store: ApiStore<T, CreateT, any>;
   form: Form<CreateT>;
 }
 

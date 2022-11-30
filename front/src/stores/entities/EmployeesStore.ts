@@ -5,7 +5,9 @@ import { employees } from "../../assets/data";
 import { CreateEmployee, UpdateEmployee } from "../../types/entities/Employee";
 import { ApiStore } from "../../types/api";
 
-class EmployeesStore implements ApiStore<Employee, CreateEmployee> {
+class EmployeesStore
+  implements ApiStore<Employee, CreateEmployee, UpdateEmployee>
+{
   private _employees: Employee[];
   private _employee: Employee | undefined;
 

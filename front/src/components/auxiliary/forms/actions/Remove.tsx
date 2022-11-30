@@ -11,7 +11,7 @@ interface Item {
 interface Props<T> {
   id?: string;
   name: string;
-  store: ApiStore<T, any>;
+  store: ApiStore<T, any, any>;
 }
 
 const Remove = <T extends Item>({ id, name, store }: Props<T>) => {

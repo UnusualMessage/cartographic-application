@@ -5,7 +5,7 @@ import { CreateTrailer, UpdateTrailer } from "../../types/entities/Trailer";
 import { trailers } from "../../assets/data";
 import { ApiStore } from "../../types/api";
 
-class TrailersStore implements ApiStore<Trailer, CreateTrailer> {
+class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
   private _trailers: Trailer[];
   private _trailer: Trailer | undefined;
 
