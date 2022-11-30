@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import { Speed } from "../../../types/entities";
 import { useFetch } from "../../../hooks";
-import DialogForm from "../../auxiliary/DialogForm";
+import DialogForm from "../../auxiliary/forms/DialogForm";
 import SpeedsStore from "../../../stores/entities/SpeedsStore";
 
 interface Props {

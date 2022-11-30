@@ -1,7 +1,7 @@
 import { Icon } from "@blueprintjs/core";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import DialogForm from "../../auxiliary/DialogForm";
+import DialogForm from "../../auxiliary/forms/DialogForm";
 import {
   EmployeesStore,
   OrganizationsStore,

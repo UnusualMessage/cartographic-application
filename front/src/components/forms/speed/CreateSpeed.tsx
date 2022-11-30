@@ -2,7 +2,7 @@ import { Icon } from "@blueprintjs/core";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { observer } from "mobx-react-lite";
 
-import DialogForm from "../../auxiliary/DialogForm";
+import DialogForm from "../../auxiliary/forms/DialogForm";
 import { OrganizationsStore } from "../../../stores/entities";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
 import { createSpeed } from "../../../assets/forms";

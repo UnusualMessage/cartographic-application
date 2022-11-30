@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { Icon } from "@blueprintjs/core";
 import { useState } from "react";
 
-import DialogForm from "../../auxiliary/DialogForm";
+import DialogForm from "../../auxiliary/forms/DialogForm";
 import { useFetch } from "../../../hooks";
 import { Department } from "../../../types/entities";
 import DepartmentsStore from "../../../stores/entities/DepartmentsStore";
