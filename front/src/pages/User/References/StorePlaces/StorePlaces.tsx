@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const StorePlaces = () => {
-  return <div>{"Места хранения"}</div>;
+  return <EmptyInformation />;
 };
 
 export default StorePlaces;

@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const OperationalPlans = () => {
-  return <div>{"Оперативный планы"}</div>;
+  return <EmptyInformation />;
 };
 
 export default OperationalPlans;

@@ -4,11 +4,11 @@ import React, { useLayoutEffect, useRef } from "react";
 import Sider from "../../../components/common/Sider";
 import Schema from "../../../components/common/Schema";
 import Footer from "../../../components/common/Footer";
-import Loader from "../../../components/auxiliary/Loader";
 import Categories from "../../../components/common/Sider/Categories";
 import Content from "../../../components/common/Content";
 import { NotificationsService } from "../../../services/ui";
 import Information from "../../../components/common/Footer/Information";
+import { Loader } from "../../../components/auxiliary/placeholders";
 
 const View = () => {
   const ref = useRef<Toaster>(null);

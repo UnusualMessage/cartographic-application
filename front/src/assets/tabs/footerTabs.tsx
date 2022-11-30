@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 
 import { TabsList } from "../../types/tabs";
 import PlansTab from "../../components/tabs/PlansTab";
-import Empty from "../../components/auxiliary/Empty";
+import { EmptyInformation } from "../../components/auxiliary/placeholders";
 
 export const footerTabs: TabsList[] = [
   {
@@ -11,7 +11,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Нет данных",
-        component: <Empty />,
+        component: <EmptyInformation />,
       },
     ],
   },
@@ -29,7 +29,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Распределение планов",
-        component: <Empty />,
+        component: <EmptyInformation />,
       },
     ],
   },
@@ -41,7 +41,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "План",
-        component: <Empty />,
+        component: <EmptyInformation />,
       },
     ],
   },

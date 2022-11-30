@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const AnnualPlans = () => {
-  return <div>{"Ежегодные планы"}</div>;
+  return <EmptyInformation />;
 };
 
 export default AnnualPlans;

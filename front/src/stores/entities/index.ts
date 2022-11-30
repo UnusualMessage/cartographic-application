@@ -6,6 +6,8 @@ import OrganizationsStore from "./OrganizationsStore";
 import GeozonesStore from "./GeozonesStore";
 import AuthStore from "./AuthStore";
 import UsersStore from "./UsersStore";
+import DepartmentsStore from "./DepartmentsStore";
+import TrailersStore from "./TrailersStore";
 
 export {
   EquipmentStore,
@@ -16,4 +18,6 @@ export {
   GeozonesStore,
   AuthStore,
   UsersStore,
+  TrailersStore,
+  DepartmentsStore,
 };

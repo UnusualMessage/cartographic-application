@@ -71,6 +71,12 @@ const RightButtonGroup = ({
       <Collapse isOpen={isCollapseOpen} keepChildrenMounted>
         <ButtonGroup vertical large>
           <Button
+            icon="layers"
+            intent={isPanelOpen ? "primary" : "none"}
+            onClick={handlePanel}
+          />
+
+          <Button
             icon="draw"
             intent={
               InteractionsStore.isGeozoneInteractionsActive ? "primary" : "none"
@@ -82,12 +88,6 @@ const RightButtonGroup = ({
                   : "geozones"
               )
             }
-          />
-
-          <Button
-            icon="layers"
-            intent={isPanelOpen ? "primary" : "none"}
-            onClick={handlePanel}
           />
 
           <Button

@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const GroupPlans = () => {
-  return <div>{"Групповые оперативные планы"}</div>;
+  return <EmptyInformation />;
 };
 
 export default GroupPlans;

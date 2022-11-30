@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const Crops = () => {
-  return <div>{"Культуры"}</div>;
+  return <EmptyInformation />;
 };
 
 export default Crops;

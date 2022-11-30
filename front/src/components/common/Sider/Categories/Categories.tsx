@@ -1,5 +1,5 @@
 import { Tab, Tabs } from "@blueprintjs/core";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { observer } from "mobx-react-lite";
 
 import { panel, wrapper } from "./categories.module.scss";
@@ -7,12 +7,9 @@ import { panel, wrapper } from "./categories.module.scss";
 import { siderTabs } from "../../../../assets/tabs";
 import { TabsStore } from "../../../../stores/ui";
 
-const switchTabsList = (tabsListId: string) => {
-  TabsStore.tabsListId = tabsListId;
-};
-
 const Categories = () => {
-  const [currentTab, setCurrentTab] = useState<string | number>("sider-fields");
+  const tabId = TabsStore.siderTabId;
+
   const currentTabs = useMemo(() => {
     return siderTabs.tabs;
   }, []);
@@ -21,15 +18,31 @@ const Categories = () => {
     <Tabs
       id="sider-tabs"
       className={wrapper}
-      selectedTabId={currentTab}
+      selectedTabId={tabId}
       renderActiveTabPanelOnly
       onChange={(newTabId) => {
-        switchTabsList(newTabId.toString());
+        switch (newTabId) {
+          case "sider-plans":
+            TabsStore.footerTabsListId = "footer-plans";
+            break;
+
+          case "sider-employees":
+            TabsStore.footerTabsListId = "footer-employees";
+            break;
+
+          case "sider-equipment":
+            TabsStore.footerTabsListId = "footer-equipment";
+            break;
+
+          case "sider-fields":
+            TabsStore.footerTabsListId = "footer-fields";
+            break;
+        }
 
         TabsStore.active = true;
-        TabsStore.footerTabId = "";
+        TabsStore.footerTabId = undefined;
 
-        setCurrentTab(newTabId);
+        TabsStore.siderTabId = newTabId;
       }}
     >
       {currentTabs.map((tab) => {

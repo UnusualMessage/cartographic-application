@@ -1,46 +1,14 @@
-import { Icon } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
 
-import DialogForm from "../../auxiliary/DialogForm";
-import { useFetch } from "../../../hooks";
-import { Speed } from "../../../types/entities";
 import SpeedsStore from "../../../stores/entities/SpeedsStore";
+import { Remove } from "../../auxiliary/forms/actions";
 
 interface Props {
   id?: string;
 }
 
 const RemoveSpeed = ({ id }: Props) => {
-  const [successful, setSuccessful] = useState(false);
-  const [speed, setSpeed] = useState<Speed | undefined>(undefined);
-
-  useFetch(async () => {
-    if (id) {
-      setSpeed(await SpeedsStore.getById(id));
-    }
-  }, [id]);
-
-  const handleRemove = async () => {
-    if (speed) {
-      await SpeedsStore.remove(speed.id);
-      setSuccessful(true);
-    }
-  };
-
-  return (
-    <DialogForm
-      title={"Удаление записи (скоростной режим)"}
-      buttonText={"Удалить"}
-      buttonIcon={<Icon icon={"remove"} />}
-      buttonDisabled={!id}
-      onAccept={id ? handleRemove : undefined}
-      successful={successful}
-      setSuccessful={setSuccessful}
-    >
-      {`Подтвердите удаление записи ${speed?.title} - ${speed?.id}`}
-    </DialogForm>
-  );
+  return <Remove name={"скоростной режим"} store={SpeedsStore} id={id} />;
 };
 
 export default observer(RemoveSpeed);

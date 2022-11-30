@@ -1,44 +1,28 @@
 import { v4 as uuid } from "uuid";
+import React from "react";
 
 import Reference from "../../types/common/Reference";
-import { lazy } from "react";
-
-const Partners = lazy(() => import("../../pages/User/References/Partners"));
-const Organizations = lazy(
-  () => import("../../pages/User/References/Organizations")
-);
-const Geozones = lazy(() => import("../../pages/User/References/Geozones"));
-const StorePlaces = lazy(
-  () => import("../../pages/User/References/StorePlaces")
-);
-const DestinationPlaces = lazy(
-  () => import("../../pages/User/References/DestinationPlaces")
-);
-const WorksCategories = lazy(
-  () => import("../../pages/User/References/WorksCategories")
-);
-const WorksPlans = lazy(() => import("../../pages/User/References/WorksPlans"));
-const AnnualPlans = lazy(
-  () => import("../../pages/User/References/AnnualPlans")
-);
-const OperationalPlans = lazy(
-  () => import("../../pages/User/References/OperationalPlans")
-);
-const GroupSchedule = lazy(
-  () => import("../../pages/User/References/GroupSchedule")
-);
-const GroupPlans = lazy(() => import("../../pages/User/References/GroupPlans"));
-const GoodsGroups = lazy(
-  () => import("../../pages/User/References/GoodsGroups")
-);
-const Crops = lazy(() => import("../../pages/User/References/Crops"));
-const Technologies = lazy(
-  () => import("../../pages/User/References/Technologies")
-);
-const Goods = lazy(() => import("../../pages/User/References/Goods"));
-const Posts = lazy(() => import("../../pages/User/References/Posts"));
-const Employees = lazy(() => import("../../pages/User/References/Employees"));
-const Speed = lazy(() => import("../../pages/User/References/Speed"));
+import Select from "../../pages/User/References/Select";
+import Trailers from "../../pages/User/References/Trailers";
+import Mounteds from "../../pages/User/References/Mounteds";
+import Partners from "../../pages/User/References/Partners";
+import Departments from "../../pages/User/References/Departments";
+import Geozones from "../../pages/User/References/Geozones";
+import StorePlaces from "../../pages/User/References/StorePlaces";
+import DestinationPlaces from "../../pages/User/References/DestinationPlaces";
+import WorksCategories from "../../pages/User/References/WorksCategories";
+import WorksPlans from "../../pages/User/References/WorksPlans";
+import AnnualPlans from "../../pages/User/References/AnnualPlans";
+import OperationalPlans from "../../pages/User/References/OperationalPlans";
+import GroupSchedule from "../../pages/User/References/GroupSchedule";
+import GroupPlans from "../../pages/User/References/GroupPlans";
+import GoodsGroups from "../../pages/User/References/GoodsGroups";
+import Crops from "../../pages/User/References/Crops";
+import Technologies from "../../pages/User/References/Technologies";
+import Goods from "../../pages/User/References/Goods";
+import Posts from "../../pages/User/References/Posts";
+import Employees from "../../pages/User/References/Employees";
+import Speed from "../../pages/User/References/Speed";
 
 export const references: Reference[] = [
   {
@@ -50,9 +34,9 @@ export const references: Reference[] = [
 
   {
     id: uuid(),
-    title: "Организации",
-    link: "organizations",
-    component: <Organizations />,
+    title: "Подразделения",
+    link: "departments",
+    component: <Departments />,
   },
 
   {
@@ -165,5 +149,26 @@ export const references: Reference[] = [
     title: "Скоростные режимы",
     link: "speed",
     component: <Speed />,
+  },
+
+  {
+    id: uuid(),
+    title: "Выбор справочника",
+    link: "select",
+    component: <Select />,
+  },
+
+  {
+    id: uuid(),
+    title: "Прицепы",
+    link: "trailers",
+    component: <Trailers />,
+  },
+
+  {
+    id: uuid(),
+    title: "Навесы",
+    link: "mounteds",
+    component: <Mounteds />,
   },
 ];
