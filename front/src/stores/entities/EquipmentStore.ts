@@ -1,18 +1,29 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 
 import { equipment } from "../../assets/data";
 import { Equipment } from "../../types/entities";
+import { ApiStore } from "../../types/api";
 
-class EquipmentStore {
-  private readonly _equipment: Equipment[];
+class EquipmentStore implements ApiStore<Equipment> {
+  private readonly _equipments: Equipment[];
+  private _equipment: Equipment | undefined;
 
   constructor() {
-    this._equipment = equipment;
+    this._equipments = equipment;
+    this._equipment = undefined;
 
     makeAutoObservable(this);
   }
 
   public get equipment() {
+    return this._equipments;
+  }
+
+  public async getById(id: string) {
+    runInAction(() => {
+      this._equipment = this._equipments.find((item) => item.id === id);
+    });
+
     return this._equipment;
   }
 }

@@ -3,8 +3,9 @@ import { makeAutoObservable, runInAction } from "mobx";
 import { Employee } from "../../types/entities";
 import { employees } from "../../assets/data";
 import { CreateEmployee, UpdateEmployee } from "../../types/entities/Employee";
+import { ApiStore } from "../../types/api";
 
-class EmployeesStore {
+class EmployeesStore implements ApiStore<Employee> {
   private _employees: Employee[];
   private _employee: Employee | undefined;
 

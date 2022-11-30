@@ -6,8 +6,9 @@ import {
   UpdateDepartment,
 } from "../../types/entities/Department";
 import { departments } from "../../assets/data";
+import { ApiStore } from "../../types/api";
 
-class DepartmentsStore {
+class DepartmentsStore implements ApiStore<Department> {
   private _departments: Department[];
   private _department: Department | undefined;
 

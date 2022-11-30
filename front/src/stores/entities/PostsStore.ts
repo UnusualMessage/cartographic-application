@@ -5,8 +5,9 @@ import { posts } from "../../assets/data/posts";
 import { Post } from "../../types/entities";
 import { CreatePost, UpdatePost } from "../../types/entities/Post";
 import { organizations } from "../../assets/data";
+import { ApiStore } from "../../types/api";
 
-class PostsStore {
+class PostsStore implements ApiStore<Post> {
   private _posts: Post[];
   private _post: Post | undefined;
 
