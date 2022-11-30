@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const Goods = () => {
-  return <div>{"Товары"}</div>;
+  return <EmptyInformation />;
 };
 
 export default Goods;

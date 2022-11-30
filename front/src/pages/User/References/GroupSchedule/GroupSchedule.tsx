@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const GroupSchedule = () => {
-  return <div>{"Групповой график работ"}</div>;
+  return <EmptyInformation />;
 };
 
 export default GroupSchedule;

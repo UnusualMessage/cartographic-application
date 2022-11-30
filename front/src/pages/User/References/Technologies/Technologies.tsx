@@ -1,5 +1,7 @@
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+
 const Technologies = () => {
-  return <div>{"Технологии"}</div>;
+  return <EmptyInformation />;
 };
 
 export default Technologies;

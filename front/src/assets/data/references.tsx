@@ -1,7 +1,8 @@
 import { v4 as uuid } from "uuid";
+import { lazy } from "react";
 
 import Reference from "../../types/common/Reference";
-import { lazy } from "react";
+import Select from "../../pages/User/References/Select";
 
 const Partners = lazy(() => import("../../pages/User/References/Partners"));
 const Organizations = lazy(
@@ -165,5 +166,12 @@ export const references: Reference[] = [
     title: "Скоростные режимы",
     link: "speed",
     component: <Speed />,
+  },
+
+  {
+    id: uuid(),
+    title: "Выбор справочника",
+    link: "select",
+    component: <Select />,
   },
 ];
