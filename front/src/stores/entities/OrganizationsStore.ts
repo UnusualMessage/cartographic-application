@@ -1,9 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { Organization } from "../../types/entities";
 import { organizations } from "../../assets/data";
-import { ApiStore } from "../../types/api";
 
-class OrganizationsStore implements ApiStore<Organization> {
+class OrganizationsStore {
   private _organizations: Organization[];
   private _organization: Organization | undefined;
 

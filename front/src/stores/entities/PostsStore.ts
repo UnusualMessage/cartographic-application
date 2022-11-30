@@ -7,7 +7,7 @@ import { CreatePost, UpdatePost } from "../../types/entities/Post";
 import { organizations } from "../../assets/data";
 import { ApiStore } from "../../types/api";
 
-class PostsStore implements ApiStore<Post> {
+class PostsStore implements ApiStore<Post, CreatePost> {
   private _posts: Post[];
   private _post: Post | undefined;
 

@@ -8,7 +8,7 @@ import {
 import { departments } from "../../assets/data";
 import { ApiStore } from "../../types/api";
 
-class DepartmentsStore implements ApiStore<Department> {
+class DepartmentsStore implements ApiStore<Department, CreateDepartment> {
   private _departments: Department[];
   private _department: Department | undefined;
 

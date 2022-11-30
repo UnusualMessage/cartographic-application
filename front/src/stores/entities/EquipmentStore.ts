@@ -2,9 +2,8 @@ import { makeAutoObservable, runInAction } from "mobx";
 
 import { equipment } from "../../assets/data";
 import { Equipment } from "../../types/entities";
-import { ApiStore } from "../../types/api";
 
-class EquipmentStore implements ApiStore<Equipment> {
+class EquipmentStore {
   private readonly _equipments: Equipment[];
   private _equipment: Equipment | undefined;
 

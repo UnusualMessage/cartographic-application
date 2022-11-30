@@ -5,7 +5,7 @@ import { CreateSpeed, UpdateSpeed } from "../../types/entities/Speed";
 import { speeds } from "../../assets/data";
 import { ApiStore } from "../../types/api";
 
-class SpeedsStore implements ApiStore<Speed> {
+class SpeedsStore implements ApiStore<Speed, CreateSpeed> {
   private _speeds: Speed[];
   private _speed: Speed | undefined;
 

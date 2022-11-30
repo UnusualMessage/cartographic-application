@@ -7,7 +7,7 @@ import Partner, {
 import { partners } from "../../assets/data";
 import { ApiStore } from "../../types/api";
 
-class PartnersStore implements ApiStore<Partner> {
+class PartnersStore implements ApiStore<Partner, CreatePartner> {
   private _partners: Partner[];
   private _partner: Partner | undefined;
 
