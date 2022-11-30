@@ -8,6 +8,7 @@ import User from "./User";
 import Speed from "./Speed";
 import Partner from "./Partner";
 import Department from "./Department";
+import Trailer from "./Trailer";
 
 export type {
   Organization,
@@ -20,4 +21,5 @@ export type {
   Speed,
   Partner,
   Department,
+  Trailer,
 };

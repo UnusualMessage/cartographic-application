@@ -4,6 +4,7 @@ import { authenticateUser } from "./user";
 import { createSpeed, updateSpeed } from "./speed";
 import { createPartner, updatePartner } from "./partner";
 import { createDepartment, updateDepartment } from "./department";
+import { createTrailer, updateTrailer } from "./trailer";
 
 export {
   createPartner,
@@ -17,4 +18,6 @@ export {
   authenticateUser,
   createDepartment,
   updateDepartment,
+  createTrailer,
+  updateTrailer,
 };

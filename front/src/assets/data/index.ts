@@ -6,3 +6,4 @@ export { types } from "./types";
 export { partners } from "./partners";
 export { speeds } from "./speeds";
 export { departments } from "./departments";
+export { trailers } from "./trailers";

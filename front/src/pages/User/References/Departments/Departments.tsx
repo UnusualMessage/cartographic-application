@@ -1,6 +1,8 @@
+import { useEffect } from "react";
+import { observer } from "mobx-react-lite";
+
 import { EmployeesStore } from "../../../../stores/entities";
 import { useRegions } from "../../../../hooks";
-import { useEffect } from "react";
 import { Table } from "../../../../components/common/Table";
 import { Department } from "../../../../types/entities";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
@@ -45,4 +47,4 @@ const Departments = () => {
   );
 };
 
-export default Departments;
+export default observer(Departments);
