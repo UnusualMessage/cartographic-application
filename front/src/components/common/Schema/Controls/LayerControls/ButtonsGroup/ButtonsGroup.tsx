@@ -3,42 +3,30 @@ import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
-import { right, wrapper } from "./group.module.scss";
+import { active, wrapper } from "./buttons.module.scss";
 
 import {
   InteractionsStore,
   LayersStore,
   MapStore,
-} from "../../../../../stores/map";
+} from "../../../../../../stores/map";
+import { auxLayerId } from "../../../../../../assets/map/config";
+import { InteractionType } from "../../../../../../types/map";
 import classNames from "classnames";
-import { auxLayerId } from "../../../../../assets/map/config";
-import { InteractionType } from "../../../../../types/map";
 
 interface Props {
   isPanelOpen: boolean;
   setIsPanelOpen: (value: boolean) => void;
-  isGeocoderOpen: boolean;
-  setIsGeocoderOpen: (value: boolean) => void;
   handlePrint: FullScreenHandle;
 }
 
-const RightButtonGroup = ({
-  isPanelOpen,
-  setIsPanelOpen,
-  isGeocoderOpen,
-  setIsGeocoderOpen,
-  handlePrint,
-}: Props) => {
+const ButtonsGroup = ({ isPanelOpen, setIsPanelOpen, handlePrint }: Props) => {
   const interactionType = InteractionsStore.interactionType;
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
 
   const handleCollapse = () => {
     setIsCollapseOpen(!isCollapseOpen);
-  };
-
-  const handleGeocoder = () => {
-    setIsGeocoderOpen(!isGeocoderOpen);
   };
 
   const handlePanel = () => {
@@ -59,8 +47,13 @@ const RightButtonGroup = ({
     MapStore.printMap();
   };
 
+  const classes = classNames({
+    [wrapper]: true,
+    [active]: isPanelOpen,
+  });
+
   return (
-    <div className={classNames(wrapper, right)}>
+    <div className={classes}>
       <Button
         icon={"wrench"}
         intent={isCollapseOpen ? "primary" : "none"}
@@ -91,12 +84,6 @@ const RightButtonGroup = ({
           />
 
           <Button
-            icon={"geosearch"}
-            intent={isGeocoderOpen ? "primary" : "none"}
-            onClick={handleGeocoder}
-          />
-
-          <Button
             icon="one-to-one"
             intent={interactionType === "measure-length" ? "primary" : "none"}
             onClick={() => switchType("measure-length")}
@@ -121,4 +108,4 @@ const RightButtonGroup = ({
   );
 };
 
-export default observer(RightButtonGroup);
+export default observer(ButtonsGroup);

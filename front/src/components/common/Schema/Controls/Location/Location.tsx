@@ -13,12 +13,12 @@ const Location = () => {
     <div className={wrapper}>
       <div className={container}>
         <Text className={label}>{"Широта: "}</Text>
-        <Text className={value}>{coordinate[0].toFixed(2)}</Text>
+        <Text className={value}>{coordinate[1].toFixed(2)}</Text>
       </div>
 
       <div className={container}>
         <Text className={label}>{"Долгота: "}</Text>
-        <Text className={value}>{coordinate[1].toFixed(2)}</Text>
+        <Text className={value}>{coordinate[0].toFixed(2)}</Text>
       </div>
     </div>
   );

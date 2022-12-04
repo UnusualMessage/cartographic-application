@@ -1,15 +1,17 @@
-@use "../../../../../node_modules/@blueprintjs/core/lib/scss/variables" as *;
-
 .wrapper {
   display: flex;
   flex-direction: column;
   gap: 10px;
 
   position: absolute;
-  top: 5px;
   right: 5px;
+  top: 5px;
 
-  width: 310px;
+  transition: right ease-in-out .5s;
+
   z-index: 2;
 }
 
+.active {
+  right: 205px;
+}
