@@ -1,18 +1,13 @@
-import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 
 import ViewControls from "./ViewControls";
 import LayerControls from "./LayerControls";
 import MainControls from "./MainControls";
 
-interface Props {
-  handle: FullScreenHandle;
-}
-
-const Controls = ({ handle }: Props) => {
+const Controls = () => {
   return (
     <>
-      <LayerControls handlePrint={handle} />
+      <LayerControls />
       <ViewControls />
       <MainControls />
     </>

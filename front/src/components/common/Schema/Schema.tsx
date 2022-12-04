@@ -1,5 +1,6 @@
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 import { StyleLike } from "ol/style/Style";
 
 import { wrapper } from "./schema.module.scss";
@@ -12,9 +13,14 @@ import { auxLayerId, geozonesLayerId } from "../../../assets/map/config";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
 import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
+import { ControlsStore } from "../../../stores/ui";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
+
+  useEffect(() => {
+    ControlsStore.fullScreenHandle = handle;
+  }, []);
 
   const styleFunction: StyleLike = (feature) => {
     return measureStyleFunction(feature, 0);
@@ -25,7 +31,7 @@ const Schema = () => {
       <MapWrapper>
         <View />
         <Menu />
-        <Controls handle={handle} />
+        <Controls />
 
         <TileLayer />
 

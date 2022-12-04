@@ -1,6 +1,10 @@
 import { makeAutoObservable } from "mobx";
+import { FullScreenHandle } from "react-full-screen";
 
 class ControlsStore {
+  private _fullScreenHandle: FullScreenHandle | null;
+  private _fullScreenActive: boolean;
+
   private _mapDrawerActive: boolean;
   private _layersPanelActive: boolean;
 
@@ -8,7 +12,26 @@ class ControlsStore {
     this._mapDrawerActive = false;
     this._layersPanelActive = false;
 
+    this._fullScreenActive = false;
+    this._fullScreenHandle = null;
+
     makeAutoObservable(this);
+  }
+
+  public get fullScreenActive() {
+    return this._fullScreenActive;
+  }
+
+  public set fullScreenActive(active: boolean) {
+    this._fullScreenActive = active;
+  }
+
+  public get fullScreenHandle() {
+    return this._fullScreenHandle;
+  }
+
+  public set fullScreenHandle(handle: FullScreenHandle | null) {
+    this._fullScreenHandle = handle;
   }
 
   public get layersPanelActive() {

@@ -1,5 +1,4 @@
 import { Button, ButtonGroup, Collapse } from "@blueprintjs/core";
-import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 import classNames from "classnames";
@@ -15,13 +14,11 @@ import { auxLayerId } from "../../../../../../assets/map/config";
 import { InteractionType } from "../../../../../../types/map";
 import { ControlsStore } from "../../../../../../stores/ui";
 
-interface Props {
-  handlePrint: FullScreenHandle;
-}
-
-const ButtonsGroup = ({ handlePrint }: Props) => {
+const ButtonsGroup = () => {
   const interactionType = InteractionsStore.interactionType;
   const isPanelOpen = ControlsStore.layersPanelActive;
+  const handleFullScreen = ControlsStore.fullScreenHandle;
+  const fullScreenActive = ControlsStore.fullScreenActive;
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
 
@@ -45,6 +42,16 @@ const ButtonsGroup = ({ handlePrint }: Props) => {
 
   const print = () => {
     MapStore.printMap();
+  };
+
+  const exitFullScreen = () => {
+    handleFullScreen?.exit();
+    ControlsStore.fullScreenActive = false;
+  };
+
+  const enterFullScreen = () => {
+    handleFullScreen?.enter();
+    ControlsStore.fullScreenActive = true;
   };
 
   const classes = classNames({
@@ -83,8 +90,8 @@ const ButtonsGroup = ({ handlePrint }: Props) => {
 
           <Button
             icon="fullscreen"
-            intent={handlePrint.active ? "primary" : "none"}
-            onClick={handlePrint.active ? handlePrint.exit : handlePrint.enter}
+            intent={fullScreenActive ? "primary" : "none"}
+            onClick={fullScreenActive ? exitFullScreen : enterFullScreen}
           />
 
           <Button icon="print" intent={"none"} onClick={print} />
