@@ -4,16 +4,14 @@
   gap: 10px;
 
   position: absolute;
+  right: 5px;
   top: 5px;
+
+  transition: right ease-in-out .5s;
 
   z-index: 2;
 }
 
-.right {
-  right: 5px;
+.active {
+  right: 205px;
 }
-
-.left {
-  left: 5px;
-}
-

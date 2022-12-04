@@ -33,9 +33,7 @@ const Header = () => {
           <Button icon="clipboard" text="Справочники" minimal large />
         </Link>
 
-        <Link to={"/info"}>
-          <Button icon="export" text="Отчеты" minimal large />
-        </Link>
+        <Button icon="export" text="Отчеты" minimal large disabled />
       </NavbarGroup>
 
       <NavbarGroup className={container}>

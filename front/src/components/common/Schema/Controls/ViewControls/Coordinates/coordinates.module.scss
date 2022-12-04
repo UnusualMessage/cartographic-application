@@ -1,4 +1,4 @@
-@use "../../../../../../node_modules/@blueprintjs/core/lib/scss/variables" as *;
+@use "../../../../../../../node_modules/@blueprintjs/core/lib/scss/variables" as *;
 
 .wrapper {
   display: flex;
@@ -14,8 +14,8 @@
 
   z-index: 2;
 
-  background: $white;
-  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0, rgba(27, 31, 35, 0.15) 0 0 0 1px;
+  background: #f6f7f9;
+  box-shadow: inset 0 0 0 1px rgb(17 20 24 / 20%), 0 1px 2px rgb(17 20 24 / 10%);
   border-radius: 1px;
 
   .container {

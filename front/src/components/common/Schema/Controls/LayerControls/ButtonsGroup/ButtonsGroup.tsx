@@ -1,35 +1,24 @@
 import { Button, ButtonGroup, Collapse } from "@blueprintjs/core";
-import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
+import classNames from "classnames";
 
-import { right, wrapper } from "./group.module.scss";
+import { active, wrapper } from "./buttons.module.scss";
 
 import {
   InteractionsStore,
   LayersStore,
   MapStore,
-} from "../../../../../stores/map";
-import classNames from "classnames";
-import { auxLayerId } from "../../../../../assets/map/config";
-import { InteractionType } from "../../../../../types/map";
+} from "../../../../../../stores/map";
+import { auxLayerId } from "../../../../../../assets/map/config";
+import { InteractionType } from "../../../../../../types/map";
+import { ControlsStore } from "../../../../../../stores/ui";
 
-interface Props {
-  isPanelOpen: boolean;
-  setIsPanelOpen: (value: boolean) => void;
-  isGeocoderOpen: boolean;
-  setIsGeocoderOpen: (value: boolean) => void;
-  handlePrint: FullScreenHandle;
-}
-
-const RightButtonGroup = ({
-  isPanelOpen,
-  setIsPanelOpen,
-  isGeocoderOpen,
-  setIsGeocoderOpen,
-  handlePrint,
-}: Props) => {
+const ButtonsGroup = () => {
   const interactionType = InteractionsStore.interactionType;
+  const isPanelOpen = ControlsStore.layersPanelActive;
+  const handleFullScreen = ControlsStore.fullScreenHandle;
+  const fullScreenActive = ControlsStore.fullScreenActive;
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
 
@@ -37,12 +26,8 @@ const RightButtonGroup = ({
     setIsCollapseOpen(!isCollapseOpen);
   };
 
-  const handleGeocoder = () => {
-    setIsGeocoderOpen(!isGeocoderOpen);
-  };
-
-  const handlePanel = () => {
-    setIsPanelOpen(!isPanelOpen);
+  const switchPanel = () => {
+    ControlsStore.switchPanel();
   };
 
   const switchType = (type: InteractionType) => {
@@ -59,8 +44,23 @@ const RightButtonGroup = ({
     MapStore.printMap();
   };
 
+  const exitFullScreen = () => {
+    handleFullScreen?.exit();
+    ControlsStore.fullScreenActive = false;
+  };
+
+  const enterFullScreen = () => {
+    handleFullScreen?.enter();
+    ControlsStore.fullScreenActive = true;
+  };
+
+  const classes = classNames({
+    [wrapper]: true,
+    [active]: isPanelOpen,
+  });
+
   return (
-    <div className={classNames(wrapper, right)}>
+    <div className={classes}>
       <Button
         icon={"wrench"}
         intent={isCollapseOpen ? "primary" : "none"}
@@ -73,27 +73,7 @@ const RightButtonGroup = ({
           <Button
             icon="layers"
             intent={isPanelOpen ? "primary" : "none"}
-            onClick={handlePanel}
-          />
-
-          <Button
-            icon="draw"
-            intent={
-              InteractionsStore.isGeozoneInteractionsActive ? "primary" : "none"
-            }
-            onClick={() =>
-              switchType(
-                InteractionsStore.isGeozoneInteractionsActive
-                  ? "none"
-                  : "geozones"
-              )
-            }
-          />
-
-          <Button
-            icon={"geosearch"}
-            intent={isGeocoderOpen ? "primary" : "none"}
-            onClick={handleGeocoder}
+            onClick={switchPanel}
           />
 
           <Button
@@ -110,8 +90,8 @@ const RightButtonGroup = ({
 
           <Button
             icon="fullscreen"
-            intent={handlePrint.active ? "primary" : "none"}
-            onClick={handlePrint.active ? handlePrint.exit : handlePrint.enter}
+            intent={fullScreenActive ? "primary" : "none"}
+            onClick={fullScreenActive ? exitFullScreen : enterFullScreen}
           />
 
           <Button icon="print" intent={"none"} onClick={print} />
@@ -121,4 +101,4 @@ const RightButtonGroup = ({
   );
 };
 
-export default observer(RightButtonGroup);
+export default observer(ButtonsGroup);
