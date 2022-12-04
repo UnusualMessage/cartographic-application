@@ -1,4 +1,4 @@
 import TabsStore from "./TabsStore";
-import DrawerStore from "./DrawerStore";
+import ControlsStore from "./ControlsStore";
 
-export { TabsStore, DrawerStore };
+export { TabsStore, ControlsStore };

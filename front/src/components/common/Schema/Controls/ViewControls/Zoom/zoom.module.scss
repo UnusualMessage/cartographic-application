@@ -7,5 +7,12 @@
   bottom: 5px;
   right: 5px;
 
+  transition: right ease-in-out .5s;
+
   z-index: 2;
 }
+
+.active {
+  right: 205px;
+}
+

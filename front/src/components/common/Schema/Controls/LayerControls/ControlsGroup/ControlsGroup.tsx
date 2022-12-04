@@ -1,14 +1,14 @@
 import classNames from "classnames";
+import { observer } from "mobx-react-lite";
 
 import { visible, wrapper } from "./group.module.scss";
 
 import LayersSwitcher from "./LayersSwitcher";
+import { ControlsStore } from "../../../../../../stores/ui";
 
-interface Props {
-  isPanelOpen?: boolean;
-}
+const ControlsGroup = () => {
+  const isPanelOpen = ControlsStore.layersPanelActive;
 
-const ControlsGroup = ({ isPanelOpen }: Props) => {
   const classes = classNames({
     [wrapper]: true,
     [visible]: isPanelOpen,
@@ -21,4 +21,4 @@ const ControlsGroup = ({ isPanelOpen }: Props) => {
   );
 };
 
-export default ControlsGroup;
+export default observer(ControlsGroup);

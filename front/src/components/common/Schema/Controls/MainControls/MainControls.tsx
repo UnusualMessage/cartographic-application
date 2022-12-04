@@ -1,7 +1,13 @@
 import SearchMenu from "./SearchMenu";
+import DrawerMenu from "./DrawerMenu";
 
 const MainControls = () => {
-  return <SearchMenu />;
+  return (
+    <>
+      <DrawerMenu />
+      <SearchMenu />
+    </>
+  );
 };
 
 export default MainControls;

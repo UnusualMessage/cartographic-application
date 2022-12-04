@@ -2,6 +2,7 @@ import { Button, ButtonGroup, Collapse } from "@blueprintjs/core";
 import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
+import classNames from "classnames";
 
 import { active, wrapper } from "./buttons.module.scss";
 
@@ -12,16 +13,15 @@ import {
 } from "../../../../../../stores/map";
 import { auxLayerId } from "../../../../../../assets/map/config";
 import { InteractionType } from "../../../../../../types/map";
-import classNames from "classnames";
+import { ControlsStore } from "../../../../../../stores/ui";
 
 interface Props {
-  isPanelOpen: boolean;
-  setIsPanelOpen: (value: boolean) => void;
   handlePrint: FullScreenHandle;
 }
 
-const ButtonsGroup = ({ isPanelOpen, setIsPanelOpen, handlePrint }: Props) => {
+const ButtonsGroup = ({ handlePrint }: Props) => {
   const interactionType = InteractionsStore.interactionType;
+  const isPanelOpen = ControlsStore.layersPanelActive;
 
   const [isCollapseOpen, setIsCollapseOpen] = useState(false);
 
@@ -29,8 +29,8 @@ const ButtonsGroup = ({ isPanelOpen, setIsPanelOpen, handlePrint }: Props) => {
     setIsCollapseOpen(!isCollapseOpen);
   };
 
-  const handlePanel = () => {
-    setIsPanelOpen(!isPanelOpen);
+  const switchPanel = () => {
+    ControlsStore.switchPanel();
   };
 
   const switchType = (type: InteractionType) => {
@@ -66,7 +66,7 @@ const ButtonsGroup = ({ isPanelOpen, setIsPanelOpen, handlePrint }: Props) => {
           <Button
             icon="layers"
             intent={isPanelOpen ? "primary" : "none"}
-            onClick={handlePanel}
+            onClick={switchPanel}
           />
 
           <Button

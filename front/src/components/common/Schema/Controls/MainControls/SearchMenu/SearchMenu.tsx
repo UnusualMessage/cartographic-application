@@ -4,17 +4,17 @@ import { observer } from "mobx-react-lite";
 import { wrapper } from "./menu.module.scss";
 
 import Geocoder from "../Geocoder";
-import DrawerStore from "../../../../../../stores/ui/DrawerStore";
+import DrawerStore from "../../../../../../stores/ui/ControlsStore";
 
 const SearchMenu = () => {
   const active = DrawerStore.mapDrawerActive;
 
   const showDrawer = () => {
-    DrawerStore.show();
+    DrawerStore.showDrawer();
   };
 
   const hideDrawer = () => {
-    DrawerStore.hide();
+    DrawerStore.hideDrawer();
   };
 
   return (

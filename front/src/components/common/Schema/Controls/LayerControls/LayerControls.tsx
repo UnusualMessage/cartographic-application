@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
 import { FullScreenHandle } from "react-full-screen";
-import { useState } from "react";
 
 import ButtonsGroup from "./ButtonsGroup";
 import ControlsGroup from "./ControlsGroup";
@@ -10,16 +9,10 @@ interface Props {
 }
 
 const LayerControls = ({ handlePrint }: Props) => {
-  const [isPanelOpen, setIsPanelOpen] = useState(false);
-
   return (
     <>
-      <ButtonsGroup
-        handlePrint={handlePrint}
-        isPanelOpen={isPanelOpen}
-        setIsPanelOpen={setIsPanelOpen}
-      />
-      <ControlsGroup isPanelOpen={isPanelOpen} />
+      <ButtonsGroup handlePrint={handlePrint} />
+      <ControlsGroup />
     </>
   );
 };
