@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite";
 import { Text } from "@blueprintjs/core";
 
-import { container, label, value, wrapper } from "./location.module.scss";
+import { container, label, value, wrapper } from "./coordinates.module.scss";
 
-import { MapStore } from "../../../../../stores/map";
+import { MapStore } from "../../../../../../stores/map";
 import { toLonLat } from "ol/proj";
 
-const Location = () => {
+const Coordinates = () => {
   const coordinate = toLonLat(MapStore.cursorCoordinate ?? [0, 0]);
 
   return (
@@ -24,4 +24,4 @@ const Location = () => {
   );
 };
 
-export default observer(Location);
+export default observer(Coordinates);

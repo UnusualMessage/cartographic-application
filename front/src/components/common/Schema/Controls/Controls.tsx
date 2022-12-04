@@ -1,7 +1,7 @@
 import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 
-import Location from "./Location";
+import Location from "./ViewControls/Coordinates";
 import ViewControls from "./ViewControls";
 import Panel from "./LayerControls";
 

@@ -70,20 +70,6 @@ const ButtonsGroup = ({ isPanelOpen, setIsPanelOpen, handlePrint }: Props) => {
           />
 
           <Button
-            icon="draw"
-            intent={
-              InteractionsStore.isGeozoneInteractionsActive ? "primary" : "none"
-            }
-            onClick={() =>
-              switchType(
-                InteractionsStore.isGeozoneInteractionsActive
-                  ? "none"
-                  : "geozones"
-              )
-            }
-          />
-
-          <Button
             icon="one-to-one"
             intent={interactionType === "measure-length" ? "primary" : "none"}
             onClick={() => switchType("measure-length")}
