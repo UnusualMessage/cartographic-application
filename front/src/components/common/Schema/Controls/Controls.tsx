@@ -1,9 +1,9 @@
 import { FullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
 
-import Location from "./ViewControls/Coordinates";
 import ViewControls from "./ViewControls";
-import Panel from "./LayerControls";
+import LayerControls from "./LayerControls";
+import MainControls from "./MainControls";
 
 interface Props {
   handle: FullScreenHandle;
@@ -12,9 +12,9 @@ interface Props {
 const Controls = ({ handle }: Props) => {
   return (
     <>
-      <Panel handlePrint={handle} />
+      <LayerControls handlePrint={handle} />
       <ViewControls />
-      <Location />
+      <MainControls />
     </>
   );
 };

@@ -4,9 +4,9 @@ import { fromLonLat } from "ol/proj";
 import { Point } from "@turf/turf";
 import { MenuItem } from "@blueprintjs/core";
 
-import { GeocoderService } from "../../../../../../../services/api";
-import { ViewStore } from "../../../../../../../stores/map";
-import { GeocoderFeature } from "../../../../../../../types/common";
+import { GeocoderService } from "../../../../../../services/api";
+import { ViewStore } from "../../../../../../stores/map";
+import { GeocoderFeature } from "../../../../../../types/common";
 
 const itemRenderer: ItemRenderer<GeocoderFeature> = (
   feature,
