@@ -4,10 +4,13 @@ import { cell } from "../../components/common/Table/table.module.scss";
 
 import { Department } from "../../types/entities";
 import { ColumnProps } from "../../components/common/Table";
+import getNumberCell from "./getNumberCell";
 
 export const getDepartmentColumns = (
   departments: Department[]
 ): ColumnProps[] => [
+  getNumberCell(departments),
+
   {
     renderer: (rowIndex) => {
       return <Cell className={cell}>{departments[rowIndex].title}</Cell>;

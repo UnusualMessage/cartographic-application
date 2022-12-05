@@ -11,13 +11,6 @@ export const createPost = (options: SelectOption[]): Form<CreatePost> => {
     },
 
     {
-      type: "text",
-      required: false,
-      label: "Номер",
-      name: "number",
-    },
-
-    {
       type: "select",
       required: "Заполните поле!",
       label: "Организация",
@@ -34,13 +27,6 @@ export const updatePost = (options: SelectOption[]): Form<UpdatePost> => {
       required: "Заполните поле!",
       label: "Название",
       name: "title",
-    },
-
-    {
-      type: "text",
-      required: false,
-      label: "Номер",
-      name: "number",
     },
 
     {

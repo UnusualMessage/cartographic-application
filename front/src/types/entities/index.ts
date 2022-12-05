@@ -15,11 +15,11 @@ export type {
   Plan,
   Employee,
   Equipment,
-  EquipmentType,
   Post,
   User,
   Speed,
   Partner,
   Department,
   Trailer,
+  EquipmentType
 };

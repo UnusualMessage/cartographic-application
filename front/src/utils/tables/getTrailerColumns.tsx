@@ -4,8 +4,11 @@ import { cell } from "../../components/common/Table/table.module.scss";
 
 import { Trailer } from "../../types/entities";
 import { ColumnProps } from "../../components/common/Table";
+import getNumberCell from "./getNumberCell";
 
 export const getTrailerColumns = (trailers: Trailer[]): ColumnProps[] => [
+  getNumberCell(trailers),
+
   {
     renderer: (rowIndex) => {
       return <Cell className={cell}>{trailers[rowIndex].title}</Cell>;

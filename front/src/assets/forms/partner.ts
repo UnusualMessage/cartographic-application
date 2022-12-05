@@ -15,13 +15,6 @@ export const createPartner = (
     {
       type: "text",
       required: false,
-      label: "Серийный номер",
-      name: "number",
-    },
-
-    {
-      type: "text",
-      required: false,
       label: "Юридический адрес",
       name: "address",
     },
@@ -59,13 +52,6 @@ export const updatePartner = (
       required: "Заполните поле!",
       label: "Название",
       name: "title",
-    },
-
-    {
-      type: "text",
-      required: false,
-      label: "Серийный номер",
-      name: "number",
     },
 
     {

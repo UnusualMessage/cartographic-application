@@ -3,6 +3,7 @@ import { Icon } from "@blueprintjs/core";
 import { useFetch } from "../../../../hooks";
 import DialogForm from "../DialogForm";
 import { ApiStore } from "../../../../types/api";
+import { fromUuidToNumber } from "../../../../utils/format";
 
 interface Item {
   id: string;
@@ -33,7 +34,7 @@ const Remove = <T extends Item>({ id, name, store }: Props<T>) => {
 
   return (
     <DialogForm
-      title={`Удаление записи ${name}`}
+      title={`Удаление записи (${name})`}
       buttonText={"Удалить"}
       buttonIcon={<Icon icon={"remove"} />}
       buttonDisabled={!id}
@@ -41,7 +42,7 @@ const Remove = <T extends Item>({ id, name, store }: Props<T>) => {
       successful={successful}
       setSuccessful={setSuccessful}
     >
-      {`Подтвердите удаление записи с ID = ${item?.id}`}
+      {`Подтвердите удаление записи с номером ${fromUuidToNumber(item?.id ?? "???")}`}
     </DialogForm>
   );
 };

@@ -1,23 +1,19 @@
-import { ColumnProps } from "../../components/common/Table";
 import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
+
 import { cell } from "../../components/common/Table/table.module.scss";
 import Partner from "../../types/entities/Partner";
+import getNumberCell from "./getNumberCell";
+import { ColumnProps } from "../../components/common/Table";
 
 export const getPartnerColumns = (partners: Partner[]): ColumnProps[] => [
+  getNumberCell(partners),
+
   {
     renderer: (rowIndex) => {
       return <Cell className={cell}>{partners[rowIndex].title}</Cell>;
     },
 
     name: "Название",
-  },
-
-  {
-    renderer: (rowIndex) => {
-      return <Cell className={cell}>{partners[rowIndex].number}</Cell>;
-    },
-
-    name: "Серийный номер",
   },
 
   {
