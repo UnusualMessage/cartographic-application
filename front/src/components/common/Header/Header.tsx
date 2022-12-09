@@ -63,10 +63,7 @@ const Header = () => {
       </NavbarGroup>
 
       <NavbarGroup className={container}>
-        <Link to={"/settings"}>
-          <Button icon="cog" text="Настройки" minimal large />
-        </Link>
-
+        <Button icon="cog" text="Настройки" minimal large disabled />
         <Button icon="notifications" minimal large />
 
         <div className={user}>

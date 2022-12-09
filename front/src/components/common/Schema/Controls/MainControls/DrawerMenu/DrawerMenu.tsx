@@ -105,17 +105,21 @@ const DrawerMenu = () => {
               intent={handleIntent("drawing")}
               onClick={() => choose("drawing")}
             >
+              <MenuItem
+                icon="ban-circle"
+                text="Обычный режим"
+                onClick={() => switchType("none")}
+              />
+              <MenuItem
+                icon="hand-down"
+                text="Курсор"
+                onClick={() => switchType("cursor")}
+              />
               <MenuItem icon="selection" text="Точка" />
               <MenuItem
                 icon="new-layer"
                 text="Многоугольник"
                 onClick={() => switchType("geozones")}
-              />
-              <MenuItem icon="circle" text="Окружность" />
-              <MenuItem
-                icon="hand-down"
-                text="Курсор"
-                onClick={() => switchType("cursor")}
               />
             </MenuItem>
             <MenuDivider />
@@ -130,7 +134,7 @@ const DrawerMenu = () => {
               icon="share"
               text="Поделиться"
               intent={handleIntent("share")}
-              onClick={() => choose("full-screen")}
+              onClick={() => choose("share")}
             />
             <MenuItem
               icon="print"
