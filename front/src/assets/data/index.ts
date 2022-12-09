@@ -7,3 +7,4 @@ export { partners } from "./partners";
 export { speeds } from "./speeds";
 export { departments } from "./departments";
 export { trailers } from "./trailers";
+export { geozones } from "./geozones";

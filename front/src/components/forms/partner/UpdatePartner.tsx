@@ -30,7 +30,6 @@ const UpdatePartner = ({ id }: Props) => {
     defaultValues: useMemo(() => {
       return {
         title: partner?.title,
-        number: partner?.number,
         organizationId: partner?.organization.id,
         phone: partner?.phone,
         inn: partner?.inn,

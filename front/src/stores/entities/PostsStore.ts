@@ -53,7 +53,6 @@ class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
       const newPost: Post = {
         id: uuid(),
         title: post.title,
-        number: post.number,
         organization: organization,
       };
 
@@ -93,7 +92,6 @@ class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
 
       if (organization) {
         updatedPost.title = post.title;
-        updatedPost.number = post.number;
         updatedPost.organization = organization;
 
         runInAction(() => {

@@ -1,4 +1,4 @@
-import { Divider, TreeEventHandler } from "@blueprintjs/core";
+import { Divider } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { cloneDeep } from "lodash";
 
@@ -9,7 +9,7 @@ import { Node } from "../../types/nodes";
 import { planNodes } from "../../assets/nodes";
 import { Plan } from "../../types/entities";
 import { PlansStore } from "../../stores/entities";
-import { TabsStore } from "../../stores/ui";
+import { getPlansTreeClickHandler } from "../../utils/nodes";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);
@@ -36,26 +36,6 @@ const fillNodes = (plans?: Plan[]) => {
   return initial;
 };
 
-const handleClick: TreeEventHandler<any> = (node) => {
-  const plansTabsListId = "footer-plans";
-  const planTabsListId = "footer-plan";
-
-  const switchTabsList = (id: string) => {
-    if (TabsStore.footerTabsListId !== id) {
-      TabsStore.footerTabsListId = id;
-      TabsStore.footerTabId = undefined;
-    }
-  };
-
-  if (node.childNodes) {
-    switchTabsList(plansTabsListId);
-    PlansStore.chosenYear = node.nodeData;
-  } else {
-    switchTabsList(planTabsListId);
-    TabsStore.footerTabsListId = "footer-plan";
-  }
-};
-
 const PlansTree = () => {
   const plans = PlansStore.plans;
 
@@ -66,7 +46,7 @@ const PlansTree = () => {
         fillNodes={fillNodes}
         source={plans}
         className={wrapper}
-        handleClick={handleClick}
+        handleClick={getPlansTreeClickHandler()}
       />
     </>
   );

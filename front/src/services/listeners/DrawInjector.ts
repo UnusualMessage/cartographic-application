@@ -9,9 +9,11 @@ import { InteractionsStore } from "../../stores/map";
 import { Change, ChangeSet, Undo } from "../../types/map";
 import { LayersService } from "../map";
 import { geozonesLayerId } from "../../assets/map/config";
-import { GeozonesStore } from "../../stores/entities";
+import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
 import { Fill, Stroke, Style } from "ol/style";
 import { DrawEvent } from "ol/interaction/Draw";
+import { Polygon } from "ol/geom";
+import { area, polygon } from "@turf/turf";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;
@@ -69,11 +71,27 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
       );
 
       if (interactionType === "geozones") {
-        GeozonesStore.add(feature);
+        const geometry = feature.getGeometry() as Polygon | undefined;
+        const organization = OrganizationsStore.organization;
+
+        if (geometry && organization) {
+          GeozonesStore.add({
+            id: uuid(),
+            title: "Новая геозона",
+            area: area(polygon(geometry.getCoordinates())) / 1e5,
+            type: "field",
+            children: [],
+            geometry: {
+              type: "Polygon",
+              coordinates: geometry.getCoordinates(),
+            },
+            organization,
+          });
+        }
 
         const undo: Undo<FeatureLike> = (oldValue, newValue) => {
           LayersService.removeFeatureFromLayer(newValue, geozonesLayerId);
-          GeozonesStore.remove(newValue);
+          GeozonesStore.remove(newValue.getId()?.toString() ?? "");
         };
 
         const set: ChangeSet<FeatureLike> = [];

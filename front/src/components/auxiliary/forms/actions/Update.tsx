@@ -61,7 +61,7 @@ const Update = <T extends Item, UpdateT extends FieldValues>({
 
   return (
     <DialogForm
-      title={`Редактирование записи ${name}`}
+      title={`Редактирование записи (${name})`}
       buttonText={"Редактировать"}
       buttonIcon={<Icon icon={"edit"} />}
       buttonDisabled={!item}

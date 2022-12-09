@@ -8,9 +8,13 @@ class OrganizationsStore {
 
   constructor() {
     this._organizations = organizations;
-    this._organization = undefined;
+    this._organization = organizations[0];
 
     makeAutoObservable(this);
+  }
+
+  get organization(): Organization | undefined {
+    return this._organization;
   }
 
   get organizations(): Organization[] {

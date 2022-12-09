@@ -14,9 +14,11 @@ import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
 import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
 import { ControlsStore } from "../../../stores/ui";
+import { GeozonesStore } from "../../../stores/entities";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
+  const geozones = GeozonesStore.geozones.map((item) => item.geometry);
 
   useEffect(() => {
     ControlsStore.fullScreenHandle = handle;
@@ -35,7 +37,7 @@ const Schema = () => {
 
         <TileLayer />
 
-        <VectorLayer id={geozonesLayerId}>
+        <VectorLayer id={geozonesLayerId} data={geozones}>
           <GeozonesInteractions />
         </VectorLayer>
 

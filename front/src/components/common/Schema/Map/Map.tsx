@@ -16,7 +16,7 @@ const Map = ({ children }: PropsWithChildren) => {
 
   useLayoutEffect(() => {
     if (mapRef.current) {
-      MapStore.initMap([], mapRef.current);
+      MapStore.initMap(mapRef.current);
     }
 
     LayersStore.resetVectorLayers();
