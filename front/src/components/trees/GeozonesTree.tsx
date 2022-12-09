@@ -1,6 +1,5 @@
 import { Divider } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
-import { FeatureLike } from "ol/Feature";
 import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
@@ -9,8 +8,10 @@ import { Node } from "../../types/nodes";
 import { fieldNodes } from "../../assets/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { GeozonesStore } from "../../stores/entities";
+import { Geozone } from "../../types/entities";
+import { getGeozonesTreeClickHandler } from "../../utils/nodes";
 
-const fillNodes = (nodes?: FeatureLike[]) => {
+const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(fieldNodes);
 
   if (!nodes) {
@@ -19,8 +20,8 @@ const fillNodes = (nodes?: FeatureLike[]) => {
 
   nodes.forEach((field) => {
     initial[0].childNodes?.push({
-      id: field.getId() ?? "",
-      label: field.getId()?.toString() ?? "",
+      id: field.id,
+      label: field.title,
       icon: "document",
       nodeData: field,
     });
@@ -35,9 +36,10 @@ const GeozonesTree = () => {
   return (
     <>
       <Divider />
-      <EntitiesTree<FeatureLike>
+      <EntitiesTree<Geozone>
         fillNodes={fillNodes}
         source={zones}
+        handleClick={getGeozonesTreeClickHandler()}
         className={wrapper}
       />
     </>

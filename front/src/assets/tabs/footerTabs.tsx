@@ -17,6 +17,64 @@ export const footerTabs: TabsList[] = [
   },
 
   {
+    id: "footer-fields",
+    tabs: [
+      {
+        id: uuid(),
+        title: "Поля по группам",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Поля по культурам",
+        component: <EmptyInformation />,
+      },
+    ],
+  },
+
+  {
+    id: "footer-field",
+    tabs: [
+      {
+        id: uuid(),
+        title: "Информация",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Текущие работы",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "История работ",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Текущая техника",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Поручения",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Заметки",
+        component: <EmptyInformation />,
+      },
+    ],
+  },
+
+  {
     id: "footer-plans",
 
     tabs: [

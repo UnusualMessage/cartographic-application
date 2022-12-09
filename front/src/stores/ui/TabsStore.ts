@@ -14,7 +14,7 @@ class TabsStore {
   private _footerTabId?: TabId;
 
   constructor() {
-    this._footerTabsListId = "";
+    this._footerTabsListId = "footer-fields";
     this._footerTabId = undefined;
 
     this._siderTabsListId = "sider-tabs";

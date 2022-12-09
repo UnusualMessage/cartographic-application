@@ -13,6 +13,7 @@ import { ControlsStore } from "../../../../../../stores/ui";
 import { InteractionType } from "../../../../../../types/map";
 import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
 import { auxLayerId } from "../../../../../../assets/map/config";
+import { about } from "../../../../../../assets/data/about";
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
@@ -89,7 +90,7 @@ const DrawerMenu = () => {
           </Menu>
         </div>
       </div>
-      <div className={Classes.DRAWER_FOOTER}>© 2022 AгрОруэлл</div>
+      <div className={Classes.DRAWER_FOOTER}>{`© 2022 ${about.title}`}</div>
     </Drawer>
   );
 };

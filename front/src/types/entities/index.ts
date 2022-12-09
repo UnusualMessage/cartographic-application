@@ -9,6 +9,7 @@ import Speed from "./Speed";
 import Partner from "./Partner";
 import Department from "./Department";
 import Trailer from "./Trailer";
+import Geozone from "./Geozone";
 
 export type {
   Organization,
@@ -21,5 +22,6 @@ export type {
   Partner,
   Department,
   Trailer,
-  EquipmentType
+  EquipmentType,
+  Geozone,
 };

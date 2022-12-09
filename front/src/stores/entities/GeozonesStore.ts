@@ -1,9 +1,10 @@
 import { makeAutoObservable } from "mobx";
 import { FeatureLike } from "ol/Feature";
 import { ChangeSet } from "../../types/map";
+import { Geozone } from "../../types/entities";
 
 class GeozonesStore {
-  private _geozones: FeatureLike[];
+  private _geozones: Geozone[];
   private _history: ChangeSet<FeatureLike>[];
 
   constructor() {
@@ -25,14 +26,14 @@ class GeozonesStore {
     return this._history;
   }
 
-  public add(zone: FeatureLike) {
+  public add(zone: Geozone) {
     const copy = this._geozones.slice();
     copy.push(zone);
     this._geozones = copy;
   }
 
-  public remove(zone: FeatureLike) {
-    this._geozones = this.geozones.filter((item) => item !== zone);
+  public remove(id: string) {
+    this._geozones = this.geozones.filter((item) => item.id !== id);
   }
 
   public save() {

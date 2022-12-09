@@ -13,6 +13,8 @@ import { observer } from "mobx-react-lite";
 
 import { container, logo, user, wrapper } from "./header.module.scss";
 import { UpdateStore } from "../../../stores/api";
+import { about } from "../../../assets/data/about";
+import { OrganizationsStore } from "../../../stores/entities";
 
 const Header = () => {
   return (
@@ -21,7 +23,7 @@ const Header = () => {
         <NavbarHeading>
           <Link className={logo} to={"/"}>
             <Icon icon={"truck"} size={32} />
-            <H2>АгрОруэлл</H2>
+            <H2>{about.title}</H2>
           </Link>
         </NavbarHeading>
 
@@ -69,7 +71,7 @@ const Header = () => {
 
         <div className={user}>
           <Text>{"Котенко Никита Алексеевич"}</Text>
-          <H6>{"ООО 'Рога и копыта'"}</H6>
+          <H6>{OrganizationsStore.organization?.title}</H6>
         </div>
 
         <Button icon="log-out" minimal large />
