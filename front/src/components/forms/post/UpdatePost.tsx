@@ -28,7 +28,6 @@ const UpdatePost = ({ id }: Props) => {
     defaultValues: useMemo(() => {
       return {
         title: post?.title,
-        number: post?.number,
         organizationId: post?.organization.id,
       };
     }, [post]),

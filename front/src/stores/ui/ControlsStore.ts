@@ -1,12 +1,24 @@
 import { makeAutoObservable } from "mobx";
 import { FullScreenHandle } from "react-full-screen";
 
+export type ControlType =
+  | "search"
+  | "measurement"
+  | "layers"
+  | "drawing"
+  | "full-screen"
+  | "print"
+  | "share"
+  | "about";
+
 class ControlsStore {
   private _fullScreenHandle: FullScreenHandle | null;
   private _fullScreenActive: boolean;
 
   private _mapDrawerActive: boolean;
   private _layersPanelActive: boolean;
+
+  private _currentMapControl: ControlType;
 
   constructor() {
     this._mapDrawerActive = false;
@@ -15,7 +27,17 @@ class ControlsStore {
     this._fullScreenActive = false;
     this._fullScreenHandle = null;
 
+    this._currentMapControl = "search";
+
     makeAutoObservable(this);
+  }
+
+  public get currentMapControl() {
+    return this._currentMapControl;
+  }
+
+  public set currentMapControl(value) {
+    this._currentMapControl = value;
   }
 
   public get fullScreenActive() {

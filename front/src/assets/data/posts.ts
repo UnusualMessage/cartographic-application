@@ -8,13 +8,11 @@ export const posts: Post[] = [
     id: uuid(),
     title: "Водитель",
     organization: organizations[0],
-    number: "777",
   },
 
   {
     id: uuid(),
     title: "Кладовщик",
     organization: organizations[0],
-    number: "666",
   },
 ];

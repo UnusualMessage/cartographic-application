@@ -3,6 +3,7 @@ import { useFetch } from "../../../../hooks";
 import DialogForm from "../DialogForm";
 import { Icon } from "@blueprintjs/core";
 import { ApiStore } from "../../../../types/api";
+import { fromUuidToNumber } from "../../../../utils/format";
 
 interface Item {
   id: string;
@@ -33,7 +34,7 @@ const Duplicate = <T extends Item>({ id, name, store }: Props<T>) => {
 
   return (
     <DialogForm
-      title={`Дублирование записи ${name})`}
+      title={`Дублирование записи (${name})`}
       buttonText={"Дублировать"}
       buttonIcon={<Icon icon={"duplicate"} />}
       buttonDisabled={!id}
@@ -41,7 +42,7 @@ const Duplicate = <T extends Item>({ id, name, store }: Props<T>) => {
       successful={successful}
       setSuccessful={setSuccessful}
     >
-      {`Подтвердите дублирование записи с ID = ${item?.id}`}
+      {`Подтвердите дублирование записи с номером ${fromUuidToNumber(item?.id ?? "???")}`}
     </DialogForm>
   );
 };

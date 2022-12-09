@@ -4,8 +4,11 @@ import { cell } from "../../components/common/Table/table.module.scss";
 
 import { ColumnProps } from "../../components/common/Table";
 import { Speed } from "../../types/entities";
+import getNumberCell from "./getNumberCell";
 
 export const getSpeedColumns = (speeds: Speed[]): ColumnProps[] => [
+  getNumberCell(speeds),
+
   {
     renderer: (rowIndex) => {
       return <Cell className={cell}>{speeds[rowIndex].title}</Cell>;

@@ -34,14 +34,14 @@ class MapStore {
     this._map = null;
   }
 
-  public initMap(layers: BaseLayer[], target: HTMLDivElement, view?: View) {
+  public initMap(target: HTMLDivElement, view?: View) {
     if (this._map) {
       this._map.setTarget(target);
     } else {
       this._map = new Map({
         target: target,
         view: view,
-        layers: layers,
+        layers: [],
         controls: [],
       });
     }

@@ -35,7 +35,7 @@ const Create = <T, CreateT extends FieldValues>({
 
   return (
     <DialogForm
-      title={`Создание записи ${name}`}
+      title={`Создание записи (${name})`}
       buttonText={"Создать"}
       buttonIcon={<Icon icon={"add"} />}
       onAccept={handleSubmit(onSubmit)}

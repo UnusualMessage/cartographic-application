@@ -9,17 +9,19 @@ import Speed from "./Speed";
 import Partner from "./Partner";
 import Department from "./Department";
 import Trailer from "./Trailer";
+import Geozone from "./Geozone";
 
 export type {
   Organization,
   Plan,
   Employee,
   Equipment,
-  EquipmentType,
   Post,
   User,
   Speed,
   Partner,
   Department,
   Trailer,
+  EquipmentType,
+  Geozone,
 };

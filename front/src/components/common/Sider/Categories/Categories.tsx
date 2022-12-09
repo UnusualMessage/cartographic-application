@@ -30,12 +30,12 @@ const Categories = () => {
             TabsStore.footerTabsListId = "footer-employees";
             break;
 
-          case "sider-equipment":
-            TabsStore.footerTabsListId = "footer-equipment";
+          case "sider-equipments":
+            TabsStore.footerTabsListId = "footer-equipments";
             break;
 
-          case "sider-fields":
-            TabsStore.footerTabsListId = "footer-fields";
+          case "sider-geozones":
+            TabsStore.footerTabsListId = "footer-geozones";
             break;
         }
 

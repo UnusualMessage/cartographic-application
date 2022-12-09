@@ -1,10 +1,9 @@
 import { Node } from "../../types/nodes";
 import { types } from "../data";
-import { v4 as uuid } from "uuid";
 
 export const equipmentNodes: Node[] = [
   {
-    id: "tree-equipment",
+    id: "tree-equipments",
     icon: "tractor",
     label: "Техника",
     isExpanded: true,
@@ -12,7 +11,7 @@ export const equipmentNodes: Node[] = [
 
     childNodes: types.map((type) => {
       return {
-        id: uuid(),
+        id: `tree-equipments-type-${type.id}`,
         icon: "folder-close",
         label: type.name,
         isExpanded: true,
