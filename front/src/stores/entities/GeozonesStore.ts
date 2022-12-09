@@ -1,5 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { FeatureLike } from "ol/Feature";
+import { geozones } from "../../assets/data";
+
 import { ChangeSet } from "../../types/map";
 import { Geozone } from "../../types/entities";
 
@@ -8,7 +10,7 @@ class GeozonesStore {
   private _history: ChangeSet<FeatureLike>[];
 
   constructor() {
-    this._geozones = [];
+    this._geozones = geozones;
     this._history = [];
 
     makeAutoObservable(this);
