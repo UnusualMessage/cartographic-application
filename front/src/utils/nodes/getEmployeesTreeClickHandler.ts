@@ -2,7 +2,7 @@ import { TreeEventHandler } from "@blueprintjs/core";
 
 import { TabsStore } from "../../stores/ui";
 
-export const getGeozonesTreeClickHandler = (): TreeEventHandler<any> => {
+export const getEmployeesTreeClickHandler = (): TreeEventHandler<any> => {
   return (node) => {
     const switchTabsList = (id: string) => {
       if (TabsStore.footerTabsListId !== id) {
@@ -12,12 +12,12 @@ export const getGeozonesTreeClickHandler = (): TreeEventHandler<any> => {
     };
 
     switch (node.id) {
-      case "tree-geozones":
-        switchTabsList("footer-geozones");
+      case "tree-plans":
+        switchTabsList("footer-plans");
         break;
 
       default:
-        switchTabsList("footer-geozone");
+        switchTabsList("footer-plan");
     }
   };
 };

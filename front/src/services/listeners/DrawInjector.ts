@@ -13,6 +13,7 @@ import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
 import { Fill, Stroke, Style } from "ol/style";
 import { DrawEvent } from "ol/interaction/Draw";
 import { Polygon } from "ol/geom";
+import { area, polygon } from "@turf/turf";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;
@@ -77,6 +78,9 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
           GeozonesStore.add({
             id: uuid(),
             title: "Новая геозона",
+            area: area(polygon(geometry.getCoordinates())) / 1e5,
+            type: "field",
+            children: [],
             geometry: {
               type: "Polygon",
               coordinates: geometry.getCoordinates(),

@@ -17,7 +17,7 @@ export const footerTabs: TabsList[] = [
   },
 
   {
-    id: "footer-fields",
+    id: "footer-geozones",
     tabs: [
       {
         id: uuid(),
@@ -34,7 +34,7 @@ export const footerTabs: TabsList[] = [
   },
 
   {
-    id: "footer-field",
+    id: "footer-geozone",
     tabs: [
       {
         id: uuid(),
@@ -69,6 +69,93 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Заметки",
+        component: <EmptyInformation />,
+      },
+    ],
+  },
+
+  {
+    id: "footer-equipments",
+    tabs: [
+      {
+        id: uuid(),
+        title: "Статусы",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Статусы по типам",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Статистика связи",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Статистика простоев",
+        component: <EmptyInformation />,
+      },
+    ],
+  },
+
+  {
+    id: "footer-equipments-type",
+    tabs: [
+      {
+        id: uuid(),
+        title: "Статусы",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Статистика связи",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Статистика простоев",
+        component: <EmptyInformation />,
+      },
+    ],
+  },
+
+  {
+    id: "footer-equipment",
+    tabs: [
+      {
+        id: uuid(),
+        title: "Информация",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Текущая работа",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "История работ",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Поручения",
+        component: <EmptyInformation />,
+      },
+
+      {
+        id: uuid(),
+        title: "Статистика статусов",
         component: <EmptyInformation />,
       },
     ],

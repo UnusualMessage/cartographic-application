@@ -18,7 +18,7 @@ class TabsStore {
     this._footerTabId = undefined;
 
     this._siderTabsListId = "sider-tabs";
-    this._siderTabId = "sider-fields";
+    this._siderTabId = "sider-geozones";
 
     this._footerTabActive = true;
     this._siderTabActive = true;

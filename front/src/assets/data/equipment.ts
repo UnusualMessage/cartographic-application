@@ -8,11 +8,13 @@ export const equipment: Equipment[] = [
     id: uuid(),
     name: "LADA 4X4 T883",
     type: types[0],
+    status: "waiting",
   },
 
   {
     id: uuid(),
     name: "LADA 4X4 У847",
     type: types[0],
+    status: "waiting",
   },
 ];

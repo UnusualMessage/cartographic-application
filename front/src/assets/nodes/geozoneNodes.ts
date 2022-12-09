@@ -1,8 +1,8 @@
 import { Node } from "../../types/nodes";
 
-export const fieldNodes: Node[] = [
+export const geozoneNodes: Node[] = [
   {
-    id: "tree-fields",
+    id: "tree-geozones",
     icon: "layers",
     label: "Поля",
     isExpanded: true,

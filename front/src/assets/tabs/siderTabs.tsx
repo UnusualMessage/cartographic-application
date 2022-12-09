@@ -10,13 +10,13 @@ export const siderTabs: TabsList = {
   id: "sider-tabs",
   tabs: [
     {
-      id: "sider-fields",
-      title: "Поля",
+      id: "sider-geozones",
+      title: "Геозоны",
       component: <GeozonesTree />,
     },
 
     {
-      id: "sider-equipment",
+      id: "sider-equipments",
       title: "Техника",
       component: <EquipmentTree />,
     },

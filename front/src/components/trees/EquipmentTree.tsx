@@ -1,6 +1,7 @@
 import { Divider } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { cloneDeep } from "lodash";
+import { ContextMenu2 } from "@blueprintjs/popover2";
 
 import { wrapper } from "./tree.module.scss";
 
@@ -10,7 +11,7 @@ import { equipmentNodes } from "../../assets/nodes";
 import { Equipment } from "../../types/entities";
 import { EquipmentStore } from "../../stores/entities";
 import { EquipmentMenu } from "../menus";
-import { ContextMenu2 } from "@blueprintjs/popover2";
+import { getEquipmentTreeClickHandler } from "../../utils/nodes";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);
@@ -56,6 +57,7 @@ const EquipmentTree = () => {
       <Divider />
       <EntitiesTree<Equipment>
         fillNodes={fillNodes}
+        handleClick={getEquipmentTreeClickHandler()}
         source={equipment}
         className={wrapper}
       />
