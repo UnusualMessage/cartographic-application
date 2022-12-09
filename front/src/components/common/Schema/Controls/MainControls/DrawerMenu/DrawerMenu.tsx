@@ -14,6 +14,7 @@ import { InteractionType } from "../../../../../../types/map";
 import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
 import { auxLayerId } from "../../../../../../assets/map/config";
 import { about } from "../../../../../../assets/data/about";
+import { ControlType } from "../../../../../../stores/ui/ControlsStore";
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
@@ -35,6 +36,18 @@ const DrawerMenu = () => {
     ControlsStore.hideDrawer();
   };
 
+  const choose = (type: ControlType) => {
+    ControlsStore.currentMapControl = type;
+  };
+
+  const handleIntent = (type: ControlType) => {
+    if (ControlsStore.currentMapControl === type) {
+      return "primary";
+    } else {
+      return "none";
+    }
+  };
+
   return (
     <Drawer
       icon="menu"
@@ -48,24 +61,50 @@ const DrawerMenu = () => {
       <div className={Classes.DRAWER_BODY}>
         <div className={Classes.DIALOG_BODY}>
           <Menu large>
-            <MenuItem icon="search" text="Поиск" />
-            <MenuItem icon="layers" text="Слои" />
+            <MenuItem
+              icon="search"
+              text="Поиск"
+              intent={handleIntent("search")}
+              onClick={() => choose("search")}
+            />
+            <MenuItem
+              icon="layers"
+              text="Слои"
+              intent={handleIntent("layers")}
+              onClick={() => choose("layers")}
+            />
             <MenuDivider />
 
-            <MenuItem icon="select" text="Измерение">
+            <MenuItem
+              icon="select"
+              text="Измерение"
+              intent={handleIntent("measurement")}
+              onClick={() => choose("measurement")}
+            >
               <MenuItem
                 icon="one-to-one"
                 text="Расстояние"
-                onClick={() => switchType("measure-length")}
+                onClick={() => {
+                  choose("measurement");
+                  switchType("measure-length");
+                }}
               />
               <MenuItem
                 icon="polygon-filter"
                 text="Площадь"
-                onClick={() => switchType("measure-area")}
+                onClick={() => {
+                  choose("measurement");
+                  switchType("measure-area");
+                }}
               />
             </MenuItem>
 
-            <MenuItem icon="edit" text="Рисование">
+            <MenuItem
+              icon="edit"
+              text="Рисование"
+              intent={handleIntent("drawing")}
+              onClick={() => choose("drawing")}
+            >
               <MenuItem icon="selection" text="Точка" />
               <MenuItem
                 icon="new-layer"
@@ -81,12 +120,32 @@ const DrawerMenu = () => {
             </MenuItem>
             <MenuDivider />
 
-            <MenuItem icon="fullscreen" text="Полный экран" />
-            <MenuItem icon="share" text="Поделиться" />
-            <MenuItem icon="print" text="Печать" />
+            <MenuItem
+              icon="fullscreen"
+              text="Полный экран"
+              intent={handleIntent("full-screen")}
+              onClick={() => choose("full-screen")}
+            />
+            <MenuItem
+              icon="share"
+              text="Поделиться"
+              intent={handleIntent("share")}
+              onClick={() => choose("full-screen")}
+            />
+            <MenuItem
+              icon="print"
+              text="Печать"
+              intent={handleIntent("print")}
+              onClick={() => choose("print")}
+            />
 
             <MenuDivider />
-            <MenuItem icon="help" text="О проекте" />
+            <MenuItem
+              icon="help"
+              text="О проекте"
+              intent={handleIntent("about")}
+              onClick={() => choose("about")}
+            />
           </Menu>
         </div>
       </div>
