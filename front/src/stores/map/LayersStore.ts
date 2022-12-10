@@ -22,6 +22,10 @@ class LayersStore {
     makeAutoObservable(this);
   }
 
+  public get vectorLayers() {
+    return this._vectorLayers;
+  }
+
   public get baseLayer() {
     return this._baseLayer;
   }
@@ -54,9 +58,10 @@ class LayersStore {
     const layer = new VectorLayer({
       source: source,
       style: style,
+      properties: {
+        id: id,
+      },
     });
-
-    layer.set("id", id);
 
     this._vectorLayers.push(layer);
 
@@ -64,14 +69,9 @@ class LayersStore {
   }
 
   public removeVectorLayer(id: string) {
-    this._vectorLayers = this._vectorLayers.filter((layer) => {
-      if (layer.get("id") === id) {
-        return layer;
-      } else {
-        layer.dispose();
-        return;
-      }
-    });
+    this._vectorLayers = this._vectorLayers.filter(
+      (layer) => layer.get("id") !== id
+    );
   }
 
   public createBaseLayer(type: BaseLayerType) {

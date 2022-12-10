@@ -41,7 +41,7 @@ const Measurement = ({ source, map, type }: Props) => {
     return () => {
       InteractionsStore.removeInteractions(map);
     };
-  }, [map, type]);
+  }, [map, type, source]);
 
   return <></>;
 };

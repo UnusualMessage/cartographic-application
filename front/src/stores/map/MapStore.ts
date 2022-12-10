@@ -112,6 +112,7 @@ class MapStore {
 
   public removeLayer(layer: BaseLayer) {
     this._map?.removeLayer(layer);
+    layer.dispose();
   }
 }
 
