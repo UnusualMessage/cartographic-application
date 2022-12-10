@@ -1,26 +1,18 @@
-import { Position, Toaster } from "@blueprintjs/core";
-import React, { useLayoutEffect, useRef } from "react";
+import React from "react";
 
 import Sider from "../../../components/common/Sider";
 import Schema from "../../../components/common/Schema";
 import Footer from "../../../components/common/Footer";
 import Categories from "../../../components/common/Sider/Categories";
 import Content from "../../../components/common/Content";
-import { NotificationsService } from "../../../services/ui";
 import Information from "../../../components/common/Footer/Information";
 import { Loader } from "../../../components/auxiliary/placeholders";
+import Overlays from "../../../components/overlays";
 
 const View = () => {
-  const ref = useRef<Toaster>(null);
-
-  useLayoutEffect(() => {
-    NotificationsService.toaster = ref.current;
-  }, []);
-
   return (
     <React.Suspense fallback={<Loader />}>
-      <Toaster position={Position.TOP} ref={ref} />
-
+      <Overlays />
       <Sider>
         <Categories />
       </Sider>

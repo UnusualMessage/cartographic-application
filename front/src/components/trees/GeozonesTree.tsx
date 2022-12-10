@@ -10,6 +10,8 @@ import EntitiesTree from "../common/EntitiesTree";
 import { GeozonesStore } from "../../stores/entities";
 import { Geozone } from "../../types/entities";
 import { getGeozonesTreeClickHandler } from "../../utils/nodes";
+import { ContextMenu2 } from "@blueprintjs/popover2";
+import { GeozoneMenu } from "../menus";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);
@@ -24,7 +26,13 @@ const fillNodes = (nodes?: Geozone[]) => {
 
       const newNode: TreeNodeInfo<any> = {
         id: field.id,
-        label: field.title,
+        label: (
+          <ContextMenu2
+            content={<GeozoneMenu id={field.id} title={field.title} />}
+          >
+            {field.title}
+          </ContextMenu2>
+        ),
         icon: hasChildren ? "layers" : "layer",
         nodeData: field.id,
         childNodes: [],

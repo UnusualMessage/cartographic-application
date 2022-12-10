@@ -4,6 +4,7 @@ import { geozones } from "../../assets/data";
 
 import { ChangeSet } from "../../types/map";
 import { Geozone } from "../../types/entities";
+import { Coordinate } from "ol/coordinate";
 
 class GeozonesStore {
   private _geozones: Geozone[];
@@ -26,6 +27,31 @@ class GeozonesStore {
 
   public get history() {
     return this._history;
+  }
+
+  public getById(id: string) {
+    return this._geozones.find((item) => item.id === id);
+  }
+
+  public translate(
+    ids: (string | undefined)[],
+    coordinates: (Coordinate[][] | undefined)[]
+  ) {
+    const geozones = this._geozones.slice();
+
+    let index = 0;
+    for (const id of ids) {
+      const geozone = geozones.find((item) => item.id === id);
+      const coordinate = coordinates[index];
+
+      if (geozone && coordinate) {
+        geozone.feature.geometry.coordinates = coordinate;
+      }
+
+      ++index;
+    }
+
+    this._geozones = geozones;
   }
 
   public add(zone: Geozone) {

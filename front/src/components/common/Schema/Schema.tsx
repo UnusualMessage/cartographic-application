@@ -18,7 +18,7 @@ import { GeozonesStore } from "../../../stores/entities";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
-  const geozones = GeozonesStore.geozones.map((item) => item.geometry);
+  const geozones = GeozonesStore.geozones.map((item) => item.feature);
 
   useEffect(() => {
     ControlsStore.fullScreenHandle = handle;

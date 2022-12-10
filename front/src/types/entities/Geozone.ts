@@ -1,4 +1,4 @@
-import { Polygon } from "@turf/turf";
+import { Feature, Polygon } from "@turf/turf";
 
 import Organization from "./Organization";
 
@@ -10,7 +10,7 @@ export default interface Geozone {
   area: number;
   type: Type;
   children: Geozone[];
-  geometry: Polygon;
+  feature: Feature<Polygon>;
   organization: Organization;
 }
 
