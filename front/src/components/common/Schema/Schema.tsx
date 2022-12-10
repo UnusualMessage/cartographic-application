@@ -15,10 +15,11 @@ import Menu from "./Menu";
 import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
 import { ControlsStore } from "../../../stores/ui";
 import { GeozonesStore } from "../../../stores/entities";
+import { Fill, Stroke, Style } from "ol/style";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
-  const geozones = GeozonesStore.geozones.map((item) => item.geometry);
+  const geozones = GeozonesStore.geozones.map((item) => item.feature);
 
   useEffect(() => {
     ControlsStore.fullScreenHandle = handle;
@@ -37,7 +38,21 @@ const Schema = () => {
 
         <TileLayer />
 
-        <VectorLayer id={geozonesLayerId} data={geozones}>
+        <VectorLayer
+          id={geozonesLayerId}
+          data={geozones}
+          style={
+            new Style({
+              fill: new Fill({
+                color: "rgba(255, 255, 255, 0.2)",
+              }),
+              stroke: new Stroke({
+                color: "rgba(0, 0, 0, 1)",
+                width: 2,
+              }),
+            })
+          }
+        >
           <GeozonesInteractions />
         </VectorLayer>
 

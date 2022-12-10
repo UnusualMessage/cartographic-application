@@ -27,7 +27,9 @@ const fillNodes = (nodes?: Geozone[]) => {
       const newNode: TreeNodeInfo<any> = {
         id: field.id,
         label: (
-          <ContextMenu2 content={<GeozoneMenu id={field.id} />}>
+          <ContextMenu2
+            content={<GeozoneMenu id={field.id} title={field.title} />}
+          >
             {field.title}
           </ContextMenu2>
         ),

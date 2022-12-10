@@ -6,12 +6,21 @@ import { code, wrapper } from "./export.module.scss";
 import { AlertsStore } from "../../../stores/ui";
 
 const GeozoneExport = () => {
+  const onConfirm = async () => {
+    await navigator.clipboard.writeText(AlertsStore.info);
+  };
+
+  const onClose = () => {
+    AlertsStore.isOpen = false;
+  };
+
   return (
     <Alert
       className={wrapper}
       isOpen={AlertsStore.isOpen}
-      onClose={() => (AlertsStore.isOpen = false)}
-      cancelButtonText={"Отменить"}
+      onClose={onClose}
+      onConfirm={onConfirm}
+      cancelButtonText={"Закрыть"}
       confirmButtonText={"Скопировать"}
       intent={"primary"}
     >
