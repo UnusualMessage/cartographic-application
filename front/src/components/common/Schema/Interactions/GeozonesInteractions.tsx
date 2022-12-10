@@ -48,7 +48,7 @@ const Draw = ({ source, map, type }: Props) => {
     return () => {
       InteractionsStore.removeDraw(map);
     };
-  }, [map, type]);
+  }, [map, type, source]);
 
   return <></>;
 };
@@ -62,8 +62,9 @@ const Select = ({ source, map, type }: Props) => {
     return () => {
       InteractionsStore.removeSelect(map);
       InteractionsStore.removeTranslate(map);
+      InteractionsStore.removeDragBox(map);
     };
-  }, [map, type]);
+  }, [map, type, source]);
 
   return <></>;
 };
@@ -77,7 +78,7 @@ const Modify = ({ source, map, type }: Props) => {
     return () => {
       InteractionsStore.removeModify(map);
     };
-  }, [map, type]);
+  }, [map, type, source]);
 
   return <></>;
 };
@@ -91,7 +92,7 @@ const Snap = ({ source, map, type }: Props) => {
     return () => {
       InteractionsStore.removeSnap(map);
     };
-  }, [map, type]);
+  }, [map, type, source]);
 
   return <></>;
 };

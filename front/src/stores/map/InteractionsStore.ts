@@ -139,13 +139,9 @@ class InteractionsStore {
   }
 
   public addSelectAndTranslate(source: VectorSource, map: Map) {
-    if (this._interactions.select) {
-      map.removeInteraction(this._interactions.select);
-    }
-
-    if (this._interactions.translate) {
-      map.removeInteraction(this._interactions.translate);
-    }
+    this.removeSelect(map);
+    this.removeTranslate(map);
+    this.removeDragBox(map);
 
     const select = new Select();
 
@@ -231,6 +227,16 @@ class InteractionsStore {
 
   public clearSelectBuffer() {
     this._interactions.select?.getFeatures().clear();
+  }
+
+  public removeDragBox(map: Map | null) {
+    if (!map) {
+      return;
+    }
+
+    if (this._interactions.dragBox) {
+      map.removeInteraction(this._interactions.dragBox);
+    }
   }
 
   public removeDraw(map: Map | null) {

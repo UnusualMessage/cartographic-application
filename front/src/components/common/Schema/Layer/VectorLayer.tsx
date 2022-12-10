@@ -29,7 +29,15 @@ const VectorLayer = ({ children, id, style, data }: Props) => {
       features: data?.map((item) => {
         const feature = new Feature();
         feature.setGeometry(new Polygon(item.geometry.coordinates));
-        feature.setStyle(style);
+
+        feature.set("id", item.id);
+
+        if (item.properties?.style) {
+          feature.setStyle(item.properties.style);
+        } else {
+          feature.setStyle(style);
+        }
+
         return feature;
       }),
     });
@@ -37,7 +45,6 @@ const VectorLayer = ({ children, id, style, data }: Props) => {
 
   useEffect(() => {
     LayersService.createVectorLayer(vectorSource, id, style);
-    console.log(vectorSource);
 
     return () => {
       LayersService.removeVectorLayer(id);
