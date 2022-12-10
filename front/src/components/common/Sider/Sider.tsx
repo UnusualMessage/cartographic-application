@@ -18,7 +18,11 @@ const Sider = ({ children }: PropsWithChildren) => {
   const { size, start, isResizing } = useResizing(props);
 
   return (
-    <div className={wrapper} style={{ width: size }}>
+    <div
+      className={wrapper}
+      style={{ width: size }}
+      onContextMenu={(e) => e.preventDefault()}
+    >
       <div className={content}>{children}</div>
       <Resize isResizing={isResizing} type={type} start={start} />
     </div>

@@ -28,6 +28,10 @@ class GeozonesStore {
     return this._history;
   }
 
+  public getById(id: string) {
+    return this._geozones.find((item) => item.id === id);
+  }
+
   public add(zone: Geozone) {
     const copy = this._geozones.slice();
     copy.push(zone);

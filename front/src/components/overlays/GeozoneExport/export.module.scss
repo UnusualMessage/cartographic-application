@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  .code {
+    min-height: 0;
+    min-width: 0;
+
+    width: 350px;
+    height: 200px;
+    overflow: auto;
+
+    user-select: text;
+  }
+}
