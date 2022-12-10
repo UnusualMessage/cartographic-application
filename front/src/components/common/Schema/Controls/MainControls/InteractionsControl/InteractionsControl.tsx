@@ -6,7 +6,7 @@ import { wrapper } from "./menu.module.scss";
 import Geocoder from "../Geocoder";
 import DrawerStore from "../../../../../../stores/ui/ControlsStore";
 
-const SearchMenu = () => {
+const InteractionsControl = () => {
   const active = DrawerStore.mapDrawerActive;
 
   const showDrawer = () => {
@@ -31,4 +31,4 @@ const SearchMenu = () => {
   );
 };
 
-export default observer(SearchMenu);
+export default observer(InteractionsControl);
