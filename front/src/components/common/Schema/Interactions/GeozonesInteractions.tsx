@@ -1,12 +1,14 @@
 import { observer } from "mobx-react-lite";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
+import VectorSource from "ol/source/Vector";
+import { Map } from "ol";
 
 import { SourceContext } from "../Layer/VectorLayer";
 import { InteractionsStore, MapStore } from "../../../../stores/map";
 import Interactions from "./Interactions";
-import VectorSource from "ol/source/Vector";
-import { Map } from "ol";
 import { InteractionType } from "../../../../types/map";
+import { AddEventListener } from "../../../../hooks/useInteraction";
+import { useInteraction } from "../../../../hooks";
 
 const GeozonesInteractions = () => {
   const source = useContext(SourceContext);
@@ -33,66 +35,48 @@ const GeozonesInteractions = () => {
   );
 };
 
-interface Props {
+export interface InteractionProps {
   source?: VectorSource;
   map: Map | null;
   type: InteractionType;
 }
 
-const Draw = ({ source, map, type }: Props) => {
-  useEffect(() => {
-    if (map && source) {
-      InteractionsStore.addDraw(source, map);
-    }
+const Draw = ({ source, map, type }: InteractionProps) => {
+  const addInteraction: AddEventListener = (map, source) => {
+    return InteractionsStore.addDraw(source, map);
+  };
 
-    return () => {
-      InteractionsStore.removeDraw(map);
-    };
-  }, [map, type, source]);
+  useInteraction(addInteraction, { source, map, type });
 
   return <></>;
 };
 
-const Select = ({ source, map, type }: Props) => {
-  useEffect(() => {
-    if (map && source) {
-      InteractionsStore.addSelectAndTranslate(source, map);
-    }
+const Select = ({ source, map, type }: InteractionProps) => {
+  const addInteraction: AddEventListener = (map, source) => {
+    return InteractionsStore.addSelectAndTranslate(source, map);
+  };
 
-    return () => {
-      InteractionsStore.removeSelect(map);
-      InteractionsStore.removeTranslate(map);
-      InteractionsStore.removeDragBox(map);
-    };
-  }, [map, type, source]);
+  useInteraction(addInteraction, { source, map, type });
 
   return <></>;
 };
 
-const Modify = ({ source, map, type }: Props) => {
-  useEffect(() => {
-    if (map && source) {
-      InteractionsStore.addModify(source, map);
-    }
+const Modify = ({ source, map, type }: InteractionProps) => {
+  const addInteraction: AddEventListener = (map, source) => {
+    return InteractionsStore.addModify(source, map);
+  };
 
-    return () => {
-      InteractionsStore.removeModify(map);
-    };
-  }, [map, type, source]);
+  useInteraction(addInteraction, { source, map, type });
 
   return <></>;
 };
 
-const Snap = ({ source, map, type }: Props) => {
-  useEffect(() => {
-    if (map && source) {
-      InteractionsStore.addSnap(source, map);
-    }
+const Snap = ({ source, map, type }: InteractionProps) => {
+  const addInteraction: AddEventListener = (map, source) => {
+    return InteractionsStore.addSnap(source, map);
+  };
 
-    return () => {
-      InteractionsStore.removeSnap(map);
-    };
-  }, [map, type, source]);
+  useInteraction(addInteraction, { source, map, type });
 
   return <></>;
 };

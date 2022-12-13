@@ -27,25 +27,28 @@ const Map = ({ children }: PropsWithChildren) => {
   }, []);
 
   useEffect(() => {
-    mapRef.current?.addEventListener("contextmenu", (e) => {
+    const onContextMenu = (e: MouseEvent) => {
       e.preventDefault();
-    });
+    };
 
-    let cleanupCallback = () => {
+    const cleanContextMenu = () => {
+      mapRef.current?.removeEventListener("contextmenu", onContextMenu);
+    };
+
+    mapRef.current?.addEventListener("contextmenu", onContextMenu);
+
+    let cleanPointerEvent = () => {
       return;
     };
 
     if (map) {
       const injector: ListenersInjector<CommonEvent> = new MapInjector(map);
-      cleanupCallback = injector.addEventListener("pointermove");
+      cleanPointerEvent = injector.addEventListener("pointermove");
     }
 
     return () => {
-      mapRef.current?.addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-      });
-
-      cleanupCallback();
+      cleanContextMenu();
+      cleanPointerEvent();
     };
   }, [map]);
 
