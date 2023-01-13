@@ -7,6 +7,12 @@ interface Props {
   plans: Plan[];
 }
 
+interface ChartData {
+  id: string;
+  value: number;
+  color: string;
+}
+
 const PlansChart = ({ plans }: Props) => {
   const data = plans.map((plan) => {
     return {
@@ -19,7 +25,7 @@ const PlansChart = ({ plans }: Props) => {
   return (
     <div className={wrapper}>
       <div className={chart}>
-        <ResponsivePie
+        <ResponsivePie<ChartData>
           data={data}
           margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
           startAngle={-180}

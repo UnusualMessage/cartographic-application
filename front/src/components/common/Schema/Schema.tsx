@@ -12,9 +12,11 @@ import { Controls } from "./Controls";
 import { auxLayerId, geozonesLayerId } from "../../../assets/map/config";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
-import { measureStyleFunction } from "../../../utils/styles/measureStyleFunction";
+import { getMeasurementStyle } from "../../../utils/styles/getMeasurementStyle";
 import { ControlsStore } from "../../../stores/ui";
 import { GeozonesStore } from "../../../stores/entities";
+import Condition from "../../auxiliary/Condition";
+import { InteractionsStore } from "../../../stores/map";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
@@ -25,7 +27,7 @@ const Schema = () => {
   }, []);
 
   const styleFunction: StyleLike = (feature) => {
-    return measureStyleFunction(feature, 0);
+    return getMeasurementStyle(feature, 0);
   };
 
   return (
@@ -38,11 +40,15 @@ const Schema = () => {
         <TileLayer />
 
         <VectorLayer id={geozonesLayerId} data={geozones}>
-          <GeozonesInteractions />
+          <Condition truthy={InteractionsStore.isGeozoneInteractionsActive}>
+            <GeozonesInteractions />
+          </Condition>
         </VectorLayer>
 
         <VectorLayer id={auxLayerId} style={styleFunction}>
-          <AuxInteractions />
+          <Condition truthy={InteractionsStore.isAuxInteractionsActive}>
+            <AuxInteractions />
+          </Condition>
         </VectorLayer>
       </MapWrapper>
     </FullScreen>

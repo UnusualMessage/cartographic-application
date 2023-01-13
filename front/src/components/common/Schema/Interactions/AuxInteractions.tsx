@@ -1,12 +1,14 @@
 import { observer } from "mobx-react-lite";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
+import VectorSource from "ol/source/Vector";
+import { Map } from "ol";
 
 import { SourceContext } from "../Layer/VectorLayer";
 import { InteractionsStore, MapStore } from "../../../../stores/map";
 import Interactions from "./Interactions";
-import VectorSource from "ol/source/Vector";
-import { Map } from "ol";
 import { InteractionType } from "../../../../types/map";
+import { AddEventListener } from "../../../../hooks/useInteraction";
+import { useInteraction } from "../../../../hooks";
 
 const AuxInteractions = () => {
   const source = useContext(SourceContext);
@@ -33,15 +35,11 @@ interface Props {
 }
 
 const Measurement = ({ source, map, type }: Props) => {
-  useEffect(() => {
-    if (map && source) {
-      InteractionsStore.setupMeasurementTool(source, map);
-    }
+  const addInteraction: AddEventListener = (map, source) => {
+    return InteractionsStore.setupMeasurementTool(source, map);
+  };
 
-    return () => {
-      InteractionsStore.removeInteractions(map);
-    };
-  }, [map, type, source]);
+  useInteraction(addInteraction, { source, map, type });
 
   return <></>;
 };
