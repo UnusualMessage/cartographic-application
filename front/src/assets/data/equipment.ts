@@ -17,4 +17,67 @@ export const equipment: Equipment[] = [
     type: types[0],
     status: "waiting",
   },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[0],
+    status: "disabled",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[0],
+    status: "parking",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[0],
+    status: "no-data",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[0],
+    status: "disabled",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "waiting",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "no-data",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "parking",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
 ];

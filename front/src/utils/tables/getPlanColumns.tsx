@@ -5,6 +5,7 @@ import { cell } from "../../components/common/Table/table.module.scss";
 import { ColumnProps } from "../../components/common/Table";
 import { Plan } from "../../types/entities";
 import getNumberCell from "./getNumberCell";
+import Progress from "../../components/auxiliary/Progress";
 
 export const getPlanColumns = (plans: Plan[]): ColumnProps[] => [
   getNumberCell(plans),
@@ -31,5 +32,15 @@ export const getPlanColumns = (plans: Plan[]): ColumnProps[] => [
     },
 
     name: "Год",
+  },
+
+  {
+    renderer: (rowIndex) => {
+      return (
+        <Cell className={cell}>{<Progress value={rowIndex * 0.1} />}</Cell>
+      );
+    },
+
+    name: "Прогресс",
   },
 ];

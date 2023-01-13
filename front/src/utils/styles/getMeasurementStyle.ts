@@ -40,7 +40,7 @@ const labelStyle = new Style({
   }),
 });
 
-export const measureStyleFunction: StyleFunction = (feature: FeatureLike) => {
+export const getMeasurementStyle: StyleFunction = (feature: FeatureLike) => {
   const styles = [style];
   const geometry = feature.getGeometry() as Geometry | null;
 

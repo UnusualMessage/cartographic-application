@@ -22,7 +22,7 @@ import {
   TranslateEvent,
   TranslateInjector,
 } from "../../services/listeners";
-import { measureStyleFunction } from "../../utils/styles/measureStyleFunction";
+import { getMeasurementStyle } from "../../utils/styles/getMeasurementStyle";
 import { InteractionType } from "../../types/map";
 
 interface Interactions {
@@ -94,13 +94,17 @@ class InteractionsStore {
       source: source,
       type: drawType,
       style: (feature) => {
-        return measureStyleFunction(feature, 0);
+        return getMeasurementStyle(feature, 0);
       },
     });
 
     this._interactions.draw = draw;
 
     map.addInteraction(draw);
+
+    return () => {
+      this.removeInteractions(map);
+    };
   }
 
   public addDraw(source: VectorSource, map: Map) {
@@ -130,6 +134,10 @@ class InteractionsStore {
     map.addInteraction(draw);
 
     this._interactions.draw = draw;
+
+    return () => {
+      this.removeDraw(map);
+    };
   }
 
   public stopDrawing() {
@@ -178,6 +186,12 @@ class InteractionsStore {
     this._interactions.select = select;
     this._interactions.translate = translate;
     this._interactions.dragBox = dragBox;
+
+    return () => {
+      this.removeSelect(map);
+      this.removeTranslate(map);
+      this.removeDragBox(map);
+    };
   }
 
   public addModify(source: VectorSource, map: Map) {
@@ -198,6 +212,10 @@ class InteractionsStore {
     map.addInteraction(modify);
 
     this._interactions.modify = modify;
+
+    return () => {
+      this.removeModify(map);
+    };
   }
 
   public addSnap(source: VectorSource, map: Map) {
@@ -212,6 +230,10 @@ class InteractionsStore {
     map.addInteraction(snap);
 
     this._interactions.snap = snap;
+
+    return () => {
+      this.removeSnap(map);
+    };
   }
 
   public addInteractions(source: VectorSource, map: Map | null) {
