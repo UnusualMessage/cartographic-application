@@ -11,9 +11,9 @@ import {
 } from "../../../../features/forms/department";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getDepartmentColumns } from "../../../../shared/lib/utils/tables";
-import { EmployeesStore } from "../../../../stores/entities";
-import DepartmentsStore from "../../../../stores/entities/DepartmentsStore";
-import { Department } from "../../../../types/entities";
+import { EmployeesStore } from "../../../../entities/stores/entities";
+import DepartmentsStore from "../../../../entities/stores/entities/DepartmentsStore";
+import { Department } from "../../../../shared/api/types/entities";
 
 const Departments = () => {
   const department = DepartmentsStore.department;

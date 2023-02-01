@@ -1,4 +1,4 @@
-import { Node } from "../../../../types/nodes";
+import { Node } from "../../../api/types/nodes";
 import { types } from "../../samples";
 
 export const equipmentNodes: Node[] = [

@@ -13,9 +13,9 @@ import {
   EmployeesStore,
   OrganizationsStore,
   PostsStore,
-} from "../../../stores/entities";
-import { Employee } from "../../../types/entities";
-import { UpdateEmployee } from "../../../types/entities/Employee";
+} from "../../../entities/stores/entities";
+import { Employee } from "../../../shared/api/types/entities";
+import { UpdateEmployee } from "../../../shared/api/types/entities/Employee";
 import DialogForm from "../../auxiliary/forms/DialogForm";
 
 interface Props {

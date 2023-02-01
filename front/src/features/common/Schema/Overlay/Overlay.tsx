@@ -2,7 +2,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
-import { MapStore, OverlaysStore } from "../../../../stores/map";
+import { MapStore, OverlaysStore } from "../../../../entities/stores/map";
 import { hidden, wrapper } from "./overlay.module.scss";
 
 const Overlay = () => {

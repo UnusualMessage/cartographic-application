@@ -3,9 +3,9 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { employeeNodes } from "../../shared/assets/templates/nodes";
-import { EmployeesStore } from "../../stores/entities";
-import { Employee } from "../../types/entities";
-import { Node } from "../../types/nodes";
+import { EmployeesStore } from "../../entities/stores/entities";
+import { Employee } from "../../shared/api/types/entities";
+import { Node } from "../../shared/api/types/nodes";
 import EntitiesTree from "../../components/common/EntitiesTree";
 import { wrapper } from "./tree.module.scss";
 

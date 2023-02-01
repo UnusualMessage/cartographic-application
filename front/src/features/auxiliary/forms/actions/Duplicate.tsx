@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { useFetch } from "../../../../shared/lib/hooks";
 import { fromUuidToNumber } from "../../../../shared/lib/utils/format";
-import { ApiStore } from "../../../../types/api";
+import { ApiStore } from "../../../../shared/api/types/api";
 import DialogForm from "../DialogForm";
 
 interface Item {

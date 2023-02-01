@@ -5,7 +5,7 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 
-import { Form } from "../../../../types/forms";
+import { Form } from "../../../api/types/forms";
 import { SelectInput, TextInput } from "../../../ui/inputs";
 import NumberInput from "../../../ui/inputs/NumberInput";
 

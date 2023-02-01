@@ -4,7 +4,7 @@ import {
   GeozonesTree,
   PlansTree,
 } from "../../../../features/trees";
-import { TabsList } from "../../../../types/tabs";
+import { TabsList } from "../../../api/types/tabs";
 
 export const siderTabs: TabsList = {
   id: "sider-tabs",

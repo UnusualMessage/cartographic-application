@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { PropsWithChildren, useEffect, useState } from "react";
 
-import { AuthStore } from "../../../stores/entities";
+import { AuthStore } from "../../../entities/stores/entities";
 
 const RequireAuth = ({ children }: PropsWithChildren) => {
   const [allowed, setAllowed] = useState(false);

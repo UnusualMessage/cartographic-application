@@ -1,5 +1,5 @@
-import { AuthenticateUser } from "../../../../types/entities/User";
-import { Form } from "../../../../types/forms";
+import { AuthenticateUser } from "../../../api/types/entities/User";
+import { Form } from "../../../api/types/forms";
 
 export const authenticateUser = (): Form<AuthenticateUser> => {
   return [

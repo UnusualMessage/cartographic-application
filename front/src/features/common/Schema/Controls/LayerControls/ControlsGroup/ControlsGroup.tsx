@@ -4,9 +4,9 @@ import { observer } from "mobx-react-lite";
 import { FormEventHandler } from "react";
 
 import { baseLayers } from "../../../../../../shared/assets/samples/layers";
-import { LayersStore } from "../../../../../../stores/map";
-import { ControlsStore } from "../../../../../../stores/ui";
-import { BaseLayerType } from "../../../../../../types/common";
+import { LayersStore } from "../../../../../../entities/stores/map";
+import { ControlsStore } from "../../../../../../entities/stores/ui";
+import { BaseLayerType } from "../../../../../../shared/api/types/common";
 import { visible, wrapper } from "./group.module.scss";
 
 const ControlsGroup = () => {

@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Post } from "../../../types/entities";
+import { Post } from "../../api/types/entities";
 import { organizations } from "./organizations";
 
 export const posts: Post[] = [

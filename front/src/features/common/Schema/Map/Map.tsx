@@ -5,8 +5,8 @@ import {
   CommonEvent,
   ListenersInjector,
   MapInjector,
-} from "../../../../services/listeners";
-import { LayersStore, MapStore } from "../../../../stores/map";
+} from "../../../../entities/services/listeners";
+import { LayersStore, MapStore } from "../../../../entities/stores/map";
 import { wrapper } from "./map.module.scss";
 
 const Map = ({ children }: PropsWithChildren) => {

@@ -11,8 +11,8 @@ import {
 } from "../../../../features/forms/partner";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getPartnerColumns } from "../../../../shared/lib/utils/tables";
-import PartnersStore from "../../../../stores/entities/PartnersStore";
-import { Partner } from "../../../../types/entities";
+import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
+import { Partner } from "../../../../shared/api/types/entities";
 
 const Partners = () => {
   const partner = PartnersStore.partner;

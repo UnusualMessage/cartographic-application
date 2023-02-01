@@ -9,8 +9,8 @@ import RemoveTrailer from "../../../../features/forms/trailer/RemoveTrailer";
 import UpdateTrailer from "../../../../features/forms/trailer/UpdateTrailer";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getTrailerColumns } from "../../../../shared/lib/utils/tables";
-import { TrailersStore } from "../../../../stores/entities";
-import { Trailer } from "../../../../types/entities";
+import { TrailersStore } from "../../../../entities/stores/entities";
+import { Trailer } from "../../../../shared/api/types/entities";
 
 const Trailers = () => {
   const trailer = TrailersStore.trailer;

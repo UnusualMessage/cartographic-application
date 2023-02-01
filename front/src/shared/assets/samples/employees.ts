@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Employee } from "../../../types/entities";
+import { Employee } from "../../api/types/entities";
 import { organizations } from "./organizations";
 import { posts } from "./posts";
 

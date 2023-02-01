@@ -13,9 +13,9 @@ import {
   DepartmentsStore,
   OrganizationsStore,
   TrailersStore,
-} from "../../../stores/entities";
-import { Trailer } from "../../../types/entities";
-import { UpdateTrailer } from "../../../types/entities/Trailer";
+} from "../../../entities/stores/entities";
+import { Trailer } from "../../../shared/api/types/entities";
+import { UpdateTrailer } from "../../../shared/api/types/entities/Trailer";
 import DialogForm from "../../auxiliary/forms/DialogForm";
 
 interface Props {

@@ -2,8 +2,8 @@ import { observer } from "mobx-react-lite";
 
 import { createSpeed } from "../../../shared/assets/templates/forms";
 import { getSelectOptions } from "../../../shared/lib/utils/forms";
-import { OrganizationsStore } from "../../../stores/entities";
-import SpeedsStore from "../../../stores/entities/SpeedsStore";
+import { OrganizationsStore } from "../../../entities/stores/entities";
+import SpeedsStore from "../../../entities/stores/entities/SpeedsStore";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreateSpeed = () => {

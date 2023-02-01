@@ -5,9 +5,9 @@ import { observer } from "mobx-react-lite";
 
 import { geozoneNodes } from "../../shared/assets/templates/nodes";
 import { getGeozonesTreeClickHandler } from "../../shared/lib/utils/nodes";
-import { GeozonesStore } from "../../stores/entities";
-import { Geozone } from "../../types/entities";
-import { Node } from "../../types/nodes";
+import { GeozonesStore } from "../../entities/stores/entities";
+import { Geozone } from "../../shared/api/types/entities";
+import { Node } from "../../shared/api/types/nodes";
 import EntitiesTree from "../../components/common/EntitiesTree";
 import { GeozoneMenu } from "../menus";
 import { wrapper } from "./tree.module.scss";

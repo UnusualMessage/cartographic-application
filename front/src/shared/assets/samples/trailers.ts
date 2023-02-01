@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Trailer } from "../../../types/entities";
+import { Trailer } from "../../api/types/entities";
 import { departments } from "./departments";
 import { organizations } from "./organizations";
 

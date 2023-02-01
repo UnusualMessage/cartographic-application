@@ -9,10 +9,10 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../shared/lib/utils/forms";
-import { OrganizationsStore } from "../../../stores/entities";
-import DepartmentsStore from "../../../stores/entities/DepartmentsStore";
-import { Department } from "../../../types/entities";
-import { UpdateDepartment } from "../../../types/entities/Department";
+import { OrganizationsStore } from "../../../entities/stores/entities";
+import DepartmentsStore from "../../../entities/stores/entities/DepartmentsStore";
+import { Department } from "../../../shared/api/types/entities";
+import { UpdateDepartment } from "../../../shared/api/types/entities/Department";
 import DialogForm from "../../auxiliary/forms/DialogForm";
 
 interface Props {

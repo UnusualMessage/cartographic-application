@@ -22,7 +22,7 @@ import Technologies from "../../../pages/User/References/Technologies";
 import Trailers from "../../../pages/User/References/Trailers";
 import WorksCategories from "../../../pages/User/References/WorksCategories";
 import WorksPlans from "../../../pages/User/References/WorksPlans";
-import Reference from "../../../types/common/Reference";
+import Reference from "../../api/types/common/Reference";
 
 export const references: Reference[] = [
   {

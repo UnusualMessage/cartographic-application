@@ -4,7 +4,7 @@ import { EmptyInformation } from "../../../../features/auxiliary/placeholders";
 import PlansTab from "../../../../features/tabs/PlansTab";
 import StatusTab from "../../../../features/tabs/StatusTab";
 import WorksTab from "../../../../features/tabs/WorksTab";
-import { TabsList } from "../../../../types/tabs";
+import { TabsList } from "../../../api/types/tabs";
 
 export const footerTabs: TabsList[] = [
   {

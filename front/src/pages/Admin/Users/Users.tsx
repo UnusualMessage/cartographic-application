@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { UsersStore } from "../../../stores/entities";
+import { UsersStore } from "../../../entities/stores/entities";
 import User from "./User";
 import { wrapper } from "./users.module.scss";
 

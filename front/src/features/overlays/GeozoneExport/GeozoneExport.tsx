@@ -1,7 +1,7 @@
 import { Alert, H3, Pre } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { AlertsStore } from "../../../stores/ui";
+import { AlertsStore } from "../../../entities/stores/ui";
 import { code, wrapper } from "./export.module.scss";
 
 const GeozoneExport = () => {

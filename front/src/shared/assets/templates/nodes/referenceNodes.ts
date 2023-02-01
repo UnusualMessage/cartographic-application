@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Node } from "../../../../types/nodes";
+import { Node } from "../../../api/types/nodes";
 import { references } from "../../samples/references";
 
 export const referenceNodes: Node[] = [

@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { User } from "../../../types/entities";
+import { User } from "../../api/types/entities";
 
 export const users: User[] = [
   {
