@@ -1,14 +1,13 @@
+import { Divider, Radio, RadioGroup } from "@blueprintjs/core";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { Divider, Radio, RadioGroup } from "@blueprintjs/core";
 import { FormEventHandler } from "react";
 
-import { visible, wrapper } from "./group.module.scss";
-
-import { ControlsStore } from "../../../../../../stores/ui";
-import { LayersStore } from "../../../../../../stores/map";
-import { BaseLayerType } from "../../../../../../types/common";
 import { baseLayers } from "../../../../../../assets/config/layers";
+import { LayersStore } from "../../../../../../stores/map";
+import { ControlsStore } from "../../../../../../stores/ui";
+import { BaseLayerType } from "../../../../../../types/common";
+import { visible, wrapper } from "./group.module.scss";
 
 const ControlsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;

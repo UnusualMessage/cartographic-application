@@ -1,6 +1,6 @@
 import CreateSpeed from "./CreateSpeed";
-import UpdateSpeed from "./UpdateSpeed";
-import RemoveSpeed from "./RemoveSpeed";
 import DuplicateSpeed from "./DuplicateSpeed";
+import RemoveSpeed from "./RemoveSpeed";
+import UpdateSpeed from "./UpdateSpeed";
 
-export { CreateSpeed, RemoveSpeed, UpdateSpeed, DuplicateSpeed };
+export { CreateSpeed, DuplicateSpeed, RemoveSpeed, UpdateSpeed };

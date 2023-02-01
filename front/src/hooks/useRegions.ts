@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
 import { Region, Regions } from "@blueprintjs/table";
+import { useEffect, useState } from "react";
 
 type Action = (rowIndex: number) => void;
 

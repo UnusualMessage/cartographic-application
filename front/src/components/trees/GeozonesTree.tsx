@@ -1,17 +1,16 @@
 import { Divider, TreeNodeInfo } from "@blueprintjs/core";
-import { observer } from "mobx-react-lite";
+import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
+import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./tree.module.scss";
-
-import { Node } from "../../types/nodes";
 import { geozoneNodes } from "../../assets/templates/nodes";
-import EntitiesTree from "../common/EntitiesTree";
 import { GeozonesStore } from "../../stores/entities";
 import { Geozone } from "../../types/entities";
+import { Node } from "../../types/nodes";
 import { getGeozonesTreeClickHandler } from "../../utils/nodes";
-import { ContextMenu2 } from "@blueprintjs/popover2";
+import EntitiesTree from "../common/EntitiesTree";
 import { GeozoneMenu } from "../menus";
+import { wrapper } from "./tree.module.scss";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);

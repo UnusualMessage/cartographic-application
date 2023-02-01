@@ -1,6 +1,6 @@
 import CreatePost from "./CreatePost";
-import UpdatePost from "./UpdatePost";
-import RemovePost from "./RemovePost";
 import DuplicatePost from "./DuplicatePost";
+import RemovePost from "./RemovePost";
+import UpdatePost from "./UpdatePost";
 
-export { CreatePost, RemovePost, UpdatePost, DuplicatePost };
+export { CreatePost, DuplicatePost, RemovePost, UpdatePost };

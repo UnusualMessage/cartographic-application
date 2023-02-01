@@ -1,5 +1,5 @@
-import { Modify } from "ol/interaction";
 import { Feature } from "ol";
+import { Modify } from "ol/interaction";
 import { ModifyEvent } from "ol/interaction/Modify";
 
 import ListenersInjector, {

@@ -1,10 +1,10 @@
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Icon } from "@blueprintjs/core";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
-import DialogForm from "../DialogForm";
-import { formRenderer } from "../../../../utils/forms";
 import { ApiStore } from "../../../../types/api";
 import { Form } from "../../../../types/forms";
+import { formRenderer } from "../../../../utils/forms";
+import DialogForm from "../DialogForm";
 
 interface Props<T, CreateT> {
   name: string;

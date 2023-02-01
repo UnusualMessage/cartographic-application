@@ -1,10 +1,5 @@
-import SelectInjector from "./SelectInjector";
 import DragBoxInjector from "./DragBoxInjector";
 import DrawInjector from "./DrawInjector";
-import ModifyInjector from "./ModifyInjector";
-import TranslateInjector from "./TranslateInjector";
-import MapInjector from "./MapInjector";
-
 import ListenersInjector, {
   CommonEvent,
   DragBoxEvent,
@@ -13,22 +8,26 @@ import ListenersInjector, {
   SelectEvent,
   TranslateEvent,
 } from "./ListenersInjector";
+import MapInjector from "./MapInjector";
+import ModifyInjector from "./ModifyInjector";
+import SelectInjector from "./SelectInjector";
+import TranslateInjector from "./TranslateInjector";
 
 export {
-  SelectInjector,
   DragBoxInjector,
   DrawInjector,
-  ModifyInjector,
-  TranslateInjector,
   MapInjector,
+  ModifyInjector,
+  SelectInjector,
+  TranslateInjector,
 };
 
 export type {
-  DragBoxEvent,
-  SelectEvent,
   CommonEvent,
+  DragBoxEvent,
   DrawEvent,
-  ModifyEvent,
-  TranslateEvent,
   ListenersInjector,
+  ModifyEvent,
+  SelectEvent,
+  TranslateEvent,
 };

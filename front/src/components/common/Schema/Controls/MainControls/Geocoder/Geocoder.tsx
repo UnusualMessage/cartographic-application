@@ -1,8 +1,8 @@
-import { ItemRenderer, Suggest2 } from "@blueprintjs/select";
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
-import { fromLonLat } from "ol/proj";
-import { Point } from "@turf/turf";
 import { MenuItem } from "@blueprintjs/core";
+import { ItemRenderer, Suggest2 } from "@blueprintjs/select";
+import { Point } from "@turf/turf";
+import { fromLonLat } from "ol/proj";
+import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 
 import { GeocoderService } from "../../../../../../services/api";
 import { ViewStore } from "../../../../../../stores/map";

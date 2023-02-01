@@ -1,9 +1,10 @@
-import { useState } from "react";
 import { Icon } from "@blueprintjs/core";
+import { useState } from "react";
+
 import { useFetch } from "../../../../hooks";
-import DialogForm from "../DialogForm";
 import { ApiStore } from "../../../../types/api";
 import { fromUuidToNumber } from "../../../../utils/format";
+import DialogForm from "../DialogForm";
 
 interface Item {
   id: string;
@@ -42,7 +43,9 @@ const Remove = <T extends Item>({ id, name, store }: Props<T>) => {
       successful={successful}
       setSuccessful={setSuccessful}
     >
-      {`Подтвердите удаление записи с номером ${fromUuidToNumber(item?.id ?? "???")}`}
+      {`Подтвердите удаление записи с номером ${fromUuidToNumber(
+        item?.id ?? "???"
+      )}`}
     </DialogForm>
   );
 };

@@ -1,11 +1,10 @@
 import { Tab, Tabs } from "@blueprintjs/core";
-import { useMemo } from "react";
 import { observer } from "mobx-react-lite";
-
-import { panel, wrapper } from "./categories.module.scss";
+import { useMemo } from "react";
 
 import { siderTabs } from "../../../../assets/templates/tabs";
 import { TabsStore } from "../../../../stores/ui";
+import { panel, wrapper } from "./categories.module.scss";
 
 const Categories = () => {
   const tabId = TabsStore.siderTabId;

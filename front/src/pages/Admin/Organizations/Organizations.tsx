@@ -1,9 +1,8 @@
 import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./organizations.module.scss";
-
-import Organization from "./Organization";
 import { OrganizationsStore } from "../../../stores/entities";
+import Organization from "./Organization";
+import { wrapper } from "./organizations.module.scss";
 
 const Organizations = () => {
   const organizations = OrganizationsStore.organizations;

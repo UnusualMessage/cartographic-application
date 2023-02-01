@@ -1,5 +1,5 @@
-import Organization from "./Organization";
 import Department from "./Department";
+import Organization from "./Organization";
 
 export default interface Trailer {
   id: string;

@@ -1,6 +1,6 @@
 import Create from "./Create";
-import Remove from "./Remove";
 import Duplicate from "./Duplicate";
+import Remove from "./Remove";
 import Update from "./Update";
 
-export { Create, Remove, Duplicate, Update };
+export { Create, Duplicate, Remove, Update };

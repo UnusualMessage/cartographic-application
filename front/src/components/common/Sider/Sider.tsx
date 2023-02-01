@@ -1,10 +1,9 @@
 import React, { PropsWithChildren } from "react";
 
-import { content, wrapper } from "./sider.module.scss";
-
 import { useResizing } from "../../../hooks";
 import { ResizeType } from "../../../types/common";
 import Resize from "../../auxiliary/Resize";
+import { content, wrapper } from "./sider.module.scss";
 
 const Sider = ({ children }: PropsWithChildren) => {
   const type = ResizeType.width;

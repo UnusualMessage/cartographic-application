@@ -1,5 +1,5 @@
-import { Form, SelectOption } from "../../../types/forms";
 import { CreateTrailer, UpdateTrailer } from "../../../types/entities/Trailer";
+import { Form, SelectOption } from "../../../types/forms";
 
 export const createTrailer = (
   organizations: SelectOption[],

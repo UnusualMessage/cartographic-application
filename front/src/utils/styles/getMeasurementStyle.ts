@@ -1,10 +1,11 @@
-import { Geometry, LineString, Point, Polygon } from "ol/geom";
-import { formatArea, formatLength } from "../format";
 import { FeatureLike } from "ol/Feature";
-import Style, { StyleFunction } from "ol/style/Style";
+import { Geometry, LineString, Point, Polygon } from "ol/geom";
 import { Fill, Stroke, Text } from "ol/style";
 import CircleStyle from "ol/style/Circle";
+import Style, { StyleFunction } from "ol/style/Style";
+
 import MeasurementStore from "../../stores/map/MeasurementStore";
+import { formatArea, formatLength } from "../format";
 
 const style = new Style({
   fill: new Fill({

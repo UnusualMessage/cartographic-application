@@ -1,14 +1,14 @@
 import { makeAutoObservable } from "mobx";
-import VectorLayer from "ol/layer/Vector";
-import VectorSource from "ol/source/Vector";
-import { FeatureLike } from "ol/Feature";
 import { Feature } from "ol";
-import { BingMaps, OSM, XYZ } from "ol/source";
+import { FeatureLike } from "ol/Feature";
 import { default as OLTileLayer } from "ol/layer/Tile";
-
-import { BaseLayerType } from "../../types/common";
-import { baseLayers } from "../../assets/config/layers";
+import VectorLayer from "ol/layer/Vector";
+import { BingMaps, OSM, XYZ } from "ol/source";
+import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
+
+import { baseLayers } from "../../assets/config/layers";
+import { BaseLayerType } from "../../types/common";
 
 class LayersStore {
   private _vectorLayers: VectorLayer<VectorSource>[];

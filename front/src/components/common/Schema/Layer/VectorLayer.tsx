@@ -1,3 +1,9 @@
+import { Feature as IFeature, Polygon as IPolygon } from "@turf/turf";
+import { Feature } from "ol";
+import { GeoJSON } from "ol/format";
+import { Polygon } from "ol/geom";
+import VectorSource from "ol/source/Vector";
+import { StyleLike } from "ol/style/Style";
 import {
   createContext,
   memo,
@@ -5,14 +11,8 @@ import {
   useEffect,
   useMemo,
 } from "react";
-import VectorSource from "ol/source/Vector";
-import { GeoJSON } from "ol/format";
-import { StyleLike } from "ol/style/Style";
-import { Feature as IFeature, Polygon as IPolygon } from "@turf/turf";
-import { Feature } from "ol";
 
 import { LayersService } from "../../../../services/map";
-import { Polygon } from "ol/geom";
 
 export const SourceContext = createContext<VectorSource | undefined>(undefined);
 

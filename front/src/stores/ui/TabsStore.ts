@@ -1,5 +1,5 @@
-import { makeAutoObservable } from "mobx";
 import { TabId } from "@blueprintjs/core";
+import { makeAutoObservable } from "mobx";
 
 class TabsStore {
   private _footerTabActive: boolean;

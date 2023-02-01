@@ -1,5 +1,5 @@
-import { getArea } from "ol/sphere";
 import { Geometry } from "ol/geom";
+import { getArea } from "ol/sphere";
 
 export const formatArea = (polygon: Geometry) => {
   const area = getArea(polygon);

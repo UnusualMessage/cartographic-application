@@ -1,12 +1,11 @@
 import { Tab, TabId, Tabs } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { panel, wrapper } from "./information.module.scss";
-
-import { TabsStore } from "../../../stores/ui";
 import { footerTabs } from "../../../assets/templates/tabs";
-import { Tab as TabType } from "../../../types/tabs/Tab";
 import TabPage from "../../../components/auxiliary/TabPage";
+import { TabsStore } from "../../../stores/ui";
+import { Tab as TabType } from "../../../types/tabs/Tab";
+import { panel, wrapper } from "./information.module.scss";
 
 const tabsRenderer = (tab: TabType) => {
   return (

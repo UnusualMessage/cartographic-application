@@ -2,10 +2,9 @@ import { Button, ButtonGroup } from "@blueprintjs/core";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
-import { active, wrapper } from "./zoom.module.scss";
-
 import { ViewStore } from "../../../../../../stores/map";
 import { ControlsStore } from "../../../../../../stores/ui";
+import { active, wrapper } from "./zoom.module.scss";
 
 const Zoom = () => {
   const zoomIn = () => {
