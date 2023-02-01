@@ -6,7 +6,7 @@ import { employeeNodes } from "../../shared/assets/templates/nodes";
 import { EmployeesStore } from "../../stores/entities";
 import { Employee } from "../../types/entities";
 import { Node } from "../../types/nodes";
-import EntitiesTree from "../common/EntitiesTree";
+import EntitiesTree from "../../components/common/EntitiesTree";
 import { wrapper } from "./tree.module.scss";
 
 const fillNodes = (employees?: Employee[]) => {

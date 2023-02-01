@@ -3,7 +3,7 @@ import {
   EquipmentTree,
   GeozonesTree,
   PlansTree,
-} from "../../../../components/trees";
+} from "../../../../features/trees";
 import { TabsList } from "../../../../types/tabs";
 
 export const siderTabs: TabsList = {
