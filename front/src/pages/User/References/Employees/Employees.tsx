@@ -8,7 +8,7 @@ import {
   DuplicateEmployee,
   RemoveEmployee,
   UpdateEmployee,
-} from "../../../../components/forms/employee";
+} from "../../../../features/forms/employee";
 import { useRegions } from "../../../../shared/hooks";
 import { EmployeesStore } from "../../../../stores/entities";
 import { Employee } from "../../../../types/entities";

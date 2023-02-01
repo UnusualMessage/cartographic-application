@@ -3,10 +3,10 @@ import { useEffect } from "react";
 
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import { Table } from "../../../../components/common/Table";
-import CreateTrailer from "../../../../components/forms/trailer/CreateTrailer";
-import DuplicateTrailer from "../../../../components/forms/trailer/DuplicateTrailer";
-import RemoveTrailer from "../../../../components/forms/trailer/RemoveTrailer";
-import UpdateTrailer from "../../../../components/forms/trailer/UpdateTrailer";
+import CreateTrailer from "../../../../features/forms/trailer/CreateTrailer";
+import DuplicateTrailer from "../../../../features/forms/trailer/DuplicateTrailer";
+import RemoveTrailer from "../../../../features/forms/trailer/RemoveTrailer";
+import UpdateTrailer from "../../../../features/forms/trailer/UpdateTrailer";
 import { useRegions } from "../../../../shared/hooks";
 import { TrailersStore } from "../../../../stores/entities";
 import { Trailer } from "../../../../types/entities";

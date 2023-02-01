@@ -8,7 +8,7 @@ import {
   DuplicateSpeed,
   RemoveSpeed,
   UpdateSpeed,
-} from "../../../../components/forms/speed";
+} from "../../../../features/forms/speed";
 import { useRegions } from "../../../../shared/hooks";
 import SpeedsStore from "../../../../stores/entities/SpeedsStore";
 import { Speed } from "../../../../types/entities";

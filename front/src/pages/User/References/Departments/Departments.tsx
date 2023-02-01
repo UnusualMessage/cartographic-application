@@ -8,7 +8,7 @@ import {
   DuplicateDepartment,
   RemoveDepartment,
   UpdateDepartment,
-} from "../../../../components/forms/department";
+} from "../../../../features/forms/department";
 import { useRegions } from "../../../../shared/hooks";
 import { EmployeesStore } from "../../../../stores/entities";
 import DepartmentsStore from "../../../../stores/entities/DepartmentsStore";
