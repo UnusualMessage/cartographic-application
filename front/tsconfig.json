@@ -13,11 +13,11 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "isolatedModules": true,
-
+    "baseUrl": "./src",
     "lib": ["dom", "dom.iterable"],
 
     "skipLibCheck": true,
-    "noEmit": false,
+    "noEmit": false
   },
 
   "include": ["src", "declarations.d.ts"]

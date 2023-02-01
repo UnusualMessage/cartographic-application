@@ -15,7 +15,7 @@ import "@blueprintjs/select/lib/css/blueprint-select.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import "@blueprintjs/table/lib/css/table.css";
 
-import Layout from "../components/common/Layout";
+import Layout from "../widgets/Layout";
 import { references } from "../assets/data/references";
 import Authorization from "../pages/Admin/Authorization";
 import { EmptyPage, Loader } from "../components/auxiliary/placeholders";
