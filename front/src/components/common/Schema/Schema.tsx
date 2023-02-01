@@ -9,7 +9,7 @@ import View from "./View";
 import { TileLayer, VectorLayer } from "./Layer";
 import MapWrapper from "./Map";
 import { Controls } from "./Controls";
-import { auxLayerId, geozonesLayerId } from "../../../assets/map/config";
+import { auxLayerId, geozonesLayerId } from "../../../assets/config/map";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
 import { getMeasurementStyle } from "../../../utils/styles/getMeasurementStyle";

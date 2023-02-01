@@ -6,7 +6,7 @@ import { wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../common/EntitiesTree";
 import { Node } from "../../types/nodes";
-import { planNodes } from "../../assets/nodes";
+import { planNodes } from "../../assets/templates/nodes";
 import { Plan } from "../../types/entities";
 import { PlansStore } from "../../stores/entities";
 import { getPlansTreeClickHandler } from "../../utils/nodes";

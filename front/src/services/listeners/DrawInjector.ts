@@ -17,7 +17,7 @@ import ListenersInjector, {
 import { InteractionsStore } from "../../stores/map";
 import { Change, ChangeSet, Undo } from "../../types/map";
 import { LayersService } from "../map";
-import { geozonesLayerId } from "../../assets/map/config";
+import { geozonesLayerId } from "../../assets/config/map";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
 import { getGeozoneStyle } from "../../utils/styles/getGeozoneStyle";
 

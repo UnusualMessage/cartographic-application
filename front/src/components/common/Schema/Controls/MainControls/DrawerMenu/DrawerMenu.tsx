@@ -12,7 +12,7 @@ import { observer } from "mobx-react-lite";
 import { ControlsStore } from "../../../../../../stores/ui";
 import { InteractionType } from "../../../../../../types/map";
 import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
-import { auxLayerId } from "../../../../../../assets/map/config";
+import { auxLayerId } from "../../../../../../assets/config/map";
 import { about } from "../../../../../../assets/data/about";
 import { ControlType } from "../../../../../../stores/ui/ControlsStore";
 

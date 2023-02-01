@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
-import { Node } from "../../types/nodes";
-import { organizations } from "../data";
+import { Node } from "../../../types/nodes";
+import { organizations } from "../../data";
 
 export const employeeNodes: Node[] = [
   {
