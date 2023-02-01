@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { departments } from "../../assets/data";
+import { departments } from "../../shared/assets/samples";
 import { ApiStore } from "../../types/api";
 import { Department } from "../../types/entities";
 import {

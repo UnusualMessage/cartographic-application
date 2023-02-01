@@ -3,11 +3,11 @@ import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { geozoneNodes } from "../../assets/templates/nodes";
+import { geozoneNodes } from "../../shared/assets/templates/nodes";
+import { getGeozonesTreeClickHandler } from "../../shared/lib/utils/nodes";
 import { GeozonesStore } from "../../stores/entities";
 import { Geozone } from "../../types/entities";
 import { Node } from "../../types/nodes";
-import { getGeozonesTreeClickHandler } from "../../utils/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { GeozoneMenu } from "../menus";
 import { wrapper } from "./tree.module.scss";

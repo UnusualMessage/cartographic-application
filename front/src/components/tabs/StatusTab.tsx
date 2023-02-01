@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { types } from "../../assets/data";
+import { types } from "../../shared/assets/samples";
 import { EquipmentStore } from "../../stores/entities";
 import { StatusByTypeChart, StatusChart } from "../charts";
 

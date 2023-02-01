@@ -22,8 +22,8 @@ import {
   TranslateEvent,
   TranslateInjector,
 } from "../../services/listeners";
+import { getMeasurementStyle } from "../../shared/lib/utils/map/getMeasurementStyle";
 import { InteractionType } from "../../types/map";
-import { getMeasurementStyle } from "../../utils/styles/getMeasurementStyle";
 
 interface Interactions {
   select: Select | null;

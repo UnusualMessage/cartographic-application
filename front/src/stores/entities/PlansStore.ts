@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-import { plans } from "../../assets/data";
+import { plans } from "../../shared/assets/samples";
 import { Plan } from "../../types/entities";
 
 class PlansStore {

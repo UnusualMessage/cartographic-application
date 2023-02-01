@@ -3,9 +3,13 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { updateTrailer } from "../../../assets/templates/forms";
 import DialogForm from "../../../components/auxiliary/forms/DialogForm";
-import { useFetch } from "../../../shared/hooks";
+import { updateTrailer } from "../../../shared/assets/templates/forms";
+import { useFetch } from "../../../shared/lib/hooks";
+import {
+  formRenderer,
+  getSelectOptions,
+} from "../../../shared/lib/utils/forms";
 import {
   DepartmentsStore,
   OrganizationsStore,
@@ -13,7 +17,6 @@ import {
 } from "../../../stores/entities";
 import { Trailer } from "../../../types/entities";
 import { UpdateTrailer } from "../../../types/entities/Trailer";
-import { formRenderer, getSelectOptions } from "../../../utils/forms";
 
 interface Props {
   id?: string;

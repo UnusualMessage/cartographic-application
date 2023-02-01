@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { trailers } from "../../assets/data";
+import { trailers } from "../../shared/assets/samples";
 import { ApiStore } from "../../types/api";
 import { Trailer } from "../../types/entities";
 import { CreateTrailer, UpdateTrailer } from "../../types/entities/Trailer";

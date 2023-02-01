@@ -2,7 +2,7 @@ import { Divider } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { employeeNodes } from "../../assets/templates/nodes";
+import { employeeNodes } from "../../shared/assets/templates/nodes";
 import { EmployeesStore } from "../../stores/entities";
 import { Employee } from "../../types/entities";
 import { Node } from "../../types/nodes";

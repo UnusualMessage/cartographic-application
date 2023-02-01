@@ -3,10 +3,10 @@ import { observer } from "mobx-react-lite";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { authenticateUser } from "../../../assets/templates/forms";
+import { authenticateUser } from "../../../shared/assets/templates/forms";
+import { formRenderer } from "../../../shared/lib/utils/forms";
 import { AuthStore } from "../../../stores/entities";
 import { AuthenticateUser } from "../../../types/entities/User";
-import { formRenderer } from "../../../utils/forms";
 import { content, wrapper } from "./authorization.module.scss";
 
 const Authorization = () => {

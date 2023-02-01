@@ -2,7 +2,7 @@ import { Tab, Tabs } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
 
-import { siderTabs } from "../../../../assets/templates/tabs";
+import { siderTabs } from "../../../../shared/assets/templates/tabs";
 import { TabsStore } from "../../../../stores/ui";
 import { panel, wrapper } from "./categories.module.scss";
 

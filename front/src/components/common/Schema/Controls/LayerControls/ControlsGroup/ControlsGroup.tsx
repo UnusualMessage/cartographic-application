@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { FormEventHandler } from "react";
 
-import { baseLayers } from "../../../../../../assets/config/layers";
+import { baseLayers } from "../../../../../../shared/assets/samples/layers";
 import { LayersStore } from "../../../../../../stores/map";
 import { ControlsStore } from "../../../../../../stores/ui";
 import { BaseLayerType } from "../../../../../../types/common";

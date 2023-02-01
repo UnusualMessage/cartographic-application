@@ -7,7 +7,7 @@ import { BingMaps, OSM, XYZ } from "ol/source";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
-import { baseLayers } from "../../assets/config/layers";
+import { baseLayers } from "../../shared/assets/samples/layers";
 import { BaseLayerType } from "../../types/common";
 
 class LayersStore {

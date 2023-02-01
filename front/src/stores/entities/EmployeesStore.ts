@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { employees } from "../../assets/data";
+import { employees } from "../../shared/assets/samples";
 import { ApiStore } from "../../types/api";
 import { Employee } from "../../types/entities";
 import { CreateEmployee, UpdateEmployee } from "../../types/entities/Employee";

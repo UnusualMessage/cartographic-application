@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { Coordinate } from "ol/coordinate";
 import { FeatureLike } from "ol/Feature";
 
-import { geozones } from "../../assets/data";
+import { geozones } from "../../shared/assets/samples";
 import { Geozone } from "../../types/entities";
 import { ChangeSet } from "../../types/map";
 

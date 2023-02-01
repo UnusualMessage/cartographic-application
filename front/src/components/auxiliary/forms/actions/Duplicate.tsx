@@ -1,9 +1,9 @@
 import { Icon } from "@blueprintjs/core";
 import { useState } from "react";
 
-import { useFetch } from "../../../../shared/hooks";
+import { useFetch } from "../../../../shared/lib/hooks";
+import { fromUuidToNumber } from "../../../../shared/lib/utils/format";
 import { ApiStore } from "../../../../types/api";
-import { fromUuidToNumber } from "../../../../utils/format";
 import DialogForm from "../DialogForm";
 
 interface Item {

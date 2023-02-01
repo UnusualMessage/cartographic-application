@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
 import { AuthService, ResponseService } from "../../services/api";
+import { isError } from "../../shared/lib/utils/responses";
 import { AuthenticateUser } from "../../types/entities/User";
-import { isError } from "../../utils/api/responses";
 
 class AuthStore {
   private _isLogin: boolean;

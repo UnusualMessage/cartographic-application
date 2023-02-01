@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { partners } from "../../assets/data";
+import { partners } from "../../shared/assets/samples";
 import { ApiStore } from "../../types/api";
 import Partner, {
   CreatePartner,
