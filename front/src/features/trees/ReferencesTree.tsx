@@ -4,8 +4,8 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 
-import { referenceNodes } from "../../shared/assets/templates/nodes";
-import EntitiesTree from "../../components/common/EntitiesTree";
+import EntitiesTree from "../../features/common/EntitiesTree";
+import { referenceNodes } from "../../shared/assets";
 import { fullHeight, wrapper } from "./tree.module.scss";
 
 const fillNodes = () => {
