@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { updatePartner } from "../../../assets/templates/forms";
-import { useFetch } from "../../../hooks";
+import { useFetch } from "../../../shared/hooks";
 import { OrganizationsStore } from "../../../stores/entities";
 import PartnersStore from "../../../stores/entities/PartnersStore";
 import { Partner } from "../../../types/entities";

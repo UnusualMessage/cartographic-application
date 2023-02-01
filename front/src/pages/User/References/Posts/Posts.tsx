@@ -9,7 +9,7 @@ import {
   RemovePost,
   UpdatePost,
 } from "../../../../components/forms/post";
-import { useRegions } from "../../../../hooks";
+import { useRegions } from "../../../../shared/hooks";
 import { PostsStore } from "../../../../stores/entities";
 import { Post } from "../../../../types/entities";
 import { getPostColumns } from "../../../../utils/tables";

@@ -9,8 +9,8 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { auxLayerId } from "../../../../../../assets/config/map";
 import { about } from "../../../../../../assets/data/about";
+import { auxLayerId } from "../../../../../../shared/constants/map";
 import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
 import { ControlsStore } from "../../../../../../stores/ui";
 import { ControlType } from "../../../../../../stores/ui/ControlsStore";

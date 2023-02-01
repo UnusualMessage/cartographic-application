@@ -7,7 +7,7 @@ import CreateTrailer from "../../../../components/forms/trailer/CreateTrailer";
 import DuplicateTrailer from "../../../../components/forms/trailer/DuplicateTrailer";
 import RemoveTrailer from "../../../../components/forms/trailer/RemoveTrailer";
 import UpdateTrailer from "../../../../components/forms/trailer/UpdateTrailer";
-import { useRegions } from "../../../../hooks";
+import { useRegions } from "../../../../shared/hooks";
 import { TrailersStore } from "../../../../stores/entities";
 import { Trailer } from "../../../../types/entities";
 import { getTrailerColumns } from "../../../../utils/tables";

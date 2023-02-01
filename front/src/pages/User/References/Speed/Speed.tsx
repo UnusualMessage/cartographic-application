@@ -9,7 +9,7 @@ import {
   RemoveSpeed,
   UpdateSpeed,
 } from "../../../../components/forms/speed";
-import { useRegions } from "../../../../hooks";
+import { useRegions } from "../../../../shared/hooks";
 import SpeedsStore from "../../../../stores/entities/SpeedsStore";
 import { Speed } from "../../../../types/entities";
 import { getSpeedColumns } from "../../../../utils/tables";

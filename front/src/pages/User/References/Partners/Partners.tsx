@@ -9,7 +9,7 @@ import {
   RemovePartner,
   UpdatePartner,
 } from "../../../../components/forms/partner";
-import { useRegions } from "../../../../hooks";
+import { useRegions } from "../../../../shared/hooks";
 import PartnersStore from "../../../../stores/entities/PartnersStore";
 import { Partner } from "../../../../types/entities";
 import { getPartnerColumns } from "../../../../utils/tables";

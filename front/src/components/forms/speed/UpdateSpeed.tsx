@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { updateSpeed } from "../../../assets/templates/forms";
-import { useFetch } from "../../../hooks";
+import { useFetch } from "../../../shared/hooks";
 import { OrganizationsStore } from "../../../stores/entities";
 import SpeedsStore from "../../../stores/entities/SpeedsStore";
 import { Speed } from "../../../types/entities";

@@ -9,7 +9,7 @@ import {
   RemoveDepartment,
   UpdateDepartment,
 } from "../../../../components/forms/department";
-import { useRegions } from "../../../../hooks";
+import { useRegions } from "../../../../shared/hooks";
 import { EmployeesStore } from "../../../../stores/entities";
 import DepartmentsStore from "../../../../stores/entities/DepartmentsStore";
 import { Department } from "../../../../types/entities";

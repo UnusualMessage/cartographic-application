@@ -7,7 +7,7 @@ import {
   useForm,
 } from "react-hook-form";
 
-import { useFetch } from "../../../../hooks";
+import { useFetch } from "../../../../shared/hooks";
 import { ApiStore } from "../../../../types/api";
 import { Form } from "../../../../types/forms";
 import { formRenderer } from "../../../../utils/forms";
