@@ -11,8 +11,8 @@ import {
 } from "../../../../features/forms/speed";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getSpeedColumns } from "../../../../shared/lib/utils/tables";
-import SpeedsStore from "../../../../entities/stores/entities/SpeedsStore";
-import { Speed } from "../../../../shared/api/types/entities";
+import SpeedsStore from "../../../../stores/entities/SpeedsStore";
+import { Speed } from "../../../../types/entities";
 
 const Speed = () => {
   const speed = SpeedsStore.speed;

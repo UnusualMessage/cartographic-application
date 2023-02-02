@@ -3,7 +3,7 @@ import { ChangeEvent, forwardRef } from "react";
 import { FieldError } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
-import { SelectOption } from "../../api/types/forms";
+import { SelectOption } from "../../../types/forms";
 
 interface Props {
   options: SelectOption[];

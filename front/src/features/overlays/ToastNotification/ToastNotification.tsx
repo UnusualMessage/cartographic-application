@@ -1,7 +1,7 @@
 import { Position, Toaster } from "@blueprintjs/core";
 import React, { useLayoutEffect, useRef } from "react";
 
-import { NotificationsService } from "../../../entities/services/ui";
+import { NotificationsService } from "../../../services/ui";
 
 const ToastNotification = () => {
   const ref = useRef<Toaster>(null);

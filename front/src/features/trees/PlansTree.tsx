@@ -4,9 +4,9 @@ import { observer } from "mobx-react-lite";
 
 import { planNodes } from "../../shared/assets/templates/nodes";
 import { getPlansTreeClickHandler } from "../../shared/lib/utils/nodes";
-import { PlansStore } from "../../entities/stores/entities";
-import { Plan } from "../../shared/api/types/entities";
-import { Node } from "../../shared/api/types/nodes";
+import { PlansStore } from "../../stores/entities";
+import { Plan } from "../../types/entities";
+import { Node } from "../../types/nodes";
 import EntitiesTree from "../../components/common/EntitiesTree";
 import { wrapper } from "./tree.module.scss";
 

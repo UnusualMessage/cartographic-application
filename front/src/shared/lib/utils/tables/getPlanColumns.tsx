@@ -2,7 +2,7 @@ import { Cell } from "@blueprintjs/table";
 
 import { ColumnProps } from "../../../../features/common/Table";
 import { cell } from "../../../../features/common/Table/table.module.scss";
-import { Plan } from "../../../api/types/entities";
+import { Plan } from "../../../../types/entities";
 import Progress from "../../../ui/Progress";
 import getNumberCell from "./getNumberCell";
 

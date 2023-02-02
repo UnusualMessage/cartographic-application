@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import PartnersStore from "../../../entities/stores/entities/PartnersStore";
+import PartnersStore from "../../../stores/entities/PartnersStore";
 import { Duplicate } from "../../auxiliary/forms/actions";
 
 interface Props {

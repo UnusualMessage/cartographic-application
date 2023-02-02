@@ -1,5 +1,5 @@
-import { CreateSpeed, UpdateSpeed } from "../../../api/types/entities/Speed";
-import { Form, SelectOption } from "../../../api/types/forms";
+import { CreateSpeed, UpdateSpeed } from "../../../../types/entities/Speed";
+import { Form, SelectOption } from "../../../../types/forms";
 
 export const createSpeed = (
   organizations: SelectOption[]

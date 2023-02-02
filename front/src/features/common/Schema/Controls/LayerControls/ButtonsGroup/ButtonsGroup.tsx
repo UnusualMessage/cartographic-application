@@ -8,9 +8,9 @@ import {
   InteractionsStore,
   LayersStore,
   MapStore,
-} from "../../../../../../entities/stores/map";
-import { ControlsStore } from "../../../../../../entities/stores/ui";
-import { InteractionType } from "../../../../../../shared/api/types/map";
+} from "../../../../../../stores/map";
+import { ControlsStore } from "../../../../../../stores/ui";
+import { InteractionType } from "../../../../../../types/map";
 import { active, wrapper } from "./buttons.module.scss";
 
 const ButtonsGroup = () => {

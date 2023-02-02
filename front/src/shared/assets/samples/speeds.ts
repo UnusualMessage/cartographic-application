@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Speed } from "../../api/types/entities";
+import { Speed } from "../../../types/entities";
 import { organizations } from "./organizations";
 
 export const speeds: Speed[] = [

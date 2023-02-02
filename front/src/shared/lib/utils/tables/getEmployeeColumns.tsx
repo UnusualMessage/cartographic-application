@@ -2,7 +2,7 @@ import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 
 import { ColumnProps } from "../../../../features/common/Table";
 import { cell } from "../../../../features/common/Table/table.module.scss";
-import { Employee } from "../../../api/types/entities";
+import { Employee } from "../../../../types/entities";
 import getNumberCell from "./getNumberCell";
 
 export const getEmployeeColumns = (employees: Employee[]): ColumnProps[] => [

@@ -11,8 +11,8 @@ import {
 } from "../../../../features/forms/employee";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getEmployeeColumns } from "../../../../shared/lib/utils/tables";
-import { EmployeesStore } from "../../../../entities/stores/entities";
-import { Employee } from "../../../../shared/api/types/entities";
+import { EmployeesStore } from "../../../../stores/entities";
+import { Employee } from "../../../../types/entities";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;

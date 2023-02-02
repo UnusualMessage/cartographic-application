@@ -3,8 +3,8 @@ import { observer } from "mobx-react-lite";
 
 import TabPage from "../../../features/auxiliary/TabPage";
 import { footerTabs } from "../../../shared/assets";
-import { TabsStore } from "../../../entities/stores/ui";
-import { Tab as TabType } from "../../../shared/api/types/tabs/Tab";
+import { TabsStore } from "../../../stores/ui";
+import { Tab as TabType } from "../../../types/tabs/Tab";
 import { panel, wrapper } from "./information.module.scss";
 
 const tabsRenderer = (tab: TabType) => {

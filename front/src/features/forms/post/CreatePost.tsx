@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 
 import { createPost } from "../../../shared/assets/templates/forms";
 import { getSelectOptions } from "../../../shared/lib/utils/forms";
-import { OrganizationsStore, PostsStore } from "../../../entities/stores/entities";
+import { OrganizationsStore, PostsStore } from "../../../stores/entities";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreatePost = () => {

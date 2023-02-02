@@ -12,7 +12,7 @@ import {
   useMemo,
 } from "react";
 
-import { LayersService } from "../../../../entities/services/map";
+import { LayersService } from "../../../../services/map";
 
 export const SourceContext = createContext<VectorSource | undefined>(undefined);
 

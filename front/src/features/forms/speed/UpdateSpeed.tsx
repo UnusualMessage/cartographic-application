@@ -9,10 +9,10 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../shared/lib/utils/forms";
-import { OrganizationsStore } from "../../../entities/stores/entities";
-import SpeedsStore from "../../../entities/stores/entities/SpeedsStore";
-import { Speed } from "../../../shared/api/types/entities";
-import { UpdateSpeed } from "../../../shared/api/types/entities/Speed";
+import { OrganizationsStore } from "../../../stores/entities";
+import SpeedsStore from "../../../stores/entities/SpeedsStore";
+import { Speed } from "../../../types/entities";
+import { UpdateSpeed } from "../../../types/entities/Speed";
 import DialogForm from "../../auxiliary/forms/DialogForm";
 
 interface Props {

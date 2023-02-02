@@ -5,8 +5,8 @@ import { useContext } from "react";
 
 import { useInteraction } from "../../../../shared/lib/hooks";
 import { AddEventListener } from "../../../../shared/lib/hooks/useInteraction";
-import { InteractionsStore, MapStore } from "../../../../entities/stores/map";
-import { InteractionType } from "../../../../shared/api/types/map";
+import { InteractionsStore, MapStore } from "../../../../stores/map";
+import { InteractionType } from "../../../../types/map";
 import { SourceContext } from "../Layer/VectorLayer";
 import Interactions from "./Interactions";
 

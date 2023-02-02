@@ -3,9 +3,9 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
-import { Callback } from "../../../../entities/services/listeners/ListenersInjector";
-import { FeaturesService } from "../../../../entities/services/map";
-import { MapStore, OverlaysStore } from "../../../../entities/stores/map";
+import { Callback } from "../../../../services/listeners/ListenersInjector";
+import { FeaturesService } from "../../../../services/map";
+import { MapStore, OverlaysStore } from "../../../../stores/map";
 import { hidden, wrapper } from "./menu.module.scss";
 
 const Menu = () => {

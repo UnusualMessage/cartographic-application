@@ -1,3 +1,3 @@
-import { Geozone } from "../../api/types/entities";
+import { Geozone } from "../../../types/entities";
 
 export const geozones: Geozone[] = [];

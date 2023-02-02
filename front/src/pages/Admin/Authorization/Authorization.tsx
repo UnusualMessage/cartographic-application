@@ -5,8 +5,8 @@ import { useNavigate } from "react-router-dom";
 
 import { authenticateUser } from "../../../shared/assets/templates/forms";
 import { formRenderer } from "../../../shared/lib/utils/forms";
-import { AuthStore } from "../../../entities/stores/entities";
-import { AuthenticateUser } from "../../../shared/api/types/entities/User";
+import { AuthStore } from "../../../stores/entities";
+import { AuthenticateUser } from "../../../types/entities/User";
 import { content, wrapper } from "./authorization.module.scss";
 
 const Authorization = () => {

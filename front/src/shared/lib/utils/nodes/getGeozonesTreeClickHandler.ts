@@ -1,6 +1,6 @@
 import { TreeEventHandler } from "@blueprintjs/core";
 
-import { TabsStore } from "../../../../entities/stores/ui";
+import { TabsStore } from "../../../../stores/ui";
 
 export const getGeozonesTreeClickHandler = (): TreeEventHandler<any> => {
   return (node) => {

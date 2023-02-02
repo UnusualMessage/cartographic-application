@@ -9,9 +9,9 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../shared/lib/utils/forms";
-import { OrganizationsStore, PostsStore } from "../../../entities/stores/entities";
-import { Post } from "../../../shared/api/types/entities";
-import { UpdatePost } from "../../../shared/api/types/entities/Post";
+import { OrganizationsStore, PostsStore } from "../../../stores/entities";
+import { Post } from "../../../types/entities";
+import { UpdatePost } from "../../../types/entities/Post";
 import DialogForm from "../../auxiliary/forms/DialogForm";
 
 interface Props {

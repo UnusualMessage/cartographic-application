@@ -1,6 +1,6 @@
 import { ResponsivePie } from "@nivo/pie";
 
-import { Plan } from "../../shared/api/types/entities";
+import { Plan } from "../../types/entities";
 import { chart, wrapper } from "./chart.module.scss";
 
 interface Props {

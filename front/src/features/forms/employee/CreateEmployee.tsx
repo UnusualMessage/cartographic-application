@@ -6,7 +6,7 @@ import {
   EmployeesStore,
   OrganizationsStore,
   PostsStore,
-} from "../../../entities/stores/entities";
+} from "../../../stores/entities";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreateEmployee = () => {

@@ -1,8 +1,8 @@
 import {
   CreateEmployee,
   UpdateEmployee,
-} from "../../../api/types/entities/Employee";
-import { Form, SelectOption } from "../../../api/types/forms";
+} from "../../../../types/entities/Employee";
+import { Form, SelectOption } from "../../../../types/forms";
 
 export const createEmployee = (
   organizations: SelectOption[],

@@ -6,7 +6,7 @@ import {
   DepartmentsStore,
   OrganizationsStore,
   TrailersStore,
-} from "../../../entities/stores/entities";
+} from "../../../stores/entities";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreateTrailer = () => {
