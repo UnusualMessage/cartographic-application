@@ -1,4 +1,4 @@
-import { EmptyInformation } from "../../../../shared/ui/placeholders";
+import { EmptyInformation } from "../../../../features/auxiliary/placeholders";
 
 const GroupSchedule = () => {
   return <EmptyInformation />;

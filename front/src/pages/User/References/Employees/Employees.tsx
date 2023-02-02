@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { EmployeesStore } from "../../../../entities/stores/entities";
 import TableButtons from "../../../../features/auxiliary/TableButtons";
 import { Table } from "../../../../features/common/Table";
 import {
@@ -10,9 +9,10 @@ import {
   RemoveEmployee,
   UpdateEmployee,
 } from "../../../../features/forms/employee";
-import { Employee } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getEmployeeColumns } from "../../../../shared/lib/utils/tables";
+import { EmployeesStore } from "../../../../entities/stores/entities";
+import { Employee } from "../../../../shared/api/types/entities";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;

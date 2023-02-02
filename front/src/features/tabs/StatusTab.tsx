@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 
-import { EquipmentStore } from "../../entities/stores/entities";
 import { types } from "../../shared/assets/samples";
+import { EquipmentStore } from "../../entities/stores/entities";
 import { StatusByTypeChart, StatusChart } from "../charts";
 
 const StatusTab = () => {

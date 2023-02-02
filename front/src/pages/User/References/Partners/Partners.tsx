@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
 import TableButtons from "../../../../features/auxiliary/TableButtons";
 import { Table } from "../../../../features/common/Table";
 import {
@@ -10,9 +9,10 @@ import {
   RemovePartner,
   UpdatePartner,
 } from "../../../../features/forms/partner";
-import { Partner } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getPartnerColumns } from "../../../../shared/lib/utils/tables";
+import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
+import { Partner } from "../../../../shared/api/types/entities";
 
 const Partners = () => {
   const partner = PartnersStore.partner;

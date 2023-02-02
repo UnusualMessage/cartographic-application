@@ -3,10 +3,10 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
-import { InteractionsStore, MapStore } from "../../../../entities/stores/map";
-import { InteractionType } from "../../../../shared/api/types/map";
 import { useInteraction } from "../../../../shared/lib/hooks";
 import { AddEventListener } from "../../../../shared/lib/hooks/useInteraction";
+import { InteractionsStore, MapStore } from "../../../../entities/stores/map";
+import { InteractionType } from "../../../../shared/api/types/map";
 import { SourceContext } from "../Layer/VectorLayer";
 import Interactions from "./Interactions";
 

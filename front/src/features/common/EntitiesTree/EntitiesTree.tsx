@@ -1,8 +1,8 @@
 import { Tree, TreeEventHandler } from "@blueprintjs/core";
 import { useCallback, useEffect, useState } from "react";
 
-import { Node } from "../../../shared/api/types/nodes";
 import { useTreeActions } from "../../../shared/lib/hooks";
+import { Node } from "../../../shared/api/types/nodes";
 
 interface Props<T> {
   fillNodes: (source?: T[]) => Node[];

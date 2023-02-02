@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { PostsStore } from "../../../../entities/stores/entities";
 import TableButtons from "../../../../features/auxiliary/TableButtons";
 import { Table } from "../../../../features/common/Table";
 import {
@@ -10,9 +9,10 @@ import {
   RemovePost,
   UpdatePost,
 } from "../../../../features/forms/post";
-import { Post } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getPostColumns } from "../../../../shared/lib/utils/tables";
+import { PostsStore } from "../../../../entities/stores/entities";
+import { Post } from "../../../../shared/api/types/entities";
 
 const Posts = () => {
   const post = PostsStore.post;

@@ -3,12 +3,12 @@ import { StyleLike } from "ol/style/Style";
 import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import { GeozonesStore } from "../../../entities/stores/entities";
-import { InteractionsStore } from "../../../entities/stores/map";
-import { ControlsStore } from "../../../entities/stores/ui";
 import { auxLayerId, geozonesLayerId } from "../../../shared/constants/map";
 import { getMeasurementStyle } from "../../../shared/lib/utils/map/getMeasurementStyle";
 import Condition from "../../../shared/ui/Condition";
+import { GeozonesStore } from "../../../entities/stores/entities";
+import { InteractionsStore } from "../../../entities/stores/map";
+import { ControlsStore } from "../../../entities/stores/ui";
 import { Controls } from "./Controls";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import { TileLayer, VectorLayer } from "./Layer";

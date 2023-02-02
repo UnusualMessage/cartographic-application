@@ -9,8 +9,6 @@ import { Type } from "ol/geom/Geometry";
 import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
-import { InteractionType } from "../../../shared/api/types/map";
-import { getMeasurementStyle } from "../../../shared/lib/utils/map/getMeasurementStyle";
 import {
   DragBoxEvent,
   DragBoxInjector,
@@ -24,6 +22,8 @@ import {
   TranslateEvent,
   TranslateInjector,
 } from "../../services/listeners";
+import { getMeasurementStyle } from "../../../shared/lib/utils/map/getMeasurementStyle";
+import { InteractionType } from "../../../shared/api/types/map";
 
 interface Interactions {
   select: Select | null;

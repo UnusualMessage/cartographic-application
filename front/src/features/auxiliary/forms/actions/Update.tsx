@@ -7,11 +7,11 @@ import {
   useForm,
 } from "react-hook-form";
 
-import { ApiStore } from "../../../../shared/api/types/api";
-import { Form } from "../../../../shared/api/types/forms";
 import { useFetch } from "../../../../shared/lib/hooks";
 import { formRenderer } from "../../../../shared/lib/utils/forms";
-import DialogForm from "../../../../shared/ui/DialogForm";
+import { ApiStore } from "../../../../shared/api/types/api";
+import { Form } from "../../../../shared/api/types/forms";
+import DialogForm from "../DialogForm";
 
 interface Item {
   id: string;

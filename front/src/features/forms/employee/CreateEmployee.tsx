@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite";
 
+import { createEmployee } from "../../../shared/assets/templates/forms";
+import { getSelectOptions } from "../../../shared/lib/utils/forms";
 import {
   EmployeesStore,
   OrganizationsStore,
   PostsStore,
 } from "../../../entities/stores/entities";
-import { createEmployee } from "../../../shared/assets/templates/forms";
-import { getSelectOptions } from "../../../shared/lib/utils/forms";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreateEmployee = () => {
