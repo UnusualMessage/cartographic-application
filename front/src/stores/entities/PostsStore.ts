@@ -1,8 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { v4 as uuid } from "uuid";
 
-import { organizations } from "../../shared/assets/samples";
-import { posts } from "../../shared/assets/samples/posts";
+import { organizations } from "../../assets/data";
+import { posts } from "../../assets/data/posts";
 import { ApiStore } from "../../types/api";
 import { Post } from "../../types/entities";
 import { CreatePost, UpdatePost } from "../../types/entities/Post";

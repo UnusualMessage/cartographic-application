@@ -4,7 +4,7 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 
-import { referenceNodes } from "../../shared/assets/templates/nodes";
+import { referenceNodes } from "../../assets/templates/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { fullHeight, wrapper } from "./tree.module.scss";
 

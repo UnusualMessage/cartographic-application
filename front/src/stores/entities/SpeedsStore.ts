@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { speeds } from "../../shared/assets/samples";
+import { speeds } from "../../assets/data";
 import { ApiStore } from "../../types/api";
 import { Speed } from "../../types/entities";
 import { CreateSpeed, UpdateSpeed } from "../../types/entities/Speed";

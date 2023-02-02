@@ -2,8 +2,8 @@ import { NonIdealState } from "@blueprintjs/core";
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { references } from "../assets/data/references";
 import { EmptyPage, Loader } from "../components/auxiliary/placeholders";
-import { references } from "../shared/assets/samples/references";
 import Layout from "../widgets/Layout";
 import Authorization from "./Admin/Authorization";
 

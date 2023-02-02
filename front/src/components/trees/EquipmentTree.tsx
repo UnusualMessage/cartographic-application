@@ -3,11 +3,11 @@ import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { equipmentNodes } from "../../shared/assets/templates/nodes";
-import { getEquipmentTreeClickHandler } from "../../shared/lib/utils/nodes";
+import { equipmentNodes } from "../../assets/templates/nodes";
 import { EquipmentStore } from "../../stores/entities";
 import { Equipment } from "../../types/entities";
 import { Node } from "../../types/nodes";
+import { getEquipmentTreeClickHandler } from "../../utils/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { EquipmentMenu } from "../menus";
 import { wrapper } from "./tree.module.scss";

@@ -9,10 +9,10 @@ import {
   RemoveSpeed,
   UpdateSpeed,
 } from "../../../../features/forms/speed";
-import { useRegions } from "../../../../shared/lib/hooks";
-import { getSpeedColumns } from "../../../../shared/lib/utils/tables";
+import { useRegions } from "../../../../shared/hooks";
 import SpeedsStore from "../../../../stores/entities/SpeedsStore";
 import { Speed } from "../../../../types/entities";
+import { getSpeedColumns } from "../../../../utils/tables";
 
 const Speed = () => {
   const speed = SpeedsStore.speed;

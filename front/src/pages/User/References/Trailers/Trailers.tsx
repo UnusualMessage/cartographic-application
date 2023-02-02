@@ -7,10 +7,10 @@ import CreateTrailer from "../../../../features/forms/trailer/CreateTrailer";
 import DuplicateTrailer from "../../../../features/forms/trailer/DuplicateTrailer";
 import RemoveTrailer from "../../../../features/forms/trailer/RemoveTrailer";
 import UpdateTrailer from "../../../../features/forms/trailer/UpdateTrailer";
-import { useRegions } from "../../../../shared/lib/hooks";
-import { getTrailerColumns } from "../../../../shared/lib/utils/tables";
+import { useRegions } from "../../../../shared/hooks";
 import { TrailersStore } from "../../../../stores/entities";
 import { Trailer } from "../../../../types/entities";
+import { getTrailerColumns } from "../../../../utils/tables";
 
 const Trailers = () => {
   const trailer = TrailersStore.trailer;

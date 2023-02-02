@@ -12,10 +12,10 @@ import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
 
 import { geozonesLayerId } from "../../shared/constants/map";
-import { getGeozoneStyle } from "../../shared/lib/utils/map/getGeozoneStyle";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
 import { InteractionsStore } from "../../stores/map";
 import { Change, ChangeSet, Undo } from "../../types/map";
+import { getGeozoneStyle } from "../../utils/styles/getGeozoneStyle";
 import { LayersService } from "../map";
 import ListenersInjector, {
   DrawEvent as DrawEventType,

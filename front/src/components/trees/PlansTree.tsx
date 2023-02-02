@@ -2,11 +2,11 @@ import { Divider } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { planNodes } from "../../shared/assets/templates/nodes";
-import { getPlansTreeClickHandler } from "../../shared/lib/utils/nodes";
+import { planNodes } from "../../assets/templates/nodes";
 import { PlansStore } from "../../stores/entities";
 import { Plan } from "../../types/entities";
 import { Node } from "../../types/nodes";
+import { getPlansTreeClickHandler } from "../../utils/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { wrapper } from "./tree.module.scss";
 

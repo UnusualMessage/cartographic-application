@@ -9,10 +9,10 @@ import {
   RemovePost,
   UpdatePost,
 } from "../../../../features/forms/post";
-import { useRegions } from "../../../../shared/lib/hooks";
-import { getPostColumns } from "../../../../shared/lib/utils/tables";
+import { useRegions } from "../../../../shared/hooks";
 import { PostsStore } from "../../../../stores/entities";
 import { Post } from "../../../../types/entities";
+import { getPostColumns } from "../../../../utils/tables";
 
 const Posts = () => {
   const post = PostsStore.post;

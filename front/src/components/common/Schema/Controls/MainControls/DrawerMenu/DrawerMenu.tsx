@@ -9,7 +9,7 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { about } from "../../../../../../shared/assets/samples/about";
+import { about } from "../../../../../../assets/data/about";
 import { auxLayerId } from "../../../../../../shared/constants/map";
 import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
 import { ControlsStore } from "../../../../../../stores/ui";

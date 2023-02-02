@@ -9,10 +9,10 @@ import {
   RemovePartner,
   UpdatePartner,
 } from "../../../../features/forms/partner";
-import { useRegions } from "../../../../shared/lib/hooks";
-import { getPartnerColumns } from "../../../../shared/lib/utils/tables";
+import { useRegions } from "../../../../shared/hooks";
 import PartnersStore from "../../../../stores/entities/PartnersStore";
 import { Partner } from "../../../../types/entities";
+import { getPartnerColumns } from "../../../../utils/tables";
 
 const Partners = () => {
   const partner = PartnersStore.partner;
