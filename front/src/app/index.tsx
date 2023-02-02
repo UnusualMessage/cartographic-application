@@ -1,7 +1,7 @@
 import "./index.scss";
 
 import { FocusStyleManager, HotkeysProvider } from "@blueprintjs/core";
-import React, { StrictMode } from "react";
+import React from "react";
 import { createRoot } from "react-dom/client";
 
 import Routing from "../pages";
@@ -19,8 +19,4 @@ const App = () => {
   );
 };
 
-root.render(
-  <StrictMode>
-    <App />
-  </StrictMode>
-);
+root.render(<App />);

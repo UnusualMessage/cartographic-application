@@ -4,11 +4,11 @@ import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { auxLayerId, geozonesLayerId } from "../../../assets/config/map";
-import Condition from "../../../shared/ui/Condition";
 import { GeozonesStore } from "../../../stores/entities";
 import { InteractionsStore } from "../../../stores/map";
 import { ControlsStore } from "../../../stores/ui";
 import { getMeasurementStyle } from "../../../utils/styles/getMeasurementStyle";
+import Condition from "../../auxiliary/Condition";
 import { Controls } from "./Controls";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import { TileLayer, VectorLayer } from "./Layer";

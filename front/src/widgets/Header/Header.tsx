@@ -11,9 +11,9 @@ import {
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
-import { about } from "../../../assets/data/about";
-import { UpdateStore } from "../../../stores/api";
-import { OrganizationsStore } from "../../../stores/entities";
+import { about } from "../../assets/data/about";
+import { UpdateStore } from "../../stores/api";
+import { OrganizationsStore } from "../../stores/entities";
 import { container, logo, user, wrapper } from "./header.module.scss";
 
 const Header = () => {
