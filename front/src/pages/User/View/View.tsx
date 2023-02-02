@@ -2,10 +2,10 @@ import React from "react";
 
 import Sider from "../../../components/common/Sider";
 import Schema from "../../../components/common/Schema";
-import Footer from "../../../widgets/Footer";
+import Footer from "../../../components/common/Footer";
 import Categories from "../../../components/common/Sider/Categories";
-import Content from "../../../widgets/Content";
-import Information from "../../../widgets/Footer/Information";
+import Content from "../../../components/common/Content";
+import Information from "../../../components/common/Footer/Information";
 import { Loader } from "../../../components/auxiliary/placeholders";
 import Overlays from "../../../components/overlays";
 
