@@ -1,5 +1,6 @@
 import AuthStore from "./AuthStore";
 import DepartmentsStore from "./DepartmentsStore";
+import EmployeesStore from "./EmployeesStore";
 import EquipmentStore from "./EquipmentStore";
 import GeozonesStore from "./GeozonesStore";
 import OrganizationsStore from "./OrganizationsStore";
@@ -11,6 +12,7 @@ import UsersStore from "./UsersStore";
 export {
   AuthStore,
   DepartmentsStore,
+  EmployeesStore,
   EquipmentStore,
   GeozonesStore,
   OrganizationsStore,
