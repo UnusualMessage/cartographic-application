@@ -1,4 +1,4 @@
-import { EmptyInformation } from "../../../../features/auxiliary/placeholders";
+import { EmptyInformation } from "../../../../shared/ui/placeholders";
 
 const Technologies = () => {
   return <EmptyInformation />;

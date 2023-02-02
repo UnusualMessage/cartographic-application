@@ -2,8 +2,8 @@ import { Tab, Tabs } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
 
-import { siderTabs } from "../../../../shared/assets/templates/tabs";
 import { TabsStore } from "../../../../entities/stores/ui";
+import { siderTabs } from "../../../../shared/assets/templates/tabs";
 import { panel, wrapper } from "./categories.module.scss";
 
 const Categories = () => {

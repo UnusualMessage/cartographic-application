@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite";
 
-import { createTrailer } from "../../../shared/assets/templates/forms";
-import { getSelectOptions } from "../../../shared/lib/utils/forms";
 import {
   DepartmentsStore,
   OrganizationsStore,
   TrailersStore,
 } from "../../../entities/stores/entities";
+import { createTrailer } from "../../../shared/assets/templates/forms";
+import { getSelectOptions } from "../../../shared/lib/utils/forms";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreateTrailer = () => {

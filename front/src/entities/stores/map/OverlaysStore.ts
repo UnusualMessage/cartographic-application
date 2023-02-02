@@ -3,16 +3,16 @@ import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
 import {
-  CommonEvent,
-  ListenersInjector,
-  MapInjector,
-} from "../../services/listeners";
-import {
   menuId,
   menuOffset,
   overlayId,
   overlayOffset,
 } from "../../../shared/constants/map";
+import {
+  CommonEvent,
+  ListenersInjector,
+  MapInjector,
+} from "../../services/listeners";
 
 interface CustomOverlay {
   element: HTMLElement | null;

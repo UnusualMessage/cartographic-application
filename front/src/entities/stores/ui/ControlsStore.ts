@@ -64,14 +64,6 @@ class ControlsStore {
     return this._mapDrawerActive;
   }
 
-  public showPanel() {
-    this._layersPanelActive = true;
-  }
-
-  public hidePanel() {
-    this._layersPanelActive = false;
-  }
-
   public switchPanel() {
     this._layersPanelActive = !this.layersPanelActive;
   }

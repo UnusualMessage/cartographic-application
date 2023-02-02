@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from "react";
 
-import { useResizing } from "../../../shared/lib/hooks";
 import { ResizeType } from "../../../shared/api/types/common";
-import Resize from "../../auxiliary/Resize";
+import { useResizing } from "../../../shared/lib/hooks";
+import Resize from "../../../shared/ui/Resize";
 import { content, wrapper } from "./sider.module.scss";
 
 const Sider = ({ children }: PropsWithChildren) => {

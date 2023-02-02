@@ -11,11 +11,11 @@ import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
 
+import { Change, ChangeSet, Undo } from "../../../shared/api/types/map";
 import { geozonesLayerId } from "../../../shared/constants/map";
 import { getGeozoneStyle } from "../../../shared/lib/utils/map/getGeozoneStyle";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
 import { InteractionsStore } from "../../stores/map";
-import { Change, ChangeSet, Undo } from "../../../shared/api/types/map";
 import { LayersService } from "../map";
 import ListenersInjector, {
   DrawEvent as DrawEventType,
