@@ -11,7 +11,7 @@ import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
 
-import { geozonesLayerId } from "../../shared/constants/map";
+import { geozonesLayerId } from "../../assets/config/map";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
 import { InteractionsStore } from "../../stores/map";
 import { Change, ChangeSet, Undo } from "../../types/map";

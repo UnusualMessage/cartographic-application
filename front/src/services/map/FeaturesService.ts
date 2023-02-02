@@ -1,4 +1,4 @@
-import { geozonesLayerId } from "../../shared/constants/map";
+import { geozonesLayerId } from "../../assets/config/map";
 import {
   FeaturesStore,
   InteractionsStore,

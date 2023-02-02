@@ -1,4 +1,4 @@
-import { baseUrl } from "../../shared/constants/api";
+import { baseUrl } from "../../assets/config/api";
 import { Error } from "../../types/api";
 import { AccessToken, AuthenticateUser } from "../../types/entities/User";
 import { get, post } from "../../utils/api/requests";

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
-import { auxLayerId } from "../../../../../../shared/constants/map";
+import { auxLayerId } from "../../../../../../assets/config/map";
 import {
   InteractionsStore,
   LayersStore,

@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { updateEmployee } from "../../../assets/templates/forms";
-import { useFetch } from "../../../shared/hooks";
+import { useFetch } from "../../../hooks";
 import {
   EmployeesStore,
   OrganizationsStore,

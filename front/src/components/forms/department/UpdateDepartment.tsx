@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import { updateDepartment } from "../../../assets/templates/forms";
-import { useFetch } from "../../../shared/hooks";
+import { useFetch } from "../../../hooks";
 import { OrganizationsStore } from "../../../stores/entities";
 import DepartmentsStore from "../../../stores/entities/DepartmentsStore";
 import { Department } from "../../../types/entities";

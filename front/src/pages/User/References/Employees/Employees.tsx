@@ -9,7 +9,7 @@ import {
   RemoveEmployee,
   UpdateEmployee,
 } from "../../../../components/forms/employee";
-import { useRegions } from "../../../../shared/hooks";
+import { useRegions } from "../../../../hooks";
 import { EmployeesStore } from "../../../../stores/entities";
 import { Employee } from "../../../../types/entities";
 import { getEmployeeColumns } from "../../../../utils/tables";
