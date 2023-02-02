@@ -8,7 +8,7 @@ import {
   DuplicatePost,
   RemovePost,
   UpdatePost,
-} from "../../../../features/forms/post";
+} from "../../../../components/forms/post";
 import { useRegions } from "../../../../shared/hooks";
 import { PostsStore } from "../../../../stores/entities";
 import { Post } from "../../../../types/entities";

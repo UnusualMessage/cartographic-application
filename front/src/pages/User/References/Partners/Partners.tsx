@@ -8,7 +8,7 @@ import {
   DuplicatePartner,
   RemovePartner,
   UpdatePartner,
-} from "../../../../features/forms/partner";
+} from "../../../../components/forms/partner";
 import { useRegions } from "../../../../shared/hooks";
 import PartnersStore from "../../../../stores/entities/PartnersStore";
 import { Partner } from "../../../../types/entities";
