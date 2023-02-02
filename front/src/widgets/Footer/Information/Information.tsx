@@ -1,7 +1,7 @@
 import { Tab, TabId, Tabs } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import TabPage from "../../../features/auxiliary/TabPage";
+import TabPage from "../../../components/auxiliary/TabPage";
 import { footerTabs } from "../../../shared/assets";
 import { TabsStore } from "../../../stores/ui";
 import { Tab as TabType } from "../../../types/tabs/Tab";

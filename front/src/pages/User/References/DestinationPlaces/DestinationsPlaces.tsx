@@ -1,4 +1,4 @@
-import { EmptyInformation } from "../../../../features/auxiliary/placeholders";
+import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
 
 const DestinationsPlaces = () => {
   return <EmptyInformation />;

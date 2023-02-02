@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import TableButtons from "../../../../features/auxiliary/TableButtons";
-import { Table } from "../../../../features/common/Table";
+import TableButtons from "../../../../components/auxiliary/TableButtons";
+import { Table } from "../../../../components/common/Table";
 import {
   CreateEmployee,
   DuplicateEmployee,

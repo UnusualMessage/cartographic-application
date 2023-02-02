@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 
+import { Create } from "../../../components/auxiliary/forms/actions";
 import { createDepartment } from "../../../shared/assets/templates/forms";
 import { getSelectOptions } from "../../../shared/lib/utils/forms";
 import { OrganizationsStore } from "../../../stores/entities";
 import DepartmentsStore from "../../../stores/entities/DepartmentsStore";
-import { Create } from "../../auxiliary/forms/actions";
 
 const CreateDepartment = () => {
   const organizations = OrganizationsStore.organizations;

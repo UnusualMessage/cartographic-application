@@ -1,7 +1,7 @@
 import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 
-import { ColumnProps } from "../../../../features/common/Table";
-import { cell } from "../../../../features/common/Table/table.module.scss";
+import { ColumnProps } from "../../../../components/common/Table";
+import { cell } from "../../../../components/common/Table/table.module.scss";
 import { Speed } from "../../../../types/entities";
 import getNumberCell from "./getNumberCell";
 

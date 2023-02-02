@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 
+import { Remove } from "../../../components/auxiliary/forms/actions";
 import PartnersStore from "../../../stores/entities/PartnersStore";
-import { Remove } from "../../auxiliary/forms/actions";
 
 interface Props {
   id?: string;

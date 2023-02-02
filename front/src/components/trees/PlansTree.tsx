@@ -7,7 +7,7 @@ import { getPlansTreeClickHandler } from "../../shared/lib/utils/nodes";
 import { PlansStore } from "../../stores/entities";
 import { Plan } from "../../types/entities";
 import { Node } from "../../types/nodes";
-import EntitiesTree from "../../components/common/EntitiesTree";
+import EntitiesTree from "../common/EntitiesTree";
 import { wrapper } from "./tree.module.scss";
 
 const fillNodes = (plans?: Plan[]) => {

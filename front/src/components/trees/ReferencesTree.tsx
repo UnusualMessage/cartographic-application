@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import { useNavigate } from "react-router-dom";
 
 import { referenceNodes } from "../../shared/assets/templates/nodes";
-import EntitiesTree from "../../components/common/EntitiesTree";
+import EntitiesTree from "../common/EntitiesTree";
 import { fullHeight, wrapper } from "./tree.module.scss";
 
 const fillNodes = () => {

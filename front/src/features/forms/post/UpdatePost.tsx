@@ -3,6 +3,7 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
+import DialogForm from "../../../components/auxiliary/forms/DialogForm";
 import { updatePost } from "../../../shared/assets/templates/forms";
 import { useFetch } from "../../../shared/lib/hooks";
 import {
@@ -12,7 +13,6 @@ import {
 import { OrganizationsStore, PostsStore } from "../../../stores/entities";
 import { Post } from "../../../types/entities";
 import { UpdatePost } from "../../../types/entities/Post";
-import DialogForm from "../../auxiliary/forms/DialogForm";
 
 interface Props {
   id?: string;

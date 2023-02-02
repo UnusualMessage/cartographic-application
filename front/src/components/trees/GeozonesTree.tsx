@@ -8,7 +8,7 @@ import { getGeozonesTreeClickHandler } from "../../shared/lib/utils/nodes";
 import { GeozonesStore } from "../../stores/entities";
 import { Geozone } from "../../types/entities";
 import { Node } from "../../types/nodes";
-import EntitiesTree from "../../components/common/EntitiesTree";
+import EntitiesTree from "../common/EntitiesTree";
 import { GeozoneMenu } from "../menus";
 import { wrapper } from "./tree.module.scss";
 
