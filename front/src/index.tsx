@@ -15,17 +15,17 @@ import "@blueprintjs/select/lib/css/blueprint-select.css";
 import "@blueprintjs/popover2/lib/css/blueprint-popover2.css";
 import "@blueprintjs/table/lib/css/table.css";
 
-import Layout from "../components/common/Layout";
-import { references } from "../assets/data/references";
-import Authorization from "../pages/Admin/Authorization";
-import { EmptyPage, Loader } from "../components/auxiliary/placeholders";
+import Layout from "./components/common/Layout";
+import { references } from "./assets/data/references";
+import Authorization from "./pages/Admin/Authorization";
+import { EmptyPage, Loader } from "./components/auxiliary/placeholders";
 
-const View = lazy(() => import("../pages/User/View"));
+const View = lazy(() => import("./pages/User/View"));
 
-const References = lazy(() => import("../pages/User/References"));
+const References = lazy(() => import("./pages/User/References"));
 
-const Organizations = lazy(() => import("../pages/Admin/Organizations"));
-const Users = lazy(() => import("../pages/Admin/Users"));
+const Organizations = lazy(() => import("./pages/Admin/Organizations"));
+const Users = lazy(() => import("./pages/Admin/Users"));
 
 FocusStyleManager.onlyShowFocusOnTabs();
 

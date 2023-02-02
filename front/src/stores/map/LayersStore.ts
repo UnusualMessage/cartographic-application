@@ -7,7 +7,7 @@ import { BingMaps, OSM, XYZ } from "ol/source";
 import { default as OLTileLayer } from "ol/layer/Tile";
 
 import { BaseLayerType } from "../../types/common";
-import { baseLayers } from "../../assets/config/layers";
+import { baseLayers } from "../../assets/map";
 import { StyleLike } from "ol/style/Style";
 
 class LayersStore {
@@ -20,6 +20,10 @@ class LayersStore {
     this._baseLayer = "osm";
 
     makeAutoObservable(this);
+  }
+
+  public get vectorLayers() {
+    return this._vectorLayers;
   }
 
   public get baseLayer() {

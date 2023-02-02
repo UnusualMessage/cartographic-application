@@ -10,7 +10,7 @@ import { Department } from "../../../types/entities";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
 import { UpdateDepartment } from "../../../types/entities/Department";
 import DepartmentsStore from "../../../stores/entities/DepartmentsStore";
-import { updateDepartment } from "../../../assets/templates/forms";
+import { updateDepartment } from "../../../assets/forms";
 
 interface Props {
   id?: string;

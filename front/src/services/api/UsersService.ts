@@ -1,4 +1,4 @@
-import { baseUrl } from "../../assets/config/api";
+import { baseUrl } from "../../assets/api/config";
 import { User } from "../../types/entities";
 import { Error } from "../../types/api";
 import { get, post } from "../../utils/api/requests";

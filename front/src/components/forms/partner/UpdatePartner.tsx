@@ -9,7 +9,7 @@ import { useFetch } from "../../../hooks";
 import { Partner } from "../../../types/entities";
 import { UpdatePost } from "../../../types/entities/Post";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import { updatePartner } from "../../../assets/templates/forms";
+import { updatePartner } from "../../../assets/forms";
 import PartnersStore from "../../../stores/entities/PartnersStore";
 import { UpdatePartner } from "../../../types/entities/Partner";
 

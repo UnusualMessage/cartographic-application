@@ -9,7 +9,7 @@ import { useFetch } from "../../../hooks";
 import { Post } from "../../../types/entities";
 import { UpdatePost } from "../../../types/entities/Post";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import { updatePost } from "../../../assets/templates/forms";
+import { updatePost } from "../../../assets/forms";
 
 interface Props {
   id?: string;

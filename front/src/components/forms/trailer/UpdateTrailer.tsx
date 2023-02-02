@@ -12,7 +12,7 @@ import {
 import { useFetch } from "../../../hooks";
 import { Trailer } from "../../../types/entities";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import { updateTrailer } from "../../../assets/templates/forms";
+import { updateTrailer } from "../../../assets/forms";
 import { UpdateTrailer } from "../../../types/entities/Trailer";
 
 interface Props {

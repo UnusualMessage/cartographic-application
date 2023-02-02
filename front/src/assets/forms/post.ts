@@ -1,12 +1,7 @@
-import { Form, SelectOption } from "../../../types/forms";
-import {
-  CreateDepartment,
-  UpdateDepartment,
-} from "../../../types/entities/Department";
+import { CreatePost, UpdatePost } from "../../types/entities/Post";
+import { Form, SelectOption } from "../../types/forms";
 
-export const createDepartment = (
-  options: SelectOption[]
-): Form<CreateDepartment> => {
+export const createPost = (options: SelectOption[]): Form<CreatePost> => {
   return [
     {
       type: "text",
@@ -25,9 +20,7 @@ export const createDepartment = (
   ];
 };
 
-export const updateDepartment = (
-  options: SelectOption[]
-): Form<UpdateDepartment> => {
+export const updatePost = (options: SelectOption[]): Form<UpdatePost> => {
   return [
     {
       type: "text",

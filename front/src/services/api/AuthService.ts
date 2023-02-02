@@ -1,7 +1,7 @@
 import { AccessToken, AuthenticateUser } from "../../types/entities/User";
 import { get, post } from "../../utils/api/requests";
 import { Error } from "../../types/api";
-import { baseUrl } from "../../assets/config/api";
+import { baseUrl } from "../../assets/api/config";
 
 class AuthService {
   protected readonly url: string;

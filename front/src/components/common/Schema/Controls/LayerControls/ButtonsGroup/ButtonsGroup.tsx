@@ -10,7 +10,7 @@ import {
   LayersStore,
   MapStore,
 } from "../../../../../../stores/map";
-import { auxLayerId } from "../../../../../../assets/config/map";
+import { auxLayerId } from "../../../../../../assets/map/config";
 import { InteractionType } from "../../../../../../types/map";
 import { ControlsStore } from "../../../../../../stores/ui";
 

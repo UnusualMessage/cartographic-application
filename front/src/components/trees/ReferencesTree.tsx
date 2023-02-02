@@ -6,7 +6,7 @@ import { TreeEventHandler } from "@blueprintjs/core";
 import { fullHeight, wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../common/EntitiesTree";
-import { referenceNodes } from "../../assets/templates/nodes";
+import { referenceNodes } from "../../assets/nodes";
 import { useNavigate } from "react-router-dom";
 
 const fillNodes = () => {

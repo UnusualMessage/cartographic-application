@@ -1,4 +1,4 @@
-import { Node } from "../../../types/nodes";
+import { Node } from "../../types/nodes";
 
 export const geozoneNodes: Node[] = [
   {

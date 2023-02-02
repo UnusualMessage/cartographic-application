@@ -1,5 +1,5 @@
-import { Node } from "../../../types/nodes";
-import { types } from "../../data";
+import { Node } from "../../types/nodes";
+import { types } from "../data";
 
 export const equipmentNodes: Node[] = [
   {

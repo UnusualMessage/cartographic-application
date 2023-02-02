@@ -2,12 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
-import {
-  menuId,
-  menuOffset,
-  overlayId,
-  overlayOffset,
-} from "../../assets/config/map";
+import { menuId, menuOffset, overlayId, overlayOffset } from "../../assets/map";
 import {
   CommonEvent,
   ListenersInjector,

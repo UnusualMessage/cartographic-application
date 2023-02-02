@@ -4,7 +4,7 @@ import {
   LayersStore,
   OverlaysStore,
 } from "../../stores/map";
-import { geozonesLayerId } from "../../assets/config/map";
+import { geozonesLayerId } from "../../assets/map/config";
 
 class FeaturesService {
   public copy() {

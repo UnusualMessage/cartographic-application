@@ -12,7 +12,7 @@ import {
 import { useFetch } from "../../../hooks";
 import { Employee } from "../../../types/entities";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import { updateEmployee } from "../../../assets/templates/forms";
+import { updateEmployee } from "../../../assets/forms";
 import { UpdateEmployee } from "../../../types/entities/Employee";
 
 interface Props {
