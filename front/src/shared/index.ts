@@ -1,4 +1,4 @@
-export * from "./assets/samples";
-export * from "./constants";
-export * from "./lib";
-export * from "./ui";
+export * as assets from "./assets";
+export * as constants from "./constants";
+export * as lib from "./lib";
+export * as ui from "./ui";

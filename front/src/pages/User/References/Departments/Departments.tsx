@@ -3,8 +3,6 @@ import { useEffect } from "react";
 
 import { EmployeesStore } from "../../../../entities/stores/entities";
 import DepartmentsStore from "../../../../entities/stores/entities/DepartmentsStore";
-import TableButtons from "../../../../features/auxiliary/TableButtons";
-import { Table } from "../../../../features/common/Table";
 import {
   CreateDepartment,
   DuplicateDepartment,
@@ -14,6 +12,8 @@ import {
 import { Department } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getDepartmentColumns } from "../../../../shared/lib/utils/tables";
+import { Table } from "../../../../shared/ui/Table";
+import TableButtons from "../../../../shared/ui/TableButtons";
 
 const Departments = () => {
   const department = DepartmentsStore.department;

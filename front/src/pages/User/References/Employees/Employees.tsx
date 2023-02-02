@@ -2,8 +2,6 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { EmployeesStore } from "../../../../entities/stores/entities";
-import TableButtons from "../../../../features/auxiliary/TableButtons";
-import { Table } from "../../../../features/common/Table";
 import {
   CreateEmployee,
   DuplicateEmployee,
@@ -13,6 +11,8 @@ import {
 import { Employee } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getEmployeeColumns } from "../../../../shared/lib/utils/tables";
+import { Table } from "../../../../shared/ui/Table";
+import TableButtons from "../../../../shared/ui/TableButtons";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;
