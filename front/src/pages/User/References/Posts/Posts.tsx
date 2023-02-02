@@ -2,6 +2,8 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { PostsStore } from "../../../../entities/stores/entities";
+import TableButtons from "../../../../features/auxiliary/TableButtons";
+import { Table } from "../../../../features/common/Table";
 import {
   CreatePost,
   DuplicatePost,
@@ -11,8 +13,6 @@ import {
 import { Post } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getPostColumns } from "../../../../shared/lib/utils/tables";
-import { Table } from "../../../../shared/ui/Table";
-import TableButtons from "../../../../shared/ui/TableButtons";
 
 const Posts = () => {
   const post = PostsStore.post;

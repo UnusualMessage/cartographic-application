@@ -3,12 +3,12 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { PlansStore } from "../../entities/stores/entities";
+import EntitiesTree from "../../features/common/EntitiesTree";
 import { getPlansTreeClickHandler } from "../../shared";
 import { Plan } from "../../shared/api/types/entities";
 import { Node } from "../../shared/api/types/nodes";
 import { planNodes } from "../../shared/assets";
-import EntitiesTree from "../../shared/ui/EntitiesTree";
-import { wrapper } from "../../shared/ui/EntitiesTree/tree.module.scss";
+import { wrapper } from "./tree.module.scss";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);

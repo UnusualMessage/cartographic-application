@@ -6,7 +6,7 @@ import {
   CreateEmployee,
   UpdateEmployee,
 } from "../../../shared/api/types/entities/Employee";
-import { employees } from "../../../shared/assets";
+import { employees } from "../../../shared/assets/samples";
 
 class EmployeesStore
   implements ApiStore<Employee, CreateEmployee, UpdateEmployee>

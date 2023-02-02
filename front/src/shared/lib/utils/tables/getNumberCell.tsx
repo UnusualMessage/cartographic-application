@@ -1,6 +1,6 @@
 import { Cell } from "@blueprintjs/table";
 
-import { cell } from "../../../ui/Table/table.module.scss";
+import { cell } from "../../../../features/common/Table/table.module.scss";
 import { fromUuidToNumber } from "../format";
 
 interface Entity {

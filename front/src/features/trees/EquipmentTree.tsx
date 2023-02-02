@@ -4,13 +4,13 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { EquipmentStore } from "../../entities/stores/entities";
+import EntitiesTree from "../../features/common/EntitiesTree";
 import { getEquipmentTreeClickHandler } from "../../shared";
 import { Equipment } from "../../shared/api/types/entities";
 import { Node } from "../../shared/api/types/nodes";
 import { equipmentNodes } from "../../shared/assets";
-import EntitiesTree from "../../shared/ui/EntitiesTree";
-import { wrapper } from "../../shared/ui/EntitiesTree/tree.module.scss";
 import { EquipmentMenu } from "../menus";
+import { wrapper } from "./tree.module.scss";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);
