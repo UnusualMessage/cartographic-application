@@ -4,13 +4,13 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { GeozonesStore } from "../../entities/stores/entities";
-import EntitiesTree from "../../features/common/EntitiesTree";
 import { getGeozonesTreeClickHandler } from "../../shared";
 import { Geozone } from "../../shared/api/types/entities";
 import { Node } from "../../shared/api/types/nodes";
 import { geozoneNodes } from "../../shared/assets";
+import EntitiesTree from "../../shared/ui/EntitiesTree";
+import { wrapper } from "../../shared/ui/EntitiesTree/tree.module.scss";
 import { GeozoneMenu } from "../menus";
-import { wrapper } from "./tree.module.scss";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);
