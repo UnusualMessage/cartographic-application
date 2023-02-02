@@ -1,10 +1,10 @@
-import html2canvas, { Options } from "html2canvas";
-import * as jspdf from "jspdf";
 import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
-import { Coordinate } from "ol/coordinate";
 import BaseLayer from "ol/layer/Base";
+import * as jspdf from "jspdf";
+import html2canvas, { Options } from "html2canvas";
 import { getPointResolution } from "ol/proj";
+import { Coordinate } from "ol/coordinate";
 
 class MapStore {
   private _map: Map | null;

@@ -1,5 +1,5 @@
-import { observer } from "mobx-react-lite";
 import { PropsWithChildren, useEffect, useState } from "react";
+import { observer } from "mobx-react-lite";
 
 import { AuthStore } from "../../../stores/entities";
 

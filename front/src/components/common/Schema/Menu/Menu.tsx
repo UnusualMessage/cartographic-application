@@ -1,12 +1,13 @@
-import { Menu as DefaultMenu, MenuDivider, MenuItem } from "@blueprintjs/core";
-import classNames from "classnames";
-import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
+import { observer } from "mobx-react-lite";
+import classNames from "classnames";
+import { Menu as DefaultMenu, MenuDivider, MenuItem } from "@blueprintjs/core";
+
+import { hidden, wrapper } from "./menu.module.scss";
 
 import { Callback } from "../../../../services/listeners/ListenersInjector";
-import { FeaturesService } from "../../../../services/map";
 import { MapStore, OverlaysStore } from "../../../../stores/map";
-import { hidden, wrapper } from "./menu.module.scss";
+import { FeaturesService } from "../../../../services/map";
 
 const Menu = () => {
   const contextMenuRef = useRef<HTMLUListElement>(null);

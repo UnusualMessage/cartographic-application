@@ -1,5 +1,5 @@
-import DrawerMenu from "./DrawerMenu";
 import InteractionsControl from "./InteractionsControl";
+import DrawerMenu from "./DrawerMenu";
 
 const MainControls = () => {
   return (

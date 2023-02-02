@@ -9,12 +9,12 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
+import { ControlsStore } from "../../../../../../stores/ui";
+import { InteractionType } from "../../../../../../types/map";
+import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
 import { auxLayerId } from "../../../../../../assets/config/map";
 import { about } from "../../../../../../assets/data/about";
-import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
-import { ControlsStore } from "../../../../../../stores/ui";
 import { ControlType } from "../../../../../../stores/ui/ControlsStore";
-import { InteractionType } from "../../../../../../types/map";
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;

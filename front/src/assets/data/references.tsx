@@ -1,28 +1,28 @@
-import React from "react";
 import { v4 as uuid } from "uuid";
+import React from "react";
 
-import AnnualPlans from "../../pages/User/References/AnnualPlans";
-import Crops from "../../pages/User/References/Crops";
-import Departments from "../../pages/User/References/Departments";
-import DestinationPlaces from "../../pages/User/References/DestinationPlaces";
-import Employees from "../../pages/User/References/Employees";
-import Geozones from "../../pages/User/References/Geozones";
-import Goods from "../../pages/User/References/Goods";
-import GoodsGroups from "../../pages/User/References/GoodsGroups";
-import GroupPlans from "../../pages/User/References/GroupPlans";
-import GroupSchedule from "../../pages/User/References/GroupSchedule";
-import Mounteds from "../../pages/User/References/Mounteds";
-import OperationalPlans from "../../pages/User/References/OperationalPlans";
-import Partners from "../../pages/User/References/Partners";
-import Posts from "../../pages/User/References/Posts";
+import Reference from "../../types/common/Reference";
 import Select from "../../pages/User/References/Select";
-import Speed from "../../pages/User/References/Speed";
-import StorePlaces from "../../pages/User/References/StorePlaces";
-import Technologies from "../../pages/User/References/Technologies";
 import Trailers from "../../pages/User/References/Trailers";
+import Mounteds from "../../pages/User/References/Mounteds";
+import Partners from "../../pages/User/References/Partners";
+import Departments from "../../pages/User/References/Departments";
+import Geozones from "../../pages/User/References/Geozones";
+import StorePlaces from "../../pages/User/References/StorePlaces";
+import DestinationPlaces from "../../pages/User/References/DestinationPlaces";
 import WorksCategories from "../../pages/User/References/WorksCategories";
 import WorksPlans from "../../pages/User/References/WorksPlans";
-import Reference from "../../types/common/Reference";
+import AnnualPlans from "../../pages/User/References/AnnualPlans";
+import OperationalPlans from "../../pages/User/References/OperationalPlans";
+import GroupSchedule from "../../pages/User/References/GroupSchedule";
+import GroupPlans from "../../pages/User/References/GroupPlans";
+import GoodsGroups from "../../pages/User/References/GoodsGroups";
+import Crops from "../../pages/User/References/Crops";
+import Technologies from "../../pages/User/References/Technologies";
+import Goods from "../../pages/User/References/Goods";
+import Posts from "../../pages/User/References/Posts";
+import Employees from "../../pages/User/References/Employees";
+import Speed from "../../pages/User/References/Speed";
 
 export const references: Reference[] = [
   {

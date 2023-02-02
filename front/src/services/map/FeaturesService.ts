@@ -1,10 +1,10 @@
-import { geozonesLayerId } from "../../assets/config/map";
 import {
   FeaturesStore,
   InteractionsStore,
   LayersStore,
   OverlaysStore,
 } from "../../stores/map";
+import { geozonesLayerId } from "../../assets/config/map";
 
 class FeaturesService {
   public copy() {

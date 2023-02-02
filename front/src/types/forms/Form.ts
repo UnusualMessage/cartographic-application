@@ -1,5 +1,4 @@
 import { Path } from "react-hook-form";
-
 import { SelectOption } from "./SelectOption";
 
 export type InputType = "text" | "select" | "numeric";

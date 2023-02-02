@@ -8,13 +8,13 @@ import {
   NavbarHeading,
   Text,
 } from "@blueprintjs/core";
-import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
-import { about } from "../../assets/data/about";
-import { UpdateStore } from "../../stores/api";
-import { OrganizationsStore } from "../../stores/entities";
 import { container, logo, user, wrapper } from "./header.module.scss";
+import { UpdateStore } from "../../stores/api";
+import { about } from "../../assets/data/about";
+import { OrganizationsStore } from "../../stores/entities";
 
 const Header = () => {
   return (

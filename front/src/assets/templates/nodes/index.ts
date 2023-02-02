@@ -1,5 +1,5 @@
 export { employeeNodes } from "./employeeNodes";
-export { equipmentNodes } from "./equipmentNodes";
 export { geozoneNodes } from "./geozoneNodes";
 export { planNodes } from "./planNodes";
+export { equipmentNodes } from "./equipmentNodes";
 export { referenceNodes } from "./referenceNodes";

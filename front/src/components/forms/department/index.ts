@@ -1,11 +1,11 @@
 import CreateDepartment from "./CreateDepartment";
-import DuplicateDepartment from "./DuplicateDepartment";
-import RemoveDepartment from "./RemoveDepartment";
 import UpdateDepartment from "./UpdateDepartment";
+import RemoveDepartment from "./RemoveDepartment";
+import DuplicateDepartment from "./DuplicateDepartment";
 
 export {
   CreateDepartment,
-  DuplicateDepartment,
-  RemoveDepartment,
   UpdateDepartment,
+  RemoveDepartment,
+  DuplicateDepartment,
 };

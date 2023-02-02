@@ -1,8 +1,9 @@
 import { Alert, H3, Pre } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { AlertsStore } from "../../../stores/ui";
 import { code, wrapper } from "./export.module.scss";
+
+import { AlertsStore } from "../../../stores/ui";
 
 const GeozoneExport = () => {
   const onConfirm = async () => {

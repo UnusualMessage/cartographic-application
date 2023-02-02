@@ -1,7 +1,7 @@
 import { Toaster } from "@blueprintjs/core";
 
-import { GeozonesStore } from "../../stores/entities";
 import { NotificationsService } from "../ui";
+import { GeozonesStore } from "../../stores/entities";
 
 class HistoryService {
   private _toaster: Toaster | null;

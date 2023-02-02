@@ -1,10 +1,10 @@
-export { departments } from "./departments";
+export { organizations } from "./organizations";
 export { employees } from "./employees";
 export { equipment } from "./equipment";
-export { geozones } from "./geozones";
-export { organizations } from "./organizations";
-export { partners } from "./partners";
 export { plans } from "./plans";
-export { speeds } from "./speeds";
-export { trailers } from "./trailers";
 export { types } from "./types";
+export { partners } from "./partners";
+export { speeds } from "./speeds";
+export { departments } from "./departments";
+export { trailers } from "./trailers";
+export { geozones } from "./geozones";

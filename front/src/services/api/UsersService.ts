@@ -1,8 +1,8 @@
 import { baseUrl } from "../../assets/config/api";
-import { Error } from "../../types/api";
 import { User } from "../../types/entities";
-import { AuthenticateUser } from "../../types/entities/User";
+import { Error } from "../../types/api";
 import { get, post } from "../../utils/api/requests";
+import { AuthenticateUser } from "../../types/entities/User";
 
 class UsersService {
   protected readonly url: string;

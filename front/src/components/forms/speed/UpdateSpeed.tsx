@@ -3,14 +3,14 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { updateSpeed } from "../../../assets/templates/forms";
-import { useFetch } from "../../../hooks";
-import { OrganizationsStore } from "../../../stores/entities";
-import SpeedsStore from "../../../stores/entities/SpeedsStore";
-import { Speed } from "../../../types/entities";
-import { UpdateSpeed } from "../../../types/entities/Speed";
-import { formRenderer, getSelectOptions } from "../../../utils/forms";
 import DialogForm from "../../auxiliary/forms/DialogForm";
+import { OrganizationsStore } from "../../../stores/entities";
+import { useFetch } from "../../../hooks";
+import { Speed } from "../../../types/entities";
+import { formRenderer, getSelectOptions } from "../../../utils/forms";
+import { updateSpeed } from "../../../assets/templates/forms";
+import SpeedsStore from "../../../stores/entities/SpeedsStore";
+import { UpdateSpeed } from "../../../types/entities/Speed";
 
 interface Props {
   id?: string;

@@ -1,9 +1,9 @@
 import { makeAutoObservable } from "mobx";
-import { Feature } from "ol";
 import { FeatureLike } from "ol/Feature";
-import { Geometry } from "ol/geom";
+import { Feature } from "ol";
 import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
+import { Geometry } from "ol/geom";
 import { v4 as uuid } from "uuid";
 
 import { getFeaturesCenter } from "../../utils/features";

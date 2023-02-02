@@ -1,8 +1,9 @@
 import { Outlet } from "react-router-dom";
 
+import { wrapper } from "./layout.module.scss";
+
 import Header from "../Header";
 import Main from "../Main";
-import { wrapper } from "./layout.module.scss";
 
 const Layout = () => {
   return (

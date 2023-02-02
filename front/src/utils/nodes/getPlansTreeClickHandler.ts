@@ -1,7 +1,6 @@
 import { TreeEventHandler } from "@blueprintjs/core";
-
-import { PlansStore } from "../../stores/entities";
 import { TabsStore } from "../../stores/ui";
+import { PlansStore } from "../../stores/entities";
 
 export const getPlansTreeClickHandler = (): TreeEventHandler<any> => {
   return (node) => {

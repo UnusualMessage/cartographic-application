@@ -1,6 +1,6 @@
 import CreateEmployee from "./CreateTrailer";
-import DuplicateEmployee from "./DuplicateTrailer";
-import RemoveEmployee from "./RemoveTrailer";
 import UpdateEmployee from "./UpdateTrailer";
+import RemoveEmployee from "./RemoveTrailer";
+import DuplicateEmployee from "./DuplicateTrailer";
 
-export { CreateEmployee, DuplicateEmployee, RemoveEmployee, UpdateEmployee };
+export { CreateEmployee, UpdateEmployee, RemoveEmployee, DuplicateEmployee };

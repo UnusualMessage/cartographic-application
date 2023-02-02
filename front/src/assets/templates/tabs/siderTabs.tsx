@@ -1,10 +1,10 @@
+import { TabsList } from "../../../types/tabs";
 import {
   EmployeesTree,
   EquipmentTree,
   GeozonesTree,
   PlansTree,
 } from "../../../components/trees";
-import { TabsList } from "../../../types/tabs";
 
 export const siderTabs: TabsList = {
   id: "sider-tabs",

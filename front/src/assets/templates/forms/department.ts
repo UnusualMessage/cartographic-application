@@ -1,8 +1,8 @@
+import { Form, SelectOption } from "../../../types/forms";
 import {
   CreateDepartment,
   UpdateDepartment,
 } from "../../../types/entities/Department";
-import { Form, SelectOption } from "../../../types/forms";
 
 export const createDepartment = (
   options: SelectOption[]

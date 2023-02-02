@@ -3,13 +3,13 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { updatePost } from "../../../assets/templates/forms";
-import { useFetch } from "../../../hooks";
+import DialogForm from "../../auxiliary/forms/DialogForm";
 import { OrganizationsStore, PostsStore } from "../../../stores/entities";
+import { useFetch } from "../../../hooks";
 import { Post } from "../../../types/entities";
 import { UpdatePost } from "../../../types/entities/Post";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import DialogForm from "../../auxiliary/forms/DialogForm";
+import { updatePost } from "../../../assets/templates/forms";
 
 interface Props {
   id?: string;

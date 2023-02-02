@@ -1,5 +1,5 @@
-import AlertsStore from "./AlertsStore";
-import ControlsStore from "./ControlsStore";
 import TabsStore from "./TabsStore";
+import ControlsStore from "./ControlsStore";
+import AlertsStore from "./AlertsStore";
 
-export { AlertsStore, ControlsStore, TabsStore };
+export { TabsStore, ControlsStore, AlertsStore };

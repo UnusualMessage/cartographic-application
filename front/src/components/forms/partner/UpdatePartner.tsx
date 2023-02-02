@@ -3,15 +3,15 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { updatePartner } from "../../../assets/templates/forms";
-import { useFetch } from "../../../hooks";
+import DialogForm from "../../auxiliary/forms/DialogForm";
 import { OrganizationsStore } from "../../../stores/entities";
-import PartnersStore from "../../../stores/entities/PartnersStore";
+import { useFetch } from "../../../hooks";
 import { Partner } from "../../../types/entities";
-import { UpdatePartner } from "../../../types/entities/Partner";
 import { UpdatePost } from "../../../types/entities/Post";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import DialogForm from "../../auxiliary/forms/DialogForm";
+import { updatePartner } from "../../../assets/templates/forms";
+import PartnersStore from "../../../stores/entities/PartnersStore";
+import { UpdatePartner } from "../../../types/entities/Partner";
 
 interface Props {
   id?: string;

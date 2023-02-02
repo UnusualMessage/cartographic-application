@@ -1,5 +1,5 @@
-import { Button, ButtonGroup } from "@blueprintjs/core";
 import { PropsWithChildren } from "react";
+import { Button, ButtonGroup } from "@blueprintjs/core";
 
 import { content, header, wrapper } from "./page.module.scss";
 

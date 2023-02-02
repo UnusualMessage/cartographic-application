@@ -1,7 +1,7 @@
-import useFetch from "./useFetch";
-import useInteraction from "./useInteraction";
-import useRegions from "./useRegions";
 import useResizing from "./useResizing";
 import useTreeActions from "./useTreeActions";
+import useFetch from "./useFetch";
+import useRegions from "./useRegions";
+import useInteraction from "./useInteraction";
 
-export { useFetch, useInteraction, useRegions, useResizing, useTreeActions };
+export { useResizing, useTreeActions, useFetch, useRegions, useInteraction };

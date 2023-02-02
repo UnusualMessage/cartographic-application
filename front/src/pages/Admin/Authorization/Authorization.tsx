@@ -1,13 +1,14 @@
-import { Button } from "@blueprintjs/core";
+import { useNavigate } from "react-router-dom";
 import { observer } from "mobx-react-lite";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { Button } from "@blueprintjs/core";
 
-import { authenticateUser } from "../../../assets/templates/forms";
-import { AuthStore } from "../../../stores/entities";
-import { AuthenticateUser } from "../../../types/entities/User";
-import { formRenderer } from "../../../utils/forms";
 import { content, wrapper } from "./authorization.module.scss";
+
+import { AuthenticateUser } from "../../../types/entities/User";
+import { AuthStore } from "../../../stores/entities";
+import { formRenderer } from "../../../utils/forms";
+import { authenticateUser } from "../../../assets/templates/forms";
 
 const Authorization = () => {
   const redirect = useNavigate();

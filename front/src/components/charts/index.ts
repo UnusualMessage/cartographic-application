@@ -1,5 +1,5 @@
 import PlansChart from "./PlansChart";
-import StatusByTypeChart from "./StatusByTypeChart";
 import StatusChart from "./StatusChart";
+import StatusByTypeChart from "./StatusByTypeChart";
 
-export { PlansChart, StatusByTypeChart, StatusChart };
+export { PlansChart, StatusChart, StatusByTypeChart };

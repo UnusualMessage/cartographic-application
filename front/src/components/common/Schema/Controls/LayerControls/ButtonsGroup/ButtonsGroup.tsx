@@ -1,17 +1,18 @@
 import { Button, ButtonGroup, Collapse } from "@blueprintjs/core";
-import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
+import classNames from "classnames";
 
-import { auxLayerId } from "../../../../../../assets/config/map";
+import { active, wrapper } from "./buttons.module.scss";
+
 import {
   InteractionsStore,
   LayersStore,
   MapStore,
 } from "../../../../../../stores/map";
-import { ControlsStore } from "../../../../../../stores/ui";
+import { auxLayerId } from "../../../../../../assets/config/map";
 import { InteractionType } from "../../../../../../types/map";
-import { active, wrapper } from "./buttons.module.scss";
+import { ControlsStore } from "../../../../../../stores/ui";
 
 const ButtonsGroup = () => {
   const interactionType = InteractionsStore.interactionType;

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 
-import Coordinates from "./Coordinates";
 import Zoom from "./Zoom";
+import Coordinates from "./Coordinates";
 
 const ViewControls = () => {
   return (

@@ -1,7 +1,7 @@
 import { Tag } from "@blueprintjs/core";
 
-import { RoleNumber } from "../../../../types/api";
 import { getRoleFromNumber } from "../../../../utils/format";
+import { RoleNumber } from "../../../../types/api";
 
 interface Props {
   login: string;

@@ -1,6 +1,7 @@
+import ListenersInjector, { CommonEvent } from "./ListenersInjector";
 import { Map, MapBrowserEvent } from "ol";
-import { Coordinate } from "ol/coordinate";
 import { Pixel } from "ol/pixel";
+import { Coordinate } from "ol/coordinate";
 
 import {
   FeaturesStore,
@@ -8,7 +9,6 @@ import {
   MapStore,
   OverlaysStore,
 } from "../../stores/map";
-import ListenersInjector, { CommonEvent } from "./ListenersInjector";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
   private _map: Map;

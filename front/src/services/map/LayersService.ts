@@ -1,10 +1,10 @@
-import { FeatureLike } from "ol/Feature";
 import BaseLayer from "ol/layer/Base";
-import VectorSource from "ol/source/Vector";
-import { StyleLike } from "ol/style/Style";
+import { FeatureLike } from "ol/Feature";
 
 import { FeaturesStore, LayersStore, MapStore } from "../../stores/map";
+import VectorSource from "ol/source/Vector";
 import { BaseLayerType } from "../../types/common";
+import { StyleLike } from "ol/style/Style";
 
 class LayersService {
   public createVectorLayer(

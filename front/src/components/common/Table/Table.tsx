@@ -6,9 +6,9 @@ import {
   RowHeaderRenderer,
   Table2,
 } from "@blueprintjs/table";
-import classNames from "classnames";
 
 import { cell, fill, width60, wrapper } from "./table.module.scss";
+import classNames from "classnames";
 
 export type OnSelection = (selectedRegions: Region[]) => void;
 

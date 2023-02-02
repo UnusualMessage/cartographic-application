@@ -3,17 +3,17 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { updateEmployee } from "../../../assets/templates/forms";
-import { useFetch } from "../../../hooks";
+import DialogForm from "../../auxiliary/forms/DialogForm";
 import {
   EmployeesStore,
   OrganizationsStore,
   PostsStore,
 } from "../../../stores/entities";
+import { useFetch } from "../../../hooks";
 import { Employee } from "../../../types/entities";
-import { UpdateEmployee } from "../../../types/entities/Employee";
 import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import DialogForm from "../../auxiliary/forms/DialogForm";
+import { updateEmployee } from "../../../assets/templates/forms";
+import { UpdateEmployee } from "../../../types/entities/Employee";
 
 interface Props {
   id?: string;

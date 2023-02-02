@@ -1,7 +1,7 @@
+import { Circle, Geometry } from "ol/geom";
+import { GeoJSON } from "ol/format";
 import { AllGeoJSON, centerOfMass } from "@turf/turf";
 import { FeatureLike } from "ol/Feature";
-import { GeoJSON } from "ol/format";
-import { Circle, Geometry } from "ol/geom";
 
 export const getFeatureCenter = (feature: FeatureLike) => {
   const geometry = (feature.getGeometry() as Geometry).clone();

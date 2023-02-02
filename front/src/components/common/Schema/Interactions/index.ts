@@ -1,4 +1,4 @@
-import AuxInteractions from "./AuxInteractions";
 import GeozonesInteractions from "./GeozonesInteractions";
+import AuxInteractions from "./AuxInteractions";
 
-export { AuxInteractions, GeozonesInteractions };
+export { GeozonesInteractions, AuxInteractions };
