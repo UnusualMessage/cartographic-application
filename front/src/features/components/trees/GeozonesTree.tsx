@@ -9,7 +9,7 @@ import { geozoneNodes } from "../../../shared/assets";
 import EntitiesTree from "../../../shared/ui/EntitiesTree";
 import { GeozonesStore } from "../../../entities/stores/entities";
 import { Geozone } from "../../../shared/api/types/entities";
-import { getGeozonesTreeClickHandler } from "../../../shared/lib/utils/nodes";
+import { getGeozonesTreeClickHandler } from "../../../shared/lib";
 import { ContextMenu2 } from "@blueprintjs/popover2";
 import { GeozoneMenu } from "../menus";
 

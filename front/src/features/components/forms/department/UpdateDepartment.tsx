@@ -5,12 +5,12 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/forms/DialogForm";
 import { OrganizationsStore } from "../../../../entities/stores/entities";
-import { useFetch } from "../../../../shared/lib/hooks";
-import { Department } from "../../../../shared/api/types/entities";
 import {
   formRenderer,
   getSelectOptions,
-} from "../../../../shared/lib/utils/forms";
+  useFetch,
+} from "../../../../shared/lib";
+import { Department } from "../../../../shared/api/types/entities";
 import { UpdateDepartment } from "../../../../shared/api/types/entities/Department";
 import DepartmentsStore from "../../../../entities/stores/entities/DepartmentsStore";
 import { updateDepartment } from "../../../../shared/assets";

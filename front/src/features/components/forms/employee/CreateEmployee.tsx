@@ -7,7 +7,7 @@ import {
 } from "../../../../entities/stores/entities";
 import { createEmployee } from "../../../../shared/assets";
 import { Create } from "../../auxiliary/forms/actions";
-import { getSelectOptions } from "../../../../shared/lib/utils/forms";
+import { getSelectOptions } from "../../../../shared/lib";
 
 const CreateEmployee = () => {
   const organizations = OrganizationsStore.organizations;

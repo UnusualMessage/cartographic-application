@@ -5,10 +5,9 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import { useFetch } from "../../../../../shared/lib/hooks";
+import { formRenderer, useFetch } from "../../../../../shared/lib";
 import DialogForm from "../DialogForm";
 import { Icon } from "@blueprintjs/core";
-import { formRenderer } from "../../../../../shared/lib/utils/forms";
 import { ApiStore } from "../../../../../shared/api/types/api";
 import { Form } from "../../../../../shared/api/types/forms";
 

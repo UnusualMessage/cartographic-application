@@ -9,12 +9,12 @@ import {
   OrganizationsStore,
   TrailersStore,
 } from "../../../../entities/stores/entities";
-import { useFetch } from "../../../../shared/lib/hooks";
-import { Trailer } from "../../../../shared/api/types/entities";
 import {
   formRenderer,
   getSelectOptions,
-} from "../../../../shared/lib/utils/forms";
+  useFetch,
+} from "../../../../shared/lib";
+import { Trailer } from "../../../../shared/api/types/entities";
 import { updateTrailer } from "../../../../shared/assets";
 import { UpdateTrailer } from "../../../../shared/api/types/entities/Trailer";
 

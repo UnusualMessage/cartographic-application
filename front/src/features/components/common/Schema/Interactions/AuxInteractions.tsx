@@ -4,11 +4,14 @@ import VectorSource from "ol/source/Vector";
 import { Map } from "ol";
 
 import { SourceContext } from "../Layer/VectorLayer";
-import { InteractionsStore, MapStore } from "../../../../../entities/stores/map";
+import {
+  InteractionsStore,
+  MapStore,
+} from "../../../../../entities/stores/map";
 import Interactions from "./Interactions";
 import { InteractionType } from "../../../../../shared/api/types/map";
 import { AddEventListener } from "../../../../../shared/lib/hooks/useInteraction";
-import { useInteraction } from "../../../../../shared/lib/hooks";
+import { useInteraction } from "../../../../../shared/lib";
 
 const AuxInteractions = () => {
   const source = useContext(SourceContext);

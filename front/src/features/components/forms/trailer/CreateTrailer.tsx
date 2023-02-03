@@ -5,7 +5,7 @@ import {
   OrganizationsStore,
   TrailersStore,
 } from "../../../../entities/stores/entities";
-import { getSelectOptions } from "../../../../shared/lib/utils/forms";
+import { getSelectOptions } from "../../../../shared/lib";
 import { createTrailer } from "../../../../shared/assets";
 import { Create } from "../../auxiliary/forms/actions";
 

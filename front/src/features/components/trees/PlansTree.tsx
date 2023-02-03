@@ -9,7 +9,7 @@ import { Node } from "../../../shared/api/types/nodes";
 import { planNodes } from "../../../shared/assets";
 import { Plan } from "../../../shared/api/types/entities";
 import { PlansStore } from "../../../entities/stores/entities";
-import { getPlansTreeClickHandler } from "../../../shared/lib/utils/nodes";
+import { getPlansTreeClickHandler } from "../../../shared/lib";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);

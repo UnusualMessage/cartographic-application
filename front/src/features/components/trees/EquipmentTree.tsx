@@ -11,7 +11,7 @@ import { equipmentNodes } from "../../../shared/assets";
 import { Equipment } from "../../../shared/api/types/entities";
 import { EquipmentStore } from "../../../entities/stores/entities";
 import { EquipmentMenu } from "../menus";
-import { getEquipmentTreeClickHandler } from "../../../shared/lib/utils/nodes";
+import { getEquipmentTreeClickHandler } from "../../../shared/lib";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);

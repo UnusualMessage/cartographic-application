@@ -7,7 +7,7 @@ import { content, wrapper } from "./authorization.module.scss";
 
 import { AuthenticateUser } from "../../../shared/api/types/entities/User";
 import { AuthStore } from "../../../entities/stores/entities";
-import { formRenderer } from "../../../shared/lib/utils/forms";
+import { formRenderer } from "../../../shared/lib";
 import { authenticateUser } from "../../../shared/assets";
 
 const Authorization = () => {

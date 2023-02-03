@@ -9,12 +9,12 @@ import {
   OrganizationsStore,
   PostsStore,
 } from "../../../../entities/stores/entities";
-import { useFetch } from "../../../../shared/lib/hooks";
-import { Employee } from "../../../../shared/api/types/entities";
 import {
   formRenderer,
   getSelectOptions,
-} from "../../../../shared/lib/utils/forms";
+  useFetch,
+} from "../../../../shared/lib";
+import { Employee } from "../../../../shared/api/types/entities";
 import { updateEmployee } from "../../../../shared/assets";
 import { UpdateEmployee } from "../../../../shared/api/types/entities/Employee";
 

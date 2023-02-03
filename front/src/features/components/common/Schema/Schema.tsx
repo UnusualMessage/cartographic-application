@@ -15,7 +15,7 @@ import {
 } from "../../../../shared/assets/map/config";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
-import { getMeasurementStyle } from "../../../../shared/lib/utils/map";
+import { getMeasurementStyle } from "../../../../shared/lib";
 import { ControlsStore } from "../../../../entities/stores/ui";
 import { GeozonesStore } from "../../../../entities/stores/entities";
 import Condition from "../../../../shared/ui/Condition";

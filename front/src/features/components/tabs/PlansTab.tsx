@@ -4,7 +4,7 @@ import { PlansStore } from "../../../entities/stores/entities";
 import { PlansChart } from "../charts";
 import { Table } from "../common/Table";
 import { Plan } from "../../../shared/api/types/entities";
-import { getPlanColumns } from "../../../shared/lib/utils/tables";
+import { getPlanColumns } from "../../../shared/lib";
 
 const PlansTab = () => {
   let plans = PlansStore.plans;

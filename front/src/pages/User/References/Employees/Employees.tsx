@@ -9,10 +9,9 @@ import {
   RemoveEmployee,
   UpdateEmployee,
 } from "../../../../features/components/forms/employee";
-import { getEmployeeColumns } from "../../../../shared/lib/utils/tables";
+import { getEmployeeColumns, useRegions } from "../../../../shared/lib";
 import { Table } from "../../../../features/components/common/Table";
 import { Employee } from "../../../../shared/api/types/entities";
-import { useRegions } from "../../../../shared/lib/hooks";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;

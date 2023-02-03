@@ -8,13 +8,13 @@ import {
   OrganizationsStore,
   PostsStore,
 } from "../../../../entities/stores/entities";
-import { useFetch } from "../../../../shared/lib/hooks";
-import { Post } from "../../../../shared/api/types/entities";
-import { UpdatePost } from "../../../../shared/api/types/entities/Post";
 import {
   formRenderer,
   getSelectOptions,
-} from "../../../../shared/lib/utils/forms";
+  useFetch,
+} from "../../../../shared/lib";
+import { Post } from "../../../../shared/api/types/entities";
+import { UpdatePost } from "../../../../shared/api/types/entities/Post";
 import { updatePost } from "../../../../shared/assets";
 
 interface Props {

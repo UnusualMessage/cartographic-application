@@ -1,5 +1,8 @@
-import { AccessToken, AuthenticateUser } from "../../../shared/api/types/entities/User";
-import { get, post } from "../../../shared/lib/utils/requests";
+import {
+  AccessToken,
+  AuthenticateUser,
+} from "../../../shared/api/types/entities/User";
+import { get, post } from "../../../shared/lib";
 import { Error } from "../../../shared/api/types/api";
 import { baseUrl } from "../../../shared/assets/api/config";
 
