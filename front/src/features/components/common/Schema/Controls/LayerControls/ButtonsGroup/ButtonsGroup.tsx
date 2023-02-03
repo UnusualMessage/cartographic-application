@@ -10,8 +10,8 @@ import {
   LayersStore,
   MapStore,
 } from "../../../../../../../entities/stores/map";
-import { auxLayerId } from "../../../../../../../shared/assets/map/config";
-import { InteractionType } from "../../../../../../../shared/api/types/map";
+import { auxLayerId } from "@shared/assets/map/config";
+import { InteractionType } from "@shared/api/types/map";
 import { ControlsStore } from "../../../../../../../entities/stores/ui";
 
 const ButtonsGroup = () => {

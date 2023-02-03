@@ -1,4 +1,4 @@
-import { TabsList } from "../../../api/types/tabs";
+import { TabsList } from "@shared/api/types/tabs";
 import {
   EmployeesTree,
   EquipmentTree,

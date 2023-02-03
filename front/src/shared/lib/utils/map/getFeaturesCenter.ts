@@ -2,7 +2,7 @@ import { centerOfMass, lineString } from "@turf/turf";
 import { FeatureLike } from "ol/Feature";
 import { Coordinate } from "ol/coordinate";
 
-import { getFeatureCenter } from "./getFeatureCenter";
+import { getFeatureCenter } from "@shared/lib";
 
 export const getFeaturesCenter = (features: FeatureLike[]) => {
   const centers: Coordinate[] = [];

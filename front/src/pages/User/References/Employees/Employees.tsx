@@ -9,7 +9,7 @@ import {
   RemoveEmployee,
   UpdateEmployee,
 } from "../../../../features/components/forms/employee";
-import { getEmployeeColumns, useRegions } from "../../../../shared/lib";
+import { getEmployeeColumns, useRegions } from "@shared/lib";
 import { Table } from "../../../../features/components/common/Table";
 import { Employee } from "../../../../shared/api/types/entities";
 

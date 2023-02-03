@@ -5,15 +5,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/forms/DialogForm";
 import { OrganizationsStore } from "../../../../entities/stores/entities";
-import {
-  formRenderer,
-  getSelectOptions,
-  useFetch,
-} from "../../../../shared/lib";
+import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
 import { Department } from "../../../../shared/api/types/entities";
-import { UpdateDepartment } from "../../../../shared/api/types/entities/Department";
+import { UpdateDepartment } from "@shared/api/types/entities/Department";
 import DepartmentsStore from "../../../../entities/stores/entities/DepartmentsStore";
-import { updateDepartment } from "../../../../shared/assets";
+import { updateDepartment } from "@shared/assets";
 
 interface Props {
   id?: string;

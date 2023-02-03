@@ -7,8 +7,8 @@ import { visible, wrapper } from "./group.module.scss";
 
 import { ControlsStore } from "../../../../../../../entities/stores/ui";
 import { LayersStore } from "../../../../../../../entities/stores/map";
-import { BaseLayerType } from "../../../../../../../shared/api/types/common";
-import { baseLayers } from "../../../../../../../shared/assets/map";
+import { BaseLayerType } from "@shared/api/types/common";
+import { baseLayers } from "@shared/assets/map";
 
 const ControlsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;

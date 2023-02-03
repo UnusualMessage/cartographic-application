@@ -1,4 +1,4 @@
-import { Form } from "../../../api/types/forms";
+import { Form } from "@shared/api/types/forms";
 import { SelectInput, TextInput } from "../../../../features/components/inputs";
 import {
   FieldError,

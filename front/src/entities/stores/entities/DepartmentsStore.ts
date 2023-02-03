@@ -4,9 +4,9 @@ import { Department } from "../../../shared/api/types/entities";
 import {
   CreateDepartment,
   UpdateDepartment,
-} from "../../../shared/api/types/entities/Department";
-import { departments } from "../../../shared/assets/samples";
-import { ApiStore } from "../../../shared/api/types/api";
+} from "@shared/api/types/entities/Department";
+import { departments } from "@shared/assets/samples";
+import { ApiStore } from "@shared/api/types/api";
 
 class DepartmentsStore
   implements ApiStore<Department, CreateDepartment, UpdateDepartment>

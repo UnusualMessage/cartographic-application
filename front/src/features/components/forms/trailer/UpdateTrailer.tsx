@@ -9,14 +9,10 @@ import {
   OrganizationsStore,
   TrailersStore,
 } from "../../../../entities/stores/entities";
-import {
-  formRenderer,
-  getSelectOptions,
-  useFetch,
-} from "../../../../shared/lib";
+import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
 import { Trailer } from "../../../../shared/api/types/entities";
-import { updateTrailer } from "../../../../shared/assets";
-import { UpdateTrailer } from "../../../../shared/api/types/entities/Trailer";
+import { updateTrailer } from "@shared/assets";
+import { UpdateTrailer } from "@shared/api/types/entities/Trailer";
 
 interface Props {
   id?: string;

@@ -8,14 +8,10 @@ import {
   OrganizationsStore,
   PostsStore,
 } from "../../../../entities/stores/entities";
-import {
-  formRenderer,
-  getSelectOptions,
-  useFetch,
-} from "../../../../shared/lib";
+import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
 import { Post } from "../../../../shared/api/types/entities";
-import { UpdatePost } from "../../../../shared/api/types/entities/Post";
-import { updatePost } from "../../../../shared/assets";
+import { UpdatePost } from "@shared/api/types/entities/Post";
+import { updatePost } from "@shared/assets";
 
 interface Props {
   id?: string;

@@ -18,6 +18,11 @@
 
     "skipLibCheck": true,
     "noEmit": false,
+
+    "baseUrl": "./src",
+    "paths": {
+      "@shared/*": ["shared/*"],
+    }
   },
 
   "include": ["src", "declarations.d.ts"]

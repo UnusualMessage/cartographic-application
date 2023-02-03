@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { fromUuidToNumber, useFetch } from "../../../../../shared/lib";
+import { fromUuidToNumber, useFetch } from "@shared/lib";
 import DialogForm from "../DialogForm";
 import { Icon } from "@blueprintjs/core";
-import { ApiStore } from "../../../../../shared/api/types/api";
+import { ApiStore } from "@shared/api/types/api";
 
 interface Item {
   id: string;

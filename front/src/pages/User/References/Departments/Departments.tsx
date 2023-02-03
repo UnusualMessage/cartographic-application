@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 import { EmployeesStore } from "../../../../entities/stores/entities";
-import { getDepartmentColumns, useRegions } from "../../../../shared/lib";
+import { getDepartmentColumns, useRegions } from "@shared/lib";
 import { Table } from "../../../../features/components/common/Table";
 import { Department } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../shared/ui/TableButtons";

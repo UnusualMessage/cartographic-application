@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { TabsList } from "../../../api/types/tabs";
+import { TabsList } from "@shared/api/types/tabs";
 import PlansTab from "../../../../features/components/tabs/PlansTab";
 import { EmptyInformation } from "../../../../features/components/auxiliary/placeholders";
 import StatusTab from "../../../../features/components/tabs/StatusTab";

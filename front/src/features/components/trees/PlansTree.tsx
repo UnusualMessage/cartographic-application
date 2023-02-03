@@ -5,11 +5,11 @@ import { cloneDeep } from "lodash";
 import { wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../../../shared/ui/EntitiesTree";
-import { Node } from "../../../shared/api/types/nodes";
-import { planNodes } from "../../../shared/assets";
+import { Node } from "@shared/api/types/nodes";
+import { planNodes } from "@shared/assets";
 import { Plan } from "../../../shared/api/types/entities";
 import { PlansStore } from "../../../entities/stores/entities";
-import { getPlansTreeClickHandler } from "../../../shared/lib";
+import { getPlansTreeClickHandler } from "@shared/lib";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);

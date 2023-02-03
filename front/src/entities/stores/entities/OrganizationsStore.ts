@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { Organization } from "../../../shared/api/types/entities";
-import { organizations } from "../../../shared/assets/samples";
+import { organizations } from "@shared/assets/samples";
 
 class OrganizationsStore {
   private _organizations: Organization[];

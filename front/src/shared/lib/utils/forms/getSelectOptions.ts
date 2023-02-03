@@ -1,4 +1,4 @@
-import { RawOption } from "../../../api/types/forms";
+import { RawOption } from "@shared/api/types/forms";
 
 export const getSelectOptions = (source: RawOption[]) => {
   return source.map((item) => {

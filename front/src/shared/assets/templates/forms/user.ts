@@ -1,5 +1,5 @@
-import { Form } from "../../../api/types/forms";
-import { AuthenticateUser } from "../../../api/types/entities/User";
+import { Form } from "@shared/api/types/forms";
+import { AuthenticateUser } from "@shared/api/types/entities/User";
 
 export const authenticateUser = (): Form<AuthenticateUser> => {
   return [

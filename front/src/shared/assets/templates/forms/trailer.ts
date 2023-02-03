@@ -1,8 +1,8 @@
-import { Form, SelectOption } from "../../../api/types/forms";
+import { Form, SelectOption } from "@shared/api/types/forms";
 import {
   CreateTrailer,
   UpdateTrailer,
-} from "../../../api/types/entities/Trailer";
+} from "@shared/api/types/entities/Trailer";
 
 export const createTrailer = (
   organizations: SelectOption[],

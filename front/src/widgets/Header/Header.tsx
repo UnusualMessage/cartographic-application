@@ -13,7 +13,7 @@ import { observer } from "mobx-react-lite";
 
 import { container, logo, user, wrapper } from "./header.module.scss";
 import { UpdateStore } from "../../entities/stores/api";
-import { about } from "../../shared/assets/samples/about";
+import { about } from "@shared/assets/samples/about";
 import { OrganizationsStore } from "../../entities/stores/entities";
 
 const Header = () => {

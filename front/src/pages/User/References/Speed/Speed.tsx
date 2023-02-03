@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
-import { getSpeedColumns, useRegions } from "../../../../shared/lib";
+import { getSpeedColumns, useRegions } from "@shared/lib";
 import { Table } from "../../../../features/components/common/Table";
 import { Speed } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../shared/ui/TableButtons";

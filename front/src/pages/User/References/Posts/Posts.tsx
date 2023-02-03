@@ -11,7 +11,7 @@ import {
 } from "../../../../features/components/forms/post";
 import { Table } from "../../../../features/components/common/Table";
 import { Post } from "../../../../shared/api/types/entities";
-import { getPostColumns, useRegions } from "../../../../shared/lib";
+import { getPostColumns, useRegions } from "@shared/lib";
 
 const Posts = () => {
   const post = PostsStore.post;

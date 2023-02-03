@@ -1,4 +1,4 @@
-import { Response } from "../../../shared/api/types/api";
+import { Response } from "@shared/api/types/api";
 
 class ResponseService {
   protected response: Response;

@@ -1,8 +1,8 @@
-import { Form, SelectOption } from "../../../api/types/forms";
+import { Form, SelectOption } from "@shared/api/types/forms";
 import {
   CreatePartner,
   UpdatePartner,
-} from "../../../api/types/entities/Partner";
+} from "@shared/api/types/entities/Partner";
 
 export const createPartner = (
   organizations: SelectOption[]

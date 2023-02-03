@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
-import { getPartnerColumns, useRegions } from "../../../../shared/lib";
+import { getPartnerColumns, useRegions } from "@shared/lib";
 import { Table } from "../../../../features/components/common/Table";
 import { Partner } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../shared/ui/TableButtons";

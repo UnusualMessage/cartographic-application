@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { panel, wrapper } from "./information.module.scss";
 
 import { TabsStore } from "../../../../../entities/stores/ui";
-import { footerTabs } from "../../../../../shared/assets";
+import { footerTabs } from "@shared/assets";
 import { Tab as TabType } from "../../../../../shared/api/types/tabs/Tab";
 import TabPage from "../../../../../shared/ui/TabPage";
 
