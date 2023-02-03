@@ -1,10 +1,10 @@
 import { makeAutoObservable, runInAction } from "mobx";
 import { v4 as uuid } from "uuid";
 
-import { posts } from "../../assets/data/posts";
+import { posts } from "../../shared/assets/data/posts";
 import { Post } from "../../types/entities";
 import { CreatePost, UpdatePost } from "../../types/entities/Post";
-import { organizations } from "../../assets/data";
+import { organizations } from "../../shared/assets/data";
 import { ApiStore } from "../../types/api";
 
 class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {

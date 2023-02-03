@@ -11,8 +11,8 @@ import {
 } from "../../../../components/forms/post";
 import { Table } from "../../../../components/common/Table";
 import { Post } from "../../../../types/entities";
-import { getPostColumns } from "../../../../utils/tables";
-import { useRegions } from "../../../../hooks";
+import { getPostColumns } from "../../../../shared/lib/utils/tables";
+import { useRegions } from "../../../../shared/lib/hooks";
 
 const Posts = () => {
   const post = PostsStore.post;

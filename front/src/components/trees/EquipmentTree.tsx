@@ -7,11 +7,11 @@ import { wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../common/EntitiesTree";
 import { Node } from "../../types/nodes";
-import { equipmentNodes } from "../../assets/nodes";
+import { equipmentNodes } from "../../shared/assets/nodes";
 import { Equipment } from "../../types/entities";
 import { EquipmentStore } from "../../stores/entities";
 import { EquipmentMenu } from "../menus";
-import { getEquipmentTreeClickHandler } from "../../utils/nodes";
+import { getEquipmentTreeClickHandler } from "../../shared/lib/utils/nodes";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);

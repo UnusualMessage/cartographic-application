@@ -5,7 +5,7 @@ import {
   CreateDepartment,
   UpdateDepartment,
 } from "../../types/entities/Department";
-import { departments } from "../../assets/data";
+import { departments } from "../../shared/assets/data";
 import { ApiStore } from "../../types/api";
 
 class DepartmentsStore

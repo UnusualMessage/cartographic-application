@@ -1,7 +1,7 @@
-import { baseUrl } from "../../assets/api/config";
+import { baseUrl } from "../../shared/assets/api/config";
 import { User } from "../../types/entities";
 import { Error } from "../../types/api";
-import { get, post } from "../../utils/api/requests";
+import { get, post } from "../../shared/lib/utils/requests";
 import { AuthenticateUser } from "../../types/entities/User";
 
 class UsersService {

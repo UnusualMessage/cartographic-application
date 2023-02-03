@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 
 import { OrganizationsStore } from "../../../stores/entities";
-import { getSelectOptions } from "../../../utils/forms";
-import { createPartner } from "../../../assets/forms";
+import { getSelectOptions } from "../../../shared/lib/utils/forms";
+import { createPartner } from "../../../shared/assets/forms";
 import PartnersStore from "../../../stores/entities/PartnersStore";
 import { Create } from "../../auxiliary/forms/actions";
 

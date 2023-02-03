@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { useRegions } from "../../../../hooks";
-import { getTrailerColumns } from "../../../../utils/tables";
+import { useRegions } from "../../../../shared/lib/hooks";
+import { getTrailerColumns } from "../../../../shared/lib/utils/tables";
 import { TrailersStore } from "../../../../stores/entities";
 import { Table } from "../../../../components/common/Table";
 import { Trailer } from "../../../../types/entities";

@@ -2,12 +2,12 @@ import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
 
 import { EmployeesStore } from "../../../../stores/entities";
-import { useRegions } from "../../../../hooks";
+import { useRegions } from "../../../../shared/lib/hooks";
 import { Table } from "../../../../components/common/Table";
 import { Department } from "../../../../types/entities";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import DepartmentsStore from "../../../../stores/entities/DepartmentsStore";
-import { getDepartmentColumns } from "../../../../utils/tables";
+import { getDepartmentColumns } from "../../../../shared/lib/utils/tables";
 import {
   CreateDepartment,
   DuplicateDepartment,

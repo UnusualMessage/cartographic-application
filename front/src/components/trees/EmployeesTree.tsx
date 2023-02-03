@@ -8,7 +8,7 @@ import EntitiesTree from "../common/EntitiesTree";
 import { Node } from "../../types/nodes";
 import { Employee } from "../../types/entities";
 import { EmployeesStore } from "../../stores/entities";
-import { employeeNodes } from "../../assets/nodes";
+import { employeeNodes } from "../../shared/assets/nodes";
 
 const fillNodes = (employees?: Employee[]) => {
   const initial: Node[] = cloneDeep(employeeNodes);

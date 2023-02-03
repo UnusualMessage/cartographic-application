@@ -4,7 +4,7 @@ import Partner, {
   CreatePartner,
   UpdatePartner,
 } from "../../types/entities/Partner";
-import { partners } from "../../assets/data";
+import { partners } from "../../shared/assets/data";
 import { ApiStore } from "../../types/api";
 
 class PartnersStore implements ApiStore<Partner, CreatePartner, UpdatePartner> {

@@ -2,7 +2,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Icon } from "@blueprintjs/core";
 
 import DialogForm from "../DialogForm";
-import { formRenderer } from "../../../../utils/forms";
+import { formRenderer } from "../../../../shared/lib/utils/forms";
 import { ApiStore } from "../../../../types/api";
 import { Form } from "../../../../types/forms";
 

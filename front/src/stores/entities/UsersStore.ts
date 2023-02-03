@@ -1,9 +1,9 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
 import { User } from "../../types/entities";
-import { users } from "../../assets/data/users";
+import { users } from "../../shared/assets/data/users";
 import { ResponseService, UsersService } from "../../services/api";
-import { isError } from "../../utils/api/responses";
+import { isError } from "../../shared/lib/utils/responses";
 import { AuthenticateUser } from "../../types/entities/User";
 
 class UsersStore {

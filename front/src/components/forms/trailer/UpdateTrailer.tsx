@@ -9,10 +9,13 @@ import {
   OrganizationsStore,
   TrailersStore,
 } from "../../../stores/entities";
-import { useFetch } from "../../../hooks";
+import { useFetch } from "../../../shared/lib/hooks";
 import { Trailer } from "../../../types/entities";
-import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import { updateTrailer } from "../../../assets/forms";
+import {
+  formRenderer,
+  getSelectOptions,
+} from "../../../shared/lib/utils/forms";
+import { updateTrailer } from "../../../shared/assets/forms";
 import { UpdateTrailer } from "../../../types/entities/Trailer";
 
 interface Props {

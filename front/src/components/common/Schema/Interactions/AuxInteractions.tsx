@@ -7,8 +7,8 @@ import { SourceContext } from "../Layer/VectorLayer";
 import { InteractionsStore, MapStore } from "../../../../stores/map";
 import Interactions from "./Interactions";
 import { InteractionType } from "../../../../types/map";
-import { AddEventListener } from "../../../../hooks/useInteraction";
-import { useInteraction } from "../../../../hooks";
+import { AddEventListener } from "../../../../shared/lib/hooks/useInteraction";
+import { useInteraction } from "../../../../shared/lib/hooks";
 
 const AuxInteractions = () => {
   const source = useContext(SourceContext);

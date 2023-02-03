@@ -5,10 +5,13 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/forms/DialogForm";
 import { OrganizationsStore } from "../../../stores/entities";
-import { useFetch } from "../../../hooks";
+import { useFetch } from "../../../shared/lib/hooks";
 import { Speed } from "../../../types/entities";
-import { formRenderer, getSelectOptions } from "../../../utils/forms";
-import { updateSpeed } from "../../../assets/forms";
+import {
+  formRenderer,
+  getSelectOptions,
+} from "../../../shared/lib/utils/forms";
+import { updateSpeed } from "../../../shared/assets/forms";
 import SpeedsStore from "../../../stores/entities/SpeedsStore";
 import { UpdateSpeed } from "../../../types/entities/Speed";
 

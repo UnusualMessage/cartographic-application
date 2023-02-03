@@ -2,7 +2,7 @@ import { makeAutoObservable, runInAction } from "mobx";
 
 import { Speed } from "../../types/entities";
 import { CreateSpeed, UpdateSpeed } from "../../types/entities/Speed";
-import { speeds } from "../../assets/data";
+import { speeds } from "../../shared/assets/data";
 import { ApiStore } from "../../types/api";
 
 class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {

@@ -17,9 +17,9 @@ import ListenersInjector, {
 import { InteractionsStore } from "../../stores/map";
 import { Change, ChangeSet, Undo } from "../../types/map";
 import { LayersService } from "../map";
-import { geozonesLayerId } from "../../assets/map/config";
+import { geozonesLayerId } from "../../shared/assets/map/config";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
-import { getGeozoneStyle } from "../../utils/styles/getGeozoneStyle";
+import { getGeozoneStyle } from "../../shared/lib/utils/styles/getGeozoneStyle";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;

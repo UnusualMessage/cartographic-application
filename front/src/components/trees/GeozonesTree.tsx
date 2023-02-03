@@ -5,11 +5,11 @@ import { cloneDeep } from "lodash";
 import { wrapper } from "./tree.module.scss";
 
 import { Node } from "../../types/nodes";
-import { geozoneNodes } from "../../assets/nodes";
+import { geozoneNodes } from "../../shared/assets/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { GeozonesStore } from "../../stores/entities";
 import { Geozone } from "../../types/entities";
-import { getGeozonesTreeClickHandler } from "../../utils/nodes";
+import { getGeozonesTreeClickHandler } from "../../shared/lib/utils/nodes";
 import { ContextMenu2 } from "@blueprintjs/popover2";
 import { GeozoneMenu } from "../menus";
 

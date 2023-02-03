@@ -22,7 +22,7 @@ import {
   TranslateEvent,
   TranslateInjector,
 } from "../../services/listeners";
-import { getMeasurementStyle } from "../../utils/styles/getMeasurementStyle";
+import { getMeasurementStyle } from "../../shared/lib/utils/styles/getMeasurementStyle";
 import { InteractionType } from "../../types/map";
 
 interface Interactions {

@@ -5,9 +5,9 @@ import {
   OrganizationsStore,
   PostsStore,
 } from "../../../stores/entities";
-import { createEmployee } from "../../../assets/forms";
+import { createEmployee } from "../../../shared/assets/forms";
 import { Create } from "../../auxiliary/forms/actions";
-import { getSelectOptions } from "../../../utils/forms";
+import { getSelectOptions } from "../../../shared/lib/utils/forms";
 
 const CreateEmployee = () => {
   const organizations = OrganizationsStore.organizations;

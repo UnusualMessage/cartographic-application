@@ -9,10 +9,10 @@ import {
   RemoveEmployee,
   UpdateEmployee,
 } from "../../../../components/forms/employee";
-import { getEmployeeColumns } from "../../../../utils/tables";
+import { getEmployeeColumns } from "../../../../shared/lib/utils/tables";
 import { Table } from "../../../../components/common/Table";
 import { Employee } from "../../../../types/entities";
-import { useRegions } from "../../../../hooks";
+import { useRegions } from "../../../../shared/lib/hooks";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;
