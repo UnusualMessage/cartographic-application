@@ -6,7 +6,7 @@ import {
   TrailersStore,
 } from "../../../../entities/stores/entities";
 import { getSelectOptions } from "../../../../shared/lib/utils/forms";
-import { createTrailer } from "../../../../shared/assets/templates/forms";
+import { createTrailer } from "../../../../shared/assets";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreateTrailer = () => {

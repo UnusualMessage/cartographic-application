@@ -5,8 +5,8 @@ import { cloneDeep } from "lodash";
 import { wrapper } from "./tree.module.scss";
 
 import { Node } from "../../../shared/api/types/nodes";
-import { geozoneNodes } from "../../../shared/assets/templates/nodes";
-import EntitiesTree from "../common/EntitiesTree";
+import { geozoneNodes } from "../../../shared/assets";
+import EntitiesTree from "../../../shared/ui/EntitiesTree";
 import { GeozonesStore } from "../../../entities/stores/entities";
 import { Geozone } from "../../../shared/api/types/entities";
 import { getGeozonesTreeClickHandler } from "../../../shared/lib/utils/nodes";

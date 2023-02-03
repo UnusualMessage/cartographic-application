@@ -8,7 +8,7 @@ import { content, wrapper } from "./authorization.module.scss";
 import { AuthenticateUser } from "../../../shared/api/types/entities/User";
 import { AuthStore } from "../../../entities/stores/entities";
 import { formRenderer } from "../../../shared/lib/utils/forms";
-import { authenticateUser } from "../../../shared/assets/templates/forms";
+import { authenticateUser } from "../../../shared/assets";
 
 const Authorization = () => {
   const redirect = useNavigate();

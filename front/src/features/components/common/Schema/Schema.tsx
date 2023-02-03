@@ -9,13 +9,16 @@ import View from "./View";
 import { TileLayer, VectorLayer } from "./Layer";
 import MapWrapper from "./Map";
 import { Controls } from "./Controls";
-import { auxLayerId, geozonesLayerId } from "../../../../shared/assets/map/config";
+import {
+  auxLayerId,
+  geozonesLayerId,
+} from "../../../../shared/assets/map/config";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
-import { getMeasurementStyle } from "../../../../shared/lib/utils/map/getMeasurementStyle";
+import { getMeasurementStyle } from "../../../../shared/lib/utils/map";
 import { ControlsStore } from "../../../../entities/stores/ui";
 import { GeozonesStore } from "../../../../entities/stores/entities";
-import Condition from "../../auxiliary/Condition";
+import Condition from "../../../../shared/ui/Condition";
 import { InteractionsStore } from "../../../../entities/stores/map";
 
 const Schema = () => {

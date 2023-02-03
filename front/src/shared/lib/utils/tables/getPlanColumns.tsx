@@ -5,7 +5,7 @@ import { cell } from "../../../../features/components/common/Table/table.module.
 import { ColumnProps } from "../../../../features/components/common/Table";
 import { Plan } from "../../../api/types/entities";
 import getNumberCell from "./getNumberCell";
-import Progress from "../../../../features/components/auxiliary/Progress";
+import Progress from "../../../ui/Progress";
 
 export const getPlanColumns = (plans: Plan[]): ColumnProps[] => [
   getNumberCell(plans),

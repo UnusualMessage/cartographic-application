@@ -13,7 +13,7 @@ import {
 } from "../../../../shared/lib/utils/forms";
 import { UpdateDepartment } from "../../../../shared/api/types/entities/Department";
 import DepartmentsStore from "../../../../entities/stores/entities/DepartmentsStore";
-import { updateDepartment } from "../../../../shared/assets/templates/forms";
+import { updateDepartment } from "../../../../shared/assets";
 
 interface Props {
   id?: string;

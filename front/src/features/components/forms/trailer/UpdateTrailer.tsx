@@ -15,7 +15,7 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../../shared/lib/utils/forms";
-import { updateTrailer } from "../../../../shared/assets/templates/forms";
+import { updateTrailer } from "../../../../shared/assets";
 import { UpdateTrailer } from "../../../../shared/api/types/entities/Trailer";
 
 interface Props {

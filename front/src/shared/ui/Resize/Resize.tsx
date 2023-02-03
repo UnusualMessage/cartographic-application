@@ -3,7 +3,7 @@ import { MouseEventHandler } from "react";
 
 import { active, height, width, wrapper } from "./resize.module.scss";
 
-import { ResizeType } from "../../../../shared/api/types/common";
+import { ResizeType } from "../../api/types/common";
 
 interface Props {
   start: MouseEventHandler;

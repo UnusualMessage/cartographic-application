@@ -19,7 +19,7 @@ import { Change, ChangeSet, Undo } from "../../../shared/api/types/map";
 import { LayersService } from "../map";
 import { geozonesLayerId } from "../../../shared/assets/map/config";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
-import { getGeozoneStyle } from "../../../shared/lib/utils/map/getGeozoneStyle";
+import { getGeozoneStyle } from "../../../shared/lib/utils/map";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;

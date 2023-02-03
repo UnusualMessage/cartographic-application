@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import TableButtons from "../../../../features/components/auxiliary/TableButtons";
+import TableButtons from "../../../../shared/ui/TableButtons";
 import { PostsStore } from "../../../../entities/stores/entities";
 import {
   CreatePost,

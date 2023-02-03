@@ -15,7 +15,7 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../../shared/lib/utils/forms";
-import { updateEmployee } from "../../../../shared/assets/templates/forms";
+import { updateEmployee } from "../../../../shared/assets";
 import { UpdateEmployee } from "../../../../shared/api/types/entities/Employee";
 
 interface Props {

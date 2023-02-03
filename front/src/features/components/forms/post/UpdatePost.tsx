@@ -4,7 +4,10 @@ import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
 import DialogForm from "../../auxiliary/forms/DialogForm";
-import { OrganizationsStore, PostsStore } from "../../../../entities/stores/entities";
+import {
+  OrganizationsStore,
+  PostsStore,
+} from "../../../../entities/stores/entities";
 import { useFetch } from "../../../../shared/lib/hooks";
 import { Post } from "../../../../shared/api/types/entities";
 import { UpdatePost } from "../../../../shared/api/types/entities/Post";
@@ -12,7 +15,7 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../../shared/lib/utils/forms";
-import { updatePost } from "../../../../shared/assets/templates/forms";
+import { updatePost } from "../../../../shared/assets";
 
 interface Props {
   id?: string;

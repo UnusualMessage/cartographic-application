@@ -4,7 +4,7 @@ import { Outlet } from "react-router-dom";
 
 import Sider from "../../../features/components/common/Sider";
 import { ReferencesTree } from "../../../features/components/trees";
-import Content from "../../../features/components/common/Content";
+import Content from "../../../shared/ui/Content";
 import { Loader } from "../../../features/components/auxiliary/placeholders";
 
 const References = () => {

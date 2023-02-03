@@ -12,7 +12,7 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../../shared/lib/utils/forms";
-import { updatePartner } from "../../../../shared/assets/templates/forms";
+import { updatePartner } from "../../../../shared/assets";
 import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
 import { UpdatePartner } from "../../../../shared/api/types/entities/Partner";
 

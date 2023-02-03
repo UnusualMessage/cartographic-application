@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { getPartnerColumns } from "../../../../shared/lib/utils/tables";
 import { Table } from "../../../../features/components/common/Table";
 import { Partner } from "../../../../shared/api/types/entities";
-import TableButtons from "../../../../features/components/auxiliary/TableButtons";
+import TableButtons from "../../../../shared/ui/TableButtons";
 import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
 import {
   CreatePartner,

@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { OrganizationsStore } from "../../../../entities/stores/entities";
 import { getSelectOptions } from "../../../../shared/lib/utils/forms";
 import DepartmentsStore from "../../../../entities/stores/entities/DepartmentsStore";
-import { createDepartment } from "../../../../shared/assets/templates/forms";
+import { createDepartment } from "../../../../shared/assets";
 import { Create } from "../../auxiliary/forms/actions";
 
 const CreateDepartment = () => {

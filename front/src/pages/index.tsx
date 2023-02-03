@@ -4,8 +4,11 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Authorization from "./Admin/Authorization";
 import { references } from "../shared/assets/samples/references";
-import { EmptyPage, Loader } from "../features/components/auxiliary/placeholders";
-import Layout from "../features/components/common/Layout";
+import {
+  EmptyPage,
+  Loader,
+} from "../features/components/auxiliary/placeholders";
+import Layout from "../widgets/Layout";
 
 const View = lazy(() => import("../pages/User/View"));
 const References = lazy(() => import("../pages/User/References"));

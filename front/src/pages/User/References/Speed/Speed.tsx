@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { getSpeedColumns } from "../../../../shared/lib/utils/tables";
 import { Table } from "../../../../features/components/common/Table";
 import { Speed } from "../../../../shared/api/types/entities";
-import TableButtons from "../../../../features/components/auxiliary/TableButtons";
+import TableButtons from "../../../../shared/ui/TableButtons";
 import SpeedsStore from "../../../../entities/stores/entities/SpeedsStore";
 import {
   CreateSpeed,

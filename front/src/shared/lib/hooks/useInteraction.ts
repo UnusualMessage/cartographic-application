@@ -3,7 +3,7 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 
 import { Callback } from "../../api/types/common";
-import { invoke } from "../utils/common/invoke";
+import { invoke } from "../utils/common";
 import { InteractionProps } from "../../../features/components/common/Schema/Interactions/GeozonesInteractions";
 
 export type AddEventListener = (map: Map, source: VectorSource) => Callback;

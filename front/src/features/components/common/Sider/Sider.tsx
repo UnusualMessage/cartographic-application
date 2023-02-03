@@ -4,7 +4,7 @@ import { content, wrapper } from "./sider.module.scss";
 
 import { useResizing } from "../../../../shared/lib/hooks";
 import { ResizeType } from "../../../../shared/api/types/common";
-import Resize from "../../auxiliary/Resize";
+import Resize from "../../../../shared/ui/Resize";
 
 const Sider = ({ children }: PropsWithChildren) => {
   const type = ResizeType.width;

@@ -11,7 +11,7 @@ import {
   formRenderer,
   getSelectOptions,
 } from "../../../../shared/lib/utils/forms";
-import { updateSpeed } from "../../../../shared/assets/templates/forms";
+import { updateSpeed } from "../../../../shared/assets";
 import SpeedsStore from "../../../../entities/stores/entities/SpeedsStore";
 import { UpdateSpeed } from "../../../../shared/api/types/entities/Speed";
 
