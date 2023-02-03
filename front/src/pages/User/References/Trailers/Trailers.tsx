@@ -3,14 +3,14 @@ import { useEffect } from "react";
 
 import { useRegions } from "../../../../shared/lib/hooks";
 import { getTrailerColumns } from "../../../../shared/lib/utils/tables";
-import { TrailersStore } from "../../../../stores/entities";
-import { Table } from "../../../../components/common/Table";
+import { TrailersStore } from "../../../../entities/stores/entities";
+import { Table } from "../../../../features/components/common/Table";
 import { Trailer } from "../../../../shared/api/types/entities";
-import TableButtons from "../../../../components/auxiliary/TableButtons";
-import CreateTrailer from "../../../../components/forms/trailer/CreateTrailer";
-import UpdateTrailer from "../../../../components/forms/trailer/UpdateTrailer";
-import DuplicateTrailer from "../../../../components/forms/trailer/DuplicateTrailer";
-import RemoveTrailer from "../../../../components/forms/trailer/RemoveTrailer";
+import TableButtons from "../../../../features/components/auxiliary/TableButtons";
+import CreateTrailer from "../../../../features/components/forms/trailer/CreateTrailer";
+import UpdateTrailer from "../../../../features/components/forms/trailer/UpdateTrailer";
+import DuplicateTrailer from "../../../../features/components/forms/trailer/DuplicateTrailer";
+import RemoveTrailer from "../../../../features/components/forms/trailer/RemoveTrailer";
 
 const Trailers = () => {
   const trailer = TrailersStore.trailer;

@@ -4,7 +4,7 @@ import { FeatureLike } from "ol/Feature";
 import Style, { StyleFunction } from "ol/style/Style";
 import { Fill, Stroke, Text } from "ol/style";
 import CircleStyle from "ol/style/Circle";
-import MeasurementStore from "../../../../stores/map/MeasurementStore";
+import MeasurementStore from "../../../../entities/stores/map/MeasurementStore";
 
 const style = new Style({
   fill: new Fill({

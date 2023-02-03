@@ -1,9 +1,9 @@
 import { Cell } from "@blueprintjs/table";
 
-import { cell } from "../../../../components/common/Table/table.module.scss";
+import { cell } from "../../../../features/components/common/Table/table.module.scss";
 
 import { Department } from "../../../api/types/entities";
-import { ColumnProps } from "../../../../components/common/Table";
+import { ColumnProps } from "../../../../features/components/common/Table";
 import getNumberCell from "./getNumberCell";
 
 export const getDepartmentColumns = (

@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { wrapper } from "./organizations.module.scss";
 
 import Organization from "./Organization";
-import { OrganizationsStore } from "../../../stores/entities";
+import { OrganizationsStore } from "../../../entities/stores/entities";
 
 const Organizations = () => {
   const organizations = OrganizationsStore.organizations;

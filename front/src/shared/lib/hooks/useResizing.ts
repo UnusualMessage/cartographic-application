@@ -1,7 +1,7 @@
 import { MouseEventHandler, useCallback, useEffect, useState } from "react";
 
 import { ResizeType } from "../../api/types/common";
-import { MapStore } from "../../../stores/map";
+import { MapStore } from "../../../entities/stores/map";
 
 interface Props {
   initial: number;

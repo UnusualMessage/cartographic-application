@@ -4,7 +4,7 @@ import {
   EquipmentTree,
   GeozonesTree,
   PlansTree,
-} from "../../../../components/trees";
+} from "../../../../features/components/trees";
 
 export const siderTabs: TabsList = {
   id: "sider-tabs",

@@ -1,15 +1,15 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import TableButtons from "../../../../components/auxiliary/TableButtons";
-import { PostsStore } from "../../../../stores/entities";
+import TableButtons from "../../../../features/components/auxiliary/TableButtons";
+import { PostsStore } from "../../../../entities/stores/entities";
 import {
   CreatePost,
   DuplicatePost,
   RemovePost,
   UpdatePost,
-} from "../../../../components/forms/post";
-import { Table } from "../../../../components/common/Table";
+} from "../../../../features/components/forms/post";
+import { Table } from "../../../../features/components/common/Table";
 import { Post } from "../../../../shared/api/types/entities";
 import { getPostColumns } from "../../../../shared/lib/utils/tables";
 import { useRegions } from "../../../../shared/lib/hooks";

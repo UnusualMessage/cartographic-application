@@ -1,16 +1,16 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import TableButtons from "../../../../components/auxiliary/TableButtons";
-import { EmployeesStore } from "../../../../stores/entities";
+import TableButtons from "../../../../features/components/auxiliary/TableButtons";
+import { EmployeesStore } from "../../../../entities/stores/entities";
 import {
   CreateEmployee,
   DuplicateEmployee,
   RemoveEmployee,
   UpdateEmployee,
-} from "../../../../components/forms/employee";
+} from "../../../../features/components/forms/employee";
 import { getEmployeeColumns } from "../../../../shared/lib/utils/tables";
-import { Table } from "../../../../components/common/Table";
+import { Table } from "../../../../features/components/common/Table";
 import { Employee } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 

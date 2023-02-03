@@ -1,10 +1,10 @@
 import { v4 as uuid } from "uuid";
 
 import { TabsList } from "../../../api/types/tabs";
-import PlansTab from "../../../../components/tabs/PlansTab";
-import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
-import StatusTab from "../../../../components/tabs/StatusTab";
-import WorksTab from "../../../../components/tabs/WorksTab";
+import PlansTab from "../../../../features/components/tabs/PlansTab";
+import { EmptyInformation } from "../../../../features/components/auxiliary/placeholders";
+import StatusTab from "../../../../features/components/tabs/StatusTab";
+import WorksTab from "../../../../features/components/tabs/WorksTab";
 
 export const footerTabs: TabsList[] = [
   {
