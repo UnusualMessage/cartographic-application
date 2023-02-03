@@ -1,4 +1,4 @@
-import { UpdateStatus } from "../../types/api";
+import { UpdateStatus } from "../../shared/api/types/api";
 import { makeAutoObservable } from "mobx";
 
 class UpdateStore {

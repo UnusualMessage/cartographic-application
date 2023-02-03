@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 import { getPartnerColumns } from "../../../../shared/lib/utils/tables";
 import { Table } from "../../../../components/common/Table";
-import { Partner } from "../../../../types/entities";
+import { Partner } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import PartnersStore from "../../../../stores/entities/PartnersStore";
 import {

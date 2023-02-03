@@ -3,7 +3,7 @@ import { Text } from "@blueprintjs/core";
 
 import { wrapper, chart, title } from "./chart.module.scss";
 
-import { Equipment } from "../../types/entities";
+import { Equipment } from "../../shared/api/types/entities";
 
 interface Props {
   equip: Equipment[];

@@ -3,7 +3,7 @@ import { Cell } from "@blueprintjs/table";
 import { cell } from "../../../../components/common/Table/table.module.scss";
 
 import { ColumnProps } from "../../../../components/common/Table";
-import { Plan } from "../../../../types/entities";
+import { Plan } from "../../../api/types/entities";
 import getNumberCell from "./getNumberCell";
 import Progress from "../../../../components/auxiliary/Progress";
 

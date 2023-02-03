@@ -4,11 +4,11 @@ import { cloneDeep } from "lodash";
 
 import { wrapper } from "./tree.module.scss";
 
-import { Node } from "../../types/nodes";
-import { geozoneNodes } from "../../shared/assets/nodes";
+import { Node } from "../../shared/api/types/nodes";
+import { geozoneNodes } from "../../shared/assets/templates/nodes";
 import EntitiesTree from "../common/EntitiesTree";
 import { GeozonesStore } from "../../stores/entities";
-import { Geozone } from "../../types/entities";
+import { Geozone } from "../../shared/api/types/entities";
 import { getGeozonesTreeClickHandler } from "../../shared/lib/utils/nodes";
 import { ContextMenu2 } from "@blueprintjs/popover2";
 import { GeozoneMenu } from "../menus";

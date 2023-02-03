@@ -10,10 +10,10 @@ import {
 import { observer } from "mobx-react-lite";
 
 import { ControlsStore } from "../../../../../../stores/ui";
-import { InteractionType } from "../../../../../../types/map";
+import { InteractionType } from "../../../../../../shared/api/types/map";
 import { InteractionsStore, LayersStore } from "../../../../../../stores/map";
 import { auxLayerId } from "../../../../../../shared/assets/map/config";
-import { about } from "../../../../../../shared/assets/data/about";
+import { about } from "../../../../../../shared/assets/samples/about";
 import { ControlType } from "../../../../../../stores/ui/ControlsStore";
 
 const DrawerMenu = () => {

@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { EmployeesStore } from "../../../../stores/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 import { Table } from "../../../../components/common/Table";
-import { Department } from "../../../../types/entities";
+import { Department } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import DepartmentsStore from "../../../../stores/entities/DepartmentsStore";
 import { getDepartmentColumns } from "../../../../shared/lib/utils/tables";

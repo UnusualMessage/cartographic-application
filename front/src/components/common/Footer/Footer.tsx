@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 
 import { content, wrapper } from "./footer.module.scss";
 import Resize from "../../auxiliary/Resize";
-import { ResizeType } from "../../../types/common";
+import { ResizeType } from "../../../shared/api/types/common";
 import { useResizing } from "../../../shared/lib/hooks";
 
 const Footer = ({ children }: PropsWithChildren) => {

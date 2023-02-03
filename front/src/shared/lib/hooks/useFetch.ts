@@ -1,6 +1,6 @@
 import { DependencyList, useEffect } from "react";
 
-const useFetch = (
+export const useFetch = (
   fetchCallback: () => Promise<any>,
   dependencyList: DependencyList
 ) => {
@@ -8,5 +8,3 @@ const useFetch = (
     void fetchCallback();
   }, dependencyList);
 };
-
-export default useFetch;

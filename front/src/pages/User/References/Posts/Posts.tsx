@@ -10,7 +10,7 @@ import {
   UpdatePost,
 } from "../../../../components/forms/post";
 import { Table } from "../../../../components/common/Table";
-import { Post } from "../../../../types/entities";
+import { Post } from "../../../../shared/api/types/entities";
 import { getPostColumns } from "../../../../shared/lib/utils/tables";
 import { useRegions } from "../../../../shared/lib/hooks";
 

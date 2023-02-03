@@ -6,7 +6,7 @@ import { Feature } from "ol";
 import { BingMaps, OSM, XYZ } from "ol/source";
 import { default as OLTileLayer } from "ol/layer/Tile";
 
-import { BaseLayerType } from "../../types/common";
+import { BaseLayerType } from "../../shared/api/types/common";
 import { baseLayers } from "../../shared/assets/map";
 import { StyleLike } from "ol/style/Style";
 

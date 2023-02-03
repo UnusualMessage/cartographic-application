@@ -5,7 +5,7 @@ import { useRegions } from "../../../../shared/lib/hooks";
 import { getTrailerColumns } from "../../../../shared/lib/utils/tables";
 import { TrailersStore } from "../../../../stores/entities";
 import { Table } from "../../../../components/common/Table";
-import { Trailer } from "../../../../types/entities";
+import { Trailer } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import CreateTrailer from "../../../../components/forms/trailer/CreateTrailer";
 import UpdateTrailer from "../../../../components/forms/trailer/UpdateTrailer";

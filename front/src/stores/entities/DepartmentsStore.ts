@@ -1,12 +1,12 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { Department } from "../../types/entities";
+import { Department } from "../../shared/api/types/entities";
 import {
   CreateDepartment,
   UpdateDepartment,
-} from "../../types/entities/Department";
-import { departments } from "../../shared/assets/data";
-import { ApiStore } from "../../types/api";
+} from "../../shared/api/types/entities/Department";
+import { departments } from "../../shared/assets/samples";
+import { ApiStore } from "../../shared/api/types/api";
 
 class DepartmentsStore
   implements ApiStore<Department, CreateDepartment, UpdateDepartment>

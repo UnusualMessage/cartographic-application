@@ -11,7 +11,7 @@ import {
   MapStore,
 } from "../../../../../../stores/map";
 import { auxLayerId } from "../../../../../../shared/assets/map/config";
-import { InteractionType } from "../../../../../../types/map";
+import { InteractionType } from "../../../../../../shared/api/types/map";
 import { ControlsStore } from "../../../../../../stores/ui";
 
 const ButtonsGroup = () => {

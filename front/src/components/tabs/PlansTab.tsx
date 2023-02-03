@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { PlansStore } from "../../stores/entities";
 import { PlansChart } from "../charts";
 import { Table } from "../common/Table";
-import { Plan } from "../../types/entities";
+import { Plan } from "../../shared/api/types/entities";
 import { getPlanColumns } from "../../shared/lib/utils/tables";
 
 const PlansTab = () => {

@@ -1,6 +1,6 @@
-import { AccessToken, AuthenticateUser } from "../../types/entities/User";
+import { AccessToken, AuthenticateUser } from "../../shared/api/types/entities/User";
 import { get, post } from "../../shared/lib/utils/requests";
-import { Error } from "../../types/api";
+import { Error } from "../../shared/api/types/api";
 import { baseUrl } from "../../shared/assets/api/config";
 
 class AuthService {

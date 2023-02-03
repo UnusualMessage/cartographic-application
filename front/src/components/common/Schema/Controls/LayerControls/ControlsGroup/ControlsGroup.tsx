@@ -7,7 +7,7 @@ import { visible, wrapper } from "./group.module.scss";
 
 import { ControlsStore } from "../../../../../../stores/ui";
 import { LayersStore } from "../../../../../../stores/map";
-import { BaseLayerType } from "../../../../../../types/common";
+import { BaseLayerType } from "../../../../../../shared/api/types/common";
 import { baseLayers } from "../../../../../../shared/assets/map";
 
 const ControlsGroup = () => {

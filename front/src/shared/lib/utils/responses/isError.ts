@@ -1,4 +1,4 @@
-import { Error } from "../../../../types/api";
+import { Error } from "../../../api/types/api";
 
 const isError = (data: any): data is Error => {
   return data.error;

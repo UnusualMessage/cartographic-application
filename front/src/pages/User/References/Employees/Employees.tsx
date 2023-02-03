@@ -11,7 +11,7 @@ import {
 } from "../../../../components/forms/employee";
 import { getEmployeeColumns } from "../../../../shared/lib/utils/tables";
 import { Table } from "../../../../components/common/Table";
-import { Employee } from "../../../../types/entities";
+import { Employee } from "../../../../shared/api/types/entities";
 import { useRegions } from "../../../../shared/lib/hooks";
 
 const Employees = () => {

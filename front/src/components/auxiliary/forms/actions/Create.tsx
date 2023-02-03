@@ -3,8 +3,8 @@ import { Icon } from "@blueprintjs/core";
 
 import DialogForm from "../DialogForm";
 import { formRenderer } from "../../../../shared/lib/utils/forms";
-import { ApiStore } from "../../../../types/api";
-import { Form } from "../../../../types/forms";
+import { ApiStore } from "../../../../shared/api/types/api";
+import { Form } from "../../../../shared/api/types/forms";
 
 interface Props<T, CreateT> {
   name: string;

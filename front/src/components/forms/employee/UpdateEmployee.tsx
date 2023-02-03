@@ -10,13 +10,13 @@ import {
   PostsStore,
 } from "../../../stores/entities";
 import { useFetch } from "../../../shared/lib/hooks";
-import { Employee } from "../../../types/entities";
+import { Employee } from "../../../shared/api/types/entities";
 import {
   formRenderer,
   getSelectOptions,
 } from "../../../shared/lib/utils/forms";
-import { updateEmployee } from "../../../shared/assets/forms";
-import { UpdateEmployee } from "../../../types/entities/Employee";
+import { updateEmployee } from "../../../shared/assets/templates/forms";
+import { UpdateEmployee } from "../../../shared/api/types/entities/Employee";
 
 interface Props {
   id?: string;

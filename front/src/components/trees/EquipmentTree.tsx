@@ -6,9 +6,9 @@ import { ContextMenu2 } from "@blueprintjs/popover2";
 import { wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../common/EntitiesTree";
-import { Node } from "../../types/nodes";
-import { equipmentNodes } from "../../shared/assets/nodes";
-import { Equipment } from "../../types/entities";
+import { Node } from "../../shared/api/types/nodes";
+import { equipmentNodes } from "../../shared/assets/templates/nodes";
+import { Equipment } from "../../shared/api/types/entities";
 import { EquipmentStore } from "../../stores/entities";
 import { EquipmentMenu } from "../menus";
 import { getEquipmentTreeClickHandler } from "../../shared/lib/utils/nodes";

@@ -5,9 +5,9 @@ import { cloneDeep } from "lodash";
 import { wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../common/EntitiesTree";
-import { Node } from "../../types/nodes";
-import { planNodes } from "../../shared/assets/nodes";
-import { Plan } from "../../types/entities";
+import { Node } from "../../shared/api/types/nodes";
+import { planNodes } from "../../shared/assets/templates/nodes";
+import { Plan } from "../../shared/api/types/entities";
 import { PlansStore } from "../../stores/entities";
 import { getPlansTreeClickHandler } from "../../shared/lib/utils/nodes";
 

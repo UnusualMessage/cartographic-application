@@ -5,10 +5,10 @@ import { cloneDeep } from "lodash";
 import { wrapper } from "./tree.module.scss";
 
 import EntitiesTree from "../common/EntitiesTree";
-import { Node } from "../../types/nodes";
-import { Employee } from "../../types/entities";
+import { Node } from "../../shared/api/types/nodes";
+import { Employee } from "../../shared/api/types/entities";
 import { EmployeesStore } from "../../stores/entities";
-import { employeeNodes } from "../../shared/assets/nodes";
+import { employeeNodes } from "../../shared/assets/templates/nodes";
 
 const fillNodes = (employees?: Employee[]) => {
   const initial: Node[] = cloneDeep(employeeNodes);

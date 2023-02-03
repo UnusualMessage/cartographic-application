@@ -6,7 +6,7 @@ import { Map } from "ol";
 import { SourceContext } from "../Layer/VectorLayer";
 import { InteractionsStore, MapStore } from "../../../../stores/map";
 import Interactions from "./Interactions";
-import { InteractionType } from "../../../../types/map";
+import { InteractionType } from "../../../../shared/api/types/map";
 import { AddEventListener } from "../../../../shared/lib/hooks/useInteraction";
 import { useInteraction } from "../../../../shared/lib/hooks";
 

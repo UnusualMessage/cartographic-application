@@ -3,7 +3,7 @@ import { FeatureLike } from "ol/Feature";
 
 import { FeaturesStore, LayersStore, MapStore } from "../../stores/map";
 import VectorSource from "ol/source/Vector";
-import { BaseLayerType } from "../../types/common";
+import { BaseLayerType } from "../../shared/api/types/common";
 import { StyleLike } from "ol/style/Style";
 
 class LayersService {

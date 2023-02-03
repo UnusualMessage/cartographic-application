@@ -2,7 +2,7 @@ import { Cell } from "@blueprintjs/table";
 
 import { cell } from "../../../../components/common/Table/table.module.scss";
 
-import { Trailer } from "../../../../types/entities";
+import { Trailer } from "../../../api/types/entities";
 import { ColumnProps } from "../../../../components/common/Table";
 import getNumberCell from "./getNumberCell";
 

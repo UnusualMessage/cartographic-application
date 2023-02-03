@@ -12,7 +12,7 @@ import { Controls } from "./Controls";
 import { auxLayerId, geozonesLayerId } from "../../../shared/assets/map/config";
 import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
-import { getMeasurementStyle } from "../../../shared/lib/utils/styles/getMeasurementStyle";
+import { getMeasurementStyle } from "../../../shared/lib/utils/map/getMeasurementStyle";
 import { ControlsStore } from "../../../stores/ui";
 import { GeozonesStore } from "../../../stores/entities";
 import Condition from "../../auxiliary/Condition";

@@ -5,10 +5,10 @@ import { Button } from "@blueprintjs/core";
 
 import { content, wrapper } from "./authorization.module.scss";
 
-import { AuthenticateUser } from "../../../types/entities/User";
+import { AuthenticateUser } from "../../../shared/api/types/entities/User";
 import { AuthStore } from "../../../stores/entities";
 import { formRenderer } from "../../../shared/lib/utils/forms";
-import { authenticateUser } from "../../../shared/assets/forms";
+import { authenticateUser } from "../../../shared/assets/templates/forms";
 
 const Authorization = () => {
   const redirect = useNavigate();

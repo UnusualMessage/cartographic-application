@@ -2,13 +2,13 @@ import { useEffect } from "react";
 import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 
-import { Callback } from "../../../types/common";
+import { Callback } from "../../api/types/common";
 import { invoke } from "../utils/common/invoke";
 import { InteractionProps } from "../../../components/common/Schema/Interactions/GeozonesInteractions";
 
 export type AddEventListener = (map: Map, source: VectorSource) => Callback;
 
-const useInteraction = (
+export const useInteraction = (
   callback: AddEventListener,
   { source, map, type }: InteractionProps
 ) => {
@@ -24,5 +24,3 @@ const useInteraction = (
     };
   }, [map, type, source]);
 };
-
-export default useInteraction;

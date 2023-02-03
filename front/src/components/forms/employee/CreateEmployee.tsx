@@ -5,7 +5,7 @@ import {
   OrganizationsStore,
   PostsStore,
 } from "../../../stores/entities";
-import { createEmployee } from "../../../shared/assets/forms";
+import { createEmployee } from "../../../shared/assets/templates/forms";
 import { Create } from "../../auxiliary/forms/actions";
 import { getSelectOptions } from "../../../shared/lib/utils/forms";
 

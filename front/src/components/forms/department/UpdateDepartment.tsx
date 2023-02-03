@@ -6,14 +6,14 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import DialogForm from "../../auxiliary/forms/DialogForm";
 import { OrganizationsStore } from "../../../stores/entities";
 import { useFetch } from "../../../shared/lib/hooks";
-import { Department } from "../../../types/entities";
+import { Department } from "../../../shared/api/types/entities";
 import {
   formRenderer,
   getSelectOptions,
 } from "../../../shared/lib/utils/forms";
-import { UpdateDepartment } from "../../../types/entities/Department";
+import { UpdateDepartment } from "../../../shared/api/types/entities/Department";
 import DepartmentsStore from "../../../stores/entities/DepartmentsStore";
-import { updateDepartment } from "../../../shared/assets/forms";
+import { updateDepartment } from "../../../shared/assets/templates/forms";
 
 interface Props {
   id?: string;

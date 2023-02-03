@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { Node, NodePath } from "../../../types/nodes/Node";
+import { Node, NodePath } from "../../api/types/nodes/Node";
 import { forEachNode, forNode } from "../utils/nodes";
 
 interface Props {
@@ -8,7 +8,7 @@ interface Props {
   setNodes: (nodes: Node[]) => void;
 }
 
-const useTreeActions = ({ nodes, setNodes }: Props) => {
+export const useTreeActions = ({ nodes, setNodes }: Props) => {
   const collapse = useCallback(
     (_node: Node, nodePath: NodePath) => {
       const newNodes = forNode(nodePath, nodes, (node) => {
@@ -50,5 +50,3 @@ const useTreeActions = ({ nodes, setNodes }: Props) => {
 
   return { collapse, expand, select };
 };
-
-export default useTreeActions;

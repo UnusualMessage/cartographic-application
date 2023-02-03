@@ -10,13 +10,13 @@ import {
   TrailersStore,
 } from "../../../stores/entities";
 import { useFetch } from "../../../shared/lib/hooks";
-import { Trailer } from "../../../types/entities";
+import { Trailer } from "../../../shared/api/types/entities";
 import {
   formRenderer,
   getSelectOptions,
 } from "../../../shared/lib/utils/forms";
-import { updateTrailer } from "../../../shared/assets/forms";
-import { UpdateTrailer } from "../../../types/entities/Trailer";
+import { updateTrailer } from "../../../shared/assets/templates/forms";
+import { UpdateTrailer } from "../../../shared/api/types/entities/Trailer";
 
 interface Props {
   id?: string;

@@ -6,7 +6,7 @@ import { MenuItem } from "@blueprintjs/core";
 
 import { GeocoderService } from "../../../../../../services/api";
 import { ViewStore } from "../../../../../../stores/map";
-import { GeocoderFeature } from "../../../../../../types/common";
+import { GeocoderFeature } from "../../../../../../shared/api/types/common";
 
 const itemRenderer: ItemRenderer<GeocoderFeature> = (
   feature,

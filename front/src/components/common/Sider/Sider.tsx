@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from "react";
 import { content, wrapper } from "./sider.module.scss";
 
 import { useResizing } from "../../../shared/lib/hooks";
-import { ResizeType } from "../../../types/common";
+import { ResizeType } from "../../../shared/api/types/common";
 import Resize from "../../auxiliary/Resize";
 
 const Sider = ({ children }: PropsWithChildren) => {

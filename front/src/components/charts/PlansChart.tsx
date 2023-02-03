@@ -1,4 +1,4 @@
-import { Plan } from "../../types/entities";
+import { Plan } from "../../shared/api/types/entities";
 import { ResponsivePie } from "@nivo/pie";
 
 import { chart, wrapper } from "./chart.module.scss";

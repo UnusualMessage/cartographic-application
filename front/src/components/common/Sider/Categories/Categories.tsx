@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import { panel, wrapper } from "./categories.module.scss";
 
-import { siderTabs } from "../../../../shared/assets/tabs";
+import { siderTabs } from "../../../../shared/assets/templates/tabs";
 import { TabsStore } from "../../../../stores/ui";
 
 const Categories = () => {

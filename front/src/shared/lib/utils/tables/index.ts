@@ -5,3 +5,4 @@ export { getSpeedColumns } from "./getSpeedColumns";
 export { getPartnerColumns } from "./getPartnerColumns";
 export { getDepartmentColumns } from "./getDepartmentColumns";
 export { getTrailerColumns } from "./getTrailerColumns";
+export { getNumberCell } from "./getNumberCell";

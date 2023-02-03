@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 import { getSpeedColumns } from "../../../../shared/lib/utils/tables";
 import { Table } from "../../../../components/common/Table";
-import { Speed } from "../../../../types/entities";
+import { Speed } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../components/auxiliary/TableButtons";
 import SpeedsStore from "../../../../stores/entities/SpeedsStore";
 import {

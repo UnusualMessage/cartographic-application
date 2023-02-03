@@ -1,4 +1,4 @@
-import { Callback } from "../../../../types/common";
+import { Callback } from "../../../api/types/common";
 
 export const invoke = (callback: Callback) => {
   if (callback) {
