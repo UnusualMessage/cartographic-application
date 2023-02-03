@@ -1,17 +1,17 @@
 import { Divider } from "@blueprintjs/core";
-import { observer } from "mobx-react-lite";
-import { cloneDeep } from "lodash";
 import { ContextMenu2 } from "@blueprintjs/popover2";
+import { cloneDeep } from "lodash";
+import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./tree.module.scss";
-
-import EntitiesTree from "../../../shared/ui/EntitiesTree";
 import { Node } from "@shared/api/types/nodes";
 import { equipmentNodes } from "@shared/assets";
-import { Equipment } from "../../../shared/api/types/entities";
-import { EquipmentStore } from "../../../entities/stores/entities";
-import { EquipmentMenu } from "../menus";
 import { getEquipmentTreeClickHandler } from "@shared/lib";
+
+import { wrapper } from "./tree.module.scss";
+import { EquipmentStore } from "../../../entities/stores/entities";
+import { Equipment } from "../../../shared/api/types/entities";
+import EntitiesTree from "../../../shared/ui/EntitiesTree";
+import { EquipmentMenu } from "../menus";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);

@@ -2,7 +2,6 @@ import classNames from "classnames";
 import { MouseEventHandler } from "react";
 
 import { active, height, width, wrapper } from "./resize.module.scss";
-
 import { ResizeType } from "../../api/types/common";
 
 interface Props {

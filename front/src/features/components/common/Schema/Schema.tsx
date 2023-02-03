@@ -1,22 +1,22 @@
-import { FullScreen, useFullScreenHandle } from "react-full-screen";
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 import { StyleLike } from "ol/style/Style";
+import { useEffect } from "react";
+import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import { wrapper } from "./schema.module.scss";
+import { auxLayerId, geozonesLayerId } from "@shared/assets/map/config";
+import { getMeasurementStyle } from "@shared/lib";
 
-import View from "./View";
+import { Controls } from "./Controls";
+import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import { TileLayer, VectorLayer } from "./Layer";
 import MapWrapper from "./Map";
-import { Controls } from "./Controls";
-import { auxLayerId, geozonesLayerId } from "@shared/assets/map/config";
-import { AuxInteractions, GeozonesInteractions } from "./Interactions";
 import Menu from "./Menu";
-import { getMeasurementStyle } from "@shared/lib";
-import { ControlsStore } from "../../../../entities/stores/ui";
+import { wrapper } from "./schema.module.scss";
+import View from "./View";
 import { GeozonesStore } from "../../../../entities/stores/entities";
-import Condition from "../../../../shared/ui/Condition";
 import { InteractionsStore } from "../../../../entities/stores/map";
+import { ControlsStore } from "../../../../entities/stores/ui";
+import Condition from "../../../../shared/ui/Condition";
 
 const Schema = () => {
   const handle = useFullScreenHandle();

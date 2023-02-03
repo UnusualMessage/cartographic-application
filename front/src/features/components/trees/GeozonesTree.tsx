@@ -1,16 +1,16 @@
 import { Divider, TreeNodeInfo } from "@blueprintjs/core";
-import { observer } from "mobx-react-lite";
+import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
-
-import { wrapper } from "./tree.module.scss";
+import { observer } from "mobx-react-lite";
 
 import { Node } from "@shared/api/types/nodes";
 import { geozoneNodes } from "@shared/assets";
-import EntitiesTree from "../../../shared/ui/EntitiesTree";
+import { getGeozonesTreeClickHandler } from "@shared/lib";
+
+import { wrapper } from "./tree.module.scss";
 import { GeozonesStore } from "../../../entities/stores/entities";
 import { Geozone } from "../../../shared/api/types/entities";
-import { getGeozonesTreeClickHandler } from "@shared/lib";
-import { ContextMenu2 } from "@blueprintjs/popover2";
+import EntitiesTree from "../../../shared/ui/EntitiesTree";
 import { GeozoneMenu } from "../menus";
 
 const fillNodes = (nodes?: Geozone[]) => {

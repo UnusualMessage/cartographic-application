@@ -1,6 +1,6 @@
 import CreatePartner from "./CreatePartner";
-import UpdatePartner from "./UpdatePartner";
-import RemovePartner from "./RemovePartner";
 import DuplicatePartner from "./DuplicatePartner";
+import RemovePartner from "./RemovePartner";
+import UpdatePartner from "./UpdatePartner";
 
 export { CreatePartner, RemovePartner, UpdatePartner, DuplicatePartner };

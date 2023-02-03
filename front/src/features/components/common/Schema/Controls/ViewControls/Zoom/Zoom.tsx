@@ -3,7 +3,6 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
 import { active, wrapper } from "./zoom.module.scss";
-
 import { ViewStore } from "../../../../../../../entities/stores/map";
 import { ControlsStore } from "../../../../../../../entities/stores/ui";
 

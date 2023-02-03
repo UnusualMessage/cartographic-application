@@ -1,10 +1,9 @@
-import { observer } from "mobx-react-lite";
 import { Text } from "@blueprintjs/core";
+import { observer } from "mobx-react-lite";
+import { toLonLat } from "ol/proj";
 
 import { container, label, value, wrapper } from "./coordinates.module.scss";
-
 import { MapStore } from "../../../../../../../entities/stores/map";
-import { toLonLat } from "ol/proj";
 
 const Coordinates = () => {
   const coordinate = toLonLat(MapStore.cursorCoordinate ?? [0, 0]);

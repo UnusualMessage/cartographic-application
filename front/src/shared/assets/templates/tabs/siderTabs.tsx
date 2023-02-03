@@ -1,4 +1,5 @@
 import { TabsList } from "@shared/api/types/tabs";
+
 import {
   EmployeesTree,
   EquipmentTree,

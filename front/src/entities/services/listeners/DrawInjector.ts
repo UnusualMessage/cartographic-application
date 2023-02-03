@@ -1,8 +1,3 @@
-import { Draw } from "ol/interaction";
-import { v4 as uuid } from "uuid";
-import { FeatureLike } from "ol/Feature";
-import { DrawEvent } from "ol/interaction/Draw";
-import { Polygon } from "ol/geom";
 import {
   area,
   Feature,
@@ -10,16 +5,22 @@ import {
   polygon,
   toWgs84,
 } from "@turf/turf";
+import { FeatureLike } from "ol/Feature";
+import { Polygon } from "ol/geom";
+import { Draw } from "ol/interaction";
+import { DrawEvent } from "ol/interaction/Draw";
+import { v4 as uuid } from "uuid";
+
+import { Change, ChangeSet, Undo } from "@shared/api/types/map";
+import { geozonesLayerId } from "@shared/assets/map/config";
+import { getGeozoneStyle } from "@shared/lib";
 
 import ListenersInjector, {
   DrawEvent as DrawEventType,
 } from "./ListenersInjector";
-import { InteractionsStore } from "../../stores/map";
-import { Change, ChangeSet, Undo } from "@shared/api/types/map";
-import { LayersService } from "../map";
-import { geozonesLayerId } from "@shared/assets/map/config";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
-import { getGeozoneStyle } from "@shared/lib";
+import { InteractionsStore } from "../../stores/map";
+import { LayersService } from "../map";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;

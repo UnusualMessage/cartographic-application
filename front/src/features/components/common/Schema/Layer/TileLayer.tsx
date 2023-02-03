@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
 import { LayersService } from "../../../../../entities/services/map";
 import { LayersStore } from "../../../../../entities/stores/map";

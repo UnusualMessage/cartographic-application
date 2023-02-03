@@ -1,6 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { Node } from "@shared/api/types/nodes";
+
 import { organizations } from "../../samples";
 
 export const employeeNodes: Node[] = [

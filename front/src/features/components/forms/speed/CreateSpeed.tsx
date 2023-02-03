@@ -1,8 +1,9 @@
 import { observer } from "mobx-react-lite";
 
-import { OrganizationsStore } from "../../../../entities/stores/entities";
-import { getSelectOptions } from "@shared/lib";
 import { createSpeed } from "@shared/assets";
+import { getSelectOptions } from "@shared/lib";
+
+import { OrganizationsStore } from "../../../../entities/stores/entities";
 import SpeedsStore from "../../../../entities/stores/entities/SpeedsStore";
 import { Create } from "../../auxiliary/forms/actions";
 

@@ -2,10 +2,10 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import { Outlet } from "react-router-dom";
 
+import { Loader } from "../../../features/components/auxiliary/placeholders";
 import Sider from "../../../features/components/common/Sider";
 import { ReferencesTree } from "../../../features/components/trees";
 import Content from "../../../shared/ui/Content";
-import { Loader } from "../../../features/components/auxiliary/placeholders";
 
 const References = () => {
   return (

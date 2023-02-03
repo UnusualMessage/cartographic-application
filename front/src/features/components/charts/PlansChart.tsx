@@ -1,7 +1,7 @@
-import { Plan } from "../../../shared/api/types/entities";
 import { ResponsivePie } from "@nivo/pie";
 
 import { chart, wrapper } from "./chart.module.scss";
+import { Plan } from "../../../shared/api/types/entities";
 
 interface Props {
   plans: Plan[];

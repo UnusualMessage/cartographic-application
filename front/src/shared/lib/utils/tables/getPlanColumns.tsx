@@ -1,10 +1,10 @@
 import { Cell } from "@blueprintjs/table";
 
-import { cell } from "../../../../features/components/common/Table/table.module.scss";
+import { getNumberCell } from "@shared/lib";
 
 import { ColumnProps } from "../../../../features/components/common/Table";
+import { cell } from "../../../../features/components/common/Table/table.module.scss";
 import { Plan } from "../../../api/types/entities";
-import getNumberCell from "./getNumberCell";
 import Progress from "../../../ui/Progress";
 
 export const getPlanColumns = (plans: Plan[]): ColumnProps[] => [

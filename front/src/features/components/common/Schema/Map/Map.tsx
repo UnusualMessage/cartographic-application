@@ -1,14 +1,13 @@
-import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 import { observer } from "mobx-react-lite";
+import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 
 import { wrapper } from "./map.module.scss";
-
-import { LayersStore, MapStore } from "../../../../../entities/stores/map";
 import {
   CommonEvent,
   ListenersInjector,
   MapInjector,
 } from "../../../../../entities/services/listeners";
+import { LayersStore, MapStore } from "../../../../../entities/stores/map";
 
 const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);

@@ -1,13 +1,13 @@
-import { observer } from "mobx-react-lite";
-import { cloneDeep } from "lodash";
-import classNames from "classnames";
 import { TreeEventHandler } from "@blueprintjs/core";
+import classNames from "classnames";
+import { cloneDeep } from "lodash";
+import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
+
+import { referenceNodes } from "@shared/assets";
 
 import { fullHeight, wrapper } from "./tree.module.scss";
-
 import EntitiesTree from "../../../shared/ui/EntitiesTree";
-import { referenceNodes } from "@shared/assets";
-import { useNavigate } from "react-router-dom";
 
 const fillNodes = () => {
   return cloneDeep(referenceNodes);

@@ -1,13 +1,16 @@
 import { makeAutoObservable } from "mobx";
 import { Map } from "ol";
-import VectorSource from "ol/source/Vector";
-import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
 import {
   altKeyOnly,
   platformModifierKeyOnly,
   primaryAction,
 } from "ol/events/condition";
 import { Type } from "ol/geom/Geometry";
+import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
+import VectorSource from "ol/source/Vector";
+
+import { InteractionType } from "@shared/api/types/map";
+import { getMeasurementStyle } from "@shared/lib";
 
 import {
   DragBoxEvent,
@@ -22,8 +25,6 @@ import {
   TranslateEvent,
   TranslateInjector,
 } from "../../services/listeners";
-import { getMeasurementStyle } from "@shared/lib";
-import { InteractionType } from "@shared/api/types/map";
 
 interface Interactions {
   select: Select | null;

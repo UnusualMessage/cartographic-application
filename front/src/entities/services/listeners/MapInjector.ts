@@ -1,8 +1,8 @@
-import ListenersInjector, { CommonEvent } from "./ListenersInjector";
 import { Map, MapBrowserEvent } from "ol";
-import { Pixel } from "ol/pixel";
 import { Coordinate } from "ol/coordinate";
+import { Pixel } from "ol/pixel";
 
+import ListenersInjector, { CommonEvent } from "./ListenersInjector";
 import {
   FeaturesStore,
   InteractionsStore,

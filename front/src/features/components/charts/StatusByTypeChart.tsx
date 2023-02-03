@@ -1,9 +1,8 @@
+import { Text } from "@blueprintjs/core";
 import { ResponsivePie } from "@nivo/pie";
 
-import { wrapper, chart, title as cssTitle } from "./chart.module.scss";
-
+import { chart, title as cssTitle, wrapper } from "./chart.module.scss";
 import { Equipment, EquipmentType } from "../../../shared/api/types/entities";
-import { Text } from "@blueprintjs/core";
 
 interface Props {
   equip: Equipment[];
@@ -12,13 +11,13 @@ interface Props {
 }
 
 const StatusByTypeChart = ({ equip, type, title }: Props) => {
-  equip = equip.filter(item => item.type.id === type.id);
+  equip = equip.filter((item) => item.type.id === type.id);
 
-  const waiting = equip.filter(item => item.status === "waiting");
-  const parking = equip.filter(item => item.status === "parking");
-  const nd = equip.filter(item => item.status === "no-data");
-  const disabled = equip.filter(item => item.status === "disabled");
-  const working = equip.filter(item => item.status === "working");
+  const waiting = equip.filter((item) => item.status === "waiting");
+  const parking = equip.filter((item) => item.status === "parking");
+  const nd = equip.filter((item) => item.status === "no-data");
+  const disabled = equip.filter((item) => item.status === "disabled");
+  const working = equip.filter((item) => item.status === "working");
 
   const data = [
     {
@@ -49,7 +48,7 @@ const StatusByTypeChart = ({ equip, type, title }: Props) => {
       id: `Работает - ${working.length}`,
       value: working.length,
       color: "hsl(81, 70%, 50%)",
-    }
+    },
   ];
 
   return (

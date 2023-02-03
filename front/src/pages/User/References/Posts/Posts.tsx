@@ -1,17 +1,18 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import TableButtons from "../../../../shared/ui/TableButtons";
+import { getPostColumns, useRegions } from "@shared/lib";
+
 import { PostsStore } from "../../../../entities/stores/entities";
+import { Table } from "../../../../features/components/common/Table";
 import {
   CreatePost,
   DuplicatePost,
   RemovePost,
   UpdatePost,
 } from "../../../../features/components/forms/post";
-import { Table } from "../../../../features/components/common/Table";
 import { Post } from "../../../../shared/api/types/entities";
-import { getPostColumns, useRegions } from "@shared/lib";
+import TableButtons from "../../../../shared/ui/TableButtons";
 
 const Posts = () => {
   const post = PostsStore.post;

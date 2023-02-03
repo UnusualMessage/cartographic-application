@@ -1,7 +1,7 @@
 import { FormGroup, InputGroup } from "@blueprintjs/core";
-import { v4 as uuid } from "uuid";
 import { ChangeEvent, forwardRef } from "react";
 import { FieldError } from "react-hook-form";
+import { v4 as uuid } from "uuid";
 
 interface Props {
   label: string;

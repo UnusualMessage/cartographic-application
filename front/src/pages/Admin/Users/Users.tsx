@@ -1,9 +1,8 @@
 import { observer } from "mobx-react-lite";
 
-import { wrapper } from "./users.module.scss";
-
-import { UsersStore } from "../../../entities/stores/entities";
 import User from "./User";
+import { wrapper } from "./users.module.scss";
+import { UsersStore } from "../../../entities/stores/entities";
 
 const Users = () => {
   const users = UsersStore.users;

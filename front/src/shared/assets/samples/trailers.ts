@@ -1,7 +1,8 @@
 import { v4 as uuid } from "uuid";
+
+import { departments } from "./departments";
 import { organizations } from "./organizations";
 import { Trailer } from "../../api/types/entities";
-import { departments } from "./departments";
 
 export const trailers: Trailer[] = [
   {

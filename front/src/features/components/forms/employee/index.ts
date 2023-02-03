@@ -1,6 +1,6 @@
 import CreateEmployee from "./CreateEmployee";
-import UpdateEmployee from "./UpdateEmployee";
-import RemoveEmployee from "./RemoveEmployee";
 import DuplicateEmployee from "./DuplicateEmployee";
+import RemoveEmployee from "./RemoveEmployee";
+import UpdateEmployee from "./UpdateEmployee";
 
 export { CreateEmployee, UpdateEmployee, RemoveEmployee, DuplicateEmployee };

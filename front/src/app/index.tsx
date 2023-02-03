@@ -1,6 +1,7 @@
-import Routing from "../pages";
 import { HotkeysProvider } from "@blueprintjs/core";
 import React from "react";
+
+import Routing from "../pages";
 
 import "./index.scss";
 

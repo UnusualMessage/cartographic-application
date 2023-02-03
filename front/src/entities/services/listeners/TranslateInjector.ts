@@ -1,7 +1,7 @@
-import { Translate } from "ol/interaction";
 import { Feature } from "ol";
-import { TranslateEvent } from "ol/interaction/Translate";
 import { Polygon } from "ol/geom";
+import { Translate } from "ol/interaction";
+import { TranslateEvent } from "ol/interaction/Translate";
 
 import ListenersInjector, {
   TranslateEvent as TranslateEventType,

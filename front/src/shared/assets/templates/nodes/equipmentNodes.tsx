@@ -1,4 +1,5 @@
 import { Node } from "@shared/api/types/nodes";
+
 import { types } from "../../samples";
 
 export const equipmentNodes: Node[] = [

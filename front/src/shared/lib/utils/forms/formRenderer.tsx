@@ -1,11 +1,13 @@
-import { Form } from "@shared/api/types/forms";
-import { SelectInput, TextInput } from "../../../../features/components/inputs";
 import {
   FieldError,
   FieldErrors,
   FieldValues,
   UseFormRegister,
 } from "react-hook-form";
+
+import { Form } from "@shared/api/types/forms";
+
+import { SelectInput, TextInput } from "../../../../features/components/inputs";
 import NumberInput from "../../../../features/components/inputs/NumberInput";
 
 export const formRenderer = <T extends FieldValues>(

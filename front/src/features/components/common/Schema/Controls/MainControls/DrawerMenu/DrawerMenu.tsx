@@ -9,14 +9,15 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { ControlsStore } from "../../../../../../../entities/stores/ui";
 import { InteractionType } from "@shared/api/types/map";
+import { auxLayerId } from "@shared/assets/map/config";
+import { about } from "@shared/assets/samples/about";
+
 import {
   InteractionsStore,
   LayersStore,
 } from "../../../../../../../entities/stores/map";
-import { auxLayerId } from "@shared/assets/map/config";
-import { about } from "@shared/assets/samples/about";
+import { ControlsStore } from "../../../../../../../entities/stores/ui";
 import { ControlType } from "../../../../../../../entities/stores/ui/ControlsStore";
 
 const DrawerMenu = () => {

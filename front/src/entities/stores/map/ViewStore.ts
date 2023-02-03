@@ -1,5 +1,5 @@
-import { View } from "ol";
 import { makeAutoObservable } from "mobx";
+import { View } from "ol";
 import { Coordinate } from "ol/coordinate";
 
 class ViewStore {

@@ -1,7 +1,7 @@
 import { Select } from "ol/interaction";
 
-import { FeaturesStore } from "../../stores/map";
 import ListenersInjector, { SelectEvent } from "./ListenersInjector";
+import { FeaturesStore } from "../../stores/map";
 
 class SelectInjector implements ListenersInjector<SelectEvent> {
   private _select: Select;

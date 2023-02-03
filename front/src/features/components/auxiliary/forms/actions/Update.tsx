@@ -1,3 +1,4 @@
+import { Icon } from "@blueprintjs/core";
 import { useState } from "react";
 import {
   DeepPartial,
@@ -5,11 +6,12 @@ import {
   SubmitHandler,
   useForm,
 } from "react-hook-form";
-import { formRenderer, useFetch } from "@shared/lib";
-import DialogForm from "../DialogForm";
-import { Icon } from "@blueprintjs/core";
+
 import { ApiStore } from "@shared/api/types/api";
 import { Form } from "@shared/api/types/forms";
+import { formRenderer, useFetch } from "@shared/lib";
+
+import DialogForm from "../DialogForm";
 
 interface Item {
   id: string;

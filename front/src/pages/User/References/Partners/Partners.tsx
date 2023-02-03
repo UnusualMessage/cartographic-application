@@ -1,17 +1,18 @@
-import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
 import { getPartnerColumns, useRegions } from "@shared/lib";
-import { Table } from "../../../../features/components/common/Table";
-import { Partner } from "../../../../shared/api/types/entities";
-import TableButtons from "../../../../shared/ui/TableButtons";
+
 import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
+import { Table } from "../../../../features/components/common/Table";
 import {
   CreatePartner,
   DuplicatePartner,
   RemovePartner,
   UpdatePartner,
 } from "../../../../features/components/forms/partner";
+import { Partner } from "../../../../shared/api/types/entities";
+import TableButtons from "../../../../shared/ui/TableButtons";
 
 const Partners = () => {
   const partner = PartnersStore.partner;

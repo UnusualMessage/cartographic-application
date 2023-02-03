@@ -1,6 +1,6 @@
 import { centerOfMass, lineString } from "@turf/turf";
-import { FeatureLike } from "ol/Feature";
 import { Coordinate } from "ol/coordinate";
+import { FeatureLike } from "ol/Feature";
 
 import { getFeatureCenter } from "@shared/lib";
 

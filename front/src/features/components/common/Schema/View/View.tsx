@@ -1,9 +1,9 @@
-import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
 import { debounce } from "lodash";
 import { observer } from "mobx-react-lite";
 import { toFixed } from "ol/math";
 import { fromLonLat, toLonLat } from "ol/proj";
+import { useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 
 import { MapStore, ViewStore } from "../../../../../entities/stores/map";
 

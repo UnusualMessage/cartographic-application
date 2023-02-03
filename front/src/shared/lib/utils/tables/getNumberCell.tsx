@@ -1,7 +1,6 @@
 import { Cell } from "@blueprintjs/table";
 
 import { cell } from "../../../../features/components/common/Table/table.module.scss";
-
 import { fromUuidToNumber } from "../format";
 
 interface Entity {
@@ -19,5 +18,3 @@ export const getNumberCell = (entities: Entity[]) => {
     name: "Номер",
   };
 };
-
-export default getNumberCell;

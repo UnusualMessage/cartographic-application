@@ -1,6 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
 import { equipment } from "@shared/assets/samples";
+
 import { Equipment } from "../../../shared/api/types/entities";
 
 class EquipmentStore {

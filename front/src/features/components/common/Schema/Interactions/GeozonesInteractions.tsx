@@ -1,17 +1,18 @@
 import { observer } from "mobx-react-lite";
-import { useContext } from "react";
-import VectorSource from "ol/source/Vector";
 import { Map } from "ol";
+import VectorSource from "ol/source/Vector";
+import { useContext } from "react";
 
-import { SourceContext } from "../Layer/VectorLayer";
+import { InteractionType } from "@shared/api/types/map";
+import { useInteraction } from "@shared/lib";
+import { AddEventListener } from "@shared/lib/hooks/useInteraction";
+
+import Interactions from "./Interactions";
 import {
   InteractionsStore,
   MapStore,
 } from "../../../../../entities/stores/map";
-import Interactions from "./Interactions";
-import { InteractionType } from "@shared/api/types/map";
-import { AddEventListener } from "@shared/lib/hooks/useInteraction";
-import { useInteraction } from "@shared/lib";
+import { SourceContext } from "../Layer/VectorLayer";
 
 const GeozonesInteractions = () => {
   const source = useContext(SourceContext);
