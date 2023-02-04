@@ -7,9 +7,9 @@ import {
   MenuItem,
   Position,
 } from "@blueprintjs/core";
-import { ControlType } from "@entities/stores/ui/ControlsStore";
 import { observer } from "mobx-react-lite";
 
+import { ControlType } from "@entities/stores/ui/ControlsStore";
 import { InteractionType } from "@shared/api/types/map";
 import { auxLayerId } from "@shared/assets/map/config";
 import { about } from "@shared/assets/samples/about";

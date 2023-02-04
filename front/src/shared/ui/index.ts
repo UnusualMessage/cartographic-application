@@ -7,3 +7,4 @@ export { default as Main } from "./Main";
 export { default as Progress } from "./Progress";
 export { default as TabPage } from "./TabPage";
 export { default as TableButtons } from "./TableButtons";
+export * from "./Table";

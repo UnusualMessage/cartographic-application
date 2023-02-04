@@ -1,8 +1,8 @@
-import { InteractionProps } from "@features/components/common/Schema/Interactions/GeozonesInteractions";
 import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useEffect } from "react";
 
+import { InteractionProps } from "@features/components/common/Schema/Interactions/GeozonesInteractions";
 import { Callback } from "@shared/api";
 
 import { invoke } from "../utils";

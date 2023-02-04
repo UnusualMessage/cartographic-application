@@ -1,17 +1,17 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { getDepartmentColumns, useRegions } from "@shared/lib";
-
-import { EmployeesStore } from "../../../../entities/stores/entities";
-import DepartmentsStore from "../../../../entities/stores/entities/DepartmentsStore";
-import { Table } from "../../../../features/components/common/Table";
+import DepartmentsStore from "@entities/department/model/DepartmentsStore";
 import {
   CreateDepartment,
   DuplicateDepartment,
   RemoveDepartment,
   UpdateDepartment,
-} from "../../../../features/components/forms/department";
+} from "@entities/department/ui/forms";
+import { getDepartmentColumns, useRegions } from "@shared/lib";
+import { Table } from "@shared/ui";
+
+import { EmployeesStore } from "../../../../entities/stores/entities";
 import { Department } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../shared/ui/TableButtons";
 

@@ -1,15 +1,15 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
+import CreateTrailer from "@entities/trailer/ui/forms/CreateTrailer";
+import DuplicateTrailer from "@entities/trailer/ui/forms/DuplicateTrailer";
+import RemoveTrailer from "@entities/trailer/ui/forms/RemoveTrailer";
+import UpdateTrailer from "@entities/trailer/ui/forms/UpdateTrailer";
 import { getTrailerColumns, useRegions } from "@shared/lib";
 
 import { TrailersStore } from "../../../../entities/stores/entities";
-import { Table } from "../../../../features/components/common/Table";
-import CreateTrailer from "../../../../features/components/forms/trailer/CreateTrailer";
-import DuplicateTrailer from "../../../../features/components/forms/trailer/DuplicateTrailer";
-import RemoveTrailer from "../../../../features/components/forms/trailer/RemoveTrailer";
-import UpdateTrailer from "../../../../features/components/forms/trailer/UpdateTrailer";
 import { Trailer } from "../../../../shared/api/types/entities";
+import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";
 
 const Trailers = () => {

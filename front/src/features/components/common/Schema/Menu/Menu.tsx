@@ -1,8 +1,9 @@
 import { Menu as DefaultMenu, MenuDivider, MenuItem } from "@blueprintjs/core";
-import { Callback } from "@entities/services/listeners/ListenersInjector";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
+
+import { Callback } from "@entities/services/listeners/ListenersInjector";
 
 import { hidden, wrapper } from "./menu.module.scss";
 import { FeaturesService } from "../../../../../entities/services/map";
