@@ -12,8 +12,8 @@ import { observer } from "mobx-react-lite";
 import { ControlsStore } from "@shared/api";
 import { ControlType } from "@shared/api/stores/ControlsStore";
 import { InteractionType } from "@shared/api/types/map";
-import { auxLayerId } from "@shared/assets/map/config";
 import { about } from "@shared/assets/samples/about";
+import { auxLayerId } from "@shared/constants";
 
 import {
   InteractionsStore,

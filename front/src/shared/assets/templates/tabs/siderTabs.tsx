@@ -1,9 +1,9 @@
 import { EmployeesTree } from "@entities/employee";
+import { GeozonesTree } from "@entities/geozone";
 import { TabsList } from "@shared/api/types/tabs";
 
 import {
   EquipmentTree,
-  GeozonesTree,
   PlansTree,
 } from "../../../../features/components/trees";
 

@@ -7,7 +7,7 @@ import {
   menuOffset,
   overlayId,
   overlayOffset,
-} from "@shared/assets/map";
+} from "@shared/constants";
 
 import {
   CommonEvent,

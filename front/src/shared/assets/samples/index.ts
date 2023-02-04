@@ -8,3 +8,7 @@ export { speeds } from "./speeds";
 export { departments } from "./departments";
 export { trailers } from "./trailers";
 export { geozones } from "./geozones";
+export { baseLayers } from "./baseLayers";
+export { users } from "./users";
+export { posts } from "./posts";
+export { about } from "./about";

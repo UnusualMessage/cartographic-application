@@ -5,7 +5,7 @@ import { FormEventHandler } from "react";
 
 import { ControlsStore } from "@shared/api";
 import { BaseLayerType } from "@shared/api/types/common";
-import { baseLayers } from "@shared/assets/map";
+import { baseLayers } from "@shared/assets";
 
 import { visible, wrapper } from "./group.module.scss";
 import { LayersStore } from "../../../../../../../entities/stores/map";

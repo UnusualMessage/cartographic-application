@@ -5,7 +5,7 @@ import { useState } from "react";
 
 import { ControlsStore } from "@shared/api";
 import { InteractionType } from "@shared/api/types/map";
-import { auxLayerId } from "@shared/assets/map/config";
+import { auxLayerId } from "@shared/constants";
 
 import { active, wrapper } from "./buttons.module.scss";
 import {

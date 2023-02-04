@@ -3,7 +3,6 @@ import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { GeozoneMenu } from "@features/components/menus";
 import { Geozone } from "@shared/api/types/entities";
 import { Node } from "@shared/api/types/nodes";
 import { geozoneNodes } from "@shared/assets";
@@ -12,6 +11,7 @@ import EntitiesTree from "@shared/ui/EntitiesTree";
 
 import { wrapper } from "./tree.module.scss";
 import { GeozonesStore } from "../../../stores/entities";
+import GeozoneMenu from "../GeozoneMenu";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);

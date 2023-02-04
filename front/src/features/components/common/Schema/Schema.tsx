@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { ControlsStore } from "@shared/api";
-import { auxLayerId, geozonesLayerId } from "@shared/assets/map/config";
+import { auxLayerId, geozonesLayerId } from "@shared/constants";
 import { getMeasurementStyle } from "@shared/lib";
 
 import { Controls } from "./Controls";
