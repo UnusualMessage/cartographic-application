@@ -4,10 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Authorization from "./Admin/Authorization";
 import { references } from "./User/References";
-import {
-  EmptyPage,
-  Loader,
-} from "../features/components/auxiliary/placeholders";
+import { EmptyPage, Loader } from "../shared/ui/placeholders";
 import Layout from "../widgets/Layout";
 
 const View = lazy(() => import("../pages/User/View"));

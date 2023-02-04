@@ -13,7 +13,7 @@ import {
   TrailersStore,
 } from "../../../../entities/stores/entities";
 import { Trailer } from "../../../../shared/api/types/entities";
-import DialogForm from "../../auxiliary/forms/DialogForm";
+import DialogForm from "../../../../shared/ui/forms/DialogForm";
 
 interface Props {
   id?: string;

@@ -7,8 +7,8 @@ import {
 
 import { Form } from "@shared/api/types/forms";
 
-import { SelectInput, TextInput } from "../../../../features/components/inputs";
-import NumberInput from "../../../../features/components/inputs/NumberInput";
+import { SelectInput, TextInput } from "../../../ui/forms/inputs";
+import NumberInput from "../../../ui/forms/inputs/NumberInput";
 
 export const formRenderer = <T extends FieldValues>(
   form: Form<T>,

@@ -2,8 +2,9 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useEffect } from "react";
 
+import { Callback } from "@shared/api";
+
 import { InteractionProps } from "../../../features/components/common/Schema/Interactions/GeozonesInteractions";
-import { Callback } from "../../api/types/common";
 import { invoke } from "../utils";
 
 export type AddEventListener = (map: Map, source: VectorSource) => Callback;

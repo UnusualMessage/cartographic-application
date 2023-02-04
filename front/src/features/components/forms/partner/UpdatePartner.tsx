@@ -11,7 +11,7 @@ import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
 import { OrganizationsStore } from "../../../../entities/stores/entities";
 import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
 import { Partner } from "../../../../shared/api/types/entities";
-import DialogForm from "../../auxiliary/forms/DialogForm";
+import DialogForm from "../../../../shared/ui/forms/DialogForm";
 
 interface Props {
   id?: string;

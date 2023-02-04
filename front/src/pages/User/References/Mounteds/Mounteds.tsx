@@ -1,4 +1,4 @@
-import { EmptyInformation } from "../../../../features/components/auxiliary/placeholders";
+import { EmptyInformation } from "../../../../shared/ui/placeholders";
 
 const Mounteds = () => {
   return <EmptyInformation />;

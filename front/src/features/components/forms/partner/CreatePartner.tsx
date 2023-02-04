@@ -5,7 +5,7 @@ import { getSelectOptions } from "@shared/lib";
 
 import { OrganizationsStore } from "../../../../entities/stores/entities";
 import PartnersStore from "../../../../entities/stores/entities/PartnersStore";
-import { Create } from "../../auxiliary/forms/actions";
+import { Create } from "../../../../shared/ui/forms/actions";
 
 const CreatePartner = () => {
   const organizations = OrganizationsStore.organizations;

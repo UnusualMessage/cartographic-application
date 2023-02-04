@@ -8,7 +8,7 @@ import {
   OrganizationsStore,
   PostsStore,
 } from "../../../../entities/stores/entities";
-import { Create } from "../../auxiliary/forms/actions";
+import { Create } from "../../../../shared/ui/forms/actions";
 
 const CreateEmployee = () => {
   const organizations = OrganizationsStore.organizations;

@@ -25,10 +25,10 @@ import Technologies from "./Technologies";
 import Trailers from "./Trailers";
 import WorksCategories from "./WorksCategories";
 import WorksPlans from "./WorksPlans";
-import { Loader } from "../../../features/components/auxiliary/placeholders";
 import Sider from "../../../features/components/common/Sider";
 import { ReferencesTree } from "../../../features/components/trees";
 import Content from "../../../shared/ui/Content";
+import { Loader } from "../../../shared/ui/placeholders";
 
 export const references: Reference[] = [
   {
