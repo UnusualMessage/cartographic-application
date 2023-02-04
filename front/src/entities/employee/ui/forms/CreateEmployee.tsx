@@ -2,13 +2,13 @@ import { observer } from "mobx-react-lite";
 
 import { createEmployee } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
+import { Create } from "@shared/ui/forms/actions";
 
 import {
   EmployeesStore,
   OrganizationsStore,
   PostsStore,
-} from "../../../../entities/stores/entities";
-import { Create } from "../../../../shared/ui/forms/actions";
+} from "../../../stores/entities";
 
 const CreateEmployee = () => {
   const organizations = OrganizationsStore.organizations;

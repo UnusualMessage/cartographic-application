@@ -7,6 +7,7 @@ import {
   MenuItem,
   Position,
 } from "@blueprintjs/core";
+import { ControlType } from "@entities/stores/ui/ControlsStore";
 import { observer } from "mobx-react-lite";
 
 import { InteractionType } from "@shared/api/types/map";
@@ -18,7 +19,6 @@ import {
   LayersStore,
 } from "../../../../../../../entities/stores/map";
 import { ControlsStore } from "../../../../../../../entities/stores/ui";
-import { ControlType } from "../../../../../../../entities/stores/ui/ControlsStore";
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;

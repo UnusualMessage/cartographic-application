@@ -90,7 +90,8 @@
     "import/resolver": {
       "typescript": {
         "alwaysTryTypes": true,
-        "project": "./tsconfig.json"
+        "project": "./tsconfig.json",
+        "extensions": [".ts", ".tsx", ".scss"]
       }
     }
   }

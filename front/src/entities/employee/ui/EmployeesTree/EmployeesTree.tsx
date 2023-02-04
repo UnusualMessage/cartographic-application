@@ -2,13 +2,13 @@ import { Divider } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
+import { Employee } from "@shared/api/types/entities";
 import { Node } from "@shared/api/types/nodes";
 import { employeeNodes } from "@shared/assets";
+import EntitiesTree from "@shared/ui/EntitiesTree";
 
 import { wrapper } from "./tree.module.scss";
-import { EmployeesStore } from "../../../entities/stores/entities";
-import { Employee } from "../../../shared/api/types/entities";
-import EntitiesTree from "../../../shared/ui/EntitiesTree";
+import { EmployeesStore } from "../../../stores/entities";
 
 const fillNodes = (employees?: Employee[]) => {
   const initial: Node[] = cloneDeep(employeeNodes);

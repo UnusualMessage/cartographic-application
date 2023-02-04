@@ -5,7 +5,7 @@ import { useMemo } from "react";
 import { siderTabs } from "@shared/assets";
 
 import { panel, wrapper } from "./categories.module.scss";
-import { TabsStore } from "../../../../../entities/stores/ui";
+import { TabsStore } from "../../entities/stores/ui";
 
 const Categories = () => {
   const tabId = TabsStore.siderTabId;

@@ -1,7 +1,7 @@
+import { EmployeesTree } from "@entities/employee";
 import { TabsList } from "@shared/api/types/tabs";
 
 import {
-  EmployeesTree,
   EquipmentTree,
   GeozonesTree,
   PlansTree,

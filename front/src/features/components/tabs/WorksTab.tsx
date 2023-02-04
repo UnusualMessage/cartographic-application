@@ -1,4 +1,4 @@
-import WorksChart from "../charts/WorksChart";
+import WorksChart from "../../charts/WorksChart";
 
 const WorksTab = () => {
   return (

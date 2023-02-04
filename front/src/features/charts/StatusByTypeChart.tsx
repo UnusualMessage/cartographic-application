@@ -1,8 +1,9 @@
 import { Text } from "@blueprintjs/core";
 import { ResponsivePie } from "@nivo/pie";
 
+import { Equipment, EquipmentType } from "@shared/api/types/entities";
+
 import { chart, title as cssTitle, wrapper } from "./chart.module.scss";
-import { Equipment, EquipmentType } from "../../../shared/api/types/entities";
 
 interface Props {
   equip: Equipment[];

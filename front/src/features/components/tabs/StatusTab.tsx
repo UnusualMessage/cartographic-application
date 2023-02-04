@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 import { types } from "@shared/assets/samples";
 
 import { EquipmentStore } from "../../../entities/stores/entities";
-import { StatusByTypeChart, StatusChart } from "../charts";
+import { StatusByTypeChart, StatusChart } from "../../charts";
 
 const StatusTab = () => {
   const equipment = EquipmentStore.equipment;
