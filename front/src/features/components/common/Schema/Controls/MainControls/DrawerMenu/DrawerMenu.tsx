@@ -9,7 +9,8 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { ControlType } from "@entities/stores/ui/ControlsStore";
+import { ControlsStore } from "@shared/api";
+import { ControlType } from "@shared/api/stores/ControlsStore";
 import { InteractionType } from "@shared/api/types/map";
 import { auxLayerId } from "@shared/assets/map/config";
 import { about } from "@shared/assets/samples/about";
@@ -18,7 +19,6 @@ import {
   InteractionsStore,
   LayersStore,
 } from "../../../../../../../entities/stores/map";
-import { ControlsStore } from "../../../../../../../entities/stores/ui";
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;

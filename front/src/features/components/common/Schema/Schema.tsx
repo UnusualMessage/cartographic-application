@@ -3,6 +3,7 @@ import { StyleLike } from "ol/style/Style";
 import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
+import { ControlsStore } from "@shared/api";
 import { auxLayerId, geozonesLayerId } from "@shared/assets/map/config";
 import { getMeasurementStyle } from "@shared/lib";
 
@@ -15,7 +16,6 @@ import { wrapper } from "./schema.module.scss";
 import View from "./View";
 import { GeozonesStore } from "../../../../entities/stores/entities";
 import { InteractionsStore } from "../../../../entities/stores/map";
-import { ControlsStore } from "../../../../entities/stores/ui";
 import Condition from "../../../../shared/ui/Condition";
 
 const Schema = () => {

@@ -1,5 +1,5 @@
-import GeozoneExport from "./GeozoneExport";
-import ToastNotification from "./ToastNotification";
+import { GeozoneExport } from "@entities/geozone";
+import { ToastNotification } from "@shared/ui";
 
 const Overlays = () => {
   return (

@@ -1,8 +1,9 @@
 import React from "react";
 
+import Overlays from "@widgets/Overlays";
+
 import Categories from "../../../features/Categories";
 import Schema from "../../../features/components/common/Schema";
-import Overlays from "../../../features/components/overlays";
 import Information from "../../../features/Information";
 import Content from "../../../shared/ui/Content";
 import { Loader } from "../../../shared/ui/placeholders";

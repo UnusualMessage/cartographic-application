@@ -11,10 +11,10 @@ import {
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
+import { UpdateStore } from "@shared/api/stores";
 import { about } from "@shared/assets/samples/about";
 
 import { container, logo, user, wrapper } from "./header.module.scss";
-import { UpdateStore } from "../../entities/stores/api";
 import { OrganizationsStore } from "../../entities/stores/entities";
 
 const Header = () => {

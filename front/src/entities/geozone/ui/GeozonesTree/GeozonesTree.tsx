@@ -3,15 +3,15 @@ import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
+import { GeozoneMenu } from "@features/components/menus";
+import { Geozone } from "@shared/api/types/entities";
 import { Node } from "@shared/api/types/nodes";
 import { geozoneNodes } from "@shared/assets";
 import { getGeozonesTreeClickHandler } from "@shared/lib";
+import EntitiesTree from "@shared/ui/EntitiesTree";
 
 import { wrapper } from "./tree.module.scss";
-import { GeozonesStore } from "../../../entities/stores/entities";
-import { Geozone } from "../../../shared/api/types/entities";
-import EntitiesTree from "../../../shared/ui/EntitiesTree";
-import { GeozoneMenu } from "../menus";
+import { GeozonesStore } from "../../../stores/entities";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);

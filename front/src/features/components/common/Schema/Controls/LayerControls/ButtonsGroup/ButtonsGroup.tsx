@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
+import { ControlsStore } from "@shared/api";
 import { InteractionType } from "@shared/api/types/map";
 import { auxLayerId } from "@shared/assets/map/config";
 
@@ -12,7 +13,6 @@ import {
   LayersStore,
   MapStore,
 } from "../../../../../../../entities/stores/map";
-import { ControlsStore } from "../../../../../../../entities/stores/ui";
 
 const ButtonsGroup = () => {
   const interactionType = InteractionsStore.interactionType;

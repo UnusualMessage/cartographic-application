@@ -3,12 +3,12 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { FormEventHandler } from "react";
 
+import { ControlsStore } from "@shared/api";
 import { BaseLayerType } from "@shared/api/types/common";
 import { baseLayers } from "@shared/assets/map";
 
 import { visible, wrapper } from "./group.module.scss";
 import { LayersStore } from "../../../../../../../entities/stores/map";
-import { ControlsStore } from "../../../../../../../entities/stores/ui";
 
 const ControlsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;

@@ -1,8 +1,9 @@
 import { Button } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
+import DrawerStore from "@shared/api/stores/ControlsStore";
+
 import { wrapper } from "./menu.module.scss";
-import DrawerStore from "../../../../../../../entities/stores/ui/ControlsStore";
 import Geocoder from "../Geocoder";
 
 const InteractionsControl = () => {

@@ -3,8 +3,6 @@ import { v4 as uuid } from "uuid";
 import { TabsList } from "@shared/api/types/tabs";
 
 import PlansTab from "../../../../features/components/tabs/PlansTab";
-import StatusTab from "../../../../features/components/tabs/StatusTab";
-import WorksTab from "../../../../features/components/tabs/WorksTab";
 import { EmptyInformation } from "../../../ui/placeholders";
 
 export const footerTabs: TabsList[] = [
@@ -83,7 +81,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "Статусы",
-        component: <StatusTab />,
+        component: <EmptyInformation />,
       },
 
       {
@@ -147,7 +145,7 @@ export const footerTabs: TabsList[] = [
       {
         id: uuid(),
         title: "История работ",
-        component: <WorksTab />,
+        component: <EmptyInformation />,
       },
 
       {
