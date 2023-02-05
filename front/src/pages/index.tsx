@@ -9,7 +9,7 @@ import Layout from "../widgets/Layout";
 
 const View = lazy(() => import("../pages/User/View"));
 const References = lazy(() => import("../pages/User/References"));
-const Organizations = lazy(() => import("../pages/Admin/Organizations"));
+const OrganizationsPage = lazy(() => import("./Admin/OrganizationsPage"));
 const Users = lazy(() => import("../pages/Admin/Users"));
 
 const browserRouter = createBrowserRouter([
@@ -47,7 +47,7 @@ const browserRouter = createBrowserRouter([
 
   {
     path: "/admin/organizations",
-    element: <Organizations />,
+    element: <OrganizationsPage />,
     errorElement: (
       <NonIdealState icon={"search"} title={"Страницы не существует!"} />
     ),

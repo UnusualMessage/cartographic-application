@@ -7,9 +7,9 @@ import { Geozone } from "@shared/api/types/entities";
 import { Node } from "@shared/api/types/nodes";
 import { geozoneNodes } from "@shared/assets";
 import { getGeozonesTreeClickHandler } from "@shared/lib";
+import { tree } from "@shared/styles";
 import EntitiesTree from "@shared/ui/EntitiesTree";
 
-import { wrapper } from "./tree.module.scss";
 import { GeozonesStore } from "../../../stores/entities";
 import GeozoneMenu from "../GeozoneMenu";
 
@@ -67,7 +67,7 @@ const GeozonesTree = () => {
         fillNodes={fillNodes}
         source={zones}
         handleClick={getGeozonesTreeClickHandler()}
-        className={wrapper}
+        className={tree}
       />
     </>
   );

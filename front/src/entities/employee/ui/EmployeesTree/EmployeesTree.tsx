@@ -5,9 +5,9 @@ import { observer } from "mobx-react-lite";
 import { Employee } from "@shared/api/types/entities";
 import { Node } from "@shared/api/types/nodes";
 import { employeeNodes } from "@shared/assets";
+import { tree } from "@shared/styles";
 import EntitiesTree from "@shared/ui/EntitiesTree";
 
-import { wrapper } from "./tree.module.scss";
 import { EmployeesStore } from "../../../stores/entities";
 
 const fillNodes = (employees?: Employee[]) => {
@@ -53,7 +53,7 @@ const EmployeesTree = () => {
       <EntitiesTree<Employee>
         fillNodes={fillNodes}
         source={employees}
-        className={wrapper}
+        className={tree}
       />
     </>
   );

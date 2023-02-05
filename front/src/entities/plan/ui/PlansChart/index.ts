@@ -1,1 +1,3 @@
-export { default as PlansChart } from "./PlansChart";
+import PlansChart from "./PlansChart";
+
+export default PlansChart;

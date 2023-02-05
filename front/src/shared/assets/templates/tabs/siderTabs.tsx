@@ -1,11 +1,8 @@
 import { EmployeesTree } from "@entities/employee";
+import { EquipmentTree } from "@entities/equipment";
 import { GeozonesTree } from "@entities/geozone";
+import { PlansTree } from "@entities/plan";
 import { TabsList } from "@shared/api/types/tabs";
-
-import {
-  EquipmentTree,
-  PlansTree,
-} from "../../../../features/components/trees";
 
 export const siderTabs: TabsList = {
   id: "sider-tabs",
