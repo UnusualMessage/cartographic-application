@@ -2,12 +2,12 @@ import React from "react";
 
 import Overlays from "@widgets/Overlays";
 
-import Categories from "../../../features/Categories";
-import Schema from "../../../features/components/common/Schema";
-import Information from "../../../features/Information";
+import Schema from "../../../features/Schema";
 import Content from "../../../shared/ui/Content";
 import { Loader } from "../../../shared/ui/placeholders";
+import Categories from "../../../widgets/Categories";
 import Footer from "../../../widgets/Footer";
+import Information from "../../../widgets/Information";
 import Sider from "../../../widgets/Sider";
 
 const View = () => {

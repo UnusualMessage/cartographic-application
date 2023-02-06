@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 
 import { TabsList } from "@shared/api/types/tabs";
 
-import PlansTab from "../../../../features/components/tabs/PlansTab";
+import PlansTab from "../../../../features/tabs/PlansTab";
 import { EmptyInformation } from "../../../ui/placeholders";
 
 export const footerTabs: TabsList[] = [

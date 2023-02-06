@@ -11,10 +11,6 @@ class UpdateStore {
     makeAutoObservable(this);
   }
 
-  public get status() {
-    return this._status;
-  }
-
   public get stopped() {
     return this._status === "stopped";
   }
