@@ -9,8 +9,8 @@ import { Type } from "ol/geom/Geometry";
 import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
-import { InteractionType } from "@shared/api/types/map";
-import { getMeasurementStyle } from "@shared/lib";
+import DrawingStore from "@entities/stores/map/DrawingStore";
+import { getMeasurementStyle } from "@shared/lib/utils/map";
 
 import {
   DragBoxEvent,
@@ -36,15 +36,9 @@ interface Interactions {
 }
 
 class InteractionsStore {
-  private _interactionType: InteractionType;
-  private _drawing: boolean;
-
   private _interactions: Interactions;
 
   constructor() {
-    this._interactionType = "none";
-    this._drawing = false;
-
     this._interactions = {
       select: null,
       translate: null,
@@ -57,33 +51,22 @@ class InteractionsStore {
     makeAutoObservable(this);
   }
 
-  public get interactionType() {
-    return this._interactionType;
-  }
-
-  public set interactionType(value) {
-    this._interactionType = value;
-  }
-
-  public set isDrawing(isDrawing: boolean) {
-    this._drawing = isDrawing;
-  }
-
   public get isGeozoneInteractionsActive() {
-    return (
-      this._interactionType === "geozones" || this._interactionType === "cursor"
-    );
+    const interactionType = DrawingStore.interactionType;
+
+    return interactionType === "geozones" || interactionType === "cursor";
   }
 
   public get isAuxInteractionsActive() {
+    const interactionType = DrawingStore.interactionType;
+
     return (
-      this._interactionType === "measure-length" ||
-      this._interactionType === "measure-area"
+      interactionType === "measure-length" || interactionType === "measure-area"
     );
   }
 
   public setupMeasurementTool(source: VectorSource, map: Map) {
-    const type = this.interactionType;
+    const type = DrawingStore.interactionType;
 
     if (type !== "measure-area" && type !== "measure-length") {
       return;
@@ -113,7 +96,7 @@ class InteractionsStore {
       map.removeInteraction(this._interactions.draw);
     }
 
-    const type = this.interactionType;
+    const type = DrawingStore.interactionType;
 
     if (type === "cursor") {
       return;
@@ -161,7 +144,7 @@ class InteractionsStore {
     const translate = new Translate({
       features: select.getFeatures(),
       condition: (event) => {
-        return primaryAction(event) && !this._drawing;
+        return primaryAction(event) && !DrawingStore.isDrawing;
       },
     });
 

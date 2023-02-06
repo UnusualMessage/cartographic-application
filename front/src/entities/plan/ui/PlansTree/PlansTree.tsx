@@ -3,7 +3,7 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { Node, Plan } from "@shared/api";
-import { planNodes } from "@shared/assets";
+import { planNodes } from "@shared/assets/templates/nodes";
 import { getPlansTreeClickHandler } from "@shared/lib";
 import { tree } from "@shared/styles";
 import { EntitiesTree } from "@shared/ui";

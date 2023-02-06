@@ -2,7 +2,7 @@ import { DragBox, Select } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
 import ListenersInjector, { DragBoxEvent } from "./ListenersInjector";
-import { FeaturesStore } from "../../stores/map";
+import FeaturesStore from "../../stores/map/FeaturesStore";
 
 class DragBoxInjector implements ListenersInjector<DragBoxEvent> {
   private _dragBox: DragBox;

@@ -3,7 +3,8 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
-import { InteractionsStore, LayersStore, MapStore } from "@entities/stores/map";
+import { LayersStore, MapStore } from "@entities/stores/map";
+import DrawingStore from "@entities/stores/map/DrawingStore";
 import { ControlsStore } from "@shared/api";
 import { InteractionType } from "@shared/api/types/map";
 import { auxLayerId } from "@shared/constants";
@@ -11,7 +12,7 @@ import { auxLayerId } from "@shared/constants";
 import { active, wrapper } from "./buttons.module.scss";
 
 const ButtonsGroup = () => {
-  const interactionType = InteractionsStore.interactionType;
+  const interactionType = DrawingStore.interactionType;
   const isPanelOpen = ControlsStore.layersPanelActive;
   const handleFullScreen = ControlsStore.fullScreenHandle;
   const fullScreenActive = ControlsStore.fullScreenActive;
@@ -30,9 +31,9 @@ const ButtonsGroup = () => {
     LayersStore.clearVectorLayer(auxLayerId);
 
     if (interactionType === type) {
-      InteractionsStore.interactionType = "none";
+      DrawingStore.interactionType = "none";
     } else {
-      InteractionsStore.interactionType = type;
+      DrawingStore.interactionType = type;
     }
   };
 

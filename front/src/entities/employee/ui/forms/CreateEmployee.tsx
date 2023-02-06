@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 
-import { createEmployee } from "@shared/assets";
-import { getSelectOptions } from "@shared/lib";
-import { Create } from "@shared/ui/forms/actions";
+import { createEmployee } from "@shared/assets/templates/forms";
+import { getSelectOptions } from "@shared/lib/utils/forms";
+import Create from "@shared/ui/forms/actions/Create";
 
 import {
   EmployeesStore,

@@ -2,18 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
-import {
-  menuId,
-  menuOffset,
-  overlayId,
-  overlayOffset,
-} from "@shared/constants";
-
-import {
-  CommonEvent,
-  ListenersInjector,
-  MapInjector,
-} from "../../services/listeners";
+import { overlayId, overlayOffset } from "@shared/constants";
 
 interface CustomOverlay {
   element: HTMLElement | null;
@@ -87,38 +76,38 @@ class OverlaysStore {
   }
 
   public initContextMenu(element: HTMLElement, map: Map) {
-    const overlay = new Overlay({
-      element: element,
-      offset: menuOffset,
-      id: menuId,
-    });
-
-    this._contextMenu = {
-      overlay: overlay,
-      element: element,
-      active: false,
-    };
-
-    const el = map.getViewport();
-    const canvas = el.getElementsByTagName("canvas").item(0);
-
-    if (!canvas) {
-      return [];
-    }
-
-    const mapInjector: ListenersInjector<CommonEvent> = new MapInjector(
-      map,
-      canvas
-    );
-
-    const cleanups = [];
-
-    cleanups.push(mapInjector.addEventListener("click"));
-    cleanups.push(mapInjector.addEventListener("contextmenu"));
-
-    map.addOverlay(overlay);
-
-    return cleanups;
+    // const overlay = new Overlay({
+    //   element: element,
+    //   offset: menuOffset,
+    //   id: menuId,
+    // });
+    //
+    // this._contextMenu = {
+    //   overlay: overlay,
+    //   element: element,
+    //   active: false,
+    // };
+    //
+    // const el = map.getViewport();
+    // const canvas = el.getElementsByTagName("canvas").item(0);
+    //
+    // if (!canvas) {
+    //   return [];
+    // }
+    //
+    // const mapInjector: ListenersInjector<CommonEvent> = new MapInjector(
+    //   map,
+    //   canvas
+    // );
+    //
+    // const cleanups = [];
+    //
+    // cleanups.push(mapInjector.addEventListener("click"));
+    // cleanups.push(mapInjector.addEventListener("contextmenu"));
+    //
+    // map.addOverlay(overlay);
+    //
+    // return cleanups;
   }
 
   public hideContextMenu() {

@@ -1,7 +1,7 @@
 import { Cell } from "@blueprintjs/table";
 
-import { getNumberCell } from "@shared/lib";
-import { ColumnProps } from "@shared/ui";
+import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
+import { ColumnProps } from "@shared/ui/Table";
 
 import { Plan } from "../../../api/types/entities";
 import Progress from "../../../ui/Progress";

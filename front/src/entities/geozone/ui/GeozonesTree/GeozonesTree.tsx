@@ -5,8 +5,8 @@ import { observer } from "mobx-react-lite";
 
 import { Geozone } from "@shared/api/types/entities";
 import { Node } from "@shared/api/types/nodes";
-import { geozoneNodes } from "@shared/assets";
-import { getGeozonesTreeClickHandler } from "@shared/lib";
+import { geozoneNodes } from "@shared/assets/templates/nodes";
+import { getGeozonesTreeClickHandler } from "@shared/lib/utils/nodes/getGeozonesTreeClickHandler";
 import { tree } from "@shared/styles";
 import EntitiesTree from "@shared/ui/EntitiesTree";
 

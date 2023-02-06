@@ -4,6 +4,7 @@ import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
 import { InteractionsStore, MapStore } from "@entities/stores/map";
+import DrawingStore from "@entities/stores/map/DrawingStore";
 import { InteractionType } from "@shared/api/types/map";
 import { useInteraction } from "@shared/lib";
 import { AddEventListener } from "@shared/lib/hooks/useInteraction";
@@ -14,7 +15,7 @@ import { SourceContext } from "../Layer/VectorLayer";
 const AuxInteractions = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
-  const type = InteractionsStore.interactionType;
+  const type = DrawingStore.interactionType;
 
   const props = {
     source,

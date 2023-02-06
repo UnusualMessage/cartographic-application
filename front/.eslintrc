@@ -38,6 +38,7 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "off",
 
+    "import/no-cycle": "error",
     "import/no-unresolved": "error",
     "import/order": [
       "error",

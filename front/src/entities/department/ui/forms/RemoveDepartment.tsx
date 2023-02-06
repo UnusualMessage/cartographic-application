@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { Remove } from "@shared/ui/forms/actions";
+import Remove from "@shared/ui/forms/actions/Remove";
 
 import DepartmentsStore from "../../model/DepartmentsStore";
 

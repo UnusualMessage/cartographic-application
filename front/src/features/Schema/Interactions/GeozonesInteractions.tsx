@@ -1,12 +1,13 @@
 import { observer } from "mobx-react-lite";
-import { Map } from "ol";
-import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
 import { InteractionsStore, MapStore } from "@entities/stores/map";
-import { InteractionType } from "@shared/api/types/map";
-import { useInteraction } from "@shared/lib";
-import { AddEventListener } from "@shared/lib/hooks/useInteraction";
+import DrawingStore from "@entities/stores/map/DrawingStore";
+import {
+  AddEventListener,
+  InteractionProps,
+  useInteraction,
+} from "@shared/lib/hooks/useInteraction";
 
 import Interactions from "./Interactions";
 import { SourceContext } from "../Layer/VectorLayer";
@@ -14,7 +15,7 @@ import { SourceContext } from "../Layer/VectorLayer";
 const GeozonesInteractions = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
-  const type = InteractionsStore.interactionType;
+  const type = DrawingStore.interactionType;
 
   const props = {
     source,
@@ -35,12 +36,6 @@ const GeozonesInteractions = () => {
     </Interactions>
   );
 };
-
-export interface InteractionProps {
-  source?: VectorSource;
-  map: Map | null;
-  type: InteractionType;
-}
 
 const Draw = ({ source, map, type }: InteractionProps) => {
   const addInteraction: AddEventListener = (map, source) => {

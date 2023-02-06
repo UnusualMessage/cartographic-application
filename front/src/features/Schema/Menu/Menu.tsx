@@ -35,7 +35,8 @@ const Menu = () => {
 
     let cleanups: Callback[] = [];
     if (element && map) {
-      cleanups = OverlaysStore.initContextMenu(element, map);
+      // cleanups = OverlaysStore.initContextMenu(element, map);
+      cleanups = [];
     }
 
     return () => {

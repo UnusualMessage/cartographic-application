@@ -3,7 +3,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import { ApiStore } from "@shared/api/types/api";
 import { Form } from "@shared/api/types/forms";
-import { formRenderer } from "@shared/lib";
+import { formRenderer } from "@shared/lib/utils/forms";
 
 import DialogForm from "../DialogForm";
 

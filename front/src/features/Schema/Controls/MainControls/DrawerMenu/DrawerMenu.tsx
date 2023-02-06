@@ -9,7 +9,8 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { InteractionsStore, LayersStore } from "@entities/stores/map";
+import { LayersStore } from "@entities/stores/map";
+import DrawingStore from "@entities/stores/map/DrawingStore";
 import { ControlsStore } from "@shared/api";
 import { ControlType } from "@shared/api/stores/ControlsStore";
 import { InteractionType } from "@shared/api/types/map";
@@ -25,12 +26,12 @@ const DrawerMenu = () => {
 
   const switchType = (type: InteractionType) => {
     LayersStore.clearVectorLayer(auxLayerId);
-    const interactionType = InteractionsStore.interactionType;
+    const interactionType = DrawingStore.interactionType;
 
     if (interactionType === type) {
-      InteractionsStore.interactionType = "none";
+      DrawingStore.interactionType = "none";
     } else {
-      InteractionsStore.interactionType = type;
+      DrawingStore.interactionType = type;
     }
 
     ControlsStore.hideDrawer();

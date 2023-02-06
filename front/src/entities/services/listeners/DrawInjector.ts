@@ -11,16 +11,16 @@ import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
 
+import InteractionsService from "@shared/api/services/InteractionsService";
 import { Change, ChangeSet, Undo } from "@shared/api/types/map";
 import { geozonesLayerId } from "@shared/constants";
-import { getGeozoneStyle } from "@shared/lib";
+import { getGeozoneStyle } from "@shared/lib/utils/map/getGeozoneStyle";
 
 import ListenersInjector, {
   DrawEvent as DrawEventType,
 } from "./ListenersInjector";
 import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
-import { InteractionsStore } from "../../stores/map";
-import { LayersService } from "../map";
+import LayersService from "../map/LayersService";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;
@@ -42,7 +42,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawStart() {
     const onDrawStart = () => {
-      InteractionsStore.isDrawing = true;
+      InteractionsService.startDrawing();
     };
 
     this._draw.on("drawstart", onDrawStart);
@@ -54,8 +54,8 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawEnd() {
     const onDrawEnd = (event: DrawEvent) => {
-      InteractionsStore.isDrawing = false;
-      const interactionType = InteractionsStore.interactionType;
+      InteractionsService.stopDrawing();
+      const interactionType = InteractionsService.getInteractionType();
 
       const feature = event.feature;
       feature.setId(uuid());
@@ -138,7 +138,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawAbort() {
     const onDrawAbort = () => {
-      InteractionsStore.isDrawing = false;
+      InteractionsService.stopDrawing();
     };
 
     this._draw.on("drawabort", onDrawAbort);

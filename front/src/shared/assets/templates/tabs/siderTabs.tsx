@@ -1,4 +1,4 @@
-import { EmployeesTree } from "@entities/employee";
+import EmployeesTree from "@entities/employee/ui/EmployeesTree";
 import { EquipmentTree } from "@entities/equipment";
 import { GeozonesTree } from "@entities/geozone";
 import { PlansTree } from "@entities/plan";
