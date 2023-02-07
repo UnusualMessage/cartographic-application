@@ -11,6 +11,8 @@ import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
 
+import { GeozonesStore } from "@entities/geozone";
+import { OrganizationsStore } from "@entities/organization";
 import InteractionsService from "@shared/api/services/InteractionsService";
 import { Change, ChangeSet, Undo } from "@shared/api/types/map";
 import { geozonesLayerId } from "@shared/constants";
@@ -19,7 +21,6 @@ import { getGeozoneStyle } from "@shared/lib/utils/map/getGeozoneStyle";
 import ListenersInjector, {
   DrawEvent as DrawEventType,
 } from "./ListenersInjector";
-import { GeozonesStore, OrganizationsStore } from "../../stores/entities";
 import LayersService from "../map/LayersService";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {

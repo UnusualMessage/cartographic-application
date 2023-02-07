@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
+import { PostsStore } from "@entities/post";
 import {
   CreatePost,
   DuplicatePost,
@@ -9,7 +10,6 @@ import {
 } from "@entities/post/ui/forms";
 import { getPostColumns, useRegions } from "@shared/lib";
 
-import { PostsStore } from "../../../../entities/stores/entities";
 import { Post } from "../../../../shared/api/types/entities";
 import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";

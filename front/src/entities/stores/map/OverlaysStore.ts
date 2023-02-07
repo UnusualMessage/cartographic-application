@@ -12,7 +12,7 @@ interface CustomOverlay {
 
 class OverlaysStore {
   private _featureInfo: CustomOverlay;
-  private _contextMenu: CustomOverlay;
+  private readonly _contextMenu: CustomOverlay;
 
   private _cursorPosition: Coordinate | null;
 

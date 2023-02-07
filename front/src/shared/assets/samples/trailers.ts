@@ -1,7 +1,8 @@
 import { v4 as uuid } from "uuid";
 
+import { organizations } from "@shared/assets/samples/organizations";
+
 import { departments } from "./departments";
-import { organizations } from "./organizations";
 import { Trailer } from "../../api/types/entities";
 
 export const trailers: Trailer[] = [

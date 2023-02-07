@@ -1,10 +1,10 @@
 import { observer } from "mobx-react-lite";
 
+import { OrganizationsStore } from "@entities/organization";
+import { PostsStore } from "@entities/post/model";
 import { createPost } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui/forms/actions";
-
-import { OrganizationsStore, PostsStore } from "../../../stores/entities";
 
 const CreatePost = () => {
   const organizations = OrganizationsStore.organizations;

@@ -11,7 +11,7 @@ import { useFetch } from "@shared/lib";
 import { formRenderer, getSelectOptions } from "@shared/lib/utils/forms";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
-import OrganizationsStore from "../../../stores/entities/OrganizationsStore";
+import OrganizationsStore from "../../../organization/model/OrganizationsStore";
 import DepartmentsStore from "../../model/DepartmentsStore";
 
 interface Props {

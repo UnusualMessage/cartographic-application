@@ -8,10 +8,10 @@ import {
   RemoveDepartment,
   UpdateDepartment,
 } from "@entities/department/ui/forms";
+import { EmployeesStore } from "@entities/employee";
 import { getDepartmentColumns, useRegions } from "@shared/lib";
 import { Table } from "@shared/ui";
 
-import { EmployeesStore } from "../../../../entities/stores/entities";
 import { Department } from "../../../../shared/api/types/entities";
 import TableButtons from "../../../../shared/ui/TableButtons";
 

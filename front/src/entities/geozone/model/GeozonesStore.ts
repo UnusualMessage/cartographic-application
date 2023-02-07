@@ -4,7 +4,7 @@ import { FeatureLike } from "ol/Feature";
 
 import { Geozone } from "@shared/api/types/entities";
 import { ChangeSet } from "@shared/api/types/map";
-import { geozones } from "@shared/assets/samples";
+import { geozones } from "@shared/assets/samples/geozones";
 
 class GeozonesStore {
   private _geozones: Geozone[];

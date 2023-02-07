@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
+import { EmployeesStore } from "@entities/employee";
 import {
   CreateEmployee,
   DuplicateEmployee,
@@ -9,7 +10,6 @@ import {
 } from "@entities/employee/ui/forms";
 import { getEmployeeColumns, useRegions } from "@shared/lib";
 
-import { EmployeesStore } from "../../../../entities/stores/entities";
 import { Employee } from "../../../../shared/api/types/entities";
 import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";

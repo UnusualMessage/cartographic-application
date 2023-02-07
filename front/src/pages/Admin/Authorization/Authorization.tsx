@@ -3,12 +3,12 @@ import { observer } from "mobx-react-lite";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
+import { AuthStore } from "@entities/user";
 import { AuthenticateUser } from "@shared/api/types/entities/User";
 import { authenticateUser } from "@shared/assets";
 import { formRenderer } from "@shared/lib";
 
 import { content, wrapper } from "./authorization.module.scss";
-import { AuthStore } from "../../../entities/stores/entities";
 
 const Authorization = () => {
   const redirect = useNavigate();

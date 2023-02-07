@@ -3,7 +3,7 @@ import { StyleLike } from "ol/style/Style";
 import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import { GeozonesStore } from "@entities/stores/entities";
+import { GeozonesStore } from "@entities/geozone";
 import { InteractionsStore } from "@entities/stores/map";
 import { ControlsStore } from "@shared/api";
 import { auxLayerId, geozonesLayerId } from "@shared/constants";
