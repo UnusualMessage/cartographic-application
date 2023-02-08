@@ -1,1 +1,0 @@
-export { storesMapping } from "./storesMapping";

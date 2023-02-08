@@ -1,18 +1,18 @@
-import { useEffect } from "react";
 import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
-import { getSpeedColumns } from "../../../../utils/tables";
-import { Table } from "../../../../components/common/Table";
-import { Speed } from "../../../../types/entities";
-import TableButtons from "../../../../components/auxiliary/TableButtons";
-import SpeedsStore from "../../../../stores/entities/SpeedsStore";
+import SpeedsStore from "@entities/speed/model/SpeedsStore";
 import {
   CreateSpeed,
   DuplicateSpeed,
   RemoveSpeed,
   UpdateSpeed,
-} from "../../../../components/forms/speed";
-import { useRegions } from "../../../../hooks";
+} from "@entities/speed/ui/forms";
+import { getSpeedColumns, useRegions } from "@shared/lib";
+
+import { Speed } from "../../../../shared/api/types/entities";
+import { Table } from "../../../../shared/ui/Table";
+import TableButtons from "../../../../shared/ui/TableButtons";
 
 const Speed = () => {
   const speed = SpeedsStore.speed;

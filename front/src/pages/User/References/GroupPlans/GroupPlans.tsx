@@ -1,4 +1,4 @@
-import { EmptyInformation } from "../../../../components/auxiliary/placeholders";
+import { EmptyInformation } from "../../../../shared/ui/placeholders";
 
 const GroupPlans = () => {
   return <EmptyInformation />;
