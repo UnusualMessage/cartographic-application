@@ -1,0 +1,40 @@
+@use "../../../../shared/styles/breakpoints" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 32%;
+
+  gap: 10px;
+
+  @media screen and (max-width: $big) and (min-width: $pre-big) {
+    flex-basis: 32%;
+  }
+
+  @media screen and (max-width: $pre-big) and (min-width: $medium) {
+    flex-basis: 45%;
+  }
+
+  @media screen and (max-width: $medium) {
+    flex-basis: 100%;
+  }
+
+  .images {
+    width: 100%;
+
+    display: flex;
+
+    gap: 20px;
+
+    .image {
+      width: 45%;
+
+      border: 1px solid #EDEFF2;
+    }
+  }
+
+  .link {
+    width: fit-content;
+    width: -moz-fit-content;
+  }
+}

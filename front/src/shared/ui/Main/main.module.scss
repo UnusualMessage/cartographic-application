@@ -1,0 +1,11 @@
+@use "../../styles/constants" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+
+  height: calc(100% - $header-height);
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+}

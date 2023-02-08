@@ -1,13 +1,14 @@
 import React from "react";
 
-import Sider from "../../../components/common/Sider";
-import Schema from "../../../components/common/Schema";
-import Footer from "../../../components/common/Footer";
-import Categories from "../../../components/common/Sider/Categories";
-import Content from "../../../components/common/Content";
-import Information from "../../../components/common/Footer/Information";
-import { Loader } from "../../../components/auxiliary/placeholders";
-import Overlays from "../../../components/overlays";
+import Overlays from "@widgets/Overlays";
+
+import Schema from "../../../features/Schema";
+import Content from "../../../shared/ui/Content";
+import { Loader } from "../../../shared/ui/placeholders";
+import Categories from "../../../widgets/Categories";
+import Footer from "../../../widgets/Footer";
+import Information from "../../../widgets/Information";
+import Sider from "../../../widgets/Sider";
 
 const View = () => {
   return (
