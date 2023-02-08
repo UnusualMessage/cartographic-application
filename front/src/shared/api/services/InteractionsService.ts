@@ -1,4 +1,4 @@
-import DrawingStore from "@entities/stores/map/DrawingStore";
+import DrawingStore from "@features/Schema/model/stores/DrawingStore";
 
 class InteractionsService {
   public startDrawing() {

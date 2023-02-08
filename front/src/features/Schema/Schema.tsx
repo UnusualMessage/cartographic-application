@@ -4,19 +4,19 @@ import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { GeozonesStore } from "@entities/geozone";
-import { InteractionsStore } from "@entities/stores/map";
+import { InteractionsStore } from "@features/Schema/model/stores";
 import { ControlsStore } from "@shared/api";
 import { auxLayerId, geozonesLayerId } from "@shared/constants";
 import { getMeasurementStyle } from "@shared/lib";
 import Condition from "@shared/ui/Condition";
 
-import { Controls } from "./Controls";
-import { AuxInteractions, GeozonesInteractions } from "./Interactions";
-import { TileLayer, VectorLayer } from "./Layer";
-import MapWrapper from "./Map";
-import Menu from "./Menu";
 import { wrapper } from "./schema.module.scss";
-import View from "./View";
+import { Controls } from "./ui/Controls";
+import { AuxInteractions, GeozonesInteractions } from "./ui/Interactions";
+import { TileLayer, VectorLayer } from "./ui/Layer";
+import MapWrapper from "./ui/Map";
+import Menu from "./ui/Menu";
+import View from "./ui/View";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
