@@ -2,14 +2,10 @@ import { observer } from "mobx-react-lite";
 import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 
 import { LayersStore } from "@features/layers";
-import {
-  CommonEvent,
-  ListenersInjector,
-  MapInjector,
-} from "@features/Schema/model/services/listeners";
+import { Callback, CommonEvent, ListenersInjector } from "@shared/api";
 
 import { wrapper } from "./map.module.scss";
-import { MapStore } from "../../model";
+import { MapInjector, MapStore } from "../../model";
 
 const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
@@ -38,7 +34,7 @@ const Map = ({ children }: PropsWithChildren) => {
 
     mapRef.current?.addEventListener("contextmenu", onContextMenu);
 
-    let cleanPointerEvent = () => {
+    let cleanPointerEvent: Callback = () => {
       return;
     };
 
@@ -49,7 +45,10 @@ const Map = ({ children }: PropsWithChildren) => {
 
     return () => {
       cleanContextMenu();
-      cleanPointerEvent();
+
+      if (cleanPointerEvent) {
+        cleanPointerEvent();
+      }
     };
   }, [map]);
 

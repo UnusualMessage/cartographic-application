@@ -4,7 +4,7 @@ import { ModifyEvent } from "ol/interaction/Modify";
 
 import ListenersInjector, {
   ModifyEvent as ModifyEventType,
-} from "./ListenersInjector";
+} from "@shared/api/types/map/ListenersInjector";
 
 class ModifyInjector implements ListenersInjector<ModifyEventType> {
   private _modify: Modify;

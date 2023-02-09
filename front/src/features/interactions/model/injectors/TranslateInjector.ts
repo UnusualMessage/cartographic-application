@@ -4,10 +4,9 @@ import { Translate } from "ol/interaction";
 import { TranslateEvent } from "ol/interaction/Translate";
 
 import { GeozonesStore } from "@entities/geozone";
-
 import ListenersInjector, {
   TranslateEvent as TranslateEventType,
-} from "./ListenersInjector";
+} from "@shared/api/types/map/ListenersInjector";
 
 class TranslateInjector implements ListenersInjector<TranslateEventType> {
   private _translate: Translate;

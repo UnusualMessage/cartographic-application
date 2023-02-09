@@ -2,8 +2,9 @@ import { Map, MapBrowserEvent } from "ol";
 import { Pixel } from "ol/pixel";
 
 import MapStore from "@features/map/model/MapStore";
-
-import ListenersInjector, { CommonEvent } from "./ListenersInjector";
+import ListenersInjector, {
+  CommonEvent,
+} from "@shared/api/types/map/ListenersInjector";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
   private _map: Map;

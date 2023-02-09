@@ -3,3 +3,5 @@ export type { ChangeSet } from "./Change";
 export type { Action } from "./Change";
 export type { Undo } from "./Change";
 export type { InteractionType } from "./InteractionType";
+export * from "./ListenersInjector";
+export type { default as ListenersInjector } from "./ListenersInjector";

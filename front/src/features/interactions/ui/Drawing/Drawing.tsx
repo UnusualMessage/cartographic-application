@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
-import { MapStore } from "@features/map";
+import { MapStore } from "@features/map/model";
 import {
   AddEventListener,
   InteractionProps,

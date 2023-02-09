@@ -1,3 +1,5 @@
+import { Callback } from "../common";
+
 export type DragBoxEvent = "boxstart" | "boxend";
 export type CommonEvent = "click" | "contextmenu" | "pointermove";
 export type SelectEvent = "select";
@@ -12,8 +14,6 @@ type Event =
   | DrawEvent
   | ModifyEvent
   | TranslateEvent;
-
-export type Callback = () => void;
 
 export default interface ListenersInjector<T extends Event> {
   addEventListener: (event: T) => Callback;
