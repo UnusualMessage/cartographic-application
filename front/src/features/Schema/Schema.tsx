@@ -3,13 +3,13 @@ import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import Layers from "@features/layers/ui/Layers";
+import { Controls } from "@features/map-controls";
 import { ControlsStore } from "@shared/api";
 
 import { wrapper } from "./schema.module.scss";
-import { Controls } from "./ui/Controls";
-import MapWrapper from "./ui/Map";
 import Menu from "./ui/Menu";
 import View from "./ui/View";
+import MapWrapper from "../map/ui/Map";
 
 const Schema = () => {
   const handle = useFullScreenHandle();

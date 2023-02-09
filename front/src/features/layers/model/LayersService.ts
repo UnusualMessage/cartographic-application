@@ -4,8 +4,8 @@ import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
 import LayersStore from "@features/layers/model/LayersStore";
+import MapStore from "@features/map/model/MapStore";
 import FeaturesStore from "@features/Schema/model/stores/FeaturesStore";
-import MapStore from "@features/Schema/model/stores/MapStore";
 import { BaseLayerType } from "@shared/api/types/common";
 
 class LayersService {

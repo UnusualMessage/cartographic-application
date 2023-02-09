@@ -1,9 +1,9 @@
 import FeaturesStore from "./FeaturesStore";
-import MapStore from "./MapStore";
 import OverlaysStore from "./OverlaysStore";
 import ViewStore from "./ViewStore";
 import InteractionsStore from "../../../interactions/model/InteractionsStore";
 import LayersStore from "../../../layers/model/LayersStore";
+import MapStore from "../../../map/model/MapStore";
 
 export {
   InteractionsStore,
