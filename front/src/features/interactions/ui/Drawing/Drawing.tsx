@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
-import { InteractionsStore, MapStore } from "@features/Schema/model/stores";
+import { MapStore } from "@features/map";
 import DrawingStore from "@features/Schema/model/stores/DrawingStore";
 import {
   AddEventListener,
@@ -10,6 +10,7 @@ import {
 } from "@shared/lib/hooks/useInteraction";
 
 import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
+import InteractionsStore from "../../model/InteractionsStore";
 
 const Drawing = () => {
   const source = useContext(SourceContext);

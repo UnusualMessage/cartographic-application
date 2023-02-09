@@ -2,7 +2,8 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { LayersService } from "@features/Schema/model/services/map";
-import { LayersStore } from "@features/Schema/model/stores";
+
+import { LayersStore } from "../../model";
 
 const TileLayer = () => {
   const type = LayersStore.baseLayer;

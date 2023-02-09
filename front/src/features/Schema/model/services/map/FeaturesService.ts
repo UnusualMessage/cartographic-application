@@ -1,9 +1,6 @@
-import {
-  FeaturesStore,
-  InteractionsStore,
-  LayersStore,
-  OverlaysStore,
-} from "@features/Schema/model/stores";
+import { InteractionsStore } from "@features/interactions";
+import { LayersStore } from "@features/layers/model";
+import { FeaturesStore, OverlaysStore } from "@features/Schema/model/stores";
 import { geozonesLayerId } from "@shared/constants";
 
 class FeaturesService {

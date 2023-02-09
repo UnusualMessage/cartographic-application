@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { FormEventHandler } from "react";
 
-import { LayersStore } from "@features/Schema/model/stores";
+import { LayersStore } from "@features/layers";
 import { ControlsStore } from "@shared/api";
 import { BaseLayerType } from "@shared/api/types/common";
 import { baseLayers } from "@shared/assets";

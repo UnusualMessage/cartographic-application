@@ -3,7 +3,8 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
-import { LayersStore, MapStore } from "@features/Schema/model/stores";
+import { LayersStore } from "@features/layers";
+import { MapStore } from "@features/map";
 import DrawingStore from "@features/Schema/model/stores/DrawingStore";
 import { ControlsStore } from "@shared/api";
 import { InteractionType } from "@shared/api/types/map";

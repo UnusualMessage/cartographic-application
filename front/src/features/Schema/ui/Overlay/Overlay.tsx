@@ -2,7 +2,8 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
-import { MapStore, OverlaysStore } from "@features/Schema/model/stores";
+import { MapStore } from "@features/map";
+import { OverlaysStore } from "@features/Schema/model/stores";
 
 import { hidden, wrapper } from "./overlay.module.scss";
 

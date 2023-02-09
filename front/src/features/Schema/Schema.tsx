@@ -8,8 +8,8 @@ import { ControlsStore } from "@shared/api";
 
 import { wrapper } from "./schema.module.scss";
 import Menu from "./ui/Menu";
-import View from "./ui/View";
 import MapWrapper from "../map/ui/Map";
+import View from "../map-view/ui/View";
 
 const Schema = () => {
   const handle = useFullScreenHandle();
