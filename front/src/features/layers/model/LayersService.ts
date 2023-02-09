@@ -3,8 +3,8 @@ import BaseLayer from "ol/layer/Base";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
+import LayersStore from "@features/layers/model/LayersStore";
 import FeaturesStore from "@features/Schema/model/stores/FeaturesStore";
-import LayersStore from "@features/Schema/model/stores/LayersStore";
 import MapStore from "@features/Schema/model/stores/MapStore";
 import { BaseLayerType } from "@shared/api/types/common";
 

@@ -4,8 +4,8 @@ import { Point } from "@turf/turf";
 import { fromLonLat } from "ol/proj";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 
+import { GeocoderService } from "@entities/geocoder";
 import { ViewStore } from "@features/Schema/model/stores";
-import { GeocoderService } from "@shared/api";
 import { GeocoderFeature } from "@shared/api/types/common";
 
 const itemRenderer: ItemRenderer<GeocoderFeature> = (

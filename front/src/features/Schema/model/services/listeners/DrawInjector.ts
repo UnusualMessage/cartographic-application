@@ -21,7 +21,7 @@ import { getGeozoneStyle } from "@shared/lib/utils/map/getGeozoneStyle";
 import ListenersInjector, {
   DrawEvent as DrawEventType,
 } from "./ListenersInjector";
-import LayersService from "../map/LayersService";
+import LayersService from "../../../../layers/model/LayersService";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;

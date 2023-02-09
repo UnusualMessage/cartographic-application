@@ -9,10 +9,9 @@ import {
   useInteraction,
 } from "@shared/lib/hooks/useInteraction";
 
-import Interactions from "./Interactions";
-import { SourceContext } from "../Layer/VectorLayer";
+import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
 
-const GeozonesInteractions = () => {
+const Drawing = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
   const type = DrawingStore.interactionType;
@@ -28,12 +27,12 @@ const GeozonesInteractions = () => {
   }
 
   return (
-    <Interactions>
+    <>
       <Draw {...props} />
       <Select {...props} />
       <Modify {...props} />
       <Snap {...props} />
-    </Interactions>
+    </>
   );
 };
 
@@ -77,4 +76,4 @@ const Snap = ({ source, map, type }: InteractionProps) => {
   return <></>;
 };
 
-export default observer(GeozonesInteractions);
+export default observer(Drawing);
