@@ -9,6 +9,7 @@ import { Type } from "ol/geom/Geometry";
 import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
+import DrawingStore from "@features/interactions/model/DrawingStore";
 import {
   DragBoxEvent,
   DragBoxInjector,
@@ -22,7 +23,6 @@ import {
 import ModifyInjector from "@features/Schema/model/services/listeners/ModifyInjector";
 import SelectInjector from "@features/Schema/model/services/listeners/SelectInjector";
 import TranslateInjector from "@features/Schema/model/services/listeners/TranslateInjector";
-import DrawingStore from "@features/Schema/model/stores/DrawingStore";
 import { getMeasurementStyle } from "@shared/lib/utils/map";
 
 interface Interactions {

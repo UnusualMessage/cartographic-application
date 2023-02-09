@@ -1,6 +1,6 @@
 import { Select } from "ol/interaction";
 
-import FeaturesStore from "@features/Schema/model/stores/FeaturesStore";
+import FeaturesStore from "@entities/map-features/model/FeaturesStore";
 
 import ListenersInjector, { SelectEvent } from "./ListenersInjector";
 

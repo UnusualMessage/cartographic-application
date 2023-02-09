@@ -1,4 +1,4 @@
-import DrawingStore from "@features/Schema/model/stores/DrawingStore";
+import DrawingStore from "@features/interactions/model/DrawingStore";
 
 class InteractionsService {
   public startDrawing() {

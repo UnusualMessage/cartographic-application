@@ -3,9 +3,9 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
+import { FeaturesService } from "@entities/map-features";
 import { MapStore } from "@features/map";
-import { FeaturesService } from "@features/Schema/model/services/map";
-import { OverlaysStore } from "@features/Schema/model/stores";
+import { OverlaysStore } from "@features/map-overlay";
 import { Callback } from "@shared/api";
 
 import { hidden, wrapper } from "./menu.module.scss";

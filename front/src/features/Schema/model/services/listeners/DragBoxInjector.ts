@@ -1,7 +1,7 @@
 import { DragBox, Select } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
-import FeaturesStore from "@features/Schema/model/stores/FeaturesStore";
+import FeaturesStore from "@entities/map-features/model/FeaturesStore";
 
 import ListenersInjector, { DragBoxEvent } from "./ListenersInjector";
 

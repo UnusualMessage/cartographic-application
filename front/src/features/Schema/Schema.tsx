@@ -7,8 +7,8 @@ import { Controls } from "@features/map-controls";
 import { ControlsStore } from "@shared/api";
 
 import { wrapper } from "./schema.module.scss";
-import Menu from "./ui/Menu";
 import MapWrapper from "../map/ui/Map";
+import Menu from "../map-context-menu/ui/Menu";
 import View from "../map-view/ui/View";
 
 const Schema = () => {

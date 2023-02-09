@@ -9,8 +9,8 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
+import { DrawingStore } from "@features/interactions";
 import { LayersStore } from "@features/layers";
-import DrawingStore from "@features/Schema/model/stores/DrawingStore";
 import { ControlsStore } from "@shared/api";
 import { ControlType } from "@shared/api/stores/ControlsStore";
 import { InteractionType } from "@shared/api/types/map";
