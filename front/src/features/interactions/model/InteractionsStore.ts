@@ -9,6 +9,7 @@ import { Type } from "ol/geom/Geometry";
 import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
+import { getMeasurementStyle } from "@shared/lib/utils/map";
 import {
   DragBoxEvent,
   DrawEvent,
@@ -17,7 +18,6 @@ import {
   SelectEvent,
   TranslateEvent,
 } from "@shared/misc";
-import { getMeasurementStyle } from "@shared/lib/utils/map";
 
 import DrawingStore from "./DrawingStore";
 import {

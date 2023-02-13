@@ -1,8 +1,8 @@
+import { baseUrl } from "@shared/constants";
+import { get, post } from "@shared/lib/utils/requests";
 import { Error } from "@shared/misc/types/api";
 import { User } from "@shared/misc/types/entities";
 import { AuthenticateUser } from "@shared/misc/types/entities/User";
-import { baseUrl } from "@shared/constants";
-import { get, post } from "@shared/lib/utils/requests";
 
 class UsersService {
   protected readonly url: string;

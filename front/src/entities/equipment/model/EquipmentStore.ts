@@ -1,7 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { Equipment } from "@shared/misc";
 import { equipment } from "@shared/assets/samples/equipment";
+import { Equipment } from "@shared/misc";
 
 class EquipmentStore {
   private readonly _equipments: Equipment[];

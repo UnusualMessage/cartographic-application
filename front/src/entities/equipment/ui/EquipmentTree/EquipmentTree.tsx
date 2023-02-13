@@ -5,10 +5,10 @@ import { observer } from "mobx-react-lite";
 
 import EquipmentStore from "@entities/equipment/model/EquipmentStore";
 import EquipmentMenu from "@entities/equipment/ui/EquipmentMenu";
-import { Equipment } from "@shared/misc/types/entities";
-import { Node } from "@shared/misc/types/nodes";
 import { equipmentNodes } from "@shared/assets/templates/nodes";
 import { getEquipmentTreeClickHandler } from "@shared/lib/utils/nodes/getEquipmentTreeClickHandler";
+import { Equipment } from "@shared/misc/types/entities";
+import { Node } from "@shared/misc/types/nodes";
 import { tree } from "@shared/styles";
 import EntitiesTree from "@shared/ui/EntitiesTree";
 

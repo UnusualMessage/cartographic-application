@@ -4,9 +4,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { AuthStore } from "@entities/user";
-import { AuthenticateUser } from "@shared/misc/types/entities/User";
 import { authenticateUser } from "@shared/assets";
 import { formRenderer } from "@shared/lib";
+import { AuthenticateUser } from "@shared/misc/types/entities/User";
 
 import { content, wrapper } from "./authorization.module.scss";
 

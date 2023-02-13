@@ -4,9 +4,9 @@ import { observer } from "mobx-react-lite";
 import { FormEventHandler } from "react";
 
 import { LayersStore } from "@features/layers";
+import { baseLayers } from "@shared/assets";
 import { ControlsStore } from "@shared/misc";
 import { BaseLayerType } from "@shared/misc/types/common";
-import { baseLayers } from "@shared/assets";
 
 import { visible, wrapper } from "./group.module.scss";
 

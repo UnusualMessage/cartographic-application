@@ -6,10 +6,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { EmployeesStore } from "@entities/employee/model";
 import { OrganizationsStore } from "@entities/organization";
 import { PostsStore } from "@entities/post";
-import { Employee } from "@shared/misc/types/entities";
-import { UpdateEmployee } from "@shared/misc/types/entities/Employee";
 import { updateEmployee } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
+import { Employee } from "@shared/misc/types/entities";
+import { UpdateEmployee } from "@shared/misc/types/entities/Employee";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 interface Props {

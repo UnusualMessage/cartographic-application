@@ -2,8 +2,8 @@ import { observer } from "mobx-react-lite";
 
 import { PlansStore } from "@entities/plan";
 import PlansChart from "@entities/plan/ui/PlansChart";
-import { Plan } from "@shared/misc/types/entities";
 import { getPlanColumns } from "@shared/lib/utils/tables/getPlanColumns";
+import { Plan } from "@shared/misc/types/entities";
 import { Table } from "@shared/ui/Table";
 
 const PlansTab = () => {

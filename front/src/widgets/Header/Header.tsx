@@ -12,8 +12,8 @@ import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
 import { OrganizationsStore } from "@entities/organization";
-import { UpdateStore } from "@shared/misc/stores";
 import { about } from "@shared/assets/samples/about";
+import { UpdateStore } from "@shared/misc/stores";
 
 import { container, logo, user, wrapper } from "./header.module.scss";
 

@@ -1,12 +1,12 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
+import { employees } from "@shared/assets/samples/employees";
 import { ApiStore } from "@shared/misc/types/api";
 import { Employee } from "@shared/misc/types/entities";
 import {
   CreateEmployee,
   UpdateEmployee,
 } from "@shared/misc/types/entities/Employee";
-import { employees } from "@shared/assets/samples/employees";
 
 class EmployeesStore
   implements ApiStore<Employee, CreateEmployee, UpdateEmployee>

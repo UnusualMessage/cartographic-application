@@ -3,12 +3,12 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import Department, {
-  UpdateDepartment,
-} from "@shared/misc/types/entities/Department";
 import { updateDepartment } from "@shared/assets/templates/forms/department";
 import { useFetch } from "@shared/lib";
 import { formRenderer, getSelectOptions } from "@shared/lib/utils/forms";
+import Department, {
+  UpdateDepartment,
+} from "@shared/misc/types/entities/Department";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 import OrganizationsStore from "../../../organization/model/OrganizationsStore";

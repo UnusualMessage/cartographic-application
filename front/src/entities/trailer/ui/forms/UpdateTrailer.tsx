@@ -6,10 +6,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { DepartmentsStore } from "@entities/department";
 import { OrganizationsStore } from "@entities/organization";
 import { TrailersStore } from "@entities/trailer/model";
-import { Trailer } from "@shared/misc/types/entities";
-import { UpdateTrailer } from "@shared/misc/types/entities/Trailer";
 import { updateTrailer } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
+import { Trailer } from "@shared/misc/types/entities";
+import { UpdateTrailer } from "@shared/misc/types/entities/Trailer";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 interface Props {

@@ -11,11 +11,11 @@ import { observer } from "mobx-react-lite";
 
 import { DrawingStore } from "@features/interactions";
 import { LayersStore } from "@features/layers";
+import { about } from "@shared/assets/samples/about";
+import { auxLayerId } from "@shared/constants";
 import { ControlsStore } from "@shared/misc";
 import { ControlType } from "@shared/misc/stores/ControlsStore";
 import { InteractionType } from "@shared/misc/types/map";
-import { about } from "@shared/assets/samples/about";
-import { auxLayerId } from "@shared/constants";
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
