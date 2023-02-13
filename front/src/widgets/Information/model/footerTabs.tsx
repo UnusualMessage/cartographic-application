@@ -1,9 +1,8 @@
 import { v4 as uuid } from "uuid";
 
-import { TabsList } from "@shared/misc/types/tabs";
-
-import PlansTab from "../../../../features/tabs/PlansTab";
-import { EmptyInformation } from "../../../ui/placeholders";
+import PlansTab from "@features/tabs/index";
+import { TabsList } from "@shared/misc/types/tabs/index";
+import { EmptyInformation } from "@shared/ui/placeholders/index";
 
 export const footerTabs: TabsList[] = [
   {

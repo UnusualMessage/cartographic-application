@@ -1,6 +1,5 @@
+import { types } from "@shared/assets/samples";
 import { Node } from "@shared/misc/types/nodes";
-
-import { types } from "../../samples/types";
 
 export const equipmentNodes: Node[] = [
   {
