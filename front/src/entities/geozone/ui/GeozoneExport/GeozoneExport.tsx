@@ -1,7 +1,7 @@
 import { Alert, H3, Pre } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { AlertsStore } from "@shared/api";
+import { AlertsStore } from "@shared/misc";
 
 import { code, wrapper } from "./export.module.scss";
 

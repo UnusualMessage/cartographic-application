@@ -10,7 +10,7 @@ import {
 } from "@entities/post/ui/forms";
 import { getPostColumns, useRegions } from "@shared/lib";
 
-import { Post } from "../../../../shared/api/types/entities";
+import { Post } from "../../../../shared/misc/types/entities";
 import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";
 

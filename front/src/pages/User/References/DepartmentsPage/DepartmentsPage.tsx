@@ -12,7 +12,7 @@ import { EmployeesStore } from "@entities/employee";
 import { getDepartmentColumns, useRegions } from "@shared/lib";
 import { Table } from "@shared/ui";
 
-import { Department } from "../../../../shared/api/types/entities";
+import { Department } from "../../../../shared/misc/types/entities";
 import TableButtons from "../../../../shared/ui/TableButtons";
 
 const DepartmentsPage = () => {

@@ -3,7 +3,7 @@ import { Cell } from "@blueprintjs/table";
 import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
 import { ColumnProps } from "@shared/ui/Table";
 
-import { Department } from "../../../api/types/entities";
+import { Department } from "../../../misc/types/entities";
 import { cell } from "../../../ui/Table/table.module.scss";
 
 export const getDepartmentColumns = (

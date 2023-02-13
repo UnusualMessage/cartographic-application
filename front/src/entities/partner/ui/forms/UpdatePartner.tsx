@@ -5,9 +5,9 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { OrganizationsStore } from "@entities/organization/model";
 import PartnersStore from "@entities/partner/model/PartnersStore";
-import { Partner } from "@shared/api/types/entities";
-import { UpdatePartner } from "@shared/api/types/entities/Partner";
-import { UpdatePost } from "@shared/api/types/entities/Post";
+import { Partner } from "@shared/misc/types/entities";
+import { UpdatePartner } from "@shared/misc/types/entities/Partner";
+import { UpdatePost } from "@shared/misc/types/entities/Post";
 import { updatePartner } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
 import DialogForm from "@shared/ui/forms/DialogForm";

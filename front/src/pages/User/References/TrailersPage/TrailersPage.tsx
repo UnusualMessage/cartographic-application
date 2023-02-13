@@ -8,7 +8,7 @@ import RemoveTrailer from "@entities/trailer/ui/forms/RemoveTrailer";
 import UpdateTrailer from "@entities/trailer/ui/forms/UpdateTrailer";
 import { getTrailerColumns, useRegions } from "@shared/lib";
 
-import { Trailer } from "../../../../shared/api/types/entities";
+import { Trailer } from "../../../../shared/misc/types/entities";
 import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";
 

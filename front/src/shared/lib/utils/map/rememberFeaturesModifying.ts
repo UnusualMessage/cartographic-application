@@ -1,7 +1,7 @@
 import { Feature } from "ol";
 import { FeatureLike } from "ol/Feature";
 
-import { Change, ChangeSet, Undo } from "@shared/api/types/map";
+import { Change, ChangeSet, Undo } from "@shared/misc/types/map";
 
 export const rememberFeaturesModifying = (
   initial: Feature[],

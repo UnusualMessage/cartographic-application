@@ -1,4 +1,4 @@
-import { BaseLayerType } from "@shared/api";
+import { BaseLayerType } from "@shared/misc";
 
 interface BaseLayerRadioProps {
   label: string;

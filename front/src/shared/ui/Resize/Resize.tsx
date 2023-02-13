@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { MouseEventHandler } from "react";
 
-import { ResizeType } from "@shared/api";
+import { ResizeType } from "@shared/misc";
 
 import { active, height, width, wrapper } from "./resize.module.scss";
 

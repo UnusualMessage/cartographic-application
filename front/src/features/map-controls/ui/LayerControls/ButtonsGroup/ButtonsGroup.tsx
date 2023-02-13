@@ -6,8 +6,8 @@ import { useState } from "react";
 import { DrawingStore } from "@features/interactions";
 import { LayersStore } from "@features/layers";
 import { MapStore } from "@features/map";
-import { ControlsStore } from "@shared/api";
-import { InteractionType } from "@shared/api/types/map";
+import { ControlsStore } from "@shared/misc";
+import { InteractionType } from "@shared/misc/types/map";
 import { auxLayerId } from "@shared/constants";
 
 import { active, wrapper } from "./buttons.module.scss";

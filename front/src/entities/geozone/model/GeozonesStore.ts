@@ -2,8 +2,8 @@ import { makeAutoObservable } from "mobx";
 import { Coordinate } from "ol/coordinate";
 import { FeatureLike } from "ol/Feature";
 
-import { Geozone } from "@shared/api/types/entities";
-import { ChangeSet } from "@shared/api/types/map";
+import { Geozone } from "@shared/misc/types/entities";
+import { ChangeSet } from "@shared/misc/types/map";
 import { geozones } from "@shared/assets/samples/geozones";
 
 class GeozonesStore {

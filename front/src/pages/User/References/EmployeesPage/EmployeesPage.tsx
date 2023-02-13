@@ -10,7 +10,7 @@ import {
 } from "@entities/employee/ui/forms";
 import { getEmployeeColumns, useRegions } from "@shared/lib";
 
-import { Employee } from "../../../../shared/api/types/entities";
+import { Employee } from "../../../../shared/misc/types/entities";
 import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";
 

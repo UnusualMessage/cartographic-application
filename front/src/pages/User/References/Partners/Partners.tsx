@@ -10,7 +10,7 @@ import {
 } from "@entities/partner/ui/forms";
 import { getPartnerColumns, useRegions } from "@shared/lib";
 
-import { Partner } from "../../../../shared/api/types/entities";
+import { Partner } from "../../../../shared/misc/types/entities";
 import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";
 

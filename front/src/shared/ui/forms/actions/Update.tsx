@@ -7,8 +7,8 @@ import {
   useForm,
 } from "react-hook-form";
 
-import { ApiStore } from "@shared/api/types/api";
-import { Form } from "@shared/api/types/forms";
+import { ApiStore } from "@shared/misc/types/api";
+import { Form } from "@shared/misc/types/forms";
 import { formRenderer, useFetch } from "@shared/lib";
 
 import DialogForm from "../DialogForm";

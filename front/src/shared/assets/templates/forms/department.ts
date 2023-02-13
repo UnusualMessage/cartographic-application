@@ -1,8 +1,8 @@
 import {
   CreateDepartment,
   UpdateDepartment,
-} from "@shared/api/types/entities/Department";
-import { Form, SelectOption } from "@shared/api/types/forms";
+} from "@shared/misc/types/entities/Department";
+import { Form, SelectOption } from "@shared/misc/types/forms";
 
 export const createDepartment = (
   options: SelectOption[]

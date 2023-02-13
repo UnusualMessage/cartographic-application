@@ -6,8 +6,8 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
-import { Node } from "@shared/api";
-import Reference from "@shared/api/types/common/Reference";
+import { Node } from "@shared/misc";
+import Reference from "@shared/misc/types/common/Reference";
 import EntitiesTree from "@shared/ui/EntitiesTree";
 
 import AnnualPlans from "./AnnualPlans";

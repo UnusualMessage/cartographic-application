@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { organizations } from "@shared/assets/samples/organizations";
 
 import { posts } from "./posts";
-import { Employee } from "../../api/types/entities";
+import { Employee } from "../../misc/types/entities";
 
 export const employees: Employee[] = [
   {

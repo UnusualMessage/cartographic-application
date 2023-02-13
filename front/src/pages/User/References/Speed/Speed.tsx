@@ -10,7 +10,7 @@ import {
 } from "@entities/speed/ui/forms";
 import { getSpeedColumns, useRegions } from "@shared/lib";
 
-import { Speed } from "../../../../shared/api/types/entities";
+import { Speed } from "../../../../shared/misc/types/entities";
 import { Table } from "../../../../shared/ui/Table";
 import TableButtons from "../../../../shared/ui/TableButtons";
 

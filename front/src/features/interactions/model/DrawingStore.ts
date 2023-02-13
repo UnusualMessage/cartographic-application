@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-import { InteractionType } from "@shared/api";
+import { InteractionType } from "@shared/misc";
 
 class DrawingStore {
   private _interactionType: InteractionType;

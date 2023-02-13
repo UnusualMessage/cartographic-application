@@ -1,6 +1,6 @@
 import { PropsWithChildren } from "react";
 
-import { ResizeType } from "@shared/api";
+import { ResizeType } from "@shared/misc";
 import { useResizing } from "@shared/lib";
 import Resize from "@shared/ui/Resize";
 

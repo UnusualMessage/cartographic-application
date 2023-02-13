@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-import { UpdateStatus } from "@shared/api/types/api";
+import { UpdateStatus } from "@shared/misc/types/api";
 
 class UpdateStore {
   private _status: UpdateStatus;

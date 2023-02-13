@@ -7,7 +7,7 @@ import Map from "@features/map/ui/Map";
 import Menu from "@features/map-context-menu/ui/Menu";
 import { Controls } from "@features/map-controls";
 import View from "@features/map-view/ui/View";
-import { ControlsStore } from "@shared/api";
+import { ControlsStore } from "@shared/misc";
 
 import { wrapper } from "./schema.module.scss";
 

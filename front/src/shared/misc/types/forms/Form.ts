@@ -1,6 +1,6 @@
 import { Path } from "react-hook-form";
 
-import { SelectOption } from "@shared/api/types/forms/SelectOption";
+import { SelectOption } from "@shared/misc/types/forms/SelectOption";
 
 export type InputType = "text" | "select" | "numeric";
 

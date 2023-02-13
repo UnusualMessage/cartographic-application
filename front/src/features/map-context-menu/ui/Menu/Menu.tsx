@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 import { FeaturesService } from "@entities/map-features";
 import { MapStore } from "@features/map";
 import { OverlaysStore } from "@features/map-overlay";
-import { Callback } from "@shared/api";
+import { Callback } from "@shared/misc";
 
 import { hidden, wrapper } from "./menu.module.scss";
 

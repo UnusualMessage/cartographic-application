@@ -2,7 +2,7 @@ import { Button } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
 import Geocoder from "@entities/geocoder/ui/Geocoder";
-import DrawerStore from "@shared/api/stores/ControlsStore";
+import DrawerStore from "@shared/misc/stores/ControlsStore";
 
 import { wrapper } from "./menu.module.scss";
 

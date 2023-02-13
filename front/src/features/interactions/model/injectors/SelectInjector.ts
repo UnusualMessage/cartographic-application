@@ -3,7 +3,7 @@ import { Select } from "ol/interaction";
 import FeaturesStore from "@entities/map-features/model/FeaturesStore";
 import ListenersInjector, {
   SelectEvent,
-} from "@shared/api/types/map/ListenersInjector";
+} from "@shared/misc/types/map/ListenersInjector";
 
 class SelectInjector implements ListenersInjector<SelectEvent> {
   private _select: Select;

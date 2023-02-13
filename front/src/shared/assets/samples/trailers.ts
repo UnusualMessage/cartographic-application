@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 import { organizations } from "@shared/assets/samples/organizations";
 
 import { departments } from "./departments";
-import { Trailer } from "../../api/types/entities";
+import { Trailer } from "../../misc/types/entities";
 
 export const trailers: Trailer[] = [
   {

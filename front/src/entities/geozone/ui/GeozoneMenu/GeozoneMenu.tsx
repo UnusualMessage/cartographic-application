@@ -3,7 +3,7 @@ import { Polygon, toWgs84 } from "@turf/turf";
 import { observer } from "mobx-react-lite";
 
 import { GeozonesStore } from "@entities/geozone/model";
-import { AlertsStore } from "@shared/api";
+import { AlertsStore } from "@shared/misc";
 
 interface Props {
   id: string;

@@ -16,7 +16,7 @@ import {
   ModifyEvent,
   SelectEvent,
   TranslateEvent,
-} from "@shared/api";
+} from "@shared/misc";
 import { getMeasurementStyle } from "@shared/lib/utils/map";
 
 import DrawingStore from "./DrawingStore";

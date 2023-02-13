@@ -1,4 +1,4 @@
-import { Response } from "@shared/api/types/api";
+import { Response } from "@shared/misc/types/api";
 
 class ResponseService {
   protected response: Response;
@@ -22,14 +22,6 @@ class ResponseService {
       message: error,
       successful: false,
     };
-  };
-
-  public isRequestSuccessful = () => {
-    return this.response.successful;
-  };
-
-  public getErrorMessage = () => {
-    return this.response.message;
   };
 }
 

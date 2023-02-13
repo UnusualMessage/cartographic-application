@@ -3,7 +3,7 @@ import { useCallback } from "react";
 import { forEachNode } from "@shared/lib/utils/nodes/forEachNode";
 import { forNode } from "@shared/lib/utils/nodes/forNode";
 
-import { Node, NodePath } from "../../api/types/nodes/Node";
+import { Node, NodePath } from "../../misc/types/nodes/Node";
 
 interface Props {
   nodes: Node[];

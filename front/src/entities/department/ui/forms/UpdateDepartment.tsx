@@ -5,7 +5,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import Department, {
   UpdateDepartment,
-} from "@shared/api/types/entities/Department";
+} from "@shared/misc/types/entities/Department";
 import { updateDepartment } from "@shared/assets/templates/forms/department";
 import { useFetch } from "@shared/lib";
 import { formRenderer, getSelectOptions } from "@shared/lib/utils/forms";

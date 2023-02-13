@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 
 import { organizations } from "@shared/assets/samples/organizations";
 
-import { Speed } from "../../api/types/entities";
+import { Speed } from "../../misc/types/entities";
 
 export const speeds: Speed[] = [
   {

@@ -5,8 +5,8 @@ import { SubmitHandler, useForm } from "react-hook-form";
 
 import { OrganizationsStore } from "@entities/organization/model";
 import SpeedsStore from "@entities/speed/model/SpeedsStore";
-import { Speed } from "@shared/api/types/entities";
-import { UpdateSpeed } from "@shared/api/types/entities/Speed";
+import { Speed } from "@shared/misc/types/entities";
+import { UpdateSpeed } from "@shared/misc/types/entities/Speed";
 import { updateSpeed } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
 import DialogForm from "@shared/ui/forms/DialogForm";

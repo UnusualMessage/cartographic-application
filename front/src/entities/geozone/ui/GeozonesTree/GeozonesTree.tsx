@@ -4,8 +4,8 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { GeozonesStore } from "@entities/geozone/model";
-import { Geozone } from "@shared/api/types/entities";
-import { Node } from "@shared/api/types/nodes";
+import { Geozone } from "@shared/misc/types/entities";
+import { Node } from "@shared/misc/types/nodes";
 import { geozoneNodes } from "@shared/assets/templates/nodes";
 import { getGeozonesTreeClickHandler } from "@shared/lib/utils/nodes/getGeozonesTreeClickHandler";
 import { tree } from "@shared/styles";

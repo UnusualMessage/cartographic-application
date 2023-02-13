@@ -1,11 +1,11 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { ApiStore } from "@shared/api/types/api";
-import { Trailer } from "@shared/api/types/entities";
+import { ApiStore } from "@shared/misc/types/api";
+import { Trailer } from "@shared/misc/types/entities";
 import {
   CreateTrailer,
   UpdateTrailer,
-} from "@shared/api/types/entities/Trailer";
+} from "@shared/misc/types/entities/Trailer";
 import { trailers } from "@shared/assets/samples";
 
 class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {

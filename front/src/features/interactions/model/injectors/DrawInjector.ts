@@ -13,11 +13,11 @@ import { v4 as uuid } from "uuid";
 
 import { GeozonesStore } from "@entities/geozone";
 import { OrganizationsStore } from "@entities/organization";
-import InteractionsService from "@shared/api/services/InteractionsService";
-import { Change, ChangeSet, Undo } from "@shared/api/types/map";
+import InteractionsService from "@features/interactions/model/InteractionsService";
+import { Change, ChangeSet, Undo } from "@shared/misc/types/map";
 import ListenersInjector, {
   DrawEvent as DrawEventType,
-} from "@shared/api/types/map/ListenersInjector";
+} from "@shared/misc/types/map/ListenersInjector";
 import { geozonesLayerId } from "@shared/constants";
 import { getGeozoneStyle } from "@shared/lib/utils/map/getGeozoneStyle";
 

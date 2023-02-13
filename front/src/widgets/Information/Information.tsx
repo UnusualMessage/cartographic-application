@@ -1,8 +1,8 @@
 import { Tab, TabId, Tabs } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { TabsStore } from "@shared/api";
-import { Tab as TabType } from "@shared/api/types/tabs/Tab";
+import { TabsStore } from "@shared/misc";
+import { Tab as TabType } from "@shared/misc/types/tabs/Tab";
 import { footerTabs } from "@shared/assets";
 import TabPage from "@shared/ui/TabPage";
 

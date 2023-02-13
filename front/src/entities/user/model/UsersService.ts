@@ -1,6 +1,6 @@
-import { Error } from "@shared/api/types/api";
-import { User } from "@shared/api/types/entities";
-import { AuthenticateUser } from "@shared/api/types/entities/User";
+import { Error } from "@shared/misc/types/api";
+import { User } from "@shared/misc/types/entities";
+import { AuthenticateUser } from "@shared/misc/types/entities/User";
 import { baseUrl } from "@shared/constants";
 import { get, post } from "@shared/lib/utils/requests";
 

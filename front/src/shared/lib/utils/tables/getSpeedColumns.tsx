@@ -3,7 +3,7 @@ import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
 import { ColumnProps } from "@shared/ui/Table";
 
-import { Speed } from "../../../api/types/entities";
+import { Speed } from "../../../misc/types/entities";
 import { cell } from "../../../ui/Table/table.module.scss";
 
 export const getSpeedColumns = (speeds: Speed[]): ColumnProps[] => [
