@@ -1,11 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
 import { partners } from "@shared/assets/samples";
+import { Partner, CreatePartner, UpdatePartner } from "@shared/misc";
 import { ApiStore } from "@shared/misc/types/api";
-import Partner, {
-  CreatePartner,
-  UpdatePartner,
-} from "@shared/misc/types/entities/Partner";
 
 class PartnersStore implements ApiStore<Partner, CreatePartner, UpdatePartner> {
   private _partners: Partner[];

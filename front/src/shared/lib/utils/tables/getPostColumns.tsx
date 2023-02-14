@@ -1,12 +1,11 @@
 import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 
 import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
-import { ColumnProps } from "@shared/ui/Table";
 
-import { Post } from "../../../misc/types/entities";
+import { Post, Column } from "../../../misc";
 import { cell } from "../../../styles";
 
-export const getPostColumns = (posts: Post[]): ColumnProps[] => [
+export const getPostColumns = (posts: Post[]): Column[] => [
   getNumberCell(posts),
 
   {

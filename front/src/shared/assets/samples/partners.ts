@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { organizations } from "./organizations";
-import Partner from "../../misc/types/entities/Partner";
+import { Partner } from "../../misc";
 
 export const partners: Partner[] = [
   {

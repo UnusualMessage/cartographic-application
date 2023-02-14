@@ -4,7 +4,7 @@ import { Error } from "@shared/misc/types/api";
 import {
   AccessToken,
   AuthenticateUser,
-} from "@shared/misc/types/entities/User";
+} from "@shared/misc/types/entities/user";
 
 class AuthService {
   protected readonly url: string;

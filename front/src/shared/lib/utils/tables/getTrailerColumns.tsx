@@ -1,12 +1,11 @@
 import { Cell } from "@blueprintjs/table";
 
 import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
-import { ColumnProps } from "@shared/ui/Table";
 
-import { Trailer } from "../../../misc/types/entities";
+import { Trailer, Column } from "../../../misc";
 import { cell } from "../../../styles";
 
-export const getTrailerColumns = (trailers: Trailer[]): ColumnProps[] => [
+export const getTrailerColumns = (trailers: Trailer[]): Column[] => [
   getNumberCell(trailers),
 
   {

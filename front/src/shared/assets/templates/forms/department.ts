@@ -1,8 +1,6 @@
-import {
-  CreateDepartment,
-  UpdateDepartment,
-} from "@shared/misc/types/entities/Department";
 import { Form, SelectOption } from "@shared/misc/types/form";
+
+import { UpdateDepartment, CreateDepartment } from "../../../misc";
 
 export const createDepartment = (
   options: SelectOption[]

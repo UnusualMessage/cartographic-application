@@ -1,12 +1,11 @@
 import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 
 import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
-import { ColumnProps } from "@shared/ui/Table";
 
-import Partner from "../../../misc/types/entities/Partner";
+import { Column, Partner } from "../../../misc";
 import { cell } from "../../../styles";
 
-export const getPartnerColumns = (partners: Partner[]): ColumnProps[] => [
+export const getPartnerColumns = (partners: Partner[]): Column[] => [
   getNumberCell(partners),
 
   {

@@ -3,12 +3,12 @@ import { Coordinate } from "ol/coordinate";
 import { FeatureLike } from "ol/Feature";
 
 import { geozones } from "@shared/assets/samples/geozones";
+import { Changes } from "@shared/misc";
 import { Geozone } from "@shared/misc/types/entities";
-import { ChangeSet } from "@shared/misc/types/map";
 
 class GeozonesStore {
   private _geozones: Geozone[];
-  private _history: ChangeSet<FeatureLike>[];
+  private _history: Changes<FeatureLike>[];
 
   constructor() {
     this._geozones = geozones;
@@ -78,7 +78,7 @@ class GeozonesStore {
     }
   }
 
-  public push(set: ChangeSet<FeatureLike>) {
+  public push(set: Changes<FeatureLike>) {
     const copy = this._history.slice();
 
     copy.push(set);

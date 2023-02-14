@@ -2,7 +2,7 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useEffect } from "react";
 
-import { Callback, InteractionType } from "@shared/misc/types";
+import { Callback, Interaction } from "@shared/misc";
 
 import { invoke } from "../utils";
 
@@ -11,7 +11,7 @@ export type AddEventListener = (map: Map, source: VectorSource) => Callback;
 export interface InteractionProps {
   source?: VectorSource;
   map: Map | null;
-  type: InteractionType;
+  type: Interaction;
 }
 
 export const useInteraction = (

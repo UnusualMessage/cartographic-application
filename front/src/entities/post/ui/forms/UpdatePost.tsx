@@ -8,7 +8,7 @@ import { PostsStore } from "@entities/post/model";
 import { updatePost } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
 import { Post } from "@shared/misc/types/entities";
-import { UpdatePost } from "@shared/misc/types/entities/Post";
+import { UpdatePost } from "@shared/misc/types/entities/post";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 interface Props {

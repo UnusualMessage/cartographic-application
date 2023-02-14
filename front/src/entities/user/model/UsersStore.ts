@@ -5,7 +5,7 @@ import { users } from "@shared/assets/samples/users";
 import { isError } from "@shared/lib/utils/responses";
 import ResponseService from "@shared/misc/services/ResponseService";
 import { User } from "@shared/misc/types/entities";
-import { AuthenticateUser } from "@shared/misc/types/entities/User";
+import { AuthenticateUser } from "@shared/misc/types/entities/user";
 
 class UsersStore {
   private _users: User[];

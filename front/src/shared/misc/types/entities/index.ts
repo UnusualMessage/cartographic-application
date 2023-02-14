@@ -1,27 +1,11 @@
-import Department from "./Department";
-import Employee from "./Employee";
-import Equipment from "./Equipment";
-import EquipmentType from "./EquipmentType";
-import Geozone from "./Geozone";
-import Organization from "./Organization";
-import Partner from "./Partner";
-import Plan from "./Plan";
-import Post from "./Post";
-import Speed from "./Speed";
-import Trailer from "./Trailer";
-import User from "./User";
-
-export type {
-  Organization,
-  Plan,
-  Employee,
-  Equipment,
-  Post,
-  User,
-  Speed,
-  Partner,
-  Department,
-  Trailer,
-  EquipmentType,
-  Geozone,
-};
+export * from "./department";
+export * from "./employee";
+export * from "./equipment";
+export * from "./geozone";
+export * from "./organization";
+export * from "./partner";
+export * from "./plan";
+export * from "./post";
+export * from "./speed";
+export * from "./trailer";
+export * from "./user";

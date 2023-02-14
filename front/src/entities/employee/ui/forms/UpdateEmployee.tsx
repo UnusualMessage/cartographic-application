@@ -8,8 +8,8 @@ import { OrganizationsStore } from "@entities/organization";
 import { PostsStore } from "@entities/post";
 import { updateEmployee } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
+import { UpdateEmployee as UpdateEmployeeType } from "@shared/misc";
 import { Employee } from "@shared/misc/types/entities";
-import { UpdateEmployee } from "@shared/misc/types/entities/Employee";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 interface Props {
@@ -25,7 +25,7 @@ const UpdateEmployee = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateEmployee>({
+  } = useForm<UpdateEmployeeType>({
     defaultValues: useMemo(() => {
       return {
         firstName: employee?.firstName,
@@ -48,7 +48,7 @@ const UpdateEmployee = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateEmployee> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateEmployeeType> = async (data) => {
     await EmployeesStore.update(data);
     setSuccessful(true);
   };

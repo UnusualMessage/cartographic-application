@@ -7,9 +7,9 @@ import { OrganizationsStore } from "@entities/organization/model";
 import PartnersStore from "@entities/partner/model/PartnersStore";
 import { updatePartner } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
+import { UpdatePartner as UpdatePartnerType } from "@shared/misc";
 import { Partner } from "@shared/misc/types/entities";
-import { UpdatePartner } from "@shared/misc/types/entities/Partner";
-import { UpdatePost } from "@shared/misc/types/entities/Post";
+import { UpdatePost } from "@shared/misc/types/entities/post";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 interface Props {
@@ -45,7 +45,7 @@ const UpdatePartner = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdatePartner> = async (data) => {
+  const onSubmit: SubmitHandler<UpdatePartnerType> = async (data) => {
     await PartnersStore.update(data);
     setSuccessful(true);
   };

@@ -8,8 +8,8 @@ import { OrganizationsStore } from "@entities/organization";
 import { TrailersStore } from "@entities/trailer/model";
 import { updateTrailer } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
+import { UpdateTrailer as UpdateTrailerType } from "@shared/misc";
 import { Trailer } from "@shared/misc/types/entities";
-import { UpdateTrailer } from "@shared/misc/types/entities/Trailer";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 interface Props {
@@ -25,7 +25,7 @@ const UpdateTrailer = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateTrailer>({
+  } = useForm<UpdateTrailerType>({
     defaultValues: useMemo(() => {
       return {
         title: trailer?.title,
@@ -43,7 +43,7 @@ const UpdateTrailer = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateTrailer> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateTrailerType> = async (data) => {
     await TrailersStore.update(data);
     setSuccessful(true);
   };

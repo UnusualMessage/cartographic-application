@@ -7,8 +7,7 @@ import { DrawingStore } from "@features/interactions";
 import { LayersStore } from "@features/layers";
 import { MapStore } from "@features/map";
 import { auxLayerId } from "@shared/constants";
-import { ControlsStore } from "@shared/misc";
-import { InteractionType } from "@shared/misc/types/map";
+import { ControlsStore, Interaction } from "@shared/misc";
 
 import { active, wrapper } from "./buttons.module.scss";
 
@@ -28,7 +27,7 @@ const ButtonsGroup = () => {
     ControlsStore.switchPanel();
   };
 
-  const switchType = (type: InteractionType) => {
+  const switchType = (type: Interaction) => {
     LayersStore.clearVectorLayer(auxLayerId);
 
     if (interactionType === type) {

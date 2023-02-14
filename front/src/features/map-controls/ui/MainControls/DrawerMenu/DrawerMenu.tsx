@@ -13,9 +13,8 @@ import { DrawingStore } from "@features/interactions";
 import { LayersStore } from "@features/layers";
 import { about } from "@shared/assets/samples/about";
 import { auxLayerId } from "@shared/constants";
-import { ControlsStore } from "@shared/misc";
+import { ControlsStore, Interaction } from "@shared/misc";
 import { ControlType } from "@shared/misc/stores/ControlsStore";
-import { InteractionType } from "@shared/misc/types/map";
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
@@ -24,7 +23,7 @@ const DrawerMenu = () => {
     ControlsStore.hideDrawer();
   };
 
-  const switchType = (type: InteractionType) => {
+  const switchType = (type: Interaction) => {
     LayersStore.clearVectorLayer(auxLayerId);
     const interactionType = DrawingStore.interactionType;
 

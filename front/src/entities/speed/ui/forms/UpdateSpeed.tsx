@@ -7,8 +7,8 @@ import { OrganizationsStore } from "@entities/organization/model";
 import SpeedsStore from "@entities/speed/model/SpeedsStore";
 import { updateSpeed } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
+import { UpdateSpeed as UpdateSpeedType } from "@shared/misc";
 import { Speed } from "@shared/misc/types/entities";
-import { UpdateSpeed } from "@shared/misc/types/entities/Speed";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 interface Props {
@@ -24,7 +24,7 @@ const UpdateSpeed = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateSpeed>({
+  } = useForm<UpdateSpeedType>({
     defaultValues: useMemo(() => {
       return {
         title: speed?.title,
@@ -44,7 +44,7 @@ const UpdateSpeed = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateSpeed> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateSpeedType> = async (data) => {
     await SpeedsStore.update(data);
     setSuccessful(true);
   };

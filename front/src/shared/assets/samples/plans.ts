@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import Plan from "../../misc/types/entities/Plan";
+import { Plan } from "../../misc";
 
 export const plans: Plan[] = [
   {

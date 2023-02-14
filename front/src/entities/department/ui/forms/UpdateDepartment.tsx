@@ -6,9 +6,10 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import { updateDepartment } from "@shared/assets/templates/forms/department";
 import { useFetch } from "@shared/lib";
 import { formRenderer, getSelectOptions } from "@shared/lib/utils/forms";
-import Department, {
-  UpdateDepartment,
-} from "@shared/misc/types/entities/Department";
+import {
+  Department,
+  UpdateDepartment as UpdateDepartmentType,
+} from "@shared/misc";
 import DialogForm from "@shared/ui/forms/DialogForm";
 
 import OrganizationsStore from "../../../organization/model/OrganizationsStore";
@@ -29,7 +30,7 @@ const UpdateDepartment = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateDepartment>({
+  } = useForm<UpdateDepartmentType>({
     defaultValues: useMemo(() => {
       return {
         title: department?.title,
@@ -46,7 +47,7 @@ const UpdateDepartment = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateDepartment> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateDepartmentType> = async (data) => {
     await DepartmentsStore.update(data);
     setSuccessful(true);
   };

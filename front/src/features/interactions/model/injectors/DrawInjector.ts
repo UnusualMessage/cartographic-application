@@ -16,10 +16,13 @@ import { OrganizationsStore } from "@entities/organization";
 import InteractionsService from "@features/interactions/model/InteractionsService";
 import { geozonesLayerId } from "@shared/constants";
 import { getGeozoneStyle } from "@shared/lib/utils/map/getGeozoneStyle";
-import { Change, ChangeSet, Undo } from "@shared/misc/types/map";
-import ListenersInjector, {
+import {
+  Change,
+  Changes,
+  Undo,
+  ListenersInjector,
   DrawEvent as DrawEventType,
-} from "@shared/misc/types/map/ListenersInjector";
+} from "@shared/misc";
 
 import LayersService from "../../../layers/model/LayersService";
 
@@ -115,7 +118,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
           GeozonesStore.remove(newValue.getId()?.toString() ?? "");
         };
 
-        const set: ChangeSet<FeatureLike> = [];
+        const set: Changes<FeatureLike> = [];
 
         const change: Change<FeatureLike> = {
           action: "createFeature",

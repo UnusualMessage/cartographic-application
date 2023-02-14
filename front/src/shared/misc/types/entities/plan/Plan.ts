@@ -1,4 +1,4 @@
-export default interface Plan {
+export interface Plan {
   id: string;
   title: string;
   type: string;

@@ -1,4 +1,3 @@
-import Table, { ColumnProps, OnSelection } from "./Table";
+import Table from "./Table";
 
-export type { ColumnProps, OnSelection };
 export { Table };

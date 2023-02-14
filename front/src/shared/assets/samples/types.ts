@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { EquipmentType } from "../../misc/types/entities";
+import { EquipmentType } from "../../misc";
 
 export const types: EquipmentType[] = [
   {
