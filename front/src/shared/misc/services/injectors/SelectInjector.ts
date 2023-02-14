@@ -1,7 +1,7 @@
 import { Select } from "ol/interaction";
 
-import FeaturesStore from "@entities/map-features/model/FeaturesStore";
-import { ListenersInjector, SelectEvent } from "@shared/misc";
+import FeaturesStore from "../../stores/map/FeaturesStore";
+import type { ListenersInjector, SelectEvent } from "../../types";
 
 class SelectInjector implements ListenersInjector<SelectEvent> {
   private _select: Select;

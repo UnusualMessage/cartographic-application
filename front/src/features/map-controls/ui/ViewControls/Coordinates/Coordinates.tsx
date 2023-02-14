@@ -2,7 +2,7 @@ import { Text } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 import { toLonLat } from "ol/proj";
 
-import { MapStore } from "@features/map";
+import { MapStore } from "@shared/misc";
 
 import { container, label, value, wrapper } from "./coordinates.module.scss";
 

@@ -1,4 +1,4 @@
-import { BaseLayer } from "../../misc";
+import type { BaseLayer } from "../../misc";
 
 interface BaseLayerChoice {
   label: string;

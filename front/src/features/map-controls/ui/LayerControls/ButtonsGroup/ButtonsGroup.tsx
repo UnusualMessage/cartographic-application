@@ -3,11 +3,14 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useState } from "react";
 
-import { DrawingStore } from "@features/interactions";
-import { LayersStore } from "@features/layers";
-import { MapStore } from "@features/map";
 import { auxLayerId } from "@shared/constants";
-import { ControlsStore, Interaction } from "@shared/misc";
+import {
+  ControlsStore,
+  Interaction,
+  DrawingStore,
+  LayersStore,
+  MapStore,
+} from "@shared/misc";
 
 import { active, wrapper } from "./buttons.module.scss";
 

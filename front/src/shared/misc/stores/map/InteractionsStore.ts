@@ -9,7 +9,14 @@ import { Type } from "ol/geom/Geometry";
 import { DragBox, Draw, Modify, Select, Snap, Translate } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
-import { getMeasurementStyle } from "@shared/lib/utils/map";
+import { getMeasurementStyle } from "@shared/lib/utils/map/getMeasurementStyle";
+
+import DrawingStore from "./DrawingStore";
+import DragBoxInjector from "../../services/injectors/DragBoxInjector";
+import DrawInjector from "../../services/injectors/DrawInjector";
+import ModifyInjector from "../../services/injectors/ModifyInjector";
+import SelectInjector from "../../services/injectors/SelectInjector";
+import TranslateInjector from "../../services/injectors/TranslateInjector";
 import {
   DragBoxEvent,
   DrawEvent,
@@ -17,16 +24,7 @@ import {
   ModifyEvent,
   SelectEvent,
   TranslateEvent,
-} from "@shared/misc";
-
-import DrawingStore from "./DrawingStore";
-import {
-  DragBoxInjector,
-  DrawInjector,
-  ModifyInjector,
-  SelectInjector,
-  TranslateInjector,
-} from "./injectors";
+} from "../../types";
 
 interface Interactions {
   select: Select | null;

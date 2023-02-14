@@ -2,10 +2,10 @@ import { Feature } from "ol";
 import { Modify } from "ol/interaction";
 import { ModifyEvent } from "ol/interaction/Modify";
 
-import {
+import type {
   ListenersInjector,
   ModifyEvent as ModifyEventType,
-} from "@shared/misc";
+} from "../../types";
 
 class ModifyInjector implements ListenersInjector<ModifyEventType> {
   private _modify: Modify;

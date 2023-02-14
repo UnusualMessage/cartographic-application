@@ -1,4 +1,4 @@
-import DrawingStore from "@features/interactions/model/DrawingStore";
+import DrawingStore from "../../stores/map/DrawingStore";
 
 class InteractionsService {
   public startDrawing() {

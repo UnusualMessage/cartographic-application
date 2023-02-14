@@ -9,11 +9,14 @@ import {
 } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import { DrawingStore } from "@features/interactions";
-import { LayersStore } from "@features/layers";
 import { about } from "@shared/assets/samples/about";
 import { auxLayerId } from "@shared/constants";
-import { ControlsStore, Interaction } from "@shared/misc";
+import {
+  ControlsStore,
+  Interaction,
+  DrawingStore,
+  LayersStore,
+} from "@shared/misc";
 import { ControlType } from "@shared/misc/stores/ControlsStore";
 
 const DrawerMenu = () => {

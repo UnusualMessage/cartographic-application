@@ -3,11 +3,12 @@ import { Polygon } from "ol/geom";
 import { Translate } from "ol/interaction";
 import { TranslateEvent } from "ol/interaction/Translate";
 
-import { GeozonesStore } from "@entities/geozone";
-import {
+import GeozonesStore from "@entities/geozone/model/GeozonesStore";
+
+import type {
   ListenersInjector,
   TranslateEvent as TranslateEventType,
-} from "@shared/misc";
+} from "../../types";
 
 class TranslateInjector implements ListenersInjector<TranslateEventType> {
   private _translate: Translate;

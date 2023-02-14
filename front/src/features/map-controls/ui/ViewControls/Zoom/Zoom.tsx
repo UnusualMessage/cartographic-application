@@ -2,8 +2,7 @@ import { Button, ButtonGroup } from "@blueprintjs/core";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
-import { ViewStore } from "@features/map-view";
-import { ControlsStore } from "@shared/misc";
+import { ControlsStore, ViewStore } from "@shared/misc";
 
 import { active, wrapper } from "./zoom.module.scss";
 

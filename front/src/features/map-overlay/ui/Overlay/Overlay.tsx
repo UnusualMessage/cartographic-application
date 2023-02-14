@@ -2,10 +2,9 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
-import { MapStore } from "@features/map";
+import { MapStore, OverlaysStore } from "@shared/misc";
 
 import { hidden, wrapper } from "./overlay.module.scss";
-import { OverlaysStore } from "../../model";
 
 const Overlay = () => {
   const overlayRef = useRef<HTMLDivElement>(null);

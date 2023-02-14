@@ -1,12 +1,15 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
-import { MapStore } from "@features/map/model";
 import { useInteraction } from "@shared/lib";
-import { AddInteractionCallback } from "@shared/misc";
+import {
+  AddInteractionCallback,
+  MapStore,
+  DrawingStore,
+  InteractionsStore,
+} from "@shared/misc";
 
 import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
-import { DrawingStore, InteractionsStore } from "../../model";
 
 const Measurement = () => {
   const source = useContext(SourceContext);

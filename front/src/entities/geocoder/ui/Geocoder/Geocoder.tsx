@@ -4,8 +4,7 @@ import { Point } from "@turf/turf";
 import { fromLonLat } from "ol/proj";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 
-import { ViewStore } from "@features/map-view";
-import { GeocoderFeature } from "@shared/misc";
+import { GeocoderFeature, ViewStore } from "@shared/misc";
 
 import { GeocoderService } from "../../model";
 

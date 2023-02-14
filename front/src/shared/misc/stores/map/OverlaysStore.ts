@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
-import { overlayId, overlayOffset } from "@shared/constants";
+import { overlayId, overlayOffset } from "../../../constants";
 
 interface CustomOverlay {
   element: HTMLElement | null;

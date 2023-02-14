@@ -3,10 +3,12 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
-import { FeaturesService } from "@entities/map-features";
-import { MapStore } from "@features/map";
-import { OverlaysStore } from "@features/map-overlay";
-import { Callback } from "@shared/misc";
+import {
+  Callback,
+  MapStore,
+  OverlaysStore,
+  FeaturesService,
+} from "@shared/misc";
 
 import { hidden, wrapper } from "./menu.module.scss";
 

@@ -1,12 +1,12 @@
 import { StyleLike } from "ol/style/Style";
 
 import { GeozonesStore } from "@entities/geozone";
-import { InteractionsStore } from "@features/interactions/model";
-import { Drawing, Measurement } from "@features/interactions/ui";
 import { auxLayerId, geozonesLayerId } from "@shared/constants";
 import { getMeasurementStyle } from "@shared/lib";
-import Condition from "@shared/ui/Condition";
+import { InteractionsStore } from "@shared/misc";
+import { Condition } from "@shared/ui";
 
+import { Drawing, Measurement } from "../../../interactions";
 import TileLayer from "../TileLayer";
 import VectorLayer from "../VectorLayer";
 

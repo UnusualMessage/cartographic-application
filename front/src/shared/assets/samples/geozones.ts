@@ -1,3 +1,3 @@
-import { Geozone } from "../../misc/types/entities";
+import type { Geozone } from "../../misc";
 
 export const geozones: Geozone[] = [];

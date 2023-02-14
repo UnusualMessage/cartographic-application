@@ -3,9 +3,8 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { FormEventHandler } from "react";
 
-import { LayersStore } from "@features/layers";
 import { baseLayers } from "@shared/assets";
-import { ControlsStore, BaseLayer } from "@shared/misc";
+import { ControlsStore, BaseLayer, LayersStore } from "@shared/misc";
 
 import { visible, wrapper } from "./group.module.scss";
 

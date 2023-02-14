@@ -1,11 +1,16 @@
 import { observer } from "mobx-react-lite";
 import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 
-import { LayersStore } from "@features/layers";
-import { Callback, CommonEvent, ListenersInjector } from "@shared/misc";
+import {
+  Callback,
+  CommonEvent,
+  ListenersInjector,
+  MapStore,
+  LayersStore,
+  MapInjector,
+} from "@shared/misc";
 
 import { wrapper } from "./map.module.scss";
-import { MapInjector, MapStore } from "../../model";
 
 const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);

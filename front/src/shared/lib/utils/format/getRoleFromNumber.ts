@@ -1,4 +1,4 @@
-import { RoleNumber, Role } from "../../../misc";
+import type { RoleNumber, Role } from "../../../misc";
 
 export const getRoleFromNumber = (role: RoleNumber): Role => {
   switch (role) {

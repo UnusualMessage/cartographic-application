@@ -3,13 +3,16 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
-import { MapStore } from "@features/map/model";
 import { useInteraction } from "@shared/lib/hooks/useInteraction";
-import { Interaction, AddInteractionCallback } from "@shared/misc";
+import {
+  Interaction,
+  AddInteractionCallback,
+  MapStore,
+  DrawingStore,
+} from "@shared/misc";
+import InteractionsStore from "@shared/misc/stores/map/InteractionsStore";
 
 import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
-import { DrawingStore } from "../../model";
-import InteractionsStore from "../../model/InteractionsStore";
 
 const Drawing = () => {
   const source = useContext(SourceContext);
