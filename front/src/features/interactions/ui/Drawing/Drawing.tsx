@@ -1,12 +1,11 @@
 import { observer } from "mobx-react-lite";
+import { Map } from "ol";
+import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
 import { MapStore } from "@features/map/model";
-import {
-  AddEventListener,
-  InteractionProps,
-  useInteraction,
-} from "@shared/lib/hooks/useInteraction";
+import { useInteraction } from "@shared/lib/hooks/useInteraction";
+import { Interaction, AddInteractionCallback } from "@shared/misc";
 
 import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
 import { DrawingStore } from "../../model";
@@ -37,8 +36,14 @@ const Drawing = () => {
   );
 };
 
-const Draw = ({ source, map, type }: InteractionProps) => {
-  const addInteraction: AddEventListener = (map, source) => {
+interface Props {
+  source?: VectorSource;
+  map: Map | null;
+  type: Interaction;
+}
+
+const Draw = ({ source, map, type }: Props) => {
+  const addInteraction: AddInteractionCallback = (map, source) => {
     return InteractionsStore.addDraw(source, map);
   };
 
@@ -47,8 +52,8 @@ const Draw = ({ source, map, type }: InteractionProps) => {
   return <></>;
 };
 
-const Select = ({ source, map, type }: InteractionProps) => {
-  const addInteraction: AddEventListener = (map, source) => {
+const Select = ({ source, map, type }: Props) => {
+  const addInteraction: AddInteractionCallback = (map, source) => {
     return InteractionsStore.addSelectAndTranslate(source, map);
   };
 
@@ -57,8 +62,8 @@ const Select = ({ source, map, type }: InteractionProps) => {
   return <></>;
 };
 
-const Modify = ({ source, map, type }: InteractionProps) => {
-  const addInteraction: AddEventListener = (map, source) => {
+const Modify = ({ source, map, type }: Props) => {
+  const addInteraction: AddInteractionCallback = (map, source) => {
     return InteractionsStore.addModify(source, map);
   };
 
@@ -67,8 +72,8 @@ const Modify = ({ source, map, type }: InteractionProps) => {
   return <></>;
 };
 
-const Snap = ({ source, map, type }: InteractionProps) => {
-  const addInteraction: AddEventListener = (map, source) => {
+const Snap = ({ source, map, type }: Props) => {
+  const addInteraction: AddInteractionCallback = (map, source) => {
     return InteractionsStore.addSnap(source, map);
   };
 

@@ -3,17 +3,16 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { updateDepartment } from "@shared/assets/templates/forms/department";
-import { useFetch } from "@shared/lib";
-import { formRenderer, getSelectOptions } from "@shared/lib/utils/forms";
+import { updateDepartment } from "@shared/assets";
+import { useFetch, formRenderer, getSelectOptions } from "@shared/lib";
 import {
   Department,
   UpdateDepartment as UpdateDepartmentType,
 } from "@shared/misc";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { DialogForm } from "@shared/ui";
 
-import OrganizationsStore from "../../../organization/model/OrganizationsStore";
-import DepartmentsStore from "../../model/DepartmentsStore";
+import { OrganizationsStore } from "../../../organization";
+import { DepartmentsStore } from "../../model";
 
 interface Props {
   id?: string;

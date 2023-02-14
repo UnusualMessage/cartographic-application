@@ -6,7 +6,7 @@ import { StyleLike } from "ol/style/Style";
 import FeaturesStore from "@entities/map-features/model/FeaturesStore";
 import LayersStore from "@features/layers/model/LayersStore";
 import MapStore from "@features/map/model/MapStore";
-import { BaseLayerType } from "@shared/misc/types/common";
+import { BaseLayer as BaseLayerType } from "@shared/misc";
 
 class LayersService {
   public createVectorLayer(

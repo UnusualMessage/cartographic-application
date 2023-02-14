@@ -3,13 +3,13 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { OrganizationsStore } from "@entities/organization";
-import { PostsStore } from "@entities/post/model";
 import { updatePost } from "@shared/assets";
-import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
-import { Post } from "@shared/misc/types/entities";
-import { UpdatePost } from "@shared/misc/types/entities/post";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { useFetch, formRenderer, getSelectOptions } from "@shared/lib";
+import { Post, UpdatePost as UpdatePostType } from "@shared/misc";
+import { DialogForm } from "@shared/ui";
+
+import { OrganizationsStore } from "../../../organization";
+import { PostsStore } from "../../model";
 
 interface Props {
   id?: string;
@@ -24,7 +24,7 @@ const UpdatePost = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdatePost>({
+  } = useForm<UpdatePostType>({
     defaultValues: useMemo(() => {
       return {
         title: post?.title,
@@ -41,7 +41,7 @@ const UpdatePost = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdatePost> = async (data) => {
+  const onSubmit: SubmitHandler<UpdatePostType> = async (data) => {
     await PostsStore.update(data);
     setSuccessful(true);
   };

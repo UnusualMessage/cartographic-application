@@ -1,6 +1,6 @@
 import { FeatureCollection } from "@turf/turf";
 
-import { GeocoderFeature } from "@shared/misc/types/common";
+import { GeocoderFeature } from "@shared/misc";
 
 class GeocoderService {
   private _url: string;

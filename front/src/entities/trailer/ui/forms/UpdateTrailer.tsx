@@ -3,14 +3,14 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { DepartmentsStore } from "@entities/department";
-import { OrganizationsStore } from "@entities/organization";
-import { TrailersStore } from "@entities/trailer/model";
 import { updateTrailer } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
-import { UpdateTrailer as UpdateTrailerType } from "@shared/misc";
-import { Trailer } from "@shared/misc/types/entities";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { UpdateTrailer as UpdateTrailerType, Trailer } from "@shared/misc";
+import { DialogForm } from "@shared/ui";
+
+import { DepartmentsStore } from "../../../department";
+import { OrganizationsStore } from "../../../organization";
+import { TrailersStore } from "../../model";
 
 interface Props {
   id?: string;

@@ -6,7 +6,7 @@ import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { v4 as uuid } from "uuid";
 
-import { getFeaturesCenter } from "@shared/lib/utils/map";
+import { getFeaturesCenter } from "@shared/lib";
 
 class FeaturesStore {
   private _features: FeatureLike[];
@@ -29,10 +29,6 @@ class FeaturesStore {
 
   public set features(features) {
     this._features = features;
-  }
-
-  public set clickedFeature(clickedFeature: FeatureLike | null) {
-    this._clickedFeature = clickedFeature;
   }
 
   public get selectedFeatures() {

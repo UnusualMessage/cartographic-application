@@ -1,10 +1,6 @@
 import { baseUrl } from "@shared/constants";
-import { get, post } from "@shared/lib/utils/requests";
-import { Error } from "@shared/misc/types/api";
-import {
-  AccessToken,
-  AuthenticateUser,
-} from "@shared/misc/types/entities/user";
+import { get, post } from "@shared/lib";
+import { AccessToken, AuthenticateUser, Error } from "@shared/misc";
 
 class AuthService {
   protected readonly url: string;

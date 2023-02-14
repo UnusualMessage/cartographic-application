@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 
-import { TrailersStore } from "@entities/trailer/model";
-import { Duplicate } from "@shared/ui/forms/actions";
+import { Duplicate } from "@shared/ui";
+
+import { TrailersStore } from "../../model";
 
 interface Props {
   id?: string;

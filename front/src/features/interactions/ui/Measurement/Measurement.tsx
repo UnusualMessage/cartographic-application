@@ -3,7 +3,7 @@ import { useContext } from "react";
 
 import { MapStore } from "@features/map/model";
 import { useInteraction } from "@shared/lib";
-import { AddEventListener } from "@shared/lib/hooks/useInteraction";
+import { AddInteractionCallback } from "@shared/misc";
 
 import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
 import { DrawingStore, InteractionsStore } from "../../model";
@@ -13,7 +13,7 @@ const Measurement = () => {
   const map = MapStore.map;
   const type = DrawingStore.interactionType;
 
-  const addInteraction: AddEventListener = (map, source) => {
+  const addInteraction: AddInteractionCallback = (map, source) => {
     return InteractionsStore.setupMeasurementTool(source, map);
   };
 

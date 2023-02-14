@@ -2,12 +2,13 @@ import { Divider } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { PlansStore } from "@entities/plan/model";
-import { planNodes } from "@shared/assets/templates/nodes";
+import { planNodes } from "@shared/assets";
 import { getPlansTreeClickHandler } from "@shared/lib";
 import { Node, Plan } from "@shared/misc";
 import { tree } from "@shared/styles";
 import { EntitiesTree } from "@shared/ui";
+
+import { PlansStore } from "../../model";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);

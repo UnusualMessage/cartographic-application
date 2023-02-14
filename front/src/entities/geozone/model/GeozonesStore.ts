@@ -2,9 +2,8 @@ import { makeAutoObservable } from "mobx";
 import { Coordinate } from "ol/coordinate";
 import { FeatureLike } from "ol/Feature";
 
-import { geozones } from "@shared/assets/samples/geozones";
-import { Changes } from "@shared/misc";
-import { Geozone } from "@shared/misc/types/entities";
+import { geozones } from "@shared/assets";
+import { Changes, Geozone } from "@shared/misc";
 
 class GeozonesStore {
   private _geozones: Geozone[];
@@ -19,14 +18,6 @@ class GeozonesStore {
 
   public get geozones() {
     return this._geozones;
-  }
-
-  public get changesCount() {
-    return this._history.length;
-  }
-
-  public get history() {
-    return this._history;
   }
 
   public getById(id: string) {
@@ -62,20 +53,6 @@ class GeozonesStore {
 
   public remove(id: string) {
     this._geozones = this.geozones.filter((item) => item.id !== id);
-  }
-
-  public save() {
-    this._history = [];
-  }
-
-  public undo() {
-    const lastSet = this._history.pop();
-
-    if (lastSet) {
-      for (const change of lastSet) {
-        change.undo(change.oldValue, change.newValue);
-      }
-    }
   }
 
   public push(set: Changes<FeatureLike>) {

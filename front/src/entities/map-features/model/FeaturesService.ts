@@ -1,5 +1,5 @@
 import { InteractionsStore } from "@features/interactions";
-import { LayersStore } from "@features/layers/model";
+import { LayersStore } from "@features/layers";
 import { OverlaysStore } from "@features/map-overlay";
 import { geozonesLayerId } from "@shared/constants";
 

@@ -1,4 +1,4 @@
-export type BaseLayerType =
+export type BaseLayer =
   | "osm"
   | "otm"
   | "bing-road"

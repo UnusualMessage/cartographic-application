@@ -5,8 +5,7 @@ import { FormEventHandler } from "react";
 
 import { LayersStore } from "@features/layers";
 import { baseLayers } from "@shared/assets";
-import { ControlsStore } from "@shared/misc";
-import { BaseLayerType } from "@shared/misc/types/common";
+import { ControlsStore, BaseLayer } from "@shared/misc";
 
 import { visible, wrapper } from "./group.module.scss";
 
@@ -14,7 +13,7 @@ const ControlsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;
 
   const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
-    LayersStore.baseLayer = e.currentTarget.value as BaseLayerType;
+    LayersStore.baseLayer = e.currentTarget.value as BaseLayer;
   };
 
   const classes = classNames({

@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { equipment } from "@shared/assets/samples/equipment";
+import { equipment } from "@shared/assets";
 import { Equipment } from "@shared/misc";
 
 class EquipmentStore {

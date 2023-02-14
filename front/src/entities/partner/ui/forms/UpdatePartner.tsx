@@ -3,14 +3,17 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { OrganizationsStore } from "@entities/organization/model";
-import PartnersStore from "@entities/partner/model/PartnersStore";
 import { updatePartner } from "@shared/assets";
-import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
-import { UpdatePartner as UpdatePartnerType } from "@shared/misc";
-import { Partner } from "@shared/misc/types/entities";
-import { UpdatePost } from "@shared/misc/types/entities/post";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { useFetch, formRenderer, getSelectOptions } from "@shared/lib";
+import {
+  Partner,
+  UpdatePost,
+  UpdatePartner as UpdatePartnerType,
+} from "@shared/misc";
+import { DialogForm } from "@shared/ui";
+
+import { OrganizationsStore } from "../../../organization";
+import { PartnersStore } from "../../model";
 
 interface Props {
   id?: string;

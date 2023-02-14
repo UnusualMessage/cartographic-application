@@ -8,11 +8,11 @@ import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
 import { baseLayers } from "@shared/assets";
-import { BaseLayerType } from "@shared/misc";
+import { BaseLayer } from "@shared/misc";
 
 class LayersStore {
   private _vectorLayers: VectorLayer<VectorSource>[];
-  private _baseLayer: BaseLayerType;
+  private _baseLayer: BaseLayer;
 
   constructor() {
     this._vectorLayers = [];
@@ -30,7 +30,7 @@ class LayersStore {
     return this._baseLayer;
   }
 
-  public set baseLayer(type: BaseLayerType) {
+  public set baseLayer(type: BaseLayer) {
     this._baseLayer = type;
   }
 
@@ -74,7 +74,7 @@ class LayersStore {
     );
   }
 
-  public createBaseLayer(type: BaseLayerType) {
+  public createBaseLayer(type: BaseLayer) {
     let source;
     const maxSourceZoom = 19;
     const zIndex = -1;

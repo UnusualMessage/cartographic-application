@@ -5,7 +5,7 @@ import { fromLonLat } from "ol/proj";
 import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
 
 import { ViewStore } from "@features/map-view";
-import { GeocoderFeature } from "@shared/misc/types/common";
+import { GeocoderFeature } from "@shared/misc";
 
 import { GeocoderService } from "../../model";
 

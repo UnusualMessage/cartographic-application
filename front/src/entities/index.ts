@@ -10,3 +10,4 @@ export * as trailer from "./trailer";
 export * as user from "./user";
 export * as geocoder from "./geocoder";
 export * as mapFeatures from "./map-features";
+export * as plan from "./plan";

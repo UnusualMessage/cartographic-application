@@ -1,9 +1,9 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import AuthService from "@entities/user/model/AuthService";
-import { isError } from "@shared/lib/utils/responses";
-import ResponseService from "@shared/misc/services/ResponseService";
-import { AuthenticateUser } from "@shared/misc/types/entities/user";
+import { isError } from "@shared/lib";
+import { ResponseService, AuthenticateUser } from "@shared/misc";
+
+import AuthService from "./AuthService";
 
 class AuthStore {
   private _isLogin: boolean;
@@ -28,37 +28,8 @@ class AuthStore {
     return this._accessToken;
   };
 
-  public access = async () => {
-    const data = await this._authService.access();
-
-    if (isError(data)) {
-      this._responseService.invokeError(data.message);
-      return;
-    }
-
-    this._responseService.invokeSuccess();
-    runInAction(() => {
-      this.login(data.token);
-    });
-  };
-
   public authenticateUser = async (user: AuthenticateUser) => {
     const data = await this._authService.authenticate(user);
-
-    if (isError(data)) {
-      this._responseService.invokeError(data.message);
-      this.logout();
-      return;
-    }
-
-    this._responseService.invokeSuccess();
-    runInAction(() => {
-      this.login(data.token);
-    });
-  };
-
-  public refreshUser = async () => {
-    const data = await this._authService.refresh();
 
     if (isError(data)) {
       this._responseService.invokeError(data.message);
