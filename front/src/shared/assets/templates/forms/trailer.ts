@@ -2,7 +2,7 @@ import {
   CreateTrailer,
   UpdateTrailer,
 } from "@shared/misc/types/entities/Trailer";
-import { Form, SelectOption } from "@shared/misc/types/forms";
+import { Form, SelectOption } from "@shared/misc/types/form";
 
 export const createTrailer = (
   organizations: SelectOption[],

@@ -8,7 +8,7 @@ import EquipmentMenu from "@entities/equipment/ui/EquipmentMenu";
 import { equipmentNodes } from "@shared/assets/templates/nodes";
 import { getEquipmentTreeClickHandler } from "@shared/lib/utils/nodes/getEquipmentTreeClickHandler";
 import { Equipment } from "@shared/misc/types/entities";
-import { Node } from "@shared/misc/types/nodes";
+import { Node } from "@shared/misc/types/node";
 import { tree } from "@shared/styles";
 import EntitiesTree from "@shared/ui/EntitiesTree";
 

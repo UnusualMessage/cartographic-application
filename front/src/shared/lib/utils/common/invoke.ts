@@ -1,4 +1,4 @@
-import { Callback } from "@shared/misc/types/common";
+import { Callback } from "../../../misc";
 
 export const invoke = (callback: Callback) => {
   if (callback) {

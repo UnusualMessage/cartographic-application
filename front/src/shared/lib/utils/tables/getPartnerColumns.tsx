@@ -4,7 +4,7 @@ import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
 import { ColumnProps } from "@shared/ui/Table";
 
 import Partner from "../../../misc/types/entities/Partner";
-import { cell } from "../../../ui/Table/table.module.scss";
+import { cell } from "../../../styles";
 
 export const getPartnerColumns = (partners: Partner[]): ColumnProps[] => [
   getNumberCell(partners),

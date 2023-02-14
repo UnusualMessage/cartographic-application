@@ -1,6 +1,6 @@
 import { TreeEventHandler } from "@blueprintjs/core";
 
-import { TabsStore } from "@shared/misc";
+import { TabsStore } from "../../../misc";
 
 export const getEquipmentTreeClickHandler = (): TreeEventHandler<any> => {
   return (node) => {

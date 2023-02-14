@@ -7,7 +7,7 @@ import { GeozonesStore } from "@entities/geozone/model";
 import { geozoneNodes } from "@shared/assets/templates/nodes";
 import { getGeozonesTreeClickHandler } from "@shared/lib/utils/nodes/getGeozonesTreeClickHandler";
 import { Geozone } from "@shared/misc/types/entities";
-import { Node } from "@shared/misc/types/nodes";
+import { Node } from "@shared/misc/types/node";
 import { tree } from "@shared/styles";
 import EntitiesTree from "@shared/ui/EntitiesTree";
 

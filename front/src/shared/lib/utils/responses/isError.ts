@@ -1,4 +1,4 @@
-import { Error } from "@shared/misc/types/api";
+import { Error } from "../../../misc";
 
 const isError = (data: any): data is Error => {
   return data.error;

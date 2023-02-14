@@ -4,7 +4,7 @@ import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
 import { ColumnProps } from "@shared/ui/Table";
 
 import { Trailer } from "../../../misc/types/entities";
-import { cell } from "../../../ui/Table/table.module.scss";
+import { cell } from "../../../styles";
 
 export const getTrailerColumns = (trailers: Trailer[]): ColumnProps[] => [
   getNumberCell(trailers),

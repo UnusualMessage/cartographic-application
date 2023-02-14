@@ -2,7 +2,7 @@ import {
   CreateEmployee,
   UpdateEmployee,
 } from "@shared/misc/types/entities/Employee";
-import { Form, SelectOption } from "@shared/misc/types/forms";
+import { Form, SelectOption } from "@shared/misc/types/form";
 
 export const createEmployee = (
   organizations: SelectOption[],

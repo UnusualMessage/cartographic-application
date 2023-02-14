@@ -5,8 +5,3 @@ export interface Tab {
   title: string;
   component: JSX.Element;
 }
-
-export interface TabsList {
-  id: string;
-  tabs: Tab[];
-}

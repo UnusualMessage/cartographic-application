@@ -4,7 +4,7 @@ import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
 import { ColumnProps } from "@shared/ui/Table";
 
 import { Speed } from "../../../misc/types/entities";
-import { cell } from "../../../ui/Table/table.module.scss";
+import { cell } from "../../../styles";
 
 export const getSpeedColumns = (speeds: Speed[]): ColumnProps[] => [
   getNumberCell(speeds),

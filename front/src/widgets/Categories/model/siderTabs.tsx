@@ -2,7 +2,7 @@ import EmployeesTree from "@entities/employee/ui/EmployeesTree/index";
 import { EquipmentTree } from "@entities/equipment/index";
 import { GeozonesTree } from "@entities/geozone/index";
 import { PlansTree } from "@entities/plan/index";
-import { TabsList } from "@shared/misc/types/tabs/index";
+import { TabsList } from "@shared/misc";
 
 export const siderTabs: TabsList = {
   id: "sider-tabs",

@@ -4,8 +4,8 @@ import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
 import { ColumnProps } from "@shared/ui/Table";
 
 import { Plan } from "../../../misc/types/entities";
+import { cell } from "../../../styles";
 import Progress from "../../../ui/Progress";
-import { cell } from "../../../ui/Table/table.module.scss";
 
 export const getPlanColumns = (plans: Plan[]): ColumnProps[] => [
   getNumberCell(plans),

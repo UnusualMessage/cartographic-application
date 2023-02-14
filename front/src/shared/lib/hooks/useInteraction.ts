@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 import { Callback, InteractionType } from "@shared/misc/types";
 
-import { invoke } from "../utils/common";
+import { invoke } from "../utils";
 
 export type AddEventListener = (map: Map, source: VectorSource) => Callback;
 

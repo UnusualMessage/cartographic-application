@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 
-import { Node, NodePath } from "@shared/misc/types/nodes";
+import { Node, NodePath } from "@shared/misc/types/node";
 
 import { forEachNode, forNode } from "../utils";
 

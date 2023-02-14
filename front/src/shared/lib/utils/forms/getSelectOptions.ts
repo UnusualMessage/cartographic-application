@@ -1,4 +1,4 @@
-import { RawOption } from "@shared/misc/types/forms";
+import { RawOption } from "../../../misc";
 
 export const getSelectOptions = (source: RawOption[]) => {
   return source.map((item) => {

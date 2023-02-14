@@ -1,4 +1,4 @@
-export type InteractionType =
+export type Interaction =
   | "geozones"
   | "cursor"
   | "none"
