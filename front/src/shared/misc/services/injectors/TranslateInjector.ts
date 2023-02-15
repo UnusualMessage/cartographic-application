@@ -3,8 +3,6 @@ import { Polygon } from "ol/geom";
 import { Translate } from "ol/interaction";
 import { TranslateEvent } from "ol/interaction/Translate";
 
-import { GeozonesStore } from "@entities/geozone";
-
 import type {
   ListenersInjector,
   TranslateEvent as TranslateEventType,
@@ -36,7 +34,7 @@ class TranslateInjector implements ListenersInjector<TranslateEventType> {
         return;
       });
 
-      GeozonesStore.translate(ids, coordinates);
+      // GeozonesStore.translate(ids, coordinates);
     };
 
     this._translate.on("translateend", onTranslateEnd);

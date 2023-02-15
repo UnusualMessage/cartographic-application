@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 
+import { invoke } from "@shared/lib";
 import {
   Callback,
   CommonEvent,
@@ -50,10 +51,7 @@ const Map = ({ children }: PropsWithChildren) => {
 
     return () => {
       cleanContextMenu();
-
-      if (cleanPointerEvent) {
-        cleanPointerEvent();
-      }
+      invoke(cleanPointerEvent);
     };
   }, [map]);
 

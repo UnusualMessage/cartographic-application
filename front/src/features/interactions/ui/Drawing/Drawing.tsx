@@ -25,10 +25,6 @@ const Drawing = () => {
     type,
   };
 
-  if (!InteractionsStore.isGeozoneInteractionsActive) {
-    return <></>;
-  }
-
   return (
     <>
       <Draw {...props} />

@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import { StyleLike } from "ol/style/Style";
 
 import { GeozonesStore } from "@entities/geozone";
@@ -36,4 +37,4 @@ const Layers = () => {
   );
 };
 
-export default Layers;
+export default observer(Layers);

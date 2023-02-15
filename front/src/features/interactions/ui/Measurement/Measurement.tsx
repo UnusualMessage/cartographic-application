@@ -22,10 +22,6 @@ const Measurement = () => {
 
   useInteraction(addInteraction, { source, map, type });
 
-  if (!InteractionsStore.isAuxInteractionsActive) {
-    return <></>;
-  }
-
   return <></>;
 };
 export default observer(Measurement);
