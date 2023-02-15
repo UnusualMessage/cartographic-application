@@ -1,4 +1,4 @@
-import { Node } from "@shared/misc/types/node";
+import type { Node } from "../../../misc";
 
 export const geozoneNodes: Node[] = [
   {

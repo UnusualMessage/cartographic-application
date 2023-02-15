@@ -3,14 +3,14 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
-import { useInteraction } from "@shared/lib/hooks/useInteraction";
+import { useInteraction } from "@shared/lib";
 import {
   Interaction,
   AddInteractionCallback,
   MapStore,
   DrawingStore,
+  InteractionsStore,
 } from "@shared/misc";
-import InteractionsStore from "@shared/misc/stores/map/InteractionsStore";
 
 import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
 

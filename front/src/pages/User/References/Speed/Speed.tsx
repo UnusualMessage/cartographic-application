@@ -1,18 +1,16 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import SpeedsStore from "@entities/speed/model/SpeedsStore";
 import {
+  SpeedsStore,
   CreateSpeed,
+  UpdateSpeed,
   DuplicateSpeed,
   RemoveSpeed,
-  UpdateSpeed,
-} from "@entities/speed/ui/forms";
+} from "@entities/speed";
 import { getSpeedColumns, useRegions } from "@shared/lib";
-
-import { Speed } from "../../../../shared/misc/types/entities";
-import { Table } from "../../../../shared/ui/Table";
-import TableButtons from "../../../../shared/ui/TableButtons";
+import { Speed as SpeedType } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const Speed = () => {
   const speed = SpeedsStore.speed;
@@ -30,7 +28,7 @@ const Speed = () => {
 
   return (
     <>
-      <Table<Speed>
+      <Table<SpeedType>
         items={speeds}
         onSelection={onSelection}
         regions={regions}

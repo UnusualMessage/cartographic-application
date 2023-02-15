@@ -5,8 +5,8 @@ import {
   UseFormRegister,
 } from "react-hook-form";
 
-import { Form } from "../../../misc";
-import { TextInput, NumberInput, SelectInput } from "../../../ui/forms/inputs";
+import type { Form } from "../../../misc";
+import { TextInput, SelectInput, NumberInput } from "../../../ui";
 
 export const formRenderer = <T extends FieldValues>(
   form: Form<T>,

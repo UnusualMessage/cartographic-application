@@ -1,16 +1,16 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { TrailersStore } from "@entities/trailer";
-import CreateTrailer from "@entities/trailer/ui/forms/CreateTrailer";
-import DuplicateTrailer from "@entities/trailer/ui/forms/DuplicateTrailer";
-import RemoveTrailer from "@entities/trailer/ui/forms/RemoveTrailer";
-import UpdateTrailer from "@entities/trailer/ui/forms/UpdateTrailer";
+import {
+  TrailersStore,
+  CreateTrailer,
+  UpdateTrailer,
+  DuplicateTrailer,
+  RemoveTrailer,
+} from "@entities/trailer";
 import { getTrailerColumns, useRegions } from "@shared/lib";
-
-import { Trailer } from "../../../../shared/misc/types/entities";
-import { Table } from "../../../../shared/ui/Table";
-import TableButtons from "../../../../shared/ui/TableButtons";
+import { Trailer } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const TrailersPage = () => {
   const trailer = TrailersStore.trailer;

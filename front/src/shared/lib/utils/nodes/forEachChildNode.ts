@@ -1,7 +1,7 @@
 import { Tree } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 
-import { Node, NodeCallback, NodePath } from "../../../misc";
+import type { Node, NodeCallback, NodePath } from "../../../misc";
 
 export const forEachChildNode = (
   path: NodePath,

@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { organizations } from "./organizations";
-import { Post } from "../../misc/types/entities";
+import type { Post } from "../../misc";
 
 export const posts: Post[] = [
   {

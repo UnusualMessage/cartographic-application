@@ -1,4 +1,4 @@
-import DrawingStore from "../../stores/map/DrawingStore";
+import { DrawingStore } from "../../stores";
 
 class InteractionsService {
   public startDrawing() {

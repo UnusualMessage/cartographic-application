@@ -8,7 +8,7 @@ import {
 import classNames from "classnames";
 
 import { fill, width60, wrapper } from "./table.module.scss";
-import { Column as ColumnProps, OnSelection } from "../../misc";
+import type { Column as ColumnProps, OnSelection } from "../../misc";
 import { cell } from "../../styles";
 
 interface Props<T> {

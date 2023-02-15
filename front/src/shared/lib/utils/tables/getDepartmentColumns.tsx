@@ -1,8 +1,7 @@
 import { Cell } from "@blueprintjs/table";
 
-import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
-
-import { Department, Column } from "../../../misc";
+import { getNumberCell } from "./getNumberCell";
+import type { Department, Column } from "../../../misc";
 import { cell } from "../../../styles";
 
 export const getDepartmentColumns = (departments: Department[]): Column[] => [

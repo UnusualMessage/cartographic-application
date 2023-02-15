@@ -1,6 +1,9 @@
-import { Form, SelectOption } from "@shared/misc/types/form";
-
-import { CreateSpeed, UpdateSpeed } from "../../../misc";
+import type {
+  CreateSpeed,
+  UpdateSpeed,
+  SelectOption,
+  Form,
+} from "../../../misc";
 
 export const createSpeed = (
   organizations: SelectOption[]

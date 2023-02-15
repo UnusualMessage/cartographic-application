@@ -3,9 +3,7 @@ import BaseLayer from "ol/layer/Base";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
-import FeaturesStore from "../../stores/map/FeaturesStore";
-import LayersStore from "../../stores/map/LayersStore";
-import MapStore from "../../stores/map/MapStore";
+import { LayersStore, MapStore, FeaturesStore } from "../../stores";
 import type { BaseLayer as BaseLayerType } from "../../types";
 
 class LayersService {

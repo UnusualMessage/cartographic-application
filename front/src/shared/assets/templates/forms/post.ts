@@ -1,5 +1,4 @@
-import { CreatePost, UpdatePost } from "@shared/misc/types/entities/post";
-import { Form, SelectOption } from "@shared/misc/types/form";
+import type { SelectOption, Form, CreatePost, UpdatePost } from "../../../misc";
 
 export const createPost = (options: SelectOption[]): Form<CreatePost> => {
   return [

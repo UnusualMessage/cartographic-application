@@ -1,4 +1,4 @@
-import { Response } from "../types";
+import type { Response } from "../types";
 
 class ResponseService {
   protected response: Response;

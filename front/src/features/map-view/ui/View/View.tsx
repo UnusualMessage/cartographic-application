@@ -5,8 +5,7 @@ import { fromLonLat, toLonLat } from "ol/proj";
 import { useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 
-import { MapStore } from "@shared/misc";
-import ViewStore from "@shared/misc/stores/map/ViewStore";
+import { MapStore, ViewStore } from "@shared/misc";
 
 const View = () => {
   const [viewParams, setViewParams] = useSearchParams();

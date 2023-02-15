@@ -1,10 +1,9 @@
 import { Cell } from "@blueprintjs/table";
 
-import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
-
-import { Plan, Column } from "../../../misc";
+import { getNumberCell } from "./getNumberCell";
+import type { Plan, Column } from "../../../misc";
 import { cell } from "../../../styles";
-import Progress from "../../../ui/Progress";
+import { Progress } from "../../../ui";
 
 export const getPlanColumns = (plans: Plan[]): Column[] => [
   getNumberCell(plans),

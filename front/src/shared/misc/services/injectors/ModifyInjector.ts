@@ -21,6 +21,7 @@ class ModifyInjector implements ListenersInjector<ModifyEventType> {
   private addModify() {
     const onModifyEnd = (event: ModifyEvent) => {
       const modifiedFeatures = event.features.getArray() as Feature[];
+      console.log(modifiedFeatures);
     };
 
     this._modify.on("modifyend", onModifyEnd);

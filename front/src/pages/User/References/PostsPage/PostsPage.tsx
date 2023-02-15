@@ -1,18 +1,16 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { PostsStore } from "@entities/post";
 import {
+  PostsStore,
   CreatePost,
+  UpdatePost,
   DuplicatePost,
   RemovePost,
-  UpdatePost,
-} from "@entities/post/ui/forms";
-import { getPostColumns, useRegions } from "@shared/lib";
-
-import { Post } from "../../../../shared/misc/types/entities";
-import { Table } from "../../../../shared/ui/Table";
-import TableButtons from "../../../../shared/ui/TableButtons";
+} from "@entities/post";
+import { useRegions, getPostColumns } from "@shared/lib";
+import { Post } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const PostsPage = () => {
   const post = PostsStore.post;

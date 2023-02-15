@@ -3,7 +3,7 @@ import { Polygon } from "ol/geom";
 import { Translate } from "ol/interaction";
 import { TranslateEvent } from "ol/interaction/Translate";
 
-import GeozonesStore from "@entities/geozone/model/GeozonesStore";
+import { GeozonesStore } from "@entities/geozone";
 
 import type {
   ListenersInjector,

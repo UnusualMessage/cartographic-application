@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { organizations } from "@shared/assets/samples/organizations";
+import { organizations } from "@shared/assets";
 import type { Organization } from "@shared/misc";
 
 class OrganizationsStore {

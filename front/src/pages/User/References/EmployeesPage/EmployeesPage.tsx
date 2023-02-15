@@ -1,18 +1,16 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { EmployeesStore } from "@entities/employee";
 import {
+  EmployeesStore,
   CreateEmployee,
+  UpdateEmployee,
   DuplicateEmployee,
   RemoveEmployee,
-  UpdateEmployee,
-} from "@entities/employee/ui/forms";
+} from "@entities/employee";
 import { getEmployeeColumns, useRegions } from "@shared/lib";
-
-import { Employee } from "../../../../shared/misc/types/entities";
-import { Table } from "../../../../shared/ui/Table";
-import TableButtons from "../../../../shared/ui/TableButtons";
+import { Employee } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const EmployeesPage = () => {
   const employee = EmployeesStore.employee;

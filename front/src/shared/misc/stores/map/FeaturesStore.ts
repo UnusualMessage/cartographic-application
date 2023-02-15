@@ -6,7 +6,7 @@ import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { v4 as uuid } from "uuid";
 
-import { getFeaturesCenter } from "@shared/lib/utils/map/getFeaturesCenter";
+import { getFeaturesCenter } from "../../../lib";
 
 class FeaturesStore {
   private _features: FeatureLike[];

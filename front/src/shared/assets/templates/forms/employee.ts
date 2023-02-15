@@ -1,6 +1,9 @@
-import { Form, SelectOption } from "@shared/misc/types/form";
-
-import { CreateEmployee, UpdateEmployee } from "../../../misc";
+import type {
+  CreateEmployee,
+  UpdateEmployee,
+  SelectOption,
+  Form,
+} from "../../../misc";
 
 export const createEmployee = (
   organizations: SelectOption[],

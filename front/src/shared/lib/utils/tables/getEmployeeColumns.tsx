@@ -1,8 +1,7 @@
 import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
 
-import { getNumberCell } from "@shared/lib/utils/tables/getNumberCell";
-
-import { Employee, Column } from "../../../misc";
+import { getNumberCell } from "./getNumberCell";
+import type { Employee, Column } from "../../../misc";
 import { cell } from "../../../styles";
 
 export const getEmployeeColumns = (employees: Employee[]): Column[] => [

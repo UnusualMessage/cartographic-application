@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthStore } from "@entities/user";
 import { authenticateUser } from "@shared/assets";
 import { formRenderer } from "@shared/lib";
-import { AuthenticateUser } from "@shared/misc/types/entities/user";
+import { AuthenticateUser } from "@shared/misc";
 
 import { content, wrapper } from "./authorization.module.scss";
 

@@ -2,7 +2,7 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useEffect } from "react";
 
-import { Interaction, AddInteractionCallback, Callback } from "../../misc";
+import type { Interaction, AddInteractionCallback, Callback } from "../../misc";
 import { invoke } from "../utils";
 
 interface Props {

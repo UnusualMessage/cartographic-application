@@ -1,20 +1,20 @@
 import { Button } from "@blueprintjs/core";
 import { observer } from "mobx-react-lite";
 
-import Geocoder from "@entities/geocoder/ui/Geocoder";
-import DrawerStore from "@shared/misc/stores/ControlsStore";
+import { Geocoder } from "@entities/geocoder";
+import { ControlsStore } from "@shared/misc";
 
 import { wrapper } from "./menu.module.scss";
 
 const InteractionsControl = () => {
-  const active = DrawerStore.mapDrawerActive;
+  const active = ControlsStore.mapDrawerActive;
 
   const showDrawer = () => {
-    DrawerStore.showDrawer();
+    ControlsStore.showDrawer();
   };
 
   const hideDrawer = () => {
-    DrawerStore.hideDrawer();
+    ControlsStore.hideDrawer();
   };
 
   return (

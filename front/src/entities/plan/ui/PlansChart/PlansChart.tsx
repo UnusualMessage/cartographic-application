@@ -1,6 +1,6 @@
 import { ResponsivePie } from "@nivo/pie";
 
-import { Plan } from "@shared/misc";
+import type { Plan } from "@shared/misc";
 import { chart, main } from "@shared/styles";
 
 interface Props {

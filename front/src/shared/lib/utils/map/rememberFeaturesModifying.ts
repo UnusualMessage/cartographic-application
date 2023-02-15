@@ -1,7 +1,7 @@
 import { Feature } from "ol";
 import { FeatureLike } from "ol/Feature";
 
-import { Changes, Undo, Change } from "../../../misc";
+import type { Changes, Undo, Change } from "../../../misc";
 
 export const rememberFeaturesModifying = (
   initial: Feature[],

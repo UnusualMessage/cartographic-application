@@ -1,6 +1,9 @@
-import { Form, SelectOption } from "@shared/misc/types/form";
-
-import { CreateTrailer, UpdateTrailer } from "../../../misc";
+import type {
+  CreateTrailer,
+  UpdateTrailer,
+  SelectOption,
+  Form,
+} from "../../../misc";
 
 export const createTrailer = (
   organizations: SelectOption[],

@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { organizations } from "./organizations";
-import { Department } from "../../misc/types/entities";
+import type { Department } from "../../misc";
 
 export const departments: Department[] = [
   {

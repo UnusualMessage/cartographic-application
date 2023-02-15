@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 
 import { organizations } from "./organizations";
 import { posts } from "./posts";
-import { Employee } from "../../misc/types/entities";
+import type { Employee } from "../../misc";
 
 export const employees: Employee[] = [
   {

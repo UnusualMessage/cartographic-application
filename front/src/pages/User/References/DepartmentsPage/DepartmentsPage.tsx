@@ -1,19 +1,17 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import DepartmentsStore from "@entities/department/model/DepartmentsStore";
 import {
   CreateDepartment,
+  UpdateDepartment,
   DuplicateDepartment,
   RemoveDepartment,
-  UpdateDepartment,
-} from "@entities/department/ui/forms";
+  DepartmentsStore,
+} from "@entities/department";
 import { EmployeesStore } from "@entities/employee";
 import { getDepartmentColumns, useRegions } from "@shared/lib";
-import { Table } from "@shared/ui";
-
-import { Department } from "../../../../shared/misc/types/entities";
-import TableButtons from "../../../../shared/ui/TableButtons";
+import { Department } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const DepartmentsPage = () => {
   const department = DepartmentsStore.department;

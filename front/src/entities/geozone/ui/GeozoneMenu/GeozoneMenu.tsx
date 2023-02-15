@@ -2,7 +2,7 @@ import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
 import { Polygon, toWgs84 } from "@turf/turf";
 import { observer } from "mobx-react-lite";
 
-import { GeozonesStore } from "@entities/geozone/model";
+import { GeozonesStore } from "@entities/geozone";
 import { AlertsStore } from "@shared/misc";
 
 interface Props {

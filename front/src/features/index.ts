@@ -5,3 +5,4 @@ export * as map from "./map";
 export * as overlay from "./map-overlay";
 export * as view from "./map-view";
 export * as menu from "./map-context-menu";
+export * as tabs from "./tabs";
