@@ -1,8 +1,7 @@
 import { v4 as uuid } from "uuid";
 
-import { organizations } from "@shared/assets/samples/organizations";
-
-import Partner from "../../api/types/entities/Partner";
+import { organizations } from "./organizations";
+import type { Partner } from "../../misc";
 
 export const partners: Partner[] = [
   {

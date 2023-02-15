@@ -2,15 +2,16 @@ import { NonIdealState } from "@blueprintjs/core";
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
+import { EmptyPage, Loader } from "@shared/ui";
+import { Layout } from "@widgets/index";
+
 import Authorization from "./Admin/Authorization";
 import { references } from "./User/References";
-import { EmptyPage, Loader } from "../shared/ui/placeholders";
-import Layout from "../widgets/Layout";
 
-const View = lazy(() => import("../pages/User/View"));
-const References = lazy(() => import("../pages/User/References"));
+const View = lazy(() => import("./User/View"));
+const References = lazy(() => import("./User/References"));
 const OrganizationsPage = lazy(() => import("./Admin/OrganizationsPage"));
-const Users = lazy(() => import("../pages/Admin/Users"));
+const Users = lazy(() => import("./Admin/Users"));
 
 const browserRouter = createBrowserRouter([
   {

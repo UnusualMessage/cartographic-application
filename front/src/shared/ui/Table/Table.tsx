@@ -1,5 +1,4 @@
 import {
-  CellRenderer,
   Column,
   Region,
   RowHeaderCell2,
@@ -8,14 +7,9 @@ import {
 } from "@blueprintjs/table";
 import classNames from "classnames";
 
-import { cell, fill, width60, wrapper } from "./table.module.scss";
-
-export type OnSelection = (selectedRegions: Region[]) => void;
-
-export interface ColumnProps {
-  renderer: CellRenderer;
-  name: string;
-}
+import { fill, width60, wrapper } from "./table.module.scss";
+import type { Column as ColumnProps, OnSelection } from "../../misc";
+import { cell } from "../../styles";
 
 interface Props<T> {
   width?: number;

@@ -1,6 +1,6 @@
 import { cloneDeep } from "lodash";
 
-import { Node, NodeCallback } from "../../../api/types/nodes/Node";
+import type { Node, NodeCallback } from "../../../misc";
 
 export const forEachNode = (
   nodes: Node[] | undefined,

@@ -1,11 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { ApiStore } from "@shared/api/types/api";
-import Partner, {
-  CreatePartner,
-  UpdatePartner,
-} from "@shared/api/types/entities/Partner";
-import { partners } from "@shared/assets/samples";
+import { partners } from "@shared/assets";
+import { Partner, ApiStore, CreatePartner, UpdatePartner } from "@shared/misc";
 
 class PartnersStore implements ApiStore<Partner, CreatePartner, UpdatePartner> {
   private _partners: Partner[];
@@ -39,6 +35,7 @@ class PartnersStore implements ApiStore<Partner, CreatePartner, UpdatePartner> {
   }
 
   public async add(entity: CreatePartner) {
+    console.log(entity);
     const data = this._partners.slice();
 
     runInAction(() => {
@@ -47,6 +44,7 @@ class PartnersStore implements ApiStore<Partner, CreatePartner, UpdatePartner> {
   }
 
   public async duplicate(id: string) {
+    console.log(id);
     const data = this._partners.slice();
 
     runInAction(() => {
@@ -55,6 +53,7 @@ class PartnersStore implements ApiStore<Partner, CreatePartner, UpdatePartner> {
   }
 
   public async update(entity: UpdatePartner) {
+    console.log(entity);
     const data = this._partners.slice();
 
     runInAction(() => {

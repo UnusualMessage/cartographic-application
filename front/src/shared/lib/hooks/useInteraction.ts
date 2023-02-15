@@ -2,20 +2,18 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useEffect } from "react";
 
-import { Callback, InteractionType } from "@shared/api";
-import { invoke } from "@shared/lib/utils/common";
+import type { Interaction, AddInteractionCallback, Callback } from "../../misc";
+import { invoke } from "../utils";
 
-export type AddEventListener = (map: Map, source: VectorSource) => Callback;
-
-export interface InteractionProps {
+interface Props {
   source?: VectorSource;
   map: Map | null;
-  type: InteractionType;
+  type: Interaction;
 }
 
 export const useInteraction = (
-  callback: AddEventListener,
-  { source, map, type }: InteractionProps
+  callback: AddInteractionCallback,
+  { source, map, type }: Props
 ) => {
   useEffect(() => {
     let clean: Callback;

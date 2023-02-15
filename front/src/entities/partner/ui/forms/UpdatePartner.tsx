@@ -3,14 +3,17 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { OrganizationsStore } from "@entities/organization/model";
-import PartnersStore from "@entities/partner/model/PartnersStore";
-import { Partner } from "@shared/api/types/entities";
-import { UpdatePartner } from "@shared/api/types/entities/Partner";
-import { UpdatePost } from "@shared/api/types/entities/Post";
 import { updatePartner } from "@shared/assets";
-import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { useFetch, formRenderer, getSelectOptions } from "@shared/lib";
+import {
+  Partner,
+  UpdatePost,
+  UpdatePartner as UpdatePartnerType,
+} from "@shared/misc";
+import { DialogForm } from "@shared/ui";
+
+import { OrganizationsStore } from "../../../organization";
+import { PartnersStore } from "../../model";
 
 interface Props {
   id?: string;
@@ -45,7 +48,7 @@ const UpdatePartner = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdatePartner> = async (data) => {
+  const onSubmit: SubmitHandler<UpdatePartnerType> = async (data) => {
     await PartnersStore.update(data);
     setSuccessful(true);
   };

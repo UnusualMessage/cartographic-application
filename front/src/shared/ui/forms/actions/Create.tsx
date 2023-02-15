@@ -1,10 +1,8 @@
 import { Icon } from "@blueprintjs/core";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
-import { ApiStore } from "@shared/api/types/api";
-import { Form } from "@shared/api/types/forms";
-import { formRenderer } from "@shared/lib/utils/forms";
-
+import { formRenderer } from "../../../lib";
+import type { ApiStore, Form } from "../../../misc";
 import DialogForm from "../DialogForm";
 
 interface Props<T, CreateT> {

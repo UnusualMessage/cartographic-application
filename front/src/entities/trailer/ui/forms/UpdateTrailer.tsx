@@ -3,14 +3,14 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { DepartmentsStore } from "@entities/department";
-import { OrganizationsStore } from "@entities/organization";
-import { TrailersStore } from "@entities/trailer/model";
-import { Trailer } from "@shared/api/types/entities";
-import { UpdateTrailer } from "@shared/api/types/entities/Trailer";
 import { updateTrailer } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { UpdateTrailer as UpdateTrailerType, Trailer } from "@shared/misc";
+import { DialogForm } from "@shared/ui";
+
+import { DepartmentsStore } from "../../../department";
+import { OrganizationsStore } from "../../../organization";
+import { TrailersStore } from "../../model";
 
 interface Props {
   id?: string;
@@ -25,7 +25,7 @@ const UpdateTrailer = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateTrailer>({
+  } = useForm<UpdateTrailerType>({
     defaultValues: useMemo(() => {
       return {
         title: trailer?.title,
@@ -43,7 +43,7 @@ const UpdateTrailer = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateTrailer> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateTrailerType> = async (data) => {
     await TrailersStore.update(data);
     setSuccessful(true);
   };

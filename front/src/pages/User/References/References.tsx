@@ -6,9 +6,9 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
-import { Node } from "@shared/api";
-import Reference from "@shared/api/types/common/Reference";
-import EntitiesTree from "@shared/ui/EntitiesTree";
+import { Node, Reference } from "@shared/misc";
+import { EntitiesTree, Loader, Content } from "@shared/ui";
+import { Sider } from "@widgets/index";
 
 import AnnualPlans from "./AnnualPlans";
 import Crops from "./Crops";
@@ -32,9 +32,6 @@ import TrailersPage from "./TrailersPage";
 import { fullHeight, wrapper } from "./tree.module.scss";
 import WorksCategories from "./WorksCategories";
 import WorksPlans from "./WorksPlans";
-import Content from "../../../shared/ui/Content";
-import { Loader } from "../../../shared/ui/placeholders";
-import Sider from "../../../widgets/Sider";
 
 const referenceNodes: Node[] = [
   {

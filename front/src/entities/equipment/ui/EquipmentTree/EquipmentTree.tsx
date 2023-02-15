@@ -3,14 +3,14 @@ import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import EquipmentStore from "@entities/equipment/model/EquipmentStore";
-import EquipmentMenu from "@entities/equipment/ui/EquipmentMenu";
-import { Equipment } from "@shared/api/types/entities";
-import { Node } from "@shared/api/types/nodes";
-import { equipmentNodes } from "@shared/assets/templates/nodes";
-import { getEquipmentTreeClickHandler } from "@shared/lib/utils/nodes/getEquipmentTreeClickHandler";
+import { equipmentNodes } from "@shared/assets";
+import { getEquipmentTreeClickHandler } from "@shared/lib";
+import { Equipment, Node } from "@shared/misc";
 import { tree } from "@shared/styles";
-import EntitiesTree from "@shared/ui/EntitiesTree";
+import { EntitiesTree } from "@shared/ui";
+
+import EquipmentStore from "../../model/EquipmentStore";
+import EquipmentMenu from "../EquipmentMenu";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);

@@ -1,11 +1,12 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { ApiStore } from "@shared/api/types/api/ApiStore";
-import Department, {
+import { departments } from "@shared/assets";
+import {
+  Department,
   CreateDepartment,
   UpdateDepartment,
-} from "@shared/api/types/entities/Department";
-import { departments } from "@shared/assets/samples/departments";
+  ApiStore,
+} from "@shared/misc";
 
 class DepartmentsStore
   implements ApiStore<Department, CreateDepartment, UpdateDepartment>
@@ -41,6 +42,7 @@ class DepartmentsStore
   }
 
   public async add(entity: CreateDepartment) {
+    console.log(entity);
     const data = this._departments.slice();
 
     runInAction(() => {
@@ -49,6 +51,7 @@ class DepartmentsStore
   }
 
   public async duplicate(id: string) {
+    console.log(id);
     const data = this._departments.slice();
 
     runInAction(() => {
@@ -57,6 +60,7 @@ class DepartmentsStore
   }
 
   public async update(entity: UpdateDepartment) {
+    console.log(entity);
     const data = this._departments.slice();
 
     runInAction(() => {

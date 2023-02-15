@@ -1,7 +1,7 @@
 import { PropsWithChildren } from "react";
 
-import { ResizeType } from "@shared/api";
 import { useResizing } from "@shared/lib";
+import { ResizeType } from "@shared/misc";
 import Resize from "@shared/ui/Resize";
 
 import { content, wrapper } from "./footer.module.scss";

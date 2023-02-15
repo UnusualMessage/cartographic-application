@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from "react";
 
-import { ResizeType } from "@shared/api/types/common";
 import { useResizing } from "@shared/lib";
+import { ResizeType } from "@shared/misc/types/common";
 import Resize from "@shared/ui/Resize";
 
 import { content, wrapper } from "./sider.module.scss";

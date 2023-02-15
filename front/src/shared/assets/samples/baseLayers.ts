@@ -1,12 +1,12 @@
-import { BaseLayerType } from "@shared/api";
+import type { BaseLayer } from "../../misc";
 
-interface BaseLayerRadioProps {
+interface BaseLayerChoice {
   label: string;
-  value: BaseLayerType;
+  value: BaseLayer;
   source: string;
 }
 
-export const baseLayers: BaseLayerRadioProps[] = [
+export const baseLayers: BaseLayerChoice[] = [
   {
     label: "OpenStreetMap",
     value: "osm",

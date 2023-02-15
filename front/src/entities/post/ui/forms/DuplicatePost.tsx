@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 
-import { PostsStore } from "@entities/post/model";
-import { Duplicate } from "@shared/ui/forms/actions";
+import { Duplicate } from "@shared/ui";
+
+import { PostsStore } from "../../model";
 
 interface Props {
   id?: string;
