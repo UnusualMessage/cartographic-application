@@ -1,8 +1,8 @@
 import { observer } from "mobx-react-lite";
 
-import Remove from "@shared/ui/forms/actions/Remove";
+import { Remove } from "@shared/ui";
 
-import DepartmentsStore from "../../model/DepartmentsStore";
+import { DepartmentsStore } from "../../model";
 
 interface Props {
   id?: string;

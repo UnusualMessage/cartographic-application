@@ -7,5 +7,6 @@ export { default as Main } from "./Main";
 export { default as Progress } from "./Progress";
 export { default as TabPage } from "./TabPage";
 export { default as TableButtons } from "./TableButtons";
+export { default as Condition } from "./Condition";
 export * from "./Table";
 export { default as ToastNotification } from "./ToastNotification";

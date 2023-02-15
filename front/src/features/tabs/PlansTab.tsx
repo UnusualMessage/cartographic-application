@@ -1,10 +1,9 @@
 import { observer } from "mobx-react-lite";
 
-import { PlansStore } from "@entities/plan";
-import PlansChart from "@entities/plan/ui/PlansChart";
-import { Plan } from "@shared/api/types/entities";
-import { getPlanColumns } from "@shared/lib/utils/tables/getPlanColumns";
-import { Table } from "@shared/ui/Table";
+import { PlansStore, PlansChart } from "@entities/plan";
+import { getPlanColumns } from "@shared/lib";
+import { Plan } from "@shared/misc";
+import { Table } from "@shared/ui";
 
 const PlansTab = () => {
   let plans = PlansStore.plans;

@@ -3,14 +3,14 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { EmployeesStore } from "@entities/employee/model";
-import { OrganizationsStore } from "@entities/organization";
-import { PostsStore } from "@entities/post";
-import { Employee } from "@shared/api/types/entities";
-import { UpdateEmployee } from "@shared/api/types/entities/Employee";
 import { updateEmployee } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { UpdateEmployee as UpdateEmployeeType, Employee } from "@shared/misc";
+import { DialogForm } from "@shared/ui";
+
+import { OrganizationsStore } from "../../../organization";
+import { PostsStore } from "../../../post";
+import { EmployeesStore } from "../../model";
 
 interface Props {
   id?: string;
@@ -25,7 +25,7 @@ const UpdateEmployee = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateEmployee>({
+  } = useForm<UpdateEmployeeType>({
     defaultValues: useMemo(() => {
       return {
         firstName: employee?.firstName,
@@ -48,7 +48,7 @@ const UpdateEmployee = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateEmployee> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateEmployeeType> = async (data) => {
     await EmployeesStore.update(data);
     setSuccessful(true);
   };

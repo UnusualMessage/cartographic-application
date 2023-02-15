@@ -1,4 +1,4 @@
-import { EmptyInformation } from "../../../../shared/ui/placeholders";
+import { EmptyInformation } from "@shared/ui";
 
 const Crops = () => {
   return <EmptyInformation />;

@@ -1,9 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { ApiStore } from "@shared/api/types/api";
-import { Speed } from "@shared/api/types/entities";
-import { CreateSpeed, UpdateSpeed } from "@shared/api/types/entities/Speed";
-import { speeds } from "@shared/assets/samples";
+import { speeds } from "@shared/assets";
+import { Speed, UpdateSpeed, CreateSpeed, ApiStore } from "@shared/misc";
 
 class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {
   private _speeds: Speed[];
@@ -37,6 +35,7 @@ class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {
   }
 
   public async add(entity: CreateSpeed) {
+    console.log(entity);
     const data = this._speeds.slice();
 
     runInAction(() => {
@@ -45,6 +44,7 @@ class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {
   }
 
   public async duplicate(id: string) {
+    console.log(id);
     const data = this._speeds.slice();
 
     runInAction(() => {
@@ -53,6 +53,7 @@ class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {
   }
 
   public async update(entity: UpdateSpeed) {
+    console.log(entity);
     const data = this._speeds.slice();
 
     runInAction(() => {

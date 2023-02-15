@@ -1,4 +1,4 @@
-import { Role } from "@shared/api/types/api";
+import type { Role } from "../../../misc";
 
 export const getRoleFromString = (role: Role) => {
   switch (role) {

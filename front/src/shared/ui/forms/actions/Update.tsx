@@ -7,10 +7,8 @@ import {
   useForm,
 } from "react-hook-form";
 
-import { ApiStore } from "@shared/api/types/api";
-import { Form } from "@shared/api/types/forms";
-import { formRenderer, useFetch } from "@shared/lib";
-
+import { useFetch, formRenderer } from "../../../lib";
+import type { ApiStore, Form } from "../../../misc";
 import DialogForm from "../DialogForm";
 
 interface Item {
@@ -38,7 +36,6 @@ const Update = <T extends Item, UpdateT extends FieldValues>({
 
   const {
     register,
-    reset,
     formState: { errors },
     handleSubmit,
   } = useForm<UpdateT>({

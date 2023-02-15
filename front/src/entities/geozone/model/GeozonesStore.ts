@@ -2,13 +2,12 @@ import { makeAutoObservable } from "mobx";
 import { Coordinate } from "ol/coordinate";
 import { FeatureLike } from "ol/Feature";
 
-import { Geozone } from "@shared/api/types/entities";
-import { ChangeSet } from "@shared/api/types/map";
-import { geozones } from "@shared/assets/samples/geozones";
+import { geozones } from "@shared/assets";
+import type { Changes, Geozone } from "@shared/misc";
 
 class GeozonesStore {
   private _geozones: Geozone[];
-  private _history: ChangeSet<FeatureLike>[];
+  private _history: Changes<FeatureLike>[];
 
   constructor() {
     this._geozones = geozones;
@@ -19,14 +18,6 @@ class GeozonesStore {
 
   public get geozones() {
     return this._geozones;
-  }
-
-  public get changesCount() {
-    return this._history.length;
-  }
-
-  public get history() {
-    return this._history;
   }
 
   public getById(id: string) {
@@ -64,21 +55,7 @@ class GeozonesStore {
     this._geozones = this.geozones.filter((item) => item.id !== id);
   }
 
-  public save() {
-    this._history = [];
-  }
-
-  public undo() {
-    const lastSet = this._history.pop();
-
-    if (lastSet) {
-      for (const change of lastSet) {
-        change.undo(change.oldValue, change.newValue);
-      }
-    }
-  }
-
-  public push(set: ChangeSet<FeatureLike>) {
+  public push(set: Changes<FeatureLike>) {
     const copy = this._history.slice();
 
     copy.push(set);

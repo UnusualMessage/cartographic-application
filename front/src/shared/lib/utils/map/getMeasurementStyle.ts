@@ -4,8 +4,7 @@ import { Fill, Stroke, Text } from "ol/style";
 import CircleStyle from "ol/style/Circle";
 import Style, { StyleFunction } from "ol/style/Style";
 
-import MeasurementStore from "@features/Schema/model/stores/MeasurementStore";
-
+import { MeasurementStore } from "../../../misc";
 import { formatArea, formatLength } from "../format";
 
 const style = new Style({

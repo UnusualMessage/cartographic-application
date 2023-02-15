@@ -3,13 +3,13 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import { OrganizationsStore } from "@entities/organization/model";
-import SpeedsStore from "@entities/speed/model/SpeedsStore";
-import { Speed } from "@shared/api/types/entities";
-import { UpdateSpeed } from "@shared/api/types/entities/Speed";
 import { updateSpeed } from "@shared/assets";
 import { formRenderer, getSelectOptions, useFetch } from "@shared/lib";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { UpdateSpeed as UpdateSpeedType, Speed } from "@shared/misc";
+import { DialogForm } from "@shared/ui";
+
+import { OrganizationsStore } from "../../../organization";
+import { SpeedsStore } from "../../model";
 
 interface Props {
   id?: string;
@@ -24,7 +24,7 @@ const UpdateSpeed = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateSpeed>({
+  } = useForm<UpdateSpeedType>({
     defaultValues: useMemo(() => {
       return {
         title: speed?.title,
@@ -44,7 +44,7 @@ const UpdateSpeed = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateSpeed> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateSpeedType> = async (data) => {
     await SpeedsStore.update(data);
     setSuccessful(true);
   };

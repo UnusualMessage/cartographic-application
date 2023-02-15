@@ -1,6 +1,6 @@
 export * as assets from "./assets";
 export * as lib from "./lib";
 export * as ui from "./ui";
-export * as api from "./api";
+export * as misc from "./misc";
 export * as constants from "./constants";
 export * as styles from "./styles";

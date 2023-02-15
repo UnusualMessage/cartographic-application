@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
 
-import SpeedsStore from "@entities/speed/model/SpeedsStore";
-import { Duplicate } from "@shared/ui/forms/actions";
+import { Duplicate } from "@shared/ui";
+
+import { SpeedsStore } from "../../model";
 
 interface Props {
   id?: string;

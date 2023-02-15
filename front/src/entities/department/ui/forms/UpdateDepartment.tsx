@@ -3,16 +3,16 @@ import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-import Department, {
-  UpdateDepartment,
-} from "@shared/api/types/entities/Department";
-import { updateDepartment } from "@shared/assets/templates/forms/department";
-import { useFetch } from "@shared/lib";
-import { formRenderer, getSelectOptions } from "@shared/lib/utils/forms";
-import DialogForm from "@shared/ui/forms/DialogForm";
+import { updateDepartment } from "@shared/assets";
+import { useFetch, formRenderer, getSelectOptions } from "@shared/lib";
+import {
+  Department,
+  UpdateDepartment as UpdateDepartmentType,
+} from "@shared/misc";
+import { DialogForm } from "@shared/ui";
 
-import OrganizationsStore from "../../../organization/model/OrganizationsStore";
-import DepartmentsStore from "../../model/DepartmentsStore";
+import { OrganizationsStore } from "../../../organization";
+import { DepartmentsStore } from "../../model";
 
 interface Props {
   id?: string;
@@ -29,7 +29,7 @@ const UpdateDepartment = ({ id }: Props) => {
     reset,
     formState: { errors },
     handleSubmit,
-  } = useForm<UpdateDepartment>({
+  } = useForm<UpdateDepartmentType>({
     defaultValues: useMemo(() => {
       return {
         title: department?.title,
@@ -46,7 +46,7 @@ const UpdateDepartment = ({ id }: Props) => {
     }
   }, [id]);
 
-  const onSubmit: SubmitHandler<UpdateDepartment> = async (data) => {
+  const onSubmit: SubmitHandler<UpdateDepartmentType> = async (data) => {
     await DepartmentsStore.update(data);
     setSuccessful(true);
   };

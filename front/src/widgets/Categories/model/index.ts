@@ -1,0 +1,1 @@
+export { siderTabs } from "./siderTabs";

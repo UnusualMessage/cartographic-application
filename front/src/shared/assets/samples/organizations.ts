@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { Organization } from "../../api/types/entities";
+import type { Organization } from "../../misc";
 
 export const organizations: Organization[] = [
   {

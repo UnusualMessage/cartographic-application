@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { types } from "./types";
-import Equipment from "../../api/types/entities/Equipment";
+import type { Equipment } from "../../misc";
 
 export const equipment: Equipment[] = [
   {

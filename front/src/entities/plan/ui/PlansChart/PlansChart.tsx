@@ -1,7 +1,7 @@
 import { ResponsivePie } from "@nivo/pie";
 
-import { Plan } from "@shared/api/types/entities";
-import { chart, wrapper } from "@shared/styles/chart.module.scss";
+import type { Plan } from "@shared/misc";
+import { chart, main } from "@shared/styles";
 
 interface Props {
   plans: Plan[];
@@ -23,8 +23,8 @@ const PlansChart = ({ plans }: Props) => {
   });
 
   return (
-    <div className={wrapper}>
-      <div className={chart}>
+    <div className={chart}>
+      <div className={main}>
         <ResponsivePie<ChartData>
           data={data}
           margin={{ top: 40, right: 80, bottom: 80, left: 80 }}

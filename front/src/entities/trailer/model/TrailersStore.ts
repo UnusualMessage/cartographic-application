@@ -1,12 +1,7 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
-import { ApiStore } from "@shared/api/types/api";
-import { Trailer } from "@shared/api/types/entities";
-import {
-  CreateTrailer,
-  UpdateTrailer,
-} from "@shared/api/types/entities/Trailer";
-import { trailers } from "@shared/assets/samples";
+import { trailers } from "@shared/assets";
+import { Trailer, CreateTrailer, UpdateTrailer, ApiStore } from "@shared/misc";
 
 class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
   private _trailers: Trailer[];
@@ -40,6 +35,7 @@ class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
   }
 
   public async add(entity: CreateTrailer) {
+    console.log(entity);
     const data = this._trailers.slice();
 
     runInAction(() => {
@@ -48,6 +44,7 @@ class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
   }
 
   public async duplicate(id: string) {
+    console.log(id);
     const data = this._trailers.slice();
 
     runInAction(() => {
@@ -56,6 +53,7 @@ class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
   }
 
   public async update(entity: UpdateTrailer) {
+    console.log(entity);
     const data = this._trailers.slice();
 
     runInAction(() => {

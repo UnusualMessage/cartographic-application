@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import { EquipmentType } from "../../api/types/entities";
+import type { EquipmentType } from "../../misc";
 
 export const types: EquipmentType[] = [
   {
