@@ -2,9 +2,13 @@ import { Map, MapBrowserEvent } from "ol";
 import { Coordinate } from "ol/coordinate";
 import { Pixel } from "ol/pixel";
 
-import { MapStore, OverlaysStore, FeaturesStore } from "../../stores";
+import {
+  MapStore,
+  OverlaysStore,
+  FeaturesStore,
+  InteractionsStore,
+} from "../../stores";
 import type { CommonEvent, ListenersInjector } from "../../types";
-import { InteractionsService } from "../map";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
   private _map: Map;
@@ -48,7 +52,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       OverlaysStore.showContextMenu(cursor);
       OverlaysStore.hideFeatureInfo();
       OverlaysStore.cursorPosition = cursor;
-      InteractionsService.stopDrawing();
+      InteractionsStore.stopDrawing();
     };
 
     this._canvas?.addEventListener("contextmenu", onContextMenu);

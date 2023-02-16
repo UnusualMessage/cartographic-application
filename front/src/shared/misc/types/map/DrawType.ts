@@ -1,4 +1,4 @@
-export type Interaction =
+export type DrawType =
   | "geozones"
   | "cursor"
   | "none"
