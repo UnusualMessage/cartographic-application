@@ -1,6 +1,10 @@
 import { makeAutoObservable } from "mobx";
-import { Map } from "ol";
-import { platformModifierKeyOnly, primaryAction } from "ol/events/condition";
+import { Map, MapBrowserEvent } from "ol";
+import {
+  platformModifierKeyOnly,
+  primaryAction,
+  click,
+} from "ol/events/condition";
 import { DragBox, Select, Translate } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
@@ -49,7 +53,13 @@ class SelectStore {
   public setup(source: VectorSource, map: Map) {
     this.remove(map);
 
-    const select = new Select();
+    const condition = (event: MapBrowserEvent<UIEvent>) => {
+      return platformModifierKeyOnly(event) && click(event);
+    };
+
+    const select = new Select({
+      condition: condition,
+    });
 
     const dragBox = new DragBox({
       condition: platformModifierKeyOnly,

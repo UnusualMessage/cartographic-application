@@ -59,7 +59,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
   private addDrawEnd() {
     const onDrawEnd = (event: DrawEvent) => {
       InteractionsStore.stopDrawing();
-      const interactionType = InteractionsStore.drawType;
+      const type = InteractionsStore.drawType;
 
       const feature = event.feature;
       feature.setId(uuid());
@@ -74,7 +74,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
         blue,
       };
 
-      if (interactionType === "geozones") {
+      if (type === "geozones") {
         const geometry = feature.getGeometry() as Polygon | undefined;
         const organization = OrganizationsStore.organization;
         const id = uuid();

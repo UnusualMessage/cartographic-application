@@ -37,10 +37,10 @@ class TranslateInjector implements ListenersInjector<TranslateEventType> {
       // GeozonesStore.translate(ids, coordinates);
     };
 
-    this._translate.on("translateend", onTranslateEnd);
+    this._translate.on("translatestart", onTranslateEnd);
 
     return () => {
-      this._translate.un("translateend", onTranslateEnd);
+      this._translate.un("translatestart", onTranslateEnd);
     };
   }
 }
