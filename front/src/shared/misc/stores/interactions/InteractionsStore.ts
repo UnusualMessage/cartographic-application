@@ -25,11 +25,11 @@ class InteractionsStore {
     this._drawing = isDrawing;
   }
 
-  public get isGeozoneInteractionsActive() {
+  public get isGeozonesActive() {
     return this.drawType === "geozones" || this.drawType === "cursor";
   }
 
-  public get isAuxInteractionsActive() {
+  public get isMeasurementActive() {
     return (
       this.drawType === "measure-length" || this.drawType === "measure-area"
     );

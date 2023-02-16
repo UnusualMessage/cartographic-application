@@ -7,9 +7,8 @@ import {
 } from "@blueprintjs/table";
 import classNames from "classnames";
 
-import { fill, width60, wrapper } from "./table.module.scss";
 import type { Column as ColumnProps, OnSelection } from "../../misc";
-import { cell } from "../../styles";
+import { table, cell, fill, width60 } from "../../styles";
 
 interface Props<T> {
   width?: number;
@@ -37,7 +36,7 @@ const Table = <T,>({
   };
 
   const classes = classNames({
-    [wrapper]: true,
+    [table]: true,
     [fill]: width,
     [width60]: width === 60,
   });

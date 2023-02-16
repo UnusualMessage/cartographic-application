@@ -23,13 +23,13 @@ const Layers = () => {
       <TileLayer />
 
       <VectorLayer id={geozonesLayerId} data={geozones}>
-        <Condition truthy={InteractionsStore.isGeozoneInteractionsActive}>
+        <Condition truthy={InteractionsStore.isGeozonesActive}>
           <Drawing />
         </Condition>
       </VectorLayer>
 
       <VectorLayer id={auxLayerId} style={styleFunction}>
-        <Condition truthy={InteractionsStore.isAuxInteractionsActive}>
+        <Condition truthy={InteractionsStore.isMeasurementActive}>
           <Measurement />
         </Condition>
       </VectorLayer>

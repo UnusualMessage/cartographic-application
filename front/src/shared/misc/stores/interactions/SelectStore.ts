@@ -47,9 +47,7 @@ class SelectStore {
   }
 
   public setup(source: VectorSource, map: Map) {
-    if (this._select) {
-      this.removeSelect(map);
-    }
+    this.remove(map);
 
     const select = new Select();
 
