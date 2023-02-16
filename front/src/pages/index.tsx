@@ -5,12 +5,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { EmptyPage, Loader } from "@shared/ui";
 import { Layout } from "@widgets/index";
 
-import Authorization from "./Admin/Authorization";
+import Authorization from "./Authorization";
 import { references } from "./User/References";
 
 const View = lazy(() => import("./User/View"));
 const References = lazy(() => import("./User/References"));
-const OrganizationsPage = lazy(() => import("./Admin/OrganizationsPage"));
+const Organizations = lazy(() => import("./Admin/Organizations"));
 const Users = lazy(() => import("./Admin/Users"));
 
 const browserRouter = createBrowserRouter([
@@ -47,19 +47,21 @@ const browserRouter = createBrowserRouter([
   },
 
   {
-    path: "/admin/organizations",
-    element: <OrganizationsPage />,
+    path: "/admin",
     errorElement: (
       <NonIdealState icon={"search"} title={"Страницы не существует!"} />
     ),
-  },
+    children: [
+      {
+        path: "organizations",
+        element: <Organizations />,
+      },
 
-  {
-    path: "/admin/users",
-    element: <Users />,
-    errorElement: (
-      <NonIdealState icon={"search"} title={"Страницы не существует!"} />
-    ),
+      {
+        path: "users",
+        element: <Users />,
+      },
+    ],
   },
 ]);
 

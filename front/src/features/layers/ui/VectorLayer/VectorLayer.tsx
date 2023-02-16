@@ -4,17 +4,10 @@ import { GeoJSON } from "ol/format";
 import { Polygon } from "ol/geom";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
-import {
-  createContext,
-  memo,
-  PropsWithChildren,
-  useEffect,
-  useMemo,
-} from "react";
+import { memo, PropsWithChildren, useEffect, useMemo } from "react";
 
+import { SourceContext } from "@shared/constants";
 import { LayersService } from "@shared/misc";
-
-export const SourceContext = createContext<VectorSource | undefined>(undefined);
 
 interface Props extends PropsWithChildren {
   id: string;

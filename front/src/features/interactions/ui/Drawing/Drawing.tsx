@@ -3,6 +3,7 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
+import { SourceContext } from "@shared/constants";
 import { useInteraction } from "@shared/lib";
 import {
   DrawType,
@@ -14,8 +15,6 @@ import {
   ModifyStore,
   SnapStore,
 } from "@shared/misc";
-
-import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
 
 const Drawing = () => {
   const source = useContext(SourceContext);
