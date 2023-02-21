@@ -2,7 +2,14 @@ import { makeAutoObservable } from "mobx";
 import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
-import { overlayId, overlayOffset } from "../../../constants";
+import {
+  overlayId,
+  overlayOffset,
+  menuOffset,
+  menuId,
+} from "../../../constants";
+import { MapInjector } from "../../services";
+import type { ListenersInjector, CommonEvent } from "../../types";
 
 interface CustomOverlay {
   element: HTMLElement | null;
@@ -12,7 +19,7 @@ interface CustomOverlay {
 
 class OverlaysStore {
   private _featureInfo: CustomOverlay;
-  private readonly _contextMenu: CustomOverlay;
+  private _contextMenu: CustomOverlay;
 
   private _cursorPosition: Coordinate | null;
 
@@ -76,38 +83,38 @@ class OverlaysStore {
   }
 
   public initContextMenu(element: HTMLElement, map: Map) {
-    // const overlay = new Overlay({
-    //   element: element,
-    //   offset: menuOffset,
-    //   id: menuId,
-    // });
-    //
-    // this._contextMenu = {
-    //   overlay: overlay,
-    //   element: element,
-    //   active: false,
-    // };
-    //
-    // const el = map.getViewport();
-    // const canvas = el.getElementsByTagName("canvas").item(0);
-    //
-    // if (!canvas) {
-    //   return [];
-    // }
-    //
-    // const mapInjector: ListenersInjector<CommonEvent> = new MapInjector(
-    //   map,
-    //   canvas
-    // );
-    //
-    // const cleanups = [];
-    //
-    // cleanups.push(mapInjector.addEventListener("click"));
-    // cleanups.push(mapInjector.addEventListener("contextmenu"));
-    //
-    // map.addOverlay(overlay);
-    //
-    // return cleanups;
+    const overlay = new Overlay({
+      element: element,
+      offset: menuOffset,
+      id: menuId,
+    });
+
+    this._contextMenu = {
+      overlay: overlay,
+      element: element,
+      active: false,
+    };
+
+    const el = map.getViewport();
+    const canvas = el.getElementsByTagName("canvas").item(0);
+
+    if (!canvas) {
+      return [];
+    }
+
+    const mapInjector: ListenersInjector<CommonEvent> = new MapInjector(
+      map,
+      canvas
+    );
+
+    const cleanups = [];
+
+    cleanups.push(mapInjector.addEventListener("click"));
+    cleanups.push(mapInjector.addEventListener("contextmenu"));
+
+    map.addOverlay(overlay);
+
+    return cleanups;
   }
 
   public hideContextMenu() {

@@ -3,6 +3,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef } from "react";
 
+import { invoke } from "@shared/lib";
 import {
   Callback,
   MapStore,
@@ -38,15 +39,13 @@ const Menu = () => {
 
     let cleanups: Callback[] = [];
     if (element && map) {
-      // cleanups = OverlaysStore.initContextMenu(element, map);
-      cleanups = [];
+      cleanups = OverlaysStore.initContextMenu(element, map);
     }
 
     return () => {
-      return;
-      // for (const cleanup of cleanups) {
-      //   cleanup();
-      // }
+      for (const cleanup of cleanups) {
+        invoke(cleanup);
+      }
     };
   }, [map]);
 

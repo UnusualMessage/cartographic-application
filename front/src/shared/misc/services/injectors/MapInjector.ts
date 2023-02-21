@@ -1,7 +1,13 @@
 import { Map, MapBrowserEvent } from "ol";
+import { Coordinate } from "ol/coordinate";
 import { Pixel } from "ol/pixel";
 
-import { MapStore } from "../../stores";
+import {
+  MapStore,
+  OverlaysStore,
+  FeaturesStore,
+  InteractionsStore,
+} from "../../stores";
 import type { CommonEvent, ListenersInjector } from "../../types";
 
 class MapInjector implements ListenersInjector<CommonEvent> {
@@ -40,13 +46,13 @@ class MapInjector implements ListenersInjector<CommonEvent> {
 
   private addMapContextMenu() {
     const onContextMenu = (e: MouseEvent) => {
-      // const pixel: Pixel = this._map.getEventPixel(e);
-      // const cursor: Coordinate = this._map.getCoordinateFromPixel(pixel);
-      //
-      // OverlaysStore.showContextMenu(cursor);
-      // OverlaysStore.hideFeatureInfo();
-      // OverlaysStore.cursorPosition = cursor;
-      // InteractionsService.stopDrawing();
+      const pixel: Pixel = this._map.getEventPixel(e);
+      const cursor: Coordinate = this._map.getCoordinateFromPixel(pixel);
+
+      OverlaysStore.showContextMenu(cursor);
+      OverlaysStore.hideFeatureInfo();
+      OverlaysStore.cursorPosition = cursor;
+      InteractionsStore.stopDrawing();
     };
 
     this._canvas?.addEventListener("contextmenu", onContextMenu);
@@ -58,19 +64,19 @@ class MapInjector implements ListenersInjector<CommonEvent> {
 
   private addMapClick() {
     const onClick = (e: MapBrowserEvent<any>) => {
-      // const pixel = this._map.getEventPixel(e.originalEvent);
-      // const features = this._map.getFeaturesAtPixel(pixel);
-      //
-      // OverlaysStore.hideContextMenu();
-      //
-      // if (!features.length) {
-      //   FeaturesStore.clickedFeature = null;
-      //   OverlaysStore.hideFeatureInfo();
-      //   return;
-      // }
-      //
-      // FeaturesStore.clickedFeature = features[0];
-      // OverlaysStore.showFeatureInfo(this._map.getCoordinateFromPixel(pixel));
+      const pixel = this._map.getEventPixel(e.originalEvent);
+      const features = this._map.getFeaturesAtPixel(pixel);
+
+      OverlaysStore.hideContextMenu();
+
+      if (!features.length) {
+        FeaturesStore.clickedFeature = null;
+        OverlaysStore.hideFeatureInfo();
+        return;
+      }
+
+      FeaturesStore.clickedFeature = features[0];
+      OverlaysStore.showFeatureInfo(this._map.getCoordinateFromPixel(pixel));
     };
 
     this._map.on("click", onClick);

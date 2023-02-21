@@ -1,7 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
 img, embed, iframe, object, audio, video {
   height: auto;
   max-width: 100%;
@@ -10,10 +6,6 @@ img, embed, iframe, object, audio, video {
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
-}
-
-body {
-  margin: 0;
 }
 
 main {

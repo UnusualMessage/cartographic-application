@@ -3,31 +3,29 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
+import { SourceContext } from "@shared/constants";
 import { useInteraction } from "@shared/lib";
 import {
-  Interaction,
+  DrawType,
   AddInteractionCallback,
   MapStore,
-  DrawingStore,
   InteractionsStore,
+  DrawStore,
+  SelectStore,
+  ModifyStore,
+  SnapStore,
 } from "@shared/misc";
-
-import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
 
 const Drawing = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
-  const type = DrawingStore.interactionType;
+  const type = InteractionsStore.drawType;
 
   const props = {
     source,
     map,
     type,
   };
-
-  if (!InteractionsStore.isGeozoneInteractionsActive) {
-    return <></>;
-  }
 
   return (
     <>
@@ -42,12 +40,12 @@ const Drawing = () => {
 interface Props {
   source?: VectorSource;
   map: Map | null;
-  type: Interaction;
+  type: DrawType;
 }
 
 const Draw = ({ source, map, type }: Props) => {
   const addInteraction: AddInteractionCallback = (map, source) => {
-    return InteractionsStore.addDraw(source, map);
+    return DrawStore.setup(type, source, map);
   };
 
   useInteraction(addInteraction, { source, map, type });
@@ -57,7 +55,7 @@ const Draw = ({ source, map, type }: Props) => {
 
 const Select = ({ source, map, type }: Props) => {
   const addInteraction: AddInteractionCallback = (map, source) => {
-    return InteractionsStore.addSelectAndTranslate(source, map);
+    return SelectStore.setup(source, map);
   };
 
   useInteraction(addInteraction, { source, map, type });
@@ -67,7 +65,7 @@ const Select = ({ source, map, type }: Props) => {
 
 const Modify = ({ source, map, type }: Props) => {
   const addInteraction: AddInteractionCallback = (map, source) => {
-    return InteractionsStore.addModify(source, map);
+    return ModifyStore.setup(source, map);
   };
 
   useInteraction(addInteraction, { source, map, type });
@@ -77,7 +75,7 @@ const Modify = ({ source, map, type }: Props) => {
 
 const Snap = ({ source, map, type }: Props) => {
   const addInteraction: AddInteractionCallback = (map, source) => {
-    return InteractionsStore.addSnap(source, map);
+    return SnapStore.setup(source, map);
   };
 
   useInteraction(addInteraction, { source, map, type });

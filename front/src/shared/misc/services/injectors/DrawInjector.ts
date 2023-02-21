@@ -16,6 +16,7 @@ import { OrganizationsStore } from "@entities/organization";
 
 import { geozonesLayerId } from "../../../constants";
 import { getGeozoneStyle } from "../../../lib";
+import { InteractionsStore } from "../../stores";
 import type {
   Change,
   Changes,
@@ -23,7 +24,7 @@ import type {
   ListenersInjector,
   DrawEvent as DrawEventType,
 } from "../../types";
-import { InteractionsService, LayersService } from "../map";
+import { LayersService } from "../map";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;
@@ -45,7 +46,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawStart() {
     const onDrawStart = () => {
-      InteractionsService.startDrawing();
+      InteractionsStore.startDrawing();
     };
 
     this._draw.on("drawstart", onDrawStart);
@@ -57,8 +58,8 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawEnd() {
     const onDrawEnd = (event: DrawEvent) => {
-      InteractionsService.stopDrawing();
-      const interactionType = InteractionsService.getInteractionType();
+      InteractionsStore.stopDrawing();
+      const type = InteractionsStore.drawType;
 
       const feature = event.feature;
       feature.setId(uuid());
@@ -73,7 +74,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
         blue,
       };
 
-      if (interactionType === "geozones") {
+      if (type === "geozones") {
         const geometry = feature.getGeometry() as Polygon | undefined;
         const organization = OrganizationsStore.organization;
         const id = uuid();
@@ -141,7 +142,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawAbort() {
     const onDrawAbort = () => {
-      InteractionsService.stopDrawing();
+      InteractionsStore.stopDrawing();
     };
 
     this._draw.on("drawabort", onDrawAbort);

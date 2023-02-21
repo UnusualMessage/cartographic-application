@@ -1,30 +1,25 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
+import { SourceContext } from "@shared/constants";
 import { useInteraction } from "@shared/lib";
 import {
   AddInteractionCallback,
   MapStore,
-  DrawingStore,
   InteractionsStore,
+  DrawStore,
 } from "@shared/misc";
-
-import { SourceContext } from "../../../layers/ui/VectorLayer/VectorLayer";
 
 const Measurement = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
-  const type = DrawingStore.interactionType;
+  const type = InteractionsStore.drawType;
 
   const addInteraction: AddInteractionCallback = (map, source) => {
-    return InteractionsStore.setupMeasurementTool(source, map);
+    return DrawStore.setup(type, source, map);
   };
 
   useInteraction(addInteraction, { source, map, type });
-
-  if (!InteractionsStore.isAuxInteractionsActive) {
-    return <></>;
-  }
 
   return <></>;
 };
