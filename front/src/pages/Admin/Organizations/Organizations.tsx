@@ -5,7 +5,7 @@ import { OrganizationsStore } from "@entities/organization";
 import Organization from "./Organization";
 import { wrapper } from "./organizations.module.scss";
 
-const OrganizationsPage = () => {
+const Organizations = () => {
   const organizations = OrganizationsStore.organizations;
 
   return (
@@ -24,4 +24,4 @@ const OrganizationsPage = () => {
   );
 };
 
-export default observer(OrganizationsPage);
+export default observer(Organizations);

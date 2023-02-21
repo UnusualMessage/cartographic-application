@@ -1,9 +1,9 @@
 import { geozonesLayerId } from "../../../constants";
 import {
   OverlaysStore,
-  InteractionsStore,
   LayersStore,
   FeaturesStore,
+  SelectStore,
 } from "../../stores";
 
 class FeaturesService {
@@ -15,7 +15,7 @@ class FeaturesService {
   public close() {
     OverlaysStore.hideContextMenu();
     FeaturesStore.clearBuffer();
-    InteractionsStore.clearSelectBuffer();
+    SelectStore.clearSelectBuffer();
   }
 
   public insert() {

@@ -6,16 +6,16 @@ import { useState } from "react";
 import { auxLayerId } from "@shared/constants";
 import {
   ControlsStore,
-  Interaction,
-  DrawingStore,
+  DrawType,
   LayersStore,
   MapStore,
+  InteractionsStore,
 } from "@shared/misc";
 
 import { active, wrapper } from "./buttons.module.scss";
 
 const ButtonsGroup = () => {
-  const interactionType = DrawingStore.interactionType;
+  const drawType = InteractionsStore.drawType;
   const isPanelOpen = ControlsStore.layersPanelActive;
   const handleFullScreen = ControlsStore.fullScreenHandle;
   const fullScreenActive = ControlsStore.fullScreenActive;
@@ -30,13 +30,13 @@ const ButtonsGroup = () => {
     ControlsStore.switchPanel();
   };
 
-  const switchType = (type: Interaction) => {
+  const switchType = (type: DrawType) => {
     LayersStore.clearVectorLayer(auxLayerId);
 
-    if (interactionType === type) {
-      DrawingStore.interactionType = "none";
+    if (drawType === type) {
+      InteractionsStore.drawType = "none";
     } else {
-      DrawingStore.interactionType = type;
+      InteractionsStore.drawType = type;
     }
   };
 
@@ -78,13 +78,13 @@ const ButtonsGroup = () => {
 
           <Button
             icon="one-to-one"
-            intent={interactionType === "measure-length" ? "primary" : "none"}
+            intent={drawType === "measure-length" ? "primary" : "none"}
             onClick={() => switchType("measure-length")}
           />
 
           <Button
             icon="polygon-filter"
-            intent={interactionType === "measure-area" ? "primary" : "none"}
+            intent={drawType === "measure-area" ? "primary" : "none"}
             onClick={() => switchType("measure-area")}
           />
 

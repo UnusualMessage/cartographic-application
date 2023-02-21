@@ -13,9 +13,9 @@ import { about } from "@shared/assets/samples/about";
 import { auxLayerId } from "@shared/constants";
 import {
   ControlsStore,
-  Interaction,
-  DrawingStore,
+  DrawType,
   LayersStore,
+  InteractionsStore,
 } from "@shared/misc";
 import { ControlType } from "@shared/misc/stores/ControlsStore";
 
@@ -26,14 +26,14 @@ const DrawerMenu = () => {
     ControlsStore.hideDrawer();
   };
 
-  const switchType = (type: Interaction) => {
+  const switchType = (type: DrawType) => {
     LayersStore.clearVectorLayer(auxLayerId);
-    const interactionType = DrawingStore.interactionType;
+    const drawType = InteractionsStore.drawType;
 
-    if (interactionType === type) {
-      DrawingStore.interactionType = "none";
+    if (drawType === type) {
+      InteractionsStore.drawType = "none";
     } else {
-      DrawingStore.interactionType = type;
+      InteractionsStore.drawType = type;
     }
 
     ControlsStore.hideDrawer();

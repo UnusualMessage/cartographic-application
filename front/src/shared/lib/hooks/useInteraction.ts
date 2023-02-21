@@ -2,13 +2,13 @@ import { Map } from "ol";
 import VectorSource from "ol/source/Vector";
 import { useEffect } from "react";
 
-import type { Interaction, AddInteractionCallback, Callback } from "../../misc";
+import type { DrawType, AddInteractionCallback, Callback } from "../../misc";
 import { invoke } from "../utils";
 
 interface Props {
   source?: VectorSource;
   map: Map | null;
-  type: Interaction;
+  type: DrawType;
 }
 
 export const useInteraction = (
