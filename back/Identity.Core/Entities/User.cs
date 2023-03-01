@@ -8,7 +8,7 @@ public class User : Entity<User>
     public string Login { get; set; } = string.Empty;
     public string Password { get; set; } = string.Empty;
 
-    public Roles Roles { get; set; }
+    public Roles Role { get; set; }
 
     public ICollection<RefreshToken> RefreshTokens { get; set; } = new List<RefreshToken>();
 
@@ -16,6 +16,6 @@ public class User : Entity<User>
     {
         Login = user.Login;
         Password = user.Password;
-        Roles = user.Roles;
+        Role = user.Role;
     }
 }

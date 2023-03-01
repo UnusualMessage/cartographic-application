@@ -3,25 +3,25 @@ import React from "react";
 import { Loader, Content } from "@shared/ui";
 import {
   Overlays,
-  Sider,
-  Categories,
+  UserAside,
+  EntitiesMenu,
   Schema,
-  Footer,
-  Information,
+  UserFooter,
+  InfoMenu,
 } from "@widgets/index";
 
 const View = () => {
   return (
     <React.Suspense fallback={<Loader />}>
       <Overlays />
-      <Sider>
-        <Categories />
-      </Sider>
+      <UserAside>
+        <EntitiesMenu />
+      </UserAside>
       <Content>
         <Schema />
-        <Footer>
-          <Information />
-        </Footer>
+        <UserFooter>
+          <InfoMenu />
+        </UserFooter>
       </Content>
     </React.Suspense>
   );

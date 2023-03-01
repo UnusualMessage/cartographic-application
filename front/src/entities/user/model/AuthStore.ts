@@ -1,7 +1,8 @@
 import { makeAutoObservable, runInAction } from "mobx";
 
+import { users } from "@shared/assets";
 import { isError } from "@shared/lib";
-import { ResponseService, AuthenticateUser } from "@shared/misc";
+import { ResponseService, AuthenticateUser, User } from "@shared/misc";
 
 import AuthService from "./AuthService";
 
@@ -10,14 +11,20 @@ class AuthStore {
   private _accessToken: string;
   private _authService: AuthService;
   private _responseService: ResponseService;
+  private _user?: User;
 
   constructor() {
     this._isLogin = false;
     this._accessToken = "";
     this._authService = new AuthService();
     this._responseService = new ResponseService();
+    this._user = users[0];
 
     makeAutoObservable(this);
+  }
+
+  public get fullName() {
+    return this._user?.fullName;
   }
 
   public entered = () => {

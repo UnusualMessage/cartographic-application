@@ -27,10 +27,10 @@ public class JwtService : ITokenService
 
         var roleClaims = new List<Claim>();
 
-        if (user.Roles.HasFlag(Roles.Admin)) AddRoleClaim(roleClaims, "Admin");
-        if (user.Roles.HasFlag(Roles.Moderator)) AddRoleClaim(roleClaims, "Moderator");
-        if (user.Roles.HasFlag(Roles.Monitor)) AddRoleClaim(roleClaims, "Monitor");
-        if (user.Roles.HasFlag(Roles.Guest)) AddRoleClaim(roleClaims, "Guest");
+        if (user.Role.HasFlag(Roles.Admin)) AddRoleClaim(roleClaims, "Admin");
+        if (user.Role.HasFlag(Roles.Moderator)) AddRoleClaim(roleClaims, "Moderator");
+        if (user.Role.HasFlag(Roles.Monitor)) AddRoleClaim(roleClaims, "Monitor");
+        if (user.Role.HasFlag(Roles.Guest)) AddRoleClaim(roleClaims, "Guest");
 
         ClaimsIdentity claimsIdentity = new(new[]
         {
