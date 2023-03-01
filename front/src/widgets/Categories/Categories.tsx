@@ -52,6 +52,7 @@ const Categories = () => {
             key={`sider-${tab.id}`}
             title={tab.title}
             panel={tab.component}
+            icon={tab.icon}
             panelClassName={panel}
           />
         );

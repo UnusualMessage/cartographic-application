@@ -11,7 +11,7 @@ const Sider = ({ children }: PropsWithChildren) => {
 
   const props = {
     type: type,
-    initial: 370,
+    initial: 400,
     bottomBorder: 3,
   };
 
