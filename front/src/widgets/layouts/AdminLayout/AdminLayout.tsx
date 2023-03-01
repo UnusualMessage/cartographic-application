@@ -5,13 +5,13 @@ import Main from "@shared/ui/Main";
 
 import { wrapper } from "./layout.module.scss";
 import { AdminAside } from "../../asides";
-import UserHeader from "../../headers/UserHeader";
+import { AdminHeader } from "../../headers";
 import { AdminMenu } from "../../menus";
 
 const AdminLayout = () => {
   return (
     <div className={wrapper}>
-      <UserHeader />
+      <AdminHeader />
       <Main>
         <AdminAside>
           <AdminMenu />
