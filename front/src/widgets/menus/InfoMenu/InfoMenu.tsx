@@ -5,7 +5,7 @@ import { TabsStore } from "@shared/misc";
 import { Tab as TabType } from "@shared/misc/types/tab/Tab";
 import TabPage from "@shared/ui/TabPage";
 
-import { panel, wrapper } from "./information.module.scss";
+import { panel, wrapper } from "./menu.module.scss";
 import { footerTabs } from "./model";
 
 const tabsRenderer = (tab: TabType) => {
@@ -28,7 +28,7 @@ const switchTab = (newTab: TabId) => {
   TabsStore.footerTabId = newTab;
 };
 
-const Information = () => {
+const InfoMenu = () => {
   const tabId = TabsStore.footerTabId;
   const tabListId = TabsStore.footerTabsListId;
 
@@ -50,4 +50,4 @@ const Information = () => {
   );
 };
 
-export default observer(Information);
+export default observer(InfoMenu);

@@ -12,12 +12,13 @@ import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
 import { OrganizationsStore } from "@entities/organization";
+import { AuthStore } from "@entities/user";
 import { about } from "@shared/assets/samples/about";
 import { UpdateStore } from "@shared/misc/stores";
 
 import { container, logo, user, wrapper } from "./header.module.scss";
 
-const Header = () => {
+const UserHeader = () => {
   return (
     <Navbar className={wrapper}>
       <NavbarGroup className={container}>
@@ -68,7 +69,7 @@ const Header = () => {
         <Button icon="notifications" minimal large />
 
         <div className={user}>
-          <Text>{"Котенко Никита Алексеевич"}</Text>
+          <Text>{AuthStore.fullName}</Text>
           <H6>{OrganizationsStore.organization?.title}</H6>
         </div>
 
@@ -78,4 +79,4 @@ const Header = () => {
   );
 };
 
-export default observer(Header);
+export default observer(UserHeader);

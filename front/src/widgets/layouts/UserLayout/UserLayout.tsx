@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
 
-import { wrapper } from "./layout.module.scss";
-import Main from "../../shared/ui/Main";
-import Header from "../Header";
+import Main from "@shared/ui/Main";
 
-const Layout = () => {
+import { wrapper } from "./layout.module.scss";
+import UserHeader from "../../headers/UserHeader";
+
+const UserLayout = () => {
   return (
     <div className={wrapper}>
-      <Header />
+      <UserHeader />
       <Main>
         <Outlet />
       </Main>
@@ -15,4 +16,4 @@ const Layout = () => {
   );
 };
 
-export default Layout;
+export default UserLayout;

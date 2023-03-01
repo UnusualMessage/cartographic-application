@@ -12,6 +12,7 @@ const View = lazy(() => import("./User/View"));
 const References = lazy(() => import("./User/References"));
 const Organizations = lazy(() => import("./Admin/Organizations"));
 const Users = lazy(() => import("./Admin/Users"));
+const Home = lazy(() => import("./Admin/Home"));
 
 const browserRouter = createBrowserRouter([
   {
@@ -52,6 +53,11 @@ const browserRouter = createBrowserRouter([
       <NonIdealState icon={"search"} title={"Страницы не существует!"} />
     ),
     children: [
+      {
+        path: "",
+        element: <Home />,
+      },
+
       {
         path: "organizations",
         element: <Organizations />,

@@ -1,7 +1,7 @@
-import EmployeesTree from "@entities/employee/ui/EmployeesTree/index";
-import { EquipmentTree } from "@entities/equipment/index";
-import { GeozonesTree } from "@entities/geozone/index";
-import { PlansTree } from "@entities/plan/index";
+import EmployeesTree from "@entities/employee/ui/EmployeesTree";
+import { EquipmentTree } from "@entities/equipment";
+import { GeozonesTree } from "@entities/geozone";
+import { PlansTree } from "@entities/plan";
 import { TabsList } from "@shared/misc";
 
 export const siderTabs: TabsList = {

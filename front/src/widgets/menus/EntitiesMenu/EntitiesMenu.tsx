@@ -4,10 +4,10 @@ import { useMemo } from "react";
 
 import { TabsStore } from "@shared/misc";
 
-import { panel, wrapper } from "./categories.module.scss";
+import { panel, wrapper } from "./menu.module.scss";
 import { siderTabs } from "./model";
 
-const Categories = () => {
+const EntitiesMenu = () => {
   const tabId = TabsStore.siderTabId;
 
   const currentTabs = useMemo(() => {
@@ -61,4 +61,4 @@ const Categories = () => {
   );
 };
 
-export default observer(Categories);
+export default observer(EntitiesMenu);

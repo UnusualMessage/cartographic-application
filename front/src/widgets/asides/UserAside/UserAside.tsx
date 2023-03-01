@@ -6,7 +6,7 @@ import Resize from "@shared/ui/Resize";
 
 import { content, wrapper } from "./sider.module.scss";
 
-const Sider = ({ children }: PropsWithChildren) => {
+const UserAside = ({ children }: PropsWithChildren) => {
   const type = ResizeType.width;
 
   const props = {
@@ -29,4 +29,4 @@ const Sider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default Sider;
+export default UserAside;

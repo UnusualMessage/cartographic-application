@@ -6,7 +6,7 @@ import Resize from "@shared/ui/Resize";
 
 import { content, wrapper } from "./footer.module.scss";
 
-const Footer = ({ children }: PropsWithChildren) => {
+const UserFooter = ({ children }: PropsWithChildren) => {
   const type = ResizeType.height;
 
   const props = {
@@ -25,4 +25,4 @@ const Footer = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default Footer;
+export default UserFooter;
