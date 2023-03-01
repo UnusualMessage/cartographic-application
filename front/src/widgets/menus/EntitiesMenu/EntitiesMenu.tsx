@@ -21,23 +21,9 @@ const EntitiesMenu = () => {
       selectedTabId={tabId}
       renderActiveTabPanelOnly
       onChange={(newTabId) => {
-        switch (newTabId) {
-          case "sider-plans":
-            TabsStore.footerTabsListId = "footer-plans";
-            break;
-
-          case "sider-employees":
-            TabsStore.footerTabsListId = "footer-employees";
-            break;
-
-          case "sider-equipments":
-            TabsStore.footerTabsListId = "footer-equipments";
-            break;
-
-          case "sider-geozones":
-            TabsStore.footerTabsListId = "footer-geozones";
-            break;
-        }
+        TabsStore.footerTabsListId = newTabId
+          .toString()
+          .replace("sider-", "footer-");
 
         TabsStore.active = true;
         TabsStore.footerTabId = undefined;

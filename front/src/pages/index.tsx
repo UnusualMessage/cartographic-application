@@ -1,9 +1,8 @@
-import { NonIdealState } from "@blueprintjs/core";
 import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { EmptyPage, Loader } from "@shared/ui";
-import { Layout } from "@widgets/index";
+import { UserLayout, AdminLayout } from "@widgets/index";
 
 import Authorization from "./Authorization";
 import { references } from "./User/References";
@@ -17,7 +16,7 @@ const Home = lazy(() => import("./Admin/Home"));
 const browserRouter = createBrowserRouter([
   {
     path: "/",
-    element: <Layout />,
+    element: <UserLayout />,
     errorElement: <EmptyPage />,
     children: [
       {
@@ -42,16 +41,13 @@ const browserRouter = createBrowserRouter([
   {
     path: "/authorization",
     element: <Authorization />,
-    errorElement: (
-      <NonIdealState icon={"search"} title={"Страницы не существует!"} />
-    ),
+    errorElement: <EmptyPage />,
   },
 
   {
     path: "/admin",
-    errorElement: (
-      <NonIdealState icon={"search"} title={"Страницы не существует!"} />
-    ),
+    element: <AdminLayout />,
+    errorElement: <EmptyPage />,
     children: [
       {
         path: "",
