@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 
 import { Node, Reference } from "@shared/misc";
 import { EntitiesTree, Loader, Content } from "@shared/ui";
-import { Sider } from "@widgets/index";
+import { UserAside } from "@widgets/index";
 
 import AnnualPlans from "./AnnualPlans";
 import Crops from "./Crops";
@@ -390,9 +390,9 @@ export const references: Reference[] = [
 const References = () => {
   return (
     <React.Suspense fallback={<Loader />}>
-      <Sider>
+      <UserAside>
         <ReferencesTree />
-      </Sider>
+      </UserAside>
       <Content>
         <Outlet />
       </Content>
