@@ -1,4 +1,3 @@
-import { Divider } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
@@ -47,14 +46,11 @@ const EmployeesTree = () => {
   const employees = EmployeesStore.employees;
 
   return (
-    <>
-      <Divider />
-      <EntitiesTree<Employee>
-        fillNodes={fillNodes}
-        source={employees}
-        className={tree}
-      />
-    </>
+    <EntitiesTree<Employee>
+      fillNodes={fillNodes}
+      source={employees}
+      className={tree}
+    />
   );
 };
 

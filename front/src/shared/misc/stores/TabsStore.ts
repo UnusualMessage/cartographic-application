@@ -1,4 +1,3 @@
-import { TabId } from "@blueprintjs/core";
 import { makeAutoObservable } from "mobx";
 
 class TabsStore {
@@ -9,13 +8,13 @@ class TabsStore {
   private _active: boolean;
 
   private _siderTabsListId: string;
-  private _siderTabId?: TabId;
+  private _siderTabId?: string;
 
   private _footerTabsListId: string;
-  private _footerTabId?: TabId;
+  private _footerTabId?: string;
 
   private _adminTabsListId: string;
-  private _adminTabId?: TabId;
+  private _adminTabId?: string;
 
   constructor() {
     this._footerTabsListId = "footer-geozones";
@@ -48,7 +47,7 @@ class TabsStore {
     return this._adminTabId;
   }
 
-  public set adminTabId(id: TabId | undefined) {
+  public set adminTabId(id) {
     this._adminTabId = id;
   }
 
@@ -56,7 +55,7 @@ class TabsStore {
     return this._footerTabsListId;
   }
 
-  public set footerTabsListId(id: string) {
+  public set footerTabsListId(id) {
     this._footerTabsListId = id;
   }
 
@@ -64,7 +63,7 @@ class TabsStore {
     return this._footerTabId;
   }
 
-  public set footerTabId(id: TabId | undefined) {
+  public set footerTabId(id) {
     this._footerTabId = id;
   }
 
@@ -72,7 +71,7 @@ class TabsStore {
     return this._siderTabId;
   }
 
-  public set siderTabId(id: TabId | undefined) {
+  public set siderTabId(id) {
     this._siderTabId = id;
   }
 

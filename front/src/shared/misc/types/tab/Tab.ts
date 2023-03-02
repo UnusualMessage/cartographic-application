@@ -1,8 +1,7 @@
-import { TabId, IconName, MaybeElement } from "@blueprintjs/core";
+import { ReactNode } from "react";
 
 export interface Tab {
-  id: TabId;
-  title: string;
-  icon?: IconName | MaybeElement;
-  component: JSX.Element;
+  key: string;
+  label: ReactNode;
+  children: ReactNode;
 }

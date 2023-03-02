@@ -1,4 +1,3 @@
-import { Divider } from "@blueprintjs/core";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
@@ -39,15 +38,12 @@ const PlansTree = () => {
   const plans = PlansStore.plans;
 
   return (
-    <>
-      <Divider />
-      <EntitiesTree<Plan>
-        fillNodes={fillNodes}
-        source={plans}
-        className={tree}
-        handleClick={getPlansTreeClickHandler()}
-      />
-    </>
+    <EntitiesTree<Plan>
+      fillNodes={fillNodes}
+      source={plans}
+      className={tree}
+      handleClick={getPlansTreeClickHandler()}
+    />
   );
 };
 

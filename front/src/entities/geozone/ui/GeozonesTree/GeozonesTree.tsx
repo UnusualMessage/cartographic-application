@@ -1,4 +1,4 @@
-import { Divider, TreeNodeInfo } from "@blueprintjs/core";
+import { TreeNodeInfo } from "@blueprintjs/core";
 import { ContextMenu2 } from "@blueprintjs/popover2";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
@@ -60,15 +60,12 @@ const GeozonesTree = () => {
   const zones = GeozonesStore.geozones;
 
   return (
-    <>
-      <Divider />
-      <EntitiesTree<Geozone>
-        fillNodes={fillNodes}
-        source={zones}
-        handleClick={getGeozonesTreeClickHandler()}
-        className={tree}
-      />
-    </>
+    <EntitiesTree<Geozone>
+      fillNodes={fillNodes}
+      source={zones}
+      handleClick={getGeozonesTreeClickHandler()}
+      className={tree}
+    />
   );
 };
 

@@ -1,4 +1,4 @@
-import { Tabs, Tab } from "@blueprintjs/core";
+import { Tabs } from "antd";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,28 +20,15 @@ const AdminMenu = () => {
     <Tabs
       id="admin-tabs"
       className={wrapper}
-      selectedTabId={tabId}
-      renderActiveTabPanelOnly
-      vertical
-      large
+      activeKey={tabId}
+      items={currentTabs}
+      tabPosition={"left"}
       onChange={(newTabId) => {
         TabsStore.adminTabId = newTabId;
         const link = newTabId.toString().replace("admin-", "");
         navigate(link);
       }}
-    >
-      {currentTabs.map((tab) => {
-        return (
-          <Tab
-            id={tab.id}
-            key={`admin-${tab.id}`}
-            title={tab.title}
-            panel={tab.component}
-            icon={tab.icon}
-          />
-        );
-      })}
-    </Tabs>
+    />
   );
 };
 
