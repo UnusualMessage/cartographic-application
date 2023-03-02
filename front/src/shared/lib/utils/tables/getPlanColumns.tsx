@@ -34,9 +34,7 @@ export const getPlanColumns = (plans: Plan[]): Column[] => [
 
   {
     renderer: (rowIndex) => {
-      return (
-        <Cell className={cell}>{<Progress value={rowIndex * 0.1} />}</Cell>
-      );
+      return <Cell className={cell}>{<Progress value={rowIndex * 10} />}</Cell>;
     },
 
     name: "Прогресс",
