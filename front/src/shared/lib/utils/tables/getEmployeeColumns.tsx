@@ -1,63 +1,33 @@
-import { Cell, TruncatedFormat2 } from "@blueprintjs/table";
+import type { Column } from "../../../misc";
 
-import { getNumberCell } from "./getNumberCell";
-import type { Employee, Column } from "../../../misc";
-import { cell } from "../../../styles";
-
-export const getEmployeeColumns = (employees: Employee[]): Column[] => [
-  getNumberCell(employees),
-
+export const getEmployeeColumns = (): Column[] => [
   {
-    renderer: (rowIndex) => {
-      return <Cell className={cell}>{employees[rowIndex].firstName}</Cell>;
-    },
-
-    name: "Имя",
+    title: "Имя",
+    dataIndex: "firstName",
   },
 
   {
-    renderer: (rowIndex) => {
-      return <Cell className={cell}>{employees[rowIndex].secondName}</Cell>;
-    },
-
-    name: "Фамилия",
+    title: "Фамилия",
+    dataIndex: "secondName",
   },
 
   {
-    renderer: (rowIndex) => {
-      return <Cell className={cell}>{employees[rowIndex].patronymic}</Cell>;
-    },
-
-    name: "Отчество",
+    title: "Отчество",
+    dataIndex: "patronymic",
   },
 
   {
-    renderer: (rowIndex) => {
-      return <Cell className={cell}>{employees[rowIndex].phone}</Cell>;
-    },
-
-    name: "Телефон",
+    title: "Телефон",
+    dataIndex: "phone",
   },
 
   {
-    renderer: (rowIndex) => {
-      return <Cell className={cell}>{employees[rowIndex].post.title}</Cell>;
-    },
-
-    name: "Должность",
+    title: "Должность",
+    dataIndex: "post",
   },
 
   {
-    renderer: (rowIndex) => {
-      return (
-        <Cell className={cell}>
-          <TruncatedFormat2 detectTruncation>
-            {employees[rowIndex].organization.title}
-          </TruncatedFormat2>
-        </Cell>
-      );
-    },
-
-    name: "Организация",
+    title: "Организация",
+    dataIndex: "organization",
   },
 ];

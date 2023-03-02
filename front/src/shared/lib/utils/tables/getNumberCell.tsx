@@ -1,20 +1,8 @@
-import { Cell } from "@blueprintjs/table";
+import { Column } from "../../../misc";
 
-import { cell } from "../../../styles";
-import { fromUuidToNumber } from "../format";
-
-interface Entity {
-  id: string;
-}
-
-export const getNumberCell = (entities: Entity[]) => {
+export const getNumberCell = (): Column => {
   return {
-    renderer: (rowIndex: number) => {
-      return (
-        <Cell className={cell}>{fromUuidToNumber(entities[rowIndex].id)}</Cell>
-      );
-    },
-
-    name: "Номер",
+    title: "Номер",
+    dataIndex: "number",
   };
 };

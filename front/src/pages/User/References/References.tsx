@@ -123,13 +123,6 @@ const referenceNodes: Node[] = [
                 label: "Ежегодные планы",
                 nodeData: "annual-plans",
               },
-
-              {
-                id: uuid(),
-                icon: "document",
-                label: "Выбор справочника",
-                nodeData: "select",
-              },
             ],
           },
 

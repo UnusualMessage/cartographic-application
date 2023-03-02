@@ -1,68 +1,60 @@
-import {
-  Column,
-  Region,
-  RowHeaderCell2,
-  RowHeaderRenderer,
-  Table2,
-} from "@blueprintjs/table";
+import { Table as AntTable } from "antd";
 import classNames from "classnames";
+import { Key } from "react";
 
-import type { Column as ColumnProps, OnSelection } from "../../misc";
-import { table, cell, fill, width60 } from "../../styles";
+import type { Column as ColumnProps } from "../../misc";
+import { table, fill, width60 } from "../../styles";
+
+interface Item {
+  id: string;
+}
 
 interface Props<T> {
   width?: number;
   items: T[];
   columns: ColumnProps[];
-  onSelection?: OnSelection;
-  regions?: Region[];
+  setItems?: (items: T[]) => void;
 }
 
-const Table = <T,>({
+const Table = <T extends Item>({
   width,
   items,
   columns,
-  onSelection,
-  regions,
+  setItems,
 }: Props<T>) => {
-  const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
-    return (
-      <RowHeaderCell2
-        index={rowIndex}
-        name={(rowIndex + 1).toString()}
-        className={cell}
-      />
-    );
-  };
-
   const classes = classNames({
     [table]: true,
     [fill]: width,
     [width60]: width === 60,
   });
 
+  let rowSelection = undefined;
+
+  if (setItems) {
+    rowSelection = {
+      onChange: (selectedRowKeys: Key[], selectedRows: T[]) => {
+        setItems(selectedRows);
+      },
+
+      getCheckboxProps: (item: T) => ({
+        id: item.id,
+      }),
+    };
+  }
+
   return (
     <>
-      <Table2
-        numRows={items.length}
+      <AntTable<T>
         className={classes}
-        cellRendererDependencies={[items]}
-        rowHeaderCellRenderer={rowHeaderRenderer}
-        onSelection={onSelection}
-        defaultRowHeight={40}
-        enableMultipleSelection={false}
-        selectedRegions={regions}
-      >
-        {columns.map((column) => {
-          return (
-            <Column
-              cellRenderer={column.renderer}
-              name={column.name}
-              key={`table-${column.name}`}
-            />
-          );
-        })}
-      </Table2>
+        rowSelection={{
+          type: rowSelection ? "radio" : undefined,
+          onChange: rowSelection?.onChange,
+          getCheckboxProps: rowSelection?.getCheckboxProps,
+        }}
+        columns={columns}
+        dataSource={items}
+        bordered
+      />
     </>
   );
 };

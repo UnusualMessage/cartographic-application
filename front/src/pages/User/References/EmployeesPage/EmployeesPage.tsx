@@ -8,19 +8,19 @@ import {
   DuplicateEmployee,
   RemoveEmployee,
 } from "@entities/employee";
-import { getEmployeeColumns, useRegions } from "@shared/lib";
-import { Employee } from "@shared/misc";
+import { getEmployeeColumns, mapEmployeeToTable } from "@shared/lib";
+import { TableEmployee } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const EmployeesPage = () => {
   const employee = EmployeesStore.employee;
   const employees = EmployeesStore.employees;
 
-  const { regions, onSelection } = useRegions((rowIndex: number) => {
-    EmployeesStore.employee = employees[rowIndex];
-  });
+  const columns = getEmployeeColumns();
 
-  const columns = getEmployeeColumns(employees);
+  const onSelection = async (employees: TableEmployee[]) => {
+    EmployeesStore.employee = await EmployeesStore.getById(employees[0].id);
+  };
 
   useEffect(() => {
     EmployeesStore.employee = undefined;
@@ -28,11 +28,10 @@ const EmployeesPage = () => {
 
   return (
     <>
-      <Table<Employee>
-        items={employees}
-        onSelection={onSelection}
-        regions={regions}
+      <Table<TableEmployee>
+        items={employees.map(mapEmployeeToTable)}
         columns={columns}
+        setItems={onSelection}
       />
       <TableButtons>
         <CreateEmployee />
