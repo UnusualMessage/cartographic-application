@@ -1,8 +1,9 @@
-import { Button } from "@blueprintjs/core";
+import { Space, Button } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { Geocoder } from "@entities/geocoder";
 import { ControlsStore } from "@shared/misc";
+import { Icon } from "@shared/ui";
 
 import { wrapper } from "./menu.module.scss";
 
@@ -18,16 +19,15 @@ const InteractionsControl = () => {
   };
 
   return (
-    <div className={wrapper}>
+    <Space className={wrapper}>
       <Button
         onClick={active ? hideDrawer : showDrawer}
-        minimal
-        icon={active ? "menu-open" : "menu-closed"}
-        intent={active ? "primary" : "none"}
+        icon={<Icon icon={active ? "menu-open" : "menu-closed"} />}
+        type={active ? "primary" : "text"}
       />
       <Geocoder />
-      <Button minimal icon={"search"} />
-    </div>
+      <Button icon={<Icon icon={"search"} />} type={"text"} />
+    </Space>
   );
 };
 
