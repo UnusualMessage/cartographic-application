@@ -1,4 +1,4 @@
-import { Icon } from "@blueprintjs/core";
+import { EditOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -59,7 +59,7 @@ const UpdatePartner = ({ id }: Props) => {
     <DialogForm
       title={"Редактирование записи (контрагент)"}
       buttonText={"Редактировать"}
-      buttonIcon={<Icon icon={"edit"} />}
+      buttonIcon={<EditOutlined />}
       buttonDisabled={!id}
       onAccept={id ? handleSubmit(onSubmit) : undefined}
       successful={successful}

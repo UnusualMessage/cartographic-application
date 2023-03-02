@@ -1,4 +1,4 @@
-import { Icon } from "@blueprintjs/core";
+import { CopyOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 import { useFetch, fromUuidToNumber } from "../../../lib";
@@ -36,7 +36,7 @@ const Duplicate = <T extends Item>({ id, name, store }: Props<T>) => {
     <DialogForm
       title={`Дублирование записи (${name})`}
       buttonText={"Дублировать"}
-      buttonIcon={<Icon icon={"duplicate"} />}
+      buttonIcon={<CopyOutlined />}
       buttonDisabled={!id}
       onAccept={id ? handleDuplicate : undefined}
       successful={successful}
