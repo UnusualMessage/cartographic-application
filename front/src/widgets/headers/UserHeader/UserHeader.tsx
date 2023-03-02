@@ -1,81 +1,101 @@
 import {
-  Button,
-  H2,
-  H6,
-  Icon,
-  Navbar,
-  NavbarGroup,
-  NavbarHeading,
-  Text,
-} from "@blueprintjs/core";
+  PauseOutlined,
+  StepForwardOutlined,
+  FieldTimeOutlined,
+  FileExcelOutlined,
+  DesktopOutlined,
+  FileAddOutlined,
+  HomeOutlined,
+  SettingOutlined,
+  BellOutlined,
+} from "@ant-design/icons";
+import { Button, Typography, Space } from "antd";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
 import { OrganizationsStore } from "@entities/organization";
 import { AuthStore } from "@entities/user";
-import { about } from "@shared/assets/samples/about";
-import { UpdateStore } from "@shared/misc/stores";
+import { about } from "@shared/assets";
+import { UpdateStore } from "@shared/misc";
+import { Icon } from "@shared/ui";
 
-import { container, logo, user, wrapper } from "./header.module.scss";
+import { container, logo, wrapper } from "./header.module.scss";
+
+const { Text, Title } = Typography;
 
 const UserHeader = () => {
   return (
-    <Navbar className={wrapper}>
-      <NavbarGroup className={container}>
-        <NavbarHeading>
-          <Link className={logo} to={"/"}>
-            <Icon icon={"truck"} size={32} />
-            <H2>{about.title}</H2>
-          </Link>
-        </NavbarHeading>
+    <Space className={wrapper}>
+      <Space className={container}>
+        <Space className={logo}>
+          <HomeOutlined style={{ fontSize: "32px" }} />
+          <Title level={2} style={{ margin: 0 }}>
+            {about.title}
+          </Title>
+        </Space>
 
         <Link to={"/"}>
-          <Button icon="path-search" text="Просмотр" minimal large />
+          <Button icon={<DesktopOutlined />} size={"large"} type={"text"}>
+            Мониторинг
+          </Button>
         </Link>
 
         <Link to={"/references/select"}>
-          <Button icon="clipboard" text="Справочники" minimal large />
+          <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
+            Справочники
+          </Button>
         </Link>
 
-        <Button icon="export" text="Отчеты" minimal large disabled />
-      </NavbarGroup>
-
-      <NavbarGroup className={container}>
         <Button
-          icon="pause"
-          intent={UpdateStore.paused ? "primary" : "none"}
-          minimal
-          large
+          icon={<FileExcelOutlined />}
+          size={"large"}
+          type={"text"}
+          disabled
+        >
+          Отчеты
+        </Button>
+      </Space>
+
+      <Space className={container}>
+        <Button
+          icon={<PauseOutlined />}
+          type={UpdateStore.paused ? "primary" : "text"}
+          size={"large"}
           onClick={() => UpdateStore.pause()}
         />
         <Button
-          icon="stop"
-          intent={UpdateStore.stopped ? "primary" : "none"}
-          minimal
-          large
+          icon={<FieldTimeOutlined />}
+          type={UpdateStore.stopped ? "primary" : "text"}
+          size={"large"}
           onClick={() => UpdateStore.stop()}
         />
         <Button
-          icon="step-forward"
-          intent={UpdateStore.active ? "primary" : "none"}
-          minimal
-          large
+          icon={<StepForwardOutlined />}
+          type={UpdateStore.active ? "primary" : "text"}
+          size={"large"}
           onClick={() => UpdateStore.resume()}
         />
-      </NavbarGroup>
+      </Space>
 
-      <NavbarGroup className={container}>
-        <Button icon="cog" text="Настройки" minimal large disabled />
-        <Button icon="notifications" minimal large />
+      <Space className={container}>
+        <Button
+          icon={<SettingOutlined />}
+          size={"large"}
+          type={"text"}
+          disabled
+        >
+          Настройки
+        </Button>
+        <Button icon={<BellOutlined />} type={"text"} size={"large"} />
 
-        <div className={user}>
+        <Space direction={"vertical"} size={2}>
           <Text>{AuthStore.fullName}</Text>
-          <H6>{OrganizationsStore.organization?.title}</H6>
-        </div>
+          <Text strong>{OrganizationsStore.organization?.title}</Text>
+        </Space>
 
-        <Button icon="log-out" minimal large />
-      </NavbarGroup>
-    </Navbar>
+        <Button icon={<Icon icon={"log-out"} />} type={"text"} size={"large"} />
+      </Space>
+    </Space>
   );
 };
 

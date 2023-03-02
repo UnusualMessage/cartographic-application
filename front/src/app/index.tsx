@@ -1,4 +1,5 @@
-import { HotkeysProvider } from "@blueprintjs/core";
+import { ConfigProvider } from "antd";
+import ruRU from "antd/locale/ru_RU";
 import React from "react";
 
 import Routing from "../pages";
@@ -7,9 +8,9 @@ import "./index.scss";
 
 const App = () => {
   return (
-    <HotkeysProvider>
+    <ConfigProvider locale={ruRU}>
       <Routing />
-    </HotkeysProvider>
+    </ConfigProvider>
   );
 };
 

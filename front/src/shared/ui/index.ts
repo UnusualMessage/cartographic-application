@@ -10,3 +10,4 @@ export { default as TableButtons } from "./TableButtons";
 export { default as Condition } from "./Condition";
 export * from "./Table";
 export { default as ToastNotification } from "./ToastNotification";
+export { default as Icon } from "./Icon";
