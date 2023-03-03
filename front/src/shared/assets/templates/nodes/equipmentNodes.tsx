@@ -1,22 +1,21 @@
+import { CarOutlined, FolderOutlined } from "@ant-design/icons";
+
 import type { Node } from "../../../misc";
 import { types } from "../../samples";
 
 export const equipmentNodes: Node[] = [
   {
-    id: "tree-equipments",
-    icon: "tractor",
-    label: "Техника",
-    isExpanded: true,
-    isSelected: true,
+    key: "tree-equipments",
+    icon: <CarOutlined />,
+    title: "Техника",
 
-    childNodes: types.map((type) => {
+    children: types.map((type) => {
       return {
-        id: `tree-equipments-type-${type.id}`,
-        icon: "folder-close",
-        label: type.name,
-        isExpanded: true,
-        nodeData: type.id,
-        childNodes: [],
+        key: `tree-equipments-type-${type.id}`,
+        icon: <FolderOutlined />,
+        title: type.name,
+        data: type.id,
+        children: [],
       };
     }),
   },

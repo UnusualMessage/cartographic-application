@@ -1,3 +1,4 @@
+import { FileOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
@@ -17,16 +18,16 @@ const fillNodes = (plans?: Plan[]) => {
   }
 
   plans.forEach((plan) => {
-    const yearNode = initial[0].childNodes?.find(
-      (node) => node.nodeData === plan.year
+    const yearNode = initial[0].children?.find(
+      (node) => node.data === plan.year
     );
 
     if (yearNode) {
-      yearNode.childNodes?.push({
-        id: plan.id,
-        label: plan.title,
-        icon: "document",
-        nodeData: plan,
+      yearNode.children?.push({
+        key: plan.id,
+        title: plan.title,
+        icon: <FileOutlined />,
+        data: plan,
       });
     }
   });
@@ -42,7 +43,7 @@ const PlansTree = () => {
       fillNodes={fillNodes}
       source={plans}
       className={tree}
-      handleClick={getPlansTreeClickHandler()}
+      handleSelect={getPlansTreeClickHandler()}
     />
   );
 };

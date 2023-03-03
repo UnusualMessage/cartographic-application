@@ -17,11 +17,11 @@ class TabsStore {
   private _adminTabId?: string;
 
   constructor() {
-    this._footerTabsListId = "footer-geozones";
+    this._footerTabsListId = "footer-plans";
     this._footerTabId = undefined;
 
     this._siderTabsListId = "sider-tabs";
-    this._siderTabId = "sider-geozones";
+    this._siderTabId = "sider-plans";
 
     this._adminTabsListId = "admin-tabs";
     this._adminTabId = "admin-home";

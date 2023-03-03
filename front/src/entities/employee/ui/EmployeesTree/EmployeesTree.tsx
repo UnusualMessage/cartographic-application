@@ -1,3 +1,4 @@
+import { UserOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
@@ -16,25 +17,25 @@ const fillNodes = (employees?: Employee[]) => {
   }
 
   employees.forEach((employee) => {
-    const area = initial[0].childNodes?.find(
-      (node) => node.nodeData === employee.organization.id
+    const area = initial[0].children?.find(
+      (node) => node.data === employee.organization.id
     );
 
     if (area) {
-      area.childNodes?.push({
-        id: employee.id,
-        label: `${employee.secondName} ${employee.firstName} ${employee.patronymic}`,
-        icon: "person",
-        nodeData: employee,
+      area.children?.push({
+        key: employee.id,
+        title: `${employee.secondName} ${employee.firstName} ${employee.patronymic}`,
+        icon: <UserOutlined />,
+        data: employee,
       });
     }
   });
 
-  if (initial[0].childNodes) {
-    for (const folder of initial[0].childNodes) {
-      if (!folder.childNodes?.length) {
+  if (initial[0].children) {
+    for (const folder of initial[0].children) {
+      if (!folder.children?.length) {
         folder.disabled = true;
-        folder.isExpanded = true;
+        folder.isLeaf = true;
       }
     }
   }

@@ -1,3 +1,11 @@
-import { TreeNodeInfo } from "@blueprintjs/core";
+import { ReactNode } from "react";
 
-export type Node = TreeNodeInfo<any>;
+export interface Node {
+  title: ReactNode;
+  key: string;
+  icon: ReactNode;
+  data?: any;
+  children?: Node[];
+  isLeaf?: boolean;
+  disabled?: boolean;
+}
