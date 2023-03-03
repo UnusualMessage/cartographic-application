@@ -1,77 +1,66 @@
-import { MenuItem } from "@blueprintjs/core";
-import { ItemRenderer, Suggest2 } from "@blueprintjs/select";
 import { Point } from "@turf/turf";
+import { Select } from "antd";
+import { Coordinate } from "ol/coordinate";
 import { fromLonLat } from "ol/proj";
-import { ChangeEvent, ChangeEventHandler, useEffect, useState } from "react";
+import { useState, ReactNode } from "react";
 
-import { GeocoderFeature, ViewStore } from "@shared/misc";
+import { ViewStore } from "@shared/misc";
 
 import { GeocoderService } from "../../model";
 
-const itemRenderer: ItemRenderer<GeocoderFeature> = (
-  feature,
-  { handleClick }
-) => {
-  return (
-    <MenuItem
-      role={"listoption"}
-      text={feature.place_name}
-      key={feature.id}
-      onClick={handleClick}
-    />
-  );
-};
-
-const inputValueRenderer = (feature: GeocoderFeature) => {
-  return feature.place_name;
-};
-
-const onItemSelect = (feature: GeocoderFeature) => {
-  if (feature.geometry.type === "Point") {
-    ViewStore.centerTo(fromLonLat((feature.geometry as Point).coordinates));
-  }
-};
+interface Item {
+  key?: string;
+  label: ReactNode;
+  value: Coordinate;
+}
 
 const Geocoder = () => {
-  const [features, setFeatures] = useState<GeocoderFeature[]>([]);
+  const [items, setItems] = useState<Item[]>([]);
+  const [value, setValue] = useState<string>();
 
-  const handleInput: ChangeEventHandler<HTMLInputElement> = (event) => {
+  const handleSearch = (value: string) => {
     const geocoderService = new GeocoderService();
 
     const getFeatures = async () => {
-      const response = await geocoderService.getLocation(event.target.value);
-      setFeatures(response);
+      const response = await geocoderService.getLocation(value);
+      setItems(
+        response.map((item) => {
+          return {
+            key: item.id?.toString(),
+            label: item.place_name,
+            value: (item.geometry as Point).coordinates,
+          };
+        })
+      );
     };
 
     void getFeatures();
   };
 
-  useEffect(() => {
-    const input = document.querySelector(".bp4-input") as HTMLInputElement;
-    input.placeholder = "Поиск...";
-  }, []);
+  const handleChange = (value: string) => {
+    setValue(value);
+  };
 
-  const onQueryChange = (
-    query: string,
-    event: ChangeEvent<HTMLInputElement> | undefined
-  ) => {
-    if (event) {
-      handleInput(event);
-    }
+  const handleSelect = (value: string, item: Item) => {
+    ViewStore.centerTo(fromLonLat(item.value));
+    setValue(value);
   };
 
   return (
-    <Suggest2<GeocoderFeature>
-      items={features}
-      inputValueRenderer={inputValueRenderer}
-      itemRenderer={itemRenderer}
-      onQueryChange={onQueryChange}
-      onItemSelect={onItemSelect}
-      noResults={"Пустота..."}
-      popoverProps={{ minimal: true, matchTargetWidth: true }}
-      resetOnClose
-      resetOnSelect
-      closeOnSelect
+    <Select
+      showSearch
+      labelInValue
+      defaultActiveFirstOption={false}
+      showArrow={false}
+      filterOption={false}
+      value={value}
+      options={items}
+      placeholder="Поиск..."
+      notFoundContent={null}
+      onSearch={handleSearch}
+      onChange={handleChange}
+      onSelect={handleSelect}
+      style={{ width: "200px" }}
     />
   );
 };

@@ -9,7 +9,7 @@ import {
   SettingOutlined,
   BellOutlined,
 } from "@ant-design/icons";
-import { Button, Typography, Space } from "antd";
+import { Button, Typography, Space, Badge } from "antd";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
@@ -86,7 +86,10 @@ const UserHeader = () => {
         >
           Настройки
         </Button>
-        <Button icon={<BellOutlined />} type={"text"} size={"large"} />
+
+        <Badge count={100} size={"small"} offset={[-20, 10]}>
+          <Button icon={<BellOutlined />} type={"text"} size={"large"} />
+        </Badge>
 
         <Space direction={"vertical"} size={2}>
           <Text>{AuthStore.fullName}</Text>
