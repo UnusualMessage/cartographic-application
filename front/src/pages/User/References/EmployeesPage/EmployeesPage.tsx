@@ -8,7 +8,7 @@ import {
   DuplicateEmployee,
   RemoveEmployee,
 } from "@entities/employee";
-import { getEmployeeColumns, mapEmployeeToTable } from "@shared/lib";
+import { getEmployeeTable, mapEmployeeToTable } from "@shared/lib";
 import { TableEmployee } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
@@ -16,7 +16,7 @@ const EmployeesPage = () => {
   const employee = EmployeesStore.employee;
   const employees = EmployeesStore.employees;
 
-  const columns = getEmployeeColumns();
+  const columns = getEmployeeTable();
 
   const onSelection = async (employees: TableEmployee[]) => {
     EmployeesStore.employee = await EmployeesStore.getById(employees[0].id);

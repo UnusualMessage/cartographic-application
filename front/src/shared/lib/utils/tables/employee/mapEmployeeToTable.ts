@@ -1,4 +1,4 @@
-import { Employee, TableEmployee } from "../../../misc";
+import { Employee, TableEmployee } from "../../../../misc";
 
 export const mapEmployeeToTable = (employee: Employee): TableEmployee => {
   return {

@@ -9,7 +9,7 @@ import {
   DepartmentsStore,
 } from "@entities/department";
 import { EmployeesStore } from "@entities/employee";
-import { getDepartmentColumns, useRegions } from "@shared/lib";
+import { getDepartmentTable, useRegions } from "@shared/lib";
 import { Department } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
@@ -21,7 +21,7 @@ const DepartmentsPage = () => {
     DepartmentsStore.department = departments[rowIndex];
   });
 
-  const columns = getDepartmentColumns(departments);
+  const columns = getDepartmentTable(departments);
 
   useEffect(() => {
     EmployeesStore.employee = undefined;

@@ -1,6 +1,6 @@
-export interface TableEmployee {
-  id: string;
-  key: string;
+import { TableItem } from "../../table";
+
+export interface TableEmployee extends TableItem {
   firstName: string;
   secondName?: string;
   patronymic?: string;
