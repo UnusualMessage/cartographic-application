@@ -1,4 +1,5 @@
-import { TreeEventHandler } from "@blueprintjs/core";
+import { FolderOutlined, FileOutlined } from "@ant-design/icons";
+import { TreeProps } from "antd/es/tree";
 import classNames from "classnames";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
@@ -33,215 +34,332 @@ import { fullHeight, wrapper } from "./tree.module.scss";
 import WorksCategories from "./WorksCategories";
 import WorksPlans from "./WorksPlans";
 
+export const references: Reference[] = [
+  {
+    id: uuid(),
+    link: "partners",
+    component: <Partners />,
+  },
+
+  {
+    id: uuid(),
+    link: "departments",
+    component: <Departments />,
+  },
+
+  {
+    id: uuid(),
+    link: "geozones",
+    component: <Geozones />,
+  },
+
+  {
+    id: uuid(),
+    link: "store-places",
+    component: <StorePlaces />,
+  },
+
+  {
+    id: uuid(),
+    link: "dest-places",
+    component: <DestinationPlaces />,
+  },
+
+  {
+    id: uuid(),
+    link: "works-categories",
+    component: <WorksCategories />,
+  },
+
+  {
+    id: uuid(),
+    link: "works-plans",
+    component: <WorksPlans />,
+  },
+
+  {
+    id: uuid(),
+    link: "annual-plans",
+    component: <AnnualPlans />,
+  },
+
+  {
+    id: uuid(),
+    link: "operational-plans",
+    component: <OperationalPlans />,
+  },
+
+  {
+    id: uuid(),
+    link: "group-schedule",
+    component: <GroupSchedule />,
+  },
+
+  {
+    id: uuid(),
+    link: "group-plans",
+    component: <GroupPlans />,
+  },
+
+  {
+    id: uuid(),
+    link: "goods-groups",
+    component: <GoodsGroups />,
+  },
+
+  {
+    id: uuid(),
+    link: "crops",
+    component: <Crops />,
+  },
+
+  {
+    id: uuid(),
+    link: "technologies",
+    component: <Technologies />,
+  },
+
+  {
+    id: uuid(),
+    link: "goods",
+    component: <Goods />,
+  },
+
+  {
+    id: uuid(),
+    link: "posts",
+    component: <Posts />,
+  },
+
+  {
+    id: uuid(),
+    link: "employees",
+    component: <Employees />,
+  },
+
+  {
+    id: uuid(),
+    link: "speed",
+    component: <Speed />,
+  },
+
+  {
+    id: uuid(),
+    link: "select",
+    component: <Select />,
+  },
+
+  {
+    id: uuid(),
+    link: "trailers",
+    component: <Trailers />,
+  },
+
+  {
+    id: uuid(),
+    link: "mounteds",
+    component: <Mounteds />,
+  },
+];
+
 const referenceNodes: Node[] = [
   {
-    id: "tree-references",
-    icon: "folder-close",
-    label: "Все",
-    isExpanded: true,
-    isSelected: false,
-    nodeData: undefined,
+    key: "tree-references",
+    icon: <FolderOutlined />,
+    title: "Все",
+    data: undefined,
 
-    childNodes: [
+    children: [
       {
-        id: uuid(),
-        icon: "folder-close",
-        label: "Юридические лица",
-        isExpanded: true,
-        nodeData: undefined,
-        childNodes: [
+        key: uuid(),
+        icon: <FolderOutlined />,
+        title: "Юридические лица",
+        data: undefined,
+        children: [
           {
-            id: uuid(),
-            icon: "document",
-            label: "Контрагенты",
-            nodeData: "partners",
+            key: references[0].id,
+            icon: <FileOutlined />,
+            title: "Контрагенты",
+            data: "partners",
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Подразделения",
-            nodeData: "departments",
+            key: references[1].id,
+            icon: <FileOutlined />,
+            title: "Подразделения",
+            data: "departments",
           },
         ],
       },
 
       {
-        id: uuid(),
-        icon: "folder-close",
-        label: "Поля и места",
-        isExpanded: true,
-        nodeData: undefined,
-        childNodes: [
+        key: uuid(),
+        icon: <FolderOutlined />,
+        title: "Поля и места",
+        data: undefined,
+        children: [
           {
-            id: uuid(),
-            icon: "document",
-            label: "Геозоны",
-            nodeData: "geozones",
+            key: references[2].id,
+            icon: <FileOutlined />,
+            title: "Геозоны",
+            data: "geozones",
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Места хранения",
-            nodeData: "store-places",
+            key: references[3].id,
+            icon: <FileOutlined />,
+            title: "Места хранения",
+            data: "store-places",
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Места назначения",
-            nodeData: "dest-places",
+            key: references[4].id,
+            icon: <FileOutlined />,
+            title: "Места назначения",
+            data: "dest-places",
           },
         ],
       },
 
       {
-        id: uuid(),
-        icon: "folder-close",
-        label: "Планирование и задания",
-        isExpanded: true,
-        nodeData: undefined,
-        childNodes: [
+        key: uuid(),
+        icon: <FolderOutlined />,
+        title: "Планирование и задания",
+        children: [
           {
-            id: uuid(),
-            icon: "folder-close",
-            label: "Настройки планирования",
-            isExpanded: true,
-            nodeData: undefined,
-            childNodes: [
+            key: uuid(),
+            icon: <FolderOutlined />,
+            title: "Настройки планирования",
+            data: undefined,
+            children: [
               {
-                id: uuid(),
-                icon: "document",
-                label: "Смены работ",
-                nodeData: "works-plans",
+                key: references[6].id,
+                icon: <FileOutlined />,
+                title: "Смены работ",
+                data: "works-plans",
               },
 
               {
-                id: uuid(),
-                icon: "document",
-                label: "Ежегодные планы",
-                nodeData: "annual-plans",
+                key: references[7].id,
+                icon: <FileOutlined />,
+                title: "Ежегодные планы",
+                data: "annual-plans",
               },
             ],
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Оперативные планы",
-            nodeData: "operational-plans",
+            key: references[8].id,
+            icon: <FileOutlined />,
+            title: "Оперативные планы",
+            data: "operational-plans",
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Групповой график работ",
-            nodeData: "group-schedule",
+            key: references[9].id,
+            icon: <FileOutlined />,
+            title: "Групповой график работ",
+            data: "group-schedule",
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Групповые оперативные планы",
-            nodeData: "group-plans",
+            key: references[10].id,
+            icon: <FileOutlined />,
+            title: "Групповые оперативные планы",
+            data: "group-plans",
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Группы товаров",
-            nodeData: "goods-groups",
-          },
-        ],
-      },
-
-      {
-        id: uuid(),
-        icon: "folder-close",
-        label: "Культуры и товары",
-        isExpanded: true,
-        nodeData: undefined,
-        childNodes: [
-          {
-            id: uuid(),
-            icon: "document",
-            label: "Культуры",
-            nodeData: "crops",
-          },
-
-          {
-            id: uuid(),
-            icon: "document",
-            label: "Технологии",
-            nodeData: "technologies",
-          },
-
-          {
-            id: uuid(),
-            icon: "document",
-            label: "Товары",
-            nodeData: "goods",
-          },
-
-          {
-            id: uuid(),
-            icon: "document",
-            label: "Должности",
-            nodeData: "posts",
+            key: references[11].id,
+            icon: <FileOutlined />,
+            title: "Группы товаров",
+            data: "goods-groups",
           },
         ],
       },
 
       {
-        id: uuid(),
-        icon: "folder-close",
-        label: "Сотрудники",
-        isExpanded: true,
-        nodeData: undefined,
-        childNodes: [
+        key: uuid(),
+        icon: <FolderOutlined />,
+        title: "Культуры и товары",
+        data: undefined,
+        children: [
           {
-            id: uuid(),
-            icon: "document",
-            label: "Персонал",
-            nodeData: "employees",
+            key: references[12].id,
+            icon: <FileOutlined />,
+            title: "Культуры",
+            data: "crops",
           },
 
           {
-            id: uuid(),
-            icon: "document",
-            label: "Скоростные режимы",
-            nodeData: "speed",
+            key: references[13].id,
+            icon: <FileOutlined />,
+            title: "Технологии",
+            data: "technologies",
+          },
+
+          {
+            key: references[14].id,
+            icon: <FileOutlined />,
+            title: "Товары",
+            data: "goods",
+          },
+
+          {
+            key: references[15].id,
+            icon: <FileOutlined />,
+            title: "Должности",
+            data: "posts",
           },
         ],
       },
 
       {
-        id: uuid(),
-        icon: "folder-close",
-        label: "Техника и оборудование",
-        isExpanded: true,
-        nodeData: undefined,
-        childNodes: [
+        key: uuid(),
+        icon: <FolderOutlined />,
+        title: "Сотрудники",
+        data: undefined,
+        children: [
           {
-            id: uuid(),
-            icon: "folder-close",
-            label: "Прицепы и навесное оборудование",
-            isExpanded: true,
-            nodeData: undefined,
-            childNodes: [
+            key: references[16].id,
+            icon: <FileOutlined />,
+            title: "Персонал",
+            data: "employees",
+          },
+
+          {
+            key: references[17].id,
+            icon: <FileOutlined />,
+            title: "Скоростные режимы",
+            data: "speed",
+          },
+        ],
+      },
+
+      {
+        key: uuid(),
+        icon: <FolderOutlined />,
+        title: "Техника и оборудование",
+        data: undefined,
+        children: [
+          {
+            key: uuid(),
+            icon: <FolderOutlined />,
+            title: "Прицепы и навесное оборудование",
+            data: undefined,
+            children: [
               {
-                id: uuid(),
-                icon: "document",
-                label: "Прицепы",
-                nodeData: "trailers",
+                key: references[19].id,
+                icon: <FileOutlined />,
+                title: "Прицепы",
+                data: "trailers",
               },
 
               {
-                id: uuid(),
-                icon: "document",
-                label: "Навесы",
-                nodeData: "mounteds",
+                key: references[20].id,
+                icon: <FileOutlined />,
+                title: "Навесы",
+                data: "mounteds",
               },
             ],
           },
@@ -258,9 +376,13 @@ const fillNodes = () => {
 const ReferencesTree = () => {
   const navigate = useNavigate();
 
-  const handleClick: TreeEventHandler<any> = (node) => {
-    if (node.nodeData) {
-      navigate(node.nodeData);
+  const handleClick: TreeProps["onSelect"] = (keys, info) => {
+    const reference = references.find(
+      (reference) => info.selectedNodes[0].key === reference.id
+    );
+
+    if (reference) {
+      navigate(reference.link);
     }
   };
 
@@ -268,117 +390,10 @@ const ReferencesTree = () => {
     <EntitiesTree
       fillNodes={fillNodes}
       className={classNames(wrapper, fullHeight)}
-      handleClick={handleClick}
+      handleSelect={handleClick}
     />
   );
 };
-
-export const references: Reference[] = [
-  {
-    link: "partners",
-    component: <Partners />,
-  },
-
-  {
-    link: "departments",
-    component: <Departments />,
-  },
-
-  {
-    link: "geozones",
-    component: <Geozones />,
-  },
-
-  {
-    link: "store-places",
-    component: <StorePlaces />,
-  },
-
-  {
-    link: "dest-places",
-    component: <DestinationPlaces />,
-  },
-
-  {
-    link: "works-categories",
-    component: <WorksCategories />,
-  },
-
-  {
-    link: "works-plans",
-    component: <WorksPlans />,
-  },
-
-  {
-    link: "annual-plans",
-    component: <AnnualPlans />,
-  },
-
-  {
-    link: "operational-plans",
-    component: <OperationalPlans />,
-  },
-
-  {
-    link: "group-schedule",
-    component: <GroupSchedule />,
-  },
-
-  {
-    link: "group-plans",
-    component: <GroupPlans />,
-  },
-
-  {
-    link: "goods-groups",
-    component: <GoodsGroups />,
-  },
-
-  {
-    link: "crops",
-    component: <Crops />,
-  },
-
-  {
-    link: "technologies",
-    component: <Technologies />,
-  },
-
-  {
-    link: "goods",
-    component: <Goods />,
-  },
-
-  {
-    link: "posts",
-    component: <Posts />,
-  },
-
-  {
-    link: "employees",
-    component: <Employees />,
-  },
-
-  {
-    link: "speed",
-    component: <Speed />,
-  },
-
-  {
-    link: "select",
-    component: <Select />,
-  },
-
-  {
-    link: "trailers",
-    component: <Trailers />,
-  },
-
-  {
-    link: "mounteds",
-    component: <Mounteds />,
-  },
-];
 
 const References = () => {
   return (
