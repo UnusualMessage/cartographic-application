@@ -8,32 +8,32 @@ import {
   RemoveDepartment,
   DepartmentsStore,
 } from "@entities/department";
-import { EmployeesStore } from "@entities/employee";
-import { getDepartmentTable, useRegions } from "@shared/lib";
-import { Department } from "@shared/misc";
+import { getDepartmentTable, mapDepartmentToTable } from "@shared/lib";
+import { TableDepartment } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
-const DepartmentsPage = () => {
+const Departments = () => {
   const department = DepartmentsStore.department;
   const departments = DepartmentsStore.departments;
 
-  const { regions, onSelection } = useRegions((rowIndex: number) => {
-    DepartmentsStore.department = departments[rowIndex];
-  });
+  const columns = getDepartmentTable();
 
-  const columns = getDepartmentTable(departments);
+  const onSelection = async (departments: TableDepartment[]) => {
+    DepartmentsStore.department = await DepartmentsStore.getById(
+      departments[0].id
+    );
+  };
 
   useEffect(() => {
-    EmployeesStore.employee = undefined;
+    DepartmentsStore.department = undefined;
   }, []);
 
   return (
     <>
-      <Table<Department>
-        items={departments}
-        onSelection={onSelection}
-        regions={regions}
+      <Table<TableDepartment>
+        items={departments.map(mapDepartmentToTable)}
         columns={columns}
+        setItems={onSelection}
       />
       <TableButtons>
         <CreateDepartment />
@@ -45,4 +45,4 @@ const DepartmentsPage = () => {
   );
 };
 
-export default observer(DepartmentsPage);
+export default observer(Departments);

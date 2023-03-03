@@ -1,7 +1,7 @@
 import { EmptyInformation } from "@shared/ui";
 
-const GeozonesPage = () => {
+const Geozones = () => {
   return <EmptyInformation />;
 };
 
-export default GeozonesPage;
+export default Geozones;

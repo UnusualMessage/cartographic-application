@@ -8,19 +8,19 @@ import {
   DuplicatePost,
   RemovePost,
 } from "@entities/post";
-import { useRegions, getPostColumns } from "@shared/lib";
-import { Post } from "@shared/misc";
+import { mapPostToTable, getPostTable } from "@shared/lib";
+import { TablePartner, TablePost } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
-const PostsPage = () => {
+const Posts = () => {
   const post = PostsStore.post;
   const posts = PostsStore.posts;
 
-  const { regions, onSelection } = useRegions((rowIndex: number) => {
-    PostsStore.post = posts[rowIndex];
-  });
+  const columns = getPostTable();
 
-  const columns = getPostColumns(posts);
+  const onSelection = async (posts: TablePost[]) => {
+    PostsStore.post = await PostsStore.getById(posts[0].id);
+  };
 
   useEffect(() => {
     PostsStore.post = undefined;
@@ -28,11 +28,10 @@ const PostsPage = () => {
 
   return (
     <>
-      <Table<Post>
-        items={posts}
-        onSelection={onSelection}
-        regions={regions}
+      <Table<TablePartner>
+        items={posts.map(mapPostToTable)}
         columns={columns}
+        setItems={onSelection}
       />
       <TableButtons>
         <CreatePost />
@@ -44,4 +43,4 @@ const PostsPage = () => {
   );
 };
 
-export default observer(PostsPage);
+export default observer(Posts);

@@ -3,31 +3,25 @@ import classNames from "classnames";
 import { Key } from "react";
 
 import type { Column as ColumnProps } from "../../misc";
-import { table, fill, width60 } from "../../styles";
+import { table } from "../../styles";
 
 interface Item {
   id: string;
 }
 
 interface Props<T> {
-  width?: number;
   items: T[];
   columns: ColumnProps[];
   setItems?: (items: T[]) => void;
+  className?: string;
 }
 
 const Table = <T extends Item>({
-  width,
   items,
   columns,
   setItems,
+  className,
 }: Props<T>) => {
-  const classes = classNames({
-    [table]: true,
-    [fill]: width,
-    [width60]: width === 60,
-  });
-
   let rowSelection = undefined;
 
   if (setItems) {
@@ -43,19 +37,22 @@ const Table = <T extends Item>({
   }
 
   return (
-    <>
-      <AntTable<T>
-        className={classes}
-        rowSelection={{
-          type: rowSelection ? "radio" : undefined,
-          onChange: rowSelection?.onChange,
-          getCheckboxProps: rowSelection?.getCheckboxProps,
-        }}
-        columns={columns}
-        dataSource={items}
-        bordered
-      />
-    </>
+    <AntTable<T>
+      className={classNames(className, table)}
+      rowSelection={
+        rowSelection
+          ? {
+              type: "radio",
+              onChange: rowSelection.onChange,
+              getCheckboxProps: rowSelection.getCheckboxProps,
+            }
+          : undefined
+      }
+      columns={columns}
+      dataSource={items}
+      bordered
+      pagination={{ position: ["bottomLeft"], pageSize: 50 }}
+    />
   );
 };
 

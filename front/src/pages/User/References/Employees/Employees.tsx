@@ -12,7 +12,7 @@ import { getEmployeeTable, mapEmployeeToTable } from "@shared/lib";
 import { TableEmployee } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
-const EmployeesPage = () => {
+const Employees = () => {
   const employee = EmployeesStore.employee;
   const employees = EmployeesStore.employees;
 
@@ -43,4 +43,4 @@ const EmployeesPage = () => {
   );
 };
 
-export default observer(EmployeesPage);
+export default observer(Employees);

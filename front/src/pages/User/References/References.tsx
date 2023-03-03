@@ -12,10 +12,10 @@ import { UserAside } from "@widgets/index";
 
 import AnnualPlans from "./AnnualPlans";
 import Crops from "./Crops";
-import DepartmentsPage from "./DepartmentsPage";
+import Departments from "./Departments";
 import DestinationPlaces from "./DestinationPlaces";
-import EmployeesPage from "./EmployeesPage";
-import GeozonesPage from "./GeozonesPage";
+import Employees from "./Employees";
+import Geozones from "./Geozones";
 import Goods from "./Goods";
 import GoodsGroups from "./GoodsGroups";
 import GroupPlans from "./GroupPlans";
@@ -23,12 +23,12 @@ import GroupSchedule from "./GroupSchedule";
 import Mounteds from "./Mounteds";
 import OperationalPlans from "./OperationalPlans";
 import Partners from "./Partners";
-import PostsPage from "./PostsPage";
+import Posts from "./Posts";
 import Select from "./Select";
-import Speed from "./Speed";
+import Speed from "./Speeds";
 import StorePlaces from "./StorePlaces";
 import Technologies from "./Technologies";
-import TrailersPage from "./TrailersPage";
+import Trailers from "./Trailers";
 import { fullHeight, wrapper } from "./tree.module.scss";
 import WorksCategories from "./WorksCategories";
 import WorksPlans from "./WorksPlans";
@@ -281,12 +281,12 @@ export const references: Reference[] = [
 
   {
     link: "departments",
-    component: <DepartmentsPage />,
+    component: <Departments />,
   },
 
   {
     link: "geozones",
-    component: <GeozonesPage />,
+    component: <Geozones />,
   },
 
   {
@@ -351,12 +351,12 @@ export const references: Reference[] = [
 
   {
     link: "posts",
-    component: <PostsPage />,
+    component: <Posts />,
   },
 
   {
     link: "employees",
-    component: <EmployeesPage />,
+    component: <Employees />,
   },
 
   {
@@ -371,7 +371,7 @@ export const references: Reference[] = [
 
   {
     link: "trailers",
-    component: <TrailersPage />,
+    component: <Trailers />,
   },
 
   {

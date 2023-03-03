@@ -8,19 +8,19 @@ import {
   DuplicateTrailer,
   RemoveTrailer,
 } from "@entities/trailer";
-import { getTrailerColumns, useRegions } from "@shared/lib";
-import { Trailer } from "@shared/misc";
+import { getTrailerTable, mapTrailerToTable } from "@shared/lib";
+import { TableTrailer } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
-const TrailersPage = () => {
+const Trailers = () => {
   const trailer = TrailersStore.trailer;
   const trailers = TrailersStore.trailers;
 
-  const { regions, onSelection } = useRegions((rowIndex: number) => {
-    TrailersStore.trailer = trailers[rowIndex];
-  });
+  const columns = getTrailerTable();
 
-  const columns = getTrailerColumns(trailers);
+  const onSelection = async (trailers: TableTrailer[]) => {
+    TrailersStore.trailer = await TrailersStore.getById(trailers[0].id);
+  };
 
   useEffect(() => {
     TrailersStore.trailer = undefined;
@@ -28,11 +28,10 @@ const TrailersPage = () => {
 
   return (
     <>
-      <Table<Trailer>
-        items={trailers}
-        onSelection={onSelection}
-        regions={regions}
+      <Table<TableTrailer>
+        items={trailers.map(mapTrailerToTable)}
         columns={columns}
+        setItems={onSelection}
       />
       <TableButtons>
         <CreateTrailer />
@@ -44,4 +43,4 @@ const TrailersPage = () => {
   );
 };
 
-export default observer(TrailersPage);
+export default observer(Trailers);

@@ -8,19 +8,19 @@ import {
   DuplicateSpeed,
   RemoveSpeed,
 } from "@entities/speed";
-import { getSpeedColumns, useRegions } from "@shared/lib";
-import { Speed as SpeedType } from "@shared/misc";
+import { getSpeedTable, mapSpeedToTable } from "@shared/lib";
+import { TableSpeed } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
-const Speed = () => {
+const Speeds = () => {
   const speed = SpeedsStore.speed;
   const speeds = SpeedsStore.speeds;
 
-  const { regions, onSelection } = useRegions((rowIndex: number) => {
-    SpeedsStore.speed = speeds[rowIndex];
-  });
+  const columns = getSpeedTable();
 
-  const columns = getSpeedColumns(speeds);
+  const onSelection = async (speeds: TableSpeed[]) => {
+    SpeedsStore.speed = await SpeedsStore.getById(speeds[0].id);
+  };
 
   useEffect(() => {
     SpeedsStore.speed = undefined;
@@ -28,11 +28,10 @@ const Speed = () => {
 
   return (
     <>
-      <Table<SpeedType>
-        items={speeds}
-        onSelection={onSelection}
-        regions={regions}
+      <Table<TableSpeed>
+        items={speeds.map(mapSpeedToTable)}
         columns={columns}
+        setItems={onSelection}
       />
       <TableButtons>
         <CreateSpeed />
@@ -44,4 +43,4 @@ const Speed = () => {
   );
 };
 
-export default observer(Speed);
+export default observer(Speeds);
