@@ -48,6 +48,7 @@ const Geocoder = () => {
 
   return (
     <Select
+      bordered={false}
       showSearch
       labelInValue
       defaultActiveFirstOption={false}
