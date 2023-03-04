@@ -6,9 +6,24 @@ import Routing from "../pages";
 
 import "./index.scss";
 
+interface ThemeData {
+  borderRadius: number;
+}
+
+const data: ThemeData = {
+  borderRadius: 0,
+};
+
 const App = () => {
   return (
-    <ConfigProvider locale={ruRU}>
+    <ConfigProvider
+      locale={ruRU}
+      theme={{
+        token: {
+          borderRadius: data.borderRadius,
+        },
+      }}
+    >
       <Routing />
     </ConfigProvider>
   );
