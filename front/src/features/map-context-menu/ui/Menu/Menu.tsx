@@ -37,21 +37,32 @@ const remove = () => {
 
 const items: MenuProps["items"] = [
   {
-    label: "Копировать",
-    key: "copy",
-    icon: <CopyOutlined />,
+    label: "Редактирование",
+    type: "group",
+
+    children: [
+      {
+        label: "Копировать",
+        key: "copy",
+        icon: <CopyOutlined />,
+      },
+
+      {
+        label: "Вставить",
+        key: "insert",
+        icon: <PlusSquareOutlined />,
+      },
+
+      {
+        label: "Удалить",
+        key: "delete",
+        icon: <MinusSquareOutlined />,
+      },
+    ],
   },
 
   {
-    label: "Вставить",
-    key: "insert",
-    icon: <PlusSquareOutlined />,
-  },
-
-  {
-    label: "Удалить",
-    key: "delete",
-    icon: <MinusSquareOutlined />,
+    type: "divider",
   },
 
   {

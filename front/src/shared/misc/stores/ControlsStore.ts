@@ -5,7 +5,7 @@ export type ControlType =
   | "search"
   | "measurement"
   | "layers"
-  | "drawing"
+  | "edit"
   | "full-screen"
   | "print"
   | "share"

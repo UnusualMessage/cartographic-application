@@ -1,5 +1,15 @@
-import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
-import { Drawer, Typography } from "antd";
+import {
+  SearchOutlined,
+  PrinterOutlined,
+  ShareAltOutlined,
+  FullscreenOutlined,
+  InfoOutlined,
+  StopOutlined,
+  EyeInvisibleOutlined,
+  EllipsisOutlined,
+  BorderOutlined,
+} from "@ant-design/icons";
+import { Drawer, Typography, MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { about } from "@shared/assets";
@@ -11,8 +21,107 @@ import {
   InteractionsStore,
 } from "@shared/misc";
 import { ControlType } from "@shared/misc/stores/ControlsStore";
+import { LayersFilled, LengthMeasurement, AreaMeasurement } from "@shared/ui";
 
 const { Text } = Typography;
+
+const items: MenuProps["items"] = [
+  {
+    label: "Поиск",
+    key: "search",
+    icon: <SearchOutlined />,
+  },
+
+  {
+    label: "Слои",
+    key: "layers",
+    icon: <LayersFilled />,
+  },
+
+  {
+    type: "divider",
+  },
+
+  {
+    label: "Измерение",
+    key: "measurement",
+    children: [
+      {
+        label: "Расстояние",
+        key: "measure-length",
+        icon: <LengthMeasurement />,
+      },
+
+      {
+        label: "Площадь",
+        key: "measure-area",
+        icon: <AreaMeasurement />,
+      },
+    ],
+  },
+
+  {
+    label: "Редактирование",
+    key: "edit",
+    children: [
+      {
+        label: "Выкл.",
+        key: "none",
+        icon: <StopOutlined />,
+      },
+
+      {
+        label: "Курсор",
+        key: "cursor",
+        icon: <EyeInvisibleOutlined />,
+      },
+
+      {
+        label: "Точка",
+        key: "point",
+        icon: <EllipsisOutlined />,
+      },
+
+      {
+        label: "Полигон",
+        key: "geozones",
+        icon: <BorderOutlined />,
+      },
+    ],
+  },
+
+  {
+    type: "divider",
+  },
+
+  {
+    label: "Полный экран",
+    key: "full-screen",
+    icon: <FullscreenOutlined />,
+  },
+
+  {
+    label: "Поделиться",
+    key: "share",
+    icon: <ShareAltOutlined />,
+  },
+
+  {
+    label: "Печать",
+    key: "print",
+    icon: <PrinterOutlined />,
+  },
+
+  {
+    type: "divider",
+  },
+
+  {
+    label: "О проекте",
+    key: "about",
+    icon: <InfoOutlined />,
+  },
+];
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
@@ -38,11 +147,27 @@ const DrawerMenu = () => {
     ControlsStore.currentMapControl = type;
   };
 
-  const handleIntent = (type: ControlType) => {
-    if (ControlsStore.currentMapControl === type) {
-      return "primary";
-    } else {
-      return "none";
+  const onClick: MenuProps["onClick"] = (e) => {
+    switch (e.key) {
+      case "measure-length":
+        choose(e.key as ControlType);
+        switchType(e.key);
+        break;
+      case "measure-area":
+        choose(e.key as ControlType);
+        switchType(e.key);
+        break;
+      case "none":
+        switchType(e.key);
+        break;
+      case "cursor":
+        switchType(e.key);
+        break;
+      case "geozones":
+        switchType(e.key);
+        break;
+      default:
+        choose(e.key as ControlType);
     }
   };
 
@@ -56,97 +181,7 @@ const DrawerMenu = () => {
       getContainer={ControlsStore.fullScreenActive ? false : ""}
       bodyStyle={{ padding: 0 }}
     >
-      <Menu large>
-        <MenuItem
-          icon="search"
-          text="Поиск"
-          intent={handleIntent("search")}
-          onClick={() => choose("search")}
-        />
-        <MenuItem
-          icon="layers"
-          text="Слои"
-          intent={handleIntent("layers")}
-          onClick={() => choose("layers")}
-        />
-        <MenuDivider />
-
-        <MenuItem
-          icon="select"
-          text="Измерение"
-          intent={handleIntent("measurement")}
-          onClick={() => choose("measurement")}
-        >
-          <MenuItem
-            icon="one-to-one"
-            text="Расстояние"
-            onClick={() => {
-              choose("measurement");
-              switchType("measure-length");
-            }}
-          />
-          <MenuItem
-            icon="polygon-filter"
-            text="Площадь"
-            onClick={() => {
-              choose("measurement");
-              switchType("measure-area");
-            }}
-          />
-        </MenuItem>
-
-        <MenuItem
-          icon="edit"
-          text="Рисование"
-          intent={handleIntent("drawing")}
-          onClick={() => choose("drawing")}
-        >
-          <MenuItem
-            icon="ban-circle"
-            text="Обычный режим"
-            onClick={() => switchType("none")}
-          />
-          <MenuItem
-            icon="hand-down"
-            text="Курсор"
-            onClick={() => switchType("cursor")}
-          />
-          <MenuItem icon="selection" text="Точка" />
-          <MenuItem
-            icon="new-layer"
-            text="Многоугольник"
-            onClick={() => switchType("geozones")}
-          />
-        </MenuItem>
-        <MenuDivider />
-
-        <MenuItem
-          icon="fullscreen"
-          text="Полный экран"
-          intent={handleIntent("full-screen")}
-          onClick={() => choose("full-screen")}
-        />
-        <MenuItem
-          icon="share"
-          text="Поделиться"
-          intent={handleIntent("share")}
-          onClick={() => choose("share")}
-        />
-        <MenuItem
-          icon="print"
-          text="Печать"
-          intent={handleIntent("print")}
-          onClick={() => choose("print")}
-        />
-
-        <MenuDivider />
-        <MenuItem
-          icon="help"
-          text="О проекте"
-          intent={handleIntent("about")}
-          onClick={() => choose("about")}
-        />
-      </Menu>
+      <Menu items={items} selectable={false} onClick={onClick} />
     </Drawer>
   );
 };
