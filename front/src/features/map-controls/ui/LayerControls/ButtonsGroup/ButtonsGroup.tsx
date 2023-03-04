@@ -1,3 +1,4 @@
+import { FullscreenOutlined, PrinterOutlined } from "@ant-design/icons";
 import { Button, Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
@@ -10,7 +11,8 @@ import {
   MapStore,
   InteractionsStore,
 } from "@shared/misc";
-import { Icon } from "@shared/ui";
+import { LengthMeasurement, LayersFilled } from "@shared/ui";
+import AreaMesurement from "@shared/ui/icons/AreaMesurement";
 
 import { active, wrapper } from "./buttons.module.scss";
 
@@ -57,39 +59,30 @@ const ButtonsGroup = () => {
     <div className={classes}>
       <Space direction={"vertical"} size={2}>
         <Button
-          icon={<Icon icon={"layers"} />}
+          icon={<LayersFilled />}
           type={isPanelOpen ? "primary" : "default"}
-          size={"large"}
           onClick={switchPanel}
         />
 
         <Button
-          icon={<Icon icon={"one-to-one"} />}
+          icon={<LengthMeasurement />}
           type={drawType === "measure-length" ? "primary" : "default"}
-          size={"large"}
           onClick={() => switchType("measure-length")}
         />
 
         <Button
-          icon={<Icon icon={"polygon-filter"} />}
+          icon={<AreaMesurement />}
           type={drawType === "measure-area" ? "primary" : "default"}
-          size={"large"}
           onClick={() => switchType("measure-area")}
         />
 
         <Button
-          icon={<Icon icon={"fullscreen"} />}
+          icon={<FullscreenOutlined />}
           type={fullScreenActive ? "primary" : "default"}
-          size={"large"}
           onClick={fullScreenActive ? exitFullScreen : enterFullScreen}
         />
 
-        <Button
-          icon={<Icon icon={"print"} />}
-          type={"default"}
-          size={"large"}
-          onClick={print}
-        />
+        <Button icon={<PrinterOutlined />} type={"default"} onClick={print} />
       </Space>
     </div>
   );

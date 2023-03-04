@@ -8,6 +8,7 @@ import {
   HomeOutlined,
   SettingOutlined,
   BellOutlined,
+  LogoutOutlined,
 } from "@ant-design/icons";
 import { Button, Typography, Space, Badge } from "antd";
 import { observer } from "mobx-react-lite";
@@ -17,7 +18,6 @@ import { OrganizationsStore } from "@entities/organization";
 import { AuthStore } from "@entities/user";
 import { about } from "@shared/assets";
 import { UpdateStore } from "@shared/misc";
-import { Icon } from "@shared/ui";
 
 import { container, logo, wrapper } from "./header.module.scss";
 
@@ -96,7 +96,7 @@ const UserHeader = () => {
           <Text strong>{OrganizationsStore.organization?.title}</Text>
         </Space>
 
-        <Button icon={<Icon icon={"log-out"} />} type={"text"} size={"large"} />
+        <Button icon={<LogoutOutlined />} type={"text"} size={"large"} />
       </Space>
     </Space>
   );
