@@ -1,7 +1,13 @@
-import { Menu as DefaultMenu, MenuDivider, MenuItem } from "@blueprintjs/core";
+import {
+  CloseOutlined,
+  MinusSquareOutlined,
+  CopyOutlined,
+  PlusSquareOutlined,
+} from "@ant-design/icons";
+import { Menu as AntMenu, MenuProps, MenuRef } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, Ref } from "react";
 
 import { invoke } from "@shared/lib";
 import {
@@ -13,29 +19,71 @@ import {
 
 import { hidden, wrapper } from "./menu.module.scss";
 
+const close = () => {
+  FeaturesService.close();
+};
+
+const copy = () => {
+  FeaturesService.copy();
+};
+
+const insert = () => {
+  FeaturesService.insert();
+};
+
+const remove = () => {
+  FeaturesService.remove();
+};
+
+const items: MenuProps["items"] = [
+  {
+    label: "Копировать",
+    key: "copy",
+    icon: <CopyOutlined />,
+  },
+
+  {
+    label: "Вставить",
+    key: "insert",
+    icon: <PlusSquareOutlined />,
+  },
+
+  {
+    label: "Удалить",
+    key: "delete",
+    icon: <MinusSquareOutlined />,
+  },
+
+  {
+    label: "Закрыть",
+    key: "close",
+    icon: <CloseOutlined />,
+  },
+];
+
 const Menu = () => {
-  const contextMenuRef = useRef<HTMLUListElement>(null);
+  const contextMenuRef: Ref<MenuRef> = useRef(null);
   const map = MapStore.map;
   const active = OverlaysStore.isContextMenuActive;
 
-  const close = () => {
-    FeaturesService.close();
-  };
-
-  const copy = () => {
-    FeaturesService.copy();
-  };
-
-  const insert = () => {
-    FeaturesService.insert();
-  };
-
-  const remove = () => {
-    FeaturesService.remove();
+  const onClick: MenuProps["onClick"] = (e) => {
+    switch (e.key) {
+      case "copy":
+        copy();
+        break;
+      case "close":
+        close();
+        break;
+      case "insert":
+        insert();
+        break;
+      case "delete":
+        remove();
+    }
   };
 
   useEffect(() => {
-    const element = contextMenuRef.current;
+    const element = contextMenuRef.current?.menu?.list;
 
     let cleanups: Callback[] = [];
     if (element && map) {
@@ -55,14 +103,13 @@ const Menu = () => {
   });
 
   return (
-    <DefaultMenu className={classes} ulRef={contextMenuRef}>
-      <MenuDivider title="Редактирование" />
-      <MenuItem icon="duplicate" text="Копировать" label="⌘C" onClick={copy} />
-      <MenuItem icon="clipboard" text="Вставить" label="⌘V" onClick={insert} />
-      <MenuItem icon="delete" text="Удалить" label="⌘D" onClick={remove} />
-      <MenuDivider title="Другое" />
-      <MenuItem icon="cross" text="Закрыть" label="⌘R" onClick={close} />
-    </DefaultMenu>
+    <AntMenu
+      className={classes}
+      onClick={onClick}
+      items={items}
+      ref={contextMenuRef}
+      selectable={false}
+    />
   );
 };
 
