@@ -1,30 +1,17 @@
-import { Tab, TabId, Tabs } from "@blueprintjs/core";
+import { Tabs } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { TabsStore } from "@shared/misc";
 import { Tab as TabType } from "@shared/misc/types/tab/Tab";
-import TabPage from "@shared/ui/TabPage";
 
-import { panel, wrapper } from "./menu.module.scss";
+import { wrapper } from "./menu.module.scss";
 import { footerTabs } from "./model";
 
-const tabsRenderer = (tab: TabType) => {
-  return (
-    <Tab
-      id={tab.id}
-      key={`table-tab-${tab.id}`}
-      title={tab.title}
-      panel={<TabPage>{tab.component}</TabPage>}
-      panelClassName={panel}
-    />
-  );
+const handleSelectedTab = (list: TabType[], current?: string) => {
+  return current ?? list[0].key;
 };
 
-const handleSelectedTab = (list: TabType[], current?: TabId) => {
-  return current ?? list[0].id;
-};
-
-const switchTab = (newTab: TabId) => {
+const switchTab = (newTab: string) => {
   TabsStore.footerTabId = newTab;
 };
 
@@ -42,11 +29,10 @@ const InfoMenu = () => {
     <Tabs
       className={wrapper}
       id="footer-tabs"
-      selectedTabId={handleSelectedTab(currentTabs, tabId)}
+      activeKey={handleSelectedTab(currentTabs, tabId)}
       onChange={switchTab}
-    >
-      {currentTabs.map(tabsRenderer)}
-    </Tabs>
+      items={currentTabs}
+    />
   );
 };
 

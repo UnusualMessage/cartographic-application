@@ -1,4 +1,4 @@
-import { Icon } from "@blueprintjs/core";
+import { EditOutlined } from "@ant-design/icons";
 import { useState } from "react";
 import {
   DeepPartial,
@@ -61,11 +61,10 @@ const Update = <T extends Item, UpdateT extends FieldValues>({
     <DialogForm
       title={`Редактирование записи (${name})`}
       buttonText={"Редактировать"}
-      buttonIcon={<Icon icon={"edit"} />}
+      buttonIcon={<EditOutlined />}
       buttonDisabled={!item}
       onAccept={item ? handleSubmit(onSubmit) : undefined}
       successful={successful}
-      setSuccessful={setSuccessful}
     >
       {formRenderer(form, register, errors)}
     </DialogForm>

@@ -80,4 +80,90 @@ export const equipment: Equipment[] = [
     type: types[1],
     status: "disabled",
   },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
+  {
+    id: uuid(),
+    name: "LADA 4X4 У847",
+    type: types[1],
+    status: "disabled",
+  },
 ];

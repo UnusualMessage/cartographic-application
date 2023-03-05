@@ -8,19 +8,19 @@ import {
   DuplicatePartner,
   RemovePartner,
 } from "@entities/partner";
-import { getPartnerColumns, useRegions } from "@shared/lib";
-import { Partner } from "@shared/misc";
+import { getPartnerTable, mapPartnerToTable } from "@shared/lib";
+import { TablePartner } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Partners = () => {
   const partner = PartnersStore.partner;
   const partners = PartnersStore.partners;
 
-  const { regions, onSelection } = useRegions((rowIndex: number) => {
-    PartnersStore.partner = partners[rowIndex];
-  });
+  const columns = getPartnerTable();
 
-  const columns = getPartnerColumns(partners);
+  const onSelection = async (partners: TablePartner[]) => {
+    PartnersStore.partner = await PartnersStore.getById(partners[0].id);
+  };
 
   useEffect(() => {
     PartnersStore.partner = undefined;
@@ -28,11 +28,10 @@ const Partners = () => {
 
   return (
     <>
-      <Table<Partner>
-        items={partners}
-        onSelection={onSelection}
-        regions={regions}
+      <Table<TablePartner>
+        items={partners.map(mapPartnerToTable)}
         columns={columns}
+        setItems={onSelection}
       />
       <TableButtons>
         <CreatePartner />

@@ -4,52 +4,45 @@ export const adminTabs: TabsList = {
   id: "admin-tabs",
   tabs: [
     {
-      id: "admin-home",
-      title: "Главная",
-      component: <></>,
-      icon: "home",
+      key: "admin-home",
+      label: "Главная",
+      children: <></>,
     },
 
     {
-      id: "admin-users",
-      title: "Пользователи",
-      component: <></>,
-      icon: "layers",
+      key: "admin-users",
+      label: "Пользователи",
+      children: <></>,
     },
 
     {
-      id: "admin-organizations",
-      title: "Организации",
-      component: <></>,
-      icon: "truck",
+      key: "admin-organizations",
+      label: "Организации",
+      children: <></>,
     },
 
     {
-      id: "admin-places",
-      title: "Муниципальные образования",
-      component: <></>,
-      icon: "truck",
+      key: "admin-places",
+      label: "Муниципальные образования",
+      children: <></>,
     },
 
     {
-      id: "admin-stats",
-      title: "Статистика",
-      component: <></>,
-      icon: "truck",
+      key: "admin-stats",
+      label: "Статистика",
+      children: <></>,
     },
 
     {
-      id: "admin-settings",
-      title: "Настройки",
-      component: <></>,
-      icon: "truck",
+      key: "admin-settings",
+      label: "Настройки",
+      children: <></>,
     },
 
     {
-      id: "admin-exit",
-      title: "Выход",
-      component: <></>,
-      icon: "truck",
+      key: "admin-exit",
+      label: "Выход",
+      children: <></>,
     },
   ],
 };

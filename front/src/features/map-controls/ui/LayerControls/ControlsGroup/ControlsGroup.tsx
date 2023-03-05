@@ -1,18 +1,17 @@
-import { Divider, Radio, RadioGroup } from "@blueprintjs/core";
+import { Radio, RadioChangeEvent, Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { FormEventHandler } from "react";
 
 import { baseLayers } from "@shared/assets";
 import { ControlsStore, BaseLayer, LayersStore } from "@shared/misc";
 
-import { visible, wrapper } from "./group.module.scss";
+import { visible, wrapper, layers } from "./group.module.scss";
 
 const ControlsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;
 
-  const handleChoose: FormEventHandler<HTMLInputElement> = (e) => {
-    LayersStore.baseLayer = e.currentTarget.value as BaseLayer;
+  const handleChoose = (e: RadioChangeEvent) => {
+    LayersStore.baseLayer = e.target.value as BaseLayer;
   };
 
   const classes = classNames({
@@ -21,24 +20,21 @@ const ControlsGroup = () => {
   });
 
   return (
-    <div className={classes}>
-      <RadioGroup
+    <Space className={classes} direction={"vertical"}>
+      <Radio.Group
+        className={layers}
         onChange={handleChoose}
-        selectedValue={LayersStore.baseLayer}
-        label={"Вид карты"}
+        value={LayersStore.baseLayer}
       >
         {baseLayers.map((layer) => {
           return (
-            <Radio
-              label={layer.label}
-              value={layer.value}
-              key={`radio-${layer.value}`}
-            />
+            <Radio value={layer.value} key={`radio-${layer.value}`}>
+              {layer.label}
+            </Radio>
           );
         })}
-        <Divider />
-      </RadioGroup>
-    </div>
+      </Radio.Group>
+    </Space>
   );
 };
 

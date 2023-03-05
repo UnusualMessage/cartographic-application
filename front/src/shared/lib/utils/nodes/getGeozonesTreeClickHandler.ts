@@ -1,9 +1,9 @@
-import { TreeEventHandler } from "@blueprintjs/core";
+import { TreeProps } from "antd/es/tree";
 
 import { TabsStore } from "../../../misc";
 
-export const getGeozonesTreeClickHandler = (): TreeEventHandler<any> => {
-  return (node) => {
+export const getGeozonesTreeClickHandler = (): TreeProps["onSelect"] => {
+  return (keys, info) => {
     const switchTabsList = (id: string) => {
       if (TabsStore.footerTabsListId !== id) {
         TabsStore.footerTabsListId = id;
@@ -11,7 +11,7 @@ export const getGeozonesTreeClickHandler = (): TreeEventHandler<any> => {
       }
     };
 
-    switch (node.id) {
+    switch (info.selectedNodes[0].key) {
       case "tree-geozones":
         switchTabsList("footer-geozones");
         break;

@@ -1,15 +1,18 @@
-import { Button, Classes, Dialog, MaybeElement } from "@blueprintjs/core";
+import { Modal, Button } from "antd";
 import {
   FormEventHandler,
   memo,
   PropsWithChildren,
   useEffect,
   useState,
+  ReactNode,
 } from "react";
+
+import { invoke } from "../../../lib";
 
 interface Props extends PropsWithChildren {
   buttonText: string;
-  buttonIcon: MaybeElement;
+  buttonIcon: ReactNode;
   buttonDisabled?: boolean;
   title: string;
   onAccept?: () => void;
@@ -31,76 +34,57 @@ const DialogForm = ({
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const resetSuccess = () => {
+  const open = () => setIsOpen(!isOpen);
+  const close = () => setIsOpen(false);
+
+  const afterClose = () => {
     if (setSuccessful) {
       setSuccessful(false);
     }
   };
 
-  const handleClick = () => setIsOpen(!isOpen);
-  const handleClose = () => setIsOpen(false);
-
-  const handleDeny = () => {
-    if (onDeny) {
-      onDeny();
-    }
-
-    handleClose();
+  const deny = () => {
+    invoke(onDeny);
+    close();
   };
 
-  const handleAccept = () => {
-    if (onAccept) {
-      onAccept();
-    }
+  const accept = () => {
+    invoke(onAccept);
   };
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    handleAccept();
+    accept();
   };
 
   useEffect(() => {
     if (successful) {
-      handleClose();
+      close();
     }
   }, [successful]);
 
   return (
     <>
       <Button
-        onClick={handleClick}
-        text={buttonText}
+        onClick={open}
         icon={buttonIcon}
         disabled={buttonDisabled}
-      />
-      <Dialog
-        isOpen={isOpen}
-        onClose={handleClose}
-        title={title}
-        onClosed={resetSuccess}
-        onOpened={resetSuccess}
-        usePortal
-        lazy
+        type={"text"}
+        size={"large"}
       >
-        <form onSubmit={handleSubmit}>
-          <div className={Classes.DIALOG_BODY}>{children}</div>
-
-          {onAccept ? (
-            <div className={Classes.DIALOG_FOOTER}>
-              <div className={Classes.DIALOG_FOOTER_ACTIONS}>
-                <Button intent={"success"} type={"submit"}>
-                  Подтвердить
-                </Button>
-                <Button intent={"danger"} onClick={handleDeny}>
-                  Отменить
-                </Button>
-              </div>
-            </div>
-          ) : (
-            <></>
-          )}
-        </form>
-      </Dialog>
+        {buttonText}
+      </Button>
+      <Modal
+        open={isOpen}
+        onOk={accept}
+        onCancel={deny}
+        title={title}
+        okText={"Принять"}
+        afterClose={afterClose}
+        destroyOnClose
+      >
+        <form onSubmit={handleSubmit}>{children}</form>
+      </Modal>
     </>
   );
 };

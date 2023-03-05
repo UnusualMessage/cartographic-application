@@ -1,4 +1,4 @@
-import { Icon } from "@blueprintjs/core";
+import { PlusCircleOutlined } from "@ant-design/icons";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 
 import { formRenderer } from "../../../lib";
@@ -36,7 +36,7 @@ const Create = <T, CreateT extends FieldValues>({
     <DialogForm
       title={`Создание записи (${name})`}
       buttonText={"Создать"}
-      buttonIcon={<Icon icon={"add"} />}
+      buttonIcon={<PlusCircleOutlined />}
       onAccept={handleSubmit(onSubmit)}
       onDeny={onDeny}
       successful={isSubmitSuccessful}

@@ -1,10 +1,10 @@
-import { Tab, Tabs } from "@blueprintjs/core";
+import { Tabs } from "antd";
 import { observer } from "mobx-react-lite";
 import { useMemo } from "react";
 
 import { TabsStore } from "@shared/misc";
 
-import { panel, wrapper } from "./menu.module.scss";
+import { wrapper } from "./menu.module.scss";
 import { siderTabs } from "./model";
 
 const EntitiesMenu = () => {
@@ -18,8 +18,8 @@ const EntitiesMenu = () => {
     <Tabs
       id="sider-tabs"
       className={wrapper}
-      selectedTabId={tabId}
-      renderActiveTabPanelOnly
+      activeKey={tabId ?? "sider-geozones"}
+      items={currentTabs}
       onChange={(newTabId) => {
         TabsStore.footerTabsListId = newTabId
           .toString()
@@ -30,20 +30,7 @@ const EntitiesMenu = () => {
 
         TabsStore.siderTabId = newTabId;
       }}
-    >
-      {currentTabs.map((tab) => {
-        return (
-          <Tab
-            id={tab.id}
-            key={`sider-${tab.id}`}
-            title={tab.title}
-            panel={tab.component}
-            icon={tab.icon}
-            panelClassName={panel}
-          />
-        );
-      })}
-    </Tabs>
+    />
   );
 };
 

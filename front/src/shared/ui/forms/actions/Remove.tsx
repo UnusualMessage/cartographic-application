@@ -1,4 +1,4 @@
-import { Icon } from "@blueprintjs/core";
+import { MinusCircleOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
 import { useFetch, fromUuidToNumber } from "../../../lib";
@@ -36,7 +36,7 @@ const Remove = <T extends Item>({ id, name, store }: Props<T>) => {
     <DialogForm
       title={`Удаление записи (${name})`}
       buttonText={"Удалить"}
-      buttonIcon={<Icon icon={"remove"} />}
+      buttonIcon={<MinusCircleOutlined />}
       buttonDisabled={!id}
       onAccept={id ? handleRemove : undefined}
       successful={successful}
