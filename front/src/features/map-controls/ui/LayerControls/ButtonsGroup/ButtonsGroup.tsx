@@ -1,7 +1,7 @@
-import { Button, ButtonGroup, Collapse } from "@blueprintjs/core";
+import { FullscreenOutlined, PrinterOutlined } from "@ant-design/icons";
+import { Button, Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { useState } from "react";
 
 import { auxLayerId } from "@shared/constants";
 import {
@@ -11,6 +11,8 @@ import {
   MapStore,
   InteractionsStore,
 } from "@shared/misc";
+import { LengthMeasurement, LayersFilled } from "@shared/ui";
+import AreaMesurement from "@shared/ui/icons/AreaMesurement";
 
 import { active, wrapper } from "./buttons.module.scss";
 
@@ -19,12 +21,6 @@ const ButtonsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;
   const handleFullScreen = ControlsStore.fullScreenHandle;
   const fullScreenActive = ControlsStore.fullScreenActive;
-
-  const [isCollapseOpen, setIsCollapseOpen] = useState(false);
-
-  const handleCollapse = () => {
-    setIsCollapseOpen(!isCollapseOpen);
-  };
 
   const switchPanel = () => {
     ControlsStore.switchPanel();
@@ -61,42 +57,33 @@ const ButtonsGroup = () => {
 
   return (
     <div className={classes}>
-      <Button
-        icon={"wrench"}
-        intent={isCollapseOpen ? "primary" : "none"}
-        onClick={handleCollapse}
-        large
-      />
+      <Space direction={"vertical"} size={2}>
+        <Button
+          icon={<LayersFilled />}
+          type={isPanelOpen ? "primary" : "default"}
+          onClick={switchPanel}
+        />
 
-      <Collapse isOpen={isCollapseOpen} keepChildrenMounted>
-        <ButtonGroup vertical large>
-          <Button
-            icon="layers"
-            intent={isPanelOpen ? "primary" : "none"}
-            onClick={switchPanel}
-          />
+        <Button
+          icon={<LengthMeasurement />}
+          type={drawType === "measure-length" ? "primary" : "default"}
+          onClick={() => switchType("measure-length")}
+        />
 
-          <Button
-            icon="one-to-one"
-            intent={drawType === "measure-length" ? "primary" : "none"}
-            onClick={() => switchType("measure-length")}
-          />
+        <Button
+          icon={<AreaMesurement />}
+          type={drawType === "measure-area" ? "primary" : "default"}
+          onClick={() => switchType("measure-area")}
+        />
 
-          <Button
-            icon="polygon-filter"
-            intent={drawType === "measure-area" ? "primary" : "none"}
-            onClick={() => switchType("measure-area")}
-          />
+        <Button
+          icon={<FullscreenOutlined />}
+          type={fullScreenActive ? "primary" : "default"}
+          onClick={fullScreenActive ? exitFullScreen : enterFullScreen}
+        />
 
-          <Button
-            icon="fullscreen"
-            intent={fullScreenActive ? "primary" : "none"}
-            onClick={fullScreenActive ? exitFullScreen : enterFullScreen}
-          />
-
-          <Button icon="print" intent={"none"} onClick={print} />
-        </ButtonGroup>
-      </Collapse>
+        <Button icon={<PrinterOutlined />} type={"default"} onClick={print} />
+      </Space>
     </div>
   );
 };

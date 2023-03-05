@@ -2,6 +2,7 @@ import { v4 as uuid } from "uuid";
 
 import PlansTab from "@features/tabs";
 import { TabsList } from "@shared/misc";
+import { TabPage } from "@shared/ui";
 import { EmptyInformation } from "@shared/ui/placeholders";
 
 export const footerTabs: TabsList[] = [
@@ -9,9 +10,13 @@ export const footerTabs: TabsList[] = [
     id: "",
     tabs: [
       {
-        id: uuid(),
-        title: "Нет данных",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Нет данных",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },
@@ -20,15 +25,23 @@ export const footerTabs: TabsList[] = [
     id: "footer-geozones",
     tabs: [
       {
-        id: uuid(),
-        title: "Поля по группам",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Поля по группам",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Поля по культурам",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Поля по культурам",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },
@@ -37,39 +50,63 @@ export const footerTabs: TabsList[] = [
     id: "footer-geozone",
     tabs: [
       {
-        id: uuid(),
-        title: "Информация",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Информация",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Текущие работы",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Текущие работы",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "История работ",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "История работ",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Текущая техника",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Текущая техника",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Поручения",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Поручения",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Заметки",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Заметки",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },
@@ -78,27 +115,43 @@ export const footerTabs: TabsList[] = [
     id: "footer-equipments",
     tabs: [
       {
-        id: uuid(),
-        title: "Статусы",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статусы",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Статусы по типам",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статусы по типам",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Статистика связи",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статистика связи",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Статистика простоев",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статистика простоев",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },
@@ -107,21 +160,33 @@ export const footerTabs: TabsList[] = [
     id: "footer-equipments-type",
     tabs: [
       {
-        id: uuid(),
-        title: "Статусы",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статусы",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Статистика связи",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статистика связи",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Статистика простоев",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статистика простоев",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },
@@ -130,63 +195,94 @@ export const footerTabs: TabsList[] = [
     id: "footer-equipment",
     tabs: [
       {
-        id: uuid(),
-        title: "Информация",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Информация",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Текущая работа",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Текущая работа",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "История работ",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "История работ",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Поручения",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Поручения",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Статистика статусов",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Статистика статусов",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },
 
   {
     id: "footer-plans",
-
     tabs: [
       {
-        id: uuid(),
-        title: "Список планов",
-        component: <PlansTab />,
+        key: uuid(),
+        label: "Список планов",
+        children: (
+          <TabPage>
+            {" "}
+            <PlansTab />{" "}
+          </TabPage>
+        ),
       },
 
       {
-        id: uuid(),
-        title: "Распределение планов",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "Распределение планов",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },
 
   {
     id: "footer-plan",
-
     tabs: [
       {
-        id: uuid(),
-        title: "План",
-        component: <EmptyInformation />,
+        key: uuid(),
+        label: "План",
+        children: (
+          <TabPage>
+            <EmptyInformation />
+          </TabPage>
+        ),
       },
     ],
   },

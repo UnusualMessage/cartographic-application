@@ -1,5 +1,4 @@
-import { Divider } from "@blueprintjs/core";
-import { ContextMenu2 } from "@blueprintjs/popover2";
+import { CarOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
@@ -10,7 +9,6 @@ import { tree } from "@shared/styles";
 import { EntitiesTree } from "@shared/ui";
 
 import EquipmentStore from "../../model/EquipmentStore";
-import EquipmentMenu from "../EquipmentMenu";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);
@@ -20,27 +18,24 @@ const fillNodes = (equipment?: Equipment[]) => {
   }
 
   equipment.forEach((item) => {
-    const equipType = initial[0].childNodes?.find(
-      (node) => node.nodeData === item.type.id
+    const equipType = initial[0].children?.find(
+      (node) => node.data === item.type.id
     );
 
     if (equipType) {
-      equipType.childNodes?.push({
-        id: item.id,
-        label: (
-          <ContextMenu2 content={<EquipmentMenu />}>{item.name}</ContextMenu2>
-        ),
-        icon: "document",
-        nodeData: item,
+      equipType.children?.push({
+        key: item.id,
+        title: item.name,
+        icon: <CarOutlined />,
+        data: item,
       });
     }
   });
 
-  if (initial[0].childNodes) {
-    for (const folder of initial[0].childNodes) {
-      if (!folder.childNodes?.length) {
+  if (initial[0].children) {
+    for (const folder of initial[0].children) {
+      if (!folder.children?.length) {
         folder.disabled = true;
-        folder.isExpanded = true;
       }
     }
   }
@@ -52,15 +47,12 @@ const EquipmentTree = () => {
   const equipment = EquipmentStore.equipment;
 
   return (
-    <>
-      <Divider />
-      <EntitiesTree<Equipment>
-        fillNodes={fillNodes}
-        handleClick={getEquipmentTreeClickHandler()}
-        source={equipment}
-        className={tree}
-      />
-    </>
+    <EntitiesTree<Equipment>
+      fillNodes={fillNodes}
+      handleSelect={getEquipmentTreeClickHandler()}
+      source={equipment}
+      className={tree}
+    />
   );
 };
 

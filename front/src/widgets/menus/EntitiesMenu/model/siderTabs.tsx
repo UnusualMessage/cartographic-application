@@ -8,31 +8,27 @@ export const siderTabs: TabsList = {
   id: "sider-tabs",
   tabs: [
     {
-      id: "sider-geozones",
-      title: "Геозоны",
-      component: <GeozonesTree />,
-      icon: "layers",
+      key: "sider-geozones",
+      label: "Геозоны",
+      children: <GeozonesTree />,
     },
 
     {
-      id: "sider-equipments",
-      title: "Техника",
-      component: <EquipmentTree />,
-      icon: "truck",
+      key: "sider-equipments",
+      label: "Техника",
+      children: <EquipmentTree />,
     },
 
     {
-      id: "sider-employees",
-      title: "Сотрудники",
-      component: <EmployeesTree />,
-      icon: "people",
+      key: "sider-employees",
+      label: "Сотрудники",
+      children: <EmployeesTree />,
     },
 
     {
-      id: "sider-plans",
-      title: "Планы",
-      component: <PlansTree />,
-      icon: "timeline-events",
+      key: "sider-plans",
+      label: "Планы",
+      children: <PlansTree />,
     },
   ],
 };

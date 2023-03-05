@@ -1,5 +1,4 @@
-import { Divider, TreeNodeInfo } from "@blueprintjs/core";
-import { ContextMenu2 } from "@blueprintjs/popover2";
+import { AppstoreOutlined, BorderOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
@@ -10,8 +9,6 @@ import { Geozone, Node } from "@shared/misc";
 import { tree } from "@shared/styles";
 import { EntitiesTree } from "@shared/ui";
 
-import GeozoneMenu from "../GeozoneMenu";
-
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);
 
@@ -20,21 +17,15 @@ const fillNodes = (nodes?: Geozone[]) => {
   }
 
   nodes.forEach((field) => {
-    const push = (node: TreeNodeInfo<any>, field: Geozone) => {
+    const push = (node: Node, field: Geozone) => {
       const hasChildren = field.children.length;
 
-      const newNode: TreeNodeInfo<any> = {
-        id: field.id,
-        label: (
-          <ContextMenu2
-            content={<GeozoneMenu id={field.id} title={field.title} />}
-          >
-            {field.title}
-          </ContextMenu2>
-        ),
-        icon: hasChildren ? "layers" : "layer",
-        nodeData: field.id,
-        childNodes: [],
+      const newNode: Node = {
+        key: field.id,
+        title: field.title,
+        icon: hasChildren ? <AppstoreOutlined /> : <BorderOutlined />,
+        data: field.id,
+        children: [],
       };
 
       if (hasChildren) {
@@ -43,11 +34,7 @@ const fillNodes = (nodes?: Geozone[]) => {
         }
       }
 
-      if (newNode.childNodes) {
-        newNode.hasCaret = newNode.childNodes.length > 0;
-      }
-
-      node.childNodes?.push(newNode);
+      node.children?.push(newNode);
     };
 
     push(initial[0], field);
@@ -60,15 +47,12 @@ const GeozonesTree = () => {
   const zones = GeozonesStore.geozones;
 
   return (
-    <>
-      <Divider />
-      <EntitiesTree<Geozone>
-        fillNodes={fillNodes}
-        source={zones}
-        handleClick={getGeozonesTreeClickHandler()}
-        className={tree}
-      />
-    </>
+    <EntitiesTree<Geozone>
+      fillNodes={fillNodes}
+      source={zones}
+      handleSelect={getGeozonesTreeClickHandler()}
+      className={tree}
+    />
   );
 };
 

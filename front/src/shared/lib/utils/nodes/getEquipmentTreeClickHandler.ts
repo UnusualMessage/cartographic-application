@@ -1,9 +1,11 @@
-import { TreeEventHandler } from "@blueprintjs/core";
+import { TreeProps } from "antd/es/tree";
 
 import { TabsStore } from "../../../misc";
 
-export const getEquipmentTreeClickHandler = (): TreeEventHandler<any> => {
-  return (node) => {
+export const getEquipmentTreeClickHandler = (): TreeProps["onSelect"] => {
+  return (keys, info) => {
+    const node = info.selectedNodes[0];
+
     const switchTabsList = (id: string) => {
       if (TabsStore.footerTabsListId !== id) {
         TabsStore.footerTabsListId = id;
@@ -11,12 +13,12 @@ export const getEquipmentTreeClickHandler = (): TreeEventHandler<any> => {
       }
     };
 
-    if (node.id.toString().includes("tree-equipments-type")) {
+    if (node.key.toString().includes("tree-equipments-type")) {
       switchTabsList("footer-equipments-type");
       return;
     }
 
-    switch (node.id) {
+    switch (node.key) {
       case "tree-equipments":
         switchTabsList("footer-equipments");
         break;

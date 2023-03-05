@@ -1,26 +1,23 @@
-import { Tree, TreeEventHandler } from "@blueprintjs/core";
-import { useCallback, useEffect, useState } from "react";
+import { DownOutlined } from "@ant-design/icons";
+import { Tree } from "antd";
+import type { TreeProps } from "antd/es/tree";
+import { useEffect, useState } from "react";
 
-import { useTreeActions } from "../../lib";
-import type { Node } from "../../misc";
+import { Node } from "../../misc";
 
 interface Props<T> {
   fillNodes: (source?: T[]) => Node[];
   source?: T[];
-  handleCollapse?: TreeEventHandler;
-  handleExpand?: TreeEventHandler;
-  handleClick?: TreeEventHandler;
-  handleContextMenu?: TreeEventHandler;
+  handleSelect?: TreeProps["onSelect"];
   className: string;
 }
+
+const { DirectoryTree } = Tree;
 
 const EntitiesTree = <T,>({
   fillNodes,
   source,
-  handleCollapse,
-  handleExpand,
-  handleClick,
-  handleContextMenu,
+  handleSelect,
   className,
 }: Props<T>) => {
   const [nodes, setNodes] = useState(() => fillNodes(source));
@@ -29,30 +26,16 @@ const EntitiesTree = <T,>({
     setNodes(fillNodes(source));
   }, [source]);
 
-  const { collapse, expand, select } = useTreeActions({
-    nodes,
-    setNodes,
-  });
-
-  const handleCombinedClick: TreeEventHandler = useCallback(
-    (node, nodePath, e) => {
-      if (handleClick) {
-        handleClick(node, nodePath, e);
-      }
-
-      select(node);
-    },
-    [nodes]
-  );
-
   return (
-    <Tree
+    <DirectoryTree
       className={className}
-      contents={nodes}
-      onNodeCollapse={handleCollapse ? handleCollapse : collapse}
-      onNodeExpand={handleExpand ? handleExpand : expand}
-      onNodeContextMenu={handleContextMenu}
-      onNodeClick={handleCombinedClick}
+      defaultExpandAll
+      showIcon={true}
+      showLine
+      autoExpandParent={false}
+      switcherIcon={<DownOutlined />}
+      onSelect={handleSelect}
+      treeData={nodes}
     />
   );
 };

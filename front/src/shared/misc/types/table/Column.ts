@@ -1,6 +1,7 @@
-import { CellRenderer } from "@blueprintjs/table";
+import { FC } from "react";
 
 export interface Column {
-  renderer: CellRenderer;
-  name: string;
+  title: string;
+  dataIndex: string;
+  render?: FC;
 }

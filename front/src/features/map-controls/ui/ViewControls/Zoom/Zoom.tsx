@@ -1,4 +1,5 @@
-import { Button, ButtonGroup } from "@blueprintjs/core";
+import { ZoomInOutlined, ZoomOutOutlined } from "@ant-design/icons";
+import { Space, Button } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
@@ -23,10 +24,10 @@ const Zoom = () => {
   });
 
   return (
-    <ButtonGroup vertical className={classes}>
-      <Button icon="zoom-in" onClick={zoomIn} />
-      <Button icon="zoom-out" onClick={zoomOut} />
-    </ButtonGroup>
+    <Space className={classes} direction={"vertical"}>
+      <Button icon={<ZoomInOutlined />} onClick={zoomIn} />
+      <Button icon={<ZoomOutOutlined />} onClick={zoomOut} />
+    </Space>
   );
 };
 

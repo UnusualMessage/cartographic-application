@@ -1,8 +1,7 @@
-export { getEmployeeColumns } from "./getEmployeeColumns";
-export { getPostColumns } from "./getPostColumns";
-export { getPlanColumns } from "./getPlanColumns";
-export { getSpeedColumns } from "./getSpeedColumns";
-export { getPartnerColumns } from "./getPartnerColumns";
-export { getDepartmentColumns } from "./getDepartmentColumns";
-export { getTrailerColumns } from "./getTrailerColumns";
-export { getNumberCell } from "./getNumberCell";
+export * from "./employee";
+export * from "./department";
+export * from "./partner";
+export * from "./plan";
+export * from "./post";
+export * from "./speed";
+export * from "./trailer";

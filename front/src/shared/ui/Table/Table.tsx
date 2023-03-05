@@ -1,69 +1,58 @@
-import {
-  Column,
-  Region,
-  RowHeaderCell2,
-  RowHeaderRenderer,
-  Table2,
-} from "@blueprintjs/table";
+import { Table as AntTable } from "antd";
 import classNames from "classnames";
+import { Key } from "react";
 
-import type { Column as ColumnProps, OnSelection } from "../../misc";
-import { table, cell, fill, width60 } from "../../styles";
+import type { Column as ColumnProps } from "../../misc";
+import { table } from "../../styles";
 
-interface Props<T> {
-  width?: number;
-  items: T[];
-  columns: ColumnProps[];
-  onSelection?: OnSelection;
-  regions?: Region[];
+interface Item {
+  id: string;
 }
 
-const Table = <T,>({
-  width,
+interface Props<T> {
+  items: T[];
+  columns: ColumnProps[];
+  setItems?: (items: T[]) => void;
+  className?: string;
+}
+
+const Table = <T extends Item>({
   items,
   columns,
-  onSelection,
-  regions,
+  setItems,
+  className,
 }: Props<T>) => {
-  const rowHeaderRenderer: RowHeaderRenderer = (rowIndex) => {
-    return (
-      <RowHeaderCell2
-        index={rowIndex}
-        name={(rowIndex + 1).toString()}
-        className={cell}
-      />
-    );
-  };
+  let rowSelection = undefined;
 
-  const classes = classNames({
-    [table]: true,
-    [fill]: width,
-    [width60]: width === 60,
-  });
+  if (setItems) {
+    rowSelection = {
+      onChange: (selectedRowKeys: Key[], selectedRows: T[]) => {
+        setItems(selectedRows);
+      },
+
+      getCheckboxProps: (item: T) => ({
+        id: item.id,
+      }),
+    };
+  }
 
   return (
-    <>
-      <Table2
-        numRows={items.length}
-        className={classes}
-        cellRendererDependencies={[items]}
-        rowHeaderCellRenderer={rowHeaderRenderer}
-        onSelection={onSelection}
-        defaultRowHeight={40}
-        enableMultipleSelection={false}
-        selectedRegions={regions}
-      >
-        {columns.map((column) => {
-          return (
-            <Column
-              cellRenderer={column.renderer}
-              name={column.name}
-              key={`table-${column.name}`}
-            />
-          );
-        })}
-      </Table2>
-    </>
+    <AntTable<T>
+      className={classNames(className, table)}
+      rowSelection={
+        rowSelection
+          ? {
+              type: "radio",
+              onChange: rowSelection.onChange,
+              getCheckboxProps: rowSelection.getCheckboxProps,
+            }
+          : undefined
+      }
+      columns={columns}
+      dataSource={items}
+      bordered
+      pagination={{ position: ["bottomLeft"], pageSize: 10 }}
+    />
   );
 };
 
