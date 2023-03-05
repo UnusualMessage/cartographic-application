@@ -65,7 +65,6 @@ const Update = <T extends Item, UpdateT extends FieldValues>({
       buttonDisabled={!item}
       onAccept={item ? handleSubmit(onSubmit) : undefined}
       successful={successful}
-      setSuccessful={setSuccessful}
     >
       {formRenderer(form, register, errors)}
     </DialogForm>

@@ -8,6 +8,8 @@ import {
   ReactNode,
 } from "react";
 
+import { invoke } from "../../../lib";
+
 interface Props extends PropsWithChildren {
   buttonText: string;
   buttonIcon: ReactNode;
@@ -32,51 +34,39 @@ const DialogForm = ({
 }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const resetSuccess = () => {
+  const open = () => setIsOpen(!isOpen);
+  const close = () => setIsOpen(false);
+
+  const afterClose = () => {
     if (setSuccessful) {
       setSuccessful(false);
     }
   };
 
-  const handleClick = () => setIsOpen(!isOpen);
-  const handleClose = () => setIsOpen(false);
-
-  const handleDeny = () => {
-    if (onDeny) {
-      onDeny();
-    }
-
-    handleClose();
+  const deny = () => {
+    invoke(onDeny);
+    close();
   };
 
-  const handleAccept = () => {
-    if (onAccept) {
-      onAccept();
-    }
-
-    handleClose();
-    resetSuccess();
+  const accept = () => {
+    invoke(onAccept);
   };
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
-    handleAccept();
+    accept();
   };
 
   useEffect(() => {
-    resetSuccess();
-  }, []);
-
-  useEffect(() => {
     if (successful) {
-      handleClose();
+      close();
     }
   }, [successful]);
 
   return (
     <>
       <Button
-        onClick={handleClick}
+        onClick={open}
         icon={buttonIcon}
         disabled={buttonDisabled}
         type={"text"}
@@ -86,13 +76,14 @@ const DialogForm = ({
       </Button>
       <Modal
         open={isOpen}
-        onOk={handleAccept}
-        onCancel={handleDeny}
+        onOk={accept}
+        onCancel={deny}
         title={title}
+        okText={"Принять"}
+        afterClose={afterClose}
+        destroyOnClose
       >
-        <form onSubmit={handleSubmit}>
-          <div>{children}</div>
-        </form>
+        <form onSubmit={handleSubmit}>{children}</form>
       </Modal>
     </>
   );
