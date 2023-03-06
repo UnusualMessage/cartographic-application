@@ -1,5 +1,4 @@
-import { FormGroup } from "@blueprintjs/core";
-import { InputNumber } from "antd";
+import { Form, InputNumber } from "antd";
 import { Control, useController } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
@@ -24,20 +23,21 @@ const NumberInput = ({ label, rules, name, control }: Props) => {
   const id = uuid();
 
   return (
-    <FormGroup
+    <Form.Item
       label={label}
-      labelFor={id}
-      labelInfo={rules?.required ? "(обязательно для заполнения)" : undefined}
-      intent={invalid ? "danger" : rules?.required ? "primary" : "none"}
-      helperText={error ? error.message : undefined}
+      htmlFor={id}
+      help={error?.message}
+      validateStatus={invalid ? "error" : ""}
+      required={!!rules?.required}
     >
       <InputNumber
         id={id}
         placeholder={"Введите число..."}
         status={invalid ? "error" : ""}
+        style={{ width: "100%" }}
         {...field}
       />
-    </FormGroup>
+    </Form.Item>
   );
 };
 

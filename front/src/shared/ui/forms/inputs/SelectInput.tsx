@@ -1,5 +1,4 @@
-import { FormGroup } from "@blueprintjs/core";
-import { Select } from "antd";
+import { Form, Select } from "antd";
 import { useController, Control } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
@@ -27,12 +26,12 @@ const SelectInput = ({ options, label, rules, name, control }: Props) => {
   const id = uuid();
 
   return (
-    <FormGroup
+    <Form.Item
       label={label}
-      labelFor={id}
-      helperText={error ? error.message : undefined}
-      labelInfo={rules?.required ? "(обязательно для заполнения)" : undefined}
-      intent={invalid ? "danger" : rules?.required ? "primary" : "none"}
+      htmlFor={id}
+      help={error?.message}
+      validateStatus={invalid ? "error" : ""}
+      required={!!rules?.required}
     >
       <Select
         id={id}
@@ -49,7 +48,7 @@ const SelectInput = ({ options, label, rules, name, control }: Props) => {
           );
         })}
       </Select>
-    </FormGroup>
+    </Form.Item>
   );
 };
 
