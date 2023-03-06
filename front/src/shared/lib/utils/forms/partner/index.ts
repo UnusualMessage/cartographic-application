@@ -1,0 +1,1 @@
+export { getPartnerDefaultValues } from "./getPartnerDefaultValues";
