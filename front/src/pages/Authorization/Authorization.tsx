@@ -1,6 +1,6 @@
-import { Button } from "@blueprintjs/core";
+import { Button, Form } from "antd";
 import { observer } from "mobx-react-lite";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm, Control } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { AuthStore } from "@entities/user";
@@ -13,12 +13,7 @@ import { content, wrapper } from "./authorization.module.scss";
 const Authorization = () => {
   const redirect = useNavigate();
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<AuthenticateUser>({
+  const { control, handleSubmit, reset } = useForm<AuthenticateUser>({
     defaultValues: {
       login: "",
       password: "",
@@ -42,13 +37,16 @@ const Authorization = () => {
 
   return (
     <div className={wrapper}>
-      <form className={content} onSubmit={handleSubmit(onSubmit)}>
-        {formRenderer(authenticateUser(), register, errors)}
-
-        <Button type={"submit"} intent={"primary"}>
+      <Form
+        className={content}
+        onFinish={handleSubmit(onSubmit)}
+        layout={"vertical"}
+      >
+        {formRenderer(authenticateUser(), control as unknown as Control)}
+        <Button type={"primary"} htmlType={"submit"}>
           Ок
         </Button>
-      </form>
+      </Form>
     </div>
   );
 };

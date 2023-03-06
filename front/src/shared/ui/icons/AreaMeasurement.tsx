@@ -1,6 +1,6 @@
 import Icon from "@ant-design/icons";
 
-const AreaMesurement = () => {
+const AreaMeasurement = () => {
   return (
     <Icon>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
@@ -10,4 +10,4 @@ const AreaMesurement = () => {
   );
 };
 
-export default AreaMesurement;
+export default AreaMeasurement;

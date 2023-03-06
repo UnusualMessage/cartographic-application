@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 
 import { updateTrailer } from "@shared/assets";
 import { getSelectOptions, getTrailerDefaultValues } from "@shared/lib";
-import { Trailer, UpdateTrailer as UpdateTralerType } from "@shared/misc";
+import { Trailer, UpdateTrailer as UpdateTrailerType } from "@shared/misc";
 import { Update } from "@shared/ui";
 
 import { DepartmentsStore } from "../../../department";
@@ -23,7 +23,7 @@ const UpdateTrailer = ({ id }: Props) => {
   );
 
   return (
-    <Update<Trailer, UpdateTralerType>
+    <Update<Trailer, UpdateTrailerType>
       name={"прицеп"}
       store={TrailersStore}
       form={form}
