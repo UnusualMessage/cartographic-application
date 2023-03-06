@@ -1,7 +1,7 @@
 import { EditOutlined } from "@ant-design/icons";
 import { observer } from "mobx-react-lite";
 import { useMemo, useState } from "react";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { SubmitHandler, useForm, Control } from "react-hook-form";
 
 import { updatePost } from "@shared/assets";
 import { useFetch, formRenderer, getSelectOptions } from "@shared/lib";
@@ -17,14 +17,9 @@ interface Props {
 
 const UpdatePost = ({ id }: Props) => {
   const [successful, setSuccessful] = useState(false);
-  const [post, setPost] = useState<Post | undefined>(undefined);
+  const [post, setPost] = useState<Post>();
 
-  const {
-    register,
-    reset,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<UpdatePostType>({
+  const { reset, handleSubmit, control } = useForm<UpdatePostType>({
     defaultValues: useMemo(() => {
       return {
         title: post?.title,
@@ -37,7 +32,14 @@ const UpdatePost = ({ id }: Props) => {
     if (id) {
       const post = await PostsStore.getById(id);
       setPost(post);
-      reset(post);
+
+      const defaultValues: Partial<UpdatePostType> = {
+        id: post?.id,
+        title: post?.title,
+        organizationId: post?.organization.id,
+      };
+
+      reset(defaultValues);
     }
   }, [id]);
 
@@ -60,8 +62,7 @@ const UpdatePost = ({ id }: Props) => {
     >
       {formRenderer(
         updatePost(getSelectOptions(organizations)),
-        register,
-        errors
+        control as unknown as Control
       )}
     </DialogForm>
   );

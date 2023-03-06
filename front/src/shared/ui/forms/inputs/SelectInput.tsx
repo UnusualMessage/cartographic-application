@@ -1,32 +1,28 @@
-import { FormGroup, HTMLSelect } from "@blueprintjs/core";
-import { ChangeEvent, forwardRef } from "react";
-import { FieldError } from "react-hook-form";
+import { FormGroup } from "@blueprintjs/core";
+import { Select } from "antd";
+import { useController, Control } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
-import type { SelectOption } from "../../../misc";
+import type { SelectOption, Rules } from "../../../misc";
 
 interface Props {
   options: SelectOption[];
   label: string;
-  required?: boolean | string;
-  value?: string;
-  defaultValue?: string;
-  onChange: (event: ChangeEvent) => void;
+  rules?: Rules;
   name: string;
-  error?: FieldError;
+  control: Control;
 }
 
-const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
-  const {
-    options,
-    label,
-    required,
-    onChange,
+const { Option } = Select;
+
+const SelectInput = ({ options, label, rules, name, control }: Props) => {
+  const { field, fieldState } = useController({
+    control,
     name,
-    value,
-    defaultValue,
-    error,
-  } = props;
+    rules,
+  });
+
+  const { invalid, error } = fieldState;
 
   const id = uuid();
 
@@ -35,31 +31,26 @@ const SelectInput = forwardRef<HTMLSelectElement, Props>((props, ref) => {
       label={label}
       labelFor={id}
       helperText={error ? error.message : undefined}
-      labelInfo={required ? "(обязательно для заполнения)" : undefined}
-      intent={error ? "danger" : required ? "primary" : "none"}
+      labelInfo={rules?.required ? "(обязательно для заполнения)" : undefined}
+      intent={invalid ? "danger" : rules?.required ? "primary" : "none"}
     >
-      <HTMLSelect
+      <Select
         id={id}
         placeholder={"Выберите..."}
-        value={value}
-        defaultValue={defaultValue}
-        name={name}
-        onChange={onChange}
-        elementRef={ref}
-        fill
+        status={invalid ? "error" : ""}
+        style={{ width: "100%" }}
+        {...field}
       >
         {options.map((option) => {
           return (
-            <option key={`select-${option.value}`} value={option.value}>
+            <Option key={`select-${option.value}`} value={option.value}>
               {option.label}
-            </option>
+            </Option>
           );
         })}
-      </HTMLSelect>
+      </Select>
     </FormGroup>
   );
-});
-
-SelectInput.displayName = "SelectInput";
+};
 
 export default SelectInput;
