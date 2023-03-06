@@ -12,28 +12,26 @@ export const createEmployee = (
   return [
     {
       type: "text",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Имя",
       name: "firstName",
     },
 
     {
       type: "text",
-      required: false,
       label: "Фамилия",
       name: "secondName",
     },
 
     {
       type: "text",
-      required: false,
       label: "Отчество",
       name: "patronymic",
     },
 
     {
       type: "select",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Должность",
       name: "postId",
       options: posts,
@@ -41,7 +39,7 @@ export const createEmployee = (
 
     {
       type: "select",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
       options: organizations,
@@ -49,14 +47,12 @@ export const createEmployee = (
 
     {
       type: "text",
-      required: false,
       label: "Номер телефона",
       name: "phone",
     },
 
     {
       type: "text",
-      required: false,
       label: "№ водительского удостоверения",
       name: "driverCard",
     },
@@ -70,28 +66,26 @@ export const updateEmployee = (
   return [
     {
       type: "text",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Имя",
       name: "firstName",
     },
 
     {
       type: "text",
-      required: false,
       label: "Фамилия",
       name: "secondName",
     },
 
     {
       type: "text",
-      required: false,
       label: "Отчество",
       name: "patronymic",
     },
 
     {
       type: "select",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Должность",
       name: "postId",
       options: posts,
@@ -99,7 +93,7 @@ export const updateEmployee = (
 
     {
       type: "select",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
       options: organizations,
@@ -107,14 +101,12 @@ export const updateEmployee = (
 
     {
       type: "text",
-      required: false,
       label: "Номер телефона",
       name: "phone",
     },
 
     {
       type: "text",
-      required: false,
       label: "№ водительского удостоверения",
       name: "driverCard",
     },

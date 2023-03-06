@@ -11,35 +11,32 @@ export const createPartner = (
   return [
     {
       type: "text",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Название",
       name: "title",
     },
 
     {
       type: "text",
-      required: false,
       label: "Юридический адрес",
       name: "address",
     },
 
     {
       type: "text",
-      required: false,
       label: "Номер телефона",
       name: "phone",
     },
 
     {
       type: "text",
-      required: false,
       label: "ИНН",
       name: "inn",
     },
 
     {
       type: "select",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
       options: organizations,
@@ -53,35 +50,32 @@ export const updatePartner = (
   return [
     {
       type: "text",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Название",
       name: "title",
     },
 
     {
       type: "text",
-      required: false,
       label: "Юридический адрес",
       name: "address",
     },
 
     {
       type: "text",
-      required: false,
       label: "Номер телефона",
       name: "phone",
     },
 
     {
       type: "text",
-      required: false,
       label: "ИНН",
       name: "inn",
     },
 
     {
       type: "select",
-      required: "Заполните поле!",
+      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
       options: organizations,
