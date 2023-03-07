@@ -4,14 +4,14 @@ import { useResizing } from "@shared/lib";
 import { ResizeType } from "@shared/misc";
 import { Resize } from "@shared/ui";
 
-import { content, wrapper } from "./sider.module.scss";
+import { content, wrapper } from "./aside.module.scss";
 
 const UserAside = ({ children }: PropsWithChildren) => {
   const type = ResizeType.width;
 
   const props = {
     type: type,
-    initial: 400,
+    initial: 350,
     bottomBorder: 3,
   };
 

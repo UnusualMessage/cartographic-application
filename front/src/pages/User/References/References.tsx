@@ -8,8 +8,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import { Node, Reference } from "@shared/misc";
-import { EntitiesTree, Loader, Content } from "@shared/ui";
-import { UserAside } from "@widgets/index";
+import { Tree, Loader } from "@shared/ui";
+import { UserAside as Aside, Content } from "@widgets/index";
 
 import AnnualPlans from "./AnnualPlans";
 import Crops from "./Crops";
@@ -380,7 +380,7 @@ const ReferencesTree = () => {
   };
 
   return (
-    <EntitiesTree
+    <Tree
       fillNodes={fillNodes}
       className={classNames(wrapper, fullHeight)}
       handleSelect={handleClick}
@@ -391,9 +391,9 @@ const ReferencesTree = () => {
 const References = () => {
   return (
     <React.Suspense fallback={<Loader />}>
-      <UserAside>
+      <Aside>
         <ReferencesTree />
-      </UserAside>
+      </Aside>
       <Content>
         <Outlet />
       </Content>

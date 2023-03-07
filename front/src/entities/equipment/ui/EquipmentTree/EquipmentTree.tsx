@@ -6,7 +6,7 @@ import { equipmentNodes } from "@shared/assets";
 import { getEquipmentTreeClickHandler } from "@shared/lib";
 import { Equipment, Node } from "@shared/misc";
 import { tree } from "@shared/styles";
-import { EntitiesTree } from "@shared/ui";
+import { Tree } from "@shared/ui";
 
 import EquipmentStore from "../../model/EquipmentStore";
 
@@ -47,7 +47,7 @@ const EquipmentTree = () => {
   const equipment = EquipmentStore.equipment;
 
   return (
-    <EntitiesTree<Equipment>
+    <Tree<Equipment>
       fillNodes={fillNodes}
       handleSelect={getEquipmentTreeClickHandler()}
       source={equipment}

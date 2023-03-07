@@ -7,7 +7,7 @@ import { geozoneNodes } from "@shared/assets";
 import { getGeozonesTreeClickHandler } from "@shared/lib";
 import { Geozone, Node } from "@shared/misc";
 import { tree } from "@shared/styles";
-import { EntitiesTree } from "@shared/ui";
+import { Tree } from "@shared/ui";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);
@@ -47,7 +47,7 @@ const GeozonesTree = () => {
   const zones = GeozonesStore.geozones;
 
   return (
-    <EntitiesTree<Geozone>
+    <Tree<Geozone>
       fillNodes={fillNodes}
       source={zones}
       handleSelect={getGeozonesTreeClickHandler()}

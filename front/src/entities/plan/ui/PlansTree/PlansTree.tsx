@@ -6,7 +6,7 @@ import { planNodes } from "@shared/assets";
 import { getPlansTreeClickHandler } from "@shared/lib";
 import type { Node, Plan } from "@shared/misc";
 import { tree } from "@shared/styles";
-import { EntitiesTree } from "@shared/ui";
+import { Tree } from "@shared/ui";
 
 import { PlansStore } from "../../model";
 
@@ -39,7 +39,7 @@ const PlansTree = () => {
   const plans = PlansStore.plans;
 
   return (
-    <EntitiesTree<Plan>
+    <Tree<Plan>
       fillNodes={fillNodes}
       source={plans}
       className={tree}

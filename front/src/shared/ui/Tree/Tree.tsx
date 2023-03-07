@@ -1,5 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Tree } from "antd";
+import { Tree as AntTree } from "antd";
 import type { TreeProps } from "antd/es/tree";
 import { useEffect, useState } from "react";
 
@@ -12,14 +12,9 @@ interface Props<T> {
   className: string;
 }
 
-const { DirectoryTree } = Tree;
+const { DirectoryTree } = AntTree;
 
-const EntitiesTree = <T,>({
-  fillNodes,
-  source,
-  handleSelect,
-  className,
-}: Props<T>) => {
+const Tree = <T,>({ fillNodes, source, handleSelect, className }: Props<T>) => {
   const [nodes, setNodes] = useState(() => fillNodes(source));
 
   useEffect(() => {
@@ -40,4 +35,4 @@ const EntitiesTree = <T,>({
   );
 };
 
-export default EntitiesTree;
+export default Tree;
