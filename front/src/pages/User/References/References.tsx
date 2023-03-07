@@ -25,7 +25,6 @@ import Mounteds from "./Mounteds";
 import OperationalPlans from "./OperationalPlans";
 import Partners from "./Partners";
 import Posts from "./Posts";
-import Select from "./Select";
 import Speed from "./Speeds";
 import StorePlaces from "./StorePlaces";
 import Technologies from "./Technologies";
@@ -141,12 +140,6 @@ export const references: Reference[] = [
     id: uuid(),
     link: "speed",
     component: <Speed />,
-  },
-
-  {
-    id: uuid(),
-    link: "select",
-    component: <Select />,
   },
 
   {
@@ -349,14 +342,14 @@ const referenceNodes: Node[] = [
             data: undefined,
             children: [
               {
-                key: references[19].id,
+                key: references[18].id,
                 icon: <FileOutlined />,
                 title: "Прицепы",
                 data: "trailers",
               },
 
               {
-                key: references[20].id,
+                key: references[19].id,
                 icon: <FileOutlined />,
                 title: "Навесы",
                 data: "mounteds",

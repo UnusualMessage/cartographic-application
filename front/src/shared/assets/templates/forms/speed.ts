@@ -18,14 +18,20 @@ export const createSpeed = (
 
     {
       type: "numeric",
-      rules: { required: "Заполните поле!" },
+      rules: {
+        required: "Заполните поле!",
+        min: { value: 0, message: "Скорость > 0" },
+      },
       label: "Максимальная скорость, км/ч",
       name: "max",
     },
 
     {
       type: "numeric",
-      rules: { required: "Заполните поле!" },
+      rules: {
+        required: "Заполните поле!",
+        min: { value: 0, message: "Скорость > 0" },
+      },
       label: "Минимальная скорость, км/ч",
       name: "min",
     },
