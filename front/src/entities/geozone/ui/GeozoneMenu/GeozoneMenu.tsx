@@ -1,5 +1,6 @@
-import { Menu, MenuDivider, MenuItem } from "@blueprintjs/core";
+import { ExportOutlined } from "@ant-design/icons";
 import { Polygon, toWgs84 } from "@turf/turf";
+import { MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { GeozonesStore } from "@entities/geozone";
@@ -12,7 +13,27 @@ interface Props {
 
 type ExportType = "4326" | "3857";
 
-const GeozoneMenu = ({ id, title }: Props) => {
+const items: MenuProps["items"] = [
+  {
+    label: "Экспорт",
+    key: "export",
+    children: [
+      {
+        label: "Экспорт (EPSG-4326)",
+        key: "export-4326",
+        icon: <ExportOutlined />,
+      },
+
+      {
+        label: "Экспорт (EPSG-3857)",
+        key: "export-3857",
+        icon: <ExportOutlined />,
+      },
+    ],
+  },
+];
+
+const GeozoneMenu = ({ id }: Props) => {
   const onExport = (type: ExportType) => {
     let geometry: Polygon | undefined = undefined;
     const geozone = GeozonesStore.getById(id);
@@ -44,25 +65,18 @@ const GeozoneMenu = ({ id, title }: Props) => {
     AlertsStore.isOpen = true;
   };
 
-  return (
-    <Menu>
-      <MenuDivider title={title} />
+  const onClick: MenuProps["onClick"] = (e) => {
+    switch (e.key) {
+      case "export-4326":
+        onExport("4326");
+        break;
+      case "export-3857":
+        onExport("3857");
+        break;
+    }
+  };
 
-      <MenuItem text={"Экспорт"} icon="export">
-        <MenuItem
-          icon="export"
-          text="Экспорт (EPSG-4326)"
-          onClick={() => onExport("4326")}
-        />
-
-        <MenuItem
-          icon="export"
-          text="Экспорт (EPSG-3857)"
-          onClick={() => onExport("3857")}
-        />
-      </MenuItem>
-    </Menu>
-  );
+  return <Menu items={items} selectable={false} onClick={onClick} />;
 };
 
 export default observer(GeozoneMenu);
