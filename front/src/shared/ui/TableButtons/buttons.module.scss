@@ -1,9 +1,11 @@
+@use "../../styles/constants" as *;
+
 .wrapper {
   width: 100%;
 
   min-width: 0;
 
-  border-top: 1px solid rgba(17, 20, 24, 0.1);
+  border-top: 1px solid $border-color;
 
   overflow-x: auto;
   overflow-y: hidden;

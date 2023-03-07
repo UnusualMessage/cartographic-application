@@ -2,8 +2,8 @@ import { Table as AntTable } from "antd";
 import classNames from "classnames";
 import { Key } from "react";
 
+import { wrapper } from "./table.module.scss";
 import type { Column as ColumnProps } from "../../misc";
-import { table } from "../../styles";
 
 interface Item {
   id: string;
@@ -38,7 +38,7 @@ const Table = <T extends Item>({
 
   return (
     <AntTable<T>
-      className={classNames(className, table)}
+      className={classNames(className, wrapper)}
       rowSelection={
         rowSelection
           ? {

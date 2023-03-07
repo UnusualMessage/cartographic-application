@@ -11,7 +11,7 @@ const UserFooter = ({ children }: PropsWithChildren) => {
 
   const props = {
     type: type,
-    initial: 420,
+    initial: 350,
     bottomBorder: 3,
   };
 

@@ -5,8 +5,7 @@ import { observer } from "mobx-react-lite";
 import { equipmentNodes } from "@shared/assets";
 import { getEquipmentTreeClickHandler } from "@shared/lib";
 import { Equipment, Node } from "@shared/misc";
-import { tree } from "@shared/styles";
-import { Tree } from "@shared/ui";
+import { tree, Tree } from "@shared/ui";
 
 import EquipmentStore from "../../model/EquipmentStore";
 

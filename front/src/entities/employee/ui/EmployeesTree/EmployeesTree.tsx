@@ -4,8 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import { employeeNodes } from "@shared/assets";
 import { Employee, Node } from "@shared/misc";
-import { tree } from "@shared/styles";
-import { Tree } from "@shared/ui";
+import { tree, Tree } from "@shared/ui";
 
 import { EmployeesStore } from "../../model";
 

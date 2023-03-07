@@ -5,8 +5,7 @@ import { observer } from "mobx-react-lite";
 import { planNodes } from "@shared/assets";
 import { getPlansTreeClickHandler } from "@shared/lib";
 import type { Node, Plan } from "@shared/misc";
-import { tree } from "@shared/styles";
-import { Tree } from "@shared/ui";
+import { tree, Tree } from "@shared/ui";
 
 import { PlansStore } from "../../model";
 
