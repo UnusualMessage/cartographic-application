@@ -1,46 +1,45 @@
-import { FormGroup, NumericInput } from "@blueprintjs/core";
-import { ChangeEvent, forwardRef } from "react";
-import { FieldError } from "react-hook-form";
+import { Form, InputNumber } from "antd";
+import { Control, useController } from "react-hook-form";
 import { v4 as uuid } from "uuid";
+
+import { wrapper } from "./input.module.scss";
+import { Rules } from "../../../misc";
 
 interface Props {
   label: string;
-  required?: boolean | string;
-  value?: string;
-  defaultValue?: string;
-  onChange: (event: ChangeEvent) => void;
   name: string;
-  error?: FieldError;
+  rules?: Rules;
+  control: Control;
 }
 
-const NumberInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
+const NumberInput = ({ label, rules, name, control }: Props) => {
+  const { field, fieldState } = useController({
+    control,
+    name,
+    rules,
+  });
+
+  const { invalid, error } = fieldState;
+
   const id = uuid();
 
-  const { label, required, value, defaultValue, name, onChange, error } = props;
-
   return (
-    <FormGroup
+    <Form.Item
       label={label}
-      labelFor={id}
-      labelInfo={required ? "(обязательно для заполнения)" : undefined}
-      intent={error ? "danger" : required ? "primary" : "none"}
-      helperText={error ? error.message : undefined}
+      htmlFor={id}
+      help={error?.message}
+      validateStatus={invalid ? "error" : ""}
+      required={!!rules?.required}
     >
-      <NumericInput
+      <InputNumber
         id={id}
         placeholder={"Введите число..."}
-        value={value}
-        defaultValue={defaultValue}
-        name={name}
-        onChange={onChange}
-        inputRef={ref}
-        intent={error ? "danger" : required ? "primary" : "none"}
-        fill
+        status={invalid ? "error" : ""}
+        className={wrapper}
+        {...field}
       />
-    </FormGroup>
+    </Form.Item>
   );
-});
-
-NumberInput.displayName = "TextInput";
+};
 
 export default NumberInput;

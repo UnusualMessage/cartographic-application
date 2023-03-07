@@ -1,36 +1,43 @@
-import { ResponsivePie } from "@nivo/pie";
+import { Pie } from "@ant-design/plots";
+import classNames from "classnames";
 
 import type { Plan } from "@shared/misc";
 import { chart, main } from "@shared/styles";
+
+import { wrapper, content } from "./chart.module.scss";
 
 interface Props {
   plans: Plan[];
 }
 
-interface ChartData {
-  id: string;
-  value: number;
-  color: string;
-}
-
 const PlansChart = ({ plans }: Props) => {
   const data = plans.map((plan) => {
     return {
-      id: `${plan.type}-${plan.year}`,
+      title: `${plan.type}-${plan.year}`,
       value: plan.target,
-      color: "hsl(81, 70%, 50%)",
     };
   });
 
+  const config = {
+    appendPadding: 10,
+    data: data,
+    angleField: "value",
+    colorField: "title",
+    radius: 0.8,
+    label: {
+      type: "outer",
+    },
+    interactions: [
+      {
+        type: "element-active",
+      },
+    ],
+  };
+
   return (
-    <div className={chart}>
-      <div className={main}>
-        <ResponsivePie<ChartData>
-          data={data}
-          margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
-          startAngle={-180}
-          enableArcLabels={false}
-        />
+    <div className={classNames(chart, wrapper)}>
+      <div className={classNames(main, content)}>
+        <Pie {...config} />
       </div>
     </div>
   );

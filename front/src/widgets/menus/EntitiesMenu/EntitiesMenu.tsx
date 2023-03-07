@@ -30,6 +30,7 @@ const EntitiesMenu = () => {
 
         TabsStore.siderTabId = newTabId;
       }}
+      tabBarStyle={{ margin: 0, paddingLeft: "5px" }}
     />
   );
 };

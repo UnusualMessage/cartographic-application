@@ -1,4 +1,4 @@
-import { Modal, Button } from "antd";
+import { Modal, Button, Form } from "antd";
 import {
   FormEventHandler,
   memo,
@@ -83,7 +83,9 @@ const DialogForm = ({
         afterClose={afterClose}
         destroyOnClose
       >
-        <form onSubmit={handleSubmit}>{children}</form>
+        <Form onFinish={handleSubmit} layout={"vertical"}>
+          {children}
+        </Form>
       </Modal>
     </>
   );

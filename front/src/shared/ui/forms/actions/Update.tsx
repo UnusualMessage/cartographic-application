@@ -1,59 +1,55 @@
 import { EditOutlined } from "@ant-design/icons";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import {
   DeepPartial,
   FieldValues,
   SubmitHandler,
   useForm,
+  Control,
 } from "react-hook-form";
 
 import { useFetch, formRenderer } from "../../../lib";
 import type { ApiStore, Form } from "../../../misc";
 import DialogForm from "../DialogForm";
 
-interface Item {
+interface Entity {
   id: string;
 }
 
 interface Props<T, UpdateT> {
   name: string;
   store: ApiStore<T, any, UpdateT>;
-  item?: T;
-  setItem: (item: T) => void;
-  defaultValues: DeepPartial<UpdateT>;
+  id?: string;
+  getDefaultValues: (entity?: T) => DeepPartial<UpdateT>;
   form: Form<UpdateT>;
 }
 
-const Update = <T extends Item, UpdateT extends FieldValues>({
+const Update = <T extends Entity, UpdateT extends FieldValues>({
   name,
   store,
-  item,
-  setItem,
-  defaultValues,
+  id,
+  getDefaultValues,
   form,
 }: Props<T, UpdateT>) => {
   const [successful, setSuccessful] = useState(false);
+  const [entity, setEntity] = useState<T>();
 
-  const {
-    register,
-    formState: { errors },
-    handleSubmit,
-  } = useForm<UpdateT>({
-    defaultValues: defaultValues,
+  const { control, reset, handleSubmit } = useForm<UpdateT>({
+    defaultValues: useMemo(() => {
+      return getDefaultValues(entity);
+    }, [entity]),
   });
 
   useFetch(async () => {
-    if (item) {
-      const data = await store.getById(item.id);
-
-      if (data) {
-        setItem(data);
-      }
+    if (id) {
+      const data = await store.getById(id);
+      setEntity(data);
+      reset(getDefaultValues(data));
     }
-  }, [item]);
+  }, [id]);
 
   const onSubmit: SubmitHandler<UpdateT> = async (data) => {
-    await store.update(data);
+    store.update(data);
     setSuccessful(true);
   };
 
@@ -62,11 +58,12 @@ const Update = <T extends Item, UpdateT extends FieldValues>({
       title={`Редактирование записи (${name})`}
       buttonText={"Редактировать"}
       buttonIcon={<EditOutlined />}
-      buttonDisabled={!item}
-      onAccept={item ? handleSubmit(onSubmit) : undefined}
+      buttonDisabled={!id}
+      onAccept={id ? handleSubmit(onSubmit) : undefined}
+      setSuccessful={setSuccessful}
       successful={successful}
     >
-      {formRenderer(form, register, errors)}
+      {formRenderer(form, control as Control)}
     </DialogForm>
   );
 };

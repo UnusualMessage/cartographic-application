@@ -11,8 +11,7 @@ import {
   MapStore,
   InteractionsStore,
 } from "@shared/misc";
-import { LengthMeasurement, LayersFilled } from "@shared/ui";
-import AreaMesurement from "@shared/ui/icons/AreaMesurement";
+import { LengthMeasurement, LayersFilled, AreaMeasurement } from "@shared/ui";
 
 import { active, wrapper } from "./buttons.module.scss";
 
@@ -71,7 +70,7 @@ const ButtonsGroup = () => {
         />
 
         <Button
-          icon={<AreaMesurement />}
+          icon={<AreaMeasurement />}
           type={drawType === "measure-area" ? "primary" : "default"}
           onClick={() => switchType("measure-area")}
         />

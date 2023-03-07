@@ -2,12 +2,10 @@ import { AppstoreOutlined, BorderOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { GeozonesStore } from "@entities/geozone";
+import { GeozonesStore, getGeozonesTreeClickHandler } from "@entities/geozone";
 import { geozoneNodes } from "@shared/assets";
-import { getGeozonesTreeClickHandler } from "@shared/lib";
 import { Geozone, Node } from "@shared/misc";
-import { tree } from "@shared/styles";
-import { EntitiesTree } from "@shared/ui";
+import { tree, Tree } from "@shared/ui";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);
@@ -47,7 +45,7 @@ const GeozonesTree = () => {
   const zones = GeozonesStore.geozones;
 
   return (
-    <EntitiesTree<Geozone>
+    <Tree<Geozone>
       fillNodes={fillNodes}
       source={zones}
       handleSelect={getGeozonesTreeClickHandler()}

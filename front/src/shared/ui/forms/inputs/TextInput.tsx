@@ -1,45 +1,45 @@
-import { FormGroup, InputGroup } from "@blueprintjs/core";
-import { ChangeEvent, forwardRef } from "react";
-import { FieldError } from "react-hook-form";
+import { Form, Input } from "antd";
+import { Control, useController } from "react-hook-form";
 import { v4 as uuid } from "uuid";
+
+import { wrapper } from "./input.module.scss";
+import { Rules } from "../../../misc";
 
 interface Props {
   label: string;
-  required?: boolean | string;
-  value?: string;
-  defaultValue?: string;
-  onChange: (event: ChangeEvent) => void;
   name: string;
-  error?: FieldError;
+  rules?: Rules;
+  control: Control;
 }
 
-const TextInput = forwardRef<HTMLInputElement, Props>((props, ref) => {
+const TextInput = ({ label, name, control, rules }: Props) => {
+  const { field, fieldState } = useController({
+    control: control,
+    name: name,
+    rules: rules,
+  });
+
   const id = uuid();
 
-  const { label, required, value, defaultValue, name, onChange, error } = props;
+  const { invalid, error } = fieldState;
 
   return (
-    <FormGroup
+    <Form.Item
       label={label}
-      labelFor={id}
-      labelInfo={required ? "(обязательно для заполнения)" : undefined}
-      intent={error ? "danger" : required ? "primary" : "none"}
-      helperText={error ? error.message : undefined}
+      htmlFor={id}
+      help={error?.message}
+      validateStatus={invalid ? "error" : ""}
+      required={!!rules?.required}
     >
-      <InputGroup
+      <Input
         id={id}
         placeholder={"Введите текст..."}
-        value={value}
-        defaultValue={defaultValue}
-        name={name}
-        onChange={onChange}
-        inputRef={ref}
-        intent={error ? "danger" : required ? "primary" : "none"}
+        status={invalid ? "error" : ""}
+        className={wrapper}
+        {...field}
       />
-    </FormGroup>
+    </Form.Item>
   );
-});
-
-TextInput.displayName = "TextInput";
+};
 
 export default TextInput;

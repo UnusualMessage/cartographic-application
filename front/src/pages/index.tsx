@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { EmptyPage, Loader } from "@shared/ui";
-import { UserLayout, AdminLayout } from "@widgets/index";
+import { UserLayout } from "@widgets/index";
 
 import Authorization from "./Authorization";
 import { references } from "./User/References";
@@ -44,7 +44,7 @@ const browserRouter = createBrowserRouter([
 
   {
     path: "/admin",
-    element: <AdminLayout />,
+    element: <></>,
     errorElement: <EmptyPage />,
     children: [
       {

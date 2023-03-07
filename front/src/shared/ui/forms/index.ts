@@ -1,3 +1,6 @@
 export * from "./inputs";
 export * from "./actions";
-export { default as DialogForm } from "./DialogForm";
+
+import DialogForm from "./DialogForm";
+
+export { DialogForm };

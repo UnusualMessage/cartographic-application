@@ -1,18 +1,7 @@
-import {
-  SearchOutlined,
-  PrinterOutlined,
-  ShareAltOutlined,
-  FullscreenOutlined,
-  InfoOutlined,
-  StopOutlined,
-  EyeInvisibleOutlined,
-  EllipsisOutlined,
-  BorderOutlined,
-} from "@ant-design/icons";
 import { Drawer, Typography, MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { about } from "@shared/assets";
+import { about, drawerMenu } from "@shared/assets";
 import { auxLayerId } from "@shared/constants";
 import {
   ControlsStore,
@@ -21,107 +10,8 @@ import {
   InteractionsStore,
 } from "@shared/misc";
 import { ControlType } from "@shared/misc/stores/ControlsStore";
-import { LayersFilled, LengthMeasurement, AreaMeasurement } from "@shared/ui";
 
 const { Text } = Typography;
-
-const items: MenuProps["items"] = [
-  {
-    label: "Поиск",
-    key: "search",
-    icon: <SearchOutlined />,
-  },
-
-  {
-    label: "Слои",
-    key: "layers",
-    icon: <LayersFilled />,
-  },
-
-  {
-    type: "divider",
-  },
-
-  {
-    label: "Измерение",
-    key: "measurement",
-    children: [
-      {
-        label: "Расстояние",
-        key: "measure-length",
-        icon: <LengthMeasurement />,
-      },
-
-      {
-        label: "Площадь",
-        key: "measure-area",
-        icon: <AreaMeasurement />,
-      },
-    ],
-  },
-
-  {
-    label: "Редактирование",
-    key: "edit",
-    children: [
-      {
-        label: "Выкл.",
-        key: "none",
-        icon: <StopOutlined />,
-      },
-
-      {
-        label: "Курсор",
-        key: "cursor",
-        icon: <EyeInvisibleOutlined />,
-      },
-
-      {
-        label: "Точка",
-        key: "point",
-        icon: <EllipsisOutlined />,
-      },
-
-      {
-        label: "Полигон",
-        key: "geozones",
-        icon: <BorderOutlined />,
-      },
-    ],
-  },
-
-  {
-    type: "divider",
-  },
-
-  {
-    label: "Полный экран",
-    key: "full-screen",
-    icon: <FullscreenOutlined />,
-  },
-
-  {
-    label: "Поделиться",
-    key: "share",
-    icon: <ShareAltOutlined />,
-  },
-
-  {
-    label: "Печать",
-    key: "print",
-    icon: <PrinterOutlined />,
-  },
-
-  {
-    type: "divider",
-  },
-
-  {
-    label: "О проекте",
-    key: "about",
-    icon: <InfoOutlined />,
-  },
-];
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
@@ -181,7 +71,7 @@ const DrawerMenu = () => {
       getContainer={ControlsStore.fullScreenActive ? false : ""}
       bodyStyle={{ padding: 0 }}
     >
-      <Menu items={items} selectable={false} onClick={onClick} />
+      <Menu items={drawerMenu} selectable={false} onClick={onClick} />
     </Drawer>
   );
 };

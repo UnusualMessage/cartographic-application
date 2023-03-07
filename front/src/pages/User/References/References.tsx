@@ -8,8 +8,8 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
 import { Node, Reference } from "@shared/misc";
-import { EntitiesTree, Loader, Content } from "@shared/ui";
-import { UserAside } from "@widgets/index";
+import { Tree, Loader } from "@shared/ui";
+import { UserAside as Aside, Content } from "@widgets/index";
 
 import AnnualPlans from "./AnnualPlans";
 import Crops from "./Crops";
@@ -25,7 +25,6 @@ import Mounteds from "./Mounteds";
 import OperationalPlans from "./OperationalPlans";
 import Partners from "./Partners";
 import Posts from "./Posts";
-import Select from "./Select";
 import Speed from "./Speeds";
 import StorePlaces from "./StorePlaces";
 import Technologies from "./Technologies";
@@ -141,12 +140,6 @@ export const references: Reference[] = [
     id: uuid(),
     link: "speed",
     component: <Speed />,
-  },
-
-  {
-    id: uuid(),
-    link: "select",
-    component: <Select />,
   },
 
   {
@@ -349,14 +342,14 @@ const referenceNodes: Node[] = [
             data: undefined,
             children: [
               {
-                key: references[19].id,
+                key: references[18].id,
                 icon: <FileOutlined />,
                 title: "Прицепы",
                 data: "trailers",
               },
 
               {
-                key: references[20].id,
+                key: references[19].id,
                 icon: <FileOutlined />,
                 title: "Навесы",
                 data: "mounteds",
@@ -387,7 +380,7 @@ const ReferencesTree = () => {
   };
 
   return (
-    <EntitiesTree
+    <Tree
       fillNodes={fillNodes}
       className={classNames(wrapper, fullHeight)}
       handleSelect={handleClick}
@@ -398,9 +391,9 @@ const ReferencesTree = () => {
 const References = () => {
   return (
     <React.Suspense fallback={<Loader />}>
-      <UserAside>
+      <Aside>
         <ReferencesTree />
-      </UserAside>
+      </Aside>
       <Content>
         <Outlet />
       </Content>

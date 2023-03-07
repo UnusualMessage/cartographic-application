@@ -1,5 +1,5 @@
 import { PlusCircleOutlined } from "@ant-design/icons";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm, Control } from "react-hook-form";
 
 import { formRenderer } from "../../../lib";
 import type { ApiStore, Form } from "../../../misc";
@@ -17,10 +17,10 @@ const Create = <T, CreateT extends FieldValues>({
   form,
 }: Props<T, CreateT>) => {
   const {
-    register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitSuccessful },
+    control,
+    formState: { isSubmitSuccessful },
   } = useForm<CreateT>();
 
   const onSubmit: SubmitHandler<CreateT> = async (data) => {
@@ -41,7 +41,7 @@ const Create = <T, CreateT extends FieldValues>({
       onDeny={onDeny}
       successful={isSubmitSuccessful}
     >
-      {formRenderer(form, register, errors)}
+      {formRenderer(form, control as Control)}
     </DialogForm>
   );
 };

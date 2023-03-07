@@ -1,14 +1,9 @@
-import {
-  CloseOutlined,
-  MinusSquareOutlined,
-  CopyOutlined,
-  PlusSquareOutlined,
-} from "@ant-design/icons";
 import { Menu as AntMenu, MenuProps, MenuRef } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef, Ref } from "react";
 
+import { mapMenu } from "@shared/assets";
 import { invoke } from "@shared/lib";
 import {
   Callback,
@@ -34,43 +29,6 @@ const insert = () => {
 const remove = () => {
   FeaturesService.remove();
 };
-
-const items: MenuProps["items"] = [
-  {
-    label: "Редактирование",
-    type: "group",
-
-    children: [
-      {
-        label: "Копировать",
-        key: "copy",
-        icon: <CopyOutlined />,
-      },
-
-      {
-        label: "Вставить",
-        key: "insert",
-        icon: <PlusSquareOutlined />,
-      },
-
-      {
-        label: "Удалить",
-        key: "delete",
-        icon: <MinusSquareOutlined />,
-      },
-    ],
-  },
-
-  {
-    type: "divider",
-  },
-
-  {
-    label: "Закрыть",
-    key: "close",
-    icon: <CloseOutlined />,
-  },
-];
 
 const Menu = () => {
   const contextMenuRef: Ref<MenuRef> = useRef(null);
@@ -117,7 +75,7 @@ const Menu = () => {
     <AntMenu
       className={classes}
       onClick={onClick}
-      items={items}
+      items={mapMenu}
       ref={contextMenuRef}
       selectable={false}
     />

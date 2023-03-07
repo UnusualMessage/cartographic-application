@@ -3,12 +3,10 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { equipmentNodes } from "@shared/assets";
-import { getEquipmentTreeClickHandler } from "@shared/lib";
 import { Equipment, Node } from "@shared/misc";
-import { tree } from "@shared/styles";
-import { EntitiesTree } from "@shared/ui";
+import { tree, Tree } from "@shared/ui";
 
-import EquipmentStore from "../../model/EquipmentStore";
+import { getEquipmentTreeClickHandler, EquipmentStore } from "../../model";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);
@@ -47,7 +45,7 @@ const EquipmentTree = () => {
   const equipment = EquipmentStore.equipment;
 
   return (
-    <EntitiesTree<Equipment>
+    <Tree<Equipment>
       fillNodes={fillNodes}
       handleSelect={getEquipmentTreeClickHandler()}
       source={equipment}

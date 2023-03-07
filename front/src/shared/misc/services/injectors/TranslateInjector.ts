@@ -1,5 +1,3 @@
-import { Feature } from "ol";
-import { Polygon } from "ol/geom";
 import { Translate } from "ol/interaction";
 import { TranslateEvent } from "ol/interaction/Translate";
 
@@ -21,20 +19,21 @@ class TranslateInjector implements ListenersInjector<TranslateEventType> {
 
   private addTranslate() {
     const onTranslateEnd = (event: TranslateEvent) => {
-      const modifiedFeatures = event.features.getArray() as Feature<Polygon>[];
-
-      const ids = modifiedFeatures.map((item) => item.get("id"));
-      const coordinates = modifiedFeatures.map((item) => {
-        const geometry = item.getGeometry();
-
-        if (geometry) {
-          return geometry.getCoordinates();
-        }
-
-        return;
-      });
-
-      // GeozonesStore.translate(ids, coordinates);
+      console.log(event);
+      // const modifiedFeatures = event.features.getArray() as Feature<Polygon>[];
+      //
+      // const ids = modifiedFeatures.map((item) => item.get("id"));
+      // const coordinates = modifiedFeatures.map((item) => {
+      //   const geometry = item.getGeometry();
+      //
+      //   if (geometry) {
+      //     return geometry.getCoordinates();
+      //   }
+      //
+      //   return;
+      // });
+      //
+      // // GeozonesStore.translate(ids, coordinates);
     };
 
     this._translate.on("translatestart", onTranslateEnd);
