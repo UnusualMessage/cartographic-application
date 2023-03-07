@@ -1,13 +1,9 @@
 @use "../../../shared/styles/constants" as *;
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-
   width: 100%;
 
   z-index: 2;
-
   background: white;
 
   .content {

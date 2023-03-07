@@ -1,7 +1,10 @@
 import { Pie } from "@ant-design/plots";
+import classNames from "classnames";
 
 import type { Plan } from "@shared/misc";
 import { chart, main } from "@shared/styles";
+
+import { wrapper, content } from "./chart.module.scss";
 
 interface Props {
   plans: Plan[];
@@ -32,8 +35,8 @@ const PlansChart = ({ plans }: Props) => {
   };
 
   return (
-    <div className={chart}>
-      <div className={main}>
+    <div className={classNames(chart, wrapper)}>
+      <div className={classNames(main, content)}>
         <Pie {...config} />
       </div>
     </div>
