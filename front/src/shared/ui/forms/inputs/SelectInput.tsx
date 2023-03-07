@@ -2,6 +2,7 @@ import { Form, Select } from "antd";
 import { useController, Control } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
+import { wrapper } from "./input.module.scss";
 import type { SelectOption, Rules } from "../../../misc";
 
 interface Props {
@@ -37,7 +38,7 @@ const SelectInput = ({ options, label, rules, name, control }: Props) => {
         id={id}
         placeholder={"Выберите..."}
         status={invalid ? "error" : ""}
-        style={{ width: "100%" }}
+        className={wrapper}
         {...field}
       >
         {options.map((option) => {

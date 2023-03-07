@@ -1,1 +1,3 @@
-export { default as EquipmentStore } from "./EquipmentStore";
+import EquipmentStore from "./EquipmentStore";
+
+export { EquipmentStore };

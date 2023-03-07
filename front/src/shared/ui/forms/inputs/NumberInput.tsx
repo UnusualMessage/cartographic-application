@@ -2,6 +2,7 @@ import { Form, InputNumber } from "antd";
 import { Control, useController } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
+import { wrapper } from "./input.module.scss";
 import { Rules } from "../../../misc";
 
 interface Props {
@@ -34,7 +35,7 @@ const NumberInput = ({ label, rules, name, control }: Props) => {
         id={id}
         placeholder={"Введите число..."}
         status={invalid ? "error" : ""}
-        style={{ width: "100%" }}
+        className={wrapper}
         {...field}
       />
     </Form.Item>

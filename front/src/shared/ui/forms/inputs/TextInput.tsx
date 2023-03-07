@@ -2,6 +2,7 @@ import { Form, Input } from "antd";
 import { Control, useController } from "react-hook-form";
 import { v4 as uuid } from "uuid";
 
+import { wrapper } from "./input.module.scss";
 import { Rules } from "../../../misc";
 
 interface Props {
@@ -34,7 +35,7 @@ const TextInput = ({ label, name, control, rules }: Props) => {
         id={id}
         placeholder={"Введите текст..."}
         status={invalid ? "error" : ""}
-        style={{ width: "100%" }}
+        className={wrapper}
         {...field}
       />
     </Form.Item>

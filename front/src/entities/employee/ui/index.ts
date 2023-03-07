@@ -1,2 +1,5 @@
-export { default as EmployeesTree } from "./EmployeesTree";
+import EmployeesTree from "./EmployeesTree";
+
 export * from "./forms";
+
+export { EmployeesTree };

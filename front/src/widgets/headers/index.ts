@@ -1,1 +1,3 @@
-export { default as UserHeader } from "./UserHeader";
+import UserHeader from "./UserHeader";
+
+export { UserHeader };

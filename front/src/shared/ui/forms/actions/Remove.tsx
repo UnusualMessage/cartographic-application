@@ -1,11 +1,11 @@
 import { MinusCircleOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-import { useFetch, fromUuidToNumber } from "../../../lib";
+import { useFetch } from "../../../lib";
 import type { ApiStore } from "../../../misc";
 import DialogForm from "../DialogForm";
 
-interface Item {
+interface Entity {
   id: string;
 }
 
@@ -15,7 +15,7 @@ interface Props<T> {
   store: ApiStore<T, any, any>;
 }
 
-const Remove = <T extends Item>({ id, name, store }: Props<T>) => {
+const Remove = <T extends Entity>({ id, name, store }: Props<T>) => {
   const [successful, setSuccessful] = useState(false);
   const [item, setItem] = useState<T | undefined>(undefined);
 
@@ -42,9 +42,7 @@ const Remove = <T extends Item>({ id, name, store }: Props<T>) => {
       successful={successful}
       setSuccessful={setSuccessful}
     >
-      {`Подтвердите удаление записи с номером ${fromUuidToNumber(
-        item?.id ?? "???"
-      )}`}
+      Подтвердите удаление записи
     </DialogForm>
   );
 };
