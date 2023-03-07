@@ -51,7 +51,7 @@ const Table = <T extends Item>({
       columns={columns}
       dataSource={items}
       bordered
-      pagination={{ position: ["bottomLeft"], pageSize: 10 }}
+      pagination={{ position: ["bottomLeft"], pageSize: 50 }}
     />
   );
 };

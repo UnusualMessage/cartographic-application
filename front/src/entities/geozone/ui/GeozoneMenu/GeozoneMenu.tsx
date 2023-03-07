@@ -1,9 +1,9 @@
-import { ExportOutlined } from "@ant-design/icons";
 import { Polygon, toWgs84 } from "@turf/turf";
 import { MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { GeozonesStore } from "@entities/geozone";
+import { geozoneMenu } from "@shared/assets";
 import { AlertsStore } from "@shared/misc";
 
 interface Props {
@@ -12,26 +12,6 @@ interface Props {
 }
 
 type ExportType = "4326" | "3857";
-
-const items: MenuProps["items"] = [
-  {
-    label: "Экспорт",
-    key: "export",
-    children: [
-      {
-        label: "Экспорт (EPSG-4326)",
-        key: "export-4326",
-        icon: <ExportOutlined />,
-      },
-
-      {
-        label: "Экспорт (EPSG-3857)",
-        key: "export-3857",
-        icon: <ExportOutlined />,
-      },
-    ],
-  },
-];
 
 const GeozoneMenu = ({ id }: Props) => {
   const onExport = (type: ExportType) => {
@@ -76,7 +56,7 @@ const GeozoneMenu = ({ id }: Props) => {
     }
   };
 
-  return <Menu items={items} selectable={false} onClick={onClick} />;
+  return <Menu items={geozoneMenu} selectable={false} onClick={onClick} />;
 };
 
 export default observer(GeozoneMenu);

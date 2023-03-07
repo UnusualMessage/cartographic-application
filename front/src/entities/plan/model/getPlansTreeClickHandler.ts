@@ -1,8 +1,8 @@
 import type { TreeProps } from "antd/es/tree";
 
-import { PlansStore } from "@entities/plan";
+import { TabsStore } from "@shared/misc";
 
-import { TabsStore } from "../../../misc";
+import PlansStore from "./PlansStore";
 
 export const getPlansTreeClickHandler = (): TreeProps["onSelect"] => {
   return (keys, info) => {

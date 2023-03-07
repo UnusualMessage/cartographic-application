@@ -1,6 +1,6 @@
 import { TreeProps } from "antd/es/tree";
 
-import { TabsStore } from "../../../misc";
+import { TabsStore } from "@shared/misc";
 
 export const getGeozonesTreeClickHandler = (): TreeProps["onSelect"] => {
   return (keys, info) => {

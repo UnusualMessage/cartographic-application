@@ -3,11 +3,10 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
 import { planNodes } from "@shared/assets";
-import { getPlansTreeClickHandler } from "@shared/lib";
 import type { Node, Plan } from "@shared/misc";
 import { tree, Tree } from "@shared/ui";
 
-import { PlansStore } from "../../model";
+import { PlansStore, getPlansTreeClickHandler } from "../../model";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);

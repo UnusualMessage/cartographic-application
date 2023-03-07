@@ -1,8 +1,8 @@
 import { TreeProps } from "antd/es/tree";
 
-import { TabsStore } from "../../../misc";
+import { TabsStore } from "@shared/misc";
 
-export const getEmployeesTreeClickHandler = (): TreeProps["onSelect"] => {
+export const getEquipmentTreeClickHandler = (): TreeProps["onSelect"] => {
   return (keys, info) => {
     const node = info.selectedNodes[0];
 
@@ -13,13 +13,18 @@ export const getEmployeesTreeClickHandler = (): TreeProps["onSelect"] => {
       }
     };
 
+    if (node.key.toString().includes("tree-equipments-type")) {
+      switchTabsList("footer-equipments-type");
+      return;
+    }
+
     switch (node.key) {
-      case "tree-plans":
-        switchTabsList("footer-plans");
+      case "tree-equipments":
+        switchTabsList("footer-equipments");
         break;
 
       default:
-        switchTabsList("footer-plan");
+        switchTabsList("footer-equipment");
     }
   };
 };

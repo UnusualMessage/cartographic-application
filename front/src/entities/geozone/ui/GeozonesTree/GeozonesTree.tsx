@@ -2,9 +2,8 @@ import { AppstoreOutlined, BorderOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { GeozonesStore } from "@entities/geozone";
+import { GeozonesStore, getGeozonesTreeClickHandler } from "@entities/geozone";
 import { geozoneNodes } from "@shared/assets";
-import { getGeozonesTreeClickHandler } from "@shared/lib";
 import { Geozone, Node } from "@shared/misc";
 import { tree, Tree } from "@shared/ui";
 
