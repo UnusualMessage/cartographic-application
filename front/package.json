@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.0.1",
+    "@ant-design/plots": "^1.2.5",
     "@blueprintjs/core": "^4.17.1",
     "@blueprintjs/popover2": "^1.13.5",
     "@blueprintjs/select": "^4.9.5",
