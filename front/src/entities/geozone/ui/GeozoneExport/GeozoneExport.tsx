@@ -1,9 +1,11 @@
-import { Alert, H3, Pre } from "@blueprintjs/core";
+import { Modal, Typography } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { AlertsStore } from "@shared/misc";
 
 import { code, wrapper } from "./export.module.scss";
+
+const { Title } = Typography;
 
 const GeozoneExport = () => {
   const onConfirm = async () => {
@@ -15,18 +17,17 @@ const GeozoneExport = () => {
   };
 
   return (
-    <Alert
+    <Modal
       className={wrapper}
-      isOpen={AlertsStore.isOpen}
-      onClose={onClose}
-      onConfirm={onConfirm}
-      cancelButtonText={"Закрыть"}
-      confirmButtonText={"Скопировать"}
-      intent={"primary"}
+      open={AlertsStore.isOpen}
+      onCancel={onClose}
+      onOk={onConfirm}
+      cancelText={"Закрыть"}
+      okText={"Скопировать"}
     >
-      <H3>Экспорт геозоны</H3>
-      <Pre className={code}>{AlertsStore.info}</Pre>
-    </Alert>
+      <Title level={3}>Экспорт геозоны</Title>
+      <pre className={code}>{AlertsStore.info}</pre>
+    </Modal>
   );
 };
 

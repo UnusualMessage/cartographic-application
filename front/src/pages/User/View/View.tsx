@@ -1,27 +1,28 @@
 import React from "react";
 
-import { Loader, Content } from "@shared/ui";
+import { Loader } from "@shared/ui";
 import {
   Overlays,
-  UserAside,
+  UserAside as Aside,
   EntitiesMenu,
   Schema,
-  UserFooter,
+  UserFooter as Footer,
   InfoMenu,
+  Content,
 } from "@widgets/index";
 
 const View = () => {
   return (
     <React.Suspense fallback={<Loader />}>
       <Overlays />
-      <UserAside>
+      <Aside>
         <EntitiesMenu />
-      </UserAside>
+      </Aside>
       <Content>
         <Schema />
-        <UserFooter>
+        <Footer>
           <InfoMenu />
-        </UserFooter>
+        </Footer>
       </Content>
     </React.Suspense>
   );

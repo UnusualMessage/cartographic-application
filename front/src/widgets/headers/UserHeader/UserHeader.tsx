@@ -40,7 +40,7 @@ const UserHeader = () => {
           </Button>
         </Link>
 
-        <Link to={"/references/select"}>
+        <Link to={"/references"}>
           <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
             Справочники
           </Button>

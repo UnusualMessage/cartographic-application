@@ -1,30 +1,22 @@
-import {
-  FieldError,
-  FieldErrors,
-  FieldValues,
-  UseFormRegister,
-} from "react-hook-form";
+import { FieldValues, Control } from "react-hook-form";
 
 import type { Form } from "../../../misc";
 import { TextInput, SelectInput, NumberInput } from "../../../ui";
 
 export const formRenderer = <T extends FieldValues>(
-  form: Form<T>,
-  register: UseFormRegister<T>,
-  errors: FieldErrors<T>
+  fields: Form<T>,
+  control: Control
 ) => {
   return (
     <>
-      {form.map((field) => {
-        const error = errors[field.name] as FieldError | undefined;
-
+      {fields.map((field) => {
         const props = {
           key: `input-${field.label}`,
           label: field.label,
           options: field.options ?? [],
-          required: field.required,
-          error: error,
-          ...register(field.name, { required: field.required }),
+          name: field.name,
+          rules: field.rules,
+          control,
         };
 
         switch (field.type) {
