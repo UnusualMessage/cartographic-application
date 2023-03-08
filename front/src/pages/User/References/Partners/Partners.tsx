@@ -8,15 +8,14 @@ import {
   DuplicatePartner,
   RemovePartner,
 } from "@entities/partner";
-import { getPartnerTable, mapPartnerToTable } from "@shared/lib";
+import { partnerTable } from "@shared/assets";
+import { mapPartnerToTable } from "@shared/lib";
 import { TablePartner } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Partners = () => {
   const partner = PartnersStore.partner;
   const partners = PartnersStore.partners;
-
-  const columns = getPartnerTable();
 
   const onSelection = async (partners: TablePartner[]) => {
     PartnersStore.partner = await PartnersStore.getById(partners[0].id);
@@ -30,7 +29,7 @@ const Partners = () => {
     <>
       <Table<TablePartner>
         items={partners.map(mapPartnerToTable)}
-        columns={columns}
+        columns={partnerTable}
         setItems={onSelection}
       />
       <TableButtons>

@@ -8,15 +8,14 @@ import {
   DuplicatePost,
   RemovePost,
 } from "@entities/post";
-import { mapPostToTable, getPostTable } from "@shared/lib";
+import { postTable } from "@shared/assets";
+import { mapPostToTable } from "@shared/lib";
 import { TablePartner, TablePost } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Posts = () => {
   const post = PostsStore.post;
   const posts = PostsStore.posts;
-
-  const columns = getPostTable();
 
   const onSelection = async (posts: TablePost[]) => {
     PostsStore.post = await PostsStore.getById(posts[0].id);
@@ -30,7 +29,7 @@ const Posts = () => {
     <>
       <Table<TablePartner>
         items={posts.map(mapPostToTable)}
-        columns={columns}
+        columns={postTable}
         setItems={onSelection}
       />
       <TableButtons>

@@ -8,15 +8,14 @@ import {
   RemoveDepartment,
   DepartmentsStore,
 } from "@entities/department";
-import { getDepartmentTable, mapDepartmentToTable } from "@shared/lib";
+import { departmentTable } from "@shared/assets";
+import { mapDepartmentToTable } from "@shared/lib";
 import { TableDepartment } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Departments = () => {
   const department = DepartmentsStore.department;
   const departments = DepartmentsStore.departments;
-
-  const columns = getDepartmentTable();
 
   const onSelection = async (departments: TableDepartment[]) => {
     DepartmentsStore.department = await DepartmentsStore.getById(
@@ -32,7 +31,7 @@ const Departments = () => {
     <>
       <Table<TableDepartment>
         items={departments.map(mapDepartmentToTable)}
-        columns={columns}
+        columns={departmentTable}
         setItems={onSelection}
       />
       <TableButtons>

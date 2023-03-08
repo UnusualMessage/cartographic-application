@@ -1,6 +1,6 @@
-import type { Column } from "../../../../misc";
+import type { Column } from "../../../misc";
 
-export const getEmployeeTable = (): Column[] => [
+export const employeeTable: Column[] = [
   {
     title: "Имя",
     dataIndex: "firstName",

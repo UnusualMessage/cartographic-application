@@ -1,6 +1,6 @@
-import type { Column } from "../../../../misc";
+import { Column } from "../../../misc";
 
-export const getDepartmentTable = (): Column[] => [
+export const postTable: Column[] = [
   {
     title: "Название",
     dataIndex: "title",

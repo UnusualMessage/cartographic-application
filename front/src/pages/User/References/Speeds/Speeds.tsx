@@ -8,15 +8,14 @@ import {
   DuplicateSpeed,
   RemoveSpeed,
 } from "@entities/speed";
-import { getSpeedTable, mapSpeedToTable } from "@shared/lib";
+import { speedTable } from "@shared/assets";
+import { mapSpeedToTable } from "@shared/lib";
 import { TableSpeed } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Speeds = () => {
   const speed = SpeedsStore.speed;
   const speeds = SpeedsStore.speeds;
-
-  const columns = getSpeedTable();
 
   const onSelection = async (speeds: TableSpeed[]) => {
     SpeedsStore.speed = await SpeedsStore.getById(speeds[0].id);
@@ -30,7 +29,7 @@ const Speeds = () => {
     <>
       <Table<TableSpeed>
         items={speeds.map(mapSpeedToTable)}
-        columns={columns}
+        columns={speedTable}
         setItems={onSelection}
       />
       <TableButtons>

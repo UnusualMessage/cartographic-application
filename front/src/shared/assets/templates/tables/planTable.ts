@@ -1,6 +1,6 @@
-import { Column } from "../../../../misc";
+import { Column } from "../../../misc";
 
-export const getPlanTable = (): Column[] => [
+export const planTable: Column[] = [
   {
     title: "Название",
     dataIndex: "title",

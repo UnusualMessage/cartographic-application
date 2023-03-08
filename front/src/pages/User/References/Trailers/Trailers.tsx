@@ -8,15 +8,14 @@ import {
   DuplicateTrailer,
   RemoveTrailer,
 } from "@entities/trailer";
-import { getTrailerTable, mapTrailerToTable } from "@shared/lib";
+import { trailerTable } from "@shared/assets";
+import { mapTrailerToTable } from "@shared/lib";
 import { TableTrailer } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Trailers = () => {
   const trailer = TrailersStore.trailer;
   const trailers = TrailersStore.trailers;
-
-  const columns = getTrailerTable();
 
   const onSelection = async (trailers: TableTrailer[]) => {
     TrailersStore.trailer = await TrailersStore.getById(trailers[0].id);
@@ -30,7 +29,7 @@ const Trailers = () => {
     <>
       <Table<TableTrailer>
         items={trailers.map(mapTrailerToTable)}
-        columns={columns}
+        columns={trailerTable}
         setItems={onSelection}
       />
       <TableButtons>

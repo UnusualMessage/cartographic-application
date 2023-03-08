@@ -1,6 +1,6 @@
-import { Column } from "../../../../misc";
+import { Column } from "../../../misc";
 
-export const getPartnerTable = (): Column[] => [
+export const partnerTable: Column[] = [
   {
     title: "Название",
     dataIndex: "title",

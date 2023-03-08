@@ -1,6 +1,6 @@
-import { Column } from "../../../../misc";
+import { Column } from "../../../misc";
 
-export const getSpeedTable = (): Column[] => [
+export const speedTable: Column[] = [
   {
     title: "Название",
     dataIndex: "title",

@@ -8,15 +8,14 @@ import {
   DuplicateEmployee,
   RemoveEmployee,
 } from "@entities/employee";
-import { getEmployeeTable, mapEmployeeToTable } from "@shared/lib";
+import { employeeTable } from "@shared/assets";
+import { mapEmployeeToTable } from "@shared/lib";
 import { TableEmployee } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;
   const employees = EmployeesStore.employees;
-
-  const columns = getEmployeeTable();
 
   const onSelection = async (employees: TableEmployee[]) => {
     EmployeesStore.employee = await EmployeesStore.getById(employees[0].id);
@@ -30,7 +29,7 @@ const Employees = () => {
     <>
       <Table<TableEmployee>
         items={employees.map(mapEmployeeToTable)}
-        columns={columns}
+        columns={employeeTable}
         setItems={onSelection}
       />
       <TableButtons>
