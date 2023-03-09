@@ -1,5 +1,3 @@
-import { observer } from "mobx-react-lite";
-
 import LayerControls from "../LayerControls";
 import MainControls from "../MainControls";
 import ViewControls from "../ViewControls";
@@ -14,4 +12,4 @@ const Controls = () => {
   );
 };
 
-export default observer(Controls);
+export default Controls;

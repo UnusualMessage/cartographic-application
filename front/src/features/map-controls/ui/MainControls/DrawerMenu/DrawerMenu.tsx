@@ -8,8 +8,8 @@ import {
   DrawType,
   LayersStore,
   InteractionsStore,
+  MapControl,
 } from "@shared/misc";
-import { ControlType } from "@shared/misc/stores/ControlsStore";
 
 const { Text } = Typography;
 
@@ -33,18 +33,18 @@ const DrawerMenu = () => {
     ControlsStore.hideDrawer();
   };
 
-  const choose = (type: ControlType) => {
+  const choose = (type: MapControl) => {
     ControlsStore.currentMapControl = type;
   };
 
   const onClick: MenuProps["onClick"] = (e) => {
     switch (e.key) {
       case "measure-length":
-        choose(e.key as ControlType);
+        choose(e.key as MapControl);
         switchType(e.key);
         break;
       case "measure-area":
-        choose(e.key as ControlType);
+        choose(e.key as MapControl);
         switchType(e.key);
         break;
       case "none":
@@ -57,7 +57,7 @@ const DrawerMenu = () => {
         switchType(e.key);
         break;
       default:
-        choose(e.key as ControlType);
+        choose(e.key as MapControl);
     }
   };
 

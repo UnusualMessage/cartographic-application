@@ -5,7 +5,7 @@ import { Equipment } from "@shared/misc";
 
 class EquipmentStore {
   private readonly _equipments: Equipment[];
-  private _equipment: Equipment | undefined;
+  private _equipment?: Equipment;
 
   constructor() {
     this._equipments = equipment;
