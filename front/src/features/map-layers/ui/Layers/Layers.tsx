@@ -7,7 +7,7 @@ import { getMeasurementStyle } from "@shared/lib";
 import { InteractionsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
-import { Drawing, Measurement } from "../../../interactions";
+import { Drawing, Measurement } from "../../../map-interactions";
 import TileLayer from "../TileLayer";
 import VectorLayer from "../VectorLayer";
 

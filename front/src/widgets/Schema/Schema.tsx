@@ -2,10 +2,10 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import { Layers } from "@features/layers";
 import { Map } from "@features/map";
 import { Menu } from "@features/map-context-menu";
 import { Controls } from "@features/map-controls";
+import { Layers } from "@features/map-layers";
 import { View } from "@features/map-view";
 import { ControlsStore } from "@shared/misc";
 
