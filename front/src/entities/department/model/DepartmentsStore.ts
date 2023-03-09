@@ -12,7 +12,7 @@ class DepartmentsStore
   implements ApiStore<Department, CreateDepartment, UpdateDepartment>
 {
   private _departments: Department[];
-  private _department: Department | undefined;
+  private _department?: Department;
 
   constructor() {
     this._departments = departments;

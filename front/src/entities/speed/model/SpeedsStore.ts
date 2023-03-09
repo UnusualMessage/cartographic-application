@@ -5,7 +5,7 @@ import { Speed, UpdateSpeed, CreateSpeed, ApiStore } from "@shared/misc";
 
 class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {
   private _speeds: Speed[];
-  private _speed: Speed | undefined;
+  private _speed?: Speed;
 
   constructor() {
     this._speeds = speeds;

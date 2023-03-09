@@ -8,14 +8,14 @@ import { ViewStore } from "@shared/misc";
 
 import { GeocoderService } from "../../model";
 
-interface Item {
+interface Option {
   key?: string;
   label: ReactNode;
   value: Coordinate;
 }
 
 const Geocoder = () => {
-  const [items, setItems] = useState<Item[]>([]);
+  const [options, setOptions] = useState<Option[]>([]);
   const [value, setValue] = useState<string>();
 
   const handleSearch = (value: string) => {
@@ -23,7 +23,7 @@ const Geocoder = () => {
 
     const getFeatures = async () => {
       const response = await geocoderService.getLocation(value);
-      setItems(
+      setOptions(
         response.map((item) => {
           return {
             key: item.id?.toString(),
@@ -41,7 +41,7 @@ const Geocoder = () => {
     setValue(value);
   };
 
-  const handleSelect = (value: string, item: Item) => {
+  const handleSelect = (value: string, item: Option) => {
     ViewStore.centerTo(fromLonLat(item.value));
     setValue(value);
   };
@@ -55,7 +55,7 @@ const Geocoder = () => {
       showArrow={false}
       filterOption={false}
       value={value}
-      options={items}
+      options={options}
       placeholder="Поиск..."
       notFoundContent={null}
       onSearch={handleSearch}

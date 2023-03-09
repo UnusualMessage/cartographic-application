@@ -5,7 +5,7 @@ import { Partner, ApiStore, CreatePartner, UpdatePartner } from "@shared/misc";
 
 class PartnersStore implements ApiStore<Partner, CreatePartner, UpdatePartner> {
   private _partners: Partner[];
-  private _partner: Partner | undefined;
+  private _partner?: Partner;
 
   constructor() {
     this._partners = partners;

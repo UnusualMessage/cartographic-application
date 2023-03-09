@@ -5,7 +5,7 @@ import { Trailer, CreateTrailer, UpdateTrailer, ApiStore } from "@shared/misc";
 
 class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
   private _trailers: Trailer[];
-  private _trailer: Trailer | undefined;
+  private _trailer?: Trailer;
 
   constructor() {
     this._trailers = trailers;
