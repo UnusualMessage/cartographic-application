@@ -12,7 +12,7 @@ class EmployeesStore
   implements ApiStore<Employee, CreateEmployee, UpdateEmployee>
 {
   private _employees: Employee[];
-  private _employee: Employee | undefined;
+  private _employee?: Employee;
 
   constructor() {
     this._employees = employees;

@@ -5,7 +5,7 @@ import type { Organization } from "@shared/misc";
 
 class OrganizationsStore {
   private _organizations: Organization[];
-  private _organization: Organization | undefined;
+  private _organization?: Organization;
 
   constructor() {
     this._organizations = organizations;
@@ -14,15 +14,15 @@ class OrganizationsStore {
     makeAutoObservable(this);
   }
 
-  get organization(): Organization | undefined {
+  get organization() {
     return this._organization;
   }
 
-  get organizations(): Organization[] {
+  get organizations() {
     return this._organizations;
   }
 
-  set organizations(value: Organization[]) {
+  set organizations(value) {
     this._organizations = value;
   }
 

@@ -6,7 +6,7 @@ import { ApiStore, Post, UpdatePost, CreatePost } from "@shared/misc";
 
 class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
   private _posts: Post[];
-  private _post: Post | undefined;
+  private _post?: Post;
 
   constructor() {
     this._posts = posts;
@@ -19,7 +19,7 @@ class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
     return this._posts;
   }
 
-  public set posts(value: Post[]) {
+  public set posts(value) {
     this._posts = value;
   }
 
@@ -27,7 +27,7 @@ class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
     return this._post;
   }
 
-  public set post(post: Post | undefined) {
+  public set post(post) {
     this._post = post;
   }
 

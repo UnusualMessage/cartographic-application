@@ -1,8 +1,8 @@
 import { v4 as uuid } from "uuid";
 
-import PlansTab from "@features/tabs";
+import { PlansTab } from "@features/plan";
 import { TabsList } from "@shared/misc";
-import { EmptyInformation } from "@shared/ui/placeholders";
+import { EmptyInformation } from "@shared/ui";
 
 import { TabPage } from "../ui";
 

@@ -5,7 +5,6 @@ import {
   FileExcelOutlined,
   DesktopOutlined,
   FileAddOutlined,
-  HomeOutlined,
   SettingOutlined,
   BellOutlined,
   LogoutOutlined,
@@ -18,6 +17,7 @@ import { OrganizationsStore } from "@entities/organization";
 import { AuthStore } from "@entities/user";
 import { about } from "@shared/assets";
 import { UpdateStore } from "@shared/misc";
+import { TractorFilled } from "@shared/ui";
 
 import { container, logo, wrapper } from "./header.module.scss";
 
@@ -28,7 +28,7 @@ const UserHeader = () => {
     <Space className={wrapper}>
       <Space className={container}>
         <Space className={logo}>
-          <HomeOutlined style={{ fontSize: "32px" }} />
+          <TractorFilled />
           <Title level={2} style={{ margin: 0 }}>
             {about.title}
           </Title>

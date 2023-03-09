@@ -31,10 +31,6 @@ class AuthStore {
     return this._isLogin;
   };
 
-  public getAccessToken = () => {
-    return this._accessToken;
-  };
-
   public authenticateUser = async (user: AuthenticateUser) => {
     const data = await this._authService.authenticate(user);
 
