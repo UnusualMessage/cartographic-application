@@ -28,7 +28,7 @@ const Authorization = () => {
 
     await AuthStore.authenticateUser(user);
 
-    if (AuthStore.entered()) {
+    if (AuthStore.entered) {
       redirect("/");
     }
 

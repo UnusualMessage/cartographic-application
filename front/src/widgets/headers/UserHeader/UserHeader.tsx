@@ -92,11 +92,16 @@ const UserHeader = () => {
         </Badge>
 
         <Space direction={"vertical"} size={2}>
-          <Text>{AuthStore.fullName}</Text>
+          <Text>{AuthStore.user?.fullName}</Text>
           <Text strong>{OrganizationsStore.organization?.title}</Text>
         </Space>
 
-        <Button icon={<LogoutOutlined />} type={"text"} size={"large"} />
+        <Button
+          icon={<LogoutOutlined />}
+          type={"text"}
+          size={"large"}
+          onClick={() => AuthStore.logout()}
+        />
       </Space>
     </Space>
   );
