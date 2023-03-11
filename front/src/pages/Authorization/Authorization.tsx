@@ -43,9 +43,12 @@ const Authorization = () => {
         layout={"vertical"}
       >
         {formRenderer(authenticateUser(), control as unknown as Control)}
-        <Button type={"primary"} htmlType={"submit"}>
-          Ок
-        </Button>
+
+        <Form.Item>
+          <Button type={"primary"} htmlType={"submit"}>
+            Ок
+          </Button>
+        </Form.Item>
       </Form>
     </div>
   );
