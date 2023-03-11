@@ -11,7 +11,6 @@ export const authenticateUser = (): Form<AuthenticateUser> => {
 
     {
       type: "password",
-      rules: { required: "Заполните поле!" },
       label: "Пароль",
       name: "password",
     },

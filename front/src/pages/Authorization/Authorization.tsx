@@ -29,7 +29,13 @@ const Authorization = () => {
     await AuthStore.authenticateUser(user);
 
     if (AuthStore.entered) {
-      redirect("/");
+      switch (AuthStore.user?.roles) {
+        case 8:
+          redirect("/admin");
+          break;
+        default:
+          redirect("/");
+      }
     }
 
     reset();

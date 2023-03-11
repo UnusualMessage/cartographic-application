@@ -16,7 +16,7 @@ const browserRouter = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Authorized roles={4}>
+      <Authorized roles={[1, 2, 4]}>
         <UserLayout />
       </Authorized>
     ),
@@ -50,7 +50,7 @@ const browserRouter = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <Authorized roles={8}>
+      <Authorized roles={[8]}>
         <></>
       </Authorized>
     ),
