@@ -1,7 +1,12 @@
 import { FieldValues, Control } from "react-hook-form";
 
 import type { Form } from "../../../misc";
-import { TextInput, SelectInput, NumberInput } from "../../../ui";
+import {
+  TextInput,
+  SelectInput,
+  NumberInput,
+  PasswordInput,
+} from "../../../ui";
 
 export const formRenderer = <T extends FieldValues>(
   fields: Form<T>,
@@ -26,6 +31,8 @@ export const formRenderer = <T extends FieldValues>(
             return <SelectInput {...props} />;
           case "numeric":
             return <NumberInput {...props} />;
+          case "password":
+            return <PasswordInput {...props} />;
           default:
             return <></>;
         }
