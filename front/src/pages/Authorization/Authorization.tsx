@@ -28,8 +28,14 @@ const Authorization = () => {
 
     await AuthStore.authenticateUser(user);
 
-    if (AuthStore.entered()) {
-      redirect("/");
+    if (AuthStore.entered) {
+      switch (AuthStore.user?.roles) {
+        case 8:
+          redirect("/admin");
+          break;
+        default:
+          redirect("/");
+      }
     }
 
     reset();
@@ -43,9 +49,12 @@ const Authorization = () => {
         layout={"vertical"}
       >
         {formRenderer(authenticateUser(), control as unknown as Control)}
-        <Button type={"primary"} htmlType={"submit"}>
-          Ок
-        </Button>
+
+        <Form.Item>
+          <Button type={"primary"} htmlType={"submit"}>
+            Ок
+          </Button>
+        </Form.Item>
       </Form>
     </div>
   );

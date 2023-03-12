@@ -1,59 +1,59 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
 
 import { users } from "@shared/assets";
-import { isError } from "@shared/lib";
 import { ResponseService, AuthenticateUser, User } from "@shared/misc";
 
 import AuthService from "./AuthService";
 
 class AuthStore {
-  private _isLogin: boolean;
+  private _entered: boolean;
   private _accessToken: string;
   private _authService: AuthService;
   private _responseService: ResponseService;
   private _user?: User;
 
   constructor() {
-    this._isLogin = false;
+    this._entered = false;
+    this._user = undefined;
     this._accessToken = "";
+
     this._authService = new AuthService();
     this._responseService = new ResponseService();
-    this._user = users[0];
 
     makeAutoObservable(this);
   }
 
-  public get fullName() {
-    return this._user?.fullName;
+  public get user() {
+    return this._user;
   }
 
-  public entered = () => {
-    return this._isLogin;
-  };
+  public get entered() {
+    return this._entered;
+  }
 
-  public authenticateUser = async (user: AuthenticateUser) => {
-    const data = await this._authService.authenticate(user);
+  public authenticateUser = async (data: AuthenticateUser) => {
+    const account = users.find((user) => user.login === data.login);
 
-    if (isError(data)) {
-      this._responseService.invokeError(data.message);
+    if (!account) {
+      this._responseService.invokeError("Пользователь не найден");
       this.logout();
       return;
     }
 
     this._responseService.invokeSuccess();
-    runInAction(() => {
-      this.login(data.token);
-    });
+    this.login("");
+    this._user = account;
+  };
+
+  public logout = () => {
+    this._accessToken = "";
+    this._entered = false;
+    this._user = undefined;
   };
 
   private login = (accessToken: string) => {
     this._accessToken = accessToken;
-    this._isLogin = true;
-  };
-
-  private logout = () => {
-    this._accessToken = "";
-    this._isLogin = false;
+    this._entered = true;
   };
 }
 

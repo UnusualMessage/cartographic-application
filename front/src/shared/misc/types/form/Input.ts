@@ -1,1 +1,1 @@
-export type Input = "text" | "select" | "numeric";
+export type Input = "text" | "select" | "numeric" | "password";

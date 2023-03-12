@@ -6,28 +6,28 @@ export const users: User[] = [
   {
     id: uuid(),
     login: "Admin",
-    fullName: "Котенко Никита Алексеевич",
+    fullName: "Админ Никита Алексеевич",
     roles: 8,
   },
 
   {
     id: uuid(),
     login: "Moderator",
-    fullName: "Котенко Никита Алексеевич",
+    fullName: "Модератор Никита Алексеевич",
     roles: 4,
   },
 
   {
     id: uuid(),
     login: "Monitor",
-    fullName: "Котенко Никита Алексеевич",
+    fullName: "Монитор Никита Алексеевич",
     roles: 2,
   },
 
   {
     id: uuid(),
     login: "Guest",
-    fullName: "Котенко Никита Алексеевич",
+    fullName: "Гость Никита Алексеевич",
     roles: 1,
   },
 ];
