@@ -5,6 +5,7 @@ import { EmptyPage, Loader } from "@shared/ui";
 import { UserLayout } from "@widgets/index";
 
 import Authorization from "./Authorization";
+import Authorized from "./Authorization/ui/Authorized";
 import { references } from "./User/References";
 
 const View = lazy(() => import("./User/View"));
@@ -14,7 +15,11 @@ const Home = lazy(() => import("./Admin/Home"));
 const browserRouter = createBrowserRouter([
   {
     path: "/",
-    element: <UserLayout />,
+    element: (
+      <Authorized roles={[1, 2, 4]}>
+        <UserLayout />
+      </Authorized>
+    ),
     errorElement: <EmptyPage />,
     children: [
       {
@@ -44,7 +49,11 @@ const browserRouter = createBrowserRouter([
 
   {
     path: "/admin",
-    element: <></>,
+    element: (
+      <Authorized roles={[8]}>
+        <></>
+      </Authorized>
+    ),
     errorElement: <EmptyPage />,
     children: [
       {

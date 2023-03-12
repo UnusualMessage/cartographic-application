@@ -10,8 +10,7 @@ export const authenticateUser = (): Form<AuthenticateUser> => {
     },
 
     {
-      type: "text",
-      rules: { required: "Заполните поле!" },
+      type: "password",
       label: "Пароль",
       name: "password",
     },
