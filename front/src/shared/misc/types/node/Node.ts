@@ -7,5 +7,6 @@ export interface Node {
   data?: any;
   children?: Node[];
   isLeaf?: boolean;
+  visible?: boolean;
   disabled?: boolean;
 }
