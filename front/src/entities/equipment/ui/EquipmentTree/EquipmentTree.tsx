@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import { equipmentNodes } from "@shared/assets";
 import { Equipment, Node } from "@shared/misc";
-import { tree, Tree } from "@shared/ui";
+import { Tree } from "@shared/ui";
 
 import { getEquipmentTreeClickHandler, EquipmentStore } from "../../model";
 
@@ -49,7 +49,6 @@ const EquipmentTree = () => {
       fillNodes={fillNodes}
       handleSelect={getEquipmentTreeClickHandler()}
       source={equipment}
-      className={tree}
     />
   );
 };

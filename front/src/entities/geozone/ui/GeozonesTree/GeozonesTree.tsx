@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 import { GeozonesStore, getGeozonesTreeClickHandler } from "@entities/geozone";
 import { geozoneNodes } from "@shared/assets";
 import { Geozone, Node } from "@shared/misc";
-import { tree, Tree } from "@shared/ui";
+import { Tree } from "@shared/ui";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);
@@ -49,7 +49,6 @@ const GeozonesTree = () => {
       fillNodes={fillNodes}
       source={zones}
       handleSelect={getGeozonesTreeClickHandler()}
-      className={tree}
     />
   );
 };
