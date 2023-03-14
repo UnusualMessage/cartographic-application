@@ -40,24 +40,25 @@ const DrawerMenu = () => {
   const onClick: MenuProps["onClick"] = (e) => {
     switch (e.key) {
       case "measure-length":
-        choose(e.key as MapControl);
+        choose("measurement");
         switchType(e.key);
         break;
       case "measure-area":
-        choose(e.key as MapControl);
+        choose("measurement");
         switchType(e.key);
         break;
       case "none":
+        choose("edit");
         switchType(e.key);
         break;
       case "cursor":
+        choose("edit");
         switchType(e.key);
         break;
       case "geozones":
+        choose("edit");
         switchType(e.key);
         break;
-      default:
-        choose(e.key as MapControl);
     }
   };
 
@@ -67,7 +68,8 @@ const DrawerMenu = () => {
       placement="left"
       open={isOpen}
       onClose={close}
-      footer={<Text>{`© 2022 ${about.title}`}</Text>}
+      width={320}
+      footer={<Text>{`© 2023 ${about.title}`}</Text>}
       getContainer={ControlsStore.fullScreenActive ? false : ""}
       bodyStyle={{ padding: 0 }}
     >

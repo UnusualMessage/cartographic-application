@@ -14,12 +14,16 @@ import { wrapper } from "./schema.module.scss";
 const Schema = () => {
   const handle = useFullScreenHandle();
 
+  const onChange = (state: boolean) => {
+    ControlsStore.fullScreenActive = state;
+  };
+
   useEffect(() => {
     ControlsStore.fullScreenHandle = handle;
   }, []);
 
   return (
-    <FullScreen handle={handle} className={wrapper}>
+    <FullScreen handle={handle} className={wrapper} onChange={onChange}>
       <Map>
         <View />
         <Menu />

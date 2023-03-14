@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import { planNodes } from "@shared/assets";
 import type { Node, Plan } from "@shared/misc";
-import { tree, Tree } from "@shared/ui";
+import { Tree } from "@shared/ui";
 
 import { PlansStore, getPlansTreeClickHandler } from "../../model";
 
@@ -40,8 +40,8 @@ const PlansTree = () => {
     <Tree<Plan>
       fillNodes={fillNodes}
       source={plans}
-      className={tree}
       handleSelect={getPlansTreeClickHandler()}
+      defaultSelected={"tree-plans"}
     />
   );
 };

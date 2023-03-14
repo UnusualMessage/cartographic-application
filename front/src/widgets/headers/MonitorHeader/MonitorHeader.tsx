@@ -4,7 +4,6 @@ import {
   FieldTimeOutlined,
   FileExcelOutlined,
   DesktopOutlined,
-  FileAddOutlined,
   SettingOutlined,
   BellOutlined,
   LogoutOutlined,
@@ -23,7 +22,7 @@ import { container, logo, wrapper } from "./header.module.scss";
 
 const { Text, Title } = Typography;
 
-const UserHeader = () => {
+const MonitorHeader = () => {
   return (
     <Space className={wrapper}>
       <Space className={container}>
@@ -37,12 +36,6 @@ const UserHeader = () => {
         <Link to={"/"}>
           <Button icon={<DesktopOutlined />} size={"large"} type={"text"}>
             Мониторинг
-          </Button>
-        </Link>
-
-        <Link to={"/references"}>
-          <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
-            Справочники
           </Button>
         </Link>
 
@@ -107,4 +100,4 @@ const UserHeader = () => {
   );
 };
 
-export default observer(UserHeader);
+export default observer(MonitorHeader);

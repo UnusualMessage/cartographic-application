@@ -1,5 +1,5 @@
 import { FullscreenOutlined, PrinterOutlined } from "@ant-design/icons";
-import { Button, Space } from "antd";
+import { Button } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
@@ -13,7 +13,7 @@ import {
 } from "@shared/misc";
 import { LengthMeasurement, LayersFilled, AreaMeasurement } from "@shared/ui";
 
-import { active, wrapper } from "./buttons.module.scss";
+import { active, wrapper, button } from "./buttons.module.scss";
 
 const ButtonsGroup = () => {
   const drawType = InteractionsStore.drawType;
@@ -56,33 +56,40 @@ const ButtonsGroup = () => {
 
   return (
     <div className={classes}>
-      <Space direction={"vertical"} size={2}>
-        <Button
-          icon={<LayersFilled />}
-          type={isPanelOpen ? "primary" : "default"}
-          onClick={switchPanel}
-        />
+      <Button
+        className={button}
+        icon={<LayersFilled />}
+        type={isPanelOpen ? "primary" : "default"}
+        onClick={switchPanel}
+      />
 
-        <Button
-          icon={<LengthMeasurement />}
-          type={drawType === "measure-length" ? "primary" : "default"}
-          onClick={() => switchType("measure-length")}
-        />
+      <Button
+        className={button}
+        icon={<LengthMeasurement />}
+        type={drawType === "measure-length" ? "primary" : "default"}
+        onClick={() => switchType("measure-length")}
+      />
 
-        <Button
-          icon={<AreaMeasurement />}
-          type={drawType === "measure-area" ? "primary" : "default"}
-          onClick={() => switchType("measure-area")}
-        />
+      <Button
+        className={button}
+        icon={<AreaMeasurement />}
+        type={drawType === "measure-area" ? "primary" : "default"}
+        onClick={() => switchType("measure-area")}
+      />
 
-        <Button
-          icon={<FullscreenOutlined />}
-          type={fullScreenActive ? "primary" : "default"}
-          onClick={fullScreenActive ? exitFullScreen : enterFullScreen}
-        />
+      <Button
+        className={button}
+        icon={<FullscreenOutlined />}
+        type={fullScreenActive ? "primary" : "default"}
+        onClick={fullScreenActive ? exitFullScreen : enterFullScreen}
+      />
 
-        <Button icon={<PrinterOutlined />} type={"default"} onClick={print} />
-      </Space>
+      <Button
+        className={button}
+        icon={<PrinterOutlined />}
+        type={"default"}
+        onClick={print}
+      />
     </div>
   );
 };
