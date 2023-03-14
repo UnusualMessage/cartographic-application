@@ -45,7 +45,13 @@ const fillNodes = (employees?: Employee[]) => {
 const EmployeesTree = () => {
   const employees = EmployeesStore.employees;
 
-  return <Tree<Employee> fillNodes={fillNodes} source={employees} />;
+  return (
+    <Tree<Employee>
+      fillNodes={fillNodes}
+      source={employees}
+      defaultSelected={"tree-employees"}
+    />
+  );
 };
 
 export default observer(EmployeesTree);

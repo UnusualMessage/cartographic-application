@@ -3,13 +3,20 @@ import { Tree as AntTree, Input } from "antd";
 import type { TreeProps } from "antd/es/tree";
 import classNames from "classnames";
 import { cloneDeep } from "lodash";
-import { useEffect, useState, ChangeEventHandler, useCallback } from "react";
+import {
+  useEffect,
+  useState,
+  ChangeEventHandler,
+  useCallback,
+  Key,
+} from "react";
 
 import { wrapper, tree, search } from "./tree.module.scss";
 import { Node } from "../../misc";
 
 interface Props<T> {
   fillNodes: (source?: T[]) => Node[];
+  defaultSelected: Key;
   source?: T[];
   handleSelect?: TreeProps["onSelect"];
   className?: string;
@@ -45,7 +52,13 @@ const findNode = (node: Node, search: string): boolean => {
   return false;
 };
 
-const Tree = <T,>({ fillNodes, source, handleSelect, className }: Props<T>) => {
+const Tree = <T,>({
+  fillNodes,
+  source,
+  handleSelect,
+  defaultSelected,
+  className,
+}: Props<T>) => {
   const [nodes, setNodes] = useState(() => fillNodes(source));
   const [searchValue, setSearchValue] = useState<string>("");
 
@@ -95,6 +108,7 @@ const Tree = <T,>({ fillNodes, source, handleSelect, className }: Props<T>) => {
         onSelect={handleSelect}
         treeData={nodes}
         expandAction={false}
+        defaultSelectedKeys={[defaultSelected]}
         defaultExpandAll
         showLine
       />

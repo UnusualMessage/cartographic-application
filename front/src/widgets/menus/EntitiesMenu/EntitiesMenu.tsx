@@ -20,6 +20,7 @@ const EntitiesMenu = () => {
       className={wrapper}
       activeKey={tabId ?? "sider-geozones"}
       items={currentTabs}
+      destroyInactiveTabPane
       onChange={(newTabId) => {
         TabsStore.footerTabsListId = newTabId
           .toString()

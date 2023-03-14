@@ -41,6 +41,7 @@ const PlansTree = () => {
       fillNodes={fillNodes}
       source={plans}
       handleSelect={getPlansTreeClickHandler()}
+      defaultSelected={"tree-plans"}
     />
   );
 };

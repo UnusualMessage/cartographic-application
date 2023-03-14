@@ -26,7 +26,13 @@ const ReferencesTree = () => {
     }
   };
 
-  return <Tree fillNodes={fillNodes} handleSelect={handleClick} />;
+  return (
+    <Tree
+      fillNodes={fillNodes}
+      handleSelect={handleClick}
+      defaultSelected={""}
+    />
+  );
 };
 
 const References = () => {

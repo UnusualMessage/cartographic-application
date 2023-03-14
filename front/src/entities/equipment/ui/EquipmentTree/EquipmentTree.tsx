@@ -49,6 +49,7 @@ const EquipmentTree = () => {
       fillNodes={fillNodes}
       handleSelect={getEquipmentTreeClickHandler()}
       source={equipment}
+      defaultSelected={"tree-equipments"}
     />
   );
 };

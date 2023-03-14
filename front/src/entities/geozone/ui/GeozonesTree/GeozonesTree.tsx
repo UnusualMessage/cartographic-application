@@ -49,6 +49,7 @@ const GeozonesTree = () => {
       fillNodes={fillNodes}
       source={zones}
       handleSelect={getGeozonesTreeClickHandler()}
+      defaultSelected={"tree-geozones"}
     />
   );
 };
