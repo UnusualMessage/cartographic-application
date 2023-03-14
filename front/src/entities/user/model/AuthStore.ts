@@ -13,8 +13,8 @@ class AuthStore {
   private _user?: User;
 
   constructor() {
-    this._entered = false;
-    this._user = undefined;
+    this._entered = true;
+    this._user = users[1];
     this._accessToken = "";
 
     this._authService = new AuthService();

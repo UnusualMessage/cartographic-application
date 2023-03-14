@@ -1,0 +1,29 @@
+@use "../../../shared/styles/constants" as *;
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-basis: $header-height;
+
+  box-shadow: 0 0 0 1px rgba(17, 20, 24, 0.1);
+  z-index: 6;
+  background-color: white;
+
+  padding-left: 10px;
+  padding-right: 10px;
+
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: auto;
+
+  .container {
+    gap: 5px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+  }
+}

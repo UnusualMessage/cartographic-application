@@ -1,6 +1,6 @@
 import { Progress as ProgressBar } from "antd";
 
-import { bar, wrapper } from "./progress.module.scss";
+import { wrapper } from "./progress.module.scss";
 
 interface Props {
   value: number;
@@ -9,7 +9,7 @@ interface Props {
 const Progress = ({ value }: Props) => {
   return (
     <div className={wrapper}>
-      <ProgressBar className={bar} percent={value} status="active" />
+      <ProgressBar percent={value} status="active" />
     </div>
   );
 };

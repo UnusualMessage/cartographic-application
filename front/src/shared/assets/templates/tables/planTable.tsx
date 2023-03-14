@@ -1,4 +1,7 @@
+import { toFixed } from "ol/math";
+
 import { Column } from "../../../misc";
+import Progress from "../../../ui/Progress";
 
 export const planTable: Column[] = [
   {
@@ -19,5 +22,8 @@ export const planTable: Column[] = [
   {
     title: "Цель",
     dataIndex: "target",
+    render: (target) => {
+      return <Progress value={toFixed(+target / 100, 2)} />;
+    },
   },
 ];

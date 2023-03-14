@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 
 import { employeeNodes } from "@shared/assets";
 import { Employee, Node } from "@shared/misc";
-import { tree, Tree } from "@shared/ui";
+import { Tree } from "@shared/ui";
 
 import { EmployeesStore } from "../../model";
 
@@ -46,7 +46,11 @@ const EmployeesTree = () => {
   const employees = EmployeesStore.employees;
 
   return (
-    <Tree<Employee> fillNodes={fillNodes} source={employees} className={tree} />
+    <Tree<Employee>
+      fillNodes={fillNodes}
+      source={employees}
+      defaultSelected={"tree-employees"}
+    />
   );
 };
 

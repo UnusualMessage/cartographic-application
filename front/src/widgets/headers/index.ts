@@ -1,3 +1,4 @@
-import UserHeader from "./UserHeader";
+import ModeratorHeader from "./ModeratorHeader";
+import MonitorHeader from "./MonitorHeader";
 
-export { UserHeader };
+export { ModeratorHeader, MonitorHeader };

@@ -5,7 +5,7 @@ import { observer } from "mobx-react-lite";
 
 import { ControlsStore, ViewStore } from "@shared/misc";
 
-import { active, wrapper } from "./zoom.module.scss";
+import { active, wrapper, button } from "./zoom.module.scss";
 
 const Zoom = () => {
   const zoomIn = () => {
@@ -24,9 +24,9 @@ const Zoom = () => {
   });
 
   return (
-    <Space className={classes} direction={"vertical"}>
-      <Button icon={<ZoomInOutlined />} onClick={zoomIn} />
-      <Button icon={<ZoomOutOutlined />} onClick={zoomOut} />
+    <Space className={classes} direction={"vertical"} size={5}>
+      <Button className={button} icon={<ZoomInOutlined />} onClick={zoomIn} />
+      <Button className={button} icon={<ZoomOutOutlined />} onClick={zoomOut} />
     </Space>
   );
 };
