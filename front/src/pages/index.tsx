@@ -51,7 +51,7 @@ const browserRouter = createBrowserRouter([
     path: "/admin",
     element: (
       <Authorized roles={[8]}>
-        <></>
+        <Layout />
       </Authorized>
     ),
     errorElement: <EmptyPage />,

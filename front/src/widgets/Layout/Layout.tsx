@@ -1,6 +1,6 @@
 import { AuthStore } from "@entities/user";
 
-import { ModeratorLayout, MonitorLayout } from "./ui";
+import { ModeratorLayout, MonitorLayout, AdminLayout } from "./ui";
 
 const Layout = () => {
   const role = AuthStore.user?.roles;
@@ -13,6 +13,9 @@ const Layout = () => {
       break;
     case 4:
       layout = <ModeratorLayout />;
+      break;
+    case 8:
+      layout = <AdminLayout />;
   }
 
   return <>{layout}</>;

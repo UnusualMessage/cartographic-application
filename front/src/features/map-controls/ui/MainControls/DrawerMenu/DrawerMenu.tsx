@@ -69,7 +69,7 @@ const DrawerMenu = () => {
       open={isOpen}
       onClose={close}
       width={320}
-      footer={<Text>{`© 2022 ${about.title}`}</Text>}
+      footer={<Text>{`© 2023 ${about.title}`}</Text>}
       getContainer={ControlsStore.fullScreenActive ? false : ""}
       bodyStyle={{ padding: 0 }}
     >
