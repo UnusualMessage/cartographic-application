@@ -2,7 +2,7 @@ import React, { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import { EmptyPage, Loader } from "@shared/ui";
-import { UserLayout } from "@widgets/index";
+import { Layout } from "@widgets/index";
 
 import Authorization from "./Authorization";
 import Authorized from "./Authorization/ui/Authorized";
@@ -17,7 +17,7 @@ const browserRouter = createBrowserRouter([
     path: "/",
     element: (
       <Authorized roles={[1, 2, 4]}>
-        <UserLayout />
+        <Layout />
       </Authorized>
     ),
     errorElement: <EmptyPage />,
