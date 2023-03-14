@@ -25,7 +25,12 @@ interface Props<T> {
 const { DirectoryTree } = AntTree;
 
 const fit = (node: Node, search: string) => {
-  return !!node.title?.toString().includes(search);
+  const regexp = / /g;
+  return !!node.title
+    ?.toString()
+    .toLowerCase()
+    .replace(regexp, "")
+    .includes(search.toLowerCase().replace(regexp, ""));
 };
 
 const findNode = (node: Node, search: string): boolean => {
