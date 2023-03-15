@@ -1,4 +1,5 @@
 import Authorization from "./Authorization";
+import Authorized from "./ui/Authorized";
 
 export default Authorization;
-export * from "./ui";
+export { Authorized };
