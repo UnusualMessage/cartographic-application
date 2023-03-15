@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 
-import { wrapper, content } from "./layout.module.scss";
 import { ModeratorHeader } from "../../../headers";
+import { wrapper, content } from "../layout.module.scss";
 
 const ModeratorLayout = () => {
   return (

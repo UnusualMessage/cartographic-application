@@ -18,7 +18,7 @@ import { about } from "@shared/assets";
 import { UpdateStore } from "@shared/misc";
 import { TractorFilled } from "@shared/ui";
 
-import { container, logo, wrapper } from "./header.module.scss";
+import { container, logo, wrapper } from "../header.module.scss";
 
 const { Text, Title } = Typography;
 
