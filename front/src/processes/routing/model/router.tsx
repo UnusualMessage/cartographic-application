@@ -1,8 +1,8 @@
 import React, { lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 
+import { RequireAuthentication } from "@features/auth";
 import Authorization from "@pages/Authorization";
-import Authorized from "@pages/Authorization/ui/Authorized";
 import { references } from "@pages/User/References";
 import { EmptyPage } from "@shared/ui";
 import { Layout } from "@widgets/index";
@@ -15,9 +15,9 @@ export const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <Authorized roles={[1, 2, 4]}>
+      <RequireAuthentication roles={[1, 2, 4]}>
         <Layout />
-      </Authorized>
+      </RequireAuthentication>
     ),
     errorElement: <EmptyPage />,
     children: [
@@ -49,9 +49,9 @@ export const router = createBrowserRouter([
   {
     path: "/admin",
     element: (
-      <Authorized roles={[8]}>
+      <RequireAuthentication roles={[8]}>
         <Layout />
-      </Authorized>
+      </RequireAuthentication>
     ),
     errorElement: <EmptyPage />,
     children: [
