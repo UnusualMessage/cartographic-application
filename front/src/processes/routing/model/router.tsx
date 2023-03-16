@@ -1,18 +1,17 @@
-import React, { lazy, Suspense } from "react";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import React, { lazy } from "react";
+import { createBrowserRouter } from "react-router-dom";
 
-import { EmptyPage, Loader } from "@shared/ui";
+import Authorization from "@pages/Authorization";
+import Authorized from "@pages/Authorization/ui/Authorized";
+import { references } from "@pages/User/References";
+import { EmptyPage } from "@shared/ui";
 import { Layout } from "@widgets/index";
 
-import Authorization from "./Authorization";
-import Authorized from "./Authorization/ui/Authorized";
-import { references } from "./User/References";
+const View = lazy(() => import("@pages/User/View"));
+const References = lazy(() => import("@pages/User/References"));
+const Home = lazy(() => import("@pages/Admin/Home"));
 
-const View = lazy(() => import("./User/View"));
-const References = lazy(() => import("./User/References"));
-const Home = lazy(() => import("./Admin/Home"));
-
-const browserRouter = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     path: "/",
     element: (
@@ -63,13 +62,3 @@ const browserRouter = createBrowserRouter([
     ],
   },
 ]);
-
-const Routing = () => {
-  return (
-    <Suspense fallback={<Loader />}>
-      <RouterProvider router={browserRouter} />
-    </Suspense>
-  );
-};
-
-export default Routing;
