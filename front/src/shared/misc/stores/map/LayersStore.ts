@@ -22,10 +22,6 @@ class LayersStore {
     makeAutoObservable(this);
   }
 
-  public get vectorLayers() {
-    return this._vectorLayers;
-  }
-
   public get baseLayer() {
     return this._baseLayer;
   }

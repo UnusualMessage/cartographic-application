@@ -3,10 +3,10 @@ import React from "react";
 import { Loader } from "@shared/ui";
 import {
   Overlays,
-  UserAside as Aside,
+  ModeratorAside as Aside,
   EntitiesMenu,
   Schema,
-  UserFooter as Footer,
+  ModeratorFooter as Footer,
   InfoMenu,
   Content,
 } from "@widgets/index";

@@ -1,1 +1,0 @@
-export { getSpeedDefaultValues } from "./getSpeedDefaultValues";

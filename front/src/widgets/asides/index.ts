@@ -1,1 +1,1 @@
-export { default as UserAside } from "./UserAside";
+export { default as ModeratorAside } from "./ModeratorAside";

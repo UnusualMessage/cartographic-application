@@ -1,4 +1,6 @@
-export { default as AuthService } from "./AuthService";
+import AuthService from "./AuthService";
+import UsersService from "./UsersService";
+import UsersStore from "./UsersStore";
+
 export { default as AuthStore } from "./AuthStore";
-export { default as UsersService } from "./UsersService";
-export { default as UsersStore } from "./UsersStore";
+export { AuthService, UsersStore, UsersService };
