@@ -6,7 +6,7 @@ import { Resize } from "@shared/ui";
 
 import { content, wrapper } from "./aside.module.scss";
 
-const UserAside = ({ children }: PropsWithChildren) => {
+const ModeratorAside = ({ children }: PropsWithChildren) => {
   const type = ResizeType.width;
 
   const props = {
@@ -18,15 +18,15 @@ const UserAside = ({ children }: PropsWithChildren) => {
   const { size, start, isResizing } = useResizing(props);
 
   return (
-    <div
+    <aside
       className={wrapper}
       style={{ width: size }}
       onContextMenu={(e) => e.preventDefault()}
     >
       <div className={content}>{children}</div>
       <Resize isResizing={isResizing} type={type} start={start} />
-    </div>
+    </aside>
   );
 };
 
-export default UserAside;
+export default ModeratorAside;
