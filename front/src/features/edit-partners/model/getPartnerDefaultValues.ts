@@ -1,4 +1,4 @@
-import { Partner, UpdatePartner } from "../../../../misc";
+import { Partner, UpdatePartner } from "@shared/misc";
 
 export const getPartnerDefaultValues = (
   partner?: Partner

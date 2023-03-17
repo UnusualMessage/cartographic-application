@@ -1,4 +1,4 @@
-import { Post, UpdatePost } from "../../../../misc";
+import { Post, UpdatePost } from "@shared/misc";
 
 export const getPostDefaultValues = (post?: Post): Partial<UpdatePost> => {
   return {

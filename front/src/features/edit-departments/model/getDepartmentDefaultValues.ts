@@ -1,4 +1,4 @@
-import { Department, UpdateDepartment } from "../../../../misc";
+import { Department, UpdateDepartment } from "@shared/misc";
 
 export const getDepartmentDefaultValues = (
   department?: Department

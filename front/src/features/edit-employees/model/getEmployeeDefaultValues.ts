@@ -1,4 +1,4 @@
-import { Employee, UpdateEmployee } from "../../../../misc";
+import { Employee, UpdateEmployee } from "@shared/misc";
 
 export const getEmployeeDefaultValues = (
   employee?: Employee

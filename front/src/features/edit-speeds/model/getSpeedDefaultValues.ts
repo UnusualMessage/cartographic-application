@@ -1,4 +1,4 @@
-import { Speed, UpdateSpeed } from "../../../../misc";
+import { Speed, UpdateSpeed } from "@shared/misc";
 
 export const getSpeedDefaultValues = (speed?: Speed): Partial<UpdateSpeed> => {
   return {

@@ -1,4 +1,4 @@
-import { Trailer, UpdateTrailer } from "../../../../misc";
+import { Trailer, UpdateTrailer } from "@shared/misc";
 
 export const getTrailerDefaultValues = (
   trailer?: Trailer
