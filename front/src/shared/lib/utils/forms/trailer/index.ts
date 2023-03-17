@@ -1,1 +1,0 @@
-export { getTrailerDefaultValues } from "./getTrailerDefaultValues";

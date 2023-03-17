@@ -1,1 +1,1 @@
-export { default as UserFooter } from "./UserFooter";
+export { default as ModeratorFooter } from "./ModeratorFooter";

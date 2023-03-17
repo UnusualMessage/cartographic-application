@@ -1,1 +1,0 @@
-export { getPartnerDefaultValues } from "./getPartnerDefaultValues";

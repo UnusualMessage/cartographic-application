@@ -1,13 +1,13 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
+import { PostsStore } from "@entities/post";
 import {
-  PostsStore,
   CreatePost,
   UpdatePost,
   DuplicatePost,
   RemovePost,
-} from "@entities/post";
+} from "@features/edit-posts";
 import { postTable } from "@shared/assets";
 import { mapPostToTable } from "@shared/lib";
 import { TablePartner, TablePost } from "@shared/misc";
