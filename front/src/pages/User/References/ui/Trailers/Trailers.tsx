@@ -1,13 +1,13 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
+import { TrailersStore } from "@entities/trailer";
 import {
-  TrailersStore,
   CreateTrailer,
   UpdateTrailer,
-  DuplicateTrailer,
   RemoveTrailer,
-} from "@entities/trailer";
+  DuplicateTrailer,
+} from "@features/edit-trailers";
 import { trailerTable } from "@shared/assets";
 import { mapTrailerToTable } from "@shared/lib";
 import { TableTrailer } from "@shared/misc";

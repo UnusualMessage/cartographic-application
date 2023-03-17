@@ -1,13 +1,13 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
+import { PartnersStore } from "@entities/partner";
 import {
-  PartnersStore,
   CreatePartner,
   UpdatePartner,
   DuplicatePartner,
   RemovePartner,
-} from "@entities/partner";
+} from "@features/edit-partners";
 import { partnerTable } from "@shared/assets";
 import { mapPartnerToTable } from "@shared/lib";
 import { TablePartner } from "@shared/misc";
