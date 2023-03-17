@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 
 import { DepartmentsStore } from "@entities/department";
-import { updateDepartment } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import {
   Department,
@@ -9,7 +8,7 @@ import {
 } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getDepartmentDefaultValues } from "../../model";
+import { getDepartmentDefaultValues, updateDepartment } from "../../model";
 
 interface Props {
   id?: string;

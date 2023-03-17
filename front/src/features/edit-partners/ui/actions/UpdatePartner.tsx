@@ -2,12 +2,11 @@ import { observer } from "mobx-react-lite";
 
 import { OrganizationsStore } from "@entities/organization";
 import { PartnersStore } from "@entities/partner";
-import { updatePartner } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import { Partner, UpdatePartner as UpdatePartnerType } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getPartnerDefaultValues } from "../../model";
+import { getPartnerDefaultValues, updatePartner } from "../../model";
 
 interface Props {
   id?: string;

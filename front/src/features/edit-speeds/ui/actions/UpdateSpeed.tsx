@@ -2,12 +2,11 @@ import { observer } from "mobx-react-lite";
 
 import { OrganizationsStore } from "@entities/organization";
 import { SpeedsStore } from "@entities/speed";
-import { updateSpeed } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import { UpdateSpeed as UpdateSpeedType, Speed } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getSpeedDefaultValues } from "../../model";
+import { getSpeedDefaultValues, updateSpeed } from "../../model";
 
 interface Props {
   id?: string;

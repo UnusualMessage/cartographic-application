@@ -3,9 +3,10 @@ import { observer } from "mobx-react-lite";
 import { EmployeesStore } from "@entities/employee";
 import { OrganizationsStore } from "@entities/organization";
 import { PostsStore } from "@entities/post";
-import { createEmployee } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
+
+import { createEmployee } from "../../model";
 
 const CreateEmployee = () => {
   const organizations = OrganizationsStore.organizations;

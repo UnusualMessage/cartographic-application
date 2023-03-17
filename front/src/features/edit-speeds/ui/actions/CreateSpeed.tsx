@@ -2,9 +2,10 @@ import { observer } from "mobx-react-lite";
 
 import { OrganizationsStore } from "@entities/organization";
 import { SpeedsStore } from "@entities/speed";
-import { createSpeed } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
+
+import { createSpeed } from "../../model";
 
 const CreateSpeed = () => {
   const organizations = OrganizationsStore.organizations;

@@ -3,12 +3,11 @@ import { observer } from "mobx-react-lite";
 import { EmployeesStore } from "@entities/employee";
 import { OrganizationsStore } from "@entities/organization";
 import { PostsStore } from "@entities/post";
-import { updateEmployee } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import { UpdateEmployee as UpdateEmployeeType, Employee } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getEmployeeDefaultValues } from "../../model";
+import { getEmployeeDefaultValues, updateEmployee } from "../../model";
 
 interface Props {
   id?: string;

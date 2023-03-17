@@ -2,12 +2,11 @@ import { observer } from "mobx-react-lite";
 
 import { OrganizationsStore } from "@entities/organization";
 import { PostsStore } from "@entities/post";
-import { updatePost } from "@shared/assets";
 import { getSelectOptions } from "@shared/lib";
 import { Post, UpdatePost as UpdatePostType } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getPostDefaultValues } from "../../model";
+import { getPostDefaultValues, updatePost } from "../../model";
 
 interface Props {
   id?: string;

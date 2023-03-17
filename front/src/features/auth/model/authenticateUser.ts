@@ -1,4 +1,4 @@
-import type { AuthenticateUser, Form } from "../../../misc";
+import { Form, AuthenticateUser } from "@shared/misc";
 
 export const authenticateUser = (): Form<AuthenticateUser> => {
   return [
