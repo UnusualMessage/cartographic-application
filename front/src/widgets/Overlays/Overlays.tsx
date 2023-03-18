@@ -1,4 +1,4 @@
-import { GeozoneExport } from "@entities/geozone";
+import { GeozoneExport } from "@features/export-geozone";
 
 const Overlays = () => {
   return (

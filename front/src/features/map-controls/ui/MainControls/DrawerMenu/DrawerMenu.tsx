@@ -1,7 +1,7 @@
 import { Drawer, Typography, MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { about, drawerMenu } from "@shared/assets";
+import { about } from "@shared/assets";
 import { auxLayerId } from "@shared/constants";
 import {
   ControlsStore,
@@ -10,6 +10,8 @@ import {
   InteractionsStore,
   MapControl,
 } from "@shared/misc";
+
+import { drawerMenu } from "../../../model";
 
 const { Text } = Typography;
 

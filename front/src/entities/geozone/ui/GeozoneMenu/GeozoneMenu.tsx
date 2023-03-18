@@ -2,9 +2,9 @@ import { Polygon, toWgs84 } from "@turf/turf";
 import { MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { GeozonesStore } from "@entities/geozone";
-import { geozoneMenu } from "@shared/assets";
 import { AlertsStore } from "@shared/misc";
+
+import { geozoneMenu, GeozonesStore } from "../../model";
 
 interface Props {
   id: string;
