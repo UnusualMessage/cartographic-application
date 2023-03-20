@@ -2,7 +2,9 @@ import { Breadcrumb, Layout, Menu, theme } from "antd";
 import React, { useState } from "react";
 import { Outlet } from "react-router-dom";
 
-import { adminMenu, about } from "@shared/assets";
+import { about } from "@shared/assets";
+
+import { adminMenu } from "./adminMenu";
 
 const { Header, Content, Footer, Sider } = Layout;
 

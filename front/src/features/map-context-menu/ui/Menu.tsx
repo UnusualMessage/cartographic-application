@@ -3,7 +3,6 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useEffect, useRef, Ref } from "react";
 
-import { mapMenu } from "@shared/assets";
 import { invoke } from "@shared/lib";
 import {
   Callback,
@@ -13,6 +12,7 @@ import {
 } from "@shared/misc";
 
 import { hidden, wrapper } from "./menu.module.scss";
+import { mapMenu } from "../model";
 
 const close = () => {
   FeaturesService.close();
