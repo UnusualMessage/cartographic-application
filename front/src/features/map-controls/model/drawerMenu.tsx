@@ -15,7 +15,7 @@ import {
   AreaMeasurement,
   LayersFilled,
   LengthMeasurement,
-} from "../../../ui/icons";
+} from "@shared/ui/icons";
 
 export const drawerMenu: MenuProps["items"] = [
   {
