@@ -2,16 +2,25 @@ import { Radio, RadioChangeEvent, Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
-import { baseLayers } from "@shared/assets";
-import { ControlsStore, BaseLayer, LayersStore } from "@shared/misc";
+import { baseLayers, weatherLayers } from "@shared/assets";
+import {
+  ControlsStore,
+  BaseLayer,
+  LayersStore,
+  WeatherLayer,
+} from "@shared/misc";
 
 import { visible, wrapper, layers } from "./group.module.scss";
 
 const ControlsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;
 
-  const handleChoose = (e: RadioChangeEvent) => {
+  const chooseBaseLayer = (e: RadioChangeEvent) => {
     LayersStore.baseLayer = e.target.value as BaseLayer;
+  };
+
+  const chooseWeatherLayer = (e: RadioChangeEvent) => {
+    LayersStore.weatherLayer = e.target.value as WeatherLayer;
   };
 
   const classes = classNames({
@@ -21,12 +30,27 @@ const ControlsGroup = () => {
 
   return (
     <Space className={classes} direction={"vertical"}>
+      Подложка
       <Radio.Group
         className={layers}
-        onChange={handleChoose}
+        onChange={chooseBaseLayer}
         value={LayersStore.baseLayer}
       >
         {baseLayers.map((layer) => {
+          return (
+            <Radio value={layer.value} key={`radio-${layer.value}`}>
+              {layer.label}
+            </Radio>
+          );
+        })}
+      </Radio.Group>
+      Погода
+      <Radio.Group
+        className={layers}
+        onChange={chooseWeatherLayer}
+        value={LayersStore.weatherLayer}
+      >
+        {weatherLayers.map((layer) => {
           return (
             <Radio value={layer.value} key={`radio-${layer.value}`}>
               {layer.label}

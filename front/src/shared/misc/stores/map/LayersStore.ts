@@ -1,25 +1,35 @@
 import { makeAutoObservable } from "mobx";
 import { Feature } from "ol";
 import { FeatureLike } from "ol/Feature";
-import { default as OLTileLayer } from "ol/layer/Tile";
+import TileLayer from "ol/layer/Tile";
 import VectorLayer from "ol/layer/Vector";
 import { BingMaps, OSM, XYZ } from "ol/source";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
-import { baseLayers } from "../../../assets";
-import { BaseLayer } from "../../types";
+import { baseLayers, weatherLayers } from "../../../assets";
+import { BaseLayer, WeatherLayer } from "../../types";
 
 class LayersStore {
   private _vectorLayers: VectorLayer<VectorSource>[];
   private _baseLayer: BaseLayer;
+  private _weatherLayer: WeatherLayer;
 
   constructor() {
     this._vectorLayers = [];
 
     this._baseLayer = "osm";
+    this._weatherLayer = "none";
 
     makeAutoObservable(this);
+  }
+
+  public get weatherLayer() {
+    return this._weatherLayer;
+  }
+
+  public set weatherLayer(value) {
+    this._weatherLayer = value;
   }
 
   public get baseLayer() {
@@ -68,6 +78,44 @@ class LayersStore {
     this._vectorLayers = this._vectorLayers.filter(
       (layer) => layer.get("id") !== id
     );
+  }
+
+  public createWeatherLayer(type: WeatherLayer) {
+    let source;
+
+    switch (type) {
+      case "clouds":
+        source = new XYZ({
+          url: weatherLayers[3].source,
+        });
+
+        break;
+
+      case "wind":
+        source = new XYZ({
+          url: weatherLayers[2].source,
+        });
+
+        break;
+
+      case "temperatures":
+        source = new XYZ({
+          url: weatherLayers[0].source,
+        });
+
+        break;
+
+      case "precipitation":
+        source = new XYZ({
+          url: weatherLayers[1].source,
+        });
+
+        break;
+    }
+
+    return new TileLayer({
+      source: source,
+    });
   }
 
   public createBaseLayer(type: BaseLayer) {
@@ -137,7 +185,7 @@ class LayersStore {
         return;
     }
 
-    return new OLTileLayer({
+    return new TileLayer({
       source: source,
       zIndex: zIndex,
     });

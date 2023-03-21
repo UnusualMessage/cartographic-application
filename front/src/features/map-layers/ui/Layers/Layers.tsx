@@ -8,8 +8,9 @@ import { InteractionsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
 import { Drawing, Measurement } from "../../../map-interactions";
-import TileLayer from "../TileLayer";
+import BaseLayer from "../BaseLayer";
 import VectorLayer from "../VectorLayer";
+import WeatherLayer from "../WeatherLayer";
 
 const Layers = () => {
   const geozones = GeozonesStore.geozones.map((item) => item.feature);
@@ -20,7 +21,8 @@ const Layers = () => {
 
   return (
     <>
-      <TileLayer />
+      <BaseLayer />
+      <WeatherLayer />
 
       <VectorLayer id={geozonesLayerId} data={geozones}>
         <Condition truthy={InteractionsStore.isGeozonesActive}>

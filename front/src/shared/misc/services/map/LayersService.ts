@@ -4,7 +4,7 @@ import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
 import { LayersStore, MapStore, FeaturesStore } from "../../stores";
-import type { BaseLayer as BaseLayerType } from "../../types";
+import type { BaseLayer as BaseLayerType, WeatherLayer } from "../../types";
 
 class LayersService {
   public createVectorLayer(
@@ -27,6 +27,13 @@ class LayersService {
     return layer;
   }
 
+  public createWeatherLayer(type: WeatherLayer) {
+    const layer = LayersStore.createWeatherLayer(type);
+    MapStore.addLayer(layer);
+
+    return layer;
+  }
+
   public removeVectorLayer(id: string) {
     const layer = LayersStore.getVectorLayerById(id);
 
@@ -36,7 +43,7 @@ class LayersService {
     }
   }
 
-  public removeBaseLayer(layer: BaseLayer) {
+  public removeLayer(layer: BaseLayer) {
     MapStore.removeLayer(layer);
   }
 

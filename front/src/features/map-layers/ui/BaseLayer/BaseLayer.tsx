@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 import { LayersStore, LayersService } from "@shared/misc";
 
-const TileLayer = () => {
+const BaseLayer = () => {
   const type = LayersStore.baseLayer;
 
   useEffect(() => {
@@ -11,7 +11,7 @@ const TileLayer = () => {
 
     return () => {
       if (createdLayer) {
-        LayersService.removeBaseLayer(createdLayer);
+        LayersService.removeLayer(createdLayer);
       }
     };
   }, [type]);
@@ -19,4 +19,4 @@ const TileLayer = () => {
   return <></>;
 };
 
-export default observer(TileLayer);
+export default observer(BaseLayer);
