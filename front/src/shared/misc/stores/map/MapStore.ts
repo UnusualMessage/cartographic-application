@@ -1,18 +1,16 @@
-import html2canvas, { Options } from "html2canvas";
 import * as jspdf from "jspdf";
 import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
 import { Coordinate } from "ol/coordinate";
 import BaseLayer from "ol/layer/Base";
-import { getPointResolution } from "ol/proj";
 
 class MapStore {
   private _map: Map | null;
-  private _cursorCoordinate: Coordinate | null;
+  private _cursorCoordinate?: Coordinate;
 
   constructor() {
     this._map = null;
-    this._cursorCoordinate = null;
+    this._cursorCoordinate = undefined;
 
     makeAutoObservable(this);
   }
@@ -21,7 +19,7 @@ class MapStore {
     return this._cursorCoordinate;
   }
 
-  public set cursorCoordinate(coordinate: Coordinate | null) {
+  public set cursorCoordinate(coordinate) {
     this._cursorCoordinate = coordinate;
   }
 
@@ -54,52 +52,69 @@ class MapStore {
       return;
     }
 
-    const exportOptions: Partial<Options> = {
-      useCORS: true,
-    };
-
     const format = "a4";
-    const resolution = 200;
-    const scale = 500;
+    const resolution = 150;
     const dim = [297, 210];
 
     const width = Math.round((dim[0] * resolution) / 25.4);
     const height = Math.round((dim[1] * resolution) / 25.4);
 
-    const viewResolution = map.getView().getResolution();
-    const scaleResolution =
-      scale /
-      getPointResolution(
-        map.getView().getProjection(),
-        resolution / 25.4,
-        map.getView().getCenter() ?? [0, 0]
-      );
+    const printSize = [width, height];
+    const mapSize = map.getSize() ?? [0, 0];
+    const scale = Math.max(width / mapSize[0], height / mapSize[1]);
 
-    map.once("rendercomplete", () => {
-      exportOptions.width = width;
-      exportOptions.height = height;
-      html2canvas(map.getViewport(), exportOptions).then(function (canvas) {
-        const pdf = new jspdf.jsPDF("landscape", undefined, format);
-        pdf.addImage(
-          canvas.toDataURL("image/jpeg"),
-          "JPEG",
-          0,
-          0,
-          dim[0],
-          dim[1]
-        );
-        pdf.save("map.pdf");
-        map.getTargetElement().style.width = "";
-        map.getTargetElement().style.height = "";
-        map.updateSize();
-        map.getView().setResolution(viewResolution);
-      });
+    const mapResolution = map.getView().getResolution() ?? 0;
+    const printResolution = mapResolution / scale;
+
+    map.once("rendercomplete", async () => {
+      const mapCanvas = document.createElement("canvas");
+
+      mapCanvas.width = width;
+      mapCanvas.height = height;
+
+      const mapContext = mapCanvas.getContext("2d");
+
+      if (!mapContext) {
+        return;
+      }
+
+      const elements = document.querySelectorAll(".ol-layer canvas") as any;
+
+      for (const canvas of elements) {
+        if (canvas.width > 0) {
+          const transform = canvas.style.transform;
+
+          const matrix = transform
+            .match(/^matrix\(([^\(]*)\)$/)[1]
+            .split(",")
+            .map(Number);
+
+          CanvasRenderingContext2D.prototype.setTransform.apply(
+            mapContext,
+            matrix
+          );
+          mapContext.drawImage(canvas, 0, 0);
+        }
+      }
+
+      const pdf = new jspdf.jsPDF("landscape", undefined, format);
+
+      pdf.addImage(
+        mapCanvas.toDataURL("image/jpeg"),
+        "JPEG",
+        0,
+        0,
+        dim[0],
+        dim[1]
+      );
+      pdf.save("map.pdf");
+
+      map.setSize(mapSize);
+      map.getView().setResolution(mapResolution);
     });
 
-    map.getTargetElement().style.width = width + "px";
-    map.getTargetElement().style.height = height + "px";
-    map.updateSize();
-    map.getView().setResolution(scaleResolution);
+    map.setSize(printSize);
+    map.getView().setResolution(printResolution);
   }
 
   public addView(view: View) {
