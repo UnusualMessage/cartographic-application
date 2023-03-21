@@ -4,10 +4,10 @@ import Style, { StyleFunction } from "ol/style/Style";
 
 const visibleStyle = new Style({
   image: new CircleStyle({
-    radius: 6,
+    radius: 4,
     stroke: new Stroke({
       color: "#1677FF",
-      width: 3,
+      width: 2,
     }),
     fill: new Fill({
       color: "rgba(255, 255, 255, 1)",
@@ -21,10 +21,10 @@ const drawStyle = new Style({
   }),
 });
 
-export const getCoordinateMeasurementStyle: StyleFunction = () => {
-  return [visibleStyle];
+export const getDrawCoordinateStyle: StyleFunction = () => {
+  return [drawStyle];
 };
 
-export const getCoordinateMeasurementStyle1: StyleFunction = () => {
-  return [drawStyle];
+export const getVisibleCoordinateStyle: StyleFunction = () => {
+  return [visibleStyle];
 };

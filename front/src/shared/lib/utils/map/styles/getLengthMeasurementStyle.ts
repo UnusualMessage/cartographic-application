@@ -12,17 +12,12 @@ const style = new Style({
     color: "rgba(255, 255, 255, 0.2)",
   }),
   stroke: new Stroke({
-    color: "rgba(0, 0, 0, 1)",
-    width: 2,
+    color: "#1677FF",
+    width: 4,
+    lineDash: [10, 12],
   }),
   image: new CircleStyle({
-    radius: 5,
-    stroke: new Stroke({
-      color: "rgba(0, 0, 0, 1)",
-    }),
-    fill: new Fill({
-      color: "rgba(255, 255, 255, 0.2)",
-    }),
+    radius: 0,
   }),
 });
 
@@ -37,13 +32,11 @@ const labelStyle = new Style({
     }),
     padding: [3, 3, 3, 3],
     textBaseline: "bottom",
-    offsetY: -15,
+    offsetY: -30,
   }),
 });
 
-export const getLengthMeasurementStyle: StyleFunction = (
-  feature: FeatureLike
-) => {
+export const getDrawLengthStyle: StyleFunction = (feature: FeatureLike) => {
   const styles = [style];
   const geometry = feature.getGeometry() as Geometry | null;
 

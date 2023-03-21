@@ -14,6 +14,7 @@ import {
   LayersStore,
   MapStore,
   InteractionsStore,
+  TooltipStore,
 } from "@shared/misc";
 import { LengthMeasurement, LayersFilled, AreaMeasurement } from "@shared/ui";
 
@@ -31,6 +32,7 @@ const ButtonsGroup = () => {
 
   const switchType = (type: DrawType) => {
     LayersStore.clearVectorLayer(measurementLayerId);
+    TooltipStore.hide();
 
     if (drawType === type) {
       InteractionsStore.drawType = "none";

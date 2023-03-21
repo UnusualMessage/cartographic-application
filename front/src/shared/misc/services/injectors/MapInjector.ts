@@ -35,14 +35,6 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       const event = e.originalEvent;
       const pixel: Pixel = this._map.getEventPixel(event);
       MapStore.cursorCoordinate = this._map.getCoordinateFromPixel(pixel);
-
-      const features = this._map.getFeaturesAtPixel(pixel);
-
-      if (features.length) {
-        MapStore.setDefaultCursor();
-      } else if (InteractionsStore.isMeasurementActive) {
-        MapStore.setCrosshairCursor();
-      }
     };
 
     this._map.on("pointermove", onPointerMove);

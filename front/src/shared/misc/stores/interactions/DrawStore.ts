@@ -5,10 +5,10 @@ import VectorSource from "ol/source/Vector";
 
 import {
   invoke,
-  getAreaMeasurementStyle,
-  getLengthMeasurementStyle,
+  getDrawCoordinateStyle,
+  getDrawLengthStyle,
+  getDrawAreaStyle,
 } from "../../../lib";
-import { getCoordinateMeasurementStyle1 } from "../../../lib/utils/map/styles/getCoordinateMeasurementStyle";
 import { DrawInjector, CoordinateMeasurementInjector } from "../../services";
 import { ListenersInjector, Callback, DrawEvent, DrawType } from "../../types";
 
@@ -78,7 +78,7 @@ class DrawStore {
       source: source,
       type: "Polygon",
       style: (feature) => {
-        return getAreaMeasurementStyle(feature, 0);
+        return getDrawAreaStyle(feature, 0);
       },
     });
   }
@@ -88,7 +88,7 @@ class DrawStore {
       source: source,
       type: "LineString",
       style: (feature) => {
-        return getLengthMeasurementStyle(feature, 0);
+        return getDrawLengthStyle(feature, 0);
       },
     });
   }
@@ -98,7 +98,7 @@ class DrawStore {
       source: source,
       type: "Point",
       style: (feature) => {
-        return getCoordinateMeasurementStyle1(feature, 0);
+        return getDrawCoordinateStyle(feature, 0);
       },
     });
 

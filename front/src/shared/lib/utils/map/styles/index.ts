@@ -1,5 +1,8 @@
 export { getGeozoneStyle } from "./getGeozoneStyle";
-export { getCoordinateMeasurementStyle } from "./getCoordinateMeasurementStyle";
-export { getAreaMeasurementStyle } from "./getAreaMeasurementStyle";
-export { getLengthMeasurementStyle } from "./getLengthMeasurementStyle";
+export {
+  getVisibleCoordinateStyle,
+  getDrawCoordinateStyle,
+} from "./getCoordinateMeasurementStyle";
+export { getDrawAreaStyle } from "./getAreaMeasurementStyle";
+export { getDrawLengthStyle } from "./getLengthMeasurementStyle";
 export { getMeasurementStyle } from "./getMeasurementStyle";

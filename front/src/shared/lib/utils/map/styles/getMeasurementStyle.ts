@@ -2,9 +2,9 @@ import { FeatureLike } from "ol/Feature";
 import { Geometry } from "ol/geom";
 import { StyleFunction } from "ol/style/Style";
 
-import { getAreaMeasurementStyle } from "./getAreaMeasurementStyle";
-import { getCoordinateMeasurementStyle } from "./getCoordinateMeasurementStyle";
-import { getLengthMeasurementStyle } from "./getLengthMeasurementStyle";
+import { getDrawAreaStyle } from "./getAreaMeasurementStyle";
+import { getVisibleCoordinateStyle } from "./getCoordinateMeasurementStyle";
+import { getDrawLengthStyle } from "./getLengthMeasurementStyle";
 
 export const getMeasurementStyle: StyleFunction = (feature: FeatureLike) => {
   const geometry = feature.getGeometry() as Geometry | null;
@@ -17,10 +17,10 @@ export const getMeasurementStyle: StyleFunction = (feature: FeatureLike) => {
 
   switch (type) {
     case "Point":
-      return getCoordinateMeasurementStyle(feature, 0);
+      return getVisibleCoordinateStyle(feature, 0);
     case "Polygon":
-      return getAreaMeasurementStyle(feature, 0);
+      return getDrawAreaStyle(feature, 0);
     case "LineString":
-      return getLengthMeasurementStyle(feature, 0);
+      return getDrawLengthStyle(feature, 0);
   }
 };

@@ -5,13 +5,7 @@ import { Ref, useRef, useEffect, MouseEvent } from "react";
 
 import { measurementLayerId } from "@shared/constants";
 import { invoke } from "@shared/lib";
-import {
-  MapStore,
-  TooltipStore,
-  Callback,
-  LayersStore,
-  InteractionsStore,
-} from "@shared/misc";
+import { MapStore, TooltipStore, Callback, LayersStore } from "@shared/misc";
 
 import { hidden } from "./tooltip.module.scss";
 
@@ -20,11 +14,6 @@ const Tooltip = () => {
   const map = MapStore.map;
   const active = TooltipStore.active;
   const text = TooltipStore.text;
-  const measurementActive = InteractionsStore.isMeasurementActive;
-
-  if (!measurementActive) {
-    TooltipStore.hide();
-  }
 
   const onClose = (e: MouseEvent<HTMLElement>) => {
     e.preventDefault();
