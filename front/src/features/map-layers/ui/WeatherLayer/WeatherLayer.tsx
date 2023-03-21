@@ -4,13 +4,15 @@ import { useEffect } from "react";
 import { LayersStore, LayersService } from "@shared/misc";
 
 const WeatherLayer = () => {
-  const type = LayersStore.weatherLayer;
+  const type = LayersStore.weatherLayerType;
 
   useEffect(() => {
     const createdLayer = LayersService.createWeatherLayer(type);
 
     return () => {
-      LayersService.removeLayer(createdLayer);
+      if (createdLayer) {
+        LayersService.removeLayer(createdLayer);
+      }
     };
   }, [type]);
 

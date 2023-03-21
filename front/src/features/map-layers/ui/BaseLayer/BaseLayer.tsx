@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { LayersStore, LayersService } from "@shared/misc";
 
 const BaseLayer = () => {
-  const type = LayersStore.baseLayer;
+  const type = LayersStore.baseLayerType;
 
   useEffect(() => {
     const createdLayer = LayersService.createBaseLayer(type);

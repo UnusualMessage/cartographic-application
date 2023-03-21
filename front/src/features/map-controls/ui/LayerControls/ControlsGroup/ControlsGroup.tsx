@@ -16,11 +16,11 @@ const ControlsGroup = () => {
   const isPanelOpen = ControlsStore.layersPanelActive;
 
   const chooseBaseLayer = (e: RadioChangeEvent) => {
-    LayersStore.baseLayer = e.target.value as BaseLayer;
+    LayersStore.baseLayerType = e.target.value as BaseLayer;
   };
 
   const chooseWeatherLayer = (e: RadioChangeEvent) => {
-    LayersStore.weatherLayer = e.target.value as WeatherLayer;
+    LayersStore.weatherLayerType = e.target.value as WeatherLayer;
   };
 
   const classes = classNames({
@@ -34,7 +34,7 @@ const ControlsGroup = () => {
       <Radio.Group
         className={layers}
         onChange={chooseBaseLayer}
-        value={LayersStore.baseLayer}
+        value={LayersStore.baseLayerType}
       >
         {baseLayers.map((layer) => {
           return (
@@ -48,7 +48,7 @@ const ControlsGroup = () => {
       <Radio.Group
         className={layers}
         onChange={chooseWeatherLayer}
-        value={LayersStore.weatherLayer}
+        value={LayersStore.weatherLayerType}
       >
         {weatherLayers.map((layer) => {
           return (
