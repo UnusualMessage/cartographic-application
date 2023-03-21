@@ -5,11 +5,11 @@ import { Coordinate } from "ol/coordinate";
 import BaseLayer from "ol/layer/Base";
 
 class MapStore {
-  private _map: Map | null;
+  private _map?: Map;
   private _cursorCoordinate?: Coordinate;
 
   constructor() {
-    this._map = null;
+    this._map = undefined;
     this._cursorCoordinate = undefined;
 
     makeAutoObservable(this);
@@ -29,7 +29,7 @@ class MapStore {
 
   public dispose() {
     this._map?.dispose();
-    this._map = null;
+    this._map = undefined;
   }
 
   public initMap(target: HTMLDivElement, view?: View) {

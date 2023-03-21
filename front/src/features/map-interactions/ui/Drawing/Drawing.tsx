@@ -39,7 +39,7 @@ const Drawing = () => {
 
 interface Props {
   source?: VectorSource;
-  map: Map | null;
+  map?: Map;
   type: DrawType;
 }
 

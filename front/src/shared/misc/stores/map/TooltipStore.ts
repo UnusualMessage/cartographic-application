@@ -18,6 +18,10 @@ class TooltipStore {
     makeAutoObservable(this);
   }
 
+  public get coordinates() {
+    return this._tooltip.overlay?.getPosition();
+  }
+
   public get active() {
     return this._tooltip.active;
   }
@@ -38,6 +42,8 @@ class TooltipStore {
     };
 
     map.addOverlay(overlay);
+
+    return [];
   }
 }
 

@@ -7,7 +7,7 @@ import { invoke } from "../utils";
 
 interface Props {
   source?: VectorSource;
-  map: Map | null;
+  map?: Map;
   type: DrawType;
 }
 
