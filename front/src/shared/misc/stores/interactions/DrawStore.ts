@@ -7,9 +7,9 @@ import {
   invoke,
   getAreaMeasurementStyle,
   getLengthMeasurementStyle,
-  getCoordinateMeasurementStyle,
 } from "../../../lib";
-import { DrawInjector } from "../../services";
+import { getCoordinateMeasurementStyle1 } from "../../../lib/utils/map/styles/getCoordinateMeasurementStyle";
+import { DrawInjector, CoordinateMeasurementInjector } from "../../services";
 import { ListenersInjector, Callback, DrawEvent, DrawType } from "../../types";
 
 class DrawStore {
@@ -59,10 +59,8 @@ class DrawStore {
   }
 
   private getGeozonesDraw(source: VectorSource) {
-    const convertedType = "Polygon";
-
     const draw = new Draw({
-      type: convertedType,
+      type: "Polygon",
       source: source,
     });
 
@@ -96,13 +94,22 @@ class DrawStore {
   }
 
   private getCoordinateMeasurementDraw(source: VectorSource) {
-    return new Draw({
+    const draw = new Draw({
       source: source,
       type: "Point",
       style: (feature) => {
-        return getCoordinateMeasurementStyle(feature, 0);
+        return getCoordinateMeasurementStyle1(feature, 0);
       },
     });
+
+    const drawInjector: ListenersInjector<DrawEvent> =
+      new CoordinateMeasurementInjector(draw);
+
+    this._cleanups.push(drawInjector.addEventListener("drawstart"));
+    this._cleanups.push(drawInjector.addEventListener("drawend"));
+    this._cleanups.push(drawInjector.addEventListener("drawabort"));
+
+    return draw;
   }
 
   private remove(map: Map | null) {

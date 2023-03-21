@@ -1,20 +1,37 @@
-import { Typography } from "antd";
+import { Tag } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { Ref, useRef, useEffect } from "react";
+import { Ref, useRef, useEffect, MouseEvent } from "react";
 
+import { measurementLayerId } from "@shared/constants";
 import { invoke } from "@shared/lib";
-import { MapStore, TooltipStore, Callback } from "@shared/misc";
+import {
+  MapStore,
+  TooltipStore,
+  Callback,
+  LayersStore,
+  InteractionsStore,
+} from "@shared/misc";
 
-import { wrapper, hidden } from "./tooltip.module.scss";
-
-const { Text } = Typography;
+import { hidden } from "./tooltip.module.scss";
 
 const Tooltip = () => {
   const tooltipRef: Ref<HTMLDivElement> = useRef(null);
   const map = MapStore.map;
   const active = TooltipStore.active;
-  const coordinates = TooltipStore.coordinates;
+  const text = TooltipStore.text;
+  const measurementActive = InteractionsStore.isMeasurementActive;
+
+  if (!measurementActive) {
+    TooltipStore.hide();
+  }
+
+  const onClose = (e: MouseEvent<HTMLElement>) => {
+    e.preventDefault();
+
+    TooltipStore.hide();
+    LayersStore.clearVectorLayer(measurementLayerId);
+  };
 
   useEffect(() => {
     const element = tooltipRef.current;
@@ -33,14 +50,13 @@ const Tooltip = () => {
 
   const classes = classNames({
     [hidden]: !active,
-    [wrapper]: active,
   });
 
   return (
     <div className={classes} ref={tooltipRef}>
-      <Text>{`${(coordinates ?? [0])[0]} - ${
-        (coordinates ?? [0, 0])[1]
-      }`}</Text>
+      <Tag closable color={"#000000"} onClose={onClose}>
+        {text}
+      </Tag>
     </div>
   );
 };

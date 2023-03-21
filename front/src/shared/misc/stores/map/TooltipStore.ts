@@ -1,6 +1,7 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
+import { ReactNode } from "react";
 
 import { tooltipId, tooltipOffset } from "../../../constants";
 import { OverlaysService } from "../../services";
@@ -8,6 +9,7 @@ import { CustomOverlay } from "../../types";
 
 class TooltipStore {
   private _tooltip: CustomOverlay;
+  private _text: ReactNode;
 
   constructor() {
     this._tooltip = {
@@ -15,6 +17,8 @@ class TooltipStore {
       element: undefined,
       active: false,
     };
+
+    this._text = "";
 
     makeAutoObservable(this);
   }
@@ -25,6 +29,14 @@ class TooltipStore {
 
   public get active() {
     return this._tooltip.active;
+  }
+
+  public get text() {
+    return this._text;
+  }
+
+  public set text(value) {
+    this._text = value;
   }
 
   public init(element: HTMLElement, map: Map) {
@@ -48,7 +60,15 @@ class TooltipStore {
   }
 
   public show(coordinates: Coordinate) {
-    OverlaysService.showOverlay(this._tooltip, coordinates);
+    runInAction(() => {
+      OverlaysService.showOverlay(this._tooltip, coordinates);
+    });
+  }
+
+  public hide() {
+    runInAction(() => {
+      OverlaysService.hideOverlay(this._tooltip);
+    });
   }
 }
 

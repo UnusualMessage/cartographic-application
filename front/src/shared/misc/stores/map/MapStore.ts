@@ -32,6 +32,22 @@ class MapStore {
     this._map = undefined;
   }
 
+  public setCrosshairCursor() {
+    const map = this._map;
+
+    if (map) {
+      map.getTargetElement().style.cursor = "crosshair";
+    }
+  }
+
+  public setDefaultCursor() {
+    const map = this._map;
+
+    if (map) {
+      map.getTargetElement().style.cursor = "default";
+    }
+  }
+
   public initMap(target: HTMLDivElement, view?: View) {
     if (this._map) {
       this._map.setTarget(target);

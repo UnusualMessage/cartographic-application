@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
 
@@ -9,6 +10,7 @@ import {
   MapStore,
   LayersStore,
   MapInjector,
+  InteractionsStore,
 } from "@shared/misc";
 
 import { wrapper } from "./map.module.scss";
@@ -16,6 +18,13 @@ import { wrapper } from "./map.module.scss";
 const Map = ({ children }: PropsWithChildren) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
+  const measurementActive = InteractionsStore.isMeasurementActive;
+
+  if (measurementActive) {
+    MapStore.setCrosshairCursor();
+  } else {
+    MapStore.setDefaultCursor();
+  }
 
   useLayoutEffect(() => {
     if (mapRef.current) {
@@ -55,8 +64,12 @@ const Map = ({ children }: PropsWithChildren) => {
     };
   }, [map]);
 
+  const classes = classNames({
+    [wrapper]: true,
+  });
+
   return (
-    <div className={wrapper} ref={mapRef}>
+    <div className={classes} ref={mapRef}>
       {children}
     </div>
   );
