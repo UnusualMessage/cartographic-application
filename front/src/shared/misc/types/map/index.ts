@@ -5,3 +5,4 @@ export type { ListenersInjector } from "./ListenersInjector";
 export type { AddInteractionCallback } from "./AddInteractionCallback";
 export type { BaseLayer } from "./BaseLayer";
 export type { WeatherLayer } from "./WeatherLayer";
+export type { CustomOverlay } from "./CustomOverlay";

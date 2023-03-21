@@ -7,8 +7,9 @@ import { invoke } from "@shared/lib";
 import {
   Callback,
   MapStore,
-  OverlaysStore,
   FeaturesService,
+  ContextMenuStore,
+  InteractionsStore,
 } from "@shared/misc";
 
 import { hidden, wrapper } from "./menu.module.scss";
@@ -33,7 +34,8 @@ const remove = () => {
 const Menu = () => {
   const contextMenuRef: Ref<MenuRef> = useRef(null);
   const map = MapStore.map;
-  const active = OverlaysStore.isContextMenuActive;
+  const active = ContextMenuStore.active;
+  const cursor = InteractionsStore.drawType === "cursor";
 
   const onClick: MenuProps["onClick"] = (e) => {
     switch (e.key) {
@@ -56,7 +58,7 @@ const Menu = () => {
 
     let cleanups: Callback[] = [];
     if (element && map) {
-      cleanups = OverlaysStore.initContextMenu(element, map);
+      cleanups = ContextMenuStore.init(element, map);
     }
 
     return () => {
@@ -64,7 +66,7 @@ const Menu = () => {
         invoke(cleanup);
       }
     };
-  }, [map]);
+  }, [map, cursor]);
 
   const classes = classNames({
     [hidden]: !active,

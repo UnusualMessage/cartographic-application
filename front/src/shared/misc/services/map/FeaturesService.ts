@@ -1,32 +1,32 @@
 import { geozonesLayerId } from "../../../constants";
 import {
-  OverlaysStore,
   LayersStore,
   FeaturesStore,
   SelectStore,
+  ContextMenuStore,
 } from "../../stores";
 
 class FeaturesService {
   public copy() {
     FeaturesStore.copySelectedFeatures();
-    OverlaysStore.hideContextMenu();
+    ContextMenuStore.hide();
   }
 
   public close() {
-    OverlaysStore.hideContextMenu();
+    ContextMenuStore.hide();
     FeaturesStore.clearBuffer();
     SelectStore.clearSelectBuffer();
   }
 
   public insert() {
     const layer = LayersStore.getVectorLayerById(geozonesLayerId);
-    const cursor = OverlaysStore.cursorPosition;
+    const coordinates = ContextMenuStore.coordinates;
 
-    if (cursor && layer) {
-      FeaturesStore.insertCopiedFeatures(layer, cursor);
+    if (coordinates && layer) {
+      FeaturesStore.insertCopiedFeatures(layer, coordinates);
     }
 
-    OverlaysStore.hideContextMenu();
+    ContextMenuStore.hide();
   }
 
   public remove() {
@@ -36,7 +36,7 @@ class FeaturesService {
       FeaturesStore.removeSelectedFeatures(layer);
     }
 
-    OverlaysStore.hideContextMenu();
+    ContextMenuStore.hide();
   }
 }
 

@@ -4,9 +4,9 @@ import { Pixel } from "ol/pixel";
 
 import {
   MapStore,
-  OverlaysStore,
   FeaturesStore,
   InteractionsStore,
+  ContextMenuStore,
 } from "../../stores";
 import type { CommonEvent, ListenersInjector } from "../../types";
 
@@ -49,10 +49,9 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       const pixel: Pixel = this._map.getEventPixel(e);
       const cursor: Coordinate = this._map.getCoordinateFromPixel(pixel);
 
-      OverlaysStore.showContextMenu(cursor);
-      OverlaysStore.hideFeatureInfo();
-      OverlaysStore.cursorPosition = cursor;
-      InteractionsStore.stopDrawing();
+      if (InteractionsStore.drawType === "cursor") {
+        ContextMenuStore.show(cursor);
+      }
     };
 
     this._canvas?.addEventListener("contextmenu", onContextMenu);
@@ -67,16 +66,15 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       const pixel = this._map.getEventPixel(e.originalEvent);
       const features = this._map.getFeaturesAtPixel(pixel);
 
-      OverlaysStore.hideContextMenu();
+      ContextMenuStore.hide();
 
       if (!features.length) {
         FeaturesStore.clickedFeature = null;
-        OverlaysStore.hideFeatureInfo();
+        ContextMenuStore.hide();
         return;
       }
 
       FeaturesStore.clickedFeature = features[0];
-      OverlaysStore.showFeatureInfo(this._map.getCoordinateFromPixel(pixel));
     };
 
     this._map.on("click", onClick);
