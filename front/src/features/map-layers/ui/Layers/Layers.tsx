@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { StyleLike } from "ol/style/Style";
 
 import { GeozonesStore } from "@entities/geozone";
-import { auxLayerId, geozonesLayerId } from "@shared/constants";
+import { geozonesLayerId, measurementLayerId } from "@shared/constants";
 import { getMeasurementStyle } from "@shared/lib";
 import { InteractionsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
@@ -15,7 +15,7 @@ import WeatherLayer from "../WeatherLayer";
 const Layers = () => {
   const geozones = GeozonesStore.geozones.map((item) => item.feature);
 
-  const styleFunction: StyleLike = (feature) => {
+  const measurementStyleFunction: StyleLike = (feature) => {
     return getMeasurementStyle(feature, 0);
   };
 
@@ -30,7 +30,7 @@ const Layers = () => {
         </Condition>
       </VectorLayer>
 
-      <VectorLayer id={auxLayerId} style={styleFunction}>
+      <VectorLayer id={measurementLayerId} style={measurementStyleFunction}>
         <Condition truthy={InteractionsStore.isMeasurementActive}>
           <Measurement />
         </Condition>

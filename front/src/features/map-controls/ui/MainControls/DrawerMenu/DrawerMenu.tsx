@@ -2,7 +2,7 @@ import { Drawer, Typography, MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { about } from "@shared/assets";
-import { auxLayerId } from "@shared/constants";
+import { measurementLayerId } from "@shared/constants";
 import {
   ControlsStore,
   DrawType,
@@ -23,7 +23,7 @@ const DrawerMenu = () => {
   };
 
   const switchType = (type: DrawType) => {
-    LayersStore.clearVectorLayer(auxLayerId);
+    LayersStore.clearVectorLayer(measurementLayerId);
     const drawType = InteractionsStore.drawType;
 
     if (drawType === type) {

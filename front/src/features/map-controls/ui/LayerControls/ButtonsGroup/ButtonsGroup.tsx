@@ -3,7 +3,7 @@ import { Button } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
-import { auxLayerId } from "@shared/constants";
+import { measurementLayerId } from "@shared/constants";
 import {
   ControlsStore,
   DrawType,
@@ -26,7 +26,7 @@ const ButtonsGroup = () => {
   };
 
   const switchType = (type: DrawType) => {
-    LayersStore.clearVectorLayer(auxLayerId);
+    LayersStore.clearVectorLayer(measurementLayerId);
 
     if (drawType === type) {
       InteractionsStore.drawType = "none";

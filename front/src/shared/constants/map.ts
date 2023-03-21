@@ -8,4 +8,4 @@ export const menuOffset = [0, 0];
 
 export const equipmentLayerId = uuid();
 export const geozonesLayerId = uuid();
-export const auxLayerId = uuid();
+export const measurementLayerId = uuid();
