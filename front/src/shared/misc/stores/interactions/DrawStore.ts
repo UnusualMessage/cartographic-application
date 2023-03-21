@@ -3,7 +3,12 @@ import { Map } from "ol";
 import { Draw } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
-import { invoke, getMeasurementStyle } from "../../../lib";
+import {
+  invoke,
+  getAreaMeasurementStyle,
+  getLengthMeasurementStyle,
+  getCoordinateMeasurementStyle,
+} from "../../../lib";
 import { DrawInjector } from "../../services";
 import { ListenersInjector, Callback, DrawEvent, DrawType } from "../../types";
 
@@ -28,10 +33,20 @@ class DrawStore {
 
     let draw: Draw;
 
-    if (type === "measure-area" || type === "measure-length") {
-      draw = this.getMeasurementDraw(source, type);
-    } else {
-      draw = this.getGeozonesDraw(source);
+    switch (type) {
+      case "measure-area":
+        draw = this.getAreaMeasurementDraw(source);
+        break;
+
+      case "measure-length":
+        draw = this.getLengthMeasurementDraw(source);
+        break;
+
+      case "measure-coordinate":
+        draw = this.getCoordinateMeasurementDraw(source);
+        break;
+      default:
+        draw = this.getGeozonesDraw(source);
     }
 
     map?.addInteraction(draw);
@@ -60,14 +75,32 @@ class DrawStore {
     return draw;
   }
 
-  private getMeasurementDraw(source: VectorSource, type: DrawType) {
-    const convertedType = type === "measure-area" ? "Polygon" : "LineString";
-
+  private getAreaMeasurementDraw(source: VectorSource) {
     return new Draw({
       source: source,
-      type: convertedType,
+      type: "Polygon",
       style: (feature) => {
-        return getMeasurementStyle(feature, 0);
+        return getAreaMeasurementStyle(feature, 0);
+      },
+    });
+  }
+
+  private getLengthMeasurementDraw(source: VectorSource) {
+    return new Draw({
+      source: source,
+      type: "LineString",
+      style: (feature) => {
+        return getLengthMeasurementStyle(feature, 0);
+      },
+    });
+  }
+
+  private getCoordinateMeasurementDraw(source: VectorSource) {
+    return new Draw({
+      source: source,
+      type: "Point",
+      style: (feature) => {
+        return getCoordinateMeasurementStyle(feature, 0);
       },
     });
   }

@@ -31,7 +31,9 @@ class InteractionsStore {
 
   public get isMeasurementActive() {
     return (
-      this.drawType === "measure-length" || this.drawType === "measure-area"
+      this.drawType === "measure-length" ||
+      this.drawType === "measure-area" ||
+      this.drawType === "measure-coordinate"
     );
   }
 

@@ -1,5 +1,6 @@
 import { makeAutoObservable } from "mobx";
 import { Map, Overlay } from "ol";
+import { Coordinate } from "ol/coordinate";
 
 import { tooltipId, tooltipOffset } from "../../../constants";
 import { OverlaysService } from "../../services";
@@ -44,6 +45,10 @@ class TooltipStore {
     map.addOverlay(overlay);
 
     return [];
+  }
+
+  public show(coordinates: Coordinate) {
+    OverlaysService.showOverlay(this._tooltip, coordinates);
   }
 }
 

@@ -3,4 +3,5 @@ export type DrawType =
   | "cursor"
   | "none"
   | "measure-length"
-  | "measure-area";
+  | "measure-area"
+  | "measure-coordinate";

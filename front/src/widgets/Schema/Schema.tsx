@@ -6,6 +6,7 @@ import { Map } from "@features/map";
 import { Menu } from "@features/map-context-menu";
 import { Controls } from "@features/map-controls";
 import { Layers } from "@features/map-layers";
+import { Tooltip } from "@features/map-tooltip";
 import { View } from "@features/map-view";
 import { ControlsStore } from "@shared/misc";
 
@@ -27,6 +28,7 @@ const Schema = () => {
       <Map>
         <View />
         <Menu />
+        <Tooltip />
         <Controls />
         <Layers />
       </Map>

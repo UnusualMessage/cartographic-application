@@ -1,4 +1,8 @@
-import { FullscreenOutlined, PrinterOutlined } from "@ant-design/icons";
+import {
+  FullscreenOutlined,
+  PrinterOutlined,
+  AimOutlined,
+} from "@ant-design/icons";
 import { Button } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
@@ -61,6 +65,13 @@ const ButtonsGroup = () => {
         icon={<LayersFilled />}
         type={isPanelOpen ? "primary" : "default"}
         onClick={switchPanel}
+      />
+
+      <Button
+        className={button}
+        icon={<AimOutlined />}
+        type={drawType === "measure-coordinate" ? "primary" : "default"}
+        onClick={() => switchType("measure-coordinate")}
       />
 
       <Button

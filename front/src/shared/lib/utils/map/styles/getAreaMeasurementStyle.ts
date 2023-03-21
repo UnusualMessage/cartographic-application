@@ -1,11 +1,11 @@
 import { FeatureLike } from "ol/Feature";
-import { Geometry, LineString, Point, Polygon } from "ol/geom";
+import { Geometry, Polygon } from "ol/geom";
 import { Fill, Stroke, Text } from "ol/style";
 import CircleStyle from "ol/style/Circle";
 import Style, { StyleFunction } from "ol/style/Style";
 
-import { MeasurementStore } from "../../../misc";
-import { formatArea, formatLength } from "../format";
+import { MeasurementStore } from "../../../../misc";
+import { formatArea } from "../../format";
 
 const style = new Style({
   fill: new Fill({
@@ -41,7 +41,9 @@ const labelStyle = new Style({
   }),
 });
 
-export const getMeasurementStyle: StyleFunction = (feature: FeatureLike) => {
+export const getAreaMeasurementStyle: StyleFunction = (
+  feature: FeatureLike
+) => {
   const styles = [style];
   const geometry = feature.getGeometry() as Geometry | null;
 
@@ -49,28 +51,18 @@ export const getMeasurementStyle: StyleFunction = (feature: FeatureLike) => {
     return;
   }
 
-  const type = geometry.getType();
-
   let point, label;
-
-  if (type === "Polygon") {
+  if (geometry.getType() !== "Point" && geometry.getType() !== "LineString") {
     point = (geometry as Polygon).getInteriorPoint();
-
     label = formatArea(geometry);
-    MeasurementStore.area = label;
-  } else if (type === "LineString") {
-    point = new Point((geometry as LineString).getLastCoordinate());
 
-    label = formatLength(geometry);
-    MeasurementStore.length = label;
+    MeasurementStore.area = label;
   }
 
-  if (label) {
-    if (point) {
-      labelStyle.setGeometry(point);
-    }
-
+  if (label && point) {
+    labelStyle.setGeometry(point);
     labelStyle.getText().setText(label);
+
     styles.push(labelStyle);
   }
 

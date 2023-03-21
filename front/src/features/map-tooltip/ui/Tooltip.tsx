@@ -14,7 +14,7 @@ const Tooltip = () => {
   const tooltipRef: Ref<HTMLDivElement> = useRef(null);
   const map = MapStore.map;
   const active = TooltipStore.active;
-  const text = "hello";
+  const coordinates = TooltipStore.coordinates;
 
   useEffect(() => {
     const element = tooltipRef.current;
@@ -38,7 +38,9 @@ const Tooltip = () => {
 
   return (
     <div className={classes} ref={tooltipRef}>
-      <Text>{text}</Text>
+      <Text>{`${(coordinates ?? [0])[0]} - ${
+        (coordinates ?? [0, 0])[1]
+      }`}</Text>
     </div>
   );
 };
