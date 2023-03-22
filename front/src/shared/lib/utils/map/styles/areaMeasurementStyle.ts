@@ -4,7 +4,7 @@ import { Fill, Stroke } from "ol/style";
 import CircleStyle from "ol/style/Circle";
 import Style, { StyleFunction } from "ol/style/Style";
 
-import { TooltipStore } from "../../../../misc";
+import { TooltipStore, MeasurementStore } from "../../../../misc";
 import { formatArea } from "../../format";
 
 const polygonStyle = new Style({
@@ -52,7 +52,10 @@ export const getDrawAreaStyle: StyleFunction = (feature: FeatureLike) => {
     const coordinate = (geometry as Polygon)
       .getInteriorPoint()
       .getCoordinates();
-    TooltipStore.text = formatArea(geometry);
+
+    const area = formatArea(geometry);
+    MeasurementStore.area = area;
+    TooltipStore.text = area;
     TooltipStore.show(coordinate);
   }
 

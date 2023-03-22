@@ -1,10 +1,15 @@
 import { Point } from "ol/geom";
 import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
-import { toLonLat } from "ol/proj";
 
 import { measurementLayerId } from "../../../../constants";
-import { InteractionsStore, TooltipStore, LayersStore } from "../../../stores";
+import { formatCoordinate } from "../../../../lib";
+import {
+  InteractionsStore,
+  TooltipStore,
+  LayersStore,
+  MeasurementStore,
+} from "../../../stores";
 import { ListenersInjector, DrawEvent as DrawEventType } from "../../../types";
 
 class CoordinateMeasurementInjector
@@ -45,14 +50,13 @@ class CoordinateMeasurementInjector
     const onDrawEnd = (event: DrawEvent) => {
       InteractionsStore.stopDrawing();
 
-      const geometry = event.feature.getGeometry() as Point;
-      const coordinate = toLonLat(geometry.getCoordinates());
+      const point = event.feature.getGeometry() as Point;
+      const coordinate = formatCoordinate(point);
 
-      TooltipStore.text = `Широта: ${coordinate[1].toFixed(
-        2
-      )}° Долгота: ${coordinate[0].toFixed(2)}°`;
+      TooltipStore.text = coordinate;
+      MeasurementStore.coordinate = coordinate;
 
-      TooltipStore.show(geometry.getCoordinates());
+      TooltipStore.show(point.getCoordinates());
     };
 
     this._draw.on("drawend", onDrawEnd);

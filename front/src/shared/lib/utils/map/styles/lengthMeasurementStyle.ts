@@ -4,7 +4,11 @@ import { Fill, Stroke } from "ol/style";
 import CircleStyle from "ol/style/Circle";
 import Style, { StyleFunction } from "ol/style/Style";
 
-import { TooltipStore, InteractionsStore } from "../../../../misc";
+import {
+  TooltipStore,
+  InteractionsStore,
+  MeasurementStore,
+} from "../../../../misc";
 import { formatLength } from "../../format";
 
 const segmentsStyle = new Style({
@@ -54,7 +58,10 @@ export const getDrawLengthStyle: StyleFunction = (feature: FeatureLike) => {
 
   const point = new Point((geometry as LineString).getLastCoordinate());
 
-  TooltipStore.text = formatLength(geometry);
+  const length = formatLength(geometry);
+
+  MeasurementStore.length = length;
+  TooltipStore.text = length;
   TooltipStore.show(point.getCoordinates());
 
   return styles;

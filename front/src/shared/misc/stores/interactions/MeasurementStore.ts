@@ -1,15 +1,14 @@
 import { makeAutoObservable } from "mobx";
-import { Coordinate } from "ol/coordinate";
 
 class MeasurementStore {
   private _area: string;
   private _length: string;
-  private _coordinate?: Coordinate;
+  private _coordinate: string;
 
   constructor() {
     this._area = "0.0 м\xB2";
     this._length = "0.0 м";
-    this._coordinate = [0, 0];
+    this._coordinate = "Широта: 0° Долгота: 0°";
 
     makeAutoObservable(this);
   }
