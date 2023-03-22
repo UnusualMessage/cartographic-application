@@ -1,6 +1,4 @@
 import { observer } from "mobx-react-lite";
-import { Map } from "ol";
-import VectorSource from "ol/source/Vector";
 import { useContext } from "react";
 
 import { SourceContext } from "@shared/constants";
@@ -10,7 +8,6 @@ import {
   MapStore,
   InteractionsStore,
   DrawStore,
-  DrawType,
 } from "@shared/misc";
 
 const Measurement = () => {
@@ -23,32 +20,6 @@ const Measurement = () => {
   };
 
   useInteraction(addInteraction, { source, map, type });
-
-  return <></>;
-};
-
-interface Props {
-  source?: VectorSource;
-  map?: Map;
-  type: DrawType;
-}
-
-const MeasureLength = ({ source, map }: Props) => {
-  const addInteraction: AddInteractionCallback = (map, source) => {
-    return DrawStore.setup("measure-length", source, map);
-  };
-
-  useInteraction(addInteraction, { source, map, type: "measure-length" });
-
-  return <></>;
-};
-
-const MeasureArea = ({ source, map }: Props) => {
-  const addInteraction: AddInteractionCallback = (map, source) => {
-    return DrawStore.setup("measure-area", source, map);
-  };
-
-  useInteraction(addInteraction, { source, map, type: "measure-area" });
 
   return <></>;
 };
