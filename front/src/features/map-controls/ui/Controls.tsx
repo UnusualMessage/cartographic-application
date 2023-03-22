@@ -1,5 +1,5 @@
-import LeftControls from "../LeftControls";
-import RightControls from "../RightControls";
+import LeftControls from "./LeftControls";
+import RightControls from "./RightControls";
 
 const Controls = () => {
   return (

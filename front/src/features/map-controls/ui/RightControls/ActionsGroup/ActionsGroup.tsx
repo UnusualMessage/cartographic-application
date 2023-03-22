@@ -3,7 +3,7 @@ import { observer } from "mobx-react-lite";
 
 import { ControlsStore } from "@shared/misc";
 
-import { active, wrapper, actions } from "./buttons.module.scss";
+import { active, wrapper, actions } from "./actions.module.scss";
 import {
   ZoomIn,
   ZoomOut,
@@ -15,7 +15,7 @@ import {
   FullScreen,
 } from "../actions";
 
-const ButtonsGroup = () => {
+const ActionsGroup = () => {
   const open = ControlsStore.layersPanelActive;
 
   const classes = classNames({
@@ -42,4 +42,4 @@ const ButtonsGroup = () => {
   );
 };
 
-export default observer(ButtonsGroup);
+export default observer(ActionsGroup);

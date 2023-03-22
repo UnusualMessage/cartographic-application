@@ -1,11 +1,11 @@
-import ButtonsGroup from "./ButtonsGroup";
-import ControlsGroup from "./ControlsGroup";
+import ActionsGroup from "./ActionsGroup";
+import LayersGroup from "./LayersGroup";
 
 const RightControls = () => {
   return (
     <>
-      <ButtonsGroup />
-      <ControlsGroup />
+      <ActionsGroup />
+      <LayersGroup />
     </>
   );
 };

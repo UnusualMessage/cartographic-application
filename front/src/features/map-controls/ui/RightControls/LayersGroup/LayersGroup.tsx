@@ -10,10 +10,10 @@ import {
   WeatherLayer,
 } from "@shared/misc";
 
-import { visible, wrapper, layers } from "./group.module.scss";
+import { visible, wrapper, layers } from "./layers.module.scss";
 
-const ControlsGroup = () => {
-  const isPanelOpen = ControlsStore.layersPanelActive;
+const LayersGroup = () => {
+  const open = ControlsStore.layersPanelActive;
 
   const chooseBaseLayer = (e: RadioChangeEvent) => {
     LayersStore.baseLayerType = e.target.value as BaseLayer;
@@ -25,7 +25,7 @@ const ControlsGroup = () => {
 
   const classes = classNames({
     [wrapper]: true,
-    [visible]: isPanelOpen,
+    [visible]: open,
   });
 
   return (
@@ -62,4 +62,4 @@ const ControlsGroup = () => {
   );
 };
 
-export default observer(ControlsGroup);
+export default observer(LayersGroup);
