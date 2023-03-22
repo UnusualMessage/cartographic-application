@@ -2,13 +2,10 @@ export { getGeozoneStyle } from "./getGeozoneStyle";
 export {
   getVisibleCoordinateStyle,
   getDrawCoordinateStyle,
-} from "./getCoordinateMeasurementStyle";
-export {
-  getDrawAreaStyle,
-  getVisibleAreaStyle,
-} from "./getAreaMeasurementStyle";
+} from "./coordinateMeasurementStyle";
+export { getDrawAreaStyle, getVisibleAreaStyle } from "./areaMeasurementStyle";
 export {
   getDrawLengthStyle,
   getVisibleLengthStyle,
-} from "./getLengthMeasurementStyle";
+} from "./lengthMeasurementStyle";
 export { getMeasurementStyle } from "./getMeasurementStyle";

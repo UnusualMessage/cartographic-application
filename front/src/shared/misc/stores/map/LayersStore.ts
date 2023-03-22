@@ -73,6 +73,7 @@ class LayersStore {
     const layer = new VectorLayer({
       source: source,
       style: style,
+      renderBuffer: 1000,
       properties: {
         id: id,
       },

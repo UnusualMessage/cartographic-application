@@ -1,20 +1,19 @@
 import { FeatureLike } from "ol/Feature";
-import { Geometry, Polygon, LineString, MultiPoint } from "ol/geom";
+import { Geometry, Point, LineString, MultiPoint } from "ol/geom";
 import { Fill, Stroke } from "ol/style";
 import CircleStyle from "ol/style/Circle";
 import Style, { StyleFunction } from "ol/style/Style";
 
-import { TooltipStore } from "../../../../misc";
-import { formatArea } from "../../format";
+import { TooltipStore, InteractionsStore } from "../../../../misc";
+import { formatLength } from "../../format";
 
-const polygonStyle = new Style({
+const segmentsStyle = new Style({
   fill: new Fill({
     color: "rgba(255, 255, 255, 0.2)",
   }),
   stroke: new Stroke({
     color: "#1677FF",
     width: 3,
-    lineDash: [10, 12],
   }),
 
   image: new CircleStyle({
@@ -41,27 +40,26 @@ const pointsStyle = new Style({
   },
 });
 
-export const getDrawAreaStyle: StyleFunction = (feature: FeatureLike) => {
-  const styles = [polygonStyle, pointsStyle];
+export const getDrawLengthStyle: StyleFunction = (feature: FeatureLike) => {
+  if (!InteractionsStore.isDrawing) {
+    return;
+  }
+
+  const styles = [segmentsStyle, pointsStyle];
   const geometry = feature.getGeometry() as Geometry | null;
 
   if (!geometry) {
     return;
   }
 
-  if (geometry.getType() !== "Point" && geometry.getType() !== "LineString") {
-    const coordinate = (geometry as Polygon)
-      .getInteriorPoint()
-      .getCoordinates();
-    TooltipStore.text = formatArea(geometry);
-    TooltipStore.show(coordinate);
-  }
+  const point = new Point((geometry as LineString).getLastCoordinate());
+
+  TooltipStore.text = formatLength(geometry);
+  TooltipStore.show(point.getCoordinates());
 
   return styles;
 };
 
-export const getVisibleAreaStyle: StyleFunction = () => {
-  polygonStyle.getStroke().setLineDash(null);
-
-  return [polygonStyle];
+export const getVisibleLengthStyle: StyleFunction = () => {
+  return [segmentsStyle];
 };
