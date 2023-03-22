@@ -1,7 +1,7 @@
 import ButtonsGroup from "./ButtonsGroup";
 import ControlsGroup from "./ControlsGroup";
 
-const LayerControls = () => {
+const RightControls = () => {
   return (
     <>
       <ButtonsGroup />
@@ -10,4 +10,4 @@ const LayerControls = () => {
   );
 };
 
-export default LayerControls;
+export default RightControls;

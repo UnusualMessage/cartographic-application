@@ -1,26 +1,15 @@
 import * as jspdf from "jspdf";
 import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
-import { Coordinate } from "ol/coordinate";
 import BaseLayer from "ol/layer/Base";
 
 class MapStore {
   private _map?: Map;
-  private _cursorCoordinate?: Coordinate;
 
   constructor() {
     this._map = undefined;
-    this._cursorCoordinate = undefined;
 
     makeAutoObservable(this);
-  }
-
-  public get cursorCoordinate() {
-    return this._cursorCoordinate;
-  }
-
-  public set cursorCoordinate(coordinate) {
-    this._cursorCoordinate = coordinate;
   }
 
   public get map() {

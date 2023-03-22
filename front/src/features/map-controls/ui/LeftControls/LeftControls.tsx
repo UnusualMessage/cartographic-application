@@ -1,7 +1,7 @@
 import DrawerMenu from "./DrawerMenu";
 import InteractionsControl from "./InteractionsControl";
 
-const MainControls = () => {
+const LeftControls = () => {
   return (
     <>
       <DrawerMenu />
@@ -10,4 +10,4 @@ const MainControls = () => {
   );
 };
 
-export default MainControls;
+export default LeftControls;

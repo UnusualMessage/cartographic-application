@@ -1,13 +1,11 @@
-import LayerControls from "../LayerControls";
-import MainControls from "../MainControls";
-import ViewControls from "../ViewControls";
+import LeftControls from "../LeftControls";
+import RightControls from "../RightControls";
 
 const Controls = () => {
   return (
     <>
-      <LayerControls />
-      <ViewControls />
-      <MainControls />
+      <RightControls />
+      <LeftControls />
     </>
   );
 };

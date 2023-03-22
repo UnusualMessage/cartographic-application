@@ -3,7 +3,6 @@ import { Coordinate } from "ol/coordinate";
 import { Pixel } from "ol/pixel";
 
 import {
-  MapStore,
   FeaturesStore,
   InteractionsStore,
   ContextMenuStore,
@@ -31,10 +30,8 @@ class MapInjector implements ListenersInjector<CommonEvent> {
   }
 
   public addPointerMove() {
-    const onPointerMove = (e: MapBrowserEvent<any>) => {
-      const event = e.originalEvent;
-      const pixel: Pixel = this._map.getEventPixel(event);
-      MapStore.cursorCoordinate = this._map.getCoordinateFromPixel(pixel);
+    const onPointerMove = () => {
+      return;
     };
 
     this._map.on("pointermove", onPointerMove);
