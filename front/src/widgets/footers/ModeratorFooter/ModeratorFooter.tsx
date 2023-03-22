@@ -15,11 +15,17 @@ const ModeratorFooter = ({ children }: PropsWithChildren) => {
     bottomBorder: 3,
   };
 
-  const { size, start, isResizing } = useResizing(props);
+  const { size, start, isResizing, toggle } = useResizing(props);
 
   return (
     <footer className={wrapper} style={{ height: `${size}px` }}>
-      <Resize type={type} start={start} isResizing={isResizing} />
+      <Resize
+        type={type}
+        start={start}
+        isResizing={isResizing}
+        onClick={toggle}
+        hidden={size === props.bottomBorder}
+      />
       <div className={content}>{children}</div>
     </footer>
   );

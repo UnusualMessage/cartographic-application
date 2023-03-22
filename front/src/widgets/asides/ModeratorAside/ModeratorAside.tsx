@@ -15,7 +15,7 @@ const ModeratorAside = ({ children }: PropsWithChildren) => {
     bottomBorder: 3,
   };
 
-  const { size, start, isResizing } = useResizing(props);
+  const { size, start, isResizing, toggle } = useResizing(props);
 
   return (
     <aside
@@ -24,7 +24,13 @@ const ModeratorAside = ({ children }: PropsWithChildren) => {
       onContextMenu={(e) => e.preventDefault()}
     >
       <div className={content}>{children}</div>
-      <Resize isResizing={isResizing} type={type} start={start} />
+      <Resize
+        isResizing={isResizing}
+        type={type}
+        start={start}
+        onClick={toggle}
+        hidden={size === props.bottomBorder}
+      />
     </aside>
   );
 };

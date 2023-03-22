@@ -13,6 +13,14 @@ export const useResizing = ({ initial, type, bottomBorder }: Props) => {
   const [isResizing, setIsResizing] = useState(false);
   const map = MapStore.map;
 
+  const toggle = () => {
+    if (size > bottomBorder) {
+      setSize(bottomBorder);
+    } else {
+      setSize(initial);
+    }
+  };
+
   const onMouseDown: MouseEventHandler = () => {
     setIsResizing(true);
   };
@@ -64,5 +72,5 @@ export const useResizing = ({ initial, type, bottomBorder }: Props) => {
     };
   }, [isResizing]);
 
-  return { size, start: onMouseDown, isResizing };
+  return { size, start: onMouseDown, isResizing, toggle };
 };

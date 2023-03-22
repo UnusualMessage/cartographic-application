@@ -1,9 +1,27 @@
 .wrapper {
-  z-index: 2;
-  background: rgba(17, 20, 24, 0.1);
+  position: relative;
 
-  &:hover {
-    background: #4C90F0;
+  .button-vertical {
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    z-index: 3;
+  }
+
+  .button-horizontal {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    z-index: 3;
+  }
+
+  .line {
+    z-index: 2;
+    background: rgba(17, 20, 24, 0.1);
+
+    &:hover {
+      background: #4C90F0;
+    }
   }
 }
 
