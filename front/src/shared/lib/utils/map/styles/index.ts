@@ -3,6 +3,12 @@ export {
   getVisibleCoordinateStyle,
   getDrawCoordinateStyle,
 } from "./getCoordinateMeasurementStyle";
-export { getDrawAreaStyle } from "./getAreaMeasurementStyle";
-export { getDrawLengthStyle } from "./getLengthMeasurementStyle";
+export {
+  getDrawAreaStyle,
+  getVisibleAreaStyle,
+} from "./getAreaMeasurementStyle";
+export {
+  getDrawLengthStyle,
+  getVisibleLengthStyle,
+} from "./getLengthMeasurementStyle";
 export { getMeasurementStyle } from "./getMeasurementStyle";

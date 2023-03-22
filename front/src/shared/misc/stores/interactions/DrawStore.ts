@@ -9,7 +9,11 @@ import {
   getDrawLengthStyle,
   getDrawAreaStyle,
 } from "../../../lib";
-import { DrawInjector, CoordinateMeasurementInjector } from "../../services";
+import {
+  LengthMeasurementInjector,
+  DrawInjector,
+  CoordinateMeasurementInjector,
+} from "../../services";
 import { ListenersInjector, Callback, DrawEvent, DrawType } from "../../types";
 
 class DrawStore {
@@ -76,6 +80,7 @@ class DrawStore {
   private getAreaMeasurementDraw(source: VectorSource) {
     return new Draw({
       source: source,
+      trace: true,
       type: "Polygon",
       style: (feature) => {
         return getDrawAreaStyle(feature, 0);
@@ -84,13 +89,22 @@ class DrawStore {
   }
 
   private getLengthMeasurementDraw(source: VectorSource) {
-    return new Draw({
+    const draw = new Draw({
       source: source,
       type: "LineString",
       style: (feature) => {
         return getDrawLengthStyle(feature, 0);
       },
     });
+
+    const drawInjector: ListenersInjector<DrawEvent> =
+      new LengthMeasurementInjector(draw);
+
+    this._cleanups.push(drawInjector.addEventListener("drawstart"));
+    this._cleanups.push(drawInjector.addEventListener("drawend"));
+    this._cleanups.push(drawInjector.addEventListener("drawabort"));
+
+    return draw;
   }
 
   private getCoordinateMeasurementDraw(source: VectorSource) {

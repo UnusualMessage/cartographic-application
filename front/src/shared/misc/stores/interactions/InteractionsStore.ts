@@ -21,6 +21,10 @@ class InteractionsStore {
     this._drawType = value;
   }
 
+  public get isDrawing() {
+    return this._drawing;
+  }
+
   public set isDrawing(isDrawing: boolean) {
     this._drawing = isDrawing;
   }

@@ -1,43 +1,52 @@
 import { FeatureLike } from "ol/Feature";
-import { Geometry, Point, LineString } from "ol/geom";
-import { Fill, Stroke, Text } from "ol/style";
+import { Geometry, Point, LineString, MultiPoint } from "ol/geom";
+import { Fill, Stroke } from "ol/style";
 import CircleStyle from "ol/style/Circle";
 import Style, { StyleFunction } from "ol/style/Style";
 
-import { MeasurementStore } from "../../../../misc";
+import { TooltipStore, InteractionsStore } from "../../../../misc";
 import { formatLength } from "../../format";
 
-const style = new Style({
+const segmentsStyle = new Style({
   fill: new Fill({
     color: "rgba(255, 255, 255, 0.2)",
   }),
   stroke: new Stroke({
     color: "#1677FF",
-    width: 4,
+    width: 3,
     lineDash: [10, 12],
   }),
+
   image: new CircleStyle({
     radius: 0,
   }),
 });
 
-const labelStyle = new Style({
-  text: new Text({
-    font: "14px Calibri,sans-serif",
+const pointsStyle = new Style({
+  image: new CircleStyle({
+    radius: 4,
+    stroke: new Stroke({
+      color: "#1677FF",
+      width: 2,
+    }),
     fill: new Fill({
       color: "rgba(255, 255, 255, 1)",
     }),
-    backgroundFill: new Fill({
-      color: "rgba(0, 0, 0, 1)",
-    }),
-    padding: [3, 3, 3, 3],
-    textBaseline: "bottom",
-    offsetY: -30,
   }),
+
+  geometry: (feature) => {
+    const coordinates = (feature.getGeometry() as LineString).getCoordinates();
+    coordinates.pop();
+    return new MultiPoint(coordinates);
+  },
 });
 
 export const getDrawLengthStyle: StyleFunction = (feature: FeatureLike) => {
-  const styles = [style];
+  if (!InteractionsStore.isDrawing) {
+    return;
+  }
+
+  const styles = [segmentsStyle, pointsStyle];
   const geometry = feature.getGeometry() as Geometry | null;
 
   if (!geometry) {
@@ -45,16 +54,15 @@ export const getDrawLengthStyle: StyleFunction = (feature: FeatureLike) => {
   }
 
   const point = new Point((geometry as LineString).getLastCoordinate());
-  const label = formatLength(geometry);
 
-  MeasurementStore.length = label;
-
-  if (label) {
-    labelStyle.setGeometry(point);
-    labelStyle.getText().setText(label);
-
-    styles.push(labelStyle);
-  }
+  TooltipStore.text = formatLength(geometry);
+  TooltipStore.show(point.getCoordinates());
 
   return styles;
+};
+
+export const getVisibleLengthStyle: StyleFunction = () => {
+  segmentsStyle.getStroke().setLineDash(null);
+
+  return [segmentsStyle];
 };
