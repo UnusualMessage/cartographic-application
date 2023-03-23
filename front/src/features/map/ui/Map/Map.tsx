@@ -80,7 +80,8 @@ const Map = ({ children, toPrint }: Props) => {
 
   let style: CSSProperties = {};
   if (toPrint) {
-    style = { width: "297mm", height: "210mm" };
+    const dimensions = MapStore.dimensions;
+    style = { width: `${dimensions[0]}mm`, height: `${dimensions[1]}mm` };
   }
 
   return (

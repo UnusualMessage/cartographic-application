@@ -3,13 +3,30 @@ import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
 import BaseLayer from "ol/layer/Base";
 
+import { Dimensions } from "../../types/map/Dimensions";
+
 class MapStore {
   private _map?: Map;
+  private _printFormat: "a3" | "a4";
 
   constructor() {
     this._map = undefined;
 
+    this._printFormat = "a4";
+
     makeAutoObservable(this);
+  }
+
+  public get printFormat() {
+    return this._printFormat;
+  }
+
+  public set printFormat(value) {
+    this._printFormat = value;
+  }
+
+  public get dimensions(): Dimensions {
+    return this._printFormat === "a4" ? [297, 210] : [420, 297];
   }
 
   public get map() {
@@ -58,17 +75,18 @@ class MapStore {
 
   public printMap() {
     const map = this.map;
+    const dimensions: Dimensions =
+      this._printFormat === "a4" ? [297, 210] : [420, 297];
 
     if (!map) {
       return;
     }
 
-    const format = "a4";
+    const format = this.printFormat;
     const resolution = 150;
-    const dim = [297, 210];
 
-    const width = Math.round((dim[0] * resolution) / 25.4);
-    const height = Math.round((dim[1] * resolution) / 25.4);
+    const width = Math.round((dimensions[0] * resolution) / 25.4);
+    const height = Math.round((dimensions[1] * resolution) / 25.4);
 
     const printSize = [width, height];
     const mapSize = map.getSize() ?? [0, 0];
@@ -115,8 +133,8 @@ class MapStore {
         "JPEG",
         0,
         0,
-        dim[0],
-        dim[1]
+        dimensions[0],
+        dimensions[1]
       );
       pdf.save("map.pdf");
 
