@@ -17,12 +17,15 @@ import {
   LayersStore,
   MapInjector,
   InteractionsStore,
-  ControlsStore,
 } from "@shared/misc";
 
 import { wrapper } from "./map.module.scss";
 
-const Map = ({ children }: PropsWithChildren) => {
+interface Props extends PropsWithChildren {
+  toPrint?: boolean;
+}
+
+const Map = ({ children, toPrint }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
   const measurementActive = InteractionsStore.isMeasurementActive;
@@ -76,7 +79,7 @@ const Map = ({ children }: PropsWithChildren) => {
   });
 
   let style: CSSProperties = {};
-  if (ControlsStore.fullScreenActive) {
+  if (toPrint) {
     style = { width: "297mm", height: "210mm" };
   }
 

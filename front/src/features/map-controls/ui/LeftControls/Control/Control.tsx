@@ -11,6 +11,8 @@ import {
   Panel,
   ShareResult,
   MeasurementResult,
+  Print,
+  PrintResult,
 } from "./ui";
 
 const Control = () => {
@@ -30,9 +32,6 @@ const Control = () => {
         </Panel>
       );
       break;
-    case "search":
-      control = <Search />;
-      break;
     case "share":
       control = <Share />;
       label = "Поделиться";
@@ -41,6 +40,19 @@ const Control = () => {
           <ShareResult />
         </Panel>
       );
+      break;
+    case "search":
+      control = <Search />;
+      break;
+    case "print":
+      control = <Print />;
+      label = "Печать";
+      panel = (
+        <Panel>
+          <PrintResult />
+        </Panel>
+      );
+      break;
   }
 
   return (

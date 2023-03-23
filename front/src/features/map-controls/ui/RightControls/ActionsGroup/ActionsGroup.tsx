@@ -7,7 +7,6 @@ import { active, wrapper, actions } from "./actions.module.scss";
 import {
   ZoomIn,
   ZoomOut,
-  Print,
   Layers,
   Area,
   Distance,
@@ -30,7 +29,6 @@ const ActionsGroup = () => {
         <Coordinate type={"default"} />
         <Distance type={"default"} />
         <Area type={"default"} />
-        <Print />
         <FullScreen />
       </div>
 

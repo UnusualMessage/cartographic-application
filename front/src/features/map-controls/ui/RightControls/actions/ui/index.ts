@@ -1,4 +1,3 @@
-export { default as Print } from "./Print";
 export { default as FullScreen } from "./FullScreen";
 export { default as Layers } from "./Layers";
 export { default as Area } from "./Area";

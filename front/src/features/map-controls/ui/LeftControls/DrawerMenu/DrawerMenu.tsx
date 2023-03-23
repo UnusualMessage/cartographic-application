@@ -1,5 +1,6 @@
 import { Drawer, Typography, MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
+import { useNavigate } from "react-router-dom";
 
 import { about } from "@shared/assets";
 import { measurementLayerId } from "@shared/constants";
@@ -17,6 +18,8 @@ const { Text } = Typography;
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
+
+  const navigate = useNavigate();
 
   const close = () => {
     ControlsStore.hideDrawer();
@@ -69,6 +72,10 @@ const DrawerMenu = () => {
       case "full-screen":
         ControlsStore.fullScreenHandle?.enter();
         ControlsStore.hideDrawer();
+        break;
+      case "print":
+        choose("print");
+        navigate("../print");
         break;
       default:
         choose(e.key as MapControl);
