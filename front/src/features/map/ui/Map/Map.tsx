@@ -1,6 +1,12 @@
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { PropsWithChildren, useEffect, useLayoutEffect, useRef } from "react";
+import {
+  PropsWithChildren,
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  CSSProperties,
+} from "react";
 
 import { invoke } from "@shared/lib";
 import {
@@ -11,6 +17,7 @@ import {
   LayersStore,
   MapInjector,
   InteractionsStore,
+  ControlsStore,
 } from "@shared/misc";
 
 import { wrapper } from "./map.module.scss";
@@ -68,8 +75,13 @@ const Map = ({ children }: PropsWithChildren) => {
     [wrapper]: true,
   });
 
+  let style: CSSProperties = {};
+  if (ControlsStore.fullScreenActive) {
+    style = { width: "297mm", height: "210mm" };
+  }
+
   return (
-    <div className={classes} ref={mapRef}>
+    <div className={classes} ref={mapRef} style={style}>
       {children}
     </div>
   );

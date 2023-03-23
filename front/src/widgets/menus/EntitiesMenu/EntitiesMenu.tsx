@@ -1,6 +1,5 @@
 import { Tabs } from "antd";
 import { observer } from "mobx-react-lite";
-import { useMemo } from "react";
 
 import { TabsStore } from "@shared/misc";
 
@@ -10,9 +9,7 @@ import { siderTabs } from "./model";
 const EntitiesMenu = () => {
   const tabId = TabsStore.siderTabId;
 
-  const currentTabs = useMemo(() => {
-    return siderTabs.tabs;
-  }, []);
+  const currentTabs = siderTabs.tabs;
 
   return (
     <Tabs

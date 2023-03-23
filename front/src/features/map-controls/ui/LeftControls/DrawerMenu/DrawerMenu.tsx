@@ -66,6 +66,10 @@ const DrawerMenu = () => {
         choose("edit");
         switchType(e.key);
         break;
+      case "full-screen":
+        ControlsStore.fullScreenHandle?.enter();
+        ControlsStore.hideDrawer();
+        break;
       default:
         choose(e.key as MapControl);
     }

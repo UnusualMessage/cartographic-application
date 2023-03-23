@@ -25,10 +25,6 @@ class InteractionsStore {
     return this._drawing;
   }
 
-  public set isDrawing(isDrawing: boolean) {
-    this._drawing = isDrawing;
-  }
-
   public get isGeozonesActive() {
     return this.drawType === "geozones" || this.drawType === "cursor";
   }
