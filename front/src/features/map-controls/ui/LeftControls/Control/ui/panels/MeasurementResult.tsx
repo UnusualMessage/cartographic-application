@@ -5,7 +5,7 @@ import { MeasurementStore, InteractionsStore } from "@shared/misc";
 
 const { Text } = Typography;
 
-const MeasurementPanel = () => {
+const MeasurementResult = () => {
   const drawType = InteractionsStore.drawType;
   let text = <></>;
 
@@ -23,4 +23,4 @@ const MeasurementPanel = () => {
   return <>{text}</>;
 };
 
-export default observer(MeasurementPanel);
+export default observer(MeasurementResult);

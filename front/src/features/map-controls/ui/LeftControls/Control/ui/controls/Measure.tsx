@@ -1,6 +1,6 @@
 import { Space } from "antd";
 
-import { Coordinate, Distance, Area } from "../../../RightControls";
+import { Coordinate, Distance, Area } from "../../../../RightControls";
 
 const Measure = () => {
   return (

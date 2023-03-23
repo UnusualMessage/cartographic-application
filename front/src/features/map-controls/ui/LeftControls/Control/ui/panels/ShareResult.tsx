@@ -1,10 +1,10 @@
 import { Input } from "antd";
 import { useLocation } from "react-router-dom";
 
-const SharePanel = () => {
+const ShareResult = () => {
   const url = useLocation();
 
   return <Input defaultValue={url.search} />;
 };
 
-export default SharePanel;
+export default ShareResult;

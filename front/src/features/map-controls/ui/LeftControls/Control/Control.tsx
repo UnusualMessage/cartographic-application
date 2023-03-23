@@ -1,17 +1,19 @@
-import { MenuOutlined } from "@ant-design/icons";
-import { Button, Typography } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { ControlsStore } from "@shared/misc";
 
-import { wrapper, header, title, main } from "./control.module.scss";
-import { Measure, Search, Share } from "./controls";
-import { MeasurementPanel, SharePanel } from "./panels";
-
-const { Text } = Typography;
+import { wrapper, header } from "./control.module.scss";
+import {
+  Title,
+  Measure,
+  Search,
+  Share,
+  Panel,
+  ShareResult,
+  MeasurementResult,
+} from "./ui";
 
 const Control = () => {
-  const active = ControlsStore.mapDrawerActive;
   const controlType = ControlsStore.currentMapControl;
 
   let control = <></>;
@@ -23,9 +25,9 @@ const Control = () => {
       control = <Measure />;
       label = "Измерение";
       panel = (
-        <div className={main}>
-          <MeasurementPanel />
-        </div>
+        <Panel>
+          <MeasurementResult />
+        </Panel>
       );
       break;
     case "search":
@@ -35,36 +37,21 @@ const Control = () => {
       control = <Share />;
       label = "Поделиться";
       panel = (
-        <div className={main}>
-          <SharePanel />
-        </div>
+        <Panel>
+          <ShareResult />
+        </Panel>
       );
   }
-
-  const showDrawer = () => {
-    ControlsStore.showDrawer();
-  };
-
-  const hideDrawer = () => {
-    ControlsStore.hideDrawer();
-  };
 
   return (
     <div className={wrapper}>
       <div className={header}>
-        <div className={title}>
-          <Button
-            onClick={active ? hideDrawer : showDrawer}
-            icon={<MenuOutlined />}
-            type={active ? "primary" : "text"}
-          />
-
-          <Text strong>{label}</Text>
-        </div>
+        <Title label={label} />
 
         {control}
-        {panel}
       </div>
+
+      {panel}
     </div>
   );
 };
