@@ -1,5 +1,6 @@
 const path = require("path");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
+const fs = require("fs");
 
 module.exports = {
   output: {
@@ -18,6 +19,11 @@ module.exports = {
 
   devServer: {
     port: 3000,
+    https: {
+      key: fs.readFileSync("cert.key"),
+      cert: fs.readFileSync("cert.crt"),
+      ca: fs.readFileSync("ca.crt"),
+    },
 
     static: {
       directory: path.resolve(__dirname, "../build-dev"),
@@ -42,7 +48,7 @@ module.exports = {
 
     compress: true,
     historyApiFallback: true,
-    open: ["http://localhost:3000/system/monitoring"],
+    open: ["https://localhost:3000/system/monitoring"],
     hot: true,
   },
 
