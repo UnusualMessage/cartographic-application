@@ -8,6 +8,7 @@ import {
   ShareAltOutlined,
   PrinterOutlined,
   InfoOutlined,
+  AimOutlined,
 } from "@ant-design/icons";
 import { MenuProps } from "antd";
 
@@ -38,6 +39,12 @@ export const drawerMenu: MenuProps["items"] = [
     label: "Измерение",
     key: "measurement",
     children: [
+      {
+        label: "Координата",
+        key: "measure-coordinate",
+        icon: <AimOutlined />,
+      },
+
       {
         label: "Расстояние",
         key: "measure-length",

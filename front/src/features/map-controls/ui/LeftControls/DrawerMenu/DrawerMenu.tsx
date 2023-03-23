@@ -41,6 +41,10 @@ const DrawerMenu = () => {
 
   const onClick: MenuProps["onClick"] = (e) => {
     switch (e.key) {
+      case "measure-coordinate":
+        choose("measurement");
+        switchType(e.key);
+        break;
       case "measure-length":
         choose("measurement");
         switchType(e.key);

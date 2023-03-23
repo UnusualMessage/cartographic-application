@@ -1,14 +1,22 @@
-import { MenuOutlined, SearchOutlined } from "@ant-design/icons";
-import { Space, Button } from "antd";
+import { MenuOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { Geocoder } from "@entities/geocoder";
-import { ControlsStore, MeasurementStore } from "@shared/misc";
+import { ControlsStore } from "@shared/misc";
 
-import { wrapper, info, header } from "./control.module.scss";
+import { wrapper, header } from "./control.module.scss";
+import { MeasurementControl } from "./controls";
 
 const Control = () => {
   const active = ControlsStore.mapDrawerActive;
+  const controlType = ControlsStore.currentMapControl;
+
+  let control = <></>;
+
+  switch (controlType) {
+    case "measurement":
+      control = <MeasurementControl />;
+  }
 
   const showDrawer = () => {
     ControlsStore.showDrawer();
@@ -20,20 +28,20 @@ const Control = () => {
 
   return (
     <div className={wrapper}>
-      <Space className={header}>
+      <div className={header}>
         <Button
           onClick={active ? hideDrawer : showDrawer}
           icon={<MenuOutlined />}
           type={active ? "primary" : "text"}
         />
-        <Geocoder />
-        <Button icon={<SearchOutlined />} type={"text"} />
-      </Space>
-      <div className={info}>
-        <span>{MeasurementStore.area}</span>
-        <span>{MeasurementStore.length}</span>
-        <span>{MeasurementStore.coordinate}</span>
+
+        {control}
       </div>
+      {/*<div className={info}>*/}
+      {/*  <span>{MeasurementStore.area}</span>*/}
+      {/*  <span>{MeasurementStore.length}</span>*/}
+      {/*  <span>{MeasurementStore.coordinate}</span>*/}
+      {/*</div>*/}
     </div>
   );
 };

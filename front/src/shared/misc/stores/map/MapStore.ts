@@ -24,16 +24,22 @@ class MapStore {
   public setCrosshairCursor() {
     const map = this._map;
 
-    if (map) {
-      map.getTargetElement().style.cursor = "crosshair";
+    const el = map?.getViewport();
+    const canvas = el?.getElementsByTagName("canvas").item(0);
+
+    if (canvas) {
+      canvas.style.cursor = "crosshair";
     }
   }
 
   public setDefaultCursor() {
     const map = this._map;
 
-    if (map) {
-      map.getTargetElement().style.cursor = "default";
+    const el = map?.getViewport();
+    const canvas = el?.getElementsByTagName("canvas").item(0);
+
+    if (canvas) {
+      canvas.style.cursor = "default";
     }
   }
 

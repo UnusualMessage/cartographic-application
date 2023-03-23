@@ -24,6 +24,10 @@ class ControlsStore {
     makeAutoObservable(this);
   }
 
+  public get currentMapControl() {
+    return this._currentMapControl;
+  }
+
   public set currentMapControl(value: MapControl) {
     this._currentMapControl = value;
   }
