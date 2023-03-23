@@ -9,9 +9,9 @@ import {
   ZoomOut,
   Print,
   Layers,
-  LengthMeasurement,
-  CoordinateMeasurement,
-  AreaMeasurement,
+  Area,
+  Distance,
+  Coordinate,
   FullScreen,
 } from "../actions";
 
@@ -27,9 +27,9 @@ const ActionsGroup = () => {
     <div className={classes}>
       <div className={actions}>
         <Layers open={open} />
-        <CoordinateMeasurement />
-        <LengthMeasurement />
-        <AreaMeasurement />
+        <Coordinate type={"default"} />
+        <Distance type={"default"} />
+        <Area type={"default"} />
         <Print />
         <FullScreen />
       </div>

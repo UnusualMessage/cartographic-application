@@ -1,9 +1,11 @@
+@use "/src/shared/styles/constants" as *;
+
 .wrapper {
   position: relative;
 
   .button-vertical {
     position: absolute;
-    top: 50%;
+    top: calc(22% + $header-height);
     left: 3px;
     z-index: 3;
   }
