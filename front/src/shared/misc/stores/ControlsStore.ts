@@ -12,6 +12,8 @@ class ControlsStore {
 
   private _currentMapControl: MapControl;
 
+  private _currentSearchCategory: "fields" | "equipment" | "geocoder";
+
   constructor() {
     this._mapDrawerActive = false;
     this._layersPanelActive = false;
@@ -21,6 +23,8 @@ class ControlsStore {
 
     this._currentMapControl = "search";
 
+    this._currentSearchCategory = "fields";
+
     makeAutoObservable(this);
   }
 
@@ -28,15 +32,23 @@ class ControlsStore {
     return this._currentMapControl;
   }
 
-  public set currentMapControl(value: MapControl) {
+  public set currentMapControl(value) {
     this._currentMapControl = value;
+  }
+
+  public get currentSearchCategory() {
+    return this._currentSearchCategory;
+  }
+
+  public set currentSearchCategory(value) {
+    this._currentSearchCategory = value;
   }
 
   public get fullScreenActive() {
     return this._fullScreenActive;
   }
 
-  public set fullScreenActive(active: boolean) {
+  public set fullScreenActive(active) {
     this._fullScreenActive = active;
   }
 
@@ -44,7 +56,7 @@ class ControlsStore {
     return this._fullScreenHandle;
   }
 
-  public set fullScreenHandle(handle: FullScreenHandle | null) {
+  public set fullScreenHandle(handle) {
     this._fullScreenHandle = handle;
   }
 

@@ -61,7 +61,7 @@ const Geocoder = () => {
       onSearch={handleSearch}
       onChange={handleChange}
       onSelect={handleSelect}
-      style={{ width: "200px" }}
+      style={{ width: "150px" }}
     />
   );
 };

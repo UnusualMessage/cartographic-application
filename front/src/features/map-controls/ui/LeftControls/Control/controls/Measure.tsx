@@ -1,14 +1,10 @@
-import { Space, Typography } from "antd";
+import { Space } from "antd";
 
 import { Coordinate, Distance, Area } from "../../../RightControls";
 
-const { Text } = Typography;
-
-const MeasurementControl = () => {
+const Measure = () => {
   return (
     <>
-      <Text strong>Измерение</Text>
-
       <Space>
         <Coordinate type={"text"} />
         <Distance type={"text"} />
@@ -18,4 +14,4 @@ const MeasurementControl = () => {
   );
 };
 
-export default MeasurementControl;
+export default Measure;

@@ -1,21 +1,28 @@
 import { MenuOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import { Button, Typography } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { ControlsStore } from "@shared/misc";
 
-import { wrapper, header } from "./control.module.scss";
-import { MeasurementControl } from "./controls";
+import { wrapper, header, title } from "./control.module.scss";
+import { Measure, Search } from "./controls";
+
+const { Text } = Typography;
 
 const Control = () => {
   const active = ControlsStore.mapDrawerActive;
   const controlType = ControlsStore.currentMapControl;
 
   let control = <></>;
+  let label = "";
 
   switch (controlType) {
     case "measurement":
-      control = <MeasurementControl />;
+      control = <Measure />;
+      label = "Измерение";
+      break;
+    case "search":
+      control = <Search />;
   }
 
   const showDrawer = () => {
@@ -29,11 +36,15 @@ const Control = () => {
   return (
     <div className={wrapper}>
       <div className={header}>
-        <Button
-          onClick={active ? hideDrawer : showDrawer}
-          icon={<MenuOutlined />}
-          type={active ? "primary" : "text"}
-        />
+        <div className={title}>
+          <Button
+            onClick={active ? hideDrawer : showDrawer}
+            icon={<MenuOutlined />}
+            type={active ? "primary" : "text"}
+          />
+
+          <Text strong>{label}</Text>
+        </div>
 
         {control}
       </div>

@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
 import { InteractionsStore } from "@shared/misc";
-import { LengthMeasurement as Icon } from "@shared/ui";
+import { LineStringFilled } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
 import { switchDrawType } from "../model";
@@ -22,7 +22,7 @@ const Distance = ({ type }: Props) => {
   return (
     <Button
       className={classes}
-      icon={<Icon />}
+      icon={<LineStringFilled />}
       type={drawType === "measure-length" ? "primary" : type}
       onClick={() => switchDrawType(drawType, "measure-length")}
     />

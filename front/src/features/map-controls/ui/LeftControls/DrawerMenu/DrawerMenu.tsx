@@ -37,6 +37,7 @@ const DrawerMenu = () => {
 
   const choose = (type: MapControl) => {
     ControlsStore.currentMapControl = type;
+    ControlsStore.hideDrawer();
   };
 
   const onClick: MenuProps["onClick"] = (e) => {
@@ -65,6 +66,8 @@ const DrawerMenu = () => {
         choose("edit");
         switchType(e.key);
         break;
+      default:
+        choose(e.key as MapControl);
     }
   };
 

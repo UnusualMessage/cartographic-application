@@ -1,4 +1,4 @@
-export { default as LengthMeasurement } from "./LengthMeasurement";
-export { default as AreaMeasurement } from "./AreaMeasurement";
+export { default as LineStringFilled } from "./LineStringFilled";
+export { default as PolygonFilled } from "./PolygonFilled";
 export { default as LayersFilled } from "./LayersFilled";
 export { default as TractorFilled } from "./TractorFilled";

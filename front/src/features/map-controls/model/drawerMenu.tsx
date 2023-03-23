@@ -12,11 +12,8 @@ import {
 } from "@ant-design/icons";
 import { MenuProps } from "antd";
 
-import {
-  AreaMeasurement,
-  LayersFilled,
-  LengthMeasurement,
-} from "@shared/ui/icons";
+import { LineStringFilled, PolygonFilled } from "@shared/ui";
+import { LayersFilled } from "@shared/ui/icons";
 
 export const drawerMenu: MenuProps["items"] = [
   {
@@ -48,13 +45,13 @@ export const drawerMenu: MenuProps["items"] = [
       {
         label: "Расстояние",
         key: "measure-length",
-        icon: <LengthMeasurement />,
+        icon: <LineStringFilled />,
       },
 
       {
         label: "Площадь",
         key: "measure-area",
-        icon: <AreaMeasurement />,
+        icon: <PolygonFilled />,
       },
     ],
   },
