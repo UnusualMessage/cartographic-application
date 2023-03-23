@@ -4,8 +4,9 @@ import { observer } from "mobx-react-lite";
 
 import { ControlsStore } from "@shared/misc";
 
-import { wrapper, header, title } from "./control.module.scss";
-import { Measure, Search } from "./controls";
+import { wrapper, header, title, main } from "./control.module.scss";
+import { Measure, Search, Share } from "./controls";
+import { MeasurementPanel, SharePanel } from "./panels";
 
 const { Text } = Typography;
 
@@ -14,15 +15,30 @@ const Control = () => {
   const controlType = ControlsStore.currentMapControl;
 
   let control = <></>;
+  let panel = <></>;
   let label = "";
 
   switch (controlType) {
     case "measurement":
       control = <Measure />;
       label = "Измерение";
+      panel = (
+        <div className={main}>
+          <MeasurementPanel />
+        </div>
+      );
       break;
     case "search":
       control = <Search />;
+      break;
+    case "share":
+      control = <Share />;
+      label = "Поделиться";
+      panel = (
+        <div className={main}>
+          <SharePanel />
+        </div>
+      );
   }
 
   const showDrawer = () => {
@@ -47,12 +63,8 @@ const Control = () => {
         </div>
 
         {control}
+        {panel}
       </div>
-      {/*<div className={info}>*/}
-      {/*  <span>{MeasurementStore.area}</span>*/}
-      {/*  <span>{MeasurementStore.length}</span>*/}
-      {/*  <span>{MeasurementStore.coordinate}</span>*/}
-      {/*</div>*/}
     </div>
   );
 };

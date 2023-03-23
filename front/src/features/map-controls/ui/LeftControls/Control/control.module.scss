@@ -27,11 +27,12 @@
     }
   }
 
-  .info {
+  .main {
     display: flex;
     flex-direction: column;
+    gap: 5px;
 
-    width: 280px;
+    width: 370px;
     padding: 20px;
 
     background-color: white;
@@ -39,8 +40,8 @@
     overflow: auto;
 
     position: absolute;
-    left: 5px;
-    top: 48px;
+    left: 0;
+    top: 53px;
     z-index: 2;
   }
 }
