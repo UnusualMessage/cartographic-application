@@ -1,7 +1,7 @@
 import { EmptyInformation } from "@shared/ui";
 
-const DestinationsPlaces = () => {
+const DestinationPlaces = () => {
   return <EmptyInformation />;
 };
 
-export default DestinationsPlaces;
+export default DestinationPlaces;

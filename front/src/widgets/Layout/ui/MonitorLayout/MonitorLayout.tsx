@@ -1,17 +1,19 @@
 import { Outlet } from "react-router-dom";
 
+import { GlobalWrapper } from "@shared/ui";
+
 import { MonitorHeader } from "../../../headers";
-import { wrapper, content } from "../layout.module.scss";
+import { content } from "../layout.module.scss";
 
 const MonitorLayout = () => {
   return (
-    <div className={wrapper}>
+    <GlobalWrapper>
       <MonitorHeader />
 
       <main className={content}>
         <Outlet />
       </main>
-    </div>
+    </GlobalWrapper>
   );
 };
 

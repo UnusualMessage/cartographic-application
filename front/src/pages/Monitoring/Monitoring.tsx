@@ -11,7 +11,7 @@ import {
   Content,
 } from "@widgets/index";
 
-const View = () => {
+const Monitoring = () => {
   return (
     <React.Suspense fallback={<Loader />}>
       <Overlays />
@@ -28,4 +28,4 @@ const View = () => {
   );
 };
 
-export default View;
+export default Monitoring;

@@ -34,13 +34,13 @@ const ModeratorHeader = () => {
           </Title>
         </Space>
 
-        <Link to={"/"}>
+        <Link to={""}>
           <Button icon={<DesktopOutlined />} size={"large"} type={"text"}>
             Мониторинг
           </Button>
         </Link>
 
-        <Link to={"/references"}>
+        <Link to={"references"}>
           <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
             Справочники
           </Button>

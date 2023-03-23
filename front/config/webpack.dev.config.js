@@ -42,7 +42,7 @@ module.exports = {
 
     compress: true,
     historyApiFallback: true,
-    open: true,
+    open: ["http://localhost:3000/system/monitoring"],
     hot: true,
   },
 
