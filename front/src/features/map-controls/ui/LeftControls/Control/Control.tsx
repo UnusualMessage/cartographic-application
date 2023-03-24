@@ -1,5 +1,7 @@
 import { observer } from "mobx-react-lite";
+import { useContext } from "react";
 
+import { SchemaTemplateContext } from "@shared/constants";
 import { ControlsStore } from "@shared/misc";
 
 import { wrapper, header } from "./control.module.scss";
@@ -17,6 +19,7 @@ import {
 
 const Control = () => {
   const controlType = ControlsStore.currentMapControl;
+  const context = useContext(SchemaTemplateContext);
 
   let control = <></>;
   let panel = <></>;
@@ -44,15 +47,16 @@ const Control = () => {
     case "search":
       control = <Search />;
       break;
-    case "print":
-      control = <Print />;
-      label = "Печать";
-      panel = (
-        <Panel>
-          <PrintResult />
-        </Panel>
-      );
-      break;
+  }
+
+  if (context?.misc?.print) {
+    control = <Print />;
+    label = "Печать";
+    panel = (
+      <Panel>
+        <PrintResult />
+      </Panel>
+    );
   }
 
   return (

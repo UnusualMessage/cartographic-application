@@ -4,8 +4,11 @@ export type SchemaState = DeepPartial<{
   view: boolean;
   layers: boolean;
 
-  fastControls: {
+  misc: {
     print: boolean;
+  };
+
+  fastControls: {
     fullscreen: boolean;
     area: boolean;
     distance: boolean;

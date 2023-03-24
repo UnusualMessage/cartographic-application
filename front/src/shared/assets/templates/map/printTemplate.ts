@@ -4,7 +4,12 @@ export const printTemplate: SchemaState = {
   view: true,
   layers: true,
 
-  fastControls: {
+  misc: {
     print: true,
+  },
+
+  fastControls: {
+    zoomOut: true,
+    zoomIn: true,
   },
 };

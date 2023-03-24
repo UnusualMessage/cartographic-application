@@ -14,7 +14,6 @@ import {
   Distance,
   Coordinate,
   FullScreen,
-  Print,
 } from "../actions";
 
 const ActionsGroup = () => {
@@ -33,7 +32,6 @@ const ActionsGroup = () => {
         <Coordinate type={"default"} />
         <Distance type={"default"} />
         <Area type={"default"} />
-        <Print />
         <FullScreen />
       </div>
 
