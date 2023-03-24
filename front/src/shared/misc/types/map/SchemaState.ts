@@ -19,5 +19,6 @@ export type SchemaState = DeepPartial<{
     print: boolean;
     measurement: boolean;
     share: boolean;
+    menu: boolean;
   };
 }>;

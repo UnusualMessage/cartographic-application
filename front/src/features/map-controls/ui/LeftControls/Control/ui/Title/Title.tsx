@@ -1,8 +1,9 @@
 import { MenuOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { observer } from "mobx-react-lite";
-import { ReactNode } from "react";
+import { ReactNode, useContext } from "react";
 
+import { SchemaTemplateContext } from "@shared/constants";
 import { ControlsStore } from "@shared/misc";
 
 import { wrapper } from "./title.module.scss";
@@ -14,6 +15,8 @@ interface Props {
 const { Text } = Typography;
 
 const Title = ({ label }: Props) => {
+  const context = useContext(SchemaTemplateContext);
+
   const active = ControlsStore.mapDrawerActive;
 
   const showDrawer = () => {
@@ -24,14 +27,20 @@ const Title = ({ label }: Props) => {
     ControlsStore.hideDrawer();
   };
 
-  return (
-    <div className={wrapper}>
+  let menu = <></>;
+  if (context?.mainControls?.menu) {
+    menu = (
       <Button
         onClick={active ? hideDrawer : showDrawer}
         icon={<MenuOutlined />}
         type={active ? "primary" : "text"}
       />
+    );
+  }
 
+  return (
+    <div className={wrapper}>
+      {menu}
       <Text strong>{label}</Text>
     </div>
   );

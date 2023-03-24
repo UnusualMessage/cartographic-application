@@ -18,5 +18,6 @@ export const defaultTemplate: SchemaState = {
     share: true,
     measurement: true,
     print: true,
+    menu: true,
   },
 };

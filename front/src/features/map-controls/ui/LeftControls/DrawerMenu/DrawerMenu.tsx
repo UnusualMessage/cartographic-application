@@ -1,13 +1,9 @@
 import { Drawer, Typography, MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
-import {
-  useNavigate,
-  useSearchParams,
-  createSearchParams,
-} from "react-router-dom";
 
 import { about } from "@shared/assets";
 import { measurementLayerId } from "@shared/constants";
+import { useQueryNavigate } from "@shared/lib";
 import {
   ControlsStore,
   DrawType,
@@ -22,9 +18,7 @@ const { Text } = Typography;
 
 const DrawerMenu = () => {
   const isOpen = ControlsStore.mapDrawerActive;
-  const [viewParams] = useSearchParams();
-
-  const navigate = useNavigate();
+  const { navigateWithQuery } = useQueryNavigate();
 
   const close = () => {
     ControlsStore.hideDrawer();
@@ -80,14 +74,7 @@ const DrawerMenu = () => {
         break;
       case "print":
         choose("print");
-        navigate({
-          pathname: "../print",
-          search: createSearchParams({
-            x: viewParams.get("x") ?? "0",
-            y: viewParams.get("y") ?? "0",
-            z: viewParams.get("z") ?? "0",
-          }).toString(),
-        });
+        navigateWithQuery("../print", "x", "y", "z");
         break;
       default:
         choose(e.key as MapControl);
