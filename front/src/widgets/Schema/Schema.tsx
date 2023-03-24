@@ -8,7 +8,7 @@ import { Controls } from "@features/map-controls";
 import { Layers } from "@features/map-layers";
 import { Tooltip } from "@features/map-tooltip";
 import { View } from "@features/map-view";
-import { ControlsStore } from "@shared/misc";
+import { FullScreenStore } from "@shared/misc";
 
 import { wrapper } from "./schema.module.scss";
 
@@ -29,11 +29,11 @@ const Schema = ({ toPrint }: Props) => {
   );
 
   const onChange = (state: boolean) => {
-    ControlsStore.fullScreenActive = state;
+    FullScreenStore.active = state;
   };
 
   useEffect(() => {
-    ControlsStore.fullScreenHandle = handle;
+    FullScreenStore.handle = handle;
   }, []);
 
   return (

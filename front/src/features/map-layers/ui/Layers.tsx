@@ -7,10 +7,10 @@ import { getMeasurementStyle } from "@shared/lib";
 import { InteractionsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
-import { Drawing, Measurement } from "../../../map-interactions";
-import BaseLayer from "../BaseLayer";
-import VectorLayer from "../VectorLayer";
-import WeatherLayer from "../WeatherLayer";
+import BaseLayer from "./BaseLayer";
+import VectorLayer from "./VectorLayer";
+import WeatherLayer from "./WeatherLayer";
+import { Drawing, Measurement } from "../../map-interactions";
 
 const Layers = () => {
   const geozones = GeozonesStore.geozones.map((item) => item.feature);

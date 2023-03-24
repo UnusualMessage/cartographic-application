@@ -6,7 +6,7 @@ import { useState, ReactNode } from "react";
 
 import { ViewStore } from "@shared/misc";
 
-import { GeocoderService } from "../../model";
+import { GeocoderService } from "../model";
 
 interface Option {
   key?: string;

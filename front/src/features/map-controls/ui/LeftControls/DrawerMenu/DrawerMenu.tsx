@@ -10,6 +10,8 @@ import {
   LayersStore,
   InteractionsStore,
   MapControl,
+  DrawerStore,
+  FullScreenStore,
 } from "@shared/misc";
 
 import { drawerMenu } from "../../../model";
@@ -17,12 +19,9 @@ import { drawerMenu } from "../../../model";
 const { Text } = Typography;
 
 const DrawerMenu = () => {
-  const isOpen = ControlsStore.mapDrawerActive;
+  const open = DrawerStore.open;
+  const active = FullScreenStore.active;
   const { navigateWithQuery } = useQueryNavigate();
-
-  const close = () => {
-    ControlsStore.hideDrawer();
-  };
 
   const switchType = (type: DrawType) => {
     LayersStore.clearVectorLayer(measurementLayerId);
@@ -34,12 +33,12 @@ const DrawerMenu = () => {
       InteractionsStore.drawType = type;
     }
 
-    ControlsStore.hideDrawer();
+    DrawerStore.hide();
   };
 
   const choose = (type: MapControl) => {
     ControlsStore.currentMapControl = type;
-    ControlsStore.hideDrawer();
+    DrawerStore.hide();
   };
 
   const onClick: MenuProps["onClick"] = (e) => {
@@ -69,8 +68,8 @@ const DrawerMenu = () => {
         switchType(e.key);
         break;
       case "full-screen":
-        ControlsStore.fullScreenHandle?.enter();
-        ControlsStore.hideDrawer();
+        FullScreenStore.enter();
+        DrawerStore.hide();
         break;
       case "print":
         choose("print");
@@ -85,11 +84,11 @@ const DrawerMenu = () => {
     <Drawer
       title="Выбор опции"
       placement="left"
-      open={isOpen}
-      onClose={close}
+      open={open}
+      onClose={() => DrawerStore.hide()}
       width={320}
       footer={<Text>{`© 2023 ${about.title}`}</Text>}
-      getContainer={ControlsStore.fullScreenActive ? false : ""}
+      getContainer={active ? false : ""}
       bodyStyle={{ padding: 0 }}
     >
       <Menu items={drawerMenu} selectable={false} onClick={onClick} />

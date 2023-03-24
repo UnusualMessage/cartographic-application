@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
-import { ControlsStore } from "@shared/misc";
+import { FullScreenStore } from "@shared/misc";
 
 import { wrapper } from "./action.module.scss";
 
@@ -15,25 +15,22 @@ const FullScreen = () => {
     return <></>;
   }
 
-  const fullScreenActive = ControlsStore.fullScreenActive;
-  const handleFullScreen = ControlsStore.fullScreenHandle;
+  const active = FullScreenStore.active;
 
   const exit = () => {
-    handleFullScreen?.exit();
-    ControlsStore.fullScreenActive = false;
+    FullScreenStore.exit();
   };
 
   const enter = () => {
-    handleFullScreen?.enter();
-    ControlsStore.fullScreenActive = true;
+    FullScreenStore.enter();
   };
 
   return (
     <Button
       className={wrapper}
       icon={<FullscreenOutlined />}
-      type={fullScreenActive ? "primary" : "default"}
-      onClick={fullScreenActive ? exit : enter}
+      type={active ? "primary" : "default"}
+      onClick={active ? exit : enter}
     />
   );
 };

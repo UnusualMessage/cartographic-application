@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import { ReactNode, useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
-import { ControlsStore } from "@shared/misc";
+import { DrawerStore } from "@shared/misc";
 
 import { wrapper } from "./title.module.scss";
 
@@ -16,24 +16,23 @@ const { Text } = Typography;
 
 const Title = ({ label }: Props) => {
   const context = useContext(SchemaTemplateContext);
-
-  const active = ControlsStore.mapDrawerActive;
+  const open = DrawerStore.open;
 
   const showDrawer = () => {
-    ControlsStore.showDrawer();
+    DrawerStore.show();
   };
 
   const hideDrawer = () => {
-    ControlsStore.hideDrawer();
+    DrawerStore.hide();
   };
 
   let menu = <></>;
   if (context?.mainControls?.menu) {
     menu = (
       <Button
-        onClick={active ? hideDrawer : showDrawer}
+        onClick={open ? hideDrawer : showDrawer}
         icon={<MenuOutlined />}
-        type={active ? "primary" : "text"}
+        type={open ? "primary" : "text"}
       />
     );
   }
