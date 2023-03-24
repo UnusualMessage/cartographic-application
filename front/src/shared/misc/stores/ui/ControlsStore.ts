@@ -7,14 +7,24 @@ class ControlsStore {
 
   private _currentMapControl: MapControl;
   private _currentSearchCategory: "fields" | "equipment" | "geocoder";
+  private _currentLayerCategory: "weather" | "base";
 
   constructor() {
     this._layersPanelActive = false;
 
     this._currentMapControl = "search";
     this._currentSearchCategory = "fields";
+    this._currentLayerCategory = "base";
 
     makeAutoObservable(this);
+  }
+
+  public get currentLayerCategory() {
+    return this._currentLayerCategory;
+  }
+
+  public set currentLayerCategory(value) {
+    this._currentLayerCategory = value;
   }
 
   public get currentMapControl() {

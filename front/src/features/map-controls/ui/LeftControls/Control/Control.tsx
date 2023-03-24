@@ -14,6 +14,8 @@ import {
   MeasurementResult,
   PrintResult,
   Draw,
+  Layers,
+  LayersResult,
 } from "./ui";
 
 const Control = () => {
@@ -45,6 +47,15 @@ const Control = () => {
     case "edit":
       control = <Draw />;
       label = "Рисование";
+      break;
+    case "layers":
+      control = <Layers />;
+      panel = (
+        <Panel>
+          <LayersResult />
+        </Panel>
+      );
+      label = "Слои";
       break;
     case "search":
       control = <Search />;

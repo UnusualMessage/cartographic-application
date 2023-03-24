@@ -71,6 +71,9 @@ const DrawerMenu = () => {
       case "search":
         choose("search");
         break;
+      case "layers":
+        choose("layers");
+        break;
       default:
         choose("share");
     }

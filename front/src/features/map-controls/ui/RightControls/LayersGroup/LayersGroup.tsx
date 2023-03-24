@@ -1,31 +1,18 @@
-import { Radio, RadioChangeEvent, Space } from "antd";
+import { Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
-import { baseLayers, weatherLayers } from "@shared/assets";
 import { SchemaTemplateContext } from "@shared/constants";
-import {
-  ControlsStore,
-  BaseLayer,
-  LayersStore,
-  WeatherLayer,
-} from "@shared/misc";
+import { ControlsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
-import { visible, wrapper, layers } from "./layers.module.scss";
+import { visible, wrapper } from "./group.module.scss";
+import { BaseLayers, WeatherLayers } from "./ui";
 
 const LayersGroup = () => {
   const context = useContext(SchemaTemplateContext);
   const open = ControlsStore.layersPanelActive;
-
-  const chooseBaseLayer = (e: RadioChangeEvent) => {
-    LayersStore.baseLayerType = e.target.value as BaseLayer;
-  };
-
-  const chooseWeatherLayer = (e: RadioChangeEvent) => {
-    LayersStore.weatherLayerType = e.target.value as WeatherLayer;
-  };
 
   const classes = classNames({
     [wrapper]: true,
@@ -35,34 +22,8 @@ const LayersGroup = () => {
   return (
     <Condition truthy={context?.fastControls?.layers}>
       <Space className={classes} direction={"vertical"}>
-        Подложка
-        <Radio.Group
-          className={layers}
-          onChange={chooseBaseLayer}
-          value={LayersStore.baseLayerType}
-        >
-          {baseLayers.map((layer) => {
-            return (
-              <Radio value={layer.value} key={`radio-${layer.value}`}>
-                {layer.label}
-              </Radio>
-            );
-          })}
-        </Radio.Group>
-        Погода
-        <Radio.Group
-          className={layers}
-          onChange={chooseWeatherLayer}
-          value={LayersStore.weatherLayerType}
-        >
-          {weatherLayers.map((layer) => {
-            return (
-              <Radio value={layer.value} key={`radio-${layer.value}`}>
-                {layer.label}
-              </Radio>
-            );
-          })}
-        </Radio.Group>
+        <BaseLayers />
+        <WeatherLayers />
       </Space>
     </Condition>
   );

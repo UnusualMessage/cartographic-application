@@ -15,12 +15,6 @@
   transition: right ease-in-out .5s;
   overflow: auto;
   z-index: 2;
-
-  .layers {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-  }
 }
 
 .visible {
