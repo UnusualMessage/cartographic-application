@@ -68,6 +68,9 @@ const DrawerMenu = () => {
         navigateWithQuery("../print", "x", "y", "z");
         DrawerStore.hide();
         break;
+      case "search":
+        choose("search");
+        break;
       default:
         choose("share");
     }

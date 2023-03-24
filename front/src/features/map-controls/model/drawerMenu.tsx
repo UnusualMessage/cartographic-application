@@ -1,14 +1,14 @@
 import {
   SearchOutlined,
-  StopOutlined,
-  EyeInvisibleOutlined,
-  EllipsisOutlined,
-  BorderOutlined,
   FullscreenOutlined,
   ShareAltOutlined,
   PrinterOutlined,
   InfoOutlined,
   AimOutlined,
+  ToolFilled,
+  EditFilled,
+  CloseSquareOutlined,
+  SendOutlined,
 } from "@ant-design/icons";
 import { MenuProps } from "antd";
 
@@ -35,6 +35,7 @@ export const drawerMenu: MenuProps["items"] = [
   {
     label: "Измерение",
     key: "measurement",
+    icon: <ToolFilled />,
     children: [
       {
         label: "Координата",
@@ -59,29 +60,24 @@ export const drawerMenu: MenuProps["items"] = [
   {
     label: "Редактирование",
     key: "edit",
+    icon: <EditFilled />,
     children: [
       {
         label: "Выкл.",
         key: "none",
-        icon: <StopOutlined />,
+        icon: <CloseSquareOutlined />,
       },
 
       {
         label: "Курсор",
         key: "cursor",
-        icon: <EyeInvisibleOutlined />,
-      },
-
-      {
-        label: "Точка",
-        key: "point",
-        icon: <EllipsisOutlined />,
+        icon: <SendOutlined />,
       },
 
       {
         label: "Полигон",
         key: "geozones",
-        icon: <BorderOutlined />,
+        icon: <PolygonFilled />,
       },
     ],
   },

@@ -1,7 +1,7 @@
 export type DrawType =
-  | "geozones"
-  | "cursor"
   | "none"
+  | "cursor"
+  | "geozones"
   | "measure-length"
   | "measure-area"
   | "measure-coordinate";

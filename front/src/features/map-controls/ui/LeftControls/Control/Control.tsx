@@ -13,6 +13,7 @@ import {
   ShareResult,
   MeasurementResult,
   PrintResult,
+  Draw,
 } from "./ui";
 
 const Control = () => {
@@ -40,6 +41,10 @@ const Control = () => {
           <ShareResult />
         </Panel>
       );
+      break;
+    case "edit":
+      control = <Draw />;
+      label = "Рисование";
       break;
     case "search":
       control = <Search />;

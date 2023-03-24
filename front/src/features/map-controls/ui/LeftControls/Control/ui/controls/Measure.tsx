@@ -4,13 +4,11 @@ import { Coordinate, Distance, Area } from "../../../../RightControls";
 
 const Measure = () => {
   return (
-    <>
-      <Space>
-        <Coordinate type={"text"} />
-        <Distance type={"text"} />
-        <Area type={"text"} />
-      </Space>
-    </>
+    <Space>
+      <Coordinate type={"text"} />
+      <Distance type={"text"} />
+      <Area type={"text"} />
+    </Space>
   );
 };
 
