@@ -9,11 +9,9 @@ import {
   Title,
   Measure,
   Search,
-  Share,
   Panel,
   ShareResult,
   MeasurementResult,
-  Print,
   PrintResult,
 } from "./ui";
 
@@ -36,7 +34,6 @@ const Control = () => {
       );
       break;
     case "share":
-      control = <Share />;
       label = "Поделиться";
       panel = (
         <Panel>
@@ -50,7 +47,6 @@ const Control = () => {
   }
 
   if (context?.misc?.print) {
-    control = <Print />;
     label = "Печать";
     panel = (
       <Panel>
@@ -63,10 +59,8 @@ const Control = () => {
     <div className={wrapper}>
       <div className={header}>
         <Title label={label} />
-
         {control}
       </div>
-
       {panel}
     </div>
   );

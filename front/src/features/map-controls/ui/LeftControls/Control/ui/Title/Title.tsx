@@ -1,9 +1,10 @@
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined, ArrowLeftOutlined } from "@ant-design/icons";
 import { Button, Typography } from "antd";
 import { observer } from "mobx-react-lite";
 import { ReactNode, useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
+import { useQueryNavigate } from "@shared/lib";
 import { DrawerStore } from "@shared/misc";
 
 import { wrapper } from "./title.module.scss";
@@ -17,6 +18,7 @@ const { Text } = Typography;
 const Title = ({ label }: Props) => {
   const context = useContext(SchemaTemplateContext);
   const open = DrawerStore.open;
+  const { navigateWithQuery } = useQueryNavigate();
 
   const showDrawer = () => {
     DrawerStore.show();
@@ -26,7 +28,14 @@ const Title = ({ label }: Props) => {
     DrawerStore.hide();
   };
 
-  let menu = <></>;
+  const back = () => {
+    navigateWithQuery("../monitoring", "x", "y", "z");
+  };
+
+  let menu = (
+    <Button onClick={back} icon={<ArrowLeftOutlined />} type={"text"} />
+  );
+
   if (context?.mainControls?.menu) {
     menu = (
       <Button

@@ -11,16 +11,12 @@ import {
   LayersStore,
   WeatherLayer,
 } from "@shared/misc";
+import { Condition } from "@shared/ui";
 
 import { visible, wrapper, layers } from "./layers.module.scss";
 
 const LayersGroup = () => {
   const context = useContext(SchemaTemplateContext);
-
-  if (!context?.fastControls?.layers) {
-    return <></>;
-  }
-
   const open = ControlsStore.layersPanelActive;
 
   const chooseBaseLayer = (e: RadioChangeEvent) => {
@@ -37,36 +33,38 @@ const LayersGroup = () => {
   });
 
   return (
-    <Space className={classes} direction={"vertical"}>
-      Подложка
-      <Radio.Group
-        className={layers}
-        onChange={chooseBaseLayer}
-        value={LayersStore.baseLayerType}
-      >
-        {baseLayers.map((layer) => {
-          return (
-            <Radio value={layer.value} key={`radio-${layer.value}`}>
-              {layer.label}
-            </Radio>
-          );
-        })}
-      </Radio.Group>
-      Погода
-      <Radio.Group
-        className={layers}
-        onChange={chooseWeatherLayer}
-        value={LayersStore.weatherLayerType}
-      >
-        {weatherLayers.map((layer) => {
-          return (
-            <Radio value={layer.value} key={`radio-${layer.value}`}>
-              {layer.label}
-            </Radio>
-          );
-        })}
-      </Radio.Group>
-    </Space>
+    <Condition truthy={context?.fastControls?.layers}>
+      <Space className={classes} direction={"vertical"}>
+        Подложка
+        <Radio.Group
+          className={layers}
+          onChange={chooseBaseLayer}
+          value={LayersStore.baseLayerType}
+        >
+          {baseLayers.map((layer) => {
+            return (
+              <Radio value={layer.value} key={`radio-${layer.value}`}>
+                {layer.label}
+              </Radio>
+            );
+          })}
+        </Radio.Group>
+        Погода
+        <Radio.Group
+          className={layers}
+          onChange={chooseWeatherLayer}
+          value={LayersStore.weatherLayerType}
+        >
+          {weatherLayers.map((layer) => {
+            return (
+              <Radio value={layer.value} key={`radio-${layer.value}`}>
+                {layer.label}
+              </Radio>
+            );
+          })}
+        </Radio.Group>
+      </Space>
+    </Condition>
   );
 };
 

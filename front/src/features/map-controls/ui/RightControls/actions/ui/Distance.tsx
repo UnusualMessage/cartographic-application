@@ -5,7 +5,7 @@ import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
 import { InteractionsStore } from "@shared/misc";
-import { LineStringFilled } from "@shared/ui";
+import { LineStringFilled, Condition } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
 import { switchDrawType } from "../model";
@@ -16,11 +16,6 @@ interface Props {
 
 const Distance = ({ type }: Props) => {
   const context = useContext(SchemaTemplateContext);
-
-  if (!context?.fastControls?.distance) {
-    return <></>;
-  }
-
   const drawType = InteractionsStore.drawType;
 
   const classes = classNames({
@@ -28,12 +23,14 @@ const Distance = ({ type }: Props) => {
   });
 
   return (
-    <Button
-      className={classes}
-      icon={<LineStringFilled />}
-      type={drawType === "measure-length" ? "primary" : type}
-      onClick={() => switchDrawType(drawType, "measure-length")}
-    />
+    <Condition truthy={context?.fastControls?.distance}>
+      <Button
+        className={classes}
+        icon={<LineStringFilled />}
+        type={drawType === "measure-length" ? "primary" : type}
+        onClick={() => switchDrawType(drawType, "measure-length")}
+      />
+    </Condition>
   );
 };
 

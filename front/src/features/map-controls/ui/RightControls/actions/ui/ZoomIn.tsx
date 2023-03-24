@@ -4,22 +4,21 @@ import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
 import { ViewStore } from "@shared/misc";
+import { Condition } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
 
 const ZoomIn = () => {
   const context = useContext(SchemaTemplateContext);
 
-  if (!context?.fastControls?.zoomIn) {
-    return <></>;
-  }
-
-  const zoomIn = () => {
-    ViewStore.zoomIn();
-  };
-
   return (
-    <Button className={wrapper} icon={<ZoomInOutlined />} onClick={zoomIn} />
+    <Condition truthy={context?.fastControls?.zoomIn}>
+      <Button
+        className={wrapper}
+        icon={<ZoomInOutlined />}
+        onClick={() => ViewStore.zoomIn()}
+      />
+    </Condition>
   );
 };
 

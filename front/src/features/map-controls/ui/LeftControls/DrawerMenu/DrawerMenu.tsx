@@ -25,14 +25,7 @@ const DrawerMenu = () => {
 
   const switchType = (type: DrawType) => {
     LayersStore.clearVectorLayer(measurementLayerId);
-    const drawType = InteractionsStore.drawType;
-
-    if (drawType === type) {
-      InteractionsStore.drawType = "none";
-    } else {
-      InteractionsStore.drawType = type;
-    }
-
+    InteractionsStore.drawType = type;
     DrawerStore.hide();
   };
 
@@ -72,11 +65,11 @@ const DrawerMenu = () => {
         DrawerStore.hide();
         break;
       case "print":
-        choose("print");
         navigateWithQuery("../print", "x", "y", "z");
+        DrawerStore.hide();
         break;
       default:
-        choose(e.key as MapControl);
+        choose("share");
     }
   };
 
