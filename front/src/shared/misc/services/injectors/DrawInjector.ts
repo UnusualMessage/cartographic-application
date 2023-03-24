@@ -50,9 +50,11 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
     };
 
     this._draw.on("drawstart", onDrawStart);
+    console.log("drawstart injected");
 
     return () => {
       this._draw.un("drawstart", onDrawStart);
+      console.log("drawstart removed");
     };
   }
 
@@ -134,9 +136,11 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
     };
 
     this._draw.on("drawend", onDrawEnd);
+    console.log("drawend injected");
 
     return () => {
       this._draw.un("drawend", onDrawEnd);
+      console.log("drawend removed");
     };
   }
 
@@ -146,9 +150,11 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
     };
 
     this._draw.on("drawabort", onDrawAbort);
+    console.log("drawabort injected");
 
     return () => {
       this._draw.un("drawabort", onDrawAbort);
+      console.log("drawabort removed");
     };
   }
 }

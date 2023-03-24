@@ -64,6 +64,7 @@ const Control = () => {
 
   if (context?.misc?.print) {
     label = "Печать";
+    control = <></>;
     panel = (
       <Panel>
         <PrintResult />

@@ -35,9 +35,11 @@ class MapInjector implements ListenersInjector<CommonEvent> {
     };
 
     this._map.on("pointermove", onPointerMove);
+    console.log("onPointerMove injected");
 
     return () => {
       this._map.un("pointermove", onPointerMove);
+      console.log("onPointerMove removed");
     };
   }
 
@@ -52,9 +54,11 @@ class MapInjector implements ListenersInjector<CommonEvent> {
     };
 
     this._canvas?.addEventListener("contextmenu", onContextMenu);
+    console.log("contextmenu injected");
 
     return () => {
       this._canvas?.removeEventListener("contextmenu", onContextMenu);
+      console.log("contextmenu removed");
     };
   }
 
@@ -75,9 +79,11 @@ class MapInjector implements ListenersInjector<CommonEvent> {
     };
 
     this._map.on("click", onClick);
+    console.log("mapclick injected");
 
     return () => {
       this._map.un("click", onClick);
+      console.log("mapclick removed");
     };
   }
 }

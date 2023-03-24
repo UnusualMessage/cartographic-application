@@ -17,6 +17,35 @@
     z-index: 3;
   }
 
+  .opened {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .closed {
+    visibility: hidden;
+    opacity: 0;
+    animation: hide 1s ease-in-out;
+  }
+
+  @keyframes hide {
+    0% {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    99% {
+      visibility: visible;
+      opacity: 0;
+    }
+
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
   .line {
     z-index: 2;
     background: rgba(17, 20, 24, 0.1);

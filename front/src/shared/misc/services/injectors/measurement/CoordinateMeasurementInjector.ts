@@ -40,9 +40,11 @@ class CoordinateMeasurementInjector
     };
 
     this._draw.on("drawstart", onDrawStart);
+    console.log("drawabort injected");
 
     return () => {
       this._draw.un("drawstart", onDrawStart);
+      console.log("drawabort removed");
     };
   }
 
@@ -60,9 +62,11 @@ class CoordinateMeasurementInjector
     };
 
     this._draw.on("drawend", onDrawEnd);
+    console.log("drawend injected");
 
     return () => {
       this._draw.un("drawend", onDrawEnd);
+      console.log("drawend removed");
     };
   }
 
@@ -73,9 +77,11 @@ class CoordinateMeasurementInjector
     };
 
     this._draw.on("drawabort", onDrawAbort);
+    console.log("drawabort injected");
 
     return () => {
       this._draw.un("drawabort", onDrawAbort);
+      console.log("drawabort removed");
     };
   }
 }

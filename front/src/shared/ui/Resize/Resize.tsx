@@ -6,7 +6,7 @@ import {
 } from "@ant-design/icons";
 import { Button } from "antd";
 import classNames from "classnames";
-import { MouseEventHandler, ReactNode } from "react";
+import { MouseEventHandler, ReactNode, useState } from "react";
 
 import {
   active,
@@ -16,6 +16,8 @@ import {
   line,
   buttonHorizontal,
   buttonVertical,
+  opened,
+  closed,
 } from "./resize.module.scss";
 import { ResizeType } from "../../misc";
 
@@ -28,6 +30,9 @@ interface Props {
 }
 
 const Resize = ({ start, hidden, isResizing, type, onClick }: Props) => {
+  const [switchActive, setSwitchActive] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<number | undefined>(undefined);
+
   const lineClasses = classNames({
     [line]: true,
     [active]: isResizing,
@@ -38,6 +43,8 @@ const Resize = ({ start, hidden, isResizing, type, onClick }: Props) => {
   const buttonClasses = classNames({
     [buttonHorizontal]: type === ResizeType.height,
     [buttonVertical]: type === ResizeType.width,
+    [opened]: switchActive,
+    [closed]: !switchActive,
   });
 
   let icon: ReactNode;
@@ -56,9 +63,32 @@ const Resize = ({ start, hidden, isResizing, type, onClick }: Props) => {
     }
   }
 
+  const hide = () => {
+    setSwitchActive(false);
+  };
+
+  const show = () => {
+    setSwitchActive(true);
+  };
+
+  const onMouseEnter = () => {
+    show();
+  };
+
+  const onMouseLeave = () => {
+    clearTimeout(timeoutId);
+    const id = setTimeout(hide, 2000);
+    setTimeoutId(id as unknown as number);
+  };
+
   return (
     <div className={wrapper}>
-      <div className={lineClasses} onMouseDown={start} />
+      <div
+        className={lineClasses}
+        onMouseDown={start}
+        onMouseEnter={onMouseEnter}
+        onMouseLeave={onMouseLeave}
+      />
       <Button
         className={buttonClasses}
         icon={icon}

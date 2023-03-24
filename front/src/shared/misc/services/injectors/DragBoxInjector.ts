@@ -31,9 +31,11 @@ class DragBoxInjector implements ListenersInjector<DragBoxEvent> {
     };
 
     this._dragBox.on("boxstart", onBoxStart);
+    console.log("boxstart injected");
 
     return () => {
       this._dragBox.un("boxstart", onBoxStart);
+      console.log("boxstart removed");
     };
   }
 
@@ -49,9 +51,11 @@ class DragBoxInjector implements ListenersInjector<DragBoxEvent> {
     };
 
     this._dragBox.on("boxend", onBoxEnd);
+    console.log("boxend injected");
 
     return () => {
       this._dragBox.un("boxend", onBoxEnd);
+      console.log("boxend removed");
     };
   }
 }
