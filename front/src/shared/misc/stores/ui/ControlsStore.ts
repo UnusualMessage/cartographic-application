@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-import { MapControl } from "../types";
+import { MapControl } from "../../types";
 
 class ControlsStore {
   private _layersPanelActive: boolean;

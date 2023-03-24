@@ -3,16 +3,16 @@ import { Outlet } from "react-router-dom";
 import { GlobalWrapper } from "@shared/ui";
 
 import { MonitorHeader } from "../../../headers";
-import { content } from "../layout.module.scss";
+import Main from "../../../Main";
 
 const MonitorLayout = () => {
   return (
     <GlobalWrapper>
       <MonitorHeader />
 
-      <main className={content}>
+      <Main>
         <Outlet />
-      </main>
+      </Main>
     </GlobalWrapper>
   );
 };

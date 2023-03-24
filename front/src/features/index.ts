@@ -16,3 +16,6 @@ export * as editDepartments from "./edit-departments";
 export * as editTrailers from "./edit-trailers";
 
 export * as exportGeozone from "./export-geozone";
+
+export * as infoTabs from "./info-tabs";
+export * as entitiesTabs from "./entities-tabs";

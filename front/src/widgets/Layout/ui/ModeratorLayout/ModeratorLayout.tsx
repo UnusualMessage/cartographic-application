@@ -3,16 +3,16 @@ import { Outlet } from "react-router-dom";
 import { GlobalWrapper } from "@shared/ui";
 
 import { ModeratorHeader } from "../../../headers";
-import { content } from "../layout.module.scss";
+import Main from "../../../Main";
 
 const ModeratorLayout = () => {
   return (
     <GlobalWrapper>
       <ModeratorHeader />
 
-      <main className={content}>
+      <Main>
         <Outlet />
-      </main>
+      </Main>
     </GlobalWrapper>
   );
 };

@@ -1,10 +1,17 @@
 import { v4 as uuid } from "uuid";
 
+import { TabPage } from "@entities/info-tabs-page";
 import { PlansTab } from "@features/plan";
 import { TabsList } from "@shared/misc";
 import { EmptyInformation } from "@shared/ui";
 
-import { TabPage } from "../ui";
+const EmptyTab = () => {
+  return (
+    <TabPage>
+      <EmptyInformation />
+    </TabPage>
+  );
+};
 
 export const footerTabs: TabsList[] = [
   {
@@ -13,11 +20,7 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Нет данных",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },
@@ -28,21 +31,13 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Поля по группам",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Поля по культурам",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },
@@ -53,61 +48,37 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Информация",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Текущие работы",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "История работ",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Текущая техника",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Поручения",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Заметки",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },
@@ -118,41 +89,25 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Статусы",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Статусы по типам",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Статистика связи",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Статистика простоев",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },
@@ -163,31 +118,19 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Статусы",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Статистика связи",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Статистика простоев",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },
@@ -198,51 +141,31 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Информация",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Текущая работа",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "История работ",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Поручения",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
 
       {
         key: uuid(),
         label: "Статистика статусов",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },
@@ -253,22 +176,13 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Список планов",
-        children: (
-          <TabPage>
-            {" "}
-            <PlansTab />{" "}
-          </TabPage>
-        ),
+        children: <PlansTab />,
       },
 
       {
         key: uuid(),
         label: "Распределение планов",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },
@@ -279,11 +193,7 @@ export const footerTabs: TabsList[] = [
       {
         key: uuid(),
         label: "План",
-        children: (
-          <TabPage>
-            <EmptyInformation />
-          </TabPage>
-        ),
+        children: <EmptyTab />,
       },
     ],
   },

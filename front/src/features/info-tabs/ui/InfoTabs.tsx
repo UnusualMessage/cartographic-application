@@ -1,11 +1,10 @@
 import { Tabs } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { TabsStore } from "@shared/misc";
-import { Tab as TabType } from "@shared/misc/types/tab/Tab";
+import { TabsStore, Tab as TabType } from "@shared/misc";
 
 import { wrapper } from "./menu.module.scss";
-import { footerTabs } from "./model";
+import { footerTabs } from "../model";
 
 const handleSelectedTab = (list: TabType[], current?: string) => {
   return current ?? list[0].key;
@@ -15,7 +14,7 @@ const switchTab = (newTab: string) => {
   TabsStore.footerTabId = newTab;
 };
 
-const InfoMenu = () => {
+const InfoTabs = () => {
   const tabId = TabsStore.footerTabId;
   const tabListId = TabsStore.footerTabsListId;
 
@@ -36,4 +35,4 @@ const InfoMenu = () => {
   );
 };
 
-export default observer(InfoMenu);
+export default observer(InfoTabs);

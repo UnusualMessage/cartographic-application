@@ -4,9 +4,9 @@ import { observer } from "mobx-react-lite";
 import { TabsStore } from "@shared/misc";
 
 import { wrapper } from "./menu.module.scss";
-import { siderTabs } from "./model";
+import { siderTabs } from "../model";
 
-const EntitiesMenu = () => {
+const EntitiesTabs = () => {
   const tabId = TabsStore.siderTabId;
 
   const currentTabs = siderTabs.tabs;
@@ -33,4 +33,4 @@ const EntitiesMenu = () => {
   );
 };
 
-export default observer(EntitiesMenu);
+export default observer(EntitiesTabs);

@@ -1,5 +1,6 @@
 import { observer } from "mobx-react-lite";
 
+import { TabPage } from "@entities/info-tabs-page";
 import { PlansStore, PlansChart } from "@entities/plan";
 import { planTable } from "@shared/assets";
 import { mapPlanToTable } from "@shared/lib";
@@ -18,14 +19,14 @@ const PlansTab = () => {
   }
 
   return (
-    <>
+    <TabPage>
       <Table<TablePlan>
         items={plans.map(mapPlanToTable)}
         columns={planTable}
         className={table}
       />
       <PlansChart plans={plans} />
-    </>
+    </TabPage>
   );
 };
 

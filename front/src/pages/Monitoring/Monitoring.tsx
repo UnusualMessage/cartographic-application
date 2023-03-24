@@ -1,15 +1,15 @@
 import React from "react";
 
+import { EntitiesTabs } from "@features/entities-tabs";
+import { InfoTabs } from "@features/info-tabs";
 import { defaultTemplate } from "@shared/assets";
 import { SchemaTemplateContext } from "@shared/constants";
 import { Loader } from "@shared/ui";
 import {
   Overlays,
   ModeratorAside as Aside,
-  EntitiesMenu,
   Schema,
   ModeratorFooter as Footer,
-  InfoMenu,
   Content,
 } from "@widgets/index";
 
@@ -18,14 +18,14 @@ const Monitoring = () => {
     <React.Suspense fallback={<Loader />}>
       <Overlays />
       <Aside>
-        <EntitiesMenu />
+        <EntitiesTabs />
       </Aside>
       <Content>
         <SchemaTemplateContext.Provider value={defaultTemplate}>
           <Schema />
         </SchemaTemplateContext.Provider>
         <Footer>
-          <InfoMenu />
+          <InfoTabs />
         </Footer>
       </Content>
     </React.Suspense>
