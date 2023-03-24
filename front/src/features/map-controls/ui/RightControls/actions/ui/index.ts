@@ -5,3 +5,4 @@ export { default as Distance } from "./Distance";
 export { default as Coordinate } from "./Coordinate";
 export { default as ZoomIn } from "./ZoomIn";
 export { default as ZoomOut } from "./ZoomOut";
+export { default as Print } from "./Print";

@@ -1,8 +1,10 @@
 import { Radio, RadioChangeEvent, Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
+import { useContext } from "react";
 
 import { baseLayers, weatherLayers } from "@shared/assets";
+import { SchemaTemplateContext } from "@shared/constants";
 import {
   ControlsStore,
   BaseLayer,
@@ -13,6 +15,12 @@ import {
 import { visible, wrapper, layers } from "./layers.module.scss";
 
 const LayersGroup = () => {
+  const context = useContext(SchemaTemplateContext);
+
+  if (!context?.fastControls?.layers) {
+    return <></>;
+  }
+
   const open = ControlsStore.layersPanelActive;
 
   const chooseBaseLayer = (e: RadioChangeEvent) => {

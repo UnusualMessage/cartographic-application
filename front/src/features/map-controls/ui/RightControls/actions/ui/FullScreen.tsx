@@ -1,12 +1,20 @@
 import { FullscreenOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import { observer } from "mobx-react-lite";
+import { useContext } from "react";
 
+import { SchemaTemplateContext } from "@shared/constants";
 import { ControlsStore } from "@shared/misc";
 
 import { wrapper } from "./action.module.scss";
 
 const FullScreen = () => {
+  const context = useContext(SchemaTemplateContext);
+
+  if (!context?.fastControls?.fullscreen) {
+    return <></>;
+  }
+
   const fullScreenActive = ControlsStore.fullScreenActive;
   const handleFullScreen = ControlsStore.fullScreenHandle;
 

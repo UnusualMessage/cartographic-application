@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import {
   PropsWithChildren,
@@ -74,10 +73,6 @@ const Map = ({ children, toPrint }: Props) => {
     };
   }, [map]);
 
-  const classes = classNames({
-    [wrapper]: true,
-  });
-
   let style: CSSProperties = {};
   if (toPrint) {
     const dimensions = MapStore.dimensions;
@@ -85,7 +80,7 @@ const Map = ({ children, toPrint }: Props) => {
   }
 
   return (
-    <div className={classes} ref={mapRef} style={style}>
+    <div className={wrapper} ref={mapRef} style={style}>
       {children}
     </div>
   );

@@ -1,5 +1,7 @@
 import React from "react";
 
+import { defaultTemplate } from "@shared/assets";
+import { SchemaTemplateContext } from "@shared/constants";
 import { Loader } from "@shared/ui";
 import {
   Overlays,
@@ -19,7 +21,9 @@ const Monitoring = () => {
         <EntitiesMenu />
       </Aside>
       <Content>
-        <Schema />
+        <SchemaTemplateContext.Provider value={defaultTemplate}>
+          <Schema />
+        </SchemaTemplateContext.Provider>
         <Footer>
           <InfoMenu />
         </Footer>

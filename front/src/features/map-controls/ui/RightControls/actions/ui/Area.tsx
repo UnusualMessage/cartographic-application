@@ -1,7 +1,9 @@
 import { Button } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
+import { useContext } from "react";
 
+import { SchemaTemplateContext } from "@shared/constants";
 import { InteractionsStore } from "@shared/misc";
 import { PolygonFilled } from "@shared/ui";
 
@@ -13,6 +15,12 @@ interface Props {
 }
 
 const Area = ({ type }: Props) => {
+  const context = useContext(SchemaTemplateContext);
+
+  if (!context?.fastControls?.area) {
+    return <></>;
+  }
+
   const drawType = InteractionsStore.drawType;
 
   const classes = classNames({
