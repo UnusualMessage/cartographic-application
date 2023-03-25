@@ -1,11 +1,10 @@
-import { AppstoreOutlined } from "@ant-design/icons";
-
 import type { Node } from "../../../misc";
+import { LayersFilled } from "../../../ui/icons";
 
 export const geozoneNodes: Node[] = [
   {
     key: "tree-geozones",
-    icon: <AppstoreOutlined />,
+    icon: <LayersFilled />,
     title: "Поля",
 
     children: [],

@@ -25,9 +25,11 @@ class ModifyInjector implements ListenersInjector<ModifyEventType> {
     };
 
     this._modify.on("modifyend", onModifyEnd);
+    console.log("modifyend injected");
 
     return () => {
       this._modify.un("modifyend", onModifyEnd);
+      console.log("modifyend removed");
     };
   }
 }

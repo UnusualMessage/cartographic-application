@@ -1,14 +1,63 @@
-.wrapper {
-  z-index: 2;
-  background: rgba(17, 20, 24, 0.1);
+@use "/src/shared/styles/constants" as *;
 
-  &:hover {
-    background: #4C90F0;
+.wrapper {
+  position: relative;
+
+  .button-vertical {
+    position: absolute;
+    top: calc(22% + $header-height);
+    left: 3px;
+    z-index: 3;
+  }
+
+  .button-horizontal {
+    position: absolute;
+    top: -32px;
+    left: 50%;
+    z-index: 3;
+  }
+
+  .opened {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .closed {
+    visibility: hidden;
+    opacity: 0;
+    animation: hide 1s ease-in-out;
+  }
+
+  @keyframes hide {
+    0% {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    99% {
+      visibility: visible;
+      opacity: 0;
+    }
+
+    100% {
+      visibility: hidden;
+      opacity: 0;
+    }
+  }
+
+  .line {
+    z-index: 2;
+    background: rgba(17, 20, 24, 0.1);
+
+    &:hover {
+      background: #1677ff;
+    }
   }
 }
 
 .active {
-  background: #4C90F0;
+  background: #1677ff;
 }
 
 .width {

@@ -1,1 +1,1 @@
-export { default as ModeratorFooter } from "./ModeratorFooter";
+export * from "./ui";

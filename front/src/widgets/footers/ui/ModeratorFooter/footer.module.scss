@@ -1,0 +1,15 @@
+@use "../../../../shared/styles/constants" as *;
+
+.wrapper {
+  width: 100%;
+
+  z-index: 2;
+  background: white;
+
+  .content {
+    width: 100%;
+    height: calc(100% - $resize-size);
+
+    padding: 5px 5px 5px 10px;
+  }
+}

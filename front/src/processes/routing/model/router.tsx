@@ -3,39 +3,56 @@ import { createBrowserRouter } from "react-router-dom";
 
 import { RequireAuthentication } from "@features/auth";
 import Authorization from "@pages/Authorization";
-import { references } from "@pages/User/References";
+import { references } from "@pages/References";
 import { EmptyPage } from "@shared/ui";
 import { Layout } from "@widgets/index";
 
-const View = lazy(() => import("@pages/User/View"));
-const References = lazy(() => import("@pages/User/References"));
+const Monitoring = lazy(() => import("@pages/Monitoring"));
+const References = lazy(() => import("@pages/References"));
+const Print = lazy(() => import("@pages/PrintSchema"));
 const Home = lazy(() => import("@pages/Admin/Home"));
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <RequireAuthentication roles={[1, 2, 4]}>
-        <Layout />
-      </RequireAuthentication>
-    ),
+    element: <EmptyPage />,
     errorElement: <EmptyPage />,
+  },
+
+  {
+    path: "/system",
     children: [
       {
-        path: "",
-        element: <View />,
+        path: "print",
+        element: <Print />,
       },
 
       {
-        path: "references",
-        element: <References />,
+        path: "monitoring",
+        element: (
+          <RequireAuthentication roles={[1, 2, 4]}>
+            <Layout />
+          </RequireAuthentication>
+        ),
+        errorElement: <EmptyPage />,
+        children: [
+          {
+            path: "",
+            element: <Monitoring />,
+          },
 
-        children: references.map((reference) => {
-          return {
-            element: reference.component,
-            path: reference.link,
-          };
-        }),
+          {
+            path: "references",
+            element: <References />,
+
+            children: references.map((reference) => {
+              return {
+                element: reference.component,
+                path: reference.link,
+              };
+            }),
+          },
+        ],
       },
     ],
   },

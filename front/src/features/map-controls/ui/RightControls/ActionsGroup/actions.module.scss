@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5px;
+
+  height: calc(100% - 10px);
+
+  position: absolute;
+  right: 5px;
+  top: 5px;
+
+  transition: right ease-in-out .5s;
+
+  z-index: 2;
+
+  .actions {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+.active {
+  right: 205px;
+}

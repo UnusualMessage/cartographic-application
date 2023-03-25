@@ -6,7 +6,6 @@ import { useContext } from "react";
 import { SourceContext } from "@shared/constants";
 import { useInteraction } from "@shared/lib";
 import {
-  DrawType,
   AddInteractionCallback,
   MapStore,
   InteractionsStore,
@@ -14,12 +13,13 @@ import {
   SelectStore,
   ModifyStore,
   SnapStore,
+  InteractionType,
 } from "@shared/misc";
 
 const Drawing = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
-  const type = InteractionsStore.drawType;
+  const type = InteractionsStore.type;
 
   const props = {
     source,
@@ -39,8 +39,8 @@ const Drawing = () => {
 
 interface Props {
   source?: VectorSource;
-  map: Map | null;
-  type: DrawType;
+  map?: Map;
+  type: InteractionType;
 }
 
 const Draw = ({ source, map, type }: Props) => {

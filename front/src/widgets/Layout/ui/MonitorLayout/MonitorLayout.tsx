@@ -1,17 +1,17 @@
 import { Outlet } from "react-router-dom";
 
-import { MonitorHeader } from "../../../headers";
-import { wrapper, content } from "../layout.module.scss";
+import { MonitorHeader as Header } from "../../../headers";
+import { Body } from "../../../wrappers";
+import Main from "../../../wrappers/ui/Main";
 
 const MonitorLayout = () => {
   return (
-    <div className={wrapper}>
-      <MonitorHeader />
-
-      <main className={content}>
+    <Body>
+      <Header />
+      <Main>
         <Outlet />
-      </main>
-    </div>
+      </Main>
+    </Body>
   );
 };
 
