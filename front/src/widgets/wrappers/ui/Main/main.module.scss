@@ -1,0 +1,13 @@
+@use "../../../../shared/styles/constants" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+
+  flex-basis: calc(100% - $header-height);
+  height: calc(100% - $header-height);
+  width: 100%;
+
+  min-width: 0;
+  min-height: 0;
+}

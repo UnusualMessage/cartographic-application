@@ -12,3 +12,4 @@ export { baseLayers } from "./baseLayers";
 export { users } from "./users";
 export { posts } from "./posts";
 export { about } from "./about";
+export { weatherLayers } from "./weatherLayers";

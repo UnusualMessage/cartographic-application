@@ -36,7 +36,7 @@ const AuthenticateUser = ({ className }: Props) => {
           redirect("/admin");
           break;
         default:
-          redirect("/");
+          redirect("/system/monitoring");
       }
     }
 

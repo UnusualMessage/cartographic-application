@@ -26,9 +26,11 @@ class SelectInjector implements ListenersInjector<SelectEvent> {
     };
 
     this._select.on("select", onSelect);
+    console.log("select injected");
 
     return () => {
       this._select.un("select", onSelect);
+      console.log("select removed");
     };
   }
 }

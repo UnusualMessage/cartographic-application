@@ -1,46 +1,48 @@
 import { makeAutoObservable } from "mobx";
 
-import { DrawType } from "../../types";
+import { InteractionType } from "../../types";
 
 class InteractionsStore {
-  private _drawType: DrawType;
-  private _drawing: boolean;
+  private _type: InteractionType;
+  private _interacting: boolean;
 
   constructor() {
-    this._drawType = "none";
-    this._drawing = false;
+    this._type = "none";
+    this._interacting = false;
 
     makeAutoObservable(this);
   }
 
-  public get drawType() {
-    return this._drawType;
+  public get type() {
+    return this._type;
   }
 
-  public set drawType(value) {
-    this._drawType = value;
+  public set type(value) {
+    this._type = value;
   }
 
-  public set isDrawing(isDrawing: boolean) {
-    this._drawing = isDrawing;
+  public get interacting() {
+    return this._interacting;
   }
 
   public get isGeozonesActive() {
-    return this.drawType === "geozones" || this.drawType === "cursor";
+    return this.type === "geozones" || this.type === "cursor";
   }
 
   public get isMeasurementActive() {
     return (
-      this.drawType === "measure-length" || this.drawType === "measure-area"
+      this.type === "measure-length" ||
+      this.type === "measure-area" ||
+      this.type === "measure-coordinate"
     );
   }
 
-  public startDrawing() {
-    this._drawing = true;
+  public startInteraction() {
+    this._interacting = true;
   }
 
-  public stopDrawing() {
-    this._drawing = false;
+  public stopInteraction() {
+    this._interacting = false;
   }
 }
 

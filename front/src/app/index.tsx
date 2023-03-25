@@ -6,21 +6,13 @@ import "./index.scss";
 
 import { Routing } from "@processes/routing";
 
-interface ThemeData {
-  borderRadius: number;
-}
-
-const data: ThemeData = {
-  borderRadius: 0,
-};
-
 const App = () => {
   return (
     <ConfigProvider
       locale={ruRU}
       theme={{
         token: {
-          borderRadius: data.borderRadius,
+          borderRadius: 0,
         },
       }}
     >

@@ -10,3 +10,5 @@ export * as trailer from "./trailer";
 export * as user from "./user";
 export * as geocoder from "./geocoder";
 export * as plan from "./plan";
+
+export * as page from "./info-tabs-page";

@@ -3,7 +3,5 @@ export type MapControl =
   | "measurement"
   | "layers"
   | "edit"
-  | "full-screen"
   | "print"
-  | "share"
-  | "about";
+  | "share";

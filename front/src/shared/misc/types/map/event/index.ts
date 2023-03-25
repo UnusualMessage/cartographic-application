@@ -5,3 +5,4 @@ export type { ModifyEvent } from "./ModifyEvent";
 export type { SelectEvent } from "./SelectEvent";
 export type { TranslateEvent } from "./TranslateEvent";
 export type { Event } from "./Event";
+export type { ListenersInjector } from "./ListenersInjector";

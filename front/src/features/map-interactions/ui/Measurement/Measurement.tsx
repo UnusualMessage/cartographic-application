@@ -13,7 +13,7 @@ import {
 const Measurement = () => {
   const source = useContext(SourceContext);
   const map = MapStore.map;
-  const type = InteractionsStore.drawType;
+  const type = InteractionsStore.type;
 
   const addInteraction: AddInteractionCallback = (map, source) => {
     return DrawStore.setup(type, source, map);
@@ -23,4 +23,5 @@ const Measurement = () => {
 
   return <></>;
 };
+
 export default observer(Measurement);

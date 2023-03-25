@@ -13,7 +13,7 @@ const EmptyPage = () => {
         title="404"
         subTitle="Страница не существует!"
         extra={
-          <Link to={"/"}>
+          <Link to={"/system/monitoring"}>
             <Button icon={<HomeFilled />} type={"primary"}>
               На главную
             </Button>

@@ -68,7 +68,7 @@ class SelectStore {
     const translate = new Translate({
       features: select.getFeatures(),
       condition: (event) => {
-        return primaryAction(event) && !InteractionsStore.isDrawing;
+        return primaryAction(event) && !InteractionsStore.interacting;
       },
     });
 

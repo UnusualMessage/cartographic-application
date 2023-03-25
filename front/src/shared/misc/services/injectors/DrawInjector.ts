@@ -46,20 +46,22 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawStart() {
     const onDrawStart = () => {
-      InteractionsStore.startDrawing();
+      InteractionsStore.startInteraction();
     };
 
     this._draw.on("drawstart", onDrawStart);
+    console.log("drawstart injected");
 
     return () => {
       this._draw.un("drawstart", onDrawStart);
+      console.log("drawstart removed");
     };
   }
 
   private addDrawEnd() {
     const onDrawEnd = (event: DrawEvent) => {
-      InteractionsStore.stopDrawing();
-      const type = InteractionsStore.drawType;
+      InteractionsStore.stopInteraction();
+      const type = InteractionsStore.type;
 
       const feature = event.feature;
       feature.setId(uuid());
@@ -134,21 +136,25 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
     };
 
     this._draw.on("drawend", onDrawEnd);
+    console.log("drawend injected");
 
     return () => {
       this._draw.un("drawend", onDrawEnd);
+      console.log("drawend removed");
     };
   }
 
   private addDrawAbort() {
     const onDrawAbort = () => {
-      InteractionsStore.stopDrawing();
+      InteractionsStore.stopInteraction();
     };
 
     this._draw.on("drawabort", onDrawAbort);
+    console.log("drawabort injected");
 
     return () => {
       this._draw.un("drawabort", onDrawAbort);
+      console.log("drawabort removed");
     };
   }
 }
