@@ -11,15 +11,15 @@ import { wrapper } from "./action.module.scss";
 import { switchDrawType } from "../model";
 
 interface Props {
-  type: "default" | "text";
+  buttonType: "default" | "text";
 }
 
-const Area = ({ type }: Props) => {
+const Area = ({ buttonType }: Props) => {
   const context = useContext(SchemaTemplateContext);
-  const drawType = InteractionsStore.drawType;
+  const interaction = InteractionsStore.type;
 
   const classes = classNames({
-    [wrapper]: type === "default",
+    [wrapper]: buttonType === "default",
   });
 
   return (
@@ -27,8 +27,8 @@ const Area = ({ type }: Props) => {
       <Button
         className={classes}
         icon={<PolygonFilled />}
-        type={drawType === "measure-area" ? "primary" : type}
-        onClick={() => switchDrawType(drawType, "measure-area")}
+        type={interaction === "measure-area" ? "primary" : buttonType}
+        onClick={() => switchDrawType(interaction, "measure-area")}
       />
     </Condition>
   );

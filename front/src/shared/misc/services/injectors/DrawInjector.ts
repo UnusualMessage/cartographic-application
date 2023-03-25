@@ -46,7 +46,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawStart() {
     const onDrawStart = () => {
-      InteractionsStore.startDrawing();
+      InteractionsStore.startInteraction();
     };
 
     this._draw.on("drawstart", onDrawStart);
@@ -60,8 +60,8 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawEnd() {
     const onDrawEnd = (event: DrawEvent) => {
-      InteractionsStore.stopDrawing();
-      const type = InteractionsStore.drawType;
+      InteractionsStore.stopInteraction();
+      const type = InteractionsStore.type;
 
       const feature = event.feature;
       feature.setId(uuid());
@@ -146,7 +146,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawAbort() {
     const onDrawAbort = () => {
-      InteractionsStore.stopDrawing();
+      InteractionsStore.stopInteraction();
     };
 
     this._draw.on("drawabort", onDrawAbort);

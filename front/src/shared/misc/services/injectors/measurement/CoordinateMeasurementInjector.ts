@@ -34,7 +34,7 @@ class CoordinateMeasurementInjector
 
   private addDrawStart() {
     const onDrawStart = () => {
-      InteractionsStore.startDrawing();
+      InteractionsStore.startInteraction();
       LayersStore.clearVectorLayer(measurementLayerId);
       TooltipStore.hide();
     };
@@ -50,7 +50,7 @@ class CoordinateMeasurementInjector
 
   private addDrawEnd() {
     const onDrawEnd = (event: DrawEvent) => {
-      InteractionsStore.stopDrawing();
+      InteractionsStore.stopInteraction();
 
       const point = event.feature.getGeometry() as Point;
       const coordinate = formatCoordinate(point);
@@ -73,7 +73,7 @@ class CoordinateMeasurementInjector
   private addDrawAbort() {
     const onDrawAbort = () => {
       TooltipStore.hide();
-      InteractionsStore.stopDrawing();
+      InteractionsStore.stopInteraction();
     };
 
     this._draw.on("drawabort", onDrawAbort);

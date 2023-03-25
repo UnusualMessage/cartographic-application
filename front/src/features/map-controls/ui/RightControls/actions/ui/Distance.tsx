@@ -11,15 +11,15 @@ import { wrapper } from "./action.module.scss";
 import { switchDrawType } from "../model";
 
 interface Props {
-  type: "default" | "text";
+  buttonType: "default" | "text";
 }
 
-const Distance = ({ type }: Props) => {
+const Distance = ({ buttonType }: Props) => {
   const context = useContext(SchemaTemplateContext);
-  const drawType = InteractionsStore.drawType;
+  const interaction = InteractionsStore.type;
 
   const classes = classNames({
-    [wrapper]: type === "default",
+    [wrapper]: buttonType === "default",
   });
 
   return (
@@ -27,8 +27,8 @@ const Distance = ({ type }: Props) => {
       <Button
         className={classes}
         icon={<LineStringFilled />}
-        type={drawType === "measure-length" ? "primary" : type}
-        onClick={() => switchDrawType(drawType, "measure-length")}
+        type={interaction === "measure-length" ? "primary" : buttonType}
+        onClick={() => switchDrawType(interaction, "measure-length")}
       />
     </Condition>
   );

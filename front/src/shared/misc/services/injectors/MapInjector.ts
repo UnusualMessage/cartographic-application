@@ -48,7 +48,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       const pixel: Pixel = this._map.getEventPixel(e);
       const cursor: Coordinate = this._map.getCoordinateFromPixel(pixel);
 
-      if (InteractionsStore.drawType === "cursor") {
+      if (InteractionsStore.type === "cursor") {
         ContextMenuStore.show(cursor);
       }
     };

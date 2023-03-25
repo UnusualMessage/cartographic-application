@@ -29,9 +29,9 @@ const ActionsGroup = () => {
     <div className={classes}>
       <div className={actions}>
         <Layers open={open} />
-        <Coordinate type={"default"} />
-        <Distance type={"default"} />
-        <Area type={"default"} />
+        <Coordinate buttonType={"default"} />
+        <Distance buttonType={"default"} />
+        <Area buttonType={"default"} />
         <FullScreen />
       </div>
 

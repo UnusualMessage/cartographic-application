@@ -24,7 +24,7 @@ class AreaMeasurementInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawStart() {
     const onDrawStart = () => {
-      InteractionsStore.startDrawing();
+      InteractionsStore.startInteraction();
       LayersStore.clearVectorLayer(measurementLayerId);
     };
 
@@ -39,7 +39,7 @@ class AreaMeasurementInjector implements ListenersInjector<DrawEventType> {
 
   private addDrawEnd() {
     const onDrawEnd = () => {
-      InteractionsStore.stopDrawing();
+      InteractionsStore.stopInteraction();
     };
 
     this._draw.on("drawend", onDrawEnd);
@@ -54,7 +54,7 @@ class AreaMeasurementInjector implements ListenersInjector<DrawEventType> {
   private addDrawAbort() {
     const onDrawAbort = () => {
       TooltipStore.hide();
-      InteractionsStore.startDrawing();
+      InteractionsStore.startInteraction();
     };
 
     this._draw.on("drawabort", onDrawAbort);

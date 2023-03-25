@@ -35,7 +35,7 @@ const Menu = () => {
   const contextMenuRef: Ref<MenuRef> = useRef(null);
   const map = MapStore.map;
   const active = ContextMenuStore.active;
-  const cursor = InteractionsStore.drawType === "cursor";
+  const cursor = InteractionsStore.type === "cursor";
 
   const onClick: MenuProps["onClick"] = (e) => {
     switch (e.key) {

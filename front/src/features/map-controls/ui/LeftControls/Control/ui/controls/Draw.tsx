@@ -2,39 +2,31 @@ import { SendOutlined, CloseSquareOutlined } from "@ant-design/icons";
 import { Space, Button } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { measurementLayerId } from "@shared/constants";
-import {
-  DrawType,
-  LayersStore,
-  InteractionsStore,
-  DrawerStore,
-} from "@shared/misc";
+import { InteractionsStore, InteractionType } from "@shared/misc";
 import { PolygonFilled } from "@shared/ui";
 
 const Draw = () => {
-  const drawType = InteractionsStore.drawType;
+  const interaction = InteractionsStore.type;
 
-  const switchType = (type: DrawType) => {
-    LayersStore.clearVectorLayer(measurementLayerId);
-    InteractionsStore.drawType = type;
-    DrawerStore.hide();
+  const switchType = (type: InteractionType) => {
+    InteractionsStore.type = type;
   };
 
   return (
     <Space>
       <Button
         icon={<CloseSquareOutlined />}
-        type={drawType === "none" ? "primary" : "text"}
+        type={interaction === "none" ? "primary" : "text"}
         onClick={() => switchType("none")}
       />
       <Button
         icon={<SendOutlined />}
-        type={drawType === "cursor" ? "primary" : "text"}
+        type={interaction === "cursor" ? "primary" : "text"}
         onClick={() => switchType("cursor")}
       />
       <Button
         icon={<PolygonFilled />}
-        type={drawType === "geozones" ? "primary" : "text"}
+        type={interaction === "geozones" ? "primary" : "text"}
         onClick={() => switchType("geozones")}
       />
     </Space>

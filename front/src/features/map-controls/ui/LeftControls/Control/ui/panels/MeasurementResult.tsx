@@ -6,7 +6,7 @@ import { MeasurementStore, InteractionsStore } from "@shared/misc";
 const { Text } = Typography;
 
 const MeasurementResult = () => {
-  const drawType = InteractionsStore.drawType;
+  const drawType = InteractionsStore.type;
   let text = <></>;
 
   switch (drawType) {

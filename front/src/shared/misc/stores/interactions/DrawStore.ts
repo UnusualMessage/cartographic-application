@@ -15,7 +15,12 @@ import {
   CoordinateMeasurementInjector,
   AreaMeasurementInjector,
 } from "../../services";
-import { ListenersInjector, Callback, DrawEvent, DrawType } from "../../types";
+import {
+  ListenersInjector,
+  Callback,
+  DrawEvent,
+  InteractionType,
+} from "../../types";
 
 class DrawStore {
   private _draw?: Draw;
@@ -27,7 +32,7 @@ class DrawStore {
     makeAutoObservable(this);
   }
 
-  public setup(type: DrawType, source: VectorSource, map: Map | null) {
+  public setup(type: InteractionType, source: VectorSource, map: Map | null) {
     if (type === "none" || type === "cursor") {
       return;
     }

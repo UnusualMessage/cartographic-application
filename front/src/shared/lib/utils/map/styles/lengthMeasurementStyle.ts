@@ -45,7 +45,7 @@ const pointsStyle = new Style({
 });
 
 export const getDrawLengthStyle: StyleFunction = (feature: FeatureLike) => {
-  if (!InteractionsStore.isDrawing) {
+  if (!InteractionsStore.interacting) {
     return;
   }
 

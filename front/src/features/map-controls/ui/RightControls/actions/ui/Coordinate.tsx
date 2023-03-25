@@ -12,15 +12,15 @@ import { wrapper } from "./action.module.scss";
 import { switchDrawType } from "../model";
 
 interface Props {
-  type: "default" | "text";
+  buttonType: "default" | "text";
 }
 
-const Coordinate = ({ type }: Props) => {
+const Coordinate = ({ buttonType }: Props) => {
   const context = useContext(SchemaTemplateContext);
-  const drawType = InteractionsStore.drawType;
+  const interaction = InteractionsStore.type;
 
   const classes = classNames({
-    [wrapper]: type === "default",
+    [wrapper]: buttonType === "default",
   });
 
   return (
@@ -28,8 +28,8 @@ const Coordinate = ({ type }: Props) => {
       <Button
         className={classes}
         icon={<AimOutlined />}
-        type={drawType === "measure-coordinate" ? "primary" : type}
-        onClick={() => switchDrawType(drawType, "measure-coordinate")}
+        type={interaction === "measure-coordinate" ? "primary" : buttonType}
+        onClick={() => switchDrawType(interaction, "measure-coordinate")}
       />
     </Condition>
   );
