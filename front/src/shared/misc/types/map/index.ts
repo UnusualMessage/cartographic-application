@@ -1,7 +1,8 @@
 export * from "./change";
 export * from "./event";
 export * from "./interactions";
+export * from "./layers";
+
 export type { SchemaState } from "./SchemaState";
-export type { BaseLayer } from "./BaseLayer";
-export type { WeatherLayer } from "./WeatherLayer";
+export type { Dimensions } from "./Dimensions";
 export type { CustomOverlay } from "./CustomOverlay";

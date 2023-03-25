@@ -1,14 +1,15 @@
 import { observer } from "mobx-react-lite";
 
 import { AuthenticateUser } from "@features/auth";
+import { Body } from "@widgets/wrappers";
 
-import { content, wrapper } from "./authorization.module.scss";
+import { wrapper } from "./authorization.module.scss";
 
 const Authorization = () => {
   return (
-    <div className={wrapper}>
-      <AuthenticateUser className={content} />
-    </div>
+    <Body>
+      <AuthenticateUser className={wrapper} />
+    </Body>
   );
 };
 

@@ -5,13 +5,10 @@ import { InfoTabs } from "@features/info-tabs";
 import { defaultTemplate } from "@shared/assets";
 import { SchemaTemplateContext } from "@shared/constants";
 import { Loader } from "@shared/ui";
-import {
-  Overlays,
-  ModeratorAside as Aside,
-  Schema,
-  ModeratorFooter as Footer,
-  Content,
-} from "@widgets/index";
+import { ModeratorAside as Aside } from "@widgets/asides";
+import { ModeratorFooter as Footer } from "@widgets/footers";
+import { Overlays, Schema } from "@widgets/index";
+import { Content } from "@widgets/wrappers";
 
 const Monitoring = () => {
   return (

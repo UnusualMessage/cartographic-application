@@ -1,19 +1,17 @@
 import { Outlet } from "react-router-dom";
 
-import { GlobalWrapper } from "@shared/ui";
-
-import { ModeratorHeader } from "../../../headers";
-import Main from "../../../Main";
+import { ModeratorHeader as Header } from "../../../headers";
+import { Body } from "../../../wrappers";
+import Main from "../../../wrappers/ui/Main";
 
 const ModeratorLayout = () => {
   return (
-    <GlobalWrapper>
-      <ModeratorHeader />
-
+    <Body>
+      <Header />
       <Main>
         <Outlet />
       </Main>
-    </GlobalWrapper>
+    </Body>
   );
 };
 

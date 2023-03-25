@@ -3,7 +3,7 @@ import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
 import BaseLayer from "ol/layer/Base";
 
-import { Dimensions } from "../../types/map/Dimensions";
+import { Dimensions } from "../../types";
 
 class MapStore {
   private _map?: Map;

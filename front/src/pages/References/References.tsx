@@ -5,7 +5,8 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 
 import { Tree, Loader } from "@shared/ui";
-import { ModeratorAside as Aside, Content } from "@widgets/index";
+import { ModeratorAside as Aside } from "@widgets/asides";
+import { Content } from "@widgets/wrappers";
 
 import { referenceNodes, references } from "./model";
 

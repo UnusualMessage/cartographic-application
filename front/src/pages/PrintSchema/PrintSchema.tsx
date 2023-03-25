@@ -2,16 +2,16 @@ import React from "react";
 
 import { printTemplate } from "@shared/assets";
 import { SchemaTemplateContext } from "@shared/constants";
-import { GlobalWrapper } from "@shared/ui";
 import { Schema } from "@widgets/index";
+import { Body } from "@widgets/wrappers";
 
 const PrintSchema = () => {
   return (
-    <GlobalWrapper>
+    <Body>
       <SchemaTemplateContext.Provider value={printTemplate}>
         <Schema toPrint />
       </SchemaTemplateContext.Provider>
-    </GlobalWrapper>
+    </Body>
   );
 };
 
