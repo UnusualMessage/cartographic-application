@@ -1,6 +1,6 @@
 import { Badge } from "antd";
 
-import EmployeesTree from "@entities/employee/ui/EmployeesTree";
+import { EmployeesTree } from "@entities/employee";
 import { EquipmentTree } from "@entities/equipment";
 import { GeozonesTree } from "@entities/geozone";
 import { PlansTree } from "@entities/plan";

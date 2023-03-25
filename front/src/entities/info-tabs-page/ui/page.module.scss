@@ -10,7 +10,10 @@
 
   .header {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: row-reverse;
+
+    overflow-x: auto;
+    overflow-y: hidden;
 
     width: 100%;
   }
