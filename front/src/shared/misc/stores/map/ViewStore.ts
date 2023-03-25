@@ -20,7 +20,7 @@ class ViewStore {
     return this._view;
   }
 
-  public disposeView() {
+  public dispose() {
     this._view?.dispose();
     this._view = null;
   }

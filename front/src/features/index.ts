@@ -5,7 +5,6 @@ export * as map from "./map";
 export * as view from "./map-view";
 export * as menu from "./map-context-menu";
 export * as tooltip from "./map-tooltip";
-export * as plan from "./plan";
 export * as auth from "./auth";
 
 export * as editEmployees from "./edit-employees";
@@ -19,3 +18,4 @@ export * as exportGeozone from "./export-geozone";
 
 export * as infoTabs from "./info-tabs";
 export * as entitiesTabs from "./entities-tabs";
+export * as tabs from "./tabs";

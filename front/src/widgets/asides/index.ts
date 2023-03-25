@@ -1,1 +1,1 @@
-export { default as ModeratorAside } from "./ModeratorAside";
+export * from "./ui";

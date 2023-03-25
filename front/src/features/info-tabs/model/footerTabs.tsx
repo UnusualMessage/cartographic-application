@@ -1,9 +1,10 @@
 import { v4 as uuid } from "uuid";
 
 import { TabPage } from "@entities/info-tabs-page";
-import { PlansTab } from "@features/plan";
 import { TabsList } from "@shared/misc";
 import { EmptyInformation } from "@shared/ui";
+
+import { PlansTab } from "../../tabs";
 
 const EmptyTab = () => {
   return (
