@@ -20,20 +20,6 @@ class TranslateInjector implements ListenersInjector<TranslateEventType> {
   private addTranslate() {
     const onTranslateEnd = (event: TranslateEvent) => {
       console.log(event);
-      // const modifiedFeatures = event.features.getArray() as Feature<Polygon>[];
-      //
-      // const ids = modifiedFeatures.map((item) => item.get("id"));
-      // const coordinates = modifiedFeatures.map((item) => {
-      //   const geometry = item.getGeometry();
-      //
-      //   if (geometry) {
-      //     return geometry.getCoordinates();
-      //   }
-      //
-      //   return;
-      // });
-      //
-      // // GeozonesStore.translate(ids, coordinates);
     };
 
     this._translate.on("translatestart", onTranslateEnd);

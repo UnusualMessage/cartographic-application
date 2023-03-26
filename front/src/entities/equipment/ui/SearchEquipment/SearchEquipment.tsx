@@ -1,4 +1,5 @@
 import { Select } from "antd";
+import { Coordinate } from "ol/coordinate";
 import { useState, ReactNode } from "react";
 
 import { ViewStore } from "@shared/misc";
@@ -8,7 +9,7 @@ import { EquipmentStore } from "../../model";
 interface Option {
   key?: string;
   label: ReactNode;
-  value: [number, number];
+  value: Coordinate;
 }
 
 const SearchEquipment = () => {
@@ -25,7 +26,7 @@ const SearchEquipment = () => {
         return {
           key: item.id,
           label: item.name,
-          value: item.location ?? [0, 0],
+          value: item.feature.geometry.coordinates,
         };
       })
     );

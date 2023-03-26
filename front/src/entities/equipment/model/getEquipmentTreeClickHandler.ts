@@ -30,8 +30,8 @@ export const getEquipmentTreeClickHandler = (): TreeProps["onSelect"] => {
 
         const equipment = EquipmentStore.getById(node.key.toString());
         equipment.then((value) => {
-          if (value?.location) {
-            ViewStore.centerWithZoomTo(15)(value.location);
+          if (value) {
+            ViewStore.centerWithZoomTo(15)(value.feature.geometry.coordinates);
           }
         });
     }

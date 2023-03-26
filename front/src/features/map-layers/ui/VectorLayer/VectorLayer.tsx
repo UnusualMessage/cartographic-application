@@ -1,5 +1,9 @@
+import {
+  Feature as IFeature,
+  Point as IPoint,
+  Polygon as IPolygon,
+} from "@turf/helpers";
 import { Feature } from "ol";
-import { Coordinate } from "ol/coordinate";
 import { GeoJSON } from "ol/format";
 import { Polygon, Point } from "ol/geom";
 import VectorSource from "ol/source/Vector";
@@ -7,34 +11,33 @@ import { StyleLike } from "ol/style/Style";
 import { memo, PropsWithChildren, useEffect, useMemo } from "react";
 
 import { SourceContext } from "@shared/constants";
-import { LayersService, VectorLayerFeatures } from "@shared/misc";
+import { LayersService } from "@shared/misc";
 
 interface Props extends PropsWithChildren {
   id: string;
-  type?: VectorLayerFeatures;
+  features?: IFeature<IPoint | IPolygon>[];
   style?: StyleLike;
-  data?: Coordinate[];
 }
 
-const VectorLayer = ({ children, id, style, type, data }: Props) => {
+const VectorLayer = ({ children, id, style, features }: Props) => {
   const vectorSource = useMemo(() => {
     return new VectorSource({
       format: new GeoJSON(),
-      features: data?.map((coordinate) => {
-        const feature = new Feature();
+      features: features?.map((feature) => {
+        const newFeature = new Feature();
 
-        switch (type) {
-          case VectorLayerFeatures.points:
-            feature.setGeometry(new Point(coordinate));
+        switch (feature.geometry.type) {
+          case "Point":
+            newFeature.setGeometry(new Point(feature.geometry.coordinates));
             break;
-          case VectorLayerFeatures.polygons:
-            feature.setGeometry(new Polygon(coordinate));
+          case "Polygon":
+            newFeature.setGeometry(new Polygon(feature.geometry.coordinates));
         }
 
-        return feature;
+        return newFeature;
       }),
     });
-  }, [data]);
+  }, [features]);
 
   useEffect(() => {
     LayersService.createVectorLayer(vectorSource, id, style);

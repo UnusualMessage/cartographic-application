@@ -8,7 +8,7 @@ import {
   transportLayerId,
 } from "@shared/constants";
 import { getMeasurementStyle, getEquipmentStyle } from "@shared/lib";
-import { InteractionsStore, VectorLayerFeatures } from "@shared/misc";
+import { InteractionsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
 import BaseLayer from "./BaseLayer";
@@ -17,9 +17,12 @@ import WeatherLayer from "./WeatherLayer";
 import { Drawing, Measurement } from "../../map-interactions";
 
 const Layers = () => {
-  const geozones = GeozonesStore.geozones.map((item) => item.coordinates);
-  const equipment = EquipmentStore.equipment.map(
-    (item) => item.location ?? [0, 0]
+  const geozoneFeatures = GeozonesStore.geozones.map(
+    (geozone) => geozone.feature
+  );
+
+  const equipmentFeatures = EquipmentStore.equipment.map(
+    (item) => item.feature
   );
 
   return (
@@ -27,11 +30,7 @@ const Layers = () => {
       <BaseLayer />
       <WeatherLayer />
 
-      <VectorLayer
-        id={geozonesLayerId}
-        data={geozones}
-        type={VectorLayerFeatures.polygons}
-      >
+      <VectorLayer id={geozonesLayerId} features={geozoneFeatures}>
         <Condition truthy={InteractionsStore.isGeozonesActive}>
           <Drawing />
         </Condition>
@@ -39,8 +38,7 @@ const Layers = () => {
 
       <VectorLayer
         id={transportLayerId}
-        data={equipment}
-        type={VectorLayerFeatures.points}
+        features={equipmentFeatures}
         style={getEquipmentStyle}
       />
 

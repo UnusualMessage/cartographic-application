@@ -10,7 +10,15 @@ export const equipment: Equipment[] = [
     name: "LADA 4X4 T883",
     type: types[0],
     status: "waiting",
-    location: fromLonLat([36.29, 54.51]) as [number, number],
+    feature: {
+      id: uuid(),
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: fromLonLat([36.29, 54.51]),
+      },
+      properties: {},
+    },
   },
 
   {
@@ -18,6 +26,14 @@ export const equipment: Equipment[] = [
     name: "LADA 4X4 У847",
     type: types[0],
     status: "waiting",
-    location: fromLonLat([36.33, 54.57]) as [number, number],
+    feature: {
+      id: uuid(),
+      type: "Feature",
+      geometry: {
+        type: "Point",
+        coordinates: fromLonLat([36.33, 54.57]),
+      },
+      properties: {},
+    },
   },
 ];

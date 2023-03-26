@@ -27,7 +27,7 @@ const SearchGeozone = () => {
         return {
           key: item.id,
           label: item.title,
-          value: item.coordinates,
+          value: item.feature.properties.center,
         };
       })
     );
