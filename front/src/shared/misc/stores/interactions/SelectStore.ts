@@ -9,7 +9,7 @@ import { DragBox, Select, Translate } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
 import InteractionsStore from "./InteractionsStore";
-import { invoke } from "../../../lib";
+import { invoke, getSelectStyle } from "../../../lib";
 import {
   DragBoxInjector,
   SelectInjector,
@@ -59,6 +59,7 @@ class SelectStore {
 
     const select = new Select({
       condition: condition,
+      style: getSelectStyle,
     });
 
     const dragBox = new DragBox({

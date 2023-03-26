@@ -28,8 +28,9 @@ const Map = ({ children, toPrint }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
   const measurementActive = InteractionsStore.isMeasurementActive;
+  const geozonesActive = InteractionsStore.isGeozonesActive;
 
-  if (measurementActive) {
+  if (measurementActive || geozonesActive) {
     MapStore.setCrosshairCursor();
   } else {
     MapStore.setDefaultCursor();

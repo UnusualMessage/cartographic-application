@@ -7,7 +7,11 @@ import {
   measurementLayerId,
   transportLayerId,
 } from "@shared/constants";
-import { getMeasurementStyle, getEquipmentStyle } from "@shared/lib";
+import {
+  getMeasurementStyle,
+  getEquipmentStyle,
+  getGeozoneStyle,
+} from "@shared/lib";
 import { InteractionsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
@@ -30,7 +34,11 @@ const Layers = () => {
       <BaseLayer />
       <WeatherLayer />
 
-      <VectorLayer id={geozonesLayerId} features={geozoneFeatures}>
+      <VectorLayer
+        id={geozonesLayerId}
+        features={geozoneFeatures}
+        style={getGeozoneStyle}
+      >
         <Condition truthy={InteractionsStore.isGeozonesActive}>
           <Drawing />
         </Condition>

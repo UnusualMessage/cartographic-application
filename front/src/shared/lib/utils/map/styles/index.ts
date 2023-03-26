@@ -1,4 +1,4 @@
-export { getGeozoneStyle } from "./getGeozoneStyle";
+export { getGeozoneStyle, getSelectStyle } from "./getGeozoneStyle";
 export {
   getVisibleCoordinateStyle,
   getDrawCoordinateStyle,

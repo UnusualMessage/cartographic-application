@@ -1,32 +1,59 @@
-import { Fill, Stroke, Style, Text } from "ol/style";
+import { LineString, MultiPoint } from "ol/geom";
+import { Fill, Stroke } from "ol/style";
+import CircleStyle from "ol/style/Circle";
+import Style, { StyleFunction } from "ol/style/Style";
 
-interface Color {
-  red: number;
-  green: number;
-  blue: number;
-}
+const polygonStyle = new Style({
+  fill: new Fill({
+    color: "rgba(255, 255, 255, 0.5)",
+  }),
+  stroke: new Stroke({
+    color: "#1677FF",
+    width: 3,
+  }),
 
-export const getGeozoneStyle = (color: Color, text: string) => {
-  const { red, green, blue } = color;
+  image: new CircleStyle({
+    radius: 0,
+  }),
+});
 
-  return new Style({
-    fill: new Fill({
-      color: `rgb(${red},${green},${blue},${0.2})`,
-    }),
+const selectStyle = new Style({
+  fill: new Fill({
+    color: "rgba(255, 255, 255, 0.5)",
+  }),
+  stroke: new Stroke({
+    color: "#f5222d",
+    width: 3,
+  }),
+
+  image: new CircleStyle({
+    radius: 0,
+  }),
+});
+
+const pointsStyle = new Style({
+  image: new CircleStyle({
+    radius: 4,
     stroke: new Stroke({
-      color: `rgb(${red},${green},${blue},${1})`,
+      color: "#1677FF",
       width: 2,
     }),
-    text: new Text({
-      font: "14px Calibri,sans-serif",
-      text: text,
-      fill: new Fill({
-        color: "rgba(0, 0, 0, 1)",
-      }),
-      stroke: new Stroke({
-        color: "rgba(255, 255, 255, 1)",
-      }),
-      overflow: true,
+    fill: new Fill({
+      color: "rgba(255, 255, 255, 1)",
     }),
-  });
+  }),
+
+  geometry: (feature) => {
+    const coordinates = (feature.getGeometry() as LineString).getCoordinates();
+    coordinates.pop();
+    return new MultiPoint(coordinates);
+  },
+});
+
+export const getGeozoneStyle: StyleFunction = () => {
+  return [polygonStyle, pointsStyle];
+};
+
+export const getSelectStyle: StyleFunction = () => {
+  return [selectStyle, pointsStyle];
 };
