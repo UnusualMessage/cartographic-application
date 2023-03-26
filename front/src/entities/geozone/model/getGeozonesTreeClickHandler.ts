@@ -1,9 +1,13 @@
 import { TreeProps } from "antd/es/tree";
 
-import { TabsStore } from "@shared/misc";
+import { TabsStore, ViewStore } from "@shared/misc";
+
+import GeozonesStore from "./GeozonesStore";
 
 export const getGeozonesTreeClickHandler = (): TreeProps["onSelect"] => {
   return (keys, info) => {
+    const node = info.selectedNodes[0];
+
     const switchTabsList = (id: string) => {
       if (TabsStore.footerTabsListId !== id) {
         TabsStore.footerTabsListId = id;
@@ -11,13 +15,19 @@ export const getGeozonesTreeClickHandler = (): TreeProps["onSelect"] => {
       }
     };
 
-    switch (info.selectedNodes[0].key) {
+    switch (node.key) {
       case "tree-geozones":
         switchTabsList("footer-geozones");
         break;
 
       default:
         switchTabsList("footer-geozone");
+
+        const geozone = GeozonesStore.getById(node.key.toString());
+
+        if (geozone) {
+          ViewStore.centerWithZoomTo(13)(geozone.feature.properties.center);
+        }
     }
   };
 };

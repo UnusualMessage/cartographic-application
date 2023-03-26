@@ -1,6 +1,7 @@
-import { Tabs } from "antd";
+import { Tabs, Badge } from "antd";
 import { observer } from "mobx-react-lite";
 
+import { GeozonesStore } from "@entities/geozone";
 import { TabsStore } from "@shared/misc";
 
 import { wrapper } from "./menu.module.scss";
@@ -8,8 +9,19 @@ import { siderTabs } from "../model";
 
 const EntitiesTabs = () => {
   const tabId = TabsStore.siderTabId;
+  const geozones = GeozonesStore.geozones;
 
   const currentTabs = siderTabs.tabs;
+  currentTabs[0].label = (
+    <Badge
+      count={geozones.length}
+      size={"small"}
+      color="blue"
+      offset={[-10, -5]}
+    >
+      Геозоны
+    </Badge>
+  );
 
   return (
     <Tabs

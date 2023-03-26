@@ -89,6 +89,9 @@ class SelectStore {
     this._cleanup.translate.push(
       translateInjector.addEventListener("translatestart")
     );
+    this._cleanup.translate.push(
+      translateInjector.addEventListener("translateend")
+    );
 
     map.addInteraction(select);
     map.addInteraction(translate);

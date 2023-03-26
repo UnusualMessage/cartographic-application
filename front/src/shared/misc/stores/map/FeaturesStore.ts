@@ -67,6 +67,16 @@ class FeaturesStore {
     );
   }
 
+  public updateFeature(feature: FeatureLike) {
+    this.features = this.features.map((item) => {
+      if (item.getId() === feature.getId()) {
+        return feature;
+      } else {
+        return item;
+      }
+    });
+  }
+
   public copySelectedFeatures() {
     this.copiedFeatures = this.selectedFeatures;
   }
@@ -109,6 +119,18 @@ class FeaturesStore {
     });
 
     this.features = copy;
+  }
+
+  public clear(targetLayer: VectorLayer<VectorSource>) {
+    this.clearBuffer();
+
+    const source = targetLayer.getSource();
+
+    this.features.forEach((feature) => {
+      source?.removeFeature(feature as Feature);
+    });
+
+    this.features = [];
   }
 
   public clearBuffer() {

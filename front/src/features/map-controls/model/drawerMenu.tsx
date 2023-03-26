@@ -7,8 +7,8 @@ import {
   AimOutlined,
   ToolFilled,
   EditFilled,
-  CloseSquareOutlined,
   SendOutlined,
+  StopFilled,
 } from "@ant-design/icons";
 import { MenuProps } from "antd";
 
@@ -65,7 +65,7 @@ export const drawerMenu: MenuProps["items"] = [
       {
         label: "Выкл.",
         key: "none",
-        icon: <CloseSquareOutlined />,
+        icon: <StopFilled />,
       },
 
       {

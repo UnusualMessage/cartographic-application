@@ -1,23 +1,11 @@
-import {
-  area,
-  Feature,
-  Polygon as IPolygon,
-  polygon,
-  toWgs84,
-} from "@turf/turf";
-import { Polygon } from "ol/geom";
 import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
-
-import { GeozonesStore } from "@entities/geozone";
-import { OrganizationsStore } from "@entities/organization";
 
 import { InteractionsStore, FeaturesStore } from "../../stores";
 import type {
   ListenersInjector,
   DrawEvent as DrawEventType,
-  Properties,
 } from "../../types";
 
 class DrawInjector implements ListenersInjector<DrawEventType> {
@@ -61,41 +49,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
       feature.setId(uuid());
 
       if (type === "geozones") {
-        const geometry = feature.getGeometry() as Polygon | undefined;
-        const organization = OrganizationsStore.organization;
-        const id = uuid();
-
-        if (geometry && organization) {
-          const savedFeature: Feature<IPolygon, Properties> = {
-            id: id,
-            type: "Feature",
-            geometry: {
-              type: "Polygon",
-              coordinates: geometry.getCoordinates(),
-            },
-            properties: {
-              center: geometry.getInteriorPoint().getCoordinates(),
-            },
-          };
-
-          const geozoneArea = area(
-            polygon(toWgs84(savedFeature).geometry.coordinates)
-          );
-          const title = "Новая геозона";
-
-          GeozonesStore.add({
-            id: id,
-            title: title,
-            area: geozoneArea,
-            type: "field",
-            feature: savedFeature,
-            children: [],
-
-            organization,
-          });
-
-          FeaturesStore.addFeature(feature);
-        }
+        FeaturesStore.addFeature(feature);
       }
     };
 

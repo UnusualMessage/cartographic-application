@@ -4,7 +4,7 @@ import { EmployeesTree } from "@entities/employee";
 import { EquipmentTree } from "@entities/equipment";
 import { GeozonesTree } from "@entities/geozone";
 import { PlansTree } from "@entities/plan";
-import { geozones, equipment, employees, plans } from "@shared/assets";
+import { equipment, employees, plans } from "@shared/assets";
 import { TabsList } from "@shared/misc";
 
 export const siderTabs: TabsList = {
@@ -13,12 +13,7 @@ export const siderTabs: TabsList = {
     {
       key: "sider-geozones",
       label: (
-        <Badge
-          count={geozones.length}
-          size={"small"}
-          color="blue"
-          offset={[-10, -5]}
-        >
+        <Badge count={0} size={"small"} color="blue" offset={[-10, -5]}>
           Геозоны
         </Badge>
       ),
