@@ -1,3 +1,4 @@
+import { fromLonLat } from "ol/proj";
 import { v4 as uuid } from "uuid";
 
 import { types } from "./types";
@@ -9,6 +10,7 @@ export const equipment: Equipment[] = [
     name: "LADA 4X4 T883",
     type: types[0],
     status: "waiting",
+    location: fromLonLat([36.29, 54.51]) as [number, number],
   },
 
   {
@@ -16,154 +18,6 @@ export const equipment: Equipment[] = [
     name: "LADA 4X4 У847",
     type: types[0],
     status: "waiting",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[0],
-    status: "disabled",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[0],
-    status: "parking",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[0],
-    status: "no-data",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[0],
-    status: "disabled",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "waiting",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "no-data",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "parking",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
-  },
-  {
-    id: uuid(),
-    name: "LADA 4X4 У847",
-    type: types[1],
-    status: "disabled",
+    location: fromLonLat([36.33, 54.57]) as [number, number],
   },
 ];

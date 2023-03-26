@@ -6,4 +6,5 @@ export interface Equipment {
   name: string;
   status: Status;
   type: EquipmentType;
+  location?: [number, number];
 }
