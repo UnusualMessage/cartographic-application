@@ -8,7 +8,7 @@ import { ControlsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
 import { visible, wrapper } from "./group.module.scss";
-import { BaseLayers, WeatherLayers } from "./ui";
+import { BaseLayers, WeatherLayers, VectorLayers } from "./ui";
 
 const LayersGroup = () => {
   const context = useContext(SchemaTemplateContext);
@@ -24,6 +24,7 @@ const LayersGroup = () => {
       <Space className={classes} direction={"vertical"}>
         <BaseLayers />
         <WeatherLayers />
+        <VectorLayers />
       </Space>
     </Condition>
   );

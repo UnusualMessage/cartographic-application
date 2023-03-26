@@ -32,7 +32,7 @@ class ViewStore {
       this._view?.animate({
         center: coordinate,
         zoom: zoom,
-        duration: 2000,
+        duration: 1000,
       });
     };
   }

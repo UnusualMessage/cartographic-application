@@ -7,7 +7,7 @@ class ControlsStore {
 
   private _currentMapControl: MapControl;
   private _currentSearchCategory: "geozones" | "equipment" | "geocoder";
-  private _currentLayerCategory: "weather" | "base";
+  private _currentLayerCategory: "weather" | "base" | "vector";
 
   constructor() {
     this._layersPanelActive = false;

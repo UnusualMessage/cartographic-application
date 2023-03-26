@@ -1,6 +1,8 @@
 import { TreeProps } from "antd/es/tree";
 
-import { TabsStore } from "@shared/misc";
+import { TabsStore, ViewStore } from "@shared/misc";
+
+import { EquipmentStore } from "./index";
 
 export const getEquipmentTreeClickHandler = (): TreeProps["onSelect"] => {
   return (keys, info) => {
@@ -25,6 +27,13 @@ export const getEquipmentTreeClickHandler = (): TreeProps["onSelect"] => {
 
       default:
         switchTabsList("footer-equipment");
+
+        const equipment = EquipmentStore.getById(node.key.toString());
+        equipment.then((value) => {
+          if (value?.location) {
+            ViewStore.centerWithZoomTo(15)(value.location);
+          }
+        });
     }
   };
 };

@@ -5,6 +5,7 @@ import { ControlsStore } from "@shared/misc";
 import {
   WeatherLayers,
   BaseLayers,
+  VectorLayers,
 } from "../../../../RightControls/LayersGroup/ui";
 
 const LayersResult = () => {
@@ -18,6 +19,8 @@ const LayersResult = () => {
     case "weather":
       component = <WeatherLayers />;
       break;
+    case "vector":
+      component = <VectorLayers />;
   }
   return component;
 };

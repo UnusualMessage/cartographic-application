@@ -18,6 +18,7 @@ const Layers = () => {
       options={[
         { value: "base", label: "Подложки" },
         { value: "weather", label: "Погодные" },
+        { value: "vector", label: "Векторные" },
       ]}
       bordered={false}
     />
