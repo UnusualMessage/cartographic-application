@@ -7,7 +7,7 @@ import {
   measurementLayerId,
   transportLayerId,
 } from "@shared/constants";
-import { getMeasurementStyle, getVisibleCoordinateStyle } from "@shared/lib";
+import { getMeasurementStyle, getEquipmentStyle } from "@shared/lib";
 import { InteractionsStore, VectorLayerFeatures } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
@@ -41,7 +41,7 @@ const Layers = () => {
         id={transportLayerId}
         data={equipment}
         type={VectorLayerFeatures.points}
-        style={getVisibleCoordinateStyle}
+        style={getEquipmentStyle}
       />
 
       <VectorLayer id={measurementLayerId} style={getMeasurementStyle}>

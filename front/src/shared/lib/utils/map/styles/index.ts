@@ -9,3 +9,4 @@ export {
   getVisibleLengthStyle,
 } from "./lengthMeasurementStyle";
 export { getMeasurementStyle } from "./getMeasurementStyle";
+export { getEquipmentStyle } from "./getEquipmentStyle";
