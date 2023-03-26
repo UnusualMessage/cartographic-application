@@ -2,11 +2,26 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Select } from "antd";
 import { observer } from "mobx-react-lite";
 
+import { SearchEquipment } from "@entities/equipment";
 import { Geocoder } from "@entities/geocoder";
+import { SearchGeozone } from "@entities/geozone";
 import { ControlsStore } from "@shared/misc";
 
 const Search = () => {
   const category = ControlsStore.currentSearchCategory;
+
+  let searchComponent = <></>;
+
+  switch (category) {
+    case "equipment":
+      searchComponent = <SearchEquipment />;
+      break;
+    case "geozones":
+      searchComponent = <SearchGeozone />;
+      break;
+    case "geocoder":
+      searchComponent = <Geocoder />;
+  }
 
   const onSelect = (value: any) => {
     ControlsStore.currentSearchCategory = value;
@@ -20,13 +35,13 @@ const Search = () => {
         value={category}
         options={[
           { value: "geocoder", label: "Геокодер" },
-          { value: "fields", label: "Поля" },
+          { value: "geozones", label: "Геозоны" },
           { value: "equipment", label: "Техника" },
         ]}
         bordered={false}
       />
 
-      <Geocoder />
+      {searchComponent}
       <Button icon={<SearchOutlined />} type={"text"} />
     </>
   );

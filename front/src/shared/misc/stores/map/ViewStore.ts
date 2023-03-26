@@ -25,14 +25,18 @@ class ViewStore {
     this._view = null;
   }
 
-  public centerTo(coordinate: Coordinate) {
-    this.stopAnimation();
+  public centerWithZoomTo(zoom: number) {
+    const centerTo = (coordinate: Coordinate) => {
+      this.stopAnimation();
 
-    this._view?.animate({
-      center: coordinate,
-      zoom: 10,
-      duration: 2000,
-    });
+      this._view?.animate({
+        center: coordinate,
+        zoom: zoom,
+        duration: 2000,
+      });
+    };
+
+    return centerTo;
   }
 
   public zoomIn() {

@@ -1,4 +1,3 @@
-import { Point } from "@turf/turf";
 import { Select } from "antd";
 import { Coordinate } from "ol/coordinate";
 import { fromLonLat } from "ol/proj";
@@ -6,7 +5,7 @@ import { useState, ReactNode } from "react";
 
 import { ViewStore } from "@shared/misc";
 
-import { GeocoderService } from "../model";
+import { GeozonesStore } from "../../model";
 
 interface Option {
   key?: string;
@@ -14,27 +13,24 @@ interface Option {
   value: Coordinate;
 }
 
-const Geocoder = () => {
+const SearchGeozone = () => {
   const [options, setOptions] = useState<Option[]>([]);
   const [value, setValue] = useState<string>();
 
   const handleSearch = (value: string) => {
-    const geocoderService = new GeocoderService();
+    const geozones = GeozonesStore.geozones.filter((item) =>
+      item.title.toLowerCase().includes(value.toLowerCase())
+    );
 
-    const getFeatures = async () => {
-      const response = await geocoderService.getLocation(value);
-      setOptions(
-        response.map((item) => {
-          return {
-            key: item.id?.toString(),
-            label: item.place_name,
-            value: (item.geometry as Point).coordinates,
-          };
-        })
-      );
-    };
-
-    void getFeatures();
+    setOptions(
+      geozones.map((item) => {
+        return {
+          key: item.id,
+          label: item.title,
+          value: item.coordinates,
+        };
+      })
+    );
   };
 
   const handleChange = (value: string) => {
@@ -56,7 +52,7 @@ const Geocoder = () => {
       filterOption={false}
       value={value}
       options={options}
-      placeholder="Поиск..."
+      placeholder="Искать геозоны..."
       notFoundContent={null}
       onSearch={handleSearch}
       onChange={handleChange}
@@ -66,4 +62,4 @@ const Geocoder = () => {
   );
 };
 
-export default Geocoder;
+export default SearchGeozone;

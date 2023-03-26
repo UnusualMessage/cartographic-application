@@ -1,1 +1,4 @@
-export { default as EquipmentTree } from "./EquipmentTree";
+import EquipmentTree from "./EquipmentTree";
+import SearchEquipment from "./SearchEquipment";
+
+export { EquipmentTree, SearchEquipment };
