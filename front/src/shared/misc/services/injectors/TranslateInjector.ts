@@ -18,15 +18,15 @@ class TranslateInjector implements ListenersInjector<TranslateEventType> {
   }
 
   private addTranslate() {
-    const onTranslateEnd = (event: TranslateEvent) => {
+    const onTranslateStart = (event: TranslateEvent) => {
       console.log(event);
     };
 
-    this._translate.on("translatestart", onTranslateEnd);
+    this._translate.on("translatestart", onTranslateStart);
     console.log("translatestart injected");
 
     return () => {
-      this._translate.un("translatestart", onTranslateEnd);
+      this._translate.un("translatestart", onTranslateStart);
       console.log("translatestart removed");
     };
   }

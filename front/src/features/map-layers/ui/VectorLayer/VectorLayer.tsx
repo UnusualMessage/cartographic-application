@@ -37,7 +37,7 @@ const VectorLayer = ({ children, id, style, features }: Props) => {
         return newFeature;
       }),
     });
-  }, [features]);
+  }, []);
 
   useEffect(() => {
     LayersService.createVectorLayer(vectorSource, id, style);
