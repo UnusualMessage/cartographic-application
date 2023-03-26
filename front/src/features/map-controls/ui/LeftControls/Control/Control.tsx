@@ -16,6 +16,7 @@ import {
   Draw,
   Layers,
   LayersResult,
+  DrawResult,
 } from "./ui";
 
 const Control = () => {
@@ -46,6 +47,11 @@ const Control = () => {
       break;
     case "edit":
       control = <Draw />;
+      panel = (
+        <Panel>
+          <DrawResult />
+        </Panel>
+      );
       label = "Рисование";
       break;
     case "layers":

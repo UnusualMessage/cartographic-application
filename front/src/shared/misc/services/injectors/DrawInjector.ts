@@ -13,7 +13,7 @@ import { v4 as uuid } from "uuid";
 import { GeozonesStore } from "@entities/geozone";
 import { OrganizationsStore } from "@entities/organization";
 
-import { InteractionsStore } from "../../stores";
+import { InteractionsStore, FeaturesStore } from "../../stores";
 import type {
   ListenersInjector,
   DrawEvent as DrawEventType,
@@ -93,6 +93,8 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
 
             organization,
           });
+
+          FeaturesStore.addFeature(feature);
         }
       }
     };

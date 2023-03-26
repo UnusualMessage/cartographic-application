@@ -70,7 +70,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       ContextMenuStore.hide();
 
       if (!features.length) {
-        FeaturesStore.clickedFeature = null;
+        FeaturesStore.clickedFeature = undefined;
         ContextMenuStore.hide();
         return;
       }
