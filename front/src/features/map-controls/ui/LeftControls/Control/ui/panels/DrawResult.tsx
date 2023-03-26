@@ -1,4 +1,4 @@
-import { Typography, Collapse, Space } from "antd";
+import { Typography, Collapse, Space, Empty } from "antd";
 import { observer } from "mobx-react-lite";
 import { Polygon } from "ol/geom";
 import { toLonLat } from "ol/proj";
@@ -36,6 +36,10 @@ const Feature = ({ geometry }: Props) => {
 
 const DrawResult = () => {
   const features = FeaturesStore.features;
+
+  if (features.length === 0) {
+    return <Empty />;
+  }
 
   return (
     <Collapse size={"small"}>

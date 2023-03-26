@@ -55,6 +55,14 @@ class FeaturesStore {
     this._copiedFeatures = copiedFeatures;
   }
 
+  public addFeatureToLayer(
+    feature: FeatureLike,
+    layer: VectorLayer<VectorSource>
+  ) {
+    this.addFeature(feature);
+    layer.getSource()?.addFeature(feature as Feature);
+  }
+
   public addFeature(feature: FeatureLike) {
     const temp = this.features.slice();
     temp.push(feature);

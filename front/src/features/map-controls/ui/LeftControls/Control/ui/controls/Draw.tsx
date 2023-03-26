@@ -3,7 +3,6 @@ import {
   SendOutlined,
   DeleteOutlined,
   SaveOutlined,
-  FolderOutlined,
 } from "@ant-design/icons";
 import { Polygon as IPolygon } from "@turf/helpers/dist/js/lib/geojson";
 import { Feature, area, polygon, toWgs84 } from "@turf/turf";
@@ -22,7 +21,7 @@ import {
   LayersStore,
   Properties,
 } from "@shared/misc";
-import { PolygonFilled } from "@shared/ui";
+import { PolygonFilled, FileInput } from "@shared/ui";
 
 const Draw = () => {
   const interaction = InteractionsStore.type;
@@ -98,7 +97,7 @@ const Draw = () => {
         bordered={false}
       />
 
-      <Button icon={<FolderOutlined />} type={"text"} />
+      <FileInput />
       <Button icon={<SaveOutlined />} type={"text"} onClick={save} />
       <Button icon={<DeleteOutlined />} type={"text"} onClick={clear} />
     </Space>
