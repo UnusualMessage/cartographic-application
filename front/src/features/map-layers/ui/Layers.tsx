@@ -12,8 +12,6 @@ import {
   getEquipmentStyle,
   getGeozoneStyle,
 } from "@shared/lib";
-import { InteractionsStore } from "@shared/misc";
-import { Condition } from "@shared/ui";
 
 import BaseLayer from "./BaseLayer";
 import VectorLayer from "./VectorLayer";
@@ -39,9 +37,7 @@ const Layers = () => {
         features={geozoneFeatures}
         style={getGeozoneStyle}
       >
-        <Condition truthy={InteractionsStore.isGeozonesActive}>
-          <Drawing />
-        </Condition>
+        <Drawing />
       </VectorLayer>
 
       <VectorLayer
@@ -51,9 +47,7 @@ const Layers = () => {
       />
 
       <VectorLayer id={measurementLayerId} style={getMeasurementStyle}>
-        <Condition truthy={InteractionsStore.isMeasurementActive}>
-          <Measurement />
-        </Condition>
+        <Measurement />
       </VectorLayer>
     </>
   );

@@ -27,13 +27,12 @@ interface Props extends PropsWithChildren {
 const Map = ({ children, toPrint }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
-  const measurementActive = InteractionsStore.isMeasurementActive;
-  const geozonesActive = InteractionsStore.isGeozonesActive;
+  const type = InteractionsStore.type;
 
-  if (measurementActive || geozonesActive) {
-    MapStore.setCrosshairCursor();
-  } else {
+  if (type === "none") {
     MapStore.setDefaultCursor();
+  } else {
+    MapStore.setCrosshairCursor();
   }
 
   useLayoutEffect(() => {

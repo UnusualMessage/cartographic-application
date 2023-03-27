@@ -19,7 +19,11 @@ const Measurement = () => {
     return DrawStore.setup(type, source, map);
   };
 
-  useInteraction(addInteraction, { source, map, type });
+  useInteraction(
+    addInteraction,
+    ["measure-coordinate", "measure-length", "measure-area"],
+    { source, map, type }
+  );
 
   return <></>;
 };

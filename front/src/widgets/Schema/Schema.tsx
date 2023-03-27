@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { Map } from "@features/map";
-import ContextMenu from "@features/map-context-menu/ui/ContextMenu";
+import { ContextMenu } from "@features/map-context-menu";
 import { Controls } from "@features/map-controls";
 import { Layers } from "@features/map-layers";
 import { Tooltip } from "@features/map-tooltip";

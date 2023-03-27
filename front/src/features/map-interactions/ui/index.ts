@@ -1,2 +1,4 @@
-export { default as Drawing } from "./Drawing";
-export { default as Measurement } from "./Measurement";
+import Drawing from "./Drawing";
+import Measurement from "./Measurement";
+
+export { Drawing, Measurement };
