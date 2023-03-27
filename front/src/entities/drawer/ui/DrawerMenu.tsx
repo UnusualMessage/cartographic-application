@@ -26,57 +26,51 @@ const DrawerMenu = () => {
   const switchType = (type: InteractionType) => {
     LayersStore.clearVectorLayer(measurementLayerId);
     InteractionsStore.type = type;
-    DrawerStore.hide();
   };
 
-  const choose = (type: MapControl) => {
+  const switchControl = (type: MapControl) => {
     ControlsStore.currentMapControl = type;
-    DrawerStore.hide();
   };
 
-  const onClick: MenuProps["onClick"] = (e) => {
-    switch (e.key) {
+  const onClick: MenuProps["onClick"] = (context) => {
+    const type = context.key;
+
+    switch (type) {
       case "measure-coordinate":
-        choose("measurement");
-        switchType(e.key);
+        switchControl("measurement");
+        switchType(type);
         break;
       case "measure-length":
-        choose("measurement");
-        switchType(e.key);
+        switchControl("measurement");
+        switchType(type);
         break;
       case "measure-area":
-        choose("measurement");
-        switchType(e.key);
+        switchControl("measurement");
+        switchType(type);
         break;
       case "none":
-        choose("edit");
-        switchType(e.key);
+        switchControl("edit");
+        switchType(type);
         break;
       case "cursor":
-        choose("edit");
-        switchType(e.key);
+        switchControl("edit");
+        switchType(type);
         break;
       case "geozones":
-        choose("edit");
-        switchType(e.key);
+        switchControl("edit");
+        switchType(type);
         break;
       case "full-screen":
         FullScreenStore.enter();
-        DrawerStore.hide();
         break;
       case "print":
         navigateWithQuery("../print", "x", "y", "z");
-        DrawerStore.hide();
-        break;
-      case "search":
-        choose("search");
-        break;
-      case "layers":
-        choose("layers");
         break;
       default:
-        choose("share");
+        switchControl(type as MapControl);
     }
+
+    DrawerStore.hide();
   };
 
   return (

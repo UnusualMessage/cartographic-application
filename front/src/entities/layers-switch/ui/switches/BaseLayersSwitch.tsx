@@ -4,11 +4,11 @@ import { observer } from "mobx-react-lite";
 import { baseLayers } from "@shared/assets";
 import { LayersStore, BaseLayer } from "@shared/misc";
 
-import { wrapper } from "./layers.module.scss";
+import { wrapper } from "./switches.module.scss";
 
 const { Text } = Typography;
 
-const BaseLayers = () => {
+const BaseLayersSwitch = () => {
   const choose = (e: RadioChangeEvent) => {
     LayersStore.baseLayerType = e.target.value as BaseLayer;
   };
@@ -33,4 +33,4 @@ const BaseLayers = () => {
   );
 };
 
-export default observer(BaseLayers);
+export default observer(BaseLayersSwitch);

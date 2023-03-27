@@ -4,11 +4,11 @@ import { observer } from "mobx-react-lite";
 import { weatherLayers } from "@shared/assets";
 import { LayersStore, WeatherLayer } from "@shared/misc";
 
-import { wrapper } from "./layers.module.scss";
+import { wrapper } from "./switches.module.scss";
 
 const { Text } = Typography;
 
-const WeatherLayers = () => {
+const WeatherLayersSwitch = () => {
   const choose = (e: RadioChangeEvent) => {
     LayersStore.weatherLayerType = e.target.value as WeatherLayer;
   };
@@ -33,4 +33,4 @@ const WeatherLayers = () => {
   );
 };
 
-export default observer(WeatherLayers);
+export default observer(WeatherLayersSwitch);

@@ -1,10 +1,11 @@
 export * as interactions from "./map-interactions";
 export * as layers from "./map-layers";
-export * as controls from "./map-controls";
 export * as map from "./map";
 export * as view from "./map-view";
 export * as menu from "./map-context-menu";
 export * as tooltip from "./map-tooltip";
+export * as mainControls from "./map-main-controls";
+export * as fastControls from "./map-fast-controls";
 
 export * as editEmployees from "./edit-employees";
 export * as editPartners from "./edit-partners";

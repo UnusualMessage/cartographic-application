@@ -41,7 +41,7 @@ const nodes: Node[] = [
   },
 ];
 
-const VectorLayers = () => {
+const VectorLayersSwitch = () => {
   const [checkedKeys, setCheckedKeys] = useState<Key[]>([
     transportLayerId,
     geozonesLayerId,
@@ -90,4 +90,4 @@ const VectorLayers = () => {
   );
 };
 
-export default VectorLayers;
+export default VectorLayersSwitch;

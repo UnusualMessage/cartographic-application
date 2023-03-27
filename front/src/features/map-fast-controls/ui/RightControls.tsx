@@ -1,11 +1,12 @@
+import { LayersSwitch } from "@entities/layers-switch";
+
 import ActionsGroup from "./ActionsGroup";
-import LayersGroup from "./LayersGroup";
 
 const RightControls = () => {
   return (
     <>
       <ActionsGroup />
-      <LayersGroup />
+      <LayersSwitch />
     </>
   );
 };

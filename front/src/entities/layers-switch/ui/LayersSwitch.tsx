@@ -7,10 +7,14 @@ import { SchemaTemplateContext } from "@shared/constants";
 import { ControlsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
-import { visible, wrapper } from "./group.module.scss";
-import { BaseLayers, WeatherLayers, VectorLayers } from "./ui";
+import { visible, wrapper } from "./switch.module.scss";
+import {
+  VectorLayersSwitch,
+  BaseLayersSwitch,
+  WeatherLayersSwitch,
+} from "./switches";
 
-const LayersGroup = () => {
+const LayersSwitch = () => {
   const context = useContext(SchemaTemplateContext);
   const open = ControlsStore.layersPanelActive;
 
@@ -22,12 +26,12 @@ const LayersGroup = () => {
   return (
     <Condition truthy={context?.fastControls?.layers}>
       <Space className={classes} direction={"vertical"}>
-        <BaseLayers />
-        <WeatherLayers />
-        <VectorLayers />
+        <BaseLayersSwitch />
+        <WeatherLayersSwitch />
+        <VectorLayersSwitch />
       </Space>
     </Condition>
   );
 };
 
-export default observer(LayersGroup);
+export default observer(LayersSwitch);

@@ -1,6 +1,10 @@
 import { Space } from "antd";
 
-import { Coordinate, Distance, Area } from "../../../../RightControls";
+import {
+  Coordinate,
+  Distance,
+  Area,
+} from "../../../../../map-fast-controls/ui";
 
 const Measure = () => {
   return (

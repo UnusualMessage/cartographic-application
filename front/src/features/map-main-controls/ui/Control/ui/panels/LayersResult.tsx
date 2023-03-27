@@ -1,12 +1,11 @@
 import { observer } from "mobx-react-lite";
 
-import { ControlsStore } from "@shared/misc";
-
 import {
-  WeatherLayers,
-  BaseLayers,
-  VectorLayers,
-} from "../../../../RightControls/LayersGroup/ui";
+  BaseLayersSwitch,
+  WeatherLayersSwitch,
+  VectorLayersSwitch,
+} from "@entities/layers-switch";
+import { ControlsStore } from "@shared/misc";
 
 const LayersResult = () => {
   const category = ControlsStore.currentLayerCategory;
@@ -14,13 +13,13 @@ const LayersResult = () => {
   let component = <></>;
   switch (category) {
     case "base":
-      component = <BaseLayers />;
+      component = <BaseLayersSwitch />;
       break;
     case "weather":
-      component = <WeatherLayers />;
+      component = <WeatherLayersSwitch />;
       break;
     case "vector":
-      component = <VectorLayers />;
+      component = <VectorLayersSwitch />;
   }
   return component;
 };
