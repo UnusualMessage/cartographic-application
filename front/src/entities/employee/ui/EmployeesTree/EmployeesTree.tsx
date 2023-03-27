@@ -6,7 +6,7 @@ import { employeeNodes } from "@shared/assets";
 import { Employee, Node } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
-import { EmployeesStore } from "../../model";
+import { EmployeesStore, employeesTreeSelectHandler } from "../../model";
 
 const fillNodes = (employees?: Employee[]) => {
   const initial: Node[] = cloneDeep(employeeNodes);
@@ -49,6 +49,7 @@ const EmployeesTree = () => {
     <Tree<Employee>
       fillNodes={fillNodes}
       source={employees}
+      onSelect={employeesTreeSelectHandler}
       defaultSelected={"tree-employees"}
     />
   );

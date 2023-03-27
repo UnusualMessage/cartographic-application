@@ -1,12 +1,12 @@
 import { Tabs } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { TabsStore, Tab as TabType } from "@shared/misc";
+import { TabsStore, Tab } from "@shared/misc";
 
 import { wrapper } from "./menu.module.scss";
 import { footerTabs } from "../model";
 
-const handleSelectedTab = (list: TabType[], current?: string) => {
+const handleSelectedTab = (list: Tab[], current?: string) => {
   return current ?? list[0].key;
 };
 

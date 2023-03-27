@@ -6,7 +6,7 @@ import { planNodes } from "@shared/assets";
 import type { Node, Plan } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
-import { PlansStore, getPlansTreeClickHandler } from "../../model";
+import { PlansStore, plansTreeSelectHandler } from "../../model";
 
 const fillNodes = (plans?: Plan[]) => {
   const initial: Node[] = cloneDeep(planNodes);
@@ -40,7 +40,7 @@ const PlansTree = () => {
     <Tree<Plan>
       fillNodes={fillNodes}
       source={plans}
-      handleSelect={getPlansTreeClickHandler()}
+      onSelect={plansTreeSelectHandler}
       defaultSelected={"tree-plans"}
     />
   );

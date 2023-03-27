@@ -1,3 +1,3 @@
 export { default as GeozonesStore } from "./GeozonesStore";
-export { getGeozonesTreeClickHandler } from "./getGeozonesTreeClickHandler";
+export { geozonesTreeSelectHandler } from "./geozonesTreeSelectHandler";
 export { geozoneMenu } from "./geozoneMenu";

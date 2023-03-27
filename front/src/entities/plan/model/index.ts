@@ -1,2 +1,2 @@
 export { default as PlansStore } from "./PlansStore";
-export { getPlansTreeClickHandler } from "./getPlansTreeClickHandler";
+export { plansTreeSelectHandler } from "./plansTreeSelectHandler";

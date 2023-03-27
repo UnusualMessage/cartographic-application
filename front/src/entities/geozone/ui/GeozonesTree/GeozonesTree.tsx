@@ -2,7 +2,7 @@ import { AppstoreOutlined, BorderOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { GeozonesStore, getGeozonesTreeClickHandler } from "@entities/geozone";
+import { GeozonesStore, geozonesTreeSelectHandler } from "@entities/geozone";
 import { geozoneNodes } from "@shared/assets";
 import { Geozone, Node } from "@shared/misc";
 import { Tree } from "@shared/ui";
@@ -48,7 +48,7 @@ const GeozonesTree = () => {
     <Tree<Geozone>
       fillNodes={fillNodes}
       source={zones}
-      handleSelect={getGeozonesTreeClickHandler()}
+      onSelect={geozonesTreeSelectHandler}
       defaultSelected={"tree-geozones"}
     />
   );

@@ -1,10 +1,7 @@
-import { Badge } from "antd";
-
 import { EmployeesTree } from "@entities/employee";
 import { EquipmentTree } from "@entities/equipment";
 import { GeozonesTree } from "@entities/geozone";
 import { PlansTree } from "@entities/plan";
-import { equipment, employees, plans } from "@shared/assets";
 import { TabsList } from "@shared/misc";
 
 export const siderTabs: TabsList = {
@@ -12,56 +9,25 @@ export const siderTabs: TabsList = {
   tabs: [
     {
       key: "sider-geozones",
-      label: (
-        <Badge count={0} size={"small"} color="blue" offset={[-10, -5]}>
-          Геозоны
-        </Badge>
-      ),
+      label: "Геозоны",
       children: <GeozonesTree />,
     },
 
     {
       key: "sider-equipments",
-      label: (
-        <Badge
-          count={equipment.length}
-          size={"small"}
-          color="blue"
-          offset={[-10, -5]}
-        >
-          Техника
-        </Badge>
-      ),
+      label: "Техника",
       children: <EquipmentTree />,
     },
 
     {
       key: "sider-employees",
-      label: (
-        <Badge
-          count={employees.length}
-          size={"small"}
-          color="blue"
-          offset={[-10, -5]}
-        >
-          Сотрудники
-        </Badge>
-      ),
+      label: "Сотрудники",
       children: <EmployeesTree />,
     },
 
     {
       key: "sider-plans",
-      label: (
-        <Badge
-          count={plans.length}
-          size={"small"}
-          color="blue"
-          offset={[-10, -5]}
-        >
-          Планы
-        </Badge>
-      ),
+      label: "Планы",
       children: <PlansTree />,
     },
   ],

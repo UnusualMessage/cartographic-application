@@ -6,7 +6,7 @@ import { equipmentNodes } from "@shared/assets";
 import { Equipment, Node } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
-import { getEquipmentTreeClickHandler, EquipmentStore } from "../../model";
+import { equipmentTreeSelectHandler, EquipmentStore } from "../../model";
 
 const fillNodes = (equipment?: Equipment[]) => {
   const initial: Node[] = cloneDeep(equipmentNodes);
@@ -47,7 +47,7 @@ const EquipmentTree = () => {
   return (
     <Tree<Equipment>
       fillNodes={fillNodes}
-      handleSelect={getEquipmentTreeClickHandler()}
+      onSelect={equipmentTreeSelectHandler}
       source={equipment}
       defaultSelected={"tree-equipments"}
     />

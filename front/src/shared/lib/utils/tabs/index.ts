@@ -1,0 +1,1 @@
+export { switchFooterTabs } from "./switchFooterTabs";

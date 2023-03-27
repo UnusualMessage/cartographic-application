@@ -3,13 +3,7 @@ import { Tree as AntTree, Input } from "antd";
 import type { TreeProps } from "antd/es/tree";
 import classNames from "classnames";
 import { cloneDeep } from "lodash";
-import {
-  useEffect,
-  useState,
-  ChangeEventHandler,
-  useCallback,
-  Key,
-} from "react";
+import { useEffect, useState, ChangeEventHandler, Key } from "react";
 
 import { wrapper, tree, search } from "./tree.module.scss";
 import { Node } from "../../misc";
@@ -18,7 +12,7 @@ interface Props<T> {
   fillNodes: (source?: T[]) => Node[];
   defaultSelected: Key;
   source?: T[];
-  handleSelect?: TreeProps["onSelect"];
+  onSelect?: TreeProps["onSelect"];
   className?: string;
 }
 
@@ -60,7 +54,7 @@ const findNode = (node: Node, search: string): boolean => {
 const Tree = <T,>({
   fillNodes,
   source,
-  handleSelect,
+  onSelect,
   defaultSelected,
   className,
 }: Props<T>) => {
@@ -71,26 +65,23 @@ const Tree = <T,>({
     setSearchValue(e.target.value);
   };
 
-  const filter = useCallback(
-    (nodes: Node[]) => {
-      const mark = (node: Node) => {
-        node.disabled = !findNode(node, searchValue);
+  const filter = (nodes: Node[]) => {
+    const mark = (node: Node) => {
+      node.disabled = !findNode(node, searchValue);
 
-        if (node.children) {
-          for (const child of node.children) {
-            mark(child);
-          }
+      if (node.children) {
+        for (const child of node.children) {
+          mark(child);
         }
-      };
+      }
+    };
 
-      const copy = cloneDeep(nodes);
-      const root = copy[0];
+    const copy = cloneDeep(nodes);
+    const root = copy[0];
 
-      mark(root);
-      setNodes(copy);
-    },
-    [searchValue]
-  );
+    mark(root);
+    setNodes(copy);
+  };
 
   useEffect(() => {
     setNodes(fillNodes(source));
@@ -110,7 +101,7 @@ const Tree = <T,>({
         showIcon={true}
         autoExpandParent={false}
         switcherIcon={<DownOutlined />}
-        onSelect={handleSelect}
+        onSelect={onSelect}
         treeData={nodes}
         expandAction={false}
         defaultSelectedKeys={[defaultSelected]}
