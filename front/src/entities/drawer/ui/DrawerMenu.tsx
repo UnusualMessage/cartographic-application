@@ -14,7 +14,7 @@ import {
   InteractionType,
 } from "@shared/misc";
 
-import { drawerMenu } from "../../../model";
+import { drawerMenu } from "../model";
 
 const { Text } = Typography;
 

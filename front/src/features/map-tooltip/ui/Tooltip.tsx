@@ -4,26 +4,26 @@ import { observer } from "mobx-react-lite";
 import { Ref, useRef, useEffect, MouseEvent } from "react";
 
 import { measurementLayerId } from "@shared/constants";
-import { invoke } from "@shared/lib";
+import { clean } from "@shared/lib";
 import { MapStore, TooltipStore, Callback, LayersStore } from "@shared/misc";
 
 import { hidden } from "./tooltip.module.scss";
 
+const onClose = (e: MouseEvent<HTMLElement>) => {
+  e.preventDefault();
+
+  TooltipStore.hide();
+  LayersStore.clearVectorLayer(measurementLayerId);
+};
+
 const Tooltip = () => {
-  const tooltipRef: Ref<HTMLDivElement> = useRef(null);
+  const ref: Ref<HTMLDivElement> = useRef(null);
   const map = MapStore.map;
   const active = TooltipStore.active;
   const text = TooltipStore.text;
 
-  const onClose = (e: MouseEvent<HTMLElement>) => {
-    e.preventDefault();
-
-    TooltipStore.hide();
-    LayersStore.clearVectorLayer(measurementLayerId);
-  };
-
   useEffect(() => {
-    const element = tooltipRef.current;
+    const element = ref.current;
 
     let cleanups: Callback[] = [];
     if (element && map) {
@@ -31,9 +31,7 @@ const Tooltip = () => {
     }
 
     return () => {
-      for (const cleanup of cleanups) {
-        invoke(cleanup);
-      }
+      clean(cleanups);
     };
   }, [map]);
 
@@ -42,7 +40,7 @@ const Tooltip = () => {
   });
 
   return (
-    <div className={classes} ref={tooltipRef}>
+    <div className={classes} ref={ref}>
       <Tag closable color={"#000000"} onClose={onClose}>
         {text}
       </Tag>
