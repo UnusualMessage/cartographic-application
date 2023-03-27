@@ -1,7 +1,5 @@
 export * as interactions from "./map-interactions";
 export * as layers from "./map-layers";
-export * as map from "./map";
-export * as view from "./map-view";
 export * as menu from "./map-context-menu";
 export * as tooltip from "./map-tooltip";
 export * as mainControls from "./map-main-controls";

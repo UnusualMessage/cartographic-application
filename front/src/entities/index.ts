@@ -9,6 +9,8 @@ export * as organization from "./organization";
 export * as trailer from "./trailer";
 export * as user from "./user";
 export * as plan from "./plan";
+export * as map from "./map";
+export * as view from "./view";
 
 export * as page from "./info-tabs-page";
 export * as geocoder from "./geocoder";

@@ -2,13 +2,13 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import { Map } from "@features/map";
+import { Map } from "@entities/map";
+import { View } from "@entities/view";
 import { ContextMenu } from "@features/map-context-menu";
 import { FastControls } from "@features/map-fast-controls";
 import { Layers } from "@features/map-layers";
 import { MainControls } from "@features/map-main-controls";
 import { Tooltip } from "@features/map-tooltip";
-import { View } from "@features/map-view";
 import { FullScreenStore } from "@shared/misc";
 
 import { wrapper } from "./schema.module.scss";

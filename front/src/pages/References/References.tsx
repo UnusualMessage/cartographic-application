@@ -28,11 +28,7 @@ const ReferencesTree = () => {
   };
 
   return (
-    <Tree
-      fillNodes={fillNodes}
-      handleSelect={handleClick}
-      defaultSelected={""}
-    />
+    <Tree fillNodes={fillNodes} onSelect={handleClick} defaultSelected={""} />
   );
 };
 
