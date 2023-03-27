@@ -1,4 +1,3 @@
-import RightControls from "./RightControls";
+import FastControls from "./FastControls";
 
-export * from "./actions";
-export { RightControls };
+export { FastControls };

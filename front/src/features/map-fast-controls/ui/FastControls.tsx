@@ -1,8 +1,7 @@
 import { LayersSwitch } from "@entities/layers-switch";
+import { ActionsGroup } from "@entities/map-actions";
 
-import ActionsGroup from "./ActionsGroup";
-
-const RightControls = () => {
+const FastControls = () => {
   return (
     <>
       <ActionsGroup />
@@ -11,4 +10,4 @@ const RightControls = () => {
   );
 };
 
-export default RightControls;
+export default FastControls;

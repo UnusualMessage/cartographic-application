@@ -8,7 +8,7 @@ import { InteractionsStore } from "@shared/misc";
 import { LineStringFilled, Condition } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
-import { switchDrawType } from "../model";
+import { switchDrawType } from "../../model";
 
 interface Props {
   buttonType: "default" | "text";

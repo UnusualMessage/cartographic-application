@@ -4,7 +4,7 @@ import {
   Coordinate,
   Distance,
   Area,
-} from "../../../../../map-fast-controls/ui";
+} from "../../../../../../entities/map-actions/ui";
 
 const Measure = () => {
   return (

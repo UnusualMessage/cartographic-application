@@ -4,7 +4,7 @@ import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
 import { Map } from "@features/map";
 import { ContextMenu } from "@features/map-context-menu";
-import { RightControls } from "@features/map-fast-controls";
+import { FastControls } from "@features/map-fast-controls";
 import { Layers } from "@features/map-layers";
 import { LeftControls } from "@features/map-main-controls";
 import { Tooltip } from "@features/map-tooltip";
@@ -25,7 +25,7 @@ const Schema = ({ toPrint }: Props) => {
       <ContextMenu />
       <Tooltip />
       <LeftControls />
-      <RightControls />
+      <FastControls />
       <Layers />
     </Map>
   );
