@@ -1,5 +1,6 @@
 import { Tabs, Badge } from "antd";
 import { observer } from "mobx-react-lite";
+import { CSSProperties } from "react";
 
 import { EmployeesStore } from "@entities/employee";
 import { EquipmentStore } from "@entities/equipment";
@@ -11,7 +12,7 @@ import { wrapper } from "./menu.module.scss";
 import { siderTabs } from "../model";
 
 const EntitiesTabs = () => {
-  const tabId = TabsStore.siderTabId;
+  const tab = TabsStore.siderTabId;
 
   const geozones = GeozonesStore.geozones;
   const equipment = EquipmentStore.equipment;
@@ -58,24 +59,21 @@ const EntitiesTabs = () => {
     </Badge>
   );
 
+  const onChange = (newTab: string) => {
+    TabsStore.switchFooterTabs(newTab.replace("sider-", "footer-"));
+    TabsStore.siderTabId = newTab;
+  };
+
+  const barStyle: CSSProperties = { margin: 0, paddingLeft: "5px" };
+
   return (
     <Tabs
-      id="sider-tabs"
       className={wrapper}
-      activeKey={tabId ?? "sider-geozones"}
+      activeKey={tab}
       items={currentTabs}
+      tabBarStyle={barStyle}
+      onChange={onChange}
       destroyInactiveTabPane
-      onChange={(newTabId) => {
-        TabsStore.footerTabsListId = newTabId
-          .toString()
-          .replace("sider-", "footer-");
-
-        TabsStore.active = true;
-        TabsStore.footerTabId = undefined;
-
-        TabsStore.siderTabId = newTabId;
-      }}
-      tabBarStyle={{ margin: 0, paddingLeft: "5px" }}
     />
   );
 };

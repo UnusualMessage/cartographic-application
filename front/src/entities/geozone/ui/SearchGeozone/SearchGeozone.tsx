@@ -1,6 +1,5 @@
 import { Select } from "antd";
 import { Coordinate } from "ol/coordinate";
-import { fromLonLat } from "ol/proj";
 import { useState, ReactNode } from "react";
 
 import { ViewStore } from "@shared/misc";
@@ -38,7 +37,7 @@ const SearchGeozone = () => {
   };
 
   const handleSelect = (value: string, item: Option) => {
-    ViewStore.centerWithZoomTo(12)(fromLonLat(item.value));
+    ViewStore.centerWithZoomTo(12)(item.value);
     setValue(value);
   };
 

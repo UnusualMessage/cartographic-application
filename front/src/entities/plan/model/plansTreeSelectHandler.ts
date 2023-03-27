@@ -1,6 +1,6 @@
 import type { TreeProps } from "antd/es/tree";
 
-import { switchFooterTabs } from "@shared/lib";
+import { TabsStore } from "@shared/misc";
 
 import PlansStore from "./PlansStore";
 
@@ -8,9 +8,9 @@ export const plansTreeSelectHandler: TreeProps["onSelect"] = (keys, info) => {
   const node = info.selectedNodes[0];
 
   if (node.children) {
-    switchFooterTabs("footer-plans");
+    TabsStore.switchFooterTabs("footer-plans");
     PlansStore.chosenYear = Number(node.title);
   } else {
-    switchFooterTabs("footer-plan");
+    TabsStore.switchFooterTabs("footer-plan");
   }
 };

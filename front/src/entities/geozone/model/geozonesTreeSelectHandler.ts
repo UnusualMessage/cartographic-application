@@ -10,20 +10,13 @@ export const geozonesTreeSelectHandler: TreeProps["onSelect"] = (
 ) => {
   const node = info.selectedNodes[0];
 
-  const switchTabsList = (id: string) => {
-    if (TabsStore.footerTabsListId !== id) {
-      TabsStore.footerTabsListId = id;
-      TabsStore.footerTabId = undefined;
-    }
-  };
-
   switch (node.key) {
     case "tree-geozones":
-      switchTabsList("footer-geozones");
+      TabsStore.switchFooterTabs("footer-geozones");
       break;
 
     default:
-      switchTabsList("footer-geozone");
+      TabsStore.switchFooterTabs("footer-geozone");
 
       const geozone = GeozonesStore.getById(node.key.toString());
 

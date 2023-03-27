@@ -1,6 +1,7 @@
 import { FileOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
+import { useEffect } from "react";
 
 import { planNodes } from "@shared/assets";
 import type { Node, Plan } from "@shared/misc";
@@ -35,6 +36,10 @@ const fillNodes = (plans?: Plan[]) => {
 
 const PlansTree = () => {
   const plans = PlansStore.plans;
+
+  useEffect(() => {
+    PlansStore.chosenYear = undefined;
+  }, []);
 
   return (
     <Tree<Plan>

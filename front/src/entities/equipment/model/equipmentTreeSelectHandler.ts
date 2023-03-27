@@ -2,7 +2,7 @@ import { TreeProps } from "antd/es/tree";
 
 import { TabsStore, ViewStore } from "@shared/misc";
 
-import { EquipmentStore } from "./index";
+import EquipmentStore from "./EquipmentStore";
 
 export const equipmentTreeSelectHandler: TreeProps["onSelect"] = (
   keys,
@@ -10,25 +10,17 @@ export const equipmentTreeSelectHandler: TreeProps["onSelect"] = (
 ) => {
   const node = info.selectedNodes[0];
 
-  const switchTabsList = (id: string) => {
-    if (TabsStore.footerTabsListId !== id) {
-      TabsStore.footerTabsListId = id;
-      TabsStore.footerTabId = undefined;
-    }
-  };
-
-  if (node.key.toString().includes("tree-equipments-type")) {
-    switchTabsList("footer-equipments-type");
-    return;
-  }
-
   switch (node.key) {
+    case "tree-equipments-type":
+      TabsStore.switchFooterTabs("footer-equipments-type");
+      break;
+
     case "tree-equipments":
-      switchTabsList("footer-equipments");
+      TabsStore.switchFooterTabs("footer-equipments");
       break;
 
     default:
-      switchTabsList("footer-equipment");
+      TabsStore.switchFooterTabs("footer-equipment");
 
       const equipment = EquipmentStore.getById(node.key.toString());
       equipment.then((value) => {

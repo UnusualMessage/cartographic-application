@@ -6,7 +6,7 @@ import { TabsStore, Tab } from "@shared/misc";
 import { wrapper } from "./menu.module.scss";
 import { footerTabs } from "../model";
 
-const handleSelectedTab = (list: Tab[], current?: string) => {
+const getTab = (list: Tab[], current?: string) => {
   return current ?? list[0].key;
 };
 
@@ -15,10 +15,10 @@ const switchTab = (newTab: string) => {
 };
 
 const InfoTabs = () => {
-  const tabId = TabsStore.footerTabId;
-  const tabListId = TabsStore.footerTabsListId;
+  const tab = TabsStore.footerTabId;
+  const tabList = TabsStore.footerTabsListId;
 
-  let currentTabs = footerTabs.find((list) => list.id === tabListId)?.tabs;
+  let currentTabs = footerTabs.find((list) => list.id === tabList)?.tabs;
 
   if (!currentTabs) {
     currentTabs = footerTabs[0].tabs;
@@ -27,8 +27,7 @@ const InfoTabs = () => {
   return (
     <Tabs
       className={wrapper}
-      id="footer-tabs"
-      activeKey={handleSelectedTab(currentTabs, tabId)}
+      activeKey={getTab(currentTabs, tab)}
       onChange={switchTab}
       items={currentTabs}
     />
