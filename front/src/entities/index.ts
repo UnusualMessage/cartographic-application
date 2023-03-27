@@ -14,4 +14,5 @@ export * as page from "./info-tabs-page";
 export * as geocoder from "./geocoder";
 export * as drawer from "./drawer";
 export * as mapActions from "./map-actions";
+export * as mapMisc from "./map-misc";
 export * as layersSwitch from "./layers-switch";

@@ -1,12 +1,13 @@
-import { Typography, Collapse, Space, Empty } from "antd";
+import { Typography, Collapse, Space } from "antd";
 import { observer } from "mobx-react-lite";
 import { Polygon } from "ol/geom";
 import { toLonLat } from "ol/proj";
 
+import { Panel } from "@entities/map-misc";
 import { FeaturesStore } from "@shared/misc";
 
 const { Text } = Typography;
-const { Panel } = Collapse;
+const { Panel: AntPanel } = Collapse;
 
 interface Props {
   geometry: Polygon;
@@ -37,23 +38,21 @@ const Feature = ({ geometry }: Props) => {
 const DrawResult = () => {
   const features = FeaturesStore.features;
 
-  if (features.length === 0) {
-    return <Empty />;
-  }
-
   return (
-    <Collapse size={"small"}>
-      {features.map((feature) => {
-        const geometry = feature.getGeometry() as Polygon;
-        const key = feature.getId() ?? "";
+    <Panel>
+      <Collapse size={"small"}>
+        {features.map((feature) => {
+          const geometry = feature.getGeometry() as Polygon;
+          const key = feature.getId() ?? "";
 
-        return (
-          <Panel key={key.toString()} header={feature.getId()}>
-            <Feature geometry={geometry} />
-          </Panel>
-        );
-      })}
-    </Collapse>
+          return (
+            <AntPanel key={key.toString()} header={feature.getId()}>
+              <Feature geometry={geometry} />
+            </AntPanel>
+          );
+        })}
+      </Collapse>
+    </Panel>
   );
 };
 

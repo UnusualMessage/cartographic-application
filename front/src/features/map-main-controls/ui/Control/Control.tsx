@@ -1,23 +1,19 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
+import { Title } from "@entities/map-misc";
 import { SchemaTemplateContext } from "@shared/constants";
 import { ControlsStore } from "@shared/misc";
 
 import { wrapper, header } from "./control.module.scss";
+import { Measure, Draw, Layers, Search } from "../controls";
 import {
-  Title,
-  Measure,
-  Search,
-  Panel,
-  ShareResult,
   MeasurementResult,
-  PrintResult,
-  Draw,
-  Layers,
-  LayersResult,
+  ShareResult,
   DrawResult,
-} from "./ui";
+  LayersResult,
+  PrintResult,
+} from "../panels";
 
 const Control = () => {
   const controlType = ControlsStore.currentMapControl;
@@ -31,36 +27,20 @@ const Control = () => {
     case "measurement":
       control = <Measure />;
       label = "Измерение";
-      panel = (
-        <Panel>
-          <MeasurementResult />
-        </Panel>
-      );
+      panel = <MeasurementResult />;
       break;
     case "share":
       label = "Поделиться";
-      panel = (
-        <Panel>
-          <ShareResult />
-        </Panel>
-      );
+      panel = <ShareResult />;
       break;
     case "edit":
       control = <Draw />;
-      panel = (
-        <Panel>
-          <DrawResult />
-        </Panel>
-      );
+      panel = <DrawResult />;
       label = "Рисование";
       break;
     case "layers":
       control = <Layers />;
-      panel = (
-        <Panel>
-          <LayersResult />
-        </Panel>
-      );
+      panel = <LayersResult />;
       label = "Слои";
       break;
     case "search":
@@ -71,11 +51,7 @@ const Control = () => {
   if (context?.misc?.print) {
     label = "Печать";
     control = <></>;
-    panel = (
-      <Panel>
-        <PrintResult />
-      </Panel>
-    );
+    panel = <PrintResult />;
   }
 
   return (

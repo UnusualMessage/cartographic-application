@@ -2,7 +2,7 @@ import { DrawerMenu } from "@entities/drawer";
 
 import Control from "./Control";
 
-const LeftControls = () => {
+const MainControls = () => {
   return (
     <>
       <DrawerMenu />
@@ -11,4 +11,4 @@ const LeftControls = () => {
   );
 };
 
-export default LeftControls;
+export default MainControls;

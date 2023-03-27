@@ -5,6 +5,7 @@ import {
   WeatherLayersSwitch,
   VectorLayersSwitch,
 } from "@entities/layers-switch";
+import { Panel } from "@entities/map-misc";
 import { ControlsStore } from "@shared/misc";
 
 const LayersResult = () => {
@@ -21,7 +22,7 @@ const LayersResult = () => {
     case "vector":
       component = <VectorLayersSwitch />;
   }
-  return component;
+  return <Panel>{component}</Panel>;
 };
 
 export default observer(LayersResult);

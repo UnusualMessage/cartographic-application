@@ -1,6 +1,7 @@
 import { Typography } from "antd";
 import { observer } from "mobx-react-lite";
 
+import { Panel } from "@entities/map-misc";
 import { MeasurementStore, InteractionsStore } from "@shared/misc";
 
 const { Text } = Typography;
@@ -20,7 +21,7 @@ const MeasurementResult = () => {
       text = <Text strong>{`Расстояние: ${MeasurementStore.length}`}</Text>;
   }
 
-  return <>{text}</>;
+  return <Panel>{text}</Panel>;
 };
 
 export default observer(MeasurementResult);

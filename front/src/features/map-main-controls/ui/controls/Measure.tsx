@@ -1,10 +1,6 @@
 import { Space } from "antd";
 
-import {
-  Coordinate,
-  Distance,
-  Area,
-} from "../../../../../../entities/map-actions/ui";
+import { Coordinate, Distance, Area } from "@entities/map-actions";
 
 const Measure = () => {
   return (

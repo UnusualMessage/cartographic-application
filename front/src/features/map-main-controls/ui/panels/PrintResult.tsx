@@ -1,6 +1,7 @@
 import { Button, Select } from "antd";
 import { observer } from "mobx-react-lite";
 
+import { Panel } from "@entities/map-misc";
 import { MapStore } from "@shared/misc";
 
 const PrintResult = () => {
@@ -9,7 +10,7 @@ const PrintResult = () => {
   };
 
   return (
-    <>
+    <Panel>
       <Select
         onChange={onSelect}
         value={MapStore.printFormat}
@@ -22,7 +23,7 @@ const PrintResult = () => {
       <Button onClick={() => MapStore.printMap()} type={"primary"}>
         Печать
       </Button>
-    </>
+    </Panel>
   );
 };
 

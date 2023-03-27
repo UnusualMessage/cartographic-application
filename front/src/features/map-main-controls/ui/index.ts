@@ -1,3 +1,3 @@
-import LeftControls from "./LeftControls";
+import MainControls from "./MainControls";
 
-export { LeftControls };
+export { MainControls };

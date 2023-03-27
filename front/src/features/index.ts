@@ -5,7 +5,7 @@ export * as view from "./map-view";
 export * as menu from "./map-context-menu";
 export * as tooltip from "./map-tooltip";
 export * as mainControls from "./map-main-controls";
-export * as fastControls from "@entities/map-actions";
+export * as fastControls from "./map-fast-controls";
 
 export * as editEmployees from "./edit-employees";
 export * as editPartners from "./edit-partners";

@@ -1,13 +1,17 @@
 import { Input } from "antd";
 import { useLocation } from "react-router-dom";
 
+import { Panel } from "@entities/map-misc";
+
 const ShareResult = () => {
   const url = useLocation();
 
   return (
-    <Input
-      defaultValue={"https://localhost:3000" + url.pathname + url.search}
-    />
+    <Panel>
+      <Input
+        defaultValue={"https://localhost:3000" + url.pathname + url.search}
+      />
+    </Panel>
   );
 };
 
