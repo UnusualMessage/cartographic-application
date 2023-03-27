@@ -38,7 +38,7 @@ const EntitiesTabs = () => {
       color="blue"
       offset={[-10, -5]}
     >
-      Геозоны
+      Техника
     </Badge>
   );
 
@@ -49,13 +49,13 @@ const EntitiesTabs = () => {
       color="blue"
       offset={[-10, -5]}
     >
-      Геозоны
+      Сотрудники
     </Badge>
   );
 
   currentTabs[3].label = (
     <Badge count={plans.length} size={"small"} color="blue" offset={[-10, -5]}>
-      Геозоны
+      Планы
     </Badge>
   );
 

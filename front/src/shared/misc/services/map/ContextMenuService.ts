@@ -6,7 +6,7 @@ import {
   ContextMenuStore,
 } from "../../stores";
 
-class FeaturesService {
+class ContextMenuService {
   public copy() {
     FeaturesStore.copySelectedFeatures();
     ContextMenuStore.hide();
@@ -40,4 +40,4 @@ class FeaturesService {
   }
 }
 
-export default new FeaturesService();
+export default new ContextMenuService();
