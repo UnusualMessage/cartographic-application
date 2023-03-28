@@ -6,14 +6,18 @@ import { cloneDeep } from "lodash";
 import { useEffect, useState, ChangeEventHandler, Key } from "react";
 
 import { wrapper, tree, search } from "./tree.module.scss";
+import { usePopup } from "../../lib";
 import { Node } from "../../misc";
+import Popup from "../Popup";
 
 interface Props<T> {
   fillNodes: (source?: T[]) => Node[];
   defaultSelected: Key;
   source?: T[];
   onSelect?: TreeProps["onSelect"];
+  onRightClick?: TreeProps["onRightClick"];
   className?: string;
+  menu?: JSX.Element;
 }
 
 const { DirectoryTree } = AntTree;
@@ -55,11 +59,22 @@ const Tree = <T,>({
   fillNodes,
   source,
   onSelect,
+  onRightClick,
   defaultSelected,
   className,
+  menu,
 }: Props<T>) => {
   const [nodes, setNodes] = useState(() => fillNodes(source));
   const [searchValue, setSearchValue] = useState<string>("");
+  const [position, visible, onPopup] = usePopup();
+
+  const onContextMenu: TreeProps["onRightClick"] = (info) => {
+    onPopup(info.event);
+
+    if (onRightClick) {
+      onRightClick(info);
+    }
+  };
 
   const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
     setSearchValue(e.target.value);
@@ -102,12 +117,16 @@ const Tree = <T,>({
         autoExpandParent={false}
         switcherIcon={<DownOutlined />}
         onSelect={onSelect}
+        onRightClick={onContextMenu}
         treeData={nodes}
         expandAction={false}
         defaultSelectedKeys={[defaultSelected]}
         defaultExpandAll
         showLine
       />
+      <Popup visible={visible} x={position.x} y={position.y}>
+        {menu}
+      </Popup>
     </div>
   );
 };
