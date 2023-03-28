@@ -1,18 +1,15 @@
 import { makeAutoObservable } from "mobx";
-import { FeatureLike } from "ol/Feature";
 
 import { geozones } from "@shared/assets";
-import type { Changes, Geozone } from "@shared/misc";
+import type { Geozone } from "@shared/misc";
 
 class GeozonesStore {
   private _geozones: Geozone[];
   private _menuGeozoneId?: string;
-  private _history: Changes<FeatureLike>[];
 
   constructor() {
     this._geozones = geozones;
     this._menuGeozoneId = undefined;
-    this._history = [];
 
     makeAutoObservable(this);
   }
@@ -41,14 +38,6 @@ class GeozonesStore {
 
   public remove(id: string) {
     this._geozones = this.geozones.filter((item) => item.id !== id);
-  }
-
-  public push(set: Changes<FeatureLike>) {
-    const copy = this._history.slice();
-
-    copy.push(set);
-
-    this._history = copy;
   }
 }
 

@@ -5,6 +5,8 @@ export const geozoneMenu: MenuProps["items"] = [
   {
     label: "Экспорт",
     key: "export",
+    icon: <ExportOutlined />,
+
     children: [
       {
         label: "Экспорт (EPSG-4326)",

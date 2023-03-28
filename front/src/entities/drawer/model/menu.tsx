@@ -15,7 +15,7 @@ import { MenuProps } from "antd";
 import { LineStringFilled, PolygonFilled } from "@shared/ui";
 import { LayersFilled } from "@shared/ui/icons";
 
-export const drawerMenu: MenuProps["items"] = [
+export const menu: MenuProps["items"] = [
   {
     label: "Поиск",
     key: "search",

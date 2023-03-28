@@ -4,7 +4,7 @@ import { CSSProperties } from "react";
 
 import { TabsStore } from "@shared/misc";
 
-import { wrapper } from "./menu.module.scss";
+import { wrapper, popup } from "./menu.module.scss";
 import { entitiesTabs } from "../../model";
 
 const EntitiesTabs = () => {
@@ -21,6 +21,7 @@ const EntitiesTabs = () => {
   return (
     <Tabs
       className={wrapper}
+      popupClassName={popup}
       activeKey={tab}
       items={currentTabs}
       tabBarStyle={barStyle}

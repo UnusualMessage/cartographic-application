@@ -1,8 +1,6 @@
 import { Partner, UpdatePartner } from "@shared/misc";
 
-export const getPartnerDefaultValues = (
-  partner?: Partner
-): Partial<UpdatePartner> => {
+export const getDefaultValues = (partner?: Partner): Partial<UpdatePartner> => {
   return {
     id: partner?.id,
     title: partner?.title,

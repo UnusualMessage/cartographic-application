@@ -1,6 +1,6 @@
 import { Speed, UpdateSpeed } from "@shared/misc";
 
-export const getSpeedDefaultValues = (speed?: Speed): Partial<UpdateSpeed> => {
+export const getDefaultValues = (speed?: Speed): Partial<UpdateSpeed> => {
   return {
     id: speed?.id,
     title: speed?.title,

@@ -5,9 +5,17 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 import { Polygon as IPolygon } from "@turf/helpers/dist/js/lib/geojson";
-import { Feature, area, polygon, toWgs84 } from "@turf/turf";
+import {
+  Feature as IFeature,
+  area,
+  polygon,
+  toWgs84,
+  FeatureCollection,
+  toMercator,
+} from "@turf/turf";
 import { Space, Select, Button, message } from "antd";
 import { observer } from "mobx-react-lite";
+import { Feature } from "ol";
 import { Polygon } from "ol/geom";
 import { v4 as uuid } from "uuid";
 
@@ -21,11 +29,10 @@ import {
   LayersStore,
   Properties,
 } from "@shared/misc";
-import { PolygonFilled, FileInput } from "@shared/ui";
+import { PolygonFilled, TextFileInput } from "@shared/ui";
 
 const Draw = () => {
   const interaction = InteractionsStore.type;
-  const [messageApi, contextHolder] = message.useMessage();
 
   const onSelect = (value: InteractionType) => {
     InteractionsStore.type = value;
@@ -49,7 +56,7 @@ const Draw = () => {
       if (geometry && organization) {
         const id = feature.getId() ?? uuid();
 
-        const savedFeature: Feature<IPolygon, Properties> = {
+        const savedFeature: IFeature<IPolygon, Properties> = {
           id: id,
           type: "Feature",
           geometry: {
@@ -80,12 +87,29 @@ const Draw = () => {
     }
 
     clear();
-    void messageApi.success("Данные сохранены");
+    void message.success("Данные сохранены");
+  };
+
+  const onLoad = (result: string) => {
+    const collection: FeatureCollection<IPolygon> = toMercator(
+      JSON.parse(result)
+    );
+
+    for (const feature of collection.features) {
+      const newFeature = new Feature<Polygon>(feature.geometry);
+      newFeature.setId(uuid());
+      newFeature.setGeometry(new Polygon(feature.geometry.coordinates));
+
+      const layer = LayersStore.getVectorLayerById(geozonesLayerId);
+
+      if (layer) {
+        FeaturesStore.addFeatureToLayer(newFeature, layer);
+      }
+    }
   };
 
   return (
     <Space>
-      {contextHolder}
       <Select
         onChange={onSelect}
         value={interaction}
@@ -97,7 +121,7 @@ const Draw = () => {
         bordered={false}
       />
 
-      <FileInput />
+      <TextFileInput onLoad={onLoad} />
       <Button icon={<SaveOutlined />} type={"text"} onClick={save} />
       <Button icon={<DeleteOutlined />} type={"text"} onClick={clear} />
     </Space>

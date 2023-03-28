@@ -1,8 +1,6 @@
 import { Trailer, UpdateTrailer } from "@shared/misc";
 
-export const getTrailerDefaultValues = (
-  trailer?: Trailer
-): Partial<UpdateTrailer> => {
+export const getDefaultValues = (trailer?: Trailer): Partial<UpdateTrailer> => {
   return {
     id: trailer?.id,
     title: trailer?.title,

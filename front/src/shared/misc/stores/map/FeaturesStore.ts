@@ -23,11 +23,7 @@ class FeaturesStore {
     makeAutoObservable(this);
   }
 
-  public get clickedFeature() {
-    return this._clickedFeature;
-  }
-
-  public set clickedFeature(value) {
+  public set clickedFeature(value: FeatureLike | undefined) {
     this._clickedFeature = value;
   }
 

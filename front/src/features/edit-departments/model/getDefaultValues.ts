@@ -1,6 +1,6 @@
 import { Department, UpdateDepartment } from "@shared/misc";
 
-export const getDepartmentDefaultValues = (
+export const getDefaultValues = (
   department?: Department
 ): Partial<UpdateDepartment> => {
   return {
