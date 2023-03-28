@@ -6,6 +6,7 @@ export interface Node {
   icon: ReactNode;
   data?: any;
   children?: Node[];
+  isExpanded?: boolean;
   isLeaf?: boolean;
   visible?: boolean;
   disabled?: boolean;

@@ -29,7 +29,6 @@ const EquipmentTree = () => {
 
   return (
     <Tree<Equipment>
-      fillNodes={getEquipmentNodesByStatus}
       onSelect={equipmentSelectHandler}
       source={equipment}
       groups={groups}

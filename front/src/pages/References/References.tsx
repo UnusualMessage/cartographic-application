@@ -3,7 +3,9 @@ import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
+import { v4 as uuid } from "uuid";
 
+import { Group, Reference } from "@shared/misc";
 import { Tree, Loader } from "@shared/ui";
 import { ModeratorAside as Aside } from "@widgets/asides";
 import { Content } from "@widgets/wrappers";
@@ -27,9 +29,15 @@ const ReferencesTree = () => {
     }
   };
 
-  return (
-    <Tree fillNodes={fillNodes} onSelect={handleClick} defaultSelected={""} />
-  );
+  const groups: Group<Reference>[] = [
+    {
+      key: uuid(),
+      label: "По порядку",
+      getNodes: fillNodes,
+    },
+  ];
+
+  return <Tree groups={groups} onSelect={handleClick} defaultSelected={""} />;
 };
 
 const References = () => {

@@ -12,7 +12,7 @@ class TabsStore {
     this._footerTabId = undefined;
 
     this._siderTabsListId = "sider-tabs";
-    this._siderTabId = "sider-plans";
+    this._siderTabId = "sider-equipments";
 
     makeAutoObservable(this);
   }

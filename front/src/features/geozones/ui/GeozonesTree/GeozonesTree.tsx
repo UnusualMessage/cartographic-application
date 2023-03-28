@@ -1,7 +1,8 @@
 import { observer } from "mobx-react-lite";
+import { v4 as uuid } from "uuid";
 
 import { GeozonesStore, GeozoneMenu } from "@entities/geozone";
-import { Geozone } from "@shared/misc";
+import { Geozone, Group } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
 import {
@@ -13,10 +14,18 @@ import {
 const GeozonesTree = () => {
   const zones = GeozonesStore.geozones;
 
+  const groups: Group<Geozone>[] = [
+    {
+      key: uuid(),
+      label: "По порядку",
+      getNodes: getGeozoneNodes,
+    },
+  ];
+
   return (
     <Tree<Geozone>
       source={zones}
-      fillNodes={getGeozoneNodes}
+      groups={groups}
       onSelect={geozoneSelectHandler}
       onRightClick={geozoneClickHandler}
       menu={<GeozoneMenu />}

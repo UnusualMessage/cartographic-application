@@ -1,6 +1,5 @@
 import { CarOutlined, FolderOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
-import { v4 as uuid } from "uuid";
 
 import { equipmentNodes, types } from "@shared/assets";
 import { translateStatus } from "@shared/lib";
@@ -15,7 +14,7 @@ export const getNodesByType = (equipment?: Equipment[]) => {
 
   initial[0].children = types.map((type) => {
     return {
-      key: `tree-equipments-status-${type.id}`,
+      key: `tree-equipments-type-${type.id}`,
       icon: <FolderOutlined />,
       title: type.name,
       data: type.id,
@@ -24,12 +23,12 @@ export const getNodesByType = (equipment?: Equipment[]) => {
   });
 
   equipment.forEach((item) => {
-    const equipType = initial[0].children?.find(
+    const type = initial[0].children?.find(
       (node) => node.data === item.type.id
     );
 
-    if (equipType) {
-      equipType.children?.push({
+    if (type) {
+      type.children?.push({
         key: item.id,
         title: item.name,
         icon: <CarOutlined />,
@@ -69,7 +68,7 @@ export const getNodesByStatus = (equipment?: Equipment[]) => {
 
   initial[0].children = statuses.map((status) => {
     return {
-      key: `tree-equipments-status-${uuid()}`,
+      key: `tree-equipments-${status}`,
       icon: <FolderOutlined />,
       title: translateStatus(status),
       data: status,
@@ -87,7 +86,7 @@ export const getNodesByStatus = (equipment?: Equipment[]) => {
         key: item.id,
         title: item.name,
         icon: <CarOutlined />,
-        data: item,
+        data: item.id,
       });
     }
   });

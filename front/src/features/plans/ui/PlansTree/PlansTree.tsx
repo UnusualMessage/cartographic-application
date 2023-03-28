@@ -1,8 +1,10 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
+import { v4 as uuid } from "uuid";
 
 import { PlansStore } from "@entities/plan";
 import type { Plan } from "@shared/misc";
+import { Group } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
 import { getPlanNodes, planSelectHandler } from "../../model";
@@ -14,10 +16,18 @@ const PlansTree = () => {
     PlansStore.chosenYear = undefined;
   }, []);
 
+  const groups: Group<Plan>[] = [
+    {
+      key: uuid(),
+      label: "По году",
+      getNodes: getPlanNodes,
+    },
+  ];
+
   return (
     <Tree<Plan>
-      fillNodes={getPlanNodes}
       source={plans}
+      groups={groups}
       onSelect={planSelectHandler}
       defaultSelected={"tree-plans"}
     />

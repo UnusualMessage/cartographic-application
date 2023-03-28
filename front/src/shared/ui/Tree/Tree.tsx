@@ -12,9 +12,8 @@ import Condition from "../Condition";
 import Popup from "../Popup";
 
 interface Props<T> {
-  fillNodes: (source?: T[]) => Node[];
   defaultSelected: Key;
-  groups?: Group<T>[];
+  groups: Group<T>[];
   source?: T[];
   onSelect?: TreeProps["onSelect"];
   onRightClick?: TreeProps["onRightClick"];
@@ -25,7 +24,6 @@ interface Props<T> {
 const { DirectoryTree } = AntTree;
 
 const Tree = <T,>({
-  fillNodes,
   source,
   groups,
   onSelect,
@@ -34,7 +32,7 @@ const Tree = <T,>({
   className,
   menu,
 }: Props<T>) => {
-  const [nodes, setNodes] = useState(() => fillNodes(source));
+  const [nodes, setNodes] = useState(groups[0].getNodes(source));
   const [searchValue, setSearchValue] = useState<string>("");
   const [position, visible, onPopup] = usePopup();
 
@@ -51,10 +49,6 @@ const Tree = <T,>({
   };
 
   const onGroupSwitch: MenuProps["onClick"] = (context) => {
-    if (!groups) {
-      return;
-    }
-
     const group = groups.find((group) => group.key === context.key);
 
     if (group) {
@@ -74,6 +68,11 @@ const Tree = <T,>({
     };
 
     const copy = cloneDeep(nodes);
+
+    if (!copy.length) {
+      return;
+    }
+
     const root = copy[0];
 
     mark(root);
@@ -81,20 +80,24 @@ const Tree = <T,>({
   };
 
   useEffect(() => {
-    setNodes(fillNodes(source));
+    setNodes(groups[0].getNodes(source));
   }, [source]);
 
   useEffect(() => {
     filter(nodes);
   }, [searchValue]);
 
+  const items = groups.map((group) => {
+    return { key: group.key, label: group.label };
+  });
+
   return (
     <div className={classNames(wrapper, className)}>
       <div className={search}>
         <Input placeholder={"Искать..."} onChange={onChange} />
-        <Condition truthy={!!groups?.length}>
+        <Condition truthy={items.length > 1}>
           <Dropdown
-            menu={{ items: groups, selectable: true, onClick: onGroupSwitch }}
+            menu={{ items: items, selectable: true, onClick: onGroupSwitch }}
             trigger={["click"]}
           >
             <GroupOutlined />
@@ -104,7 +107,6 @@ const Tree = <T,>({
 
       <DirectoryTree
         className={tree}
-        showIcon={true}
         switcherIcon={<DownOutlined />}
         onSelect={onSelect}
         onRightClick={onContextMenu}
@@ -112,6 +114,7 @@ const Tree = <T,>({
         expandAction={false}
         defaultSelectedKeys={[defaultSelected]}
         defaultExpandAll
+        showIcon
         showLine
       />
       <Popup visible={visible} x={position.x} y={position.y}>
