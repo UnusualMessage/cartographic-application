@@ -11,11 +11,13 @@ export * as editPosts from "./edit-posts";
 export * as editSpeeds from "./edit-speeds";
 export * as editDepartments from "./edit-departments";
 export * as editTrailers from "./edit-trailers";
+
 export * as geozones from "./geozones";
+export * as employees from "./employees";
+export * as equipments from "./equipments";
+export * as plans from "./plans";
 
 export * as exportGeozone from "./export-geozone";
 
-export * as infoTabs from "./info-tabs";
-export * as entitiesTabs from "./entities-tabs";
 export * as tabs from "./tabs";
 export * as auth from "./auth";

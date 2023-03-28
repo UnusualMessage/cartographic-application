@@ -1,3 +1,4 @@
+import GeozonesTabLabel from "./GeozonesTabLabel";
 import GeozonesTree from "./GeozonesTree";
 
-export { GeozonesTree };
+export { GeozonesTree, GeozonesTabLabel };

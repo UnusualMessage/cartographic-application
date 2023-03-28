@@ -1,1 +1,0 @@
-export { footerTabs } from "./footerTabs";
