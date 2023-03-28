@@ -60,7 +60,7 @@ export const getDrawLengthStyle: StyleFunction = (feature: FeatureLike) => {
 
   const length = formatLength(geometry);
 
-  MeasurementStore.length = length;
+  MeasurementStore.distance = length;
   TooltipStore.text = length;
   TooltipStore.show(point.getCoordinates());
 

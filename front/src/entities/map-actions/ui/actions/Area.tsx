@@ -4,7 +4,11 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
-import { InteractionsStore } from "@shared/misc";
+import {
+  InteractionsStore,
+  ControlsStore,
+  MeasurementStore,
+} from "@shared/misc";
 import { PolygonFilled, Condition } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
@@ -22,13 +26,19 @@ const Area = ({ buttonType }: Props) => {
     [wrapper]: buttonType === "default",
   });
 
+  const onClick = () => {
+    ControlsStore.currentMapControl = "measurement";
+    switchDrawType(interaction, "measure-area");
+    MeasurementStore.reset();
+  };
+
   return (
     <Condition truthy={context?.fastControls?.area}>
       <Button
         className={classes}
         icon={<PolygonFilled />}
         type={interaction === "measure-area" ? "primary" : buttonType}
-        onClick={() => switchDrawType(interaction, "measure-area")}
+        onClick={onClick}
       />
     </Condition>
   );

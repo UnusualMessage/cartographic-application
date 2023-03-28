@@ -8,7 +8,7 @@ const { Text } = Typography;
 
 const MeasurementResult = () => {
   const drawType = InteractionsStore.type;
-  let text = <></>;
+  let text;
 
   switch (drawType) {
     case "measure-area":
@@ -18,7 +18,10 @@ const MeasurementResult = () => {
       text = <Text strong>{MeasurementStore.coordinate}</Text>;
       break;
     case "measure-length":
-      text = <Text strong>{`Расстояние: ${MeasurementStore.length}`}</Text>;
+      text = <Text strong>{`Расстояние: ${MeasurementStore.distance}`}</Text>;
+      break;
+    default:
+      text = <Text strong>{"Выберите действие."}</Text>;
   }
 
   return <Panel>{text}</Panel>;

@@ -5,7 +5,11 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
-import { InteractionsStore } from "@shared/misc";
+import {
+  InteractionsStore,
+  ControlsStore,
+  MeasurementStore,
+} from "@shared/misc";
 import { Condition } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
@@ -23,13 +27,19 @@ const Coordinate = ({ buttonType }: Props) => {
     [wrapper]: buttonType === "default",
   });
 
+  const onClick = () => {
+    ControlsStore.currentMapControl = "measurement";
+    switchDrawType(interaction, "measure-coordinate");
+    MeasurementStore.reset();
+  };
+
   return (
     <Condition truthy={context?.fastControls?.coordinate}>
       <Button
         className={classes}
         icon={<AimOutlined />}
         type={interaction === "measure-coordinate" ? "primary" : buttonType}
-        onClick={() => switchDrawType(interaction, "measure-coordinate")}
+        onClick={onClick}
       />
     </Condition>
   );

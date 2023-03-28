@@ -4,7 +4,11 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
-import { InteractionsStore } from "@shared/misc";
+import {
+  InteractionsStore,
+  ControlsStore,
+  MeasurementStore,
+} from "@shared/misc";
 import { LineStringFilled, Condition } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
@@ -22,13 +26,19 @@ const Distance = ({ buttonType }: Props) => {
     [wrapper]: buttonType === "default",
   });
 
+  const onClick = () => {
+    ControlsStore.currentMapControl = "measurement";
+    switchDrawType(interaction, "measure-length");
+    MeasurementStore.reset();
+  };
+
   return (
     <Condition truthy={context?.fastControls?.distance}>
       <Button
         className={classes}
         icon={<LineStringFilled />}
         type={interaction === "measure-length" ? "primary" : buttonType}
-        onClick={() => switchDrawType(interaction, "measure-length")}
+        onClick={onClick}
       />
     </Condition>
   );
