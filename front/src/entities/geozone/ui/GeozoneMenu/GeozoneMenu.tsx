@@ -9,19 +9,23 @@ import { geozoneMenu, GeozonesStore } from "../../model";
 type ExportType = "4326" | "3857";
 
 const GeozoneMenu = () => {
-  const id = GeozonesStore.chosen;
+  const id = GeozonesStore.menuGeozoneId;
 
   const onExport = (type: ExportType) => {
     let geometry: Polygon | undefined = undefined;
     const geozone = GeozonesStore.getById(id ?? "");
 
+    if (!geozone) {
+      return;
+    }
+
     switch (type) {
       case "3857":
-        geometry = geozone?.feature.geometry;
+        geometry = geozone.feature.geometry;
         break;
 
       case "4326":
-        geometry = toWgs84(geozone?.feature.geometry);
+        geometry = toWgs84(geozone.feature.geometry);
         break;
     }
 
@@ -32,7 +36,7 @@ const GeozoneMenu = () => {
           type: "Feature",
           geometry: geometry,
           properties: {
-            area: geozone?.area,
+            area: geozone.area,
           },
         },
       ],

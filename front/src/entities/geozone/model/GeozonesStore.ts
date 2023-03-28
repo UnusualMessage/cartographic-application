@@ -6,12 +6,12 @@ import type { Changes, Geozone } from "@shared/misc";
 
 class GeozonesStore {
   private _geozones: Geozone[];
-  private _chosen?: string;
+  private _menuGeozoneId?: string;
   private _history: Changes<FeatureLike>[];
 
   constructor() {
     this._geozones = geozones;
-    this._chosen = undefined;
+    this._menuGeozoneId = undefined;
     this._history = [];
 
     makeAutoObservable(this);
@@ -21,12 +21,12 @@ class GeozonesStore {
     return this._geozones;
   }
 
-  public get chosen() {
-    return this._chosen;
+  public get menuGeozoneId() {
+    return this._menuGeozoneId;
   }
 
   public choose(id?: string) {
-    this._chosen = id;
+    this._menuGeozoneId = id;
   }
 
   public getById(id: string) {

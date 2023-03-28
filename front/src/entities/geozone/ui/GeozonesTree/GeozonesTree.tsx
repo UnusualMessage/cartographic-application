@@ -1,9 +1,12 @@
 import { AppstoreOutlined, BorderOutlined } from "@ant-design/icons";
-import { TreeProps } from "antd/es/tree";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import { GeozonesStore, geozonesTreeSelectHandler } from "@entities/geozone";
+import {
+  GeozonesStore,
+  geozonesTreeSelectHandler,
+  geozonesTreeRightClickHandler,
+} from "@entities/geozone";
 import { geozoneNodes } from "@shared/assets";
 import { Geozone, Node } from "@shared/misc";
 import { Tree } from "@shared/ui";
@@ -44,21 +47,17 @@ const fillNodes = (nodes?: Geozone[]) => {
   return initial;
 };
 
-const onRightClick: TreeProps["onRightClick"] = (info) => {
-  GeozonesStore.choose(info.node.key.toString());
-};
-
 const GeozonesTree = () => {
   const zones = GeozonesStore.geozones;
 
   return (
     <Tree<Geozone>
-      fillNodes={fillNodes}
       source={zones}
+      fillNodes={fillNodes}
       onSelect={geozonesTreeSelectHandler}
-      onRightClick={onRightClick}
-      defaultSelected={"tree-geozones"}
+      onRightClick={geozonesTreeRightClickHandler}
       menu={<GeozoneMenu />}
+      defaultSelected={"tree-geozones"}
     />
   );
 };
