@@ -14,12 +14,16 @@ const Popup = ({ x, y, visible, children }: Props) => {
     return <></>;
   }
 
+  const component = (
+    <div className={wrapper} style={{ left: x, top: y }}>
+      {children}
+    </div>
+  );
+
   return (
     <>
       {createPortal(
-        <div className={wrapper} style={{ left: x, top: y }}>
-          {children}
-        </div>,
+        component,
         document.getElementById("body") as HTMLDivElement
       )}
     </>

@@ -5,6 +5,7 @@ import { toLonLat } from "ol/proj";
 
 import { Panel } from "@entities/map-misc";
 import { FeaturesStore } from "@shared/misc";
+import { EmptyInformation } from "@shared/ui";
 
 const { Text } = Typography;
 const { Panel: AntPanel } = Collapse;
@@ -37,6 +38,14 @@ const Feature = ({ geometry }: Props) => {
 
 const DrawResult = () => {
   const features = FeaturesStore.features;
+
+  if (!features.length) {
+    return (
+      <Panel>
+        <EmptyInformation />
+      </Panel>
+    );
+  }
 
   return (
     <Panel>

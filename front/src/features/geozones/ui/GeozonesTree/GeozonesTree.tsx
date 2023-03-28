@@ -2,16 +2,15 @@ import { AppstoreOutlined, BorderOutlined } from "@ant-design/icons";
 import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 
-import {
-  GeozonesStore,
-  geozonesTreeSelectHandler,
-  geozonesTreeRightClickHandler,
-} from "@entities/geozone";
+import { GeozonesStore, GeozoneMenu } from "@entities/geozone";
 import { geozoneNodes } from "@shared/assets";
 import { Geozone, Node } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
-import GeozoneMenu from "../GeozoneMenu";
+import {
+  geozonesTreeSelectHandler,
+  geozonesTreeRightClickHandler,
+} from "../../model";
 
 const fillNodes = (nodes?: Geozone[]) => {
   const initial: Node[] = cloneDeep(geozoneNodes);

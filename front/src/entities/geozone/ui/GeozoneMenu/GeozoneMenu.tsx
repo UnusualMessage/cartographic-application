@@ -1,49 +1,41 @@
-import { Polygon, toWgs84 } from "@turf/turf";
+import { Feature, FeatureCollection } from "@turf/turf";
 import { MenuProps, Menu } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { AlertsStore } from "@shared/misc";
+import { ModalsStore, GeometryType } from "@shared/misc";
 
-import { geozoneMenu, GeozonesStore } from "../../model";
-
-type ExportType = "4326" | "3857";
+import {
+  geozoneMenu,
+  GeozonesStore,
+  convertGeozones,
+  convertGeozone,
+} from "../../model";
 
 const GeozoneMenu = () => {
   const id = GeozonesStore.menuGeozoneId;
 
-  const onExport = (type: ExportType) => {
-    let geometry: Polygon | undefined = undefined;
-    const geozone = GeozonesStore.getById(id ?? "");
+  const onExport = (type: GeometryType) => {
+    let features: Feature[] = [];
 
-    if (!geozone) {
-      return;
+    if (id === "tree-geozones") {
+      features = convertGeozones(type);
+    } else {
+      const geozone = GeozonesStore.getById(id ?? "");
+
+      if (!geozone) {
+        return;
+      }
+
+      features.push(convertGeozone(geozone, type));
     }
 
-    switch (type) {
-      case "3857":
-        geometry = geozone.feature.geometry;
-        break;
-
-      case "4326":
-        geometry = toWgs84(geozone.feature.geometry);
-        break;
-    }
-
-    const exported = {
+    const exported: FeatureCollection = {
       type: "FeatureCollection",
-      features: [
-        {
-          type: "Feature",
-          geometry: geometry,
-          properties: {
-            area: geozone.area,
-          },
-        },
-      ],
+      features: features,
     };
 
-    AlertsStore.info = JSON.stringify(exported, null, 2);
-    AlertsStore.isOpen = true;
+    ModalsStore.buffer = JSON.stringify(exported, null, 2);
+    ModalsStore.open();
   };
 
   const onClick: MenuProps["onClick"] = (e) => {

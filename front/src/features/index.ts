@@ -11,6 +11,7 @@ export * as editPosts from "./edit-posts";
 export * as editSpeeds from "./edit-speeds";
 export * as editDepartments from "./edit-departments";
 export * as editTrailers from "./edit-trailers";
+export * as geozones from "./geozones";
 
 export * as exportGeozone from "./export-geozone";
 

@@ -1,8 +1,9 @@
 import { EmployeesTree } from "@entities/employee";
 import { EquipmentTree } from "@entities/equipment";
-import { GeozonesTree } from "@entities/geozone";
 import { PlansTree } from "@entities/plan";
 import { TabsList } from "@shared/misc";
+
+import { GeozonesTree } from "../../geozones";
 
 export const siderTabs: TabsList = {
   id: "sider-tabs",
