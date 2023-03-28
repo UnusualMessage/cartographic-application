@@ -1,2 +1,5 @@
 export { selectHandler as equipmentSelectHandler } from "./selectHandler";
-export { getNodes as getEquipmentNodes } from "./getNodes";
+export {
+  getNodesByType as getEquipmentNodesByType,
+  getNodesByStatus as getEquipmentNodesByStatus,
+} from "./getNodes";
