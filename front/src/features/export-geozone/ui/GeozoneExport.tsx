@@ -1,4 +1,4 @@
-import { Modal, Typography } from "antd";
+import { Modal, Typography, message } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { AlertsStore } from "@shared/misc";
@@ -9,7 +9,12 @@ const { Title } = Typography;
 
 const GeozoneExport = () => {
   const onConfirm = async () => {
-    await navigator.clipboard.writeText(AlertsStore.info);
+    try {
+      await navigator.clipboard.writeText(AlertsStore.info);
+      message.success("Геозона скопирована!");
+    } catch (Error) {
+      message.error("Ошибка копирования!");
+    }
   };
 
   const onClose = () => {
@@ -19,6 +24,7 @@ const GeozoneExport = () => {
   return (
     <Modal
       className={wrapper}
+      width={350}
       open={AlertsStore.isOpen}
       onCancel={onClose}
       onOk={onConfirm}

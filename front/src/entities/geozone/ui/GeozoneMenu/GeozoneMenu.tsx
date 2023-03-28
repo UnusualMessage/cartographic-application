@@ -6,17 +6,14 @@ import { AlertsStore } from "@shared/misc";
 
 import { geozoneMenu, GeozonesStore } from "../../model";
 
-interface Props {
-  id: string;
-  title: string;
-}
-
 type ExportType = "4326" | "3857";
 
-const GeozoneMenu = ({ id }: Props) => {
+const GeozoneMenu = () => {
+  const id = GeozonesStore.chosen;
+
   const onExport = (type: ExportType) => {
     let geometry: Polygon | undefined = undefined;
-    const geozone = GeozonesStore.getById(id);
+    const geozone = GeozonesStore.getById(id ?? "");
 
     switch (type) {
       case "3857":

@@ -1,6 +1,5 @@
 import { DownOutlined, CarOutlined, ToolOutlined } from "@ant-design/icons";
-import { Tree, Typography, message } from "antd";
-import { DirectoryTreeProps } from "antd/es/tree";
+import { Tree, Typography } from "antd";
 import { useState, Key } from "react";
 
 import {
@@ -48,10 +47,6 @@ const VectorLayersSwitch = () => {
     measurementLayerId,
   ]);
 
-  const onRightClick: DirectoryTreeProps["onRightClick"] = (info) => {
-    void message.info(info.node.title?.toString());
-  };
-
   const onCheck = (keys: Key[]) => {
     if (keys instanceof Array) {
       for (const key of keys) {
@@ -77,7 +72,6 @@ const VectorLayersSwitch = () => {
         treeData={nodes}
         checkedKeys={checkedKeys}
         onCheck={onCheck as any}
-        onRightClick={onRightClick}
         defaultExpandAll
         checkable
         showLine
