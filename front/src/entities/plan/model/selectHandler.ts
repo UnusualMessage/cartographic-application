@@ -4,7 +4,7 @@ import { TabsStore } from "@shared/misc";
 
 import PlansStore from "./PlansStore";
 
-export const plansTreeSelectHandler: TreeProps["onSelect"] = (keys, info) => {
+export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
   const node = info.selectedNodes[0];
 
   if (node.children) {

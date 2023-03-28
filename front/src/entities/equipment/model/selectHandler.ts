@@ -4,10 +4,7 @@ import { TabsStore, ViewStore } from "@shared/misc";
 
 import EquipmentStore from "./EquipmentStore";
 
-export const equipmentTreeSelectHandler: TreeProps["onSelect"] = (
-  keys,
-  info
-) => {
+export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
   const node = info.selectedNodes[0];
 
   switch (node.key) {

@@ -3,10 +3,7 @@ import { TreeProps } from "antd/es/tree";
 import GeozonesStore from "@entities/geozone/model/GeozonesStore";
 import { TabsStore, ViewStore } from "@shared/misc";
 
-export const geozonesTreeSelectHandler: TreeProps["onSelect"] = (
-  keys,
-  info
-) => {
+export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
   const node = info.selectedNodes[0];
 
   switch (node.key) {

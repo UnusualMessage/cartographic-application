@@ -1,2 +1,3 @@
 export { default as EmployeesStore } from "./EmployeesStore";
-export { employeesTreeSelectHandler } from "./employeesTreeSelectHandler";
+export { selectHandler as employeeSelectHandler } from "./selectHandler";
+export { getNodes as getEmployeeNodes } from "./getNodes";

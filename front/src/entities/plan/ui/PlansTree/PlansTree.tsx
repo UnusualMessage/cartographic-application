@@ -1,38 +1,10 @@
-import { FileOutlined } from "@ant-design/icons";
-import { cloneDeep } from "lodash";
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { planNodes } from "@shared/assets";
-import type { Node, Plan } from "@shared/misc";
+import type { Plan } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
-import { PlansStore, plansTreeSelectHandler } from "../../model";
-
-const fillNodes = (plans?: Plan[]) => {
-  const initial: Node[] = cloneDeep(planNodes);
-
-  if (!plans) {
-    return initial;
-  }
-
-  plans.forEach((plan) => {
-    const yearNode = initial[0].children?.find(
-      (node) => node.data === plan.year
-    );
-
-    if (yearNode) {
-      yearNode.children?.push({
-        key: plan.id,
-        title: plan.title,
-        icon: <FileOutlined />,
-        data: plan,
-      });
-    }
-  });
-
-  return initial;
-};
+import { PlansStore, planSelectHandler, getPlanNodes } from "../../model";
 
 const PlansTree = () => {
   const plans = PlansStore.plans;
@@ -43,9 +15,9 @@ const PlansTree = () => {
 
   return (
     <Tree<Plan>
-      fillNodes={fillNodes}
+      fillNodes={getPlanNodes}
       source={plans}
-      onSelect={plansTreeSelectHandler}
+      onSelect={planSelectHandler}
       defaultSelected={"tree-plans"}
     />
   );

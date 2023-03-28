@@ -1,2 +1,3 @@
 export { default as EquipmentStore } from "./EquipmentStore";
-export { equipmentTreeSelectHandler } from "./equipmentTreeSelectHandler";
+export { selectHandler as equipmentSelectHandler } from "./selectHandler";
+export { getNodes as getEquipmentNodes } from "./getNodes";
