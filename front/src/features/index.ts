@@ -1,4 +1,4 @@
-export * as interactions from "./map-interactions";
+export * as interactions from "@entities/interactions";
 export * as layers from "./map-layers";
 export * as menu from "./map-context-menu";
 export * as tooltip from "./map-tooltip";

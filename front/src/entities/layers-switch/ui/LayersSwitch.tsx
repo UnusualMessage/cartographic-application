@@ -1,4 +1,3 @@
-import { Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
@@ -25,11 +24,11 @@ const LayersSwitch = () => {
 
   return (
     <Condition truthy={context?.fastControls?.layers}>
-      <Space className={classes} direction={"vertical"}>
+      <div className={classes}>
         <BaseLayersSwitch />
         <WeatherLayersSwitch />
         <VectorLayersSwitch />
-      </Space>
+      </div>
     </Condition>
   );
 };
