@@ -1,7 +1,8 @@
+import Chart from "./Chart";
 import Popup from "./Popup";
 import Progress from "./Progress";
 
-export { Progress, Popup };
+export { Progress, Popup, Chart };
 export { default as Resize } from "./Resize";
 export { default as TableButtons } from "./TableButtons";
 export { default as Condition } from "./Condition";
