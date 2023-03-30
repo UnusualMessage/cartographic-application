@@ -1,16 +1,19 @@
 import { Pie } from "@ant-design/plots";
+import { observer } from "mobx-react-lite";
 
-import type { Plan } from "@shared/misc";
 import { Chart } from "@shared/ui";
 
 import { wrapper, inner } from "./chart.module.scss";
-import { getPlansChartConfig } from "../../model";
+import { getPlansChartConfig, PlansStore } from "../../model";
 
-interface Props {
-  plans: Plan[];
-}
+const PlansChart = () => {
+  const currentYear = PlansStore.chosenYear;
+  let plans = PlansStore.plans;
 
-const PlansChart = ({ plans }: Props) => {
+  if (currentYear) {
+    plans = plans.filter((plan) => plan.year === currentYear);
+  }
+
   const config = getPlansChartConfig(plans);
 
   return (
@@ -20,4 +23,4 @@ const PlansChart = ({ plans }: Props) => {
   );
 };
 
-export default PlansChart;
+export default observer(PlansChart);
