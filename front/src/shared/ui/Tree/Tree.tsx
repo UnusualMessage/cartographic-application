@@ -3,12 +3,13 @@ import { MenuProps, Tree as AntTree } from "antd";
 import type { TreeProps } from "antd/es/tree";
 import classNames from "classnames";
 import { cloneDeep } from "lodash";
-import { ChangeEventHandler, Key, useEffect, useState } from "react";
+import { Key, useEffect, useState } from "react";
 
 import { tree, wrapper } from "./tree.module.scss";
 import { TreeHeader } from "./ui";
 import { findNode, usePopup } from "../../lib";
 import { Group, Node } from "../../misc";
+import { Loader } from "../placeholders";
 import Popup from "../Popup";
 
 interface Props<T> {
@@ -35,7 +36,8 @@ const Tree = <T,>({
   const defaultGroup =
     groups.find((group) => group.defaultSelected) ?? groups[0];
 
-  const [nodes, setNodes] = useState(defaultGroup.getNodes(source));
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [group, setGroup] = useState(defaultGroup);
   const [searchValue, setSearchValue] = useState<string>("");
   const [position, visible, onPopup] = usePopup();
 
@@ -47,15 +49,11 @@ const Tree = <T,>({
     }
   };
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setSearchValue(e.target.value);
-  };
-
   const onGroupSwitch: MenuProps["onClick"] = (context) => {
     const group = groups.find((group) => group.key === context.key);
 
     if (group) {
-      setNodes(group.getNodes(source));
+      setGroup(group);
     }
   };
 
@@ -83,8 +81,8 @@ const Tree = <T,>({
   };
 
   useEffect(() => {
-    setNodes(groups[0].getNodes(source));
-  }, [source]);
+    setNodes(group.getNodes(source));
+  }, [source, group]);
 
   useEffect(() => {
     filter(nodes);
@@ -94,12 +92,17 @@ const Tree = <T,>({
     return { key: group.key, label: group.label };
   });
 
+  if (!nodes.length) {
+    return <Loader />;
+  }
+
   return (
     <div className={classNames(wrapper, className)}>
       <TreeHeader
         menuItems={items}
+        selected={group.key}
         onGroupSwitch={onGroupSwitch}
-        onSearchChange={onChange}
+        onSearchChange={(e) => setSearchValue(e.target.value)}
         searchValue={searchValue}
       />
 

@@ -1,5 +1,5 @@
 import { GroupOutlined } from "@ant-design/icons";
-import { Dropdown, Input, MenuProps } from "antd";
+import { Dropdown, Input, MenuProps, Button } from "antd";
 import { ChangeEventHandler } from "react";
 
 import { wrapper } from "./header.module.scss";
@@ -9,12 +9,14 @@ interface Props {
   menuItems: MenuProps["items"];
   onGroupSwitch: MenuProps["onClick"];
   searchValue?: string;
+  selected: string;
   onSearchChange: ChangeEventHandler<HTMLInputElement>;
 }
 
 const TreeHeader = ({
   menuItems,
   searchValue,
+  selected,
   onSearchChange,
   onGroupSwitch,
 }: Props) => {
@@ -27,10 +29,15 @@ const TreeHeader = ({
       />
       <Condition truthy={menuItems ? menuItems.length > 1 : false}>
         <Dropdown
-          menu={{ items: menuItems, selectable: true, onClick: onGroupSwitch }}
+          menu={{
+            items: menuItems,
+            selectable: true,
+            onClick: onGroupSwitch,
+            selectedKeys: [selected],
+          }}
           trigger={["click"]}
         >
-          <GroupOutlined />
+          <Button icon={<GroupOutlined />} type="text" />
         </Dropdown>
       </Condition>
     </div>
