@@ -1,11 +1,10 @@
-import { Stroke, Fill, RegularShape } from "ol/style";
+import { Stroke, Fill } from "ol/style";
+import CircleStyle from "ol/style/Circle";
 import Style, { StyleFunction } from "ol/style/Style";
 
 const style = new Style({
-  image: new RegularShape({
-    points: 3,
-    radius: 8,
-    angle: Math.PI / 2,
+  image: new CircleStyle({
+    radius: 5,
 
     stroke: new Stroke({
       color: "#1677FF",

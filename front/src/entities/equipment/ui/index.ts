@@ -1,3 +1,4 @@
 import SearchEquipment from "./SearchEquipment";
+import StatusesChart from "./StatusesChart";
 
-export { SearchEquipment };
+export { SearchEquipment, StatusesChart };
