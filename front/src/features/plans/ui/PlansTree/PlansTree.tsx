@@ -21,6 +21,7 @@ const PlansTree = () => {
       key: uuid(),
       label: "По году",
       getNodes: getPlanNodes,
+      defaultSelected: true,
     },
   ];
 

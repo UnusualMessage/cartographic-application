@@ -1,13 +1,13 @@
 import { observer } from "mobx-react-lite";
 import { v4 as uuid } from "uuid";
 
-import { GeozonesStore, GeozoneMenu } from "@entities/geozone";
+import { GeozoneMenu, GeozonesStore } from "@entities/geozone";
 import { Geozone, Group } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
 import {
-  geozoneSelectHandler,
   geozoneClickHandler,
+  geozoneSelectHandler,
   getGeozoneNodes,
 } from "../../model";
 
@@ -19,6 +19,7 @@ const GeozonesTree = () => {
       key: uuid(),
       label: "По порядку",
       getNodes: getGeozoneNodes,
+      defaultSelected: true,
     },
   ];
 

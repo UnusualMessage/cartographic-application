@@ -5,7 +5,7 @@ import { EmployeesStore } from "@entities/employee/model";
 import { Employee, Group } from "@shared/misc";
 import { Tree } from "@shared/ui";
 
-import { getEmployeeNodes, employeeSelectHandler } from "../../model";
+import { employeeSelectHandler, getEmployeeNodes } from "../../model";
 
 const EmployeesTree = () => {
   const employees = EmployeesStore.employees;
@@ -15,6 +15,7 @@ const EmployeesTree = () => {
       key: uuid(),
       label: "По подразделению",
       getNodes: getEmployeeNodes,
+      defaultSelected: true,
     },
   ];
 

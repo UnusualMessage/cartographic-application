@@ -1,14 +1,14 @@
-import { DownOutlined, GroupOutlined } from "@ant-design/icons";
-import { Tree as AntTree, Input, Dropdown, MenuProps } from "antd";
+import { DownOutlined } from "@ant-design/icons";
+import { MenuProps, Tree as AntTree } from "antd";
 import type { TreeProps } from "antd/es/tree";
 import classNames from "classnames";
 import { cloneDeep } from "lodash";
-import { useEffect, useState, ChangeEventHandler, Key } from "react";
+import { ChangeEventHandler, Key, useEffect, useState } from "react";
 
-import { wrapper, tree, search } from "./tree.module.scss";
-import { usePopup, findNode } from "../../lib";
-import { Node, Group } from "../../misc";
-import Condition from "../Condition";
+import { tree, wrapper } from "./tree.module.scss";
+import { TreeHeader } from "./ui";
+import { findNode, usePopup } from "../../lib";
+import { Group, Node } from "../../misc";
 import Popup from "../Popup";
 
 interface Props<T> {
@@ -32,7 +32,10 @@ const Tree = <T,>({
   className,
   menu,
 }: Props<T>) => {
-  const [nodes, setNodes] = useState(groups[0].getNodes(source));
+  const defaultGroup =
+    groups.find((group) => group.defaultSelected) ?? groups[0];
+
+  const [nodes, setNodes] = useState(defaultGroup.getNodes(source));
   const [searchValue, setSearchValue] = useState<string>("");
   const [position, visible, onPopup] = usePopup();
 
@@ -93,17 +96,12 @@ const Tree = <T,>({
 
   return (
     <div className={classNames(wrapper, className)}>
-      <div className={search}>
-        <Input placeholder={"Искать..."} onChange={onChange} />
-        <Condition truthy={items.length > 1}>
-          <Dropdown
-            menu={{ items: items, selectable: true, onClick: onGroupSwitch }}
-            trigger={["click"]}
-          >
-            <GroupOutlined />
-          </Dropdown>
-        </Condition>
-      </div>
+      <TreeHeader
+        menuItems={items}
+        onGroupSwitch={onGroupSwitch}
+        onSearchChange={onChange}
+        searchValue={searchValue}
+      />
 
       <DirectoryTree
         className={tree}

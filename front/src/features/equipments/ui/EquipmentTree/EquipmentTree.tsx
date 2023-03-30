@@ -7,8 +7,8 @@ import { Tree } from "@shared/ui";
 
 import {
   equipmentSelectHandler,
-  getEquipmentNodesByType,
   getEquipmentNodesByStatus,
+  getEquipmentNodesByType,
 } from "../../model";
 
 const EquipmentTree = () => {
@@ -18,6 +18,7 @@ const EquipmentTree = () => {
       key: uuid(),
       label: "По типу",
       getNodes: getEquipmentNodesByType,
+      defaultSelected: true,
     },
 
     {
