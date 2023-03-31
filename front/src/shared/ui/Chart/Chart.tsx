@@ -2,7 +2,7 @@ import { Typography } from "antd";
 import classNames from "classnames";
 import { PropsWithChildren } from "react";
 
-import { wrapper, main } from "./chart.module.scss";
+import { wrapper, main, title as titleStyle } from "./chart.module.scss";
 
 interface Props extends PropsWithChildren {
   outerClass: string;
@@ -13,12 +13,20 @@ interface Props extends PropsWithChildren {
 const { Text } = Typography;
 
 const Chart = ({ innerClass, outerClass, title, children }: Props) => {
+  let text = <></>;
+
+  if (title) {
+    text = (
+      <Text className={titleStyle} strong>
+        {title}
+      </Text>
+    );
+  }
+
   return (
     <div className={classNames(wrapper, outerClass)}>
-      <div className={classNames(main, innerClass)}>
-        {title ?? <Text strong>{title}</Text>}
-        {children}
-      </div>
+      {text}
+      <div className={classNames(main, innerClass)}>{children}</div>
     </div>
   );
 };

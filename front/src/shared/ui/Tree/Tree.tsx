@@ -5,10 +5,11 @@ import classNames from "classnames";
 import { cloneDeep } from "lodash";
 import { Key, useEffect, useState } from "react";
 
-import { tree, wrapper } from "./tree.module.scss";
+import { tree, wrapper, full } from "./tree.module.scss";
 import { TreeHeader } from "./ui";
 import { findNode, usePopup } from "../../lib";
 import { Group, Node } from "../../misc";
+import Condition from "../Condition";
 import { Loader } from "../placeholders";
 import Popup from "../Popup";
 
@@ -18,6 +19,7 @@ interface Props<T> {
   source?: T[];
   onSelect?: TreeProps["onSelect"];
   onRightClick?: TreeProps["onRightClick"];
+  searchable?: boolean;
   className?: string;
   menu?: JSX.Element;
 }
@@ -30,6 +32,7 @@ const Tree = <T,>({
   onSelect,
   onRightClick,
   defaultSelected,
+  searchable,
   className,
   menu,
 }: Props<T>) => {
@@ -96,18 +99,25 @@ const Tree = <T,>({
     return <Loader />;
   }
 
+  const treeClasses = classNames({
+    [tree]: true,
+    [full]: !searchable,
+  });
+
   return (
     <div className={classNames(wrapper, className)}>
-      <TreeHeader
-        menuItems={items}
-        selected={group.key}
-        onGroupSwitch={onGroupSwitch}
-        onSearchChange={(e) => setSearchValue(e.target.value)}
-        searchValue={searchValue}
-      />
+      <Condition truthy={searchable}>
+        <TreeHeader
+          menuItems={items}
+          selected={group.key}
+          onGroupSwitch={onGroupSwitch}
+          onSearchChange={(e) => setSearchValue(e.target.value)}
+          searchValue={searchValue}
+        />
+      </Condition>
 
       <DirectoryTree
-        className={tree}
+        className={treeClasses}
         switcherIcon={<DownOutlined />}
         onSelect={onSelect}
         onRightClick={onContextMenu}

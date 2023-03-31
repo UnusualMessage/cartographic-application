@@ -27,6 +27,7 @@ const TreeHeader = ({
         onChange={onSearchChange}
         value={searchValue}
       />
+
       <Condition truthy={menuItems ? menuItems.length > 1 : false}>
         <Dropdown
           menu={{

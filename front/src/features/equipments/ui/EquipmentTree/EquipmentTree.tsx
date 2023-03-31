@@ -34,6 +34,7 @@ const EquipmentTree = () => {
       source={equipment}
       groups={groups}
       defaultSelected={"tree-equipments"}
+      searchable
     />
   );
 };

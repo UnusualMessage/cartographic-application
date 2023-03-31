@@ -2,18 +2,19 @@
 
 .wrapper {
   display: flex;
+  flex-direction: column;
 
   height: 100%;
   overflow: auto;
 
   border: 1px solid $border-color;
 
-  .main {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-
+  .title {
+    margin: 0 auto;
     text-align: center;
+  }
+
+  .main {
     margin: auto;
   }
 }

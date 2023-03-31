@@ -31,6 +31,7 @@ const GeozonesTree = () => {
       onRightClick={geozoneClickHandler}
       menu={<GeozoneMenu />}
       defaultSelected={"tree-geozones"}
+      searchable
     />
   );
 };

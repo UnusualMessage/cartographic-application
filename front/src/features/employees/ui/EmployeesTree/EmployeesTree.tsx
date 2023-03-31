@@ -25,6 +25,7 @@ const EmployeesTree = () => {
       onSelect={employeeSelectHandler}
       defaultSelected={"tree-employees"}
       groups={groups}
+      searchable
     />
   );
 };

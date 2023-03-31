@@ -17,6 +17,7 @@ export const references: References = {
     key: "geozones",
     title: "Геозоны",
     link: "geozones",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -24,6 +25,7 @@ export const references: References = {
     key: "stores",
     title: "Места хранения",
     link: "stores",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -31,6 +33,7 @@ export const references: References = {
     key: "destinations",
     title: "Места назначения",
     link: "destinations",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -38,6 +41,7 @@ export const references: References = {
     key: "worksCategories",
     title: "Типы работ",
     link: "works-categories",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -45,6 +49,7 @@ export const references: References = {
     key: "worksPlans",
     title: "Смены работ",
     link: "works-plans",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -52,6 +57,7 @@ export const references: References = {
     key: "annualPlans",
     title: "Ежегодные планы",
     link: "annual-plans",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -59,6 +65,7 @@ export const references: References = {
     key: "operationalPlans",
     title: "Оперативные планы",
     link: "operational-plans",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -66,6 +73,7 @@ export const references: References = {
     key: "groupSchedule",
     title: "Групповые графики",
     link: "group-schedule",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -73,6 +81,7 @@ export const references: References = {
     key: "groupPlans",
     title: "Групповые планы",
     link: "group-plans",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -80,6 +89,7 @@ export const references: References = {
     key: "goodsGroups",
     title: "Группы товаров",
     link: "goods-groups",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -87,6 +97,7 @@ export const references: References = {
     key: "cropsCategories",
     title: "Типы культур",
     link: "crops-categories",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -94,6 +105,7 @@ export const references: References = {
     key: "goods",
     title: "Товары",
     link: "goods",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -101,6 +113,7 @@ export const references: References = {
     key: "crops",
     title: "Культуры",
     link: "crops",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -122,6 +135,7 @@ export const references: References = {
     key: "users",
     title: "Учетные записи",
     link: "users",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -129,6 +143,7 @@ export const references: References = {
     key: "roles",
     title: "Права",
     link: "roles",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -136,6 +151,7 @@ export const references: References = {
     key: "equipment",
     title: "Техника",
     link: "equipment",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -143,6 +159,7 @@ export const references: References = {
     key: "equipmentTypes",
     title: "Типы техники",
     link: "equipment-types",
+    disabled: true,
     component: <EmptyInformation />,
   },
 
@@ -164,6 +181,7 @@ export const references: References = {
     key: "mounteds",
     title: "Навесные агрегаты",
     link: "mounteds",
+    disabled: true,
     component: <EmptyInformation />,
   },
 };

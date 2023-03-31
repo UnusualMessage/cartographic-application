@@ -31,6 +31,7 @@ const PlansTree = () => {
       groups={groups}
       onSelect={planSelectHandler}
       defaultSelected={"tree-plans"}
+      searchable
     />
   );
 };

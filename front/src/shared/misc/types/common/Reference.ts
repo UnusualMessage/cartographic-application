@@ -2,6 +2,7 @@ export interface Reference {
   key: string;
   link: string;
   title: string;
+  disabled?: boolean;
   component: JSX.Element;
 }
 
