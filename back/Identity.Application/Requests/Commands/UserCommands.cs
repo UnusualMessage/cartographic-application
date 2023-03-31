@@ -5,5 +5,5 @@ using MassTransit.Mediator;
 
 namespace Identity.Application.Requests.Commands;
 
-public record CreateUser([Required] string Login, [Required] string Password, Roles Roles) 
+public record CreateUser([Required] string Login, [Required] string Password, Roles Role) 
     : Request<UserResponse>;

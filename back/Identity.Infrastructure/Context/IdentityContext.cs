@@ -10,11 +10,15 @@ public class IdentityContext : DbContext
 {
     static IdentityContext()
     {
-        NpgsqlConnection.GlobalTypeMapper.MapEnum<Roles>();
     }
 
     public IdentityContext(DbContextOptions options) : base(options)
     {
+        var dataSourceBuilder =
+            new NpgsqlDataSourceBuilder(
+                "Host=localhost;Port=5432;Database=identity;Username=postgres;Password=20102001");
+        dataSourceBuilder.MapEnum<Roles>();
+        using var dataSource = dataSourceBuilder.Build();
     }
 
     public DbSet<User>? Users { get; set; }
