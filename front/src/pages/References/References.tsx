@@ -5,6 +5,7 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
+import { isObjectKey } from "@shared/lib";
 import { Group, Reference } from "@shared/misc";
 import { Tree, Loader } from "@shared/ui";
 import { ModeratorAside as Aside } from "@widgets/asides";
@@ -20,9 +21,13 @@ const ReferencesTree = () => {
   const navigate = useNavigate();
 
   const handleClick: TreeProps["onSelect"] = (keys, info) => {
-    const reference = references.find(
-      (reference) => info.selectedNodes[0].key === reference.id
-    );
+    const key = info.selectedNodes[0].key.toString();
+
+    let reference: Reference | undefined;
+
+    if (isObjectKey(key, references)) {
+      reference = references[key];
+    }
 
     if (reference) {
       navigate(reference.link);
