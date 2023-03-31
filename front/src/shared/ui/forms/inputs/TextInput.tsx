@@ -36,6 +36,7 @@ const TextInput = ({ label, name, control, rules }: Props) => {
         placeholder={"Введите текст..."}
         status={invalid ? "error" : ""}
         className={wrapper}
+        size={"small"}
         {...field}
       />
     </Form.Item>
