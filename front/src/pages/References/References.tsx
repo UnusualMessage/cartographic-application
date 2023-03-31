@@ -13,14 +13,10 @@ import { Content } from "@widgets/wrappers";
 
 import { referenceNodes, references } from "./model";
 
-const fillNodes = () => {
-  return cloneDeep(referenceNodes);
-};
-
 const ReferencesTree = () => {
   const navigate = useNavigate();
 
-  const handleClick: TreeProps["onSelect"] = (keys, info) => {
+  const onSelect: TreeProps["onSelect"] = (keys, info) => {
     const key = info.selectedNodes[0].key.toString();
 
     let reference: Reference | undefined;
@@ -38,11 +34,11 @@ const ReferencesTree = () => {
     {
       key: uuid(),
       label: "По порядку",
-      getNodes: fillNodes,
+      getNodes: () => cloneDeep(referenceNodes),
     },
   ];
 
-  return <Tree groups={groups} onSelect={handleClick} defaultSelected={""} />;
+  return <Tree groups={groups} onSelect={onSelect} defaultSelected={""} />;
 };
 
 const References = () => {
