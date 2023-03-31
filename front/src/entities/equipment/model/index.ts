@@ -1,2 +1,2 @@
 export { default as EquipmentStore } from "./EquipmentStore";
-export { getChartConfig as getStatusesChartConfig } from "./getChartConfig";
+export { getStatusesChartConfig, getTypesChartConfig } from "./getChartConfig";

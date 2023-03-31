@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import { TabPage } from "@entities/info-tabs-page";
-import { PlansTab, StatusesTab } from "@features/tabs";
+import { PlansTab, StatusesTab, TypesTab } from "@features/tabs";
 import { TabsList } from "@shared/misc";
 import { EmptyInformation } from "@shared/ui";
 
@@ -95,7 +95,7 @@ export const infoTabs: TabsList[] = [
       {
         key: uuid(),
         label: "Статусы по типам",
-        children: <EmptyTab />,
+        children: <TypesTab />,
       },
 
       {
