@@ -1,11 +1,10 @@
-import { FeatureLike } from "ol/Feature";
 import BaseLayer from "ol/layer/Base";
 import { XYZ, OSM, BingMaps } from "ol/source";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
 import { weatherLayers, baseLayers } from "../../../assets";
-import { LayersStore, MapStore, FeaturesStore } from "../../stores";
+import { LayersStore, MapStore } from "../../stores";
 import type { BaseLayer as BaseLayerType, WeatherLayer } from "../../types";
 
 class LayersService {
@@ -152,11 +151,6 @@ class LayersService {
 
   public removeLayer(layer: BaseLayer) {
     MapStore.removeLayer(layer);
-  }
-
-  public removeFeatureFromLayer(feature: FeatureLike, id: string) {
-    FeaturesStore.removeFeature(feature);
-    LayersStore.removeFeatureFromLayer(feature, id);
   }
 }
 

@@ -25,18 +25,6 @@ class InteractionsStore {
     return this._interacting;
   }
 
-  public get isGeozonesActive() {
-    return this.type === "geozones" || this.type === "cursor";
-  }
-
-  public get isMeasurementActive() {
-    return (
-      this.type === "measure-length" ||
-      this.type === "measure-area" ||
-      this.type === "measure-coordinate"
-    );
-  }
-
   public startInteraction() {
     this._interacting = true;
   }

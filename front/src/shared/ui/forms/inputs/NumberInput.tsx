@@ -36,6 +36,7 @@ const NumberInput = ({ label, rules, name, control }: Props) => {
         placeholder={"Введите число..."}
         status={invalid ? "error" : ""}
         className={wrapper}
+        size={"small"}
         {...field}
       />
     </Form.Item>

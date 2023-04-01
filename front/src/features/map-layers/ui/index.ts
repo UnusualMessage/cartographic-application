@@ -1,1 +1,3 @@
-export { default as Layers } from "./Layers";
+import Layers from "./Layers";
+
+export { Layers };

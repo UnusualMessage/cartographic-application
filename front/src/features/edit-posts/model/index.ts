@@ -1,3 +1,2 @@
-export { getPostDefaultValues } from "./getPostDefaultValues";
-export { createPost } from "./createPost";
-export { updatePost } from "./updatePost";
+export { getDefaultValues as getPostDefaultValues } from "./getDefaultValues";
+export { create as createPost, update as updatePost } from "./form";

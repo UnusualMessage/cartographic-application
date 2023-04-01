@@ -1,0 +1,21 @@
+@use "../../../../shared/styles/constants" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 370px;
+  max-height: calc(100% - $header-height - $resize-size - 10px);
+  padding: 20px;
+
+  overflow: auto;
+
+  background-color: white;
+  box-shadow: 1px 2px 8px 0 rgb(13 15 16 / 30%);
+
+  position: absolute;
+  left: 5px;
+  top: 58px;
+  z-index: 2;
+}

@@ -1,4 +1,4 @@
 import GeozoneMenu from "./GeozoneMenu";
+import SearchGeozone from "./SearchGeozone";
 
-export { default as GeozonesTree } from "./GeozonesTree";
-export { GeozoneMenu };
+export { SearchGeozone, GeozoneMenu };

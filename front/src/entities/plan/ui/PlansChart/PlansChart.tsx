@@ -1,46 +1,26 @@
 import { Pie } from "@ant-design/plots";
-import classNames from "classnames";
+import { observer } from "mobx-react-lite";
 
-import type { Plan } from "@shared/misc";
-import { chart, main } from "@shared/styles";
+import { Chart } from "@shared/ui";
 
-import { wrapper, content } from "./chart.module.scss";
+import { wrapper, inner } from "./chart.module.scss";
+import { getPlansChartConfig, PlansStore } from "../../model";
 
-interface Props {
-  plans: Plan[];
-}
+const PlansChart = () => {
+  const currentYear = PlansStore.chosenYear;
+  let plans = PlansStore.plans;
 
-const PlansChart = ({ plans }: Props) => {
-  const data = plans.map((plan) => {
-    return {
-      title: `${plan.type}-${plan.year}`,
-      value: plan.target,
-    };
-  });
+  if (currentYear) {
+    plans = plans.filter((plan) => plan.year === currentYear);
+  }
 
-  const config = {
-    appendPadding: 10,
-    data: data,
-    angleField: "value",
-    colorField: "title",
-    radius: 0.8,
-    label: {
-      type: "outer",
-    },
-    interactions: [
-      {
-        type: "element-active",
-      },
-    ],
-  };
+  const config = getPlansChartConfig(plans);
 
   return (
-    <div className={classNames(chart, wrapper)}>
-      <div className={classNames(main, content)}>
-        <Pie {...config} />
-      </div>
-    </div>
+    <Chart outerClass={wrapper} innerClass={inner}>
+      <Pie {...config} />
+    </Chart>
   );
 };
 
-export default PlansChart;
+export default observer(PlansChart);

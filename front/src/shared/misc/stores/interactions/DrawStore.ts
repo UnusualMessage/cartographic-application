@@ -8,6 +8,7 @@ import {
   getDrawCoordinateStyle,
   getDrawLengthStyle,
   getDrawAreaStyle,
+  getGeozoneStyle,
 } from "../../../lib";
 import {
   LengthMeasurementInjector,
@@ -72,6 +73,7 @@ class DrawStore {
     const draw = new Draw({
       type: "Polygon",
       source: source,
+      style: getGeozoneStyle,
     });
 
     const drawInjector: ListenersInjector<DrawEvent> = new DrawInjector(draw);
@@ -88,9 +90,7 @@ class DrawStore {
       source: source,
       trace: true,
       type: "Polygon",
-      style: (feature) => {
-        return getDrawAreaStyle(feature, 0);
-      },
+      style: getDrawAreaStyle,
     });
 
     const drawInjector: ListenersInjector<DrawEvent> =
@@ -107,9 +107,7 @@ class DrawStore {
     const draw = new Draw({
       source: source,
       type: "LineString",
-      style: (feature) => {
-        return getDrawLengthStyle(feature, 0);
-      },
+      style: getDrawLengthStyle,
     });
 
     const drawInjector: ListenersInjector<DrawEvent> =
@@ -126,9 +124,7 @@ class DrawStore {
     const draw = new Draw({
       source: source,
       type: "Point",
-      style: (feature) => {
-        return getDrawCoordinateStyle(feature, 0);
-      },
+      style: getDrawCoordinateStyle,
     });
 
     const drawInjector: ListenersInjector<DrawEvent> =

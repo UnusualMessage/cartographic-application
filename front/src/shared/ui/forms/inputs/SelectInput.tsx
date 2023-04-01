@@ -39,6 +39,7 @@ const SelectInput = ({ options, label, rules, name, control }: Props) => {
         placeholder={"Выберите..."}
         status={invalid ? "error" : ""}
         className={wrapper}
+        size={"small"}
         {...field}
       >
         {options.map((option) => {

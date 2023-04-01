@@ -1,3 +1,2 @@
-export { getEmployeeDefaultValues } from "./getEmployeeDefaultValues";
-export { createEmployee } from "./createEmployee";
-export { updateEmployee } from "./updateEmployee";
+export { getDefaultValues as getEmployeeDefaultValues } from "./getDefaultValues";
+export { create as createEmployee, update as updateEmployee } from "./form";

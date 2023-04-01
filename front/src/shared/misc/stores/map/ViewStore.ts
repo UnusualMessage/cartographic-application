@@ -3,10 +3,10 @@ import { View } from "ol";
 import { Coordinate } from "ol/coordinate";
 
 class ViewStore {
-  private _view: View | null;
+  private _view?: View;
 
   constructor() {
-    this._view = null;
+    this._view = undefined;
 
     makeAutoObservable(this);
   }
@@ -22,17 +22,19 @@ class ViewStore {
 
   public dispose() {
     this._view?.dispose();
-    this._view = null;
+    this._view = undefined;
   }
 
-  public centerTo(coordinate: Coordinate) {
-    this.stopAnimation();
+  public centerWithZoomTo(zoom: number) {
+    return (coordinate: Coordinate) => {
+      this.stopAnimation();
 
-    this._view?.animate({
-      center: coordinate,
-      zoom: 10,
-      duration: 2000,
-    });
+      this._view?.animate({
+        center: coordinate,
+        zoom: zoom,
+        duration: 1000,
+      });
+    };
   }
 
   public zoomIn() {

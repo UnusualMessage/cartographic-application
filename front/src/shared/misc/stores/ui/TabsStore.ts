@@ -1,13 +1,8 @@
 import { makeAutoObservable } from "mobx";
 
 class TabsStore {
-  private _footerTabActive: boolean;
-  private _siderTabActive: boolean;
-
-  private _active: boolean;
-
   private _siderTabsListId: string;
-  private _siderTabId?: string;
+  private _siderTabId: string;
 
   private _footerTabsListId: string;
   private _footerTabId?: string;
@@ -18,11 +13,6 @@ class TabsStore {
 
     this._siderTabsListId = "sider-tabs";
     this._siderTabId = "sider-plans";
-
-    this._footerTabActive = true;
-    this._siderTabActive = true;
-
-    this._active = true;
 
     makeAutoObservable(this);
   }
@@ -51,8 +41,11 @@ class TabsStore {
     this._siderTabId = id;
   }
 
-  public set active(active: boolean) {
-    this._active = active;
+  public switchFooterTabs(id: string) {
+    if (this.footerTabsListId !== id) {
+      this.footerTabsListId = id;
+      this.footerTabId = undefined;
+    }
   }
 }
 

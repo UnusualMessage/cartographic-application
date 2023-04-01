@@ -83,7 +83,7 @@ const DialogForm = ({
         afterClose={afterClose}
         destroyOnClose
       >
-        <Form onFinish={handleSubmit} layout={"vertical"}>
+        <Form onFinish={handleSubmit} layout={"vertical"} size={"small"}>
           {children}
         </Form>
       </Modal>

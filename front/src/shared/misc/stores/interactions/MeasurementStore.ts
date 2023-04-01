@@ -2,12 +2,12 @@ import { makeAutoObservable } from "mobx";
 
 class MeasurementStore {
   private _area: string;
-  private _length: string;
+  private _distance: string;
   private _coordinate: string;
 
   constructor() {
     this._area = "0.0 м\xB2";
-    this._length = "0.0 м";
+    this._distance = "0.0 м";
     this._coordinate = "Широта: 0° Долгота: 0°";
 
     makeAutoObservable(this);
@@ -21,12 +21,12 @@ class MeasurementStore {
     this._area = value;
   }
 
-  public get length() {
-    return this._length;
+  public get distance() {
+    return this._distance;
   }
 
-  public set length(value) {
-    this._length = value;
+  public set distance(value) {
+    this._distance = value;
   }
 
   public get coordinate() {
@@ -35,6 +35,24 @@ class MeasurementStore {
 
   public set coordinate(value) {
     this._coordinate = value;
+  }
+
+  public reset() {
+    this.resetCoordinate();
+    this.resetArea();
+    this.resetDistance();
+  }
+
+  public resetArea() {
+    this._area = "0.0 м\xB2";
+  }
+
+  public resetDistance() {
+    this._distance = "0.0 м";
+  }
+
+  public resetCoordinate() {
+    this._coordinate = "Широта: 0° Долгота: 0°";
   }
 }
 

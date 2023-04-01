@@ -6,14 +6,14 @@ class ControlsStore {
   private _layersPanelActive: boolean;
 
   private _currentMapControl: MapControl;
-  private _currentSearchCategory: "fields" | "equipment" | "geocoder";
-  private _currentLayerCategory: "weather" | "base";
+  private _currentSearchCategory: "geozones" | "equipment" | "geocoder";
+  private _currentLayerCategory: "weather" | "base" | "vector";
 
   constructor() {
     this._layersPanelActive = false;
 
     this._currentMapControl = "search";
-    this._currentSearchCategory = "fields";
+    this._currentSearchCategory = "equipment";
     this._currentLayerCategory = "base";
 
     makeAutoObservable(this);

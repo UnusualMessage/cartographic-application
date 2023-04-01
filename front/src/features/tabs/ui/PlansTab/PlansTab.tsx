@@ -10,13 +10,7 @@ import { Table } from "@shared/ui";
 import { table } from "./tab.module.scss";
 
 const PlansTab = () => {
-  let plans = PlansStore.plans;
-
-  const currentYear = PlansStore.chosenYear;
-
-  if (currentYear) {
-    plans = PlansStore.plans.filter((plan) => plan.year === currentYear);
-  }
+  const plans = PlansStore.plans;
 
   return (
     <TabPage>
@@ -25,7 +19,7 @@ const PlansTab = () => {
         columns={planTable}
         className={table}
       />
-      <PlansChart plans={plans} />
+      <PlansChart />
     </TabPage>
   );
 };

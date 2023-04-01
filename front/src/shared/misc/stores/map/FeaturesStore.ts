@@ -12,18 +12,18 @@ class FeaturesStore {
   private _features: FeatureLike[];
   private _selectedFeatures: FeatureLike[];
   private _copiedFeatures: FeatureLike[];
-  private _clickedFeature: FeatureLike | null;
+  private _clickedFeature?: FeatureLike;
 
   constructor() {
+    this._features = [];
     this._selectedFeatures = [];
     this._copiedFeatures = [];
-    this._features = [];
-    this._clickedFeature = null;
+    this._clickedFeature = undefined;
 
     makeAutoObservable(this);
   }
 
-  public set clickedFeature(value: FeatureLike | null) {
+  public set clickedFeature(value: FeatureLike | undefined) {
     this._clickedFeature = value;
   }
 
@@ -51,10 +51,34 @@ class FeaturesStore {
     this._copiedFeatures = copiedFeatures;
   }
 
-  public clearBuffer() {
-    this._clickedFeature = null;
-    this._copiedFeatures = [];
-    this._selectedFeatures = [];
+  public addFeatureToLayer(
+    feature: FeatureLike,
+    layer: VectorLayer<VectorSource>
+  ) {
+    this.addFeature(feature);
+    layer.getSource()?.addFeature(feature as Feature);
+  }
+
+  public addFeature(feature: FeatureLike) {
+    const temp = this.features.slice();
+    temp.push(feature);
+    this.features = temp;
+  }
+
+  public removeFeature(feature: FeatureLike) {
+    this.features = this.features.filter(
+      (item) => item.getId() !== feature.getId()
+    );
+  }
+
+  public updateFeature(feature: FeatureLike) {
+    this.features = this.features.map((item) => {
+      if (item.getId() === feature.getId()) {
+        return feature;
+      } else {
+        return item;
+      }
+    });
   }
 
   public copySelectedFeatures() {
@@ -63,13 +87,14 @@ class FeaturesStore {
 
   public removeSelectedFeatures(targetLayer: VectorLayer<VectorSource>) {
     const source = targetLayer.getSource();
+    let copy = this.features;
 
     this.selectedFeatures.forEach((selected) => {
+      copy = copy.filter((item) => item.getId() !== selected.getId());
       source?.removeFeature(selected as Feature);
-      this.features = this._features.filter(
-        (feature) => feature.getId() !== selected.getId()
-      );
     });
+
+    this.features = copy;
   }
 
   public insertCopiedFeatures(
@@ -100,10 +125,22 @@ class FeaturesStore {
     this.features = copy;
   }
 
-  public removeFeature(feature: FeatureLike) {
-    this.features = this.features.filter(
-      (currentFeature) => currentFeature.getId() !== feature.getId()
-    );
+  public clear(targetLayer: VectorLayer<VectorSource>) {
+    this.clearBuffer();
+
+    const source = targetLayer.getSource();
+
+    this.features.forEach((feature) => {
+      source?.removeFeature(feature as Feature);
+    });
+
+    this.features = [];
+  }
+
+  public clearBuffer() {
+    this._clickedFeature = undefined;
+    this._copiedFeatures = [];
+    this._selectedFeatures = [];
   }
 }
 

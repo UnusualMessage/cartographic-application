@@ -42,7 +42,7 @@ const Geocoder = () => {
   };
 
   const handleSelect = (value: string, item: Option) => {
-    ViewStore.centerTo(fromLonLat(item.value));
+    ViewStore.centerWithZoomTo(12)(fromLonLat(item.value));
     setValue(value);
   };
 

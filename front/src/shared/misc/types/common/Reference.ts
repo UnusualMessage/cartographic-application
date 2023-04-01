@@ -1,5 +1,38 @@
 export interface Reference {
-  id: string;
+  key: string;
   link: string;
+  title: string;
+  disabled?: boolean;
   component: JSX.Element;
+}
+
+export interface References {
+  departments: Reference;
+
+  geozones: Reference;
+  stores: Reference;
+  destinations: Reference;
+
+  worksCategories: Reference;
+  worksPlans: Reference;
+  annualPlans: Reference;
+  operationalPlans: Reference;
+  groupSchedule: Reference;
+  groupPlans: Reference;
+
+  goodsGroups: Reference;
+  cropsCategories: Reference;
+  goods: Reference;
+  crops: Reference;
+
+  posts: Reference;
+  employees: Reference;
+  users: Reference;
+  roles: Reference;
+
+  equipment: Reference;
+  equipmentTypes: Reference;
+  speeds: Reference;
+  trailers: Reference;
+  mounteds: Reference;
 }

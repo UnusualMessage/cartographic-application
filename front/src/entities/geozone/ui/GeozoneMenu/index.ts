@@ -1,3 +1,3 @@
-import GeozoneMenu from "@entities/geozone/ui/GeozoneMenu/GeozoneMenu";
+import GeozoneMenu from "./GeozoneMenu";
 
 export default GeozoneMenu;
