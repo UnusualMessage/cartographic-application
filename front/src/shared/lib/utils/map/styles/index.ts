@@ -1,4 +1,4 @@
-export { getGeozoneStyle } from "./getGeozoneStyle";
+export { getGeozoneStyle, getSelectStyle } from "./getGeozoneStyle";
 export {
   getVisibleCoordinateStyle,
   getDrawCoordinateStyle,
@@ -9,3 +9,4 @@ export {
   getVisibleLengthStyle,
 } from "./lengthMeasurementStyle";
 export { getMeasurementStyle } from "./getMeasurementStyle";
+export { getEquipmentStyle } from "./getEquipmentStyle";

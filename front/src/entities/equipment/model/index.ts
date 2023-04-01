@@ -1,2 +1,2 @@
 export { default as EquipmentStore } from "./EquipmentStore";
-export { getEquipmentTreeClickHandler } from "./getEquipmentTreeClickHandler";
+export { getStatusesChartConfig, getTypesChartConfig } from "./getChartConfig";

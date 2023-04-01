@@ -1,39 +1,50 @@
 import { observer } from "mobx-react-lite";
-import { StyleLike } from "ol/style/Style";
 
+import { EquipmentStore } from "@entities/equipment";
 import { GeozonesStore } from "@entities/geozone";
-import { geozonesLayerId, measurementLayerId } from "@shared/constants";
-import { getMeasurementStyle } from "@shared/lib";
-import { InteractionsStore } from "@shared/misc";
-import { Condition } from "@shared/ui";
-
-import BaseLayer from "./BaseLayer";
-import VectorLayer from "./VectorLayer";
-import WeatherLayer from "./WeatherLayer";
-import { Drawing, Measurement } from "../../map-interactions";
+import { Drawing, Measurement } from "@entities/interactions";
+import { BaseLayer, WeatherLayer, VectorLayer } from "@entities/layers";
+import {
+  geozonesLayerId,
+  measurementLayerId,
+  transportLayerId,
+} from "@shared/constants";
+import {
+  getMeasurementStyle,
+  getEquipmentStyle,
+  getGeozoneStyle,
+} from "@shared/lib";
 
 const Layers = () => {
-  const geozones = GeozonesStore.geozones.map((item) => item.feature);
+  const geozoneFeatures = GeozonesStore.geozones.map(
+    (geozone) => geozone.feature
+  );
 
-  const measurementStyleFunction: StyleLike = (feature) => {
-    return getMeasurementStyle(feature, 0);
-  };
+  const equipmentFeatures = EquipmentStore.equipment.map(
+    (item) => item.feature
+  );
 
   return (
     <>
       <BaseLayer />
       <WeatherLayer />
 
-      <VectorLayer id={geozonesLayerId} data={geozones}>
-        <Condition truthy={InteractionsStore.isGeozonesActive}>
-          <Drawing />
-        </Condition>
+      <VectorLayer
+        id={geozonesLayerId}
+        features={geozoneFeatures}
+        style={getGeozoneStyle}
+      >
+        <Drawing />
       </VectorLayer>
 
-      <VectorLayer id={measurementLayerId} style={measurementStyleFunction}>
-        <Condition truthy={InteractionsStore.isMeasurementActive}>
-          <Measurement />
-        </Condition>
+      <VectorLayer
+        id={transportLayerId}
+        features={equipmentFeatures}
+        style={getEquipmentStyle}
+      />
+
+      <VectorLayer id={measurementLayerId} style={getMeasurementStyle}>
+        <Measurement />
       </VectorLayer>
     </>
   );

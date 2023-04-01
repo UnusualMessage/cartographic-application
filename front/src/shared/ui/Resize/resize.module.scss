@@ -5,16 +5,16 @@
 
   .button-vertical {
     position: absolute;
-    top: calc(22% + $header-height);
+    top: calc(50% - $header-height);
     left: 3px;
-    z-index: 3;
+    z-index: 1;
   }
 
   .button-horizontal {
     position: absolute;
     top: -32px;
     left: 50%;
-    z-index: 3;
+    z-index: 1;
   }
 
   .opened {

@@ -1,6 +1,7 @@
 import { Translate } from "ol/interaction";
 import { TranslateEvent } from "ol/interaction/Translate";
 
+import { FeaturesStore } from "../../stores";
 import type {
   ListenersInjector,
   TranslateEvent as TranslateEventType,
@@ -13,34 +14,43 @@ class TranslateInjector implements ListenersInjector<TranslateEventType> {
     this._translate = translate;
   }
 
-  public addEventListener() {
-    return this.addTranslate();
+  public addEventListener(event: TranslateEventType) {
+    switch (event) {
+      case "translateend":
+        return this.addTranslateEnd();
+      case "translatestart":
+        return this.addTranslateStart();
+    }
   }
 
-  private addTranslate() {
-    const onTranslateEnd = (event: TranslateEvent) => {
+  private addTranslateStart() {
+    const onTranslateStart = (event: TranslateEvent) => {
       console.log(event);
-      // const modifiedFeatures = event.features.getArray() as Feature<Polygon>[];
-      //
-      // const ids = modifiedFeatures.map((item) => item.get("id"));
-      // const coordinates = modifiedFeatures.map((item) => {
-      //   const geometry = item.getGeometry();
-      //
-      //   if (geometry) {
-      //     return geometry.getCoordinates();
-      //   }
-      //
-      //   return;
-      // });
-      //
-      // // GeozonesStore.translate(ids, coordinates);
     };
 
-    this._translate.on("translatestart", onTranslateEnd);
+    this._translate.on("translatestart", onTranslateStart);
     console.log("translatestart injected");
 
     return () => {
-      this._translate.un("translatestart", onTranslateEnd);
+      this._translate.un("translatestart", onTranslateStart);
+      console.log("translatestart removed");
+    };
+  }
+
+  private addTranslateEnd() {
+    const onTranslateEnd = (event: TranslateEvent) => {
+      const features = event.features.getArray();
+
+      for (const feature of features) {
+        FeaturesStore.updateFeature(feature);
+      }
+    };
+
+    this._translate.on("translateend", onTranslateEnd);
+    console.log("translatestart injected");
+
+    return () => {
+      this._translate.un("translateend", onTranslateEnd);
       console.log("translatestart removed");
     };
   }

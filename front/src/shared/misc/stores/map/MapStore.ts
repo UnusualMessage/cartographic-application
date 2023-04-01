@@ -39,25 +39,11 @@ class MapStore {
   }
 
   public setCrosshairCursor() {
-    const map = this._map;
-
-    const el = map?.getViewport();
-    const canvas = el?.getElementsByTagName("canvas").item(0);
-
-    if (canvas) {
-      canvas.style.cursor = "crosshair";
-    }
+    this.setCursor("crosshair");
   }
 
   public setDefaultCursor() {
-    const map = this._map;
-
-    const el = map?.getViewport();
-    const canvas = el?.getElementsByTagName("canvas").item(0);
-
-    if (canvas) {
-      canvas.style.cursor = "default";
-    }
+    this.setCursor("default");
   }
 
   public initMap(target: HTMLDivElement, view?: View) {
@@ -157,6 +143,17 @@ class MapStore {
   public removeLayer(layer: BaseLayer) {
     this._map?.removeLayer(layer);
     layer.dispose();
+  }
+
+  private setCursor(cursor: string) {
+    const map = this._map;
+
+    const el = map?.getViewport();
+    const canvas = el?.getElementsByTagName("canvas").item(0);
+
+    if (canvas) {
+      canvas.style.cursor = cursor;
+    }
   }
 }
 

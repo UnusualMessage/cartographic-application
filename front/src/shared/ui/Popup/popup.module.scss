@@ -1,0 +1,7 @@
+@use "/src/shared/styles/constants" as *;
+
+.wrapper {
+  z-index: 10;
+  position: absolute;
+  border: 1px solid $border-color;
+}

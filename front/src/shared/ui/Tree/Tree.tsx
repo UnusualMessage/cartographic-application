@@ -1,122 +1,136 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Tree as AntTree, Input } from "antd";
+import { MenuProps, Tree as AntTree } from "antd";
 import type { TreeProps } from "antd/es/tree";
 import classNames from "classnames";
 import { cloneDeep } from "lodash";
-import {
-  useEffect,
-  useState,
-  ChangeEventHandler,
-  useCallback,
-  Key,
-} from "react";
+import { Key, useEffect, useState } from "react";
 
-import { wrapper, tree, search } from "./tree.module.scss";
-import { Node } from "../../misc";
+import { tree, wrapper, full } from "./tree.module.scss";
+import { TreeHeader } from "./ui";
+import { findNode, usePopup } from "../../lib";
+import { Group, Node } from "../../misc";
+import Condition from "../Condition";
+import { Loader } from "../placeholders";
+import Popup from "../Popup";
 
 interface Props<T> {
-  fillNodes: (source?: T[]) => Node[];
   defaultSelected: Key;
+  groups: Group<T>[];
   source?: T[];
-  handleSelect?: TreeProps["onSelect"];
+  onSelect?: TreeProps["onSelect"];
+  onRightClick?: TreeProps["onRightClick"];
+  searchable?: boolean;
   className?: string;
+  menu?: JSX.Element;
 }
 
 const { DirectoryTree } = AntTree;
 
-const fit = (node: Node, search: string) => {
-  const regexp = / /g;
-  return !!node.title
-    ?.toString()
-    .toLowerCase()
-    .replace(regexp, "")
-    .includes(search.toLowerCase().replace(regexp, ""));
-};
-
-const findNode = (node: Node, search: string): boolean => {
-  if (search === "") {
-    return true;
-  }
-
-  if (fit(node, search)) {
-    return true;
-  }
-
-  if (node.children) {
-    const nodes = node.children;
-
-    for (const node of nodes) {
-      if (findNode(node, search)) {
-        return true;
-      }
-    }
-  } else {
-    return fit(node, search);
-  }
-
-  return false;
-};
-
 const Tree = <T,>({
-  fillNodes,
   source,
-  handleSelect,
+  groups,
+  onSelect,
+  onRightClick,
   defaultSelected,
+  searchable,
   className,
+  menu,
 }: Props<T>) => {
-  const [nodes, setNodes] = useState(() => fillNodes(source));
-  const [searchValue, setSearchValue] = useState<string>("");
+  const defaultGroup =
+    groups.find((group) => group.defaultSelected) ?? groups[0];
 
-  const onChange: ChangeEventHandler<HTMLInputElement> = (e) => {
-    setSearchValue(e.target.value);
+  const [nodes, setNodes] = useState<Node[]>([]);
+  const [group, setGroup] = useState(defaultGroup);
+  const [searchValue, setSearchValue] = useState<string>("");
+  const [position, visible, onPopup] = usePopup();
+
+  const onContextMenu: TreeProps["onRightClick"] = (info) => {
+    onPopup(info.event);
+
+    if (onRightClick) {
+      onRightClick(info);
+    }
   };
 
-  const filter = useCallback(
-    (nodes: Node[]) => {
-      const mark = (node: Node) => {
-        node.disabled = !findNode(node, searchValue);
+  const onGroupSwitch: MenuProps["onClick"] = (context) => {
+    const group = groups.find((group) => group.key === context.key);
 
-        if (node.children) {
-          for (const child of node.children) {
-            mark(child);
-          }
+    if (group) {
+      setGroup(group);
+    }
+  };
+
+  const filter = (nodes: Node[]) => {
+    const mark = (node: Node) => {
+      node.disabled = !findNode(node, searchValue);
+
+      if (node.children) {
+        for (const child of node.children) {
+          mark(child);
         }
-      };
+      }
+    };
 
-      const copy = cloneDeep(nodes);
-      const root = copy[0];
+    const copy = cloneDeep(nodes);
 
-      mark(root);
-      setNodes(copy);
-    },
-    [searchValue]
-  );
+    if (!copy.length) {
+      return;
+    }
+
+    const root = copy[0];
+
+    mark(root);
+    setNodes(copy);
+  };
 
   useEffect(() => {
-    setNodes(fillNodes(source));
-  }, [source]);
+    setNodes(group.getNodes(source));
+  }, [source, group]);
 
   useEffect(() => {
     filter(nodes);
   }, [searchValue]);
 
+  const items = groups.map((group) => {
+    return { key: group.key, label: group.label };
+  });
+
+  if (!nodes.length) {
+    return <Loader />;
+  }
+
+  const treeClasses = classNames({
+    [tree]: true,
+    [full]: !searchable,
+  });
+
   return (
     <div className={classNames(wrapper, className)}>
-      <div className={search}>
-        <Input placeholder={"Искать..."} onChange={onChange} />
-      </div>
+      <Condition truthy={searchable}>
+        <TreeHeader
+          menuItems={items}
+          selected={group.key}
+          onGroupSwitch={onGroupSwitch}
+          onSearchChange={(e) => setSearchValue(e.target.value)}
+          searchValue={searchValue}
+        />
+      </Condition>
+
       <DirectoryTree
-        className={tree}
-        showIcon={true}
-        autoExpandParent={false}
+        className={treeClasses}
         switcherIcon={<DownOutlined />}
-        onSelect={handleSelect}
+        onSelect={onSelect}
+        onRightClick={onContextMenu}
         treeData={nodes}
         expandAction={false}
         defaultSelectedKeys={[defaultSelected]}
         defaultExpandAll
+        showIcon
         showLine
       />
+      <Popup visible={visible} x={position.x} y={position.y}>
+        {menu}
+      </Popup>
     </div>
   );
 };

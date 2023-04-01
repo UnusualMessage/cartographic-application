@@ -17,17 +17,22 @@ interface Props {
 
 export const useInteraction = (
   callback: AddInteractionCallback,
+  allowedTypes: InteractionType[],
   { source, map, type }: Props
 ) => {
   useEffect(() => {
-    let clean: Callback;
+    if (!allowedTypes.includes(type)) {
+      return;
+    }
+
+    let cleanup: Callback;
 
     if (source && map) {
-      clean = callback(map, source);
+      cleanup = callback(map, source);
     }
 
     return () => {
-      invoke(clean);
+      invoke(cleanup);
     };
   }, [map, type, source]);
 };

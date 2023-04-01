@@ -1,149 +1,187 @@
 import React from "react";
-import { v4 as uuid } from "uuid";
 
-import { Reference } from "@shared/misc";
+import { References } from "@shared/misc";
+import { EmptyInformation } from "@shared/ui";
 
-import {
-  Speeds,
-  Partners,
-  Departments,
-  StorePlaces,
-  Geozones,
-  DestinationPlaces,
-  WorksCategories,
-  WorksPlans,
-  AnnualPlans,
-  OperationalPlans,
-  GroupSchedule,
-  GroupPlans,
-  GoodsGroups,
-  Crops,
-  Technologies,
-  Goods,
-  Posts,
-  Employees,
-  Trailers,
-  Mounteds,
-} from "../ui";
+import { Departments, Posts, Employees, Speeds, Trailers } from "../ui";
 
-export const references: Reference[] = [
-  {
-    id: uuid(),
-    link: "partners",
-    component: <Partners />,
-  },
-
-  {
-    id: uuid(),
+export const references: References = {
+  departments: {
+    key: "departments",
+    title: "Подразделения",
     link: "departments",
     component: <Departments />,
   },
 
-  {
-    id: uuid(),
+  geozones: {
+    key: "geozones",
+    title: "Геозоны",
     link: "geozones",
-    component: <Geozones />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
-    link: "store-places",
-    component: <StorePlaces />,
+  stores: {
+    key: "stores",
+    title: "Места хранения",
+    link: "stores",
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
-    link: "dest-places",
-    component: <DestinationPlaces />,
+  destinations: {
+    key: "destinations",
+    title: "Места назначения",
+    link: "destinations",
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  worksCategories: {
+    key: "worksCategories",
+    title: "Типы работ",
     link: "works-categories",
-    component: <WorksCategories />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  worksPlans: {
+    key: "worksPlans",
+    title: "Смены работ",
     link: "works-plans",
-    component: <WorksPlans />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  annualPlans: {
+    key: "annualPlans",
+    title: "Ежегодные планы",
     link: "annual-plans",
-    component: <AnnualPlans />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  operationalPlans: {
+    key: "operationalPlans",
+    title: "Оперативные планы",
     link: "operational-plans",
-    component: <OperationalPlans />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  groupSchedule: {
+    key: "groupSchedule",
+    title: "Групповые графики",
     link: "group-schedule",
-    component: <GroupSchedule />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  groupPlans: {
+    key: "groupPlans",
+    title: "Групповые планы",
     link: "group-plans",
-    component: <GroupPlans />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  goodsGroups: {
+    key: "goodsGroups",
+    title: "Группы товаров",
     link: "goods-groups",
-    component: <GoodsGroups />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
-    link: "crops",
-    component: <Crops />,
+  cropsCategories: {
+    key: "cropsCategories",
+    title: "Типы культур",
+    link: "crops-categories",
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
-    link: "technologies",
-    component: <Technologies />,
-  },
-
-  {
-    id: uuid(),
+  goods: {
+    key: "goods",
+    title: "Товары",
     link: "goods",
-    component: <Goods />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
 
-  {
-    id: uuid(),
+  crops: {
+    key: "crops",
+    title: "Культуры",
+    link: "crops",
+    disabled: true,
+    component: <EmptyInformation />,
+  },
+
+  posts: {
+    key: "posts",
+    title: "Должности",
     link: "posts",
     component: <Posts />,
   },
 
-  {
-    id: uuid(),
+  employees: {
+    key: "employees",
+    title: "Сотрудники",
     link: "employees",
     component: <Employees />,
   },
 
-  {
-    id: uuid(),
-    link: "speed",
+  users: {
+    key: "users",
+    title: "Учетные записи",
+    link: "users",
+    disabled: true,
+    component: <EmptyInformation />,
+  },
+
+  roles: {
+    key: "roles",
+    title: "Права",
+    link: "roles",
+    disabled: true,
+    component: <EmptyInformation />,
+  },
+
+  equipment: {
+    key: "equipment",
+    title: "Техника",
+    link: "equipment",
+    disabled: true,
+    component: <EmptyInformation />,
+  },
+
+  equipmentTypes: {
+    key: "equipmentTypes",
+    title: "Типы техники",
+    link: "equipment-types",
+    disabled: true,
+    component: <EmptyInformation />,
+  },
+
+  speeds: {
+    key: "speeds",
+    title: "Скоростные режимы",
+    link: "speeds",
     component: <Speeds />,
   },
 
-  {
-    id: uuid(),
+  trailers: {
+    key: "trailers",
+    title: "Прицепы",
     link: "trailers",
     component: <Trailers />,
   },
 
-  {
-    id: uuid(),
+  mounteds: {
+    key: "mounteds",
+    title: "Навесные агрегаты",
     link: "mounteds",
-    component: <Mounteds />,
+    disabled: true,
+    component: <EmptyInformation />,
   },
-];
+};

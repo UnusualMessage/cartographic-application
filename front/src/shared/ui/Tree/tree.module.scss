@@ -6,17 +6,14 @@
   width: 100%;
   height: 100%;
 
-  .search {
-    width: 100%;
-
-    padding: 5px;
-    height: 40px;
-  }
-
   .tree {
     width: 100%;
 
     height: calc(100% - 40px);
     overflow: auto;
+  }
+
+  .full {
+    height: 100%;
   }
 }

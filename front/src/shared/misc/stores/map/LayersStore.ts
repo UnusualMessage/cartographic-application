@@ -90,6 +90,14 @@ class LayersStore {
     );
   }
 
+  public switchVectorLayer(id: string) {
+    const layer = this.getVectorLayerById(id);
+
+    if (layer) {
+      layer.setVisible(!layer.getVisible());
+    }
+  }
+
   public removeFeatureFromLayer(feature: FeatureLike, id: string) {
     const layer = this._vectorLayers.find((layer) => layer.get("id") === id);
 

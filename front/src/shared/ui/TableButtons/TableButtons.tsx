@@ -1,10 +1,9 @@
-import { Space } from "antd";
 import { PropsWithChildren } from "react";
 
 import { wrapper } from "./buttons.module.scss";
 
 const TableButtons = ({ children }: PropsWithChildren) => {
-  return <Space className={wrapper}>{children}</Space>;
+  return <div className={wrapper}>{children}</div>;
 };
 
 export default TableButtons;
