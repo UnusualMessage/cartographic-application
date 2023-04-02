@@ -10,6 +10,7 @@ public class ApplicationContext : DbContext
     public DbSet<Equipment>? Equipments { get; set; }
     public DbSet<Post>? Posts { get; set; }
     public DbSet<Speed>? Speeds { get; set; }
+    public DbSet<Trailer>? Trailers { get; set; }
 
     public DbSet<Department>? Departments { get; set; }
     public DbSet<Organization>? Organizations { get; set; }
@@ -27,5 +28,6 @@ public class ApplicationContext : DbContext
         modelBuilder.ApplyConfiguration(new OrganizationsConfiguration());
         modelBuilder.ApplyConfiguration(new DepartmentsConfiguration());
         modelBuilder.ApplyConfiguration(new SpeedsConfiguration());
+        modelBuilder.ApplyConfiguration(new TrailersConfiguration());
     }
 }

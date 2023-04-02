@@ -1,4 +1,5 @@
 ﻿using Main.Application.MappingProfiles;
+using Main.Application.Responses;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Main.Application.Extensions;
@@ -13,6 +14,7 @@ public static class MappingProfilesConfiguration
             .AddAutoMapper(typeof(PostProfile))
             .AddAutoMapper(typeof(EquipmentProfile))
             .AddAutoMapper(typeof(DepartmentProfile))
-            .AddAutoMapper(typeof(SpeedProfile));
+            .AddAutoMapper(typeof(SpeedProfile))
+            .AddAutoMapper(typeof(TrailerResponse));
     }
 }
