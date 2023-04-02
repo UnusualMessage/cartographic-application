@@ -2,13 +2,12 @@ import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 
 import { employees } from "@shared/assets";
-import { isError } from "@shared/lib";
 import {
   Employee,
   CreateEmployee,
   UpdateEmployee,
   ApiStore,
-  ResponseService,
+  FetchService,
 } from "@shared/misc";
 
 import EmployeesService from "./EmployeesService";
@@ -19,21 +18,25 @@ class EmployeesStore
   private _employees: Employee[];
   private _employee?: Employee;
 
-  private _apiService: EmployeesService;
-  private _responseService: ResponseService;
+  private _api: EmployeesService;
+  private _fetch: FetchService;
 
   constructor() {
     this._employees = employees;
     this._employee = undefined;
 
-    this._apiService = new EmployeesService();
-    this._responseService = new ResponseService();
+    this._api = new EmployeesService();
+    this._fetch = new FetchService();
 
     makeAutoObservable(this);
   }
 
   public get employees() {
     return this._employees;
+  }
+
+  public set employees(value) {
+    this._employees = value;
   }
 
   public get employee() {
@@ -45,32 +48,67 @@ class EmployeesStore
   }
 
   public async getAll() {
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.getAll();
+      },
+      (result) => {
+        this.employees = result;
+      }
+    );
+
     return this._employees;
   }
 
   public async getById(id: string) {
-    const response = await this._apiService.getById(id);
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.getById(id);
+      },
+      (result) => {
+        this.employee = result;
+      }
+    );
 
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    this._employee = response;
-    this._responseService.invokeSuccess();
-    return response;
+    return this._employee;
   }
 
   public async add(entity: CreateEmployee) {
-    const response = await this._apiService.post(entity);
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.post(entity);
+      },
+      (result) => {
+        this._employees.push(result);
+      }
+    );
+  }
 
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
+  public async update(entity: UpdateEmployee) {
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.put(entity);
+      },
+      (result) => {
+        const index = this._employees.findIndex(
+          (item) => item.id === entity.id
+        );
+        this._employees[index] = result;
+      }
+    );
+  }
 
-    this._employees.push(response);
-    this._responseService.invokeSuccess();
+  public async remove(id: string) {
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.delete(id);
+      },
+      (result) => {
+        this._employees = this._employees.filter(
+          (item) => item.id !== result.id
+        );
+      }
+    );
   }
 
   public async duplicate(id: string) {
@@ -80,32 +118,6 @@ class EmployeesStore
       const copy = { ...record, id: uuid() };
       this._employees.push(copy);
     }
-  }
-
-  public async update(entity: UpdateEmployee) {
-    const response = await this._apiService.put(entity);
-
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    const index = this._employees.findIndex((item) => item.id === entity.id);
-    this._employees[index] = response;
-
-    this._responseService.invokeSuccess();
-  }
-
-  public async remove(id: string) {
-    const response = await this._apiService.delete(id);
-
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    this._employees = this._employees.filter((item) => item.id !== response.id);
-    this._responseService.invokeSuccess();
   }
 }
 

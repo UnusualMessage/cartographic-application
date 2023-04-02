@@ -2,13 +2,12 @@ import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 
 import { departments } from "@shared/assets";
-import { isError } from "@shared/lib";
 import {
   Department,
   CreateDepartment,
   UpdateDepartment,
   ApiStore,
-  ResponseService,
+  FetchService,
 } from "@shared/misc";
 
 import DepartmentsService from "./DepartmentsService";
@@ -19,21 +18,25 @@ class DepartmentsStore
   private _departments: Department[];
   private _department?: Department;
 
-  private _responseService: ResponseService;
-  private _apiService: DepartmentsService;
+  private _api: DepartmentsService;
+  private _fetch: FetchService;
 
   constructor() {
     this._departments = departments;
     this._department = undefined;
 
-    this._responseService = new ResponseService();
-    this._apiService = new DepartmentsService();
+    this._api = new DepartmentsService();
+    this._fetch = new FetchService();
 
     makeAutoObservable(this);
   }
 
   public get departments() {
     return this._departments;
+  }
+
+  public set departments(value) {
+    this._departments = value;
   }
 
   public get department() {
@@ -45,32 +48,67 @@ class DepartmentsStore
   }
 
   public async getAll() {
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.getAll();
+      },
+      (result: Department[]) => {
+        this.departments = result;
+      }
+    );
+
     return this._departments;
   }
 
   public async getById(id: string) {
-    const response = await this._apiService.getById(id);
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.getById(id);
+      },
+      (result: Department) => {
+        this.department = result;
+      }
+    );
 
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    this._department = response;
-    this._responseService.invokeSuccess();
-    return response;
+    return this._department;
   }
 
   public async add(entity: CreateDepartment) {
-    const response = await this._apiService.post(entity);
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.post(entity);
+      },
+      (result: Department) => {
+        this._departments.push(result);
+      }
+    );
+  }
 
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
+  public async update(entity: UpdateDepartment) {
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.put(entity);
+      },
+      (result) => {
+        const index = this._departments.findIndex(
+          (item) => item.id === entity.id
+        );
+        this._departments[index] = result;
+      }
+    );
+  }
 
-    this._departments.push(response);
-    this._responseService.invokeSuccess();
+  public async remove(id: string) {
+    await this._fetch.handleRequest(
+      () => {
+        return this._api.delete(id);
+      },
+      (result) => {
+        this._departments = this._departments.filter(
+          (item) => item.id !== result.id
+        );
+      }
+    );
   }
 
   public async duplicate(id: string) {
@@ -80,34 +118,6 @@ class DepartmentsStore
       const copy = { ...record, id: uuid() };
       this._departments.push(copy);
     }
-  }
-
-  public async update(entity: UpdateDepartment) {
-    const response = await this._apiService.put(entity);
-
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    const index = this._departments.findIndex((item) => item.id === entity.id);
-    this._departments[index] = response;
-
-    this._responseService.invokeSuccess();
-  }
-
-  public async remove(id: string) {
-    const response = await this._apiService.delete(id);
-
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    this._departments = this._departments.filter(
-      (item) => item.id !== response.id
-    );
-    this._responseService.invokeSuccess();
   }
 }
 

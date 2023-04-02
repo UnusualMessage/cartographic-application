@@ -1,4 +1,4 @@
 import EntitiesService from "./EntitiesService";
-import ResponseService from "./ResponseService";
+import FetchService from "./FetchService";
 
-export { ResponseService, EntitiesService };
+export { FetchService, EntitiesService };

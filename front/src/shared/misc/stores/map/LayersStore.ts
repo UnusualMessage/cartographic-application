@@ -1,6 +1,4 @@
 import { makeAutoObservable } from "mobx";
-import { Feature } from "ol";
-import { FeatureLike } from "ol/Feature";
 import TileLayer from "ol/layer/Tile";
 import VectorLayer from "ol/layer/Vector";
 import TileSource from "ol/source/Tile";
@@ -95,14 +93,6 @@ class LayersStore {
 
     if (layer) {
       layer.setVisible(!layer.getVisible());
-    }
-  }
-
-  public removeFeatureFromLayer(feature: FeatureLike, id: string) {
-    const layer = this._vectorLayers.find((layer) => layer.get("id") === id);
-
-    if (layer) {
-      layer.getSource()?.removeFeature(feature as Feature);
     }
   }
 }

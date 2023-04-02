@@ -1,24 +1,25 @@
 import { makeAutoObservable } from "mobx";
 
 import { users } from "@shared/assets";
-import { ResponseService, AuthenticateUser, User } from "@shared/misc";
+import { AuthenticateUser, User, FetchService } from "@shared/misc";
 
 import AuthService from "./AuthService";
 
 class AuthStore {
   private _entered: boolean;
   private _accessToken: string;
-  private _authService: AuthService;
-  private _responseService: ResponseService;
   private _user?: User;
+
+  private _api: AuthService;
+  private _fetch: FetchService;
 
   constructor() {
     this._entered = true;
     this._user = users[1];
     this._accessToken = "";
 
-    this._authService = new AuthService();
-    this._responseService = new ResponseService();
+    this._api = new AuthService();
+    this._fetch = new FetchService();
 
     makeAutoObservable(this);
   }
@@ -35,12 +36,12 @@ class AuthStore {
     const account = users.find((user) => user.login === data.login);
 
     if (!account) {
-      this._responseService.invokeError("Пользователь не найден");
+      this._fetch.invokeError("Пользователь не найден");
       this.logout();
       return;
     }
 
-    this._responseService.invokeSuccess();
+    this._fetch.invokeSuccess();
     this.login("");
     this._user = account;
   };
