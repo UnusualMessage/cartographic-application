@@ -6,7 +6,6 @@ export * as mainControls from "./map-main-controls";
 export * as fastControls from "./map-fast-controls";
 
 export * as editEmployees from "./edit-employees";
-export * as editPartners from "./edit-partners";
 export * as editPosts from "./edit-posts";
 export * as editSpeeds from "./edit-speeds";
 export * as editDepartments from "./edit-departments";

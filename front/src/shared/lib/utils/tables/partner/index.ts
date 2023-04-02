@@ -1,1 +1,0 @@
-export { mapPartnerToTable } from "./mapPartnerToTable";

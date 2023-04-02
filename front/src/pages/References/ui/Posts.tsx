@@ -10,7 +10,7 @@ import {
 } from "@features/edit-posts";
 import { postTable } from "@shared/assets";
 import { mapPostToTable } from "@shared/lib";
-import { TablePartner, TablePost } from "@shared/misc";
+import { TablePost } from "@shared/misc";
 import { Table, TableButtons } from "@shared/ui";
 
 const Posts = () => {
@@ -27,7 +27,7 @@ const Posts = () => {
 
   return (
     <>
-      <Table<TablePartner>
+      <Table<TablePost>
         items={posts.map(mapPostToTable)}
         columns={postTable}
         setItems={onSelection}
