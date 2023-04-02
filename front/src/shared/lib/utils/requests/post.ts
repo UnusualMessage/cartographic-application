@@ -1,25 +1,24 @@
-export const post = async (
-  model: unknown,
-  url: string,
-  route: string,
-  query: string,
-  token = ""
-) => {
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  headers.append("Authorization", `Bearer ${token}`);
+import { formatRequest } from "./formatRequest";
+import { PostRequestOptions } from "../../../misc";
+
+export const post = async ({
+  model,
+  url,
+  route,
+  query,
+  token,
+}: PostRequestOptions) => {
+  const { api, headers } = formatRequest(url, route, query, token);
 
   const options: RequestInit = {
+    headers,
     method: "POST",
     credentials: "include",
     mode: "cors",
-    headers,
     body: JSON.stringify(model),
   };
 
-  query = query ? "?" + query : "";
-
-  const request = new Request(`${url}/${route}?${query}`, options);
+  const request = new Request(api, options);
   const response = await fetch(request);
 
   return response.json();

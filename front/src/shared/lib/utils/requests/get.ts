@@ -1,22 +1,17 @@
-export const get = async (
-  url: string,
-  route: string,
-  query?: string,
-  token = ""
-) => {
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  headers.append("Authorization", `Bearer ${token}`);
+import { formatRequest } from "./formatRequest";
+import { GetRequestOptions } from "../../../misc";
+
+export const get = async ({ url, route, query, token }: GetRequestOptions) => {
+  const { api, headers } = formatRequest(url, route, query, token);
 
   const options: RequestInit = {
+    headers,
     method: "GET",
     mode: "cors",
     credentials: "include",
   };
 
-  query = query ? "?" + query : "";
-
-  const request = new Request(`${url}/${route}/${query}`, options);
+  const request = new Request(api, options);
   const response = await fetch(request);
 
   return response.json();

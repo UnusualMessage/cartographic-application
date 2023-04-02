@@ -1,13 +1,14 @@
-export const put = async (
-  model: unknown,
-  url: string,
-  route: string,
-  query: string,
-  token = ""
-) => {
-  const headers = new Headers();
-  headers.append("Content-Type", "application/json");
-  headers.append("Authorization", `Bearer ${token}`);
+import { formatRequest } from "./formatRequest";
+import { PutRequestOptions } from "../../../misc";
+
+export const put = async ({
+  model,
+  url,
+  route,
+  query,
+  token,
+}: PutRequestOptions) => {
+  const { api, headers } = formatRequest(url, route, query, token);
 
   const options = {
     method: "PUT",
@@ -15,7 +16,7 @@ export const put = async (
     body: JSON.stringify(model),
   };
 
-  const request = new Request(`${url}/${route}?${query}`, options);
+  const request = new Request(api, options);
   const response = await fetch(request);
 
   return response.json();
