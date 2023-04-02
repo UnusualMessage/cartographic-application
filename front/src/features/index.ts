@@ -1,9 +1,4 @@
-export * as interactions from "@entities/interactions";
-export * as layers from "./map-layers";
-export * as menu from "./map-context-menu";
-export * as tooltip from "./map-tooltip";
-export * as mainControls from "./map-main-controls";
-export * as fastControls from "./map-fast-controls";
+export * as map from "./map";
 
 export * as edit from "./edit";
 
