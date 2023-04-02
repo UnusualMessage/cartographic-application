@@ -12,6 +12,7 @@ public static class MappingProfilesConfiguration
             .AddAutoMapper(typeof(OrganizationProfile))
             .AddAutoMapper(typeof(PostProfile))
             .AddAutoMapper(typeof(EquipmentProfile))
-            .AddAutoMapper(typeof(DepartmentProfile));
+            .AddAutoMapper(typeof(DepartmentProfile))
+            .AddAutoMapper(typeof(SpeedProfile));
     }
 }

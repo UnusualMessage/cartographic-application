@@ -10,11 +10,11 @@ namespace Main.API.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class DepartmentsController : ControllerBase
+public class SpeedsController : ControllerBase
 {
     private readonly IMediator _mediator;
 
-    public DepartmentsController(IMediator mediator)
+    public SpeedsController(IMediator mediator)
     {
         _mediator = mediator;
     }
@@ -23,20 +23,20 @@ public class DepartmentsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
-        var departments = await _mediator.SendRequest(new GetDepartments(model));
-        return Ok(departments.Departments);
+        var speeds = await _mediator.SendRequest(new GetSpeeds(model));
+        return Ok(speeds.Speeds);
     }
 
     [AllowAnonymous]
     [HttpGet("{id:guid}")]
     public async Task<IActionResult> Get([FromRoute] Guid id)
     {
-        return Ok(await _mediator.SendRequest(new GetDepartment(id)));
+        return Ok(await _mediator.SendRequest(new GetSpeed(id)));
     }
 
     [AllowAnonymous]
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CreateDepartment request)
+    public async Task<IActionResult> Post([FromBody] CreateSpeed request)
     {
         return Ok(await _mediator.SendRequest(request));
     }
@@ -45,12 +45,12 @@ public class DepartmentsController : ControllerBase
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> Delete([FromRoute] Guid id)
     {
-        return Ok(await _mediator.SendRequest(new DeleteDepartment(id)));
+        return Ok(await _mediator.SendRequest(new DeleteSpeed(id)));
     }
 
     [AllowAnonymous]
     [HttpPut]
-    public async Task<IActionResult> Put([FromBody] UpdateDepartment request)
+    public async Task<IActionResult> Put([FromBody] UpdateSpeed request)
     {
         return Ok(await _mediator.SendRequest(request));
     }
