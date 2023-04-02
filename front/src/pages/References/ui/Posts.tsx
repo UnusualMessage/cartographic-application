@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { PostsStore } from "@entities/post";
+import { PostsStore } from "@entities/business";
 import { postTable } from "@shared/assets";
 import { mapPostToTable } from "@shared/lib";
 import { TablePost } from "@shared/misc";

@@ -1,4 +1,4 @@
-import { Error } from "./responses";
+import { Error } from "../responses";
 
 export type Out<T> = Promise<T | Error>;
 

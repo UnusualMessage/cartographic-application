@@ -1,7 +1,7 @@
 import { Input } from "antd";
 import { useLocation } from "react-router-dom";
 
-import { Panel } from "@entities/map-misc";
+import { Panel } from "entities/map";
 
 const ShareResult = () => {
   const url = useLocation();

@@ -1,4 +1,4 @@
-import { DrawerMenu } from "@entities/drawer";
+import { DrawerMenu } from "entities/map";
 
 import Control from "./Control";
 

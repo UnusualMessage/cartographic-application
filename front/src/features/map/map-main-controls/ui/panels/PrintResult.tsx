@@ -1,8 +1,8 @@
 import { Button, Select } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { Panel } from "@entities/map-misc";
 import { MapStore } from "@shared/misc";
+import { Panel } from "entities/map";
 
 const PrintResult = () => {
   const onSelect = (value: "a4" | "a3") => {

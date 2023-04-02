@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { DepartmentsStore } from "@entities/department";
-import { OrganizationsStore } from "@entities/organization";
+import { DepartmentsStore, OrganizationsStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
 

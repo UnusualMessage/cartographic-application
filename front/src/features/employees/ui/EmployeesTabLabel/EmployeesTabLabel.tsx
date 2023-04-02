@@ -1,7 +1,7 @@
 import { Badge } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { EmployeesStore } from "@entities/employee";
+import { EmployeesStore } from "@entities/business";
 
 const EmployeesTabLabel = () => {
   const employees = EmployeesStore.employees;

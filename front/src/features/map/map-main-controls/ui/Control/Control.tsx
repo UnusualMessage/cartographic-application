@@ -1,9 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
-import { Title } from "@entities/map-misc";
 import { SchemaTemplateContext } from "@shared/constants";
 import { ControlsStore } from "@shared/misc";
+import { Title } from "entities/map";
 
 import { wrapper, header } from "./control.module.scss";
 import { Measure, Draw, Layers, Search } from "../controls";

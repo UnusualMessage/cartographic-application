@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { SpeedsStore } from "@entities/speed";
+import { SpeedsStore } from "@entities/business";
 import { speedTable } from "@shared/assets";
 import { mapSpeedToTable } from "@shared/lib";
 import { TableSpeed } from "@shared/misc";

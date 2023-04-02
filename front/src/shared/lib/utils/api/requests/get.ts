@@ -1,21 +1,14 @@
 import { formatRequest } from "./formatRequest";
-import { PostRequestOptions } from "../../../misc";
+import { GetRequestOptions } from "../../../../misc";
 
-export const post = async ({
-  model,
-  url,
-  route,
-  query,
-  token,
-}: PostRequestOptions) => {
+export const get = async ({ url, route, query, token }: GetRequestOptions) => {
   const { api, headers } = formatRequest(url, route, query, token);
 
   const options: RequestInit = {
     headers,
-    method: "POST",
-    credentials: "include",
+    method: "GET",
     mode: "cors",
-    body: JSON.stringify(model),
+    credentials: "include",
   };
 
   const request = new Request(api, options);

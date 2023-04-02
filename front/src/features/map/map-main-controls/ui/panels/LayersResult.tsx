@@ -1,12 +1,12 @@
 import { observer } from "mobx-react-lite";
 
+import { ControlsStore } from "@shared/misc";
 import {
   BaseLayersSwitch,
   WeatherLayersSwitch,
   VectorLayersSwitch,
-} from "@entities/layers-switch";
-import { Panel } from "@entities/map-misc";
-import { ControlsStore } from "@shared/misc";
+  Panel,
+} from "entities/map";
 
 const LayersResult = () => {
   const category = ControlsStore.currentLayerCategory;

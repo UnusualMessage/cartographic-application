@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { TrailersStore } from "@entities/trailer";
+import { TrailersStore } from "@entities/business";
 import { trailerTable } from "@shared/assets";
 import { mapTrailerToTable } from "@shared/lib";
 import { TableTrailer } from "@shared/misc";

@@ -1,7 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { OrganizationsStore } from "@entities/organization";
-import { PostsStore } from "@entities/post";
+import { OrganizationsStore, PostsStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Post, UpdatePost as UpdatePostType } from "@shared/misc";
 import { Update } from "@shared/ui";

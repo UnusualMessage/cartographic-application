@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { SpeedsStore } from "@entities/speed";
+import { SpeedsStore } from "@entities/business";
 import { Remove } from "@shared/ui";
 
 interface Props {

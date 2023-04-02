@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { DepartmentsStore } from "@entities/department";
+import { DepartmentsStore } from "@entities/business";
 import { departmentTable } from "@shared/assets";
 import { mapDepartmentToTable } from "@shared/lib";
 import { TableDepartment } from "@shared/misc";

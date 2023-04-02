@@ -1,8 +1,10 @@
 import { observer } from "mobx-react-lite";
 
-import { EmployeesStore } from "@entities/employee";
-import { OrganizationsStore } from "@entities/organization";
-import { PostsStore } from "@entities/post";
+import {
+  EmployeesStore,
+  OrganizationsStore,
+  PostsStore,
+} from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { UpdateEmployee as UpdateEmployeeType, Employee } from "@shared/misc";
 import { Update } from "@shared/ui";

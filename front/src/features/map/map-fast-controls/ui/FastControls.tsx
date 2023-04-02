@@ -1,5 +1,4 @@
-import { LayersSwitch } from "@entities/layers-switch";
-import { ActionsGroup } from "@entities/map-actions";
+import { ActionsGroup, LayersSwitch } from "entities/map";
 
 const FastControls = () => {
   return (

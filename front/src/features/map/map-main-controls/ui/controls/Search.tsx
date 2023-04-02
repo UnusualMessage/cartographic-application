@@ -2,7 +2,7 @@ import { SearchOutlined } from "@ant-design/icons";
 import { Button, Select } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { SearchEquipment } from "@entities/equipment";
+import { SearchEquipment } from "@entities/business";
 import { Geocoder } from "@entities/geocoder";
 import { SearchGeozone } from "@entities/geozone";
 import { ControlsStore } from "@shared/misc";

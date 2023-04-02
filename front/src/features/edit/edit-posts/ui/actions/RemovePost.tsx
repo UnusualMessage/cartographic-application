@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { PostsStore } from "@entities/post";
+import { PostsStore } from "@entities/business";
 import { Remove } from "@shared/ui";
 
 interface Props {

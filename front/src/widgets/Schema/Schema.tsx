@@ -2,8 +2,6 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import { FullScreen, useFullScreenHandle } from "react-full-screen";
 
-import { Map } from "@entities/map";
-import { View } from "@entities/view";
 import {
   ContextMenu,
   Tooltip,
@@ -12,6 +10,7 @@ import {
   FastControls,
 } from "@features/map";
 import { FullScreenStore } from "@shared/misc";
+import { Map, View } from "entities/map";
 
 import { wrapper } from "./schema.module.scss";
 

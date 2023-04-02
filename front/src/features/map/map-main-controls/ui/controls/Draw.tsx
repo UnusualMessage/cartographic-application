@@ -4,7 +4,7 @@ import {
   DeleteOutlined,
   SaveOutlined,
 } from "@ant-design/icons";
-import { Polygon as IPolygon } from "@turf/helpers/dist/js/lib/geojson";
+import { Polygon as IPolygon } from "@turf/helpers";
 import {
   Feature as IFeature,
   area,
@@ -19,8 +19,8 @@ import { Feature } from "ol";
 import { Polygon } from "ol/geom";
 import { v4 as uuid } from "uuid";
 
+import { OrganizationsStore } from "@entities/business";
 import { GeozonesStore } from "@entities/geozone";
-import { OrganizationsStore } from "@entities/organization";
 import { geozonesLayerId } from "@shared/constants";
 import {
   InteractionsStore,

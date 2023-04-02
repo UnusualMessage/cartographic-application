@@ -6,4 +6,3 @@ export * from "./map";
 export * from "./node";
 export * from "./tab";
 export * from "./table";
-export * from "./decorators";

@@ -1,8 +1,8 @@
 import { Typography } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { Panel } from "@entities/map-misc";
 import { MeasurementStore, InteractionsStore } from "@shared/misc";
+import { Panel } from "entities/map";
 
 const { Text } = Typography;
 

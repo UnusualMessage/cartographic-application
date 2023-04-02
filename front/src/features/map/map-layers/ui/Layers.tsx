@@ -1,9 +1,7 @@
 import { observer } from "mobx-react-lite";
 
-import { EquipmentStore } from "@entities/equipment";
+import { EquipmentStore } from "@entities/business";
 import { GeozonesStore } from "@entities/geozone";
-import { Drawing, Measurement } from "@entities/interactions";
-import { BaseLayer, WeatherLayer, VectorLayer } from "@entities/layers";
 import {
   geozonesLayerId,
   measurementLayerId,
@@ -14,6 +12,13 @@ import {
   getEquipmentStyle,
   getGeozoneStyle,
 } from "@shared/lib";
+import {
+  Drawing,
+  Measurement,
+  BaseLayer,
+  WeatherLayer,
+  VectorLayer,
+} from "entities/map";
 
 const Layers = () => {
   const geozoneFeatures = GeozonesStore.geozones.map(

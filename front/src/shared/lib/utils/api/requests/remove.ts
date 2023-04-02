@@ -1,5 +1,5 @@
 import { formatRequest } from "./formatRequest";
-import { DeleteRequestOptions } from "../../../misc";
+import { DeleteRequestOptions } from "../../../../misc";
 
 export const remove = async ({
   url,
