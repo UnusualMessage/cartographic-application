@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 
 import { posts } from "@shared/assets";
-import { isError } from "@shared/lib";
+import { isError, handleErrors } from "@shared/lib";
 import {
   ApiStore,
   Post,
@@ -50,6 +50,7 @@ class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
     return this._posts;
   }
 
+  @handleErrors("ОШИБКА")
   public async getById(id: string) {
     const response = await this._apiService.getById(id);
 
