@@ -1,15 +1,31 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
+import { v4 as uuid } from "uuid";
 
 import { speeds } from "@shared/assets";
-import { Speed, UpdateSpeed, CreateSpeed, ApiStore } from "@shared/misc";
+import { isError } from "@shared/lib";
+import {
+  Speed,
+  UpdateSpeed,
+  CreateSpeed,
+  ApiStore,
+  ResponseService,
+} from "@shared/misc";
+
+import SpeedsService from "./SpeedsService";
 
 class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {
   private _speeds: Speed[];
   private _speed?: Speed;
 
+  private _apiService: SpeedsService;
+  private _responseService: ResponseService;
+
   constructor() {
     this._speeds = speeds;
     this._speed = undefined;
+
+    this._apiService = new SpeedsService();
+    this._responseService = new ResponseService();
 
     makeAutoObservable(this);
   }
@@ -26,48 +42,68 @@ class SpeedsStore implements ApiStore<Speed, CreateSpeed, UpdateSpeed> {
     this._speed = value;
   }
 
-  public async getById(id: string) {
-    runInAction(() => {
-      this._speed = this._speeds.find((item) => item.id === id);
-    });
+  public async getAll() {
+    return this._speeds;
+  }
 
-    return this._speed;
+  public async getById(id: string) {
+    const response = await this._apiService.getById(id);
+
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._speed = response;
+    this._responseService.invokeSuccess();
+    return response;
   }
 
   public async add(entity: CreateSpeed) {
-    console.log(entity);
-    const data = this._speeds.slice();
+    const response = await this._apiService.post(entity);
 
-    runInAction(() => {
-      this._speeds = data;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._speeds.push(response);
+    this._responseService.invokeSuccess();
   }
 
   public async duplicate(id: string) {
-    console.log(id);
-    const data = this._speeds.slice();
+    const record = this._speeds.find((item) => item.id === id);
 
-    runInAction(() => {
-      this._speeds = data;
-    });
+    if (record) {
+      const copy = { ...record, id: uuid() };
+      this._speeds.push(copy);
+    }
   }
 
   public async update(entity: UpdateSpeed) {
-    console.log(entity);
-    const data = this._speeds.slice();
+    const response = await this._apiService.put(entity);
 
-    runInAction(() => {
-      this._speeds = data;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    const index = this._speeds.findIndex((item) => item.id === entity.id);
+    this._speeds[index] = response;
+
+    this._responseService.invokeSuccess();
   }
 
   public async remove(id: string) {
-    const data = this._speeds.slice().filter((speed) => speed.id !== id);
+    const response = await this._apiService.delete(id);
 
-    runInAction(() => {
-      this._speeds = data;
-      this._speed = undefined;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._speeds = this._speeds.filter((item) => item.id !== response.id);
+    this._responseService.invokeSuccess();
   }
 }
 

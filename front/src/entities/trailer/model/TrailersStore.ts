@@ -1,15 +1,31 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
+import { v4 as uuid } from "uuid";
 
 import { trailers } from "@shared/assets";
-import { Trailer, CreateTrailer, UpdateTrailer, ApiStore } from "@shared/misc";
+import { isError } from "@shared/lib";
+import {
+  Trailer,
+  CreateTrailer,
+  UpdateTrailer,
+  ApiStore,
+  ResponseService,
+} from "@shared/misc";
+
+import TrailersService from "./TrailersService";
 
 class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
   private _trailers: Trailer[];
   private _trailer?: Trailer;
 
+  private _apiService: TrailersService;
+  private _responseService: ResponseService;
+
   constructor() {
     this._trailers = trailers;
     this._trailer = undefined;
+
+    this._apiService = new TrailersService();
+    this._responseService = new ResponseService();
 
     makeAutoObservable(this);
   }
@@ -26,48 +42,68 @@ class TrailersStore implements ApiStore<Trailer, CreateTrailer, UpdateTrailer> {
     this._trailer = value;
   }
 
-  public async getById(id: string) {
-    runInAction(() => {
-      this._trailer = this._trailers.find((item) => item.id === id);
-    });
+  public async getAll() {
+    return this._trailers;
+  }
 
-    return this._trailer;
+  public async getById(id: string) {
+    const response = await this._apiService.getById(id);
+
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._trailer = response;
+    this._responseService.invokeSuccess();
+    return response;
   }
 
   public async add(entity: CreateTrailer) {
-    console.log(entity);
-    const data = this._trailers.slice();
+    const response = await this._apiService.post(entity);
 
-    runInAction(() => {
-      this._trailers = data;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._trailers.push(response);
+    this._responseService.invokeSuccess();
   }
 
   public async duplicate(id: string) {
-    console.log(id);
-    const data = this._trailers.slice();
+    const record = this._trailers.find((item) => item.id === id);
 
-    runInAction(() => {
-      this._trailers = data;
-    });
+    if (record) {
+      const copy = { ...record, id: uuid() };
+      this._trailers.push(copy);
+    }
   }
 
   public async update(entity: UpdateTrailer) {
-    console.log(entity);
-    const data = this._trailers.slice();
+    const response = await this._apiService.put(entity);
 
-    runInAction(() => {
-      this._trailers = data;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    const index = this._trailers.findIndex((item) => item.id === entity.id);
+    this._trailers[index] = response;
+
+    this._responseService.invokeSuccess();
   }
 
   public async remove(id: string) {
-    const data = this._trailers.slice().filter((item) => item.id !== id);
+    const response = await this._apiService.delete(id);
 
-    runInAction(() => {
-      this._trailers = data;
-      this._trailer = undefined;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._trailers = this._trailers.filter((item) => item.id !== response.id);
+    this._responseService.invokeSuccess();
   }
 }
 

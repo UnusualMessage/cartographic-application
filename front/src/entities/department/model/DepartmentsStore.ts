@@ -1,12 +1,17 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
+import { v4 as uuid } from "uuid";
 
 import { departments } from "@shared/assets";
+import { isError } from "@shared/lib";
 import {
   Department,
   CreateDepartment,
   UpdateDepartment,
   ApiStore,
+  ResponseService,
 } from "@shared/misc";
+
+import DepartmentsService from "./DepartmentsService";
 
 class DepartmentsStore
   implements ApiStore<Department, CreateDepartment, UpdateDepartment>
@@ -14,9 +19,15 @@ class DepartmentsStore
   private _departments: Department[];
   private _department?: Department;
 
+  private _responseService: ResponseService;
+  private _apiService: DepartmentsService;
+
   constructor() {
     this._departments = departments;
     this._department = undefined;
+
+    this._responseService = new ResponseService();
+    this._apiService = new DepartmentsService();
 
     makeAutoObservable(this);
   }
@@ -33,48 +44,70 @@ class DepartmentsStore
     this._department = value;
   }
 
-  public async getById(id: string) {
-    runInAction(() => {
-      this._department = this._departments.find((item) => item.id === id);
-    });
+  public async getAll() {
+    return this._departments;
+  }
 
-    return this._department;
+  public async getById(id: string) {
+    const response = await this._apiService.getById(id);
+
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._department = response;
+    this._responseService.invokeSuccess();
+    return response;
   }
 
   public async add(entity: CreateDepartment) {
-    console.log(entity);
-    const data = this._departments.slice();
+    const response = await this._apiService.post(entity);
 
-    runInAction(() => {
-      this._departments = data;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._departments.push(response);
+    this._responseService.invokeSuccess();
   }
 
   public async duplicate(id: string) {
-    console.log(id);
-    const data = this._departments.slice();
+    const record = this._departments.find((item) => item.id === id);
 
-    runInAction(() => {
-      this._departments = data;
-    });
+    if (record) {
+      const copy = { ...record, id: uuid() };
+      this._departments.push(copy);
+    }
   }
 
   public async update(entity: UpdateDepartment) {
-    console.log(entity);
-    const data = this._departments.slice();
+    const response = await this._apiService.put(entity);
 
-    runInAction(() => {
-      this._departments = data;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    const index = this._departments.findIndex((item) => item.id === entity.id);
+    this._departments[index] = response;
+
+    this._responseService.invokeSuccess();
   }
 
   public async remove(id: string) {
-    const data = this._departments.slice().filter((item) => item.id !== id);
+    const response = await this._apiService.delete(id);
 
-    runInAction(() => {
-      this._departments = data;
-      this._department = undefined;
-    });
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._departments = this._departments.filter(
+      (item) => item.id !== response.id
+    );
+    this._responseService.invokeSuccess();
   }
 }
 

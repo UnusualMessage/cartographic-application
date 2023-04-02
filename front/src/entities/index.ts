@@ -6,7 +6,7 @@ export * as equipment from "./equipment";
 export * as geozone from "./geozone";
 export * as organization from "./organization";
 export * as trailer from "./trailer";
-export * as user from "./user";
+export * as auth from "./auth";
 export * as plan from "./plan";
 
 export * as map from "./map";

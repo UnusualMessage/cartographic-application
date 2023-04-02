@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { PropsWithChildren } from "react";
 
-import { AuthStore } from "@entities/user";
+import { AuthStore } from "@entities/auth";
 import { RoleNumber } from "@shared/misc";
 import { NotAuthorized } from "@shared/ui";
 

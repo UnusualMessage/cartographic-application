@@ -1,16 +1,31 @@
-import { makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 
-import { posts, organizations } from "@shared/assets";
-import { ApiStore, Post, UpdatePost, CreatePost } from "@shared/misc";
+import { posts } from "@shared/assets";
+import { isError } from "@shared/lib";
+import {
+  ApiStore,
+  Post,
+  UpdatePost,
+  CreatePost,
+  ResponseService,
+} from "@shared/misc";
+
+import PostsService from "./PostsService";
 
 class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
   private _posts: Post[];
   private _post?: Post;
 
+  private _apiService: PostsService;
+  private _responseService: ResponseService;
+
   constructor() {
     this._posts = posts;
     this._post = undefined;
+
+    this._apiService = new PostsService();
+    this._responseService = new ResponseService();
 
     makeAutoObservable(this);
   }
@@ -31,78 +46,68 @@ class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
     this._post = post;
   }
 
-  public async getById(id: string) {
-    runInAction(() => {
-      this._post = this._posts.find((post) => post.id === id);
-    });
-
-    return this._post;
+  public async getAll() {
+    return this._posts;
   }
 
-  public async add(post: CreatePost) {
-    const posts = this._posts.slice();
+  public async getById(id: string) {
+    const response = await this._apiService.getById(id);
 
-    const organization = organizations.find(
-      (organization) => post.organizationId === organization.id
-    );
-
-    if (organization) {
-      const newPost: Post = {
-        id: uuid(),
-        title: post.title,
-        organization: organization,
-      };
-
-      posts.push(newPost);
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
     }
 
-    runInAction(() => {
-      this._posts = posts;
-    });
+    this._post = response;
+    this._responseService.invokeSuccess();
+    return response;
+  }
+
+  public async add(entity: CreatePost) {
+    const response = await this._apiService.post(entity);
+
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._posts.push(response);
+    this._responseService.invokeSuccess();
   }
 
   public async duplicate(id: string) {
-    const post = this.posts.find((post) => post.id === id);
-    const posts = this._posts.slice();
+    const record = this._posts.find((item) => item.id === id);
 
-    if (post) {
-      const copy = { ...post };
-      copy.id = uuid();
-
-      posts.push(copy);
-
-      runInAction(() => {
-        this._posts = posts;
-      });
+    if (record) {
+      const copy = { ...record, id: uuid() };
+      this._posts.push(copy);
     }
   }
 
-  public async update(post: UpdatePost) {
-    const posts = this._posts.slice();
+  public async update(entity: UpdatePost) {
+    const response = await this._apiService.put(entity);
 
-    const updatedPost = this.posts.find((item) => item.id === post.id);
-
-    if (updatedPost) {
-      const organization = organizations.find(
-        (organization) => organization.id === post.organizationId
-      );
-
-      if (organization) {
-        updatedPost.title = post.title;
-        updatedPost.organization = organization;
-
-        runInAction(() => {
-          this._posts = posts;
-        });
-      }
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
     }
+
+    const index = this._posts.findIndex((item) => item.id === entity.id);
+    this._posts[index] = response;
+
+    this._responseService.invokeSuccess();
   }
 
   public async remove(id: string) {
-    runInAction(() => {
-      this._posts = this._posts.filter((post) => post.id !== id);
-      this._post = undefined;
-    });
+    const response = await this._apiService.delete(id);
+
+    if (isError(response)) {
+      this._responseService.invokeError(response.message);
+      return;
+    }
+
+    this._posts = this._posts.filter((item) => item.id !== response.id);
+    this._responseService.invokeSuccess();
   }
 }
 
