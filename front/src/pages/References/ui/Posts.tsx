@@ -2,16 +2,16 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { PostsStore } from "@entities/post";
+import { postTable } from "@shared/assets";
+import { mapPostToTable } from "@shared/lib";
+import { TablePost } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 import {
   CreatePost,
   UpdatePost,
   DuplicatePost,
   RemovePost,
-} from "@features/edit-posts";
-import { postTable } from "@shared/assets";
-import { mapPostToTable } from "@shared/lib";
-import { TablePost } from "@shared/misc";
-import { Table, TableButtons } from "@shared/ui";
+} from "features/edit";
 
 const Posts = () => {
   const post = PostsStore.post;
