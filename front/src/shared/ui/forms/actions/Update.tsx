@@ -41,8 +41,9 @@ const Update = <T extends Entity, UpdateT extends FieldValues>({
   });
 
   useFetch(async () => {
+    console.log("fetch");
     if (id) {
-      const data = await store.getById(id);
+      const data = store.getById(id);
       setEntity(data);
       reset(getDefaultValues(data));
     }

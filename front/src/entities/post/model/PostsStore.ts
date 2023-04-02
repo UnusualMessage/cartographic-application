@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 
 import { posts } from "@shared/assets";
-import { isError, handleErrors } from "@shared/lib";
+import { isError } from "@shared/lib";
 import {
   ApiStore,
   Post,
@@ -46,34 +46,32 @@ class PostsStore implements ApiStore<Post, CreatePost, UpdatePost> {
     this._post = post;
   }
 
-  public async getAll() {
+  public getAll() {
     return this._posts;
   }
 
-  @handleErrors("ОШИБКА")
-  public async getById(id: string) {
-    const response = await this._apiService.getById(id);
+  public getById(id: string) {
+    void this._responseService.handleRequest(
+      () => {
+        return this._apiService.getById(id);
+      },
+      (result: Post) => {
+        this.post = result;
+      }
+    );
 
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    this._post = response;
-    this._responseService.invokeSuccess();
-    return response;
+    return this._post;
   }
 
   public async add(entity: CreatePost) {
-    const response = await this._apiService.post(entity);
-
-    if (isError(response)) {
-      this._responseService.invokeError(response.message);
-      return;
-    }
-
-    this._posts.push(response);
-    this._responseService.invokeSuccess();
+    void this._responseService.handleRequest(
+      () => {
+        return this._apiService.post(entity);
+      },
+      (result: Post) => {
+        this._posts.push(result);
+      }
+    );
   }
 
   public async duplicate(id: string) {

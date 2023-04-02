@@ -1,3 +1,4 @@
+import { posts } from "@shared/assets";
 import { baseUrl } from "@shared/constants";
 import {
   EntitiesService,
@@ -5,6 +6,7 @@ import {
   Post,
   CreatePost,
   UpdatePost,
+  Out,
 } from "@shared/misc";
 
 class PostsService
@@ -13,6 +15,10 @@ class PostsService
 {
   constructor() {
     super(`${baseUrl}/Posts`);
+  }
+
+  public override async getById(id: string): Out<Post> {
+    return posts.find((item) => item.id === id)!;
   }
 }
 

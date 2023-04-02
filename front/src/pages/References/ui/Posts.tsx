@@ -18,7 +18,7 @@ const Posts = () => {
   const posts = PostsStore.posts;
 
   const onSelection = async (posts: TablePost[]) => {
-    PostsStore.post = await PostsStore.getById(posts[0].id);
+    PostsStore.getById(posts[0].id);
   };
 
   useEffect(() => {

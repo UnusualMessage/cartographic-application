@@ -1,7 +1,6 @@
 import { CopyOutlined } from "@ant-design/icons";
 import { useState } from "react";
 
-import { useFetch } from "../../../lib";
 import type { ApiStore } from "../../../misc";
 import DialogForm from "../DialogForm";
 
@@ -16,18 +15,11 @@ interface Props<T> {
 }
 
 const Duplicate = <T extends Entity>({ id, name, store }: Props<T>) => {
-  const [item, setItem] = useState<T | undefined>(undefined);
   const [successful, setSuccessful] = useState(false);
 
-  useFetch(async () => {
-    if (id) {
-      setItem(await store.getById(id));
-    }
-  }, [id]);
-
   const handleDuplicate = async () => {
-    if (item) {
-      await store.duplicate(item.id);
+    if (id) {
+      await store.duplicate(id);
       setSuccessful(true);
     }
   };

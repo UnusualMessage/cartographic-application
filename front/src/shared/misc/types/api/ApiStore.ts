@@ -1,8 +1,6 @@
-type Out<T> = Promise<T | undefined>;
-
 export interface ApiStore<T, CreateT, UpdateT> {
-  getAll(): Out<T[]>;
-  getById(id: string): Out<T>;
+  getAll(): T[];
+  getById(id: string): T | undefined;
   remove(id: string): void;
   duplicate(id: string): void;
   add(data: CreateT): void;
