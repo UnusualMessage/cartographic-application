@@ -11,6 +11,7 @@ public static class MappingProfilesConfiguration
             .AddAutoMapper(typeof(EmployeeProfile))
             .AddAutoMapper(typeof(OrganizationProfile))
             .AddAutoMapper(typeof(PostProfile))
-            .AddAutoMapper(typeof(EquipmentProfile));
+            .AddAutoMapper(typeof(EquipmentProfile))
+            .AddAutoMapper(typeof(DepartmentProfile));
     }
 }

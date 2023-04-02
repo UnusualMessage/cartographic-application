@@ -22,5 +22,6 @@ public static class DatabaseConfiguration
         services.AddScoped<IPostRepository, PostRepository>();
         services.AddScoped<IOrganizationRepository, OrganizationRepository>();
         services.AddScoped<IEquipmentRepository, EquipmentRepository>();
+        services.AddScoped<IDepartmentRepository, DepartmentRepository>();
     }
 }
