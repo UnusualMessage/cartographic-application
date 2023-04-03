@@ -4,7 +4,7 @@ namespace Main.Core.Entities;
 
 public class Employee : Entity<Employee>
 {
-    public string FirstName { get; set; } = "";
+    public required string FirstName { get; set; }
     public string? SecondName { get; set; }
     public string? Patronymic { get; set; }
     
