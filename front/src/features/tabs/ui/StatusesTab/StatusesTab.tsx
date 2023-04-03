@@ -1,4 +1,4 @@
-import { StatusesChart } from "@entities/equipment";
+import { StatusesChart } from "@entities/business";
 import { TabPage } from "@entities/info-tabs-page";
 
 const StatusesTab = () => {

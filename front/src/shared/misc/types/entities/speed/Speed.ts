@@ -1,7 +1,7 @@
+import { Entity } from "../base";
 import { Organization } from "../organization";
 
-export interface Speed {
-  id: string;
+export interface Speed extends Entity {
   title: string;
   organization: Organization;
   min: number;

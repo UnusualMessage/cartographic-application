@@ -1,4 +1,4 @@
-import { TypesChart } from "@entities/equipment";
+import { TypesChart } from "@entities/business";
 import { TabPage } from "@entities/info-tabs-page";
 import { types } from "@shared/assets";
 

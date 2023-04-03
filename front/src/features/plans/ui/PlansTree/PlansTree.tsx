@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 import { v4 as uuid } from "uuid";
 
-import { PlansStore } from "@entities/plan";
+import { PlansStore } from "@entities/business";
 import type { Plan } from "@shared/misc";
 import { Group } from "@shared/misc";
 import { Tree } from "@shared/ui";

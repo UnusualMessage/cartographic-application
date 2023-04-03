@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 import { v4 as uuid } from "uuid";
 
-import { EmployeesStore } from "@entities/employee/model";
+import { EmployeesStore } from "@entities/business";
 import { Employee, Group } from "@shared/misc";
 import { Tree } from "@shared/ui";
 

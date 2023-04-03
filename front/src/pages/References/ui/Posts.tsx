@@ -1,24 +1,24 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { PostsStore } from "@entities/post";
+import { PostsStore } from "@entities/business";
+import { postTable } from "@shared/assets";
+import { mapPostToTable } from "@shared/lib";
+import { TablePost } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 import {
   CreatePost,
   UpdatePost,
   DuplicatePost,
   RemovePost,
-} from "@features/edit-posts";
-import { postTable } from "@shared/assets";
-import { mapPostToTable } from "@shared/lib";
-import { TablePartner, TablePost } from "@shared/misc";
-import { Table, TableButtons } from "@shared/ui";
+} from "features/edit";
 
 const Posts = () => {
   const post = PostsStore.post;
   const posts = PostsStore.posts;
 
   const onSelection = async (posts: TablePost[]) => {
-    PostsStore.post = await PostsStore.getById(posts[0].id);
+    await PostsStore.getById(posts[0].id);
   };
 
   useEffect(() => {
@@ -27,7 +27,7 @@ const Posts = () => {
 
   return (
     <>
-      <Table<TablePartner>
+      <Table<TablePost>
         items={posts.map(mapPostToTable)}
         columns={postTable}
         setItems={onSelection}

@@ -13,8 +13,8 @@ import { Button, Typography, Space, Badge } from "antd";
 import { observer } from "mobx-react-lite";
 import { Link } from "react-router-dom";
 
-import { OrganizationsStore } from "@entities/organization";
-import { AuthStore } from "@entities/user";
+import { AuthStore } from "@entities/auth";
+import { OrganizationsStore } from "@entities/business";
 import { about } from "@shared/assets";
 import { UpdateStore } from "@shared/misc";
 import { TractorFilled } from "@shared/ui";

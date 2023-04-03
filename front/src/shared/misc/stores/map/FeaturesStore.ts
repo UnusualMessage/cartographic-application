@@ -65,12 +65,6 @@ class FeaturesStore {
     this.features = temp;
   }
 
-  public removeFeature(feature: FeatureLike) {
-    this.features = this.features.filter(
-      (item) => item.getId() !== feature.getId()
-    );
-  }
-
   public updateFeature(feature: FeatureLike) {
     this.features = this.features.map((item) => {
       if (item.getId() === feature.getId()) {
