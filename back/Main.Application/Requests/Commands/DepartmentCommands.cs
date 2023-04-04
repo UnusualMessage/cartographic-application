@@ -4,9 +4,9 @@ using MassTransit.Mediator;
 
 namespace Main.Application.Requests.Commands;
 
-public record CreateDepartment([Required] string Title, [Required] string OrganizationId) : Request<DepartmentResponse>;
+public record CreateDepartment([Required] string Title, [Required] Guid OrganizationId) : Request<DepartmentResponse>;
 
 public record UpdateDepartment
-    ([Required] Guid Id, [Required] string Title, [Required] string OrganizationId) : Request<DepartmentResponse>;
+    ([Required] Guid Id, [Required] string Title, [Required] Guid OrganizationId) : Request<DepartmentResponse>;
 
 public record DeleteDepartment([Required] Guid Id) : Request<DepartmentResponse>;

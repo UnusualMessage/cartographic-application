@@ -12,5 +12,6 @@ public class Department : Entity<Department>
     public override void Update(Department entity)
     {
         Title = entity.Title;
+        OrganizationId = entity.OrganizationId;
     }
 }

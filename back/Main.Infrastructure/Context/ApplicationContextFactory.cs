@@ -9,7 +9,8 @@ public class IdentityContextFactory : IDesignTimeDbContextFactory<ApplicationCon
     {
         DbContextOptionsBuilder optionsBuilder = new();
 
-        optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=main;Username=postgres;Password=20102001",
+        optionsBuilder.UseNpgsql(
+            "Host=localhost;Port=5432;Database=main;Username=postgres;Password=20102001;Include Error Detail=true",
             builder => { builder.UseNetTopologySuite(); });
 
         return new ApplicationContext(optionsBuilder.Options);
