@@ -14,15 +14,19 @@ public class DepartmentRepository : Repository<Department>, IDepartmentRepositor
 
     public override async Task<Department?> GetByIdAsync(Guid id)
     {
-        return await Context.Set<Department>()
-            .Include(e => e.Organization)
+        return await IncludeAll()
             .FirstOrDefaultAsync(e => e.Id == id);
     }
 
     public override async Task<IEnumerable<Department>> GetAllAsync()
     {
-        return await Context.Set<Department>()
-            .Include(e => e.Organization)
+        return await IncludeAll()
             .ToListAsync();
+    }
+
+    private IQueryable<Department> IncludeAll()
+    {
+        return Context.Set<Department>()
+            .Include(e => e.Organization);
     }
 }

@@ -23,5 +23,12 @@ public class DepartmentsConfiguration : IEntityTypeConfiguration<Department>
             .HasForeignKey(e => e.DepartmentId)
             .IsRequired(false)
             .OnDelete(DeleteBehavior.SetNull);
+
+        builder
+            .HasMany<Post>()
+            .WithOne(e => e.Department)
+            .HasForeignKey(e => e.DepartmentId)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.SetNull);
     }
 }

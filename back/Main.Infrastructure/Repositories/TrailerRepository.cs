@@ -14,17 +14,20 @@ public class TrailerRepository : Repository<Trailer>, ITrailerRepository
 
     public override async Task<Trailer?> GetByIdAsync(Guid id)
     {
-        return await Context.Set<Trailer>()
-            .Include(e => e.Organization)
-            .Include(e => e.Department)
+        return await IncludeAll()
             .FirstOrDefaultAsync(e => e.Id == id);
     }
 
     public override async Task<IEnumerable<Trailer>> GetAllAsync()
     {
-        return await Context.Set<Trailer>()
-            .Include(e => e.Organization)
-            .Include(e => e.Department)
+        return await IncludeAll()
             .ToListAsync();
+    }
+
+    private IQueryable<Trailer> IncludeAll()
+    {
+        return Context.Set<Trailer>()
+            .Include(e => e.Organization)
+            .Include(e => e.Department);
     }
 }
