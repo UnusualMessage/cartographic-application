@@ -2,6 +2,7 @@
 using Main.Core.Interfaces.Repositories;
 using Main.Infrastructure.Context;
 using Main.Infrastructure.Repositories.Base;
+using Microsoft.EntityFrameworkCore;
 
 namespace Main.Infrastructure.Repositories;
 
@@ -9,5 +10,19 @@ public class DepartmentRepository : Repository<Department>, IDepartmentRepositor
 {
     public DepartmentRepository(ApplicationContext context) : base(context)
     {
+    }
+
+    public override async Task<Department?> GetByIdAsync(Guid id)
+    {
+        return await Context.Set<Department>()
+            .Include(e => e.Organization)
+            .FirstOrDefaultAsync(e => e.Id == id);
+    }
+
+    public override async Task<IEnumerable<Department>> GetAllAsync()
+    {
+        return await Context.Set<Department>()
+            .Include(e => e.Organization)
+            .ToListAsync();
     }
 }
