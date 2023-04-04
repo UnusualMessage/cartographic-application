@@ -5,6 +5,6 @@ export const getDefaultValues = (trailer?: Trailer): Partial<UpdateTrailer> => {
     id: trailer?.id,
     title: trailer?.title,
     organizationId: trailer?.organization.id,
-    departmentId: trailer?.department.id,
+    departmentId: trailer?.department?.id,
   };
 };

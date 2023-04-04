@@ -1,9 +1,9 @@
+import { Speed } from "./Speed";
 import { TableItem } from "../../table";
 
-export interface TableSpeed extends TableItem {
-  title: string;
+export interface TableSpeed
+  extends TableItem,
+    Omit<Speed, "id" | "department" | "organization"> {
   organization: string;
-  min: number;
-  max: number;
-  timeLimit: number;
+  department?: string;
 }

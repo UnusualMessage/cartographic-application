@@ -1,7 +1,7 @@
-export interface CreateSpeed {
-  title: string;
+import { Speed } from "./Speed";
+
+export interface CreateSpeed
+  extends Omit<Speed, "id" | "organization" | "department"> {
   organizationId: string;
-  min: number;
-  max: number;
-  timeLimit: number;
+  departmentId?: string;
 }

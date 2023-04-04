@@ -1,6 +1,6 @@
-import type { Column } from "../../../misc";
+import type { Column, Employee } from "../../../misc";
 
-export const employeeTable: Column[] = [
+export const employeeTable: Column<Employee>[] = [
   {
     title: "Имя",
     dataIndex: "firstName",
@@ -22,13 +22,13 @@ export const employeeTable: Column[] = [
   },
 
   {
-    title: "Должность",
-    dataIndex: "post",
+    title: "Электронная почта",
+    dataIndex: "email",
   },
 
   {
-    title: "Организация",
-    dataIndex: "organization",
+    title: "Должность",
+    dataIndex: "post",
   },
 
   {
@@ -39,5 +39,15 @@ export const employeeTable: Column[] = [
   {
     title: "Номер ВУ",
     dataIndex: "driverCard",
+  },
+
+  {
+    title: "Организация",
+    dataIndex: "organization",
+  },
+
+  {
+    title: "Подразделение",
+    dataIndex: "department",
   },
 ];

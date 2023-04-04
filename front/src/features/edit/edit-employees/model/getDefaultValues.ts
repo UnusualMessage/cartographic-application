@@ -9,8 +9,10 @@ export const getDefaultValues = (
     secondName: employee?.secondName,
     patronymic: employee?.patronymic,
     birthDate: employee?.birthDate,
+    email: employee?.email,
     driverCard: employee?.driverCard,
     phone: employee?.phone,
+    departmentId: employee?.department?.id,
     postId: employee?.post.id,
     organizationId: employee?.organization.id,
   };

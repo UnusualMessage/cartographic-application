@@ -1,3 +1,4 @@
+import { centerOfMass } from "@turf/turf";
 import { Select } from "antd";
 import { Coordinate } from "ol/coordinate";
 import { useState, ReactNode } from "react";
@@ -26,7 +27,7 @@ const SearchGeozone = () => {
         return {
           key: item.id,
           label: item.title,
-          value: item.feature.properties.center,
+          value: centerOfMass(item.feature.geometry).geometry.coordinates,
         };
       })
     );

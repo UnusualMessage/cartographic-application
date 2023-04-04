@@ -8,3 +8,4 @@ export * from "./post";
 export * from "./speed";
 export * from "./trailer";
 export * from "./user";
+export * from "./equipment-type";

@@ -5,5 +5,6 @@ export const getDefaultValues = (post?: Post): Partial<UpdatePost> => {
     id: post?.id,
     title: post?.title,
     organizationId: post?.organization.id,
+    departmentId: post?.department?.id,
   };
 };

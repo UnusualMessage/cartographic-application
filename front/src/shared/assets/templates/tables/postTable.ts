@@ -1,6 +1,6 @@
-import { Column } from "../../../misc";
+import { Column, Post } from "../../../misc";
 
-export const postTable: Column[] = [
+export const postTable: Column<Post>[] = [
   {
     title: "Название",
     dataIndex: "title",
@@ -9,5 +9,10 @@ export const postTable: Column[] = [
   {
     title: "Организация",
     dataIndex: "organization",
+  },
+
+  {
+    title: "Подразделение",
+    dataIndex: "department",
   },
 ];

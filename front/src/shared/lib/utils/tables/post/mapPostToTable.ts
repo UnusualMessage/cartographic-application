@@ -6,5 +6,6 @@ export const mapPostToTable = (post: Post): TablePost => {
     key: post.id,
     title: post.title,
     organization: post.organization.title,
+    department: post.department?.title,
   };
 };

@@ -8,5 +8,6 @@ export const getDefaultValues = (speed?: Speed): Partial<UpdateSpeed> => {
     max: speed?.max,
     timeLimit: speed?.timeLimit,
     organizationId: speed?.organization.id,
+    departmentId: speed?.department?.id,
   };
 };

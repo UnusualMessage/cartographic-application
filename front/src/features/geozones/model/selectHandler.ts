@@ -1,6 +1,7 @@
+import { centerOfMass } from "@turf/turf";
 import { TreeProps } from "antd/es/tree";
 
-import GeozonesStore from "@entities/geozone/model/GeozonesStore";
+import { GeozonesStore } from "@entities/geozone";
 import { TabsStore, ViewStore } from "@shared/misc";
 
 export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
@@ -17,7 +18,9 @@ export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
       const geozone = GeozonesStore.getById(node.key.toString());
 
       if (geozone) {
-        ViewStore.centerWithZoomTo(13)(geozone.feature.properties.center);
+        ViewStore.centerWithZoomTo(13)(
+          centerOfMass(geozone.feature).geometry.coordinates
+        );
       }
   }
 };

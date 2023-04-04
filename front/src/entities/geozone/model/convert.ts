@@ -23,9 +23,7 @@ export const convertGeozone = (
   return {
     type: "Feature",
     geometry: geometry,
-    properties: {
-      area: geozone.area,
-    },
+    properties: {},
   };
 };
 
