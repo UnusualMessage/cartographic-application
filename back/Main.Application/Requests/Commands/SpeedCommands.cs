@@ -6,9 +6,9 @@ namespace Main.Application.Requests.Commands;
 
 public record CreateSpeed
 ([Required] string Title, [Required] int Min, [Required] int Max,
-    [Required] int TimeLimit) : Request<SpeedResponse>;
+    [Required] int TimeLimit, [Required] Guid OrganizationId, Guid? DepartmentId) : Request<SpeedResponse>;
 
 public record UpdateSpeed([Required] Guid Id, [Required] string Title, [Required] int Min, [Required] int Max,
-    [Required] int TimeLimit) : Request<SpeedResponse>;
+    [Required] int TimeLimit, [Required] Guid OrganizationId, Guid? DepartmentId) : Request<SpeedResponse>;
 
 public record DeleteSpeed([Required] Guid Id) : Request<SpeedResponse>;
