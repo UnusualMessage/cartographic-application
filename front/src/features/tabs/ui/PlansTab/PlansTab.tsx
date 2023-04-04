@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 
+import { PlansStore, PlansChart } from "@entities/business";
 import { TabPage } from "@entities/info-tabs-page";
-import { PlansStore, PlansChart } from "@entities/plan";
 import { planTable } from "@shared/assets";
 import { mapPlanToTable } from "@shared/lib";
 import { TablePlan } from "@shared/misc";

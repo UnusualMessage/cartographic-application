@@ -2,7 +2,7 @@ import { Form, Button } from "antd";
 import { Control, useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
-import { AuthStore } from "@entities/user";
+import { AuthStore } from "@entities/auth";
 import { formRenderer } from "@shared/lib";
 import { AuthenticateUser as AuthenticateUserType } from "@shared/misc";
 

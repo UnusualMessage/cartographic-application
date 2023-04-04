@@ -1,6 +1,6 @@
 import { TreeProps } from "antd/es/tree";
 
-import EquipmentStore from "@entities/equipment/model/EquipmentStore";
+import { EquipmentStore } from "@entities/business";
 import { TabsStore, ViewStore } from "@shared/misc";
 
 export const selectHandler: TreeProps["onSelect"] = (keys, info) => {

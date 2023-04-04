@@ -1,4 +1,4 @@
-import { AuthStore } from "@entities/user";
+import { AuthStore } from "@entities/auth";
 
 import { ModeratorLayout, MonitorLayout, AdminLayout } from "./ui";
 

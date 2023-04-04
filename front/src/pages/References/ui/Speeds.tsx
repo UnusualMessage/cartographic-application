@@ -1,17 +1,17 @@
 import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
-import { SpeedsStore } from "@entities/speed";
+import { SpeedsStore } from "@entities/business";
+import { speedTable } from "@shared/assets";
+import { mapSpeedToTable } from "@shared/lib";
+import { TableSpeed } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 import {
   CreateSpeed,
   UpdateSpeed,
   DuplicateSpeed,
   RemoveSpeed,
-} from "@features/edit-speeds";
-import { speedTable } from "@shared/assets";
-import { mapSpeedToTable } from "@shared/lib";
-import { TableSpeed } from "@shared/misc";
-import { Table, TableButtons } from "@shared/ui";
+} from "features/edit";
 
 const Speeds = () => {
   const speed = SpeedsStore.speed;

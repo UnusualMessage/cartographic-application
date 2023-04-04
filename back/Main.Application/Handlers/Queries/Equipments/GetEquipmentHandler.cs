@@ -19,6 +19,6 @@ public class GetEquipmentHandler : MediatorRequestHandler<GetEquipment, Equipmen
 
     protected override async Task<EquipmentResponse> Handle(GetEquipment request, CancellationToken token)
     {
-        return _mapper.Map<EquipmentResponse>(_repository.GetByIdAsync(request.Id));
+        return _mapper.Map<EquipmentResponse>(await _repository.GetByIdAsync(request.Id));
     }
 }

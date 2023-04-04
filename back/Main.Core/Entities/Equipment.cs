@@ -5,7 +5,7 @@ namespace Main.Core.Entities;
 
 public class Equipment : Entity<Equipment>
 {
-    public string Name { get; set; } = string.Empty;
+    public required string Name { get; set; }
 
     public Point? Location { get; set; }
 
