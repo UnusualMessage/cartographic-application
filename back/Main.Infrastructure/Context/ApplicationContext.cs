@@ -24,6 +24,8 @@ public class ApplicationContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.HasPostgresExtension("postgis");
+        
         modelBuilder.ApplyConfiguration(new EquipmentsConfiguration());
         modelBuilder.ApplyConfiguration(new EquipmentTypesConfiguration());
         modelBuilder.ApplyConfiguration(new EmployeesConfiguration());

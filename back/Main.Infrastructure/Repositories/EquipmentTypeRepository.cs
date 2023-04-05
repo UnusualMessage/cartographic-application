@@ -1,11 +1,12 @@
 ﻿using Main.Core.Entities;
+using Main.Core.Interfaces.Repositories;
 using Main.Infrastructure.Context;
 using Main.Infrastructure.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 
 namespace Main.Infrastructure.Repositories;
 
-public class EquipmentTypeRepository : Repository<EquipmentType>
+public class EquipmentTypeRepository : Repository<EquipmentType>, IEquipmentTypeRepository
 {
     public EquipmentTypeRepository(ApplicationContext context) : base(context)
     {

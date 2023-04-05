@@ -9,5 +9,11 @@ public class EquipmentTypesConfiguration : IEntityTypeConfiguration<EquipmentTyp
     public void Configure(EntityTypeBuilder<EquipmentType> builder)
     {
         builder.ToTable("equipment_types");
+
+        builder
+            .HasMany<Equipment>()
+            .WithOne(e => e.EquipmentType)
+            .HasForeignKey(e => e.EquipmentTypeId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
