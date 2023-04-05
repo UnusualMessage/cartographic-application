@@ -13,7 +13,8 @@ public class EquipmentProfile : Profile
     {
         CreateMap<Equipment, EquipmentResponse>()
             .ForMember(response => response.Feature,
-                expression => expression.MapFrom(equipment => new Feature(equipment.Feature.X, equipment.Feature.Y)));
+                expression =>
+                    expression.MapFrom(equipment => new EquipmentFeature(equipment.Feature.X, equipment.Feature.Y)));
 
         CreateMap<CreateEquipment, Equipment>()
             .ForMember(equipment => equipment.Feature,
