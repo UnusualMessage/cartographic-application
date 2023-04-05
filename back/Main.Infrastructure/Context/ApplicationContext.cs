@@ -10,6 +10,7 @@ public class ApplicationContext : DbContext
     public DbSet<Post>? Posts { get; set; }
     public DbSet<Speed>? Speeds { get; set; }
     public DbSet<Trailer>? Trailers { get; set; }
+    public DbSet<Geozone>? Geozones { get; set; }
 
     public DbSet<Equipment>? Equipments { get; set; }
     public DbSet<EquipmentType>? EquipmentTypes { get; set; } 
@@ -34,5 +35,6 @@ public class ApplicationContext : DbContext
         modelBuilder.ApplyConfiguration(new TrailersConfiguration());
         modelBuilder.ApplyConfiguration(new OrganizationsConfiguration());
         modelBuilder.ApplyConfiguration(new DepartmentsConfiguration());
+        modelBuilder.ApplyConfiguration(new GeozonesConfiguration());
     }
 }
