@@ -5,5 +5,6 @@ export * from "./employee";
 export * from "./speed";
 export * from "./organization";
 export * from "./trailer";
+export * from "./mounted";
 export * from "./equipment-type";
 export * from "./equipment";
