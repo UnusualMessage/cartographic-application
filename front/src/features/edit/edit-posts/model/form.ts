@@ -1,32 +1,6 @@
-import { SelectOption, Form, CreatePost, UpdatePost } from "@shared/misc";
+import { SelectOption, Form, CreatePost } from "@shared/misc";
 
-export const create = (departments: SelectOption[]): Form<CreatePost> => {
-  return [
-    {
-      type: "text",
-      rules: { required: "Заполните поле!" },
-      label: "Название",
-      name: "title",
-    },
-
-    {
-      type: "select",
-      label: "Организация",
-      name: "organizationId",
-      disabled: true,
-      hidden: true,
-    },
-
-    {
-      type: "select",
-      label: "Подразделение",
-      name: "departmentId",
-      options: departments,
-    },
-  ];
-};
-
-export const update = (departments: SelectOption[]): Form<UpdatePost> => {
+export const form = (departments: SelectOption[]): Form<CreatePost> => {
   return [
     {
       type: "text",

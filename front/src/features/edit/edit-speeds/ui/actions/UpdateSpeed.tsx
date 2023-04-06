@@ -5,7 +5,7 @@ import { getSelectOptions } from "@shared/lib";
 import { UpdateSpeed as UpdateSpeedType, Speed } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getSpeedDefaultValues, updateSpeed } from "../../model";
+import { getSpeedDefaultValues, speedForm } from "../../model";
 
 interface Props {
   id?: string;
@@ -14,7 +14,7 @@ interface Props {
 const UpdateSpeed = ({ id }: Props) => {
   const departments = DepartmentsStore.departments;
 
-  const form = updateSpeed(getSelectOptions(departments));
+  const form = speedForm(getSelectOptions(departments));
 
   return (
     <Update<Speed, UpdateSpeedType>

@@ -7,20 +7,18 @@ import {
 } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getDepartmentDefaultValues, updateDepartment } from "../../model";
+import { getDepartmentDefaultValues, departmentForm } from "../../model";
 
 interface Props {
   id?: string;
 }
 
 const UpdateDepartment = ({ id }: Props) => {
-  const form = updateDepartment();
-
   return (
     <Update<Department, UpdateDepartmentType>
       name={"подразделение"}
       store={DepartmentsStore}
-      form={form}
+      form={departmentForm()}
       id={id}
       getDefaultValues={getDepartmentDefaultValues}
     />

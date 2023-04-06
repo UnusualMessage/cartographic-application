@@ -8,13 +8,13 @@ import {
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
 
-import { createEmployee, getEmployeeDefaultValues } from "../../model";
+import { getEmployeeDefaultValues, employeeForm } from "../../model";
 
 const CreateEmployee = () => {
   const departments = DepartmentsStore.departments;
   const posts = PostsStore.posts;
 
-  const form = createEmployee(
+  const form = employeeForm(
     getSelectOptions(departments),
     getSelectOptions(posts)
   );

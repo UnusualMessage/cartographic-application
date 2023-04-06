@@ -5,7 +5,7 @@ import { getSelectOptions } from "@shared/lib";
 import { Mounted, UpdateMounted } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { updateMounted, getMountedDefaultValues } from "../../model";
+import { getMountedDefaultValues, mountedForm } from "../../model";
 
 interface Props {
   id?: string;
@@ -14,7 +14,7 @@ interface Props {
 const UpdateMounted = ({ id }: Props) => {
   const departments = DepartmentsStore.departments;
 
-  const form = updateMounted(getSelectOptions(departments));
+  const form = mountedForm(getSelectOptions(departments));
 
   return (
     <Update<Mounted, UpdateMounted>

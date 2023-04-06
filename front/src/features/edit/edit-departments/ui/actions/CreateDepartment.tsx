@@ -3,15 +3,13 @@ import { observer } from "mobx-react-lite";
 import { DepartmentsStore } from "@entities/business";
 import { Create } from "@shared/ui";
 
-import { createDepartment, getDepartmentDefaultValues } from "../../model";
+import { getDepartmentDefaultValues, departmentForm } from "../../model";
 
 const CreateDepartment = () => {
-  const form = createDepartment();
-
   return (
     <Create
       name={"подразделение"}
-      form={form}
+      form={departmentForm()}
       store={DepartmentsStore}
       defaultValues={getDepartmentDefaultValues()}
     />

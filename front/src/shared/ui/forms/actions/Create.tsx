@@ -14,7 +14,7 @@ import DialogForm from "../DialogForm";
 interface Props<T, CreateT> {
   name: string;
   store: ApiStore<T, CreateT, any>;
-  form: Form<CreateT>;
+  form: Form;
   defaultValues: DeepPartial<CreateT>;
 }
 
@@ -51,7 +51,7 @@ const Create = <T, CreateT extends FieldValues>({
       onDeny={onDeny}
       successful={isSubmitSuccessful}
     >
-      {formRenderer(form, control as Control)}
+      {formRenderer<CreateT>(form, control as Control)}
     </DialogForm>
   );
 };

@@ -5,10 +5,7 @@ import { getSelectOptions } from "@shared/lib";
 import { EquipmentType, UpdateEquipmentType } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import {
-  getEquipmentTypeDefaultValues,
-  updateEquipmentType,
-} from "../../model";
+import { getEquipmentTypeDefaultValues, equipmentTypeForm } from "../../model";
 
 interface Props {
   id?: string;
@@ -17,7 +14,7 @@ interface Props {
 const UpdateEquipmentType = ({ id }: Props) => {
   const departments = DepartmentsStore.departments;
 
-  const form = updateEquipmentType(getSelectOptions(departments));
+  const form = equipmentTypeForm(getSelectOptions(departments));
 
   return (
     <Update<EquipmentType, UpdateEquipmentType>

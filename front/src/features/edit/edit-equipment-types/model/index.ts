@@ -1,5 +1,2 @@
 export { getDefaultValues as getEquipmentTypeDefaultValues } from "./getDefaultValues";
-export {
-  create as createEquipmentType,
-  update as updateEquipmentType,
-} from "./form";
+export { form as equipmentTypeForm } from "./form";

@@ -5,7 +5,7 @@ import { getSelectOptions } from "@shared/lib";
 import { Post, UpdatePost as UpdatePostType } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getPostDefaultValues, updatePost } from "../../model";
+import { getPostDefaultValues, postForm } from "../../model";
 
 interface Props {
   id?: string;
@@ -14,7 +14,7 @@ interface Props {
 const UpdatePost = ({ id }: Props) => {
   const departments = DepartmentsStore.departments;
 
-  const form = updatePost(getSelectOptions(departments));
+  const form = postForm(getSelectOptions(departments));
 
   return (
     <Update<Post, UpdatePostType>

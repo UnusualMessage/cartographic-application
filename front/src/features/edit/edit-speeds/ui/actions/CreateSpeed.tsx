@@ -4,12 +4,12 @@ import { SpeedsStore, DepartmentsStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
 
-import { createSpeed, getSpeedDefaultValues } from "../../model";
+import { getSpeedDefaultValues, speedForm } from "../../model";
 
 const CreateSpeed = () => {
   const departments = DepartmentsStore.departments;
 
-  const form = createSpeed(getSelectOptions(departments));
+  const form = speedForm(getSelectOptions(departments));
 
   return (
     <Create

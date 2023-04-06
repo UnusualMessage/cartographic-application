@@ -9,7 +9,7 @@ import { getSelectOptions } from "@shared/lib";
 import { UpdateEmployee as UpdateEmployeeType, Employee } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getEmployeeDefaultValues, updateEmployee } from "../../model";
+import { getEmployeeDefaultValues, employeeForm } from "../../model";
 
 interface Props {
   id?: string;
@@ -19,7 +19,7 @@ const UpdateEmployee = ({ id }: Props) => {
   const departments = DepartmentsStore.departments;
   const posts = PostsStore.posts;
 
-  const form = updateEmployee(
+  const form = employeeForm(
     getSelectOptions(departments),
     getSelectOptions(posts)
   );

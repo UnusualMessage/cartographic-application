@@ -4,15 +4,12 @@ import { DepartmentsStore, EquipmentTypesStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
 
-import {
-  createEquipmentType,
-  getEquipmentTypeDefaultValues,
-} from "../../model";
+import { getEquipmentTypeDefaultValues, equipmentTypeForm } from "../../model";
 
 const CreateEquipmentType = () => {
   const departments = DepartmentsStore.departments;
 
-  const form = createEquipmentType(getSelectOptions(departments));
+  const form = equipmentTypeForm(getSelectOptions(departments));
 
   return (
     <Create
