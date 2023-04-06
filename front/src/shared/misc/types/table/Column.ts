@@ -2,6 +2,6 @@ import { FC } from "react";
 
 export interface Column<T extends Record<string, any>> {
   title: string;
-  dataIndex: keyof T;
+  dataIndex: string & keyof T;
   render?: FC;
 }
