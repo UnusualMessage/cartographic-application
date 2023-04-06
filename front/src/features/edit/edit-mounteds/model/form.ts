@@ -1,9 +1,6 @@
 import { SelectOption, Form, CreateMounted, UpdateMounted } from "@shared/misc";
 
-export const create = (
-  organizations: SelectOption[],
-  departments: SelectOption[]
-): Form<CreateMounted> => {
+export const create = (departments: SelectOption[]): Form<CreateMounted> => {
   return [
     {
       type: "text",
@@ -27,10 +24,10 @@ export const create = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: organizations,
+      hidden: true,
+      disabled: true,
     },
 
     {
@@ -42,10 +39,7 @@ export const create = (
   ];
 };
 
-export const update = (
-  organizations: SelectOption[],
-  departments: SelectOption[]
-): Form<UpdateMounted> => {
+export const update = (departments: SelectOption[]): Form<UpdateMounted> => {
   return [
     {
       type: "text",
@@ -69,10 +63,10 @@ export const update = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: organizations,
+      hidden: true,
+      disabled: true,
     },
 
     {

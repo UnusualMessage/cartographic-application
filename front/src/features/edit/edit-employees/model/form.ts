@@ -6,7 +6,6 @@ import {
 } from "@shared/misc";
 
 export const create = (
-  organizations: SelectOption[],
   departments: SelectOption[],
   posts: SelectOption[]
 ): Form<CreateEmployee> => {
@@ -40,10 +39,10 @@ export const create = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: organizations,
+      hidden: true,
+      disabled: true,
     },
 
     {
@@ -74,7 +73,6 @@ export const create = (
 };
 
 export const update = (
-  organizations: SelectOption[],
   departments: SelectOption[],
   posts: SelectOption[]
 ): Form<UpdateEmployee> => {
@@ -108,10 +106,10 @@ export const update = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: organizations,
+      hidden: true,
+      disabled: true,
     },
 
     {

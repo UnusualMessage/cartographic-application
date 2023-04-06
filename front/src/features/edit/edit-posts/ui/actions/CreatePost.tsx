@@ -1,25 +1,24 @@
 import { observer } from "mobx-react-lite";
 
-import {
-  OrganizationsStore,
-  PostsStore,
-  DepartmentsStore,
-} from "@entities/business";
+import { PostsStore, DepartmentsStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
 
-import { createPost } from "../../model";
+import { createPost, getPostDefaultValues } from "../../model";
 
 const CreatePost = () => {
-  const organizations = OrganizationsStore.organizations;
   const departments = DepartmentsStore.departments;
 
-  const form = createPost(
-    getSelectOptions(organizations),
-    getSelectOptions(departments)
-  );
+  const form = createPost(getSelectOptions(departments));
 
-  return <Create name={"должность"} store={PostsStore} form={form} />;
+  return (
+    <Create
+      name={"должность"}
+      store={PostsStore}
+      form={form}
+      defaultValues={getPostDefaultValues()}
+    />
+  );
 };
 
 export default observer(CreatePost);

@@ -1,9 +1,6 @@
 import { SelectOption, Form, CreateTrailer, UpdateTrailer } from "@shared/misc";
 
-export const create = (
-  organizations: SelectOption[],
-  departments: SelectOption[]
-): Form<CreateTrailer> => {
+export const create = (departments: SelectOption[]): Form<CreateTrailer> => {
   return [
     {
       type: "text",
@@ -14,10 +11,10 @@ export const create = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: organizations,
+      hidden: true,
+      disabled: true,
     },
 
     {
@@ -29,10 +26,7 @@ export const create = (
   ];
 };
 
-export const update = (
-  organizations: SelectOption[],
-  departments: SelectOption[]
-): Form<UpdateTrailer> => {
+export const update = (departments: SelectOption[]): Form<UpdateTrailer> => {
   return [
     {
       type: "text",
@@ -43,10 +37,10 @@ export const update = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: organizations,
+      hidden: true,
+      disabled: true,
     },
 
     {

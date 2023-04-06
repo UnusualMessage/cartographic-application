@@ -1,10 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import {
-  OrganizationsStore,
-  PostsStore,
-  DepartmentsStore,
-} from "@entities/business";
+import { PostsStore, DepartmentsStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Post, UpdatePost as UpdatePostType } from "@shared/misc";
 import { Update } from "@shared/ui";
@@ -16,13 +12,9 @@ interface Props {
 }
 
 const UpdatePost = ({ id }: Props) => {
-  const organizations = OrganizationsStore.organizations;
   const departments = DepartmentsStore.departments;
 
-  const form = updatePost(
-    getSelectOptions(organizations),
-    getSelectOptions(departments)
-  );
+  const form = updatePost(getSelectOptions(departments));
 
   return (
     <Update<Post, UpdatePostType>

@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 
 import {
   EmployeesStore,
-  OrganizationsStore,
   PostsStore,
   DepartmentsStore,
 } from "@entities/business";
@@ -17,12 +16,10 @@ interface Props {
 }
 
 const UpdateEmployee = ({ id }: Props) => {
-  const organizations = OrganizationsStore.organizations;
   const departments = DepartmentsStore.departments;
   const posts = PostsStore.posts;
 
   const form = updateEmployee(
-    getSelectOptions(organizations),
     getSelectOptions(departments),
     getSelectOptions(posts)
   );
