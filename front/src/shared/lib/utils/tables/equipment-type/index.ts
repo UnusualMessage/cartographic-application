@@ -1,0 +1,1 @@
+export { mapEquipmentTypeToTable } from "./mapEquipmentTypeToTable";

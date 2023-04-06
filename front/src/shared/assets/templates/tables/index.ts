@@ -4,3 +4,5 @@ export { planTable } from "./planTable";
 export { postTable } from "./postTable";
 export { speedTable } from "./speedTable";
 export { trailerTable } from "./trailerTable";
+export { equipmentTypeTable } from "./equipmentTypeTable";
+export { mountedTable } from "./mountedTable";
