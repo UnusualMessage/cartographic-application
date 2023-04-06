@@ -1,6 +1,9 @@
 import { SelectOption, Form, CreateSpeed, UpdateSpeed } from "@shared/misc";
 
-export const create = (organizations: SelectOption[]): Form<CreateSpeed> => {
+export const create = (
+  organizations: SelectOption[],
+  departments: SelectOption[]
+): Form<CreateSpeed> => {
   return [
     {
       type: "text",
@@ -42,11 +45,21 @@ export const create = (organizations: SelectOption[]): Form<CreateSpeed> => {
       label: "Организация",
       name: "organizationId",
       options: organizations,
+    },
+
+    {
+      type: "select",
+      label: "Подразделение",
+      name: "departmentId",
+      options: departments,
     },
   ];
 };
 
-export const update = (organizations: SelectOption[]): Form<UpdateSpeed> => {
+export const update = (
+  organizations: SelectOption[],
+  departments: SelectOption[]
+): Form<UpdateSpeed> => {
   return [
     {
       type: "text",
@@ -82,6 +95,13 @@ export const update = (organizations: SelectOption[]): Form<UpdateSpeed> => {
       label: "Организация",
       name: "organizationId",
       options: organizations,
+    },
+
+    {
+      type: "select",
+      label: "Подразделение",
+      name: "departmentId",
+      options: departments,
     },
   ];
 };

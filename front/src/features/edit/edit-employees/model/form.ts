@@ -7,6 +7,7 @@ import {
 
 export const create = (
   organizations: SelectOption[],
+  departments: SelectOption[],
   posts: SelectOption[]
 ): Form<CreateEmployee> => {
   return [
@@ -46,9 +47,22 @@ export const create = (
     },
 
     {
+      type: "select",
+      label: "Подразделение",
+      name: "departmentId",
+      options: departments,
+    },
+
+    {
       type: "text",
       label: "Номер телефона",
       name: "phone",
+    },
+
+    {
+      type: "text",
+      label: "Электронная почта",
+      name: "email",
     },
 
     {
@@ -61,6 +75,7 @@ export const create = (
 
 export const update = (
   organizations: SelectOption[],
+  departments: SelectOption[],
   posts: SelectOption[]
 ): Form<UpdateEmployee> => {
   return [
@@ -100,9 +115,22 @@ export const update = (
     },
 
     {
+      type: "select",
+      label: "Подразделение",
+      name: "departmentId",
+      options: departments,
+    },
+
+    {
       type: "text",
       label: "Номер телефона",
       name: "phone",
+    },
+
+    {
+      type: "text",
+      label: "Электронная почта",
+      name: "email",
     },
 
     {

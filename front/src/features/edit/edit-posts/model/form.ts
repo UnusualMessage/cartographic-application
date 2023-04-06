@@ -1,6 +1,9 @@
 import { SelectOption, Form, CreatePost, UpdatePost } from "@shared/misc";
 
-export const create = (options: SelectOption[]): Form<CreatePost> => {
+export const create = (
+  organizations: SelectOption[],
+  departments: SelectOption[]
+): Form<CreatePost> => {
   return [
     {
       type: "text",
@@ -14,12 +17,22 @@ export const create = (options: SelectOption[]): Form<CreatePost> => {
       rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: options,
+      options: organizations,
+    },
+
+    {
+      type: "select",
+      label: "Подразделение",
+      name: "departmentId",
+      options: departments,
     },
   ];
 };
 
-export const update = (options: SelectOption[]): Form<UpdatePost> => {
+export const update = (
+  options: SelectOption[],
+  departments: SelectOption[]
+): Form<UpdatePost> => {
   return [
     {
       type: "text",
@@ -34,6 +47,13 @@ export const update = (options: SelectOption[]): Form<UpdatePost> => {
       label: "Организация",
       name: "organizationId",
       options: options,
+    },
+
+    {
+      type: "select",
+      label: "Подразделение",
+      name: "departmentId",
+      options: departments,
     },
   ];
 };

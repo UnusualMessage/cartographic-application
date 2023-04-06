@@ -22,7 +22,6 @@ export const create = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Подразделение",
       name: "departmentId",
       options: departments,
@@ -52,7 +51,6 @@ export const update = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Подразделение",
       name: "departmentId",
       options: departments,
