@@ -3,7 +3,15 @@ import React from "react";
 import { References } from "@shared/misc";
 import { EmptyInformation } from "@shared/ui";
 
-import { Departments, Posts, Employees, Speeds, Trailers } from "../ui";
+import {
+  Departments,
+  Posts,
+  Employees,
+  Speeds,
+  Trailers,
+  Mounteds,
+} from "../ui";
+import EquipmentTypes from "../ui/EquipmentTypes";
 
 export const references: References = {
   departments: {
@@ -159,8 +167,7 @@ export const references: References = {
     key: "equipmentTypes",
     title: "Типы техники",
     link: "equipment-types",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <EquipmentTypes />,
   },
 
   speeds: {
@@ -181,7 +188,6 @@ export const references: References = {
     key: "mounteds",
     title: "Навесные агрегаты",
     link: "mounteds",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <Mounteds />,
   },
 };
