@@ -2,16 +2,16 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { EmployeesStore, MountedsStore } from "@entities/business";
-import { mountedTable } from "@shared/assets";
-import { mapMountedToTable } from "@shared/lib";
-import { TableMounted } from "@shared/misc";
-import { Table, TableButtons } from "@shared/ui";
 import {
   CreateMounted,
   UpdateMounted,
   RemoveMounted,
   DuplicateMounted,
-} from "features/edit";
+} from "@features/edit";
+import { mountedTable } from "@shared/assets";
+import { mapMountedToTable } from "@shared/lib";
+import { TableMounted } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const Mounteds = () => {
   const mounted = MountedsStore.mounted;

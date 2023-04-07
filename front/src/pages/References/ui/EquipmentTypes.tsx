@@ -2,16 +2,16 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { EquipmentTypesStore } from "@entities/business";
-import { equipmentTypeTable } from "@shared/assets";
-import { mapEquipmentTypeToTable } from "@shared/lib";
-import { TableEquipmentType } from "@shared/misc";
-import { Table, TableButtons } from "@shared/ui";
 import {
   CreateEquipmentType,
   UpdateEquipmentType,
   DuplicateEquipmentType,
   RemoveEquipmentType,
-} from "features/edit";
+} from "@features/edit";
+import { equipmentTypeTable } from "@shared/assets";
+import { mapEquipmentTypeToTable } from "@shared/lib";
+import { TableEquipmentType } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const EquipmentTypes = () => {
   const type = EquipmentTypesStore.type;

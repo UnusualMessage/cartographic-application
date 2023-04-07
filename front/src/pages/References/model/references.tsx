@@ -10,9 +10,10 @@ import {
   Speeds,
   Trailers,
   Mounteds,
+  Geozones,
+  Equipments,
+  EquipmentTypes,
 } from "../ui";
-import Equipments from "../ui/Equipments";
-import EquipmentTypes from "../ui/EquipmentTypes";
 
 export const references: References = {
   departments: {
@@ -26,8 +27,7 @@ export const references: References = {
     key: "geozones",
     title: "Геозоны",
     link: "geozones",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <Geozones />,
   },
 
   stores: {

@@ -2,16 +2,16 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { TrailersStore } from "@entities/business";
-import { trailerTable } from "@shared/assets";
-import { mapTrailerToTable } from "@shared/lib";
-import { TableTrailer } from "@shared/misc";
-import { Table, TableButtons } from "@shared/ui";
 import {
   CreateTrailer,
   UpdateTrailer,
   RemoveTrailer,
   DuplicateTrailer,
-} from "features/edit";
+} from "@features/edit";
+import { trailerTable } from "@shared/assets";
+import { mapTrailerToTable } from "@shared/lib";
+import { TableTrailer } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const Trailers = () => {
   const trailer = TrailersStore.trailer;
