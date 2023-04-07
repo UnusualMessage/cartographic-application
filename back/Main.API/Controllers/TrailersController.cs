@@ -23,8 +23,8 @@ public class TrailersController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
-        var trailers = await _mediator.SendRequest(new GetTrailers(model));
-        return Ok(trailers.Trailers);
+        var response = await _mediator.SendRequest(new GetTrailers(model));
+        return Ok(response.Items);
     }
 
     [AllowAnonymous]

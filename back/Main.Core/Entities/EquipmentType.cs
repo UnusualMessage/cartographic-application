@@ -15,6 +15,7 @@ public class EquipmentType : Entity<EquipmentType>
     public override void Update(EquipmentType entity)
     {
         Name = entity.Name;
+        
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;
     }

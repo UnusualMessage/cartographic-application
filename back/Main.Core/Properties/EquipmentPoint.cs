@@ -1,6 +1,6 @@
 ﻿namespace Main.Core.Properties;
 
-public struct EquipmentPoint
+public class EquipmentPoint
 {
     public string Type { get; set; } = "Point";
     public double[] Coordinates { get; init; } = new double[2];

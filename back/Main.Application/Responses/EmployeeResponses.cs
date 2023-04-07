@@ -6,4 +6,4 @@ public record EmployeeResponse(Guid Id, string FirstName, string? SecondName, st
     string? Email, DateOnly? BirthDate, string? DriverCard,
     OrganizationResponse Organization, DepartmentResponse? Department, PostsResponse Post) : Response(Id);
 
-public record EmployeesResponse(IEnumerable<EmployeeResponse> Employees); 
+public record EmployeesResponse(IEnumerable<EmployeeResponse> Items); 

@@ -24,7 +24,7 @@ public class GeozonesController : ControllerBase
     public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
         var response = await _mediator.SendRequest(new GetGeozones(model));
-        return Ok(response.Geozones);
+        return Ok(response.Items);
     }
 
     [AllowAnonymous]

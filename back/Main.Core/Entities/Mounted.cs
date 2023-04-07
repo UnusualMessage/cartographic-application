@@ -19,6 +19,7 @@ public class Mounted : Entity<Mounted>
         Name = entity.Name;
         Width = entity.Width;
         Offset = entity.Offset;
+        
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;
     }

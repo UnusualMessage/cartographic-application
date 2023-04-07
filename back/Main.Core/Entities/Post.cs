@@ -15,6 +15,7 @@ public class Post : Entity<Post>
     public override void Update(Post entity)
     {
         Title = entity.Title;
+        
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;
     }

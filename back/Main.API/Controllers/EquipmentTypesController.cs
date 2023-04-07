@@ -24,7 +24,7 @@ public class EquipmentTypesController : ControllerBase
     public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
         var response = await _mediator.SendRequest(new GetEquipmentTypes(model));
-        return Ok(response.EquipmentTypes);
+        return Ok(response.Items);
     }
 
     [AllowAnonymous]

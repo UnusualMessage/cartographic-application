@@ -15,6 +15,7 @@ public class Trailer : Entity<Trailer>
     public override void Update(Trailer entity)
     {
         Title = entity.Title;
+        
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;
     }

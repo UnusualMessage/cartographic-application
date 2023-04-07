@@ -2,7 +2,7 @@
 
 namespace Main.Core.Properties;
 
-public struct GeozoneFeature
+public class GeozoneFeature
 {
     public string Type { get; set; } = "Feature";
     public GeozonePolygon Geometry { get; init; }

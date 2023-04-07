@@ -16,21 +16,22 @@ public class GeozoneProfile : Profile
                 expression =>
                     expression.MapFrom((equipment, _) =>
                     {
-                        var feature = new GeozoneFeature(equipment.Feature.Coordinates);
-                        return feature;
+                        if (equipment.Feature is null) return null;
+
+                        return new GeozoneFeature(equipment.Feature.Coordinates);
                     }));
 
         CreateMap<CreateGeozone, Geozone>()
             .ForMember(equipment => equipment.Feature,
                 expression => expression.MapFrom((source, _) =>
                 {
+                    if (source.Feature is null) return null;
+
                     var coordinates = source.Feature.Geometry.Coordinates;
                     var geometryFactory = new GeometryFactory();
 
-                    var feature = geometryFactory.CreatePolygon(coordinates
+                    return geometryFactory.CreatePolygon(coordinates
                         .Select(coordinate => new Coordinate(coordinate[0], coordinate[1])).ToArray());
-
-                    return feature;
                 }));
 
         CreateMap<UpdateGeozone, Geozone>();

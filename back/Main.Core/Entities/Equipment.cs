@@ -7,7 +7,7 @@ public class Equipment : Entity<Equipment>
 {
     public required string Name { get; set; }
     public required string Status { get; set; } = "no-data";
-    public required Point Feature { get; set; }
+    public Point? Feature { get; set; }
 
     public EquipmentType? EquipmentType { get; set; }
     public required Guid EquipmentTypeId { get; set; }
@@ -22,7 +22,7 @@ public class Equipment : Entity<Equipment>
     {
         Name = entity.Name;
         Status = entity.Status;
-        Feature = (Point)entity.Feature.Copy();
+        Feature = (Point?)entity.Feature?.Copy();
 
         EquipmentTypeId = entity.EquipmentTypeId;
         OrganizationId = entity.OrganizationId;

@@ -7,7 +7,7 @@ public class Geozone : Entity<Geozone>
 {
     public required string Title { get; set; }
 
-    public required Polygon Feature { get; set; }
+    public Polygon? Feature { get; set; }
 
     public Organization? Organization { get; set; }
     public required Guid OrganizationId { get; set; }
@@ -18,7 +18,7 @@ public class Geozone : Entity<Geozone>
     public override void Update(Geozone entity)
     {
         Title = entity.Title;
-        Feature = (Polygon)entity.Feature.Copy();
+        Feature = (Polygon?)entity.Feature?.Copy();
 
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;

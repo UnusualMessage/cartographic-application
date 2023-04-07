@@ -14,16 +14,24 @@ public class EquipmentProfile : Profile
         CreateMap<Equipment, EquipmentResponse>()
             .ForMember(response => response.Feature,
                 expression =>
-                    expression.MapFrom(equipment => new EquipmentFeature(equipment.Feature.X, equipment.Feature.Y)));
+                    expression.MapFrom((equipment, _) =>
+                    {
+                        if (equipment.Feature is null) return null;
+
+                        var feature = new EquipmentFeature(equipment.Feature.X, equipment.Feature.Y);
+                        return feature;
+                    }));
 
         CreateMap<CreateEquipment, Equipment>()
             .ForMember(equipment => equipment.Feature,
                 expression => expression.MapFrom((source, _) =>
                 {
-                    var feature = new Point(source.Feature.Geometry.Coordinates[0],
+                    if (source.Feature is null) return null;
+
+                    var equipmentFeature = new Point(source.Feature.Geometry.Coordinates[0],
                         source.Feature.Geometry.Coordinates[1]);
 
-                    return feature;
+                    return equipmentFeature;
                 }));
 
         CreateMap<UpdateEquipment, Equipment>();

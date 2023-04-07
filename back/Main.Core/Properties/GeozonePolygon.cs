@@ -2,7 +2,7 @@
 
 namespace Main.Core.Properties;
 
-public struct GeozonePolygon
+public class GeozonePolygon
 {
     public string Type { get; set; } = "Polygon";
     public List<double[]> Coordinates { get; init; } = new();
