@@ -1,7 +1,7 @@
 import { Badge } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { GeozonesStore } from "@entities/geozone";
+import { GeozonesStore } from "@entities/business";
 
 const GeozonesTabLabel = () => {
   const geozones = GeozonesStore.geozones;

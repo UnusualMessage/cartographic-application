@@ -12,8 +12,7 @@ import { Feature } from "ol";
 import { Polygon } from "ol/geom";
 import { v4 as uuid } from "uuid";
 
-import { OrganizationsStore } from "@entities/business";
-import { GeozonesStore } from "@entities/geozone";
+import { OrganizationsStore, GeozonesStore } from "@entities/business";
 import { geozonesLayerId } from "@shared/constants";
 import {
   InteractionsStore,

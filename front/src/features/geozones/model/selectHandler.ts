@@ -1,7 +1,7 @@
 import { centerOfMass } from "@turf/turf";
 import { TreeProps } from "antd/es/tree";
 
-import { GeozonesStore } from "@entities/geozone";
+import { GeozonesStore } from "@entities/business";
 import { TabsStore, ViewStore } from "@shared/misc";
 
 export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
