@@ -6,3 +6,4 @@ export * from "./speed";
 export * from "./trailer";
 export * from "./mounted";
 export * from "./equipment-type";
+export * from "./equipment";
