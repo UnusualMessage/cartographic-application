@@ -51,5 +51,11 @@ public class OrganizationsConfiguration : IEntityTypeConfiguration<Organization>
             .WithOne(e => e.Organization)
             .HasForeignKey(e => e.OrganizationId)
             .OnDelete(DeleteBehavior.Cascade);
+
+        builder
+            .HasMany<Mounted>()
+            .WithOne(e => e.Organization)
+            .HasForeignKey(e => e.OrganizationId)
+            .OnDelete(DeleteBehavior.Cascade);
     }
 }
