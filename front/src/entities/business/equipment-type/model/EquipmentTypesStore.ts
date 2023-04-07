@@ -1,6 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { v4 as uuid } from "uuid";
 
+import { types } from "@shared/assets";
 import {
   ApiStore,
   FetchService,
@@ -21,7 +22,7 @@ class EquipmentTypesStore
   private _fetch: FetchService;
 
   constructor() {
-    this._types = [];
+    this._types = types;
     this._type = undefined;
 
     this._api = new EquipmentTypesService();

@@ -14,6 +14,7 @@ export const form = (
 
     {
       type: "select",
+      rules: { required: "Выберите тип!" },
       label: "Тип",
       name: "typeId",
       options: types,

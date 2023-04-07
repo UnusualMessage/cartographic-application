@@ -11,6 +11,7 @@ import {
   Trailers,
   Mounteds,
 } from "../ui";
+import Equipments from "../ui/Equipments";
 import EquipmentTypes from "../ui/EquipmentTypes";
 
 export const references: References = {
@@ -159,8 +160,7 @@ export const references: References = {
     key: "equipment",
     title: "Техника",
     link: "equipment",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <Equipments />,
   },
 
   equipmentTypes: {
