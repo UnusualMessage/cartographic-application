@@ -10,7 +10,7 @@ export const getSelectOptions = (source: (RawOption | undefined)[]) => {
     }
 
     return {
-      label: item.title ?? "",
+      label: item.title ?? item.name ?? "",
       value: item.id ?? "",
     };
   });
