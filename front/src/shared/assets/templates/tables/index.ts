@@ -7,3 +7,4 @@ export { trailerTable } from "./trailerTable";
 export { equipmentTypeTable } from "./equipmentTypeTable";
 export { mountedTable } from "./mountedTable";
 export { equipmentTable } from "./equipmentTable";
+export { geozoneTable } from "./geozoneTable";

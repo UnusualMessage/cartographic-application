@@ -15,7 +15,7 @@ import { LayersService } from "@shared/misc";
 
 interface Props extends PropsWithChildren {
   id: string;
-  features?: IFeature<IPoint | IPolygon>[];
+  features?: (IFeature<IPoint | IPolygon> | undefined)[];
   style?: StyleLike;
 }
 
@@ -26,7 +26,7 @@ const VectorLayer = ({ children, id, style, features }: Props) => {
       features: features?.map((feature) => {
         const newFeature = new Feature();
 
-        switch (feature.geometry.type) {
+        switch (feature?.geometry.type) {
           case "Point":
             newFeature.setGeometry(new Point(feature.geometry.coordinates));
             break;

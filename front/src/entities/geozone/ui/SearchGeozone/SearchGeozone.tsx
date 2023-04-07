@@ -27,7 +27,7 @@ const SearchGeozone = () => {
         return {
           key: item.id,
           label: item.title,
-          value: centerOfMass(item.feature.geometry).geometry.coordinates,
+          value: centerOfMass(item.feature?.geometry).geometry.coordinates,
         };
       })
     );

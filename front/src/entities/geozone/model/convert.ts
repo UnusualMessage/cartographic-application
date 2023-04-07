@@ -12,17 +12,17 @@ export const convertGeozone = (
 
   switch (type) {
     case "3857":
-      geometry = geozone.feature.geometry;
+      geometry = geozone.feature?.geometry;
       break;
 
     case "4326":
-      geometry = toWgs84(geozone.feature.geometry);
+      geometry = toWgs84(geozone.feature?.geometry);
       break;
   }
 
   return {
     type: "Feature",
-    geometry: geometry,
+    geometry: geometry ?? { type: "Polygon", coordinates: [] },
     properties: {},
   };
 };

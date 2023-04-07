@@ -6,7 +6,7 @@ import { Organization } from "../organization";
 
 export interface Geozone extends Entity {
   title: string;
-  feature: Feature<Polygon>;
+  feature?: Feature<Polygon>;
   organization: Organization;
   department?: Department;
 }
