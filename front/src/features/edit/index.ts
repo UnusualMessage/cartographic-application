@@ -6,3 +6,4 @@ export * from "./edit-trailers";
 export * from "./edit-equipment-types";
 export * from "./edit-equipments";
 export * from "./edit-mounteds";
+export * from "./edit-geozones";
