@@ -5,5 +5,5 @@ import { Organization } from "../organization";
 export interface Trailer extends Entity {
   title: string;
   organization: Organization;
-  department: Department;
+  department?: Department;
 }

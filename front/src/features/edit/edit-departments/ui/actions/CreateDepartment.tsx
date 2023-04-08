@@ -1,17 +1,19 @@
 import { observer } from "mobx-react-lite";
 
-import { DepartmentsStore, OrganizationsStore } from "@entities/business";
-import { getSelectOptions } from "@shared/lib";
+import { DepartmentsStore } from "@entities/business";
 import { Create } from "@shared/ui";
 
-import { createDepartment } from "../../model";
+import { getDepartmentDefaultValues, departmentForm } from "../../model";
 
 const CreateDepartment = () => {
-  const organizations = OrganizationsStore.organizations;
-
-  const form = createDepartment(getSelectOptions(organizations));
-
-  return <Create name={"подразделение"} form={form} store={DepartmentsStore} />;
+  return (
+    <Create
+      name={"подразделение"}
+      form={departmentForm()}
+      store={DepartmentsStore}
+      defaultValues={getDepartmentDefaultValues()}
+    />
+  );
 };
 
 export default observer(CreateDepartment);

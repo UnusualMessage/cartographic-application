@@ -9,5 +9,6 @@ export const mapSpeedToTable = (speed: Speed): TableSpeed => {
     min: speed.min,
     timeLimit: speed.timeLimit,
     organization: speed.organization.title,
+    department: speed.department?.title,
   };
 };

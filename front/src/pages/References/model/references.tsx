@@ -3,7 +3,17 @@ import React from "react";
 import { References } from "@shared/misc";
 import { EmptyInformation } from "@shared/ui";
 
-import { Departments, Posts, Employees, Speeds, Trailers } from "../ui";
+import {
+  Departments,
+  Posts,
+  Employees,
+  Speeds,
+  Trailers,
+  Mounteds,
+  Geozones,
+  Equipments,
+  EquipmentTypes,
+} from "../ui";
 
 export const references: References = {
   departments: {
@@ -17,8 +27,7 @@ export const references: References = {
     key: "geozones",
     title: "Геозоны",
     link: "geozones",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <Geozones />,
   },
 
   stores: {
@@ -151,16 +160,14 @@ export const references: References = {
     key: "equipment",
     title: "Техника",
     link: "equipment",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <Equipments />,
   },
 
   equipmentTypes: {
     key: "equipmentTypes",
     title: "Типы техники",
     link: "equipment-types",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <EquipmentTypes />,
   },
 
   speeds: {
@@ -181,7 +188,6 @@ export const references: References = {
     key: "mounteds",
     title: "Навесные агрегаты",
     link: "mounteds",
-    disabled: true,
-    component: <EmptyInformation />,
+    component: <Mounteds />,
   },
 };

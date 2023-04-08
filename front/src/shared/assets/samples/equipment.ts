@@ -1,6 +1,7 @@
 import { fromLonLat } from "ol/proj";
 import { v4 as uuid } from "uuid";
 
+import { organizations } from "./organizations";
 import { types } from "./types";
 import type { Equipment } from "../../misc";
 
@@ -19,6 +20,7 @@ export const equipment: Equipment[] = [
       },
       properties: {},
     },
+    organization: organizations[0],
   },
 
   {
@@ -35,6 +37,7 @@ export const equipment: Equipment[] = [
       },
       properties: {},
     },
+    organization: organizations[0],
   },
 
   {
@@ -51,6 +54,7 @@ export const equipment: Equipment[] = [
       },
       properties: {},
     },
+    organization: organizations[0],
   },
 
   {
@@ -67,6 +71,7 @@ export const equipment: Equipment[] = [
       },
       properties: {},
     },
+    organization: organizations[0],
   },
 
   {
@@ -83,5 +88,6 @@ export const equipment: Equipment[] = [
       },
       properties: {},
     },
+    organization: organizations[0],
   },
 ];

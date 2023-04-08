@@ -1,9 +1,9 @@
 import { toFixed } from "ol/math";
 
-import { Column } from "../../../misc";
+import { Column, Plan } from "../../../misc";
 import Progress from "../../../ui/Progress";
 
-export const planTable: Column[] = [
+export const planTable: Column<Plan>[] = [
   {
     title: "Название",
     dataIndex: "title",

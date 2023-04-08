@@ -3,20 +3,16 @@ import classNames from "classnames";
 import { Key } from "react";
 
 import { wrapper } from "./table.module.scss";
-import type { Column as ColumnProps } from "../../misc";
-
-interface Item {
-  id: string;
-}
+import type { Column, TableItem } from "../../misc";
 
 interface Props<T> {
   items: T[];
-  columns: ColumnProps[];
+  columns: Column<any>[];
   setItems?: (items: T[]) => void;
   className?: string;
 }
 
-const Table = <T extends Item>({
+const Table = <T extends TableItem>({
   items,
   columns,
   setItems,

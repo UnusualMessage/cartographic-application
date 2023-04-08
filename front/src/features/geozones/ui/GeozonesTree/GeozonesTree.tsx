@@ -1,9 +1,9 @@
 import { observer } from "mobx-react-lite";
 import { v4 as uuid } from "uuid";
 
-import { GeozoneMenu, GeozonesStore } from "@entities/geozone";
 import { Geozone, Group } from "@shared/misc";
 import { Tree } from "@shared/ui";
+import { GeozoneMenu, GeozonesStore } from "entities/business";
 
 import {
   geozoneClickHandler,

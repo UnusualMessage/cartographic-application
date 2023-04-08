@@ -1,0 +1,1 @@
+export { mapGeozoneToTable } from "./mapGeozoneToTable";

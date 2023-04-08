@@ -1,11 +1,6 @@
-import {
-  SelectOption,
-  Form,
-  CreateDepartment,
-  UpdateDepartment,
-} from "@shared/misc";
+import { Form, CreateDepartment } from "@shared/misc";
 
-export const create = (options: SelectOption[]): Form<CreateDepartment> => {
+export const form = (): Form<CreateDepartment> => {
   return [
     {
       type: "text",
@@ -16,29 +11,10 @@ export const create = (options: SelectOption[]): Form<CreateDepartment> => {
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: options,
-    },
-  ];
-};
-
-export const update = (options: SelectOption[]): Form<UpdateDepartment> => {
-  return [
-    {
-      type: "text",
-      rules: { required: "Заполните поле!" },
-      label: "Название",
-      name: "title",
-    },
-
-    {
-      type: "select",
-      rules: { required: "Заполните поле!" },
-      label: "Организация",
-      name: "organizationId",
-      options: options,
+      hidden: true,
+      disabled: true,
     },
   ];
 };

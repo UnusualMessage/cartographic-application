@@ -2,16 +2,16 @@ import { observer } from "mobx-react-lite";
 import { useEffect } from "react";
 
 import { EmployeesStore } from "@entities/business";
-import { employeeTable } from "@shared/assets";
-import { mapEmployeeToTable } from "@shared/lib";
-import { TableEmployee } from "@shared/misc";
-import { Table, TableButtons } from "@shared/ui";
 import {
   CreateEmployee,
   UpdateEmployee,
   DuplicateEmployee,
   RemoveEmployee,
-} from "features/edit";
+} from "@features/edit";
+import { employeeTable } from "@shared/assets";
+import { mapEmployeeToTable } from "@shared/lib";
+import { TableEmployee } from "@shared/misc";
+import { Table, TableButtons } from "@shared/ui";
 
 const Employees = () => {
   const employee = EmployeesStore.employee;

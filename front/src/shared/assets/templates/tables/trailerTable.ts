@@ -1,6 +1,6 @@
-import { Column } from "../../../misc";
+import { Column, Trailer } from "../../../misc";
 
-export const trailerTable: Column[] = [
+export const trailerTable: Column<Trailer>[] = [
   {
     title: "Название",
     dataIndex: "title",

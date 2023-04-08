@@ -1,12 +1,7 @@
-import {
-  SelectOption,
-  Form,
-  CreateEmployee,
-  UpdateEmployee,
-} from "@shared/misc";
+import { SelectOption, Form, CreateEmployee } from "@shared/misc";
 
-export const create = (
-  organizations: SelectOption[],
+export const form = (
+  departments: SelectOption[],
   posts: SelectOption[]
 ): Form<CreateEmployee> => {
   return [
@@ -39,10 +34,17 @@ export const create = (
 
     {
       type: "select",
-      rules: { required: "Заполните поле!" },
       label: "Организация",
       name: "organizationId",
-      options: organizations,
+      hidden: true,
+      disabled: true,
+    },
+
+    {
+      type: "select",
+      label: "Подразделение",
+      name: "departmentId",
+      options: departments,
     },
 
     {
@@ -53,56 +55,8 @@ export const create = (
 
     {
       type: "text",
-      label: "№ водительского удостоверения",
-      name: "driverCard",
-    },
-  ];
-};
-
-export const update = (
-  organizations: SelectOption[],
-  posts: SelectOption[]
-): Form<UpdateEmployee> => {
-  return [
-    {
-      type: "text",
-      rules: { required: "Заполните поле!" },
-      label: "Имя",
-      name: "firstName",
-    },
-
-    {
-      type: "text",
-      label: "Фамилия",
-      name: "secondName",
-    },
-
-    {
-      type: "text",
-      label: "Отчество",
-      name: "patronymic",
-    },
-
-    {
-      type: "select",
-      rules: { required: "Заполните поле!" },
-      label: "Должность",
-      name: "postId",
-      options: posts,
-    },
-
-    {
-      type: "select",
-      rules: { required: "Заполните поле!" },
-      label: "Организация",
-      name: "organizationId",
-      options: organizations,
-    },
-
-    {
-      type: "text",
-      label: "Номер телефона",
-      name: "phone",
+      label: "Электронная почта",
+      name: "email",
     },
 
     {
