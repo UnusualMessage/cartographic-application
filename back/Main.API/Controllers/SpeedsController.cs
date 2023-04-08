@@ -23,8 +23,8 @@ public class SpeedsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
-        var speeds = await _mediator.SendRequest(new GetSpeeds(model));
-        return Ok(speeds.Speeds);
+        var response = await _mediator.SendRequest(new GetSpeeds(model));
+        return Ok(response.Items);
     }
 
     [AllowAnonymous]

@@ -4,6 +4,7 @@ using MassTransit;
 using MassTransit.Mediator;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Sieve.Models;
 
 namespace Main.API.Controllers;
 
@@ -20,10 +21,10 @@ public class OrganizationsController : ControllerBase
 
     [AllowAnonymous]
     [HttpGet]
-    public async Task<IActionResult> Get()
+    public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
-        var organizations = await _mediator.SendRequest(new GetOrganizations());
-        return Ok(organizations.Organizations);
+        var response = await _mediator.SendRequest(new GetOrganizations(model));
+        return Ok(response.Items);
     }
     
     [AllowAnonymous]

@@ -17,8 +17,6 @@ public static class MicroserviceConfiguration
         services.AddCors();
         services.AddControllers();
 
-        services.AddStackExchangeRedisCache(options => { options.Configuration = "localhost:6379"; });
-        
         services.AddHealthChecks();
         services.AddMediator(x =>
         {

@@ -33,7 +33,7 @@ public class Startup
             app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Main APIv1"));
 
             app.UseCors(builder => builder
-                .WithOrigins("http://localhost:3000")
+                .WithOrigins("https://localhost:3000")
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .AllowCredentials()
