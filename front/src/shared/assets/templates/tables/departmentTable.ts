@@ -1,6 +1,6 @@
-import { Column } from "../../../misc";
+import { Column, Department } from "../../../misc";
 
-export const departmentTable: Column[] = [
+export const departmentTable: Column<Department>[] = [
   {
     title: "Название",
     dataIndex: "title",

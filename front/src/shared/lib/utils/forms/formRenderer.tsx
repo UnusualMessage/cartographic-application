@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { FieldValues, Control } from "react-hook-form";
 
 import type { Form } from "../../../misc";
@@ -19,10 +20,15 @@ export const formRenderer = <T extends FieldValues>(
           key: `input-${field.label}`,
           label: field.label,
           options: field.options ?? [],
+          disabled: field.disabled,
           name: field.name,
           rules: field.rules,
           control,
         };
+
+        if (field.hidden) {
+          return <Fragment key={`input-${field.label}`} />;
+        }
 
         switch (field.type) {
           case "text":
@@ -34,7 +40,7 @@ export const formRenderer = <T extends FieldValues>(
           case "password":
             return <PasswordInput {...props} />;
           default:
-            return <></>;
+            return <Fragment key={`input-${field.label}`} />;
         }
       })}
     </>

@@ -20,6 +20,10 @@ public class CreateEquipmentHandler : MediatorRequestHandler<CreateEquipment, Eq
 
     protected override async Task<EquipmentResponse> Handle(CreateEquipment request, CancellationToken token)
     {
-        return _mapper.Map<EquipmentResponse>(await _repository.AddAsync(_mapper.Map<Equipment>(request)));
+        var target = _mapper.Map<Equipment>(request);
+
+        var equipment = await _repository.AddAsync(target);
+
+        return _mapper.Map<EquipmentResponse>(equipment);
     }
 }

@@ -7,6 +7,8 @@ import { Rules } from "./Rules";
 export interface Field<T> {
   type: Input;
   rules?: Rules;
+  hidden?: boolean;
+  disabled?: boolean;
   label: string;
   name: Path<T>;
   options?: SelectOption[];

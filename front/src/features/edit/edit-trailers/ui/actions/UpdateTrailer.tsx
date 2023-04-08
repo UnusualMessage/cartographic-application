@@ -1,28 +1,20 @@
 import { observer } from "mobx-react-lite";
 
-import {
-  DepartmentsStore,
-  OrganizationsStore,
-  TrailersStore,
-} from "@entities/business";
+import { DepartmentsStore, TrailersStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Trailer, UpdateTrailer as UpdateTrailerType } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getTrailerDefaultValues, updateTrailer } from "../../model";
+import { getTrailerDefaultValues, trailerForm } from "../../model";
 
 interface Props {
   id?: string;
 }
 
 const UpdateTrailer = ({ id }: Props) => {
-  const organizations = OrganizationsStore.organizations;
   const departments = DepartmentsStore.departments;
 
-  const form = updateTrailer(
-    getSelectOptions(organizations),
-    getSelectOptions(departments)
-  );
+  const form = trailerForm(getSelectOptions(departments));
 
   return (
     <Update<Trailer, UpdateTrailerType>

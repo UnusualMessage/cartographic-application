@@ -1,4 +1,3 @@
-export * as geozone from "./geozone";
 export * as auth from "./auth";
 export * as plan from "./business/plan";
 

@@ -20,6 +20,7 @@ public class CreateTrailerHandler : MediatorRequestHandler<CreateTrailer, Traile
 
     protected override async Task<TrailerResponse> Handle(CreateTrailer request, CancellationToken cancellationToken)
     {
-        return _mapper.Map<TrailerResponse>(await _repository.AddAsync(_mapper.Map<Trailer>(request)));
+        var trailer = _mapper.Map<Trailer>(request);
+        return _mapper.Map<TrailerResponse>(await _repository.AddAsync(trailer));
     }
 }

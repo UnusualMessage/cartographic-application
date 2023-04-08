@@ -23,8 +23,8 @@ public class EquipmentsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> Get([FromQuery] SieveModel model)
     {
-        var employees = await _mediator.SendRequest(new GetEquipments(model));
-        return Ok(employees.Equipments);
+        var response = await _mediator.SendRequest(new GetEquipments(model));
+        return Ok(response.Items);
     }
 
     [AllowAnonymous]

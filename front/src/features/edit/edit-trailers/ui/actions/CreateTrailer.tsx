@@ -1,25 +1,24 @@
 import { observer } from "mobx-react-lite";
 
-import {
-  DepartmentsStore,
-  OrganizationsStore,
-  TrailersStore,
-} from "@entities/business";
+import { DepartmentsStore, TrailersStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { Create } from "@shared/ui";
 
-import { createTrailer } from "../../model";
+import { getTrailerDefaultValues, trailerForm } from "../../model";
 
 const CreateTrailer = () => {
-  const organizations = OrganizationsStore.organizations;
   const departments = DepartmentsStore.departments;
 
-  const form = createTrailer(
-    getSelectOptions(organizations),
-    getSelectOptions(departments)
-  );
+  const form = trailerForm(getSelectOptions(departments));
 
-  return <Create name={"прицеп"} store={TrailersStore} form={form} />;
+  return (
+    <Create
+      name={"прицеп"}
+      store={TrailersStore}
+      form={form}
+      defaultValues={getTrailerDefaultValues()}
+    />
+  );
 };
 
 export default observer(CreateTrailer);

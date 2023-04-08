@@ -1,20 +1,20 @@
 import { observer } from "mobx-react-lite";
 
-import { OrganizationsStore, SpeedsStore } from "@entities/business";
+import { SpeedsStore, DepartmentsStore } from "@entities/business";
 import { getSelectOptions } from "@shared/lib";
 import { UpdateSpeed as UpdateSpeedType, Speed } from "@shared/misc";
 import { Update } from "@shared/ui";
 
-import { getSpeedDefaultValues, updateSpeed } from "../../model";
+import { getSpeedDefaultValues, speedForm } from "../../model";
 
 interface Props {
   id?: string;
 }
 
 const UpdateSpeed = ({ id }: Props) => {
-  const organizations = OrganizationsStore.organizations;
+  const departments = DepartmentsStore.departments;
 
-  const form = updateSpeed(getSelectOptions(organizations));
+  const form = speedForm(getSelectOptions(departments));
 
   return (
     <Update<Speed, UpdateSpeedType>

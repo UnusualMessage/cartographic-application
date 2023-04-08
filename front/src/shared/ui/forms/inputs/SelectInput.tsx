@@ -8,6 +8,7 @@ import type { SelectOption, Rules } from "../../../misc";
 interface Props {
   options: SelectOption[];
   label: string;
+  disabled?: boolean;
   rules?: Rules;
   name: string;
   control: Control;
@@ -15,7 +16,14 @@ interface Props {
 
 const { Option } = Select;
 
-const SelectInput = ({ options, label, rules, name, control }: Props) => {
+const SelectInput = ({
+  options,
+  disabled,
+  label,
+  rules,
+  name,
+  control,
+}: Props) => {
   const { field, fieldState } = useController({
     control,
     name,
@@ -36,6 +44,7 @@ const SelectInput = ({ options, label, rules, name, control }: Props) => {
     >
       <Select
         id={id}
+        disabled={disabled}
         placeholder={"Выберите..."}
         status={invalid ? "error" : ""}
         className={wrapper}

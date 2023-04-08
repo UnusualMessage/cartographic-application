@@ -21,7 +21,7 @@ interface Props<T, UpdateT> {
   store: ApiStore<T, any, UpdateT>;
   id?: string;
   getDefaultValues: (entity?: T) => DeepPartial<UpdateT>;
-  form: Form<UpdateT>;
+  form: Form;
 }
 
 const Update = <T extends Entity, UpdateT extends FieldValues>({
@@ -63,7 +63,7 @@ const Update = <T extends Entity, UpdateT extends FieldValues>({
       setSuccessful={setSuccessful}
       successful={successful}
     >
-      {formRenderer(form, control as Control)}
+      {formRenderer<UpdateT>(form, control as Control)}
     </DialogForm>
   );
 };

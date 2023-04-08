@@ -6,6 +6,6 @@ export const mapTrailerToTable = (trailer: Trailer): TableTrailer => {
     key: trailer.id,
     title: trailer.title,
     organization: trailer.organization.title,
-    department: trailer.department.title,
+    department: trailer.department?.title,
   };
 };

@@ -1,9 +1,11 @@
-﻿namespace Main.Application.Responses;
+﻿using Main.Core.Properties;
 
-public record EquipmentResponse(Guid Id, string Name)
+namespace Main.Application.Responses;
+
+public record EquipmentResponse(Guid Id, string Name, string Status, OrganizationResponse Organization,
+    DepartmentResponse? Department, EquipmentTypeResponse EquipmentType)
 {
-    public double X { get; set; }
-    public double Y { get; set; }
+    public EquipmentFeature? Feature { get; set; }
 }
 
-public record EquipmentsResponse(IEnumerable<EquipmentResponse> Equipments);
+public record EquipmentsResponse(IEnumerable<EquipmentResponse> Items);

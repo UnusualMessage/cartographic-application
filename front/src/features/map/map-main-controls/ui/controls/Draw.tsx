@@ -5,29 +5,20 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 import { Polygon as IPolygon } from "@turf/helpers";
-import {
-  Feature as IFeature,
-  area,
-  polygon,
-  toWgs84,
-  FeatureCollection,
-  toMercator,
-} from "@turf/turf";
+import { Feature as IFeature, FeatureCollection, toMercator } from "@turf/turf";
 import { Space, Select, Button, message } from "antd";
 import { observer } from "mobx-react-lite";
 import { Feature } from "ol";
 import { Polygon } from "ol/geom";
 import { v4 as uuid } from "uuid";
 
-import { OrganizationsStore } from "@entities/business";
-import { GeozonesStore } from "@entities/geozone";
+import { OrganizationsStore, GeozonesStore } from "@entities/business";
 import { geozonesLayerId } from "@shared/constants";
 import {
   InteractionsStore,
   InteractionType,
   FeaturesStore,
   LayersStore,
-  Properties,
 } from "@shared/misc";
 import { PolygonFilled, TextFileInput } from "@shared/ui";
 
@@ -56,30 +47,22 @@ const Draw = () => {
       if (geometry && organization) {
         const id = feature.getId() ?? uuid();
 
-        const savedFeature: IFeature<IPolygon, Properties> = {
+        const savedFeature: IFeature<IPolygon> = {
           id: id,
           type: "Feature",
           geometry: {
             type: "Polygon",
             coordinates: geometry.getCoordinates(),
           },
-          properties: {
-            center: geometry.getInteriorPoint().getCoordinates(),
-          },
+          properties: {},
         };
 
-        const geozoneArea = area(
-          polygon(toWgs84(savedFeature).geometry.coordinates)
-        );
         const title = "Новая геозона";
 
         GeozonesStore.add({
           id: id.toString(),
           title: title,
-          area: geozoneArea,
-          type: "field",
           feature: savedFeature,
-          children: [],
 
           organization,
         });

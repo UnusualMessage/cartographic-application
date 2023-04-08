@@ -8,11 +8,12 @@ import { Rules } from "../../../misc";
 interface Props {
   label: string;
   name: string;
+  disabled?: boolean;
   rules?: Rules;
   control: Control;
 }
 
-const TextInput = ({ label, name, control, rules }: Props) => {
+const TextInput = ({ label, disabled, name, control, rules }: Props) => {
   const { field, fieldState } = useController({
     control: control,
     name: name,
@@ -33,6 +34,7 @@ const TextInput = ({ label, name, control, rules }: Props) => {
     >
       <Input
         id={id}
+        disabled={disabled}
         placeholder={"Введите текст..."}
         status={invalid ? "error" : ""}
         className={wrapper}

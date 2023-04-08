@@ -23,9 +23,9 @@ public abstract class Repository<T> : IRepository<T> where T : Entity<T>
 
             return await GetByIdAsync(entity.Id);
         }
-        catch (DbUpdateException)
+        catch (DbUpdateException exception)
         {
-            throw new InvalidCastException();
+            throw new InvalidCastException(exception.Message);
         }
     }
 
