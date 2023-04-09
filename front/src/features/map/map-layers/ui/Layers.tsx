@@ -1,6 +1,7 @@
 import { observer } from "mobx-react-lite";
 
 import { EquipmentStore, GeozonesStore } from "@entities/business";
+import { SourceType } from "@entities/map/map-layers/ui/VectorLayer/VectorLayer";
 import {
   geozonesLayerId,
   measurementLayerId,
@@ -18,6 +19,8 @@ import {
   WeatherLayer,
   VectorLayer,
 } from "entities/map";
+
+import CadastralLayer from "./CadastralLayer";
 
 const Layers = () => {
   const geozoneFeatures = GeozonesStore.geozones.map(
@@ -37,6 +40,7 @@ const Layers = () => {
         id={geozonesLayerId}
         features={geozoneFeatures}
         style={getGeozoneStyle}
+        type={SourceType.features}
       >
         <Drawing />
       </VectorLayer>
@@ -45,9 +49,16 @@ const Layers = () => {
         id={transportLayerId}
         features={equipmentFeatures}
         style={getEquipmentStyle}
+        type={SourceType.features}
       />
 
-      <VectorLayer id={measurementLayerId} style={getMeasurementStyle}>
+      <CadastralLayer />
+
+      <VectorLayer
+        id={measurementLayerId}
+        style={getMeasurementStyle}
+        type={SourceType.features}
+      >
         <Measurement />
       </VectorLayer>
     </>

@@ -9,3 +9,4 @@ export const menuOffset = [0, 0];
 export const transportLayerId = uuid();
 export const geozonesLayerId = uuid();
 export const measurementLayerId = uuid();
+export const adminLayerId = uuid();
