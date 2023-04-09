@@ -1,0 +1,1 @@
+export { mapMountedToTable } from "./mapMountedToTable";

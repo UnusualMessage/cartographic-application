@@ -1,0 +1,22 @@
+@use "/src/shared/styles/constants" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  height: 200px;
+
+  .code {
+    min-height: 0;
+    min-width: 0;
+
+    border: 1px solid $border-color;
+
+    width: 100%;
+    height: 200px;
+    overflow: auto;
+
+    user-select: text;
+  }
+}

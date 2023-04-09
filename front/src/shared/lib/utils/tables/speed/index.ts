@@ -1,0 +1,1 @@
+export { mapSpeedToTable } from "./mapSpeedToTable";

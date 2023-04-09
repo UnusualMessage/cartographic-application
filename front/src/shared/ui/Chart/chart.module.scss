@@ -1,0 +1,20 @@
+@use "/src/shared/styles/constants" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  overflow: auto;
+
+  border: 1px solid $border-color;
+
+  .title {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .main {
+    margin: auto;
+  }
+}

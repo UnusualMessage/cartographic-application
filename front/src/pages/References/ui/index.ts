@@ -1,0 +1,9 @@
+export { default as Departments } from "./Departments";
+export { default as Employees } from "./Employees";
+export { default as Posts } from "./Posts";
+export { default as Speeds } from "./Speeds";
+export { default as Trailers } from "./Trailers";
+export { default as Mounteds } from "./Mounteds";
+export { default as EquipmentTypes } from "./EquipmentTypes";
+export { default as Equipments } from "./Equipments";
+export { default as Geozones } from "./Geozones";

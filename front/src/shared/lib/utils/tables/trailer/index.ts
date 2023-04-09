@@ -1,0 +1,1 @@
+export { mapTrailerToTable } from "./mapTrailerToTable";

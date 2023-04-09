@@ -1,0 +1,1 @@
+export { mapPlanToTable } from "./mapPlanToTable";

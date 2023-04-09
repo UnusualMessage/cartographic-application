@@ -1,0 +1,21 @@
+@import 'antd/dist/reset.css';
+@import "ol/ol.css";
+
+@import "./styles/normalize.scss";
+@import "/src/shared/styles/antd-tabs.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  -ms-user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+#root {
+  min-width: 320px;
+  width: 100vw;
+  height: 100vh;
+}

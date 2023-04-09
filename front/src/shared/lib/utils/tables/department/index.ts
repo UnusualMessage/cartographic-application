@@ -1,0 +1,1 @@
+export { mapDepartmentToTable } from "./mapDepartmentToTable";

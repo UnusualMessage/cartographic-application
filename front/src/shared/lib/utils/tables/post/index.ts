@@ -1,0 +1,1 @@
+export { mapPostToTable } from "./mapPostToTable";
