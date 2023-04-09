@@ -28,5 +28,6 @@ public static class DatabaseConfiguration
         services.AddScoped<IEquipmentTypeRepository, EquipmentTypeRepository>();
         services.AddScoped<IGeozoneRepository, GeozoneRepository>();
         services.AddScoped<IMountedRepository, MountedRepository>();
+        services.AddScoped<IGeozonePolygonRepository, GeozonePolygonRepository>();
     }
 }

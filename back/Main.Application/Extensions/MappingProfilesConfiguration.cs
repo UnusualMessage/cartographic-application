@@ -18,6 +18,7 @@ public static class MappingProfilesConfiguration
             .AddAutoMapper(typeof(TrailerResponse))
             .AddAutoMapper(typeof(EquipmentTypeProfile))
             .AddAutoMapper(typeof(GeozoneProfile))
-            .AddAutoMapper(typeof(MountedProfile));
+            .AddAutoMapper(typeof(MountedProfile))
+            .AddAutoMapper(typeof(GeozonePolygonProfile))
     }
 }
