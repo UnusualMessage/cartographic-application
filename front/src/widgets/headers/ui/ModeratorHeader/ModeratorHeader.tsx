@@ -14,7 +14,7 @@ import { Link } from "react-router-dom";
 
 import { AuthStore } from "@entities/auth";
 import { OrganizationsStore } from "@entities/business";
-import { about } from "@shared/assets";
+import { about, routes } from "@shared/assets";
 import { UpdateStore } from "@shared/misc";
 import { TractorFilled } from "@shared/ui";
 
@@ -33,19 +33,19 @@ const ModeratorHeader = () => {
           </Title>
         </Space>
 
-        <Link to={""}>
+        <Link to={routes.current.path}>
           <Button icon={<DesktopOutlined />} size={"large"} type={"text"}>
             Мониторинг
           </Button>
         </Link>
 
-        <Link to={"references"}>
+        <Link to={routes.references.path}>
           <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
             Справочники
           </Button>
         </Link>
 
-        <Link to={"reports"}>
+        <Link to={routes.reports.path}>
           <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
             Отчеты
           </Button>

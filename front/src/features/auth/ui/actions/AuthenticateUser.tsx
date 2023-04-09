@@ -3,6 +3,7 @@ import { Control, useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 
 import { AuthStore } from "@entities/auth";
+import { routes } from "@shared/assets";
 import { formRenderer } from "@shared/lib";
 import { AuthenticateUser as AuthenticateUserType } from "@shared/misc";
 
@@ -33,10 +34,10 @@ const AuthenticateUser = ({ className }: Props) => {
     if (AuthStore.entered) {
       switch (AuthStore.user?.roles) {
         case 8:
-          redirect("/admin");
+          redirect(`/${routes.admin.path}`);
           break;
         default:
-          redirect("/system/monitoring");
+          redirect(`/${routes.system.path}/${routes.monitoring.path}`);
       }
     }
 

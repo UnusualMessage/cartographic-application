@@ -5,6 +5,7 @@ import { RequireAuthentication } from "@features/auth";
 import Authorization from "@pages/Authorization";
 import { references as referencesRecord } from "@pages/References";
 import { reports as reportsRecord } from "@pages/Reports";
+import { routes } from "@shared/assets";
 import { isObjectKey } from "@shared/lib";
 import { Reference, Report } from "@shared/misc";
 import { EmptyPage } from "@shared/ui";
@@ -33,21 +34,21 @@ for (const key in reportsRecord) {
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: routes.root.path,
     element: <EmptyPage />,
     errorElement: <EmptyPage />,
   },
 
   {
-    path: "/system",
+    path: routes.root.path + routes.system.path,
     children: [
       {
-        path: "print",
+        path: routes.print.path,
         element: <Print />,
       },
 
       {
-        path: "monitoring",
+        path: routes.monitoring.path,
         element: (
           <RequireAuthentication roles={[1, 2, 4]}>
             <Layout />
@@ -56,12 +57,12 @@ export const router = createBrowserRouter([
         errorElement: <EmptyPage />,
         children: [
           {
-            path: "",
+            path: routes.current.path,
             element: <Monitoring />,
           },
 
           {
-            path: "references",
+            path: routes.references.path,
             element: <References />,
 
             children: references.map((reference) => {
@@ -73,7 +74,7 @@ export const router = createBrowserRouter([
           },
 
           {
-            path: "reports",
+            path: routes.reports.path,
             element: <Reports />,
 
             children: reports.map((report) => {
@@ -89,13 +90,13 @@ export const router = createBrowserRouter([
   },
 
   {
-    path: "/authorization",
+    path: routes.root.path + routes.authorization.path,
     element: <Authorization />,
     errorElement: <EmptyPage />,
   },
 
   {
-    path: "/admin",
+    path: routes.root.path + routes.admin.path,
     element: (
       <RequireAuthentication roles={[8]}>
         <Layout />
