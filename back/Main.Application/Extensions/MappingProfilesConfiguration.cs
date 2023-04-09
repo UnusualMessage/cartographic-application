@@ -20,5 +20,6 @@ public static class MappingProfilesConfiguration
             .AddAutoMapper(typeof(GeozoneProfile))
             .AddAutoMapper(typeof(MountedProfile))
             .AddAutoMapper(typeof(GeozonePolygonProfile))
+            .AddAutoMapper(typeof(EquipmentPointProfile));
     }
 }
