@@ -2,7 +2,6 @@ import {
   PauseOutlined,
   StepForwardOutlined,
   FieldTimeOutlined,
-  FileExcelOutlined,
   DesktopOutlined,
   FileAddOutlined,
   SettingOutlined,
@@ -46,14 +45,11 @@ const ModeratorHeader = () => {
           </Button>
         </Link>
 
-        <Button
-          icon={<FileExcelOutlined />}
-          size={"large"}
-          type={"text"}
-          disabled
-        >
-          Отчеты
-        </Button>
+        <Link to={"reports"}>
+          <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
+            Отчеты
+          </Button>
+        </Link>
       </Space>
 
       <Space className={container}>
