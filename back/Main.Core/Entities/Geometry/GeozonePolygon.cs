@@ -8,12 +8,19 @@ public class GeozonePolygon : Entity<GeozonePolygon>
     public required Polygon Geometry { get; set; }
 
     public Geozone? Geozone { get; set; }
-    public Guid? GeozoneId { get; set; }
+
+    public Organization? Organization { get; set; }
+    public required Guid OrganizationId { get; set; }
+
+    public Department? Department { get; set; }
+    public Guid? DepartmentId { get; set; }
 
     public override void Update(GeozonePolygon entity)
     {
         Id = entity.Id;
-        GeozoneId = entity.GeozoneId;
         Geometry = (Polygon)entity.Geometry.Copy();
+
+        OrganizationId = entity.OrganizationId;
+        DepartmentId = entity.DepartmentId;
     }
 }

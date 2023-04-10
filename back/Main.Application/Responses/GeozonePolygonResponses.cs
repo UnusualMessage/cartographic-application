@@ -26,9 +26,9 @@ public class PolygonFeature
 }
 
 public record GeozonePolygonResponse
-    (Guid Id, Guid? GeozoneId) : Response(Id)
+    (Guid Id, FlatGeozoneResponse Geozone) : Response(Id)
 {
-    public required PointGeometry Feature { get; set; }
+    public required PolygonFeature Feature { get; set; }
 }
 
 public record GeozonePolygonsResponse(IEnumerable<GeozonePolygonResponse> Items);

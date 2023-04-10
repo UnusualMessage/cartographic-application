@@ -25,6 +25,7 @@ public class Equipment : Entity<Equipment>
         Name = entity.Name;
         Status = entity.Status;
 
+        FeatureId = entity.FeatureId;
         EquipmentTypeId = entity.EquipmentTypeId;
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;

@@ -8,7 +8,8 @@ public class Geozone : Entity<Geozone>
     public required string Title { get; set; }
 
     public GeozonePolygon? Feature { get; set; }
-
+    public Guid? FeatureId { get; set; }
+    
     public Organization? Organization { get; set; }
     public required Guid OrganizationId { get; set; }
 
@@ -19,6 +20,7 @@ public class Geozone : Entity<Geozone>
     {
         Title = entity.Title;
 
+        FeatureId = entity.FeatureId;
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;
     }

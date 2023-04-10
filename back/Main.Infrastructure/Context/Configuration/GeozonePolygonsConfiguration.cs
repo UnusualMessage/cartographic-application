@@ -14,7 +14,7 @@ public class GeozonePolygonsConfiguration : IEntityTypeConfiguration<GeozonePoly
         builder
             .HasOne<Geozone>(e => e.Geozone)
             .WithOne(e => e.Feature)
-            .HasForeignKey<GeozonePolygon>(e => e.GeozoneId)
+            .HasForeignKey<Geozone>(e => e.FeatureId)
             .IsRequired(false);
     }
 }

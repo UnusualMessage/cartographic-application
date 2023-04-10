@@ -27,6 +27,8 @@ public class EquipmentPointRepository : Repository<EquipmentPoint>, IEquipmentPo
     private IQueryable<EquipmentPoint> IncludeAll()
     {
         return Context.Set<EquipmentPoint>()
-            .Include(e => e.Equipment);
+            .Include(e => e.Equipment)
+            .Include(e => e.Department)
+            .Include(e => e.Organization);
     }
 }

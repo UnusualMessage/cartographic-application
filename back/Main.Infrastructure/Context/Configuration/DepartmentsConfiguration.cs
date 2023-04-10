@@ -1,4 +1,5 @@
 ﻿using Main.Core.Entities;
+using Main.Core.Entities.Geometry;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -54,6 +55,20 @@ public class DepartmentsConfiguration : IEntityTypeConfiguration<Department>
 
         builder
             .HasMany<Mounted>()
+            .WithOne(e => e.Department)
+            .HasForeignKey(e => e.DepartmentId)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        builder
+            .HasMany<EquipmentPoint>()
+            .WithOne(e => e.Department)
+            .HasForeignKey(e => e.DepartmentId)
+            .IsRequired(false)
+            .OnDelete(DeleteBehavior.SetNull);
+
+        builder
+            .HasMany<GeozonePolygon>()
             .WithOne(e => e.Department)
             .HasForeignKey(e => e.DepartmentId)
             .IsRequired(false)
