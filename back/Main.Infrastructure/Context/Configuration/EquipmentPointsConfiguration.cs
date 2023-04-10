@@ -14,7 +14,7 @@ public class EquipmentPointsConfiguration : IEntityTypeConfiguration<EquipmentPo
         builder
             .HasOne<Equipment>(e => e.Equipment)
             .WithOne(e => e.Feature)
-            .HasForeignKey<EquipmentPoint>(e => e.EquipmentId)
+            .HasForeignKey<Equipment>(e => e.FeatureId)
             .IsRequired(false);
     }
 }

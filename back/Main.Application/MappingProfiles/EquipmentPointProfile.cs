@@ -13,8 +13,7 @@ public class EquipmentPointProfile : Profile
         CreateMap<EquipmentPoint, EquipmentPointResponse>()
             .ForMember(response => response.Feature,
                 expression =>
-                    expression.MapFrom(equipment => new PointFeature(equipment.Geometry.X, equipment.Geometry.Y,
-                        equipment.Id, equipment.EquipmentId)));
+                    expression.MapFrom(equipment => new PointFeature(equipment.Geometry.X, equipment.Geometry.Y)));
 
         CreateMap<CreateEquipmentPoint, EquipmentPoint>()
             .ForMember(equipment => equipment.Geometry,

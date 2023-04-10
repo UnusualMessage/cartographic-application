@@ -10,6 +10,7 @@ public class EquipmentProfile : Profile
     public EquipmentProfile()
     {
         CreateMap<Equipment, EquipmentResponse>();
+        CreateMap<Equipment, FlatEquipmentResponse>();
         CreateMap<CreateEquipment, Equipment>();
         CreateMap<UpdateEquipment, Equipment>();
     }

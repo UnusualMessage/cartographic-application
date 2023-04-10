@@ -7,7 +7,7 @@ public class Equipment : Entity<Equipment>
 {
     public required string Name { get; set; }
     public required string Status { get; set; } = "no-data";
-
+    
     public EquipmentPoint? Feature { get; set; }
     public Guid? FeatureId { get; set; }
 
@@ -25,7 +25,6 @@ public class Equipment : Entity<Equipment>
         Name = entity.Name;
         Status = entity.Status;
 
-        FeatureId = entity.FeatureId;
         EquipmentTypeId = entity.EquipmentTypeId;
         OrganizationId = entity.OrganizationId;
         DepartmentId = entity.DepartmentId;

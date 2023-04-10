@@ -4,8 +4,8 @@ using MassTransit.Mediator;
 
 namespace Main.Application.Requests.Commands;
 
-public record CreateEquipmentPoint([Required] string Type, [Required] PointGeometry Geometry,
-    PointProperties? Properties) : Request<EquipmentPointResponse>;
+public record CreateEquipmentPoint
+    ([Required] string Type, [Required] PointGeometry Geometry) : Request<EquipmentPointResponse>;
 
 public record UpdateEquipmentPoint
     ([Required] Guid Id, [Required] string Type, [Required] PointGeometry Geometry) : Request<EquipmentPointResponse>;

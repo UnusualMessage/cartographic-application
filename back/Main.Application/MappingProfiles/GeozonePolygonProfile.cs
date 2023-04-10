@@ -14,13 +14,13 @@ public class GeozonePolygonProfile : Profile
             .ForMember(response => response.Feature,
                 expression =>
                     expression.MapFrom(polygon =>
-                        new PolygonFeature(polygon.Geometry.Coordinates, polygon.Id, polygon.GeozoneId)));
+                        new PolygonFeature(polygon.Geometry.Coordinates)));
 
         CreateMap<CreateGeozonePolygon, GeozonePolygon>()
             .ForMember(equipment => equipment.Geometry,
                 expression => expression.MapFrom((source, _) =>
                 {
-                    var coordinates = source.Feature.Geometry.Coordinates;
+                    var coordinates = source.Geometry.Coordinates;
                     var geometryFactory = new GeometryFactory();
 
                     return geometryFactory.CreatePolygon(coordinates
@@ -31,7 +31,7 @@ public class GeozonePolygonProfile : Profile
             .ForMember(equipment => equipment.Geometry,
                 expression => expression.MapFrom((source, _) =>
                 {
-                    var coordinates = source.Feature.Geometry.Coordinates;
+                    var coordinates = source.Geometry.Coordinates;
                     var geometryFactory = new GeometryFactory();
 
                     return geometryFactory.CreatePolygon(coordinates
