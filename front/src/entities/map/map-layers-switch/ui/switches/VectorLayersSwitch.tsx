@@ -6,7 +6,6 @@ import {
   transportLayerId,
   geozonesLayerId,
   measurementLayerId,
-  bordersLayerId,
 } from "@shared/constants";
 import { Node, LayersStore } from "@shared/misc";
 import { LayersFilled } from "@shared/ui";
@@ -37,12 +36,6 @@ const nodes: Node[] = [
         key: measurementLayerId,
         icon: <ToolOutlined />,
       },
-
-      {
-        title: "Границы",
-        key: bordersLayerId,
-        icon: <ToolOutlined />,
-      },
     ],
   },
 ];
@@ -52,7 +45,6 @@ const VectorLayersSwitch = () => {
     transportLayerId,
     geozonesLayerId,
     measurementLayerId,
-    bordersLayerId,
   ]);
 
   const onCheck = (keys: Key[]) => {
