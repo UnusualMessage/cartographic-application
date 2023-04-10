@@ -9,8 +9,8 @@ import { LayersService } from "@shared/misc";
 
 interface Props {
   id: string;
-  minZoom: number;
-  maxZoom: number;
+  minZoom?: number;
+  maxZoom?: number;
   style?: StyleLike;
 }
 
