@@ -1,7 +1,14 @@
 import { observer } from "mobx-react-lite";
 
 import { EquipmentStore, GeozonesStore } from "@entities/business";
-import { SourceType } from "@entities/map/map-layers/ui/VectorLayer/VectorLayer";
+import {
+  WfsVectorLayer,
+  Drawing,
+  Measurement,
+  BaseLayer,
+  WeatherLayer,
+  VectorLayer,
+} from "@entities/map";
 import {
   geozonesLayerId,
   measurementLayerId,
@@ -11,16 +18,8 @@ import {
   getMeasurementStyle,
   getEquipmentStyle,
   getGeozoneStyle,
+  borderStyle,
 } from "@shared/lib";
-import {
-  Drawing,
-  Measurement,
-  BaseLayer,
-  WeatherLayer,
-  VectorLayer,
-} from "entities/map";
-
-import CadastralLayer from "./CadastralLayer";
 
 const Layers = () => {
   const geozoneFeatures = GeozonesStore.geozones.map(
@@ -36,11 +35,24 @@ const Layers = () => {
       <BaseLayer />
       <WeatherLayer />
 
+      <WfsVectorLayer
+        id={"admin_level_4"}
+        style={borderStyle}
+        maxZoom={10}
+        minZoom={7}
+      />
+
+      <WfsVectorLayer
+        id={"admin_level_6"}
+        style={borderStyle}
+        maxZoom={15}
+        minZoom={10}
+      />
+
       <VectorLayer
         id={geozonesLayerId}
         features={geozoneFeatures}
         style={getGeozoneStyle}
-        type={SourceType.features}
       >
         <Drawing />
       </VectorLayer>
@@ -49,16 +61,9 @@ const Layers = () => {
         id={transportLayerId}
         features={equipmentFeatures}
         style={getEquipmentStyle}
-        type={SourceType.features}
       />
 
-      <CadastralLayer />
-
-      <VectorLayer
-        id={measurementLayerId}
-        style={getMeasurementStyle}
-        type={SourceType.features}
-      >
+      <VectorLayer id={measurementLayerId} style={getMeasurementStyle}>
         <Measurement />
       </VectorLayer>
     </>

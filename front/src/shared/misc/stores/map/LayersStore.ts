@@ -66,12 +66,16 @@ class LayersStore {
   public createVectorLayer(
     source: VectorSource,
     id: string,
-    style?: StyleLike
+    style?: StyleLike,
+    maxZoom?: number,
+    minZoom?: number
   ) {
     const layer = new VectorLayer({
       source: source,
       style: style,
       renderBuffer: 1000,
+      minZoom: minZoom,
+      maxZoom: maxZoom,
       properties: {
         id: id,
       },

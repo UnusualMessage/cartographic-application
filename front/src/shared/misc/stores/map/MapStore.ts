@@ -1,11 +1,7 @@
 import * as jspdf from "jspdf";
 import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
-import { GeoJSON } from "ol/format";
 import BaseLayer from "ol/layer/Base";
-import VectorLayer from "ol/layer/Vector";
-import { bbox } from "ol/loadingstrategy";
-import VectorSource from "ol/source/Vector";
 
 import { Dimensions } from "../../types";
 
@@ -61,18 +57,6 @@ class MapStore {
         controls: [],
       });
     }
-
-    const source = new VectorSource({
-      format: new GeoJSON(),
-      url: "http://localhost:3080/geoserver/application/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=application:spatial_data&maxFeatures=50&outputFormat=application/json",
-      strategy: bbox,
-    });
-
-    const layer = new VectorLayer({
-      source: source,
-    });
-
-    this.addLayer(layer);
   }
 
   public printMap() {

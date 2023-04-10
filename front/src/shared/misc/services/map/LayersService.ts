@@ -11,9 +11,17 @@ class LayersService {
   public createVectorLayer(
     source: VectorSource,
     id: string,
-    style?: StyleLike
+    style?: StyleLike,
+    minZoom?: number,
+    maxZoom?: number
   ) {
-    const layer = LayersStore.createVectorLayer(source, id, style);
+    const layer = LayersStore.createVectorLayer(
+      source,
+      id,
+      style,
+      maxZoom,
+      minZoom
+    );
     MapStore.addLayer(layer);
     return layer;
   }
