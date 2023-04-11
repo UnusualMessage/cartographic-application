@@ -1,55 +1,21 @@
 import { observer } from "mobx-react-lite";
 
-import { EquipmentStore, GeozonesStore } from "@entities/business";
-import {
-  geozonesLayerId,
-  measurementLayerId,
-  transportLayerId,
-} from "@shared/constants";
-import {
-  getMeasurementStyle,
-  getEquipmentStyle,
-  getGeozoneStyle,
-} from "@shared/lib";
-import {
-  Drawing,
-  Measurement,
-  BaseLayer,
-  WeatherLayer,
-  VectorLayer,
-} from "entities/map";
+import { BaseLayer, WeatherLayer } from "@entities/map";
+
+import BordersLayer from "./BordersLayer";
+import EquipmentsLayer from "./EquipmentsLayer";
+import GeozonesLayer from "./GeozonesLayer";
+import MeasurementLayer from "./MeasurementLayer";
 
 const Layers = () => {
-  const geozoneFeatures = GeozonesStore.geozones.map(
-    (geozone) => geozone.feature
-  );
-
-  const equipmentFeatures = EquipmentStore.equipment.map(
-    (item) => item.feature
-  );
-
   return (
     <>
       <BaseLayer />
       <WeatherLayer />
-
-      <VectorLayer
-        id={geozonesLayerId}
-        features={geozoneFeatures}
-        style={getGeozoneStyle}
-      >
-        <Drawing />
-      </VectorLayer>
-
-      <VectorLayer
-        id={transportLayerId}
-        features={equipmentFeatures}
-        style={getEquipmentStyle}
-      />
-
-      <VectorLayer id={measurementLayerId} style={getMeasurementStyle}>
-        <Measurement />
-      </VectorLayer>
+      <BordersLayer />
+      <GeozonesLayer />
+      <EquipmentsLayer />
+      <MeasurementLayer />
     </>
   );
 };

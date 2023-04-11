@@ -10,7 +10,7 @@ export const equipment: Equipment[] = [
     id: uuid(),
     name: "LADA 4X4 T883",
     type: types[0],
-    status: "waiting",
+    status: "parking",
     feature: {
       id: uuid(),
       type: "Feature",
@@ -27,7 +27,7 @@ export const equipment: Equipment[] = [
     id: uuid(),
     name: "LADA 4X4 T883",
     type: types[0],
-    status: "waiting",
+    status: "no-data",
     feature: {
       id: uuid(),
       type: "Feature",
@@ -78,7 +78,6 @@ export const equipment: Equipment[] = [
     id: uuid(),
     name: "LADA 4X4 У847",
     type: types[0],
-    status: "disabled",
     feature: {
       id: uuid(),
       type: "Feature",
@@ -88,6 +87,7 @@ export const equipment: Equipment[] = [
       },
       properties: {},
     },
+    status: "working",
     organization: organizations[0],
   },
 ];

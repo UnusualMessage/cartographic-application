@@ -11,6 +11,7 @@ import {
   VectorLayersSwitch,
   BaseLayersSwitch,
   WeatherLayersSwitch,
+  BordersLayersSwitch,
 } from "./switches";
 
 const LayersSwitch = () => {
@@ -27,6 +28,7 @@ const LayersSwitch = () => {
       <div className={classes}>
         <BaseLayersSwitch />
         <WeatherLayersSwitch />
+        <BordersLayersSwitch />
         <VectorLayersSwitch />
       </div>
     </Condition>

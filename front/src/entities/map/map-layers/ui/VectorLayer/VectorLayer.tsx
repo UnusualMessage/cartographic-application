@@ -4,7 +4,6 @@ import {
   Polygon as IPolygon,
 } from "@turf/helpers";
 import { Feature } from "ol";
-import { GeoJSON } from "ol/format";
 import { Polygon, Point } from "ol/geom";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
@@ -22,7 +21,6 @@ interface Props extends PropsWithChildren {
 const VectorLayer = ({ children, id, style, features }: Props) => {
   const vectorSource = useMemo(() => {
     return new VectorSource({
-      format: new GeoJSON(),
       features: features?.map((feature) => {
         const newFeature = new Feature();
 

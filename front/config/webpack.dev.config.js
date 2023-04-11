@@ -61,7 +61,7 @@ module.exports = {
           noErrorOnMissing: true,
           globOptions: {
             dot: true,
-            gitignore: true,
+            gitignore: false,
             ignore: ["**.html"],
           },
         },

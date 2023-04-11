@@ -70,7 +70,7 @@ export const getNodesByStatus = (equipment?: Equipment[]) => {
     return {
       key: `tree-equipments-${status}`,
       icon: <FolderOutlined />,
-      title: translateStatus(status),
+      title: translateStatus(status, "ru"),
       data: status,
       children: [],
     };

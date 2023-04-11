@@ -1,5 +1,5 @@
-import { Point } from "@turf/turf";
 import { Select } from "antd";
+import { debounce } from "lodash";
 import { Coordinate } from "ol/coordinate";
 import { fromLonLat } from "ol/proj";
 import { useState, ReactNode } from "react";
@@ -18,24 +18,28 @@ const Geocoder = () => {
   const [options, setOptions] = useState<Option[]>([]);
   const [value, setValue] = useState<string>();
 
-  const handleSearch = (value: string) => {
+  const handleSearch = debounce((value: string) => {
     const geocoderService = new GeocoderService();
 
     const getFeatures = async () => {
       const response = await geocoderService.getLocation(value);
+
       setOptions(
-        response.map((item) => {
+        response.map((item, index) => {
           return {
-            key: item.id?.toString(),
-            label: item.place_name,
-            value: (item.geometry as Point).coordinates,
+            key: `geocoder-${index}`,
+            label: item.value,
+            value: [
+              item.levels["4"].geo_center.lon,
+              item.levels["4"].geo_center.lat,
+            ],
           };
         })
       );
     };
 
     void getFeatures();
-  };
+  }, 300);
 
   const handleChange = (value: string) => {
     setValue(value);

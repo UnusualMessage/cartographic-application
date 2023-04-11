@@ -10,9 +10,7 @@ const BaseLayer = () => {
     const createdLayer = LayersService.createBaseLayer(type);
 
     return () => {
-      if (createdLayer) {
-        LayersService.removeLayer(createdLayer);
-      }
+      LayersService.removeLayer(createdLayer);
     };
   }, [type]);
 

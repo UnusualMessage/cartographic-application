@@ -60,11 +60,8 @@ const Draw = () => {
         const title = "Новая геозона";
 
         GeozonesStore.add({
-          id: id.toString(),
           title: title,
-          feature: savedFeature,
-
-          organization,
+          organizationId: organization.id,
         });
       }
     }
