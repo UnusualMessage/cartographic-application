@@ -29,6 +29,7 @@ public class EquipmentRepository : Repository<Equipment>, IEquipmentRepository
         return Context.Set<Equipment>()
             .Include(e => e.Organization)
             .Include(e => e.Department)
-            .Include(e => e.EquipmentType);
+            .Include(e => e.EquipmentType)
+            .Include(e => e.Feature);
     }
 }

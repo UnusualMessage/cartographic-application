@@ -1,4 +1,5 @@
 ﻿using Main.Core.Entities;
+using Main.Core.Entities.Geometry;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -54,6 +55,18 @@ public class OrganizationsConfiguration : IEntityTypeConfiguration<Organization>
 
         builder
             .HasMany<Mounted>()
+            .WithOne(e => e.Organization)
+            .HasForeignKey(e => e.OrganizationId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder
+            .HasMany<EquipmentPoint>()
+            .WithOne(e => e.Organization)
+            .HasForeignKey(e => e.OrganizationId)
+            .OnDelete(DeleteBehavior.Cascade);
+
+        builder
+            .HasMany<GeozonePolygon>()
             .WithOne(e => e.Organization)
             .HasForeignKey(e => e.OrganizationId)
             .OnDelete(DeleteBehavior.Cascade);
