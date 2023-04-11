@@ -35,6 +35,7 @@ const Table = <T extends TableItem>({
   return (
     <AntTable<T>
       className={classNames(className, wrapper)}
+      size={"small"}
       rowSelection={
         rowSelection
           ? {

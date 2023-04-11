@@ -10,9 +10,7 @@ const WeatherLayer = () => {
     const createdLayer = LayersService.createWeatherLayer(type);
 
     return () => {
-      if (createdLayer) {
-        LayersService.removeLayer(createdLayer);
-      }
+      LayersService.removeLayer(createdLayer);
     };
   }, [type]);
 

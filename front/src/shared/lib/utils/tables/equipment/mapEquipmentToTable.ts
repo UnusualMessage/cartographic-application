@@ -6,7 +6,7 @@ export const mapEquipmentToTable = (equipment: Equipment): TableEquipment => {
     id: equipment.id,
     key: equipment.id,
     name: equipment.name,
-    status: translateStatus(equipment.status) as Status,
+    status: translateStatus(equipment.status, "ru") as Status,
     type: equipment.type.name,
     organization: equipment.organization.title,
     department: equipment.department?.title,

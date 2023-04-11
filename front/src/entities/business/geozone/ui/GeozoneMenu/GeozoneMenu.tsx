@@ -14,13 +14,13 @@ import {
 const GeozoneMenu = () => {
   const id = GeozonesStore.menuGeozoneId;
 
-  const onExport = (type: GeometryType) => {
+  const onExport = async (type: GeometryType) => {
     let features: Feature[] = [];
 
     if (id === "tree-geozones") {
       features = convertGeozones(type);
     } else {
-      const geozone = GeozonesStore.getById(id ?? "");
+      const geozone = await GeozonesStore.getById(id ?? "");
 
       if (!geozone) {
         return;

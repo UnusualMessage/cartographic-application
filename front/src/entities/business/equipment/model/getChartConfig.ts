@@ -44,7 +44,7 @@ export const getStatusesChartConfig = (equipment: Equipment[]) => {
     yAxis: {
       label: {
         formatter: (text) => {
-          return translateStatus(text as Status);
+          return translateStatus(text as Status, "ru");
         },
       },
     },
@@ -52,7 +52,7 @@ export const getStatusesChartConfig = (equipment: Equipment[]) => {
     tooltip: {
       fields: ["status", "count"],
       formatter: (data) => {
-        return { name: translateStatus(data.status), value: data.count };
+        return { name: translateStatus(data.status, "ru"), value: data.count };
       },
       showTitle: false,
     },
@@ -124,7 +124,8 @@ export const getTypesChartConfig = (equipment: Equipment[]) => {
   const config: PieConfig = {
     data,
     label: {
-      content: ({ status, count }) => `${translateStatus(status)} - ${count}`,
+      content: ({ status, count }) =>
+        `${translateStatus(status, "ru")} - ${count}`,
       style: {
         fontSize: 12,
       },
@@ -138,7 +139,7 @@ export const getTypesChartConfig = (equipment: Equipment[]) => {
     tooltip: {
       fields: ["status", "count"],
       formatter: (data) => {
-        return { name: translateStatus(data.status), value: data.count };
+        return { name: translateStatus(data.status, "ru"), value: data.count };
       },
       showTitle: false,
     },

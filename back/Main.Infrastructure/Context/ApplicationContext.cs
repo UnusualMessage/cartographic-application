@@ -1,4 +1,5 @@
 ﻿using Main.Core.Entities;
+using Main.Core.Entities.Geometry;
 using Main.Infrastructure.Context.Configuration;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,7 +19,9 @@ public class ApplicationContext : DbContext
 
     public DbSet<Department>? Departments { get; set; }
     public DbSet<Organization>? Organizations { get; set; }
-    
+
+    public DbSet<EquipmentPoint>? Points { get; set; }
+    public DbSet<GeozonePolygon>? Polygons { get; set; }
     
     public ApplicationContext(DbContextOptions options) : base(options)
     {
@@ -38,5 +41,7 @@ public class ApplicationContext : DbContext
         modelBuilder.ApplyConfiguration(new DepartmentsConfiguration());
         modelBuilder.ApplyConfiguration(new GeozonesConfiguration());
         modelBuilder.ApplyConfiguration(new MountedsConfiguration());
+        modelBuilder.ApplyConfiguration(new GeozonePolygonsConfiguration());
+        modelBuilder.ApplyConfiguration(new EquipmentPointsConfiguration());
     }
 }

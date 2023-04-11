@@ -1,9 +1,10 @@
 import BaseLayer from "ol/layer/Base";
-import { XYZ, OSM, BingMaps } from "ol/source";
+import LayerGroup from "ol/layer/Group";
+import VectorLayer from "ol/layer/Vector";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
-import { weatherLayers, baseLayers } from "../../../assets";
+import { createBaseLayer, createWeatherLayer } from "../../../lib";
 import { LayersStore, MapStore } from "../../stores";
 import type { BaseLayer as BaseLayerType, WeatherLayer } from "../../types";
 
@@ -11,140 +12,58 @@ class LayersService {
   public createVectorLayer(
     source: VectorSource,
     id: string,
-    style?: StyleLike
+    style?: StyleLike,
+    minZoom?: number,
+    maxZoom?: number
   ) {
-    const layer = LayersStore.createVectorLayer(source, id, style);
+    const layer = new VectorLayer({
+      source: source,
+      style: style,
+      renderBuffer: 1000,
+      minZoom: minZoom,
+      maxZoom: maxZoom,
+      properties: {
+        id: id,
+      },
+    });
+
+    LayersStore.addVectorLayer(layer);
     MapStore.addLayer(layer);
     return layer;
   }
 
+  public addLayerGroup(group: LayerGroup) {
+    MapStore.addLayer(group);
+    LayersStore.addLayerGroup(group);
+    return group;
+  }
+
   public createBaseLayer(type: BaseLayerType) {
-    let source;
-    const maxSourceZoom = 19;
-    const zIndex = -1;
-
-    switch (type) {
-      case "otm":
-        source = new XYZ({
-          url: baseLayers[1].source,
-          maxZoom: maxSourceZoom,
-        });
-
-        break;
-
-      case "osm":
-        source = new OSM({
-          maxZoom: maxSourceZoom,
-        });
-
-        break;
-
-      case "bing-satellite":
-        source = new BingMaps({
-          key: baseLayers[3].source,
-          imagerySet: "Aerial",
-          maxZoom: maxSourceZoom,
-        });
-
-        break;
-
-      case "bing-road":
-        source = new BingMaps({
-          key: baseLayers[2].source,
-          imagerySet: "RoadOnDemand",
-          maxZoom: maxSourceZoom,
-        });
-
-        break;
-
-      case "google-road":
-        source = new XYZ({
-          url: baseLayers[4].source,
-          maxZoom: maxSourceZoom,
-        });
-
-        break;
-
-      case "google-satellite":
-        source = new XYZ({
-          url: baseLayers[5].source,
-          maxZoom: maxSourceZoom,
-        });
-
-        break;
-
-      case "google-hybrid":
-        source = new XYZ({
-          url: baseLayers[6].source,
-          maxZoom: maxSourceZoom,
-        });
-
-        break;
-
-      default:
-        return;
-    }
-
-    const layer = LayersStore.createTileLayer(source, "", zIndex);
-
+    const layer = createBaseLayer(type);
     MapStore.addLayer(layer);
-
     return layer;
   }
 
   public createWeatherLayer(type: WeatherLayer) {
-    let source;
-
-    switch (type) {
-      case "clouds":
-        source = new XYZ({
-          url: weatherLayers[3].source,
-          crossOrigin: "Anonymous",
-        });
-
-        break;
-
-      case "wind":
-        source = new XYZ({
-          url: weatherLayers[2].source,
-          crossOrigin: "Anonymous",
-        });
-
-        break;
-
-      case "temperatures":
-        source = new XYZ({
-          url: weatherLayers[0].source,
-          crossOrigin: "Anonymous",
-        });
-
-        break;
-
-      case "precipitation":
-        source = new XYZ({
-          url: weatherLayers[1].source,
-          crossOrigin: "Anonymous",
-        });
-
-        break;
-    }
-
-    if (!source) {
-      return;
-    }
-
-    const layer = LayersStore.createTileLayer(source, "");
-
+    const layer = createWeatherLayer(type);
     MapStore.addLayer(layer);
-
     return layer;
+  }
+
+  public removeGroupLayer(id: string) {
+    const group = LayersStore.getLayerGroupById(id);
+
+    if (group) {
+      this.removeLayer(group);
+      LayersStore.removeLayerGroup(id);
+    }
   }
 
   public removeVectorLayer(id: string) {
     const layer = LayersStore.getVectorLayerById(id);
 
     if (layer) {
-      MapStore.removeLayer(layer);
+      this.removeLayer(layer);
       LayersStore.removeVectorLayer(id);
     }
   }

@@ -1,5 +1,11 @@
-import { Feature } from "@turf/turf";
-
-export interface GeocoderFeature extends Feature {
-  place_name: string;
+export interface GeocoderFeature {
+  value: string;
+  levels: {
+    4: {
+      geo_center: {
+        lon: number;
+        lat: number;
+      };
+    };
+  };
 }
