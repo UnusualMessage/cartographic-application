@@ -1,16 +1,22 @@
 import { Checkbox } from "antd";
 import { CheckboxChangeEvent } from "antd/es/checkbox";
 import { observer } from "mobx-react-lite";
+import LayerGroup from "ol/layer/Group";
 import { useState } from "react";
 
 import { bordersLayerId } from "@shared/constants";
-import { LayersStore } from "@shared/misc";
+import { MapStore } from "@shared/misc";
 
 const BordersLayersSwitch = () => {
   const [checked, setChecked] = useState(true);
 
   const onChange = (e: CheckboxChangeEvent) => {
-    LayersStore.toggleLayerGroup(bordersLayerId);
+    const group = MapStore.getLayerById(bordersLayerId);
+
+    if (group instanceof LayerGroup) {
+      group.setVisible(!group.getVisible());
+    }
+
     setChecked(e.target.checked);
   };
 

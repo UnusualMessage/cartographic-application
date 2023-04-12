@@ -32,7 +32,6 @@ class LayersService {
 
   public addLayerGroup(group: LayerGroup) {
     MapStore.addLayer(group);
-    LayersStore.addLayerGroup(group);
     return group;
   }
 
@@ -59,15 +58,6 @@ class LayersService {
 
     if (layer instanceof VectorLayer<VectorSource>) {
       layer.getSource().clear();
-    }
-  }
-
-  public removeGroupLayer(id: string) {
-    const group = LayersStore.getLayerGroupById(id);
-
-    if (group) {
-      this.removeLayer(group);
-      LayersStore.removeLayerGroup(id);
     }
   }
 
