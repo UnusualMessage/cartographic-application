@@ -6,7 +6,6 @@ import { StyleLike } from "ol/style/Style";
 
 import { createBaseLayer, createWeatherLayer } from "../../../lib";
 import { LayersStore, MapStore } from "../../stores";
-import type { BaseLayer as BaseLayerType, WeatherLayer } from "../../types";
 
 class LayersService {
   public createVectorLayer(
@@ -27,7 +26,6 @@ class LayersService {
       },
     });
 
-    LayersStore.addVectorLayer(layer);
     MapStore.addLayer(layer);
     return layer;
   }
@@ -38,16 +36,30 @@ class LayersService {
     return group;
   }
 
-  public createBaseLayer(type: BaseLayerType) {
+  public createBaseLayer() {
+    const type = LayersStore.baseLayerType;
     const layer = createBaseLayer(type);
+
     MapStore.addLayer(layer);
+
     return layer;
   }
 
-  public createWeatherLayer(type: WeatherLayer) {
+  public createWeatherLayer() {
+    const type = LayersStore.weatherLayerType;
     const layer = createWeatherLayer(type);
+
     MapStore.addLayer(layer);
+
     return layer;
+  }
+
+  public clearVectorLayer(id: string) {
+    const layer = MapStore.getLayerById(id);
+
+    if (layer instanceof VectorLayer<VectorSource>) {
+      layer.getSource().clear();
+    }
   }
 
   public removeGroupLayer(id: string) {
@@ -60,11 +72,10 @@ class LayersService {
   }
 
   public removeVectorLayer(id: string) {
-    const layer = LayersStore.getVectorLayerById(id);
+    const layer = MapStore.getLayerById(id);
 
-    if (layer) {
+    if (layer instanceof VectorLayer) {
       this.removeLayer(layer);
-      LayersStore.removeVectorLayer(id);
     }
   }
 

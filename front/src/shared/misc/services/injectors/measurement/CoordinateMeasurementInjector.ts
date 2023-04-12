@@ -7,10 +7,10 @@ import { formatCoordinate } from "../../../../lib";
 import {
   InteractionsStore,
   TooltipStore,
-  LayersStore,
   MeasurementStore,
 } from "../../../stores";
 import { ListenersInjector, DrawEvent as DrawEventType } from "../../../types";
+import { LayersService } from "../../map";
 
 class CoordinateMeasurementInjector
   implements ListenersInjector<DrawEventType>
@@ -35,7 +35,7 @@ class CoordinateMeasurementInjector
   private addDrawStart() {
     const onDrawStart = () => {
       InteractionsStore.startInteraction();
-      LayersStore.clearVectorLayer(measurementLayerId);
+      LayersService.clearVectorLayer(measurementLayerId);
       TooltipStore.hide();
     };
 

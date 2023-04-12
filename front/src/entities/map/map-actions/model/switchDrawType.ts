@@ -1,16 +1,16 @@
 import { measurementLayerId } from "@shared/constants";
 import {
-  LayersStore,
   TooltipStore,
   InteractionsStore,
   InteractionType,
+  LayersService,
 } from "@shared/misc";
 
 export const switchDrawType = (
   currentType: InteractionType,
   targetType: InteractionType
 ) => {
-  LayersStore.clearVectorLayer(measurementLayerId);
+  LayersService.clearVectorLayer(measurementLayerId);
   TooltipStore.hide();
 
   if (currentType === targetType) {

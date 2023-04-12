@@ -1,18 +1,12 @@
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 
+import { useLayer } from "@shared/lib";
 import { LayersStore, LayersService } from "@shared/misc";
 
 const BaseLayer = () => {
   const type = LayersStore.baseLayerType;
 
-  useEffect(() => {
-    const createdLayer = LayersService.createBaseLayer(type);
-
-    return () => {
-      LayersService.removeLayer(createdLayer);
-    };
-  }, [type]);
+  useLayer(() => LayersService.createBaseLayer(), [type]);
 
   return <></>;
 };

@@ -38,13 +38,13 @@ const GeozoneMenu = () => {
     ModalsStore.open();
   };
 
-  const onClick: MenuProps["onClick"] = (e) => {
+  const onClick: MenuProps["onClick"] = async (e) => {
     switch (e.key) {
       case "export-4326":
-        onExport("4326");
+        await onExport("4326");
         break;
       case "export-3857":
-        onExport("3857");
+        await onExport("3857");
         break;
     }
   };

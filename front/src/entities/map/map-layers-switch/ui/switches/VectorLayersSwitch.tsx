@@ -1,5 +1,6 @@
-import { DownOutlined, CarOutlined, ToolOutlined } from "@ant-design/icons";
+import { DownOutlined } from "@ant-design/icons";
 import { Tree, Typography } from "antd";
+import VectorLayer from "ol/layer/Vector";
 import { useState, Key } from "react";
 
 import {
@@ -7,38 +8,25 @@ import {
   geozonesLayerId,
   measurementLayerId,
 } from "@shared/constants";
-import { Node, LayersStore } from "@shared/misc";
-import { LayersFilled } from "@shared/ui";
+import { MapStore } from "@shared/misc";
+
+import { vectorLayersNodes } from "../../model";
 
 const { DirectoryTree } = Tree;
 const { Text } = Typography;
 
-const nodes: Node[] = [
-  {
-    title: "Векторные слои",
-    key: "vector-layers",
-    icon: <></>,
-    children: [
-      {
-        title: "Техника",
-        key: transportLayerId,
-        icon: <CarOutlined />,
-      },
+const switchLayerFrom = (first: Key[], second: Key[]) => {
+  for (const key of first) {
+    if (!second.includes(key)) {
+      const id = key.toString();
+      const layer = MapStore.getLayerById(id);
 
-      {
-        title: "Геозоны",
-        key: geozonesLayerId,
-        icon: <LayersFilled />,
-      },
-
-      {
-        title: "Измерение",
-        key: measurementLayerId,
-        icon: <ToolOutlined />,
-      },
-    ],
-  },
-];
+      if (layer instanceof VectorLayer) {
+        layer.setVisible(!layer.getVisible());
+      }
+    }
+  }
+};
 
 const VectorLayersSwitch = () => {
   const [checkedKeys, setCheckedKeys] = useState<Key[]>([
@@ -49,17 +37,8 @@ const VectorLayersSwitch = () => {
 
   const onCheck = (keys: Key[]) => {
     if (keys instanceof Array) {
-      for (const key of keys) {
-        if (!checkedKeys.includes(key)) {
-          LayersStore.switchVectorLayer(key.toString());
-        }
-      }
-
-      for (const key of checkedKeys) {
-        if (!keys.includes(key)) {
-          LayersStore.switchVectorLayer(key.toString());
-        }
-      }
+      switchLayerFrom(keys, checkedKeys);
+      switchLayerFrom(checkedKeys, keys);
     }
 
     setCheckedKeys(keys);
@@ -69,7 +48,7 @@ const VectorLayersSwitch = () => {
     <>
       <Text strong>Векторные</Text>
       <DirectoryTree
-        treeData={nodes}
+        treeData={vectorLayersNodes}
         checkedKeys={checkedKeys}
         onCheck={onCheck as any}
         defaultExpandAll

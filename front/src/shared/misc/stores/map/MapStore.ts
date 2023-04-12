@@ -34,6 +34,15 @@ class MapStore {
   }
 
   public dispose() {
+    const layers = this._map?.getLayers().getArray();
+
+    if (layers) {
+      for (const layer of layers) {
+        layer.dispose();
+      }
+    }
+
+    this._map?.getLayers().dispose();
     this._map?.dispose();
     this._map = undefined;
   }
@@ -138,6 +147,13 @@ class MapStore {
 
   public addLayer(layer: BaseLayer) {
     this._map?.addLayer(layer);
+  }
+
+  public getLayerById(id: string) {
+    return this._map
+      ?.getLayers()
+      .getArray()
+      .find((layer) => layer.get("id") === id);
   }
 
   public removeLayer(layer: BaseLayer) {

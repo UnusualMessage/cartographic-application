@@ -6,12 +6,12 @@ import { measurementLayerId } from "@shared/constants";
 import { useQueryNavigate } from "@shared/lib";
 import {
   ControlsStore,
-  LayersStore,
   InteractionsStore,
   MapControl,
   DrawerStore,
   FullScreenStore,
   InteractionType,
+  LayersService,
 } from "@shared/misc";
 
 import { drawerMenu } from "../model";
@@ -24,7 +24,7 @@ const DrawerMenu = () => {
   const { navigateWithQuery } = useQueryNavigate();
 
   const switchType = (type: InteractionType) => {
-    LayersStore.clearVectorLayer(measurementLayerId);
+    LayersService.clearVectorLayer(measurementLayerId);
     InteractionsStore.type = type;
   };
 

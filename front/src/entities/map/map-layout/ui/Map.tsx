@@ -13,7 +13,6 @@ import {
   CommonEvent,
   ListenersInjector,
   MapStore,
-  LayersStore,
   MapInjector,
   InteractionsStore,
 } from "@shared/misc";
@@ -39,8 +38,6 @@ const Map = ({ children, toPrint }: Props) => {
     if (mapRef.current) {
       MapStore.initMap(mapRef.current);
     }
-
-    LayersStore.resetVectorLayers();
 
     return () => {
       MapStore.dispose();

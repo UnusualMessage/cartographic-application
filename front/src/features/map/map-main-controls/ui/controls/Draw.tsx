@@ -10,6 +10,7 @@ import { Space, Select, Button, message } from "antd";
 import { observer } from "mobx-react-lite";
 import { Feature } from "ol";
 import { Polygon } from "ol/geom";
+import VectorLayer from "ol/layer/Vector";
 import { v4 as uuid } from "uuid";
 
 import { OrganizationsStore, GeozonesStore } from "@entities/business";
@@ -18,7 +19,7 @@ import {
   InteractionsStore,
   InteractionType,
   FeaturesStore,
-  LayersStore,
+  MapStore,
 } from "@shared/misc";
 import { PolygonFilled, TextFileInput } from "@shared/ui";
 
@@ -30,9 +31,9 @@ const Draw = () => {
   };
 
   const clear = () => {
-    const layer = LayersStore.getVectorLayerById(geozonesLayerId);
+    const layer = MapStore.getLayerById(geozonesLayerId);
 
-    if (layer) {
+    if (layer instanceof VectorLayer) {
       FeaturesStore.clear(layer);
     }
   };
@@ -59,7 +60,7 @@ const Draw = () => {
 
         const title = "Новая геозона";
 
-        GeozonesStore.add({
+        void GeozonesStore.add({
           title: title,
           organizationId: organization.id,
         });
@@ -80,9 +81,9 @@ const Draw = () => {
       newFeature.setId(uuid());
       newFeature.setGeometry(new Polygon(feature.geometry.coordinates));
 
-      const layer = LayersStore.getVectorLayerById(geozonesLayerId);
+      const layer = MapStore.getLayerById(geozonesLayerId);
 
-      if (layer) {
+      if (layer instanceof VectorLayer) {
         FeaturesStore.addFeatureToLayer(newFeature, layer);
       }
     }

@@ -1,8 +1,9 @@
 import { Draw } from "ol/interaction";
 
 import { measurementLayerId } from "../../../../constants";
-import { InteractionsStore, TooltipStore, LayersStore } from "../../../stores";
+import { InteractionsStore, TooltipStore } from "../../../stores";
 import { ListenersInjector, DrawEvent as DrawEventType } from "../../../types";
+import { LayersService } from "../../map";
 
 class AreaMeasurementInjector implements ListenersInjector<DrawEventType> {
   private _draw: Draw;
@@ -25,7 +26,7 @@ class AreaMeasurementInjector implements ListenersInjector<DrawEventType> {
   private addDrawStart() {
     const onDrawStart = () => {
       InteractionsStore.startInteraction();
-      LayersStore.clearVectorLayer(measurementLayerId);
+      LayersService.clearVectorLayer(measurementLayerId);
     };
 
     this._draw.on("drawstart", onDrawStart);

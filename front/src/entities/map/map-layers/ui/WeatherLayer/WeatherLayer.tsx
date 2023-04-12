@@ -1,18 +1,12 @@
 import { observer } from "mobx-react-lite";
-import { useEffect } from "react";
 
+import { useLayer } from "@shared/lib";
 import { LayersStore, LayersService } from "@shared/misc";
 
 const WeatherLayer = () => {
   const type = LayersStore.weatherLayerType;
 
-  useEffect(() => {
-    const createdLayer = LayersService.createWeatherLayer(type);
-
-    return () => {
-      LayersService.removeLayer(createdLayer);
-    };
-  }, [type]);
+  useLayer(() => LayersService.createWeatherLayer(), [type]);
 
   return <></>;
 };

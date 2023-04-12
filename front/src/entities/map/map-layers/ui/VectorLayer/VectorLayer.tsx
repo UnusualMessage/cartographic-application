@@ -7,9 +7,10 @@ import { Feature } from "ol";
 import { Polygon, Point } from "ol/geom";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
-import { memo, PropsWithChildren, useEffect, useMemo } from "react";
+import { memo, PropsWithChildren, useMemo } from "react";
 
 import { SourceContext } from "@shared/constants";
+import { useLayer } from "@shared/lib";
 import { LayersService } from "@shared/misc";
 
 interface Props extends PropsWithChildren {
@@ -37,13 +38,10 @@ const VectorLayer = ({ children, id, style, features }: Props) => {
     });
   }, [features]);
 
-  useEffect(() => {
-    LayersService.createVectorLayer(vectorSource, id, style);
-
-    return () => {
-      LayersService.removeVectorLayer(id);
-    };
-  }, [vectorSource]);
+  useLayer(
+    () => LayersService.createVectorLayer(vectorSource, id, style),
+    [vectorSource]
+  );
 
   return (
     <SourceContext.Provider value={vectorSource}>
