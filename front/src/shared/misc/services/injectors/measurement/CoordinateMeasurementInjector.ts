@@ -4,30 +4,29 @@ import { DrawEvent } from "ol/interaction/Draw";
 
 import { measurementLayerId } from "../../../../constants";
 import { formatCoordinate } from "../../../../lib";
+import { DrawEvents } from "../../../enums";
 import {
   InteractionsStore,
   TooltipStore,
   MeasurementStore,
 } from "../../../stores";
-import { ListenersInjector, DrawEvent as DrawEventType } from "../../../types";
+import { ListenersInjector } from "../../../types";
 import { LayersService } from "../../map";
 
-class CoordinateMeasurementInjector
-  implements ListenersInjector<DrawEventType>
-{
+class CoordinateMeasurementInjector implements ListenersInjector<DrawEvents> {
   private _draw: Draw;
 
   constructor(draw: Draw) {
     this._draw = draw;
   }
 
-  public addEventListener(event: DrawEventType) {
+  public addEventListener(event: DrawEvents) {
     switch (event) {
-      case "drawstart":
+      case DrawEvents.drawstart:
         return this.addDrawStart();
-      case "drawabort":
+      case DrawEvents.drawabort:
         return this.addDrawAbort();
-      case "drawend":
+      case DrawEvents.drawend:
         return this.addDrawEnd();
     }
   }

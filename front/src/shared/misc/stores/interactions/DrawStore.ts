@@ -10,14 +10,14 @@ import {
   getDrawAreaStyle,
   getGeozoneStyle,
 } from "../../../lib";
-import { Interactions } from "../../enums";
+import { Interactions, DrawEvents } from "../../enums";
 import {
   LengthMeasurementInjector,
   DrawInjector,
   CoordinateMeasurementInjector,
   AreaMeasurementInjector,
 } from "../../services";
-import { ListenersInjector, Callback, DrawEvent } from "../../types";
+import { ListenersInjector, Callback } from "../../types";
 
 class DrawStore {
   private _draw?: Draw;
@@ -72,11 +72,9 @@ class DrawStore {
       style: getGeozoneStyle,
     });
 
-    const drawInjector: ListenersInjector<DrawEvent> = new DrawInjector(draw);
+    const drawInjector: ListenersInjector<DrawEvents> = new DrawInjector(draw);
 
-    this._cleanups.push(drawInjector.addEventListener("drawstart"));
-    this._cleanups.push(drawInjector.addEventListener("drawend"));
-    this._cleanups.push(drawInjector.addEventListener("drawabort"));
+    this.addEventListeners(drawInjector);
 
     return draw;
   }
@@ -89,12 +87,10 @@ class DrawStore {
       style: getDrawAreaStyle,
     });
 
-    const drawInjector: ListenersInjector<DrawEvent> =
+    const drawInjector: ListenersInjector<DrawEvents> =
       new AreaMeasurementInjector(draw);
 
-    this._cleanups.push(drawInjector.addEventListener("drawstart"));
-    this._cleanups.push(drawInjector.addEventListener("drawend"));
-    this._cleanups.push(drawInjector.addEventListener("drawabort"));
+    this.addEventListeners(drawInjector);
 
     return draw;
   }
@@ -106,12 +102,10 @@ class DrawStore {
       style: getDrawLengthStyle,
     });
 
-    const drawInjector: ListenersInjector<DrawEvent> =
+    const drawInjector: ListenersInjector<DrawEvents> =
       new LengthMeasurementInjector(draw);
 
-    this._cleanups.push(drawInjector.addEventListener("drawstart"));
-    this._cleanups.push(drawInjector.addEventListener("drawend"));
-    this._cleanups.push(drawInjector.addEventListener("drawabort"));
+    this.addEventListeners(drawInjector);
 
     return draw;
   }
@@ -123,14 +117,18 @@ class DrawStore {
       style: getDrawCoordinateStyle,
     });
 
-    const drawInjector: ListenersInjector<DrawEvent> =
+    const drawInjector: ListenersInjector<DrawEvents> =
       new CoordinateMeasurementInjector(draw);
 
-    this._cleanups.push(drawInjector.addEventListener("drawstart"));
-    this._cleanups.push(drawInjector.addEventListener("drawend"));
-    this._cleanups.push(drawInjector.addEventListener("drawabort"));
+    this.addEventListeners(drawInjector);
 
     return draw;
+  }
+
+  private addEventListeners(injector: ListenersInjector<DrawEvents>) {
+    this._cleanups.push(injector.addEventListener(DrawEvents.drawstart));
+    this._cleanups.push(injector.addEventListener(DrawEvents.drawend));
+    this._cleanups.push(injector.addEventListener(DrawEvents.drawabort));
   }
 
   private remove(map: Map | null) {

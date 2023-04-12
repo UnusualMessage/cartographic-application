@@ -5,7 +5,7 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 import { Polygon as IPolygon } from "@turf/helpers";
-import { Feature as IFeature, FeatureCollection, toMercator } from "@turf/turf";
+import { FeatureCollection, toMercator } from "@turf/turf";
 import { Space, Select, Button, message } from "antd";
 import { observer } from "mobx-react-lite";
 import { Feature } from "ol";
@@ -48,15 +48,7 @@ const Draw = () => {
       if (geometry && organization) {
         const id = feature.getId() ?? uuid();
 
-        const savedFeature: IFeature<IPolygon> = {
-          id: id,
-          type: "Feature",
-          geometry: {
-            type: "Polygon",
-            coordinates: geometry.getCoordinates(),
-          },
-          properties: {},
-        };
+        geometry.getCoordinates();
 
         const title = "Новая геозона";
 

@@ -3,8 +3,9 @@ import { Map, Overlay } from "ol";
 import { Coordinate } from "ol/coordinate";
 
 import { menuOffset, menuId } from "../../../constants";
+import { CommonEvents } from "../../enums";
 import { OverlaysService, MapInjector } from "../../services";
-import { CustomOverlay, ListenersInjector, CommonEvent } from "../../types";
+import { CustomOverlay, ListenersInjector } from "../../types";
 
 class ContextMenuStore {
   private _menu: CustomOverlay;
@@ -49,15 +50,15 @@ class ContextMenuStore {
       return [];
     }
 
-    const mapInjector: ListenersInjector<CommonEvent> = new MapInjector(
+    const mapInjector: ListenersInjector<CommonEvents> = new MapInjector(
       map,
       canvas
     );
 
     const cleanups = [];
 
-    cleanups.push(mapInjector.addEventListener("click"));
-    cleanups.push(mapInjector.addEventListener("contextmenu"));
+    cleanups.push(mapInjector.addEventListener(CommonEvents.click));
+    cleanups.push(mapInjector.addEventListener(CommonEvents.contextmenu));
 
     map.addOverlay(overlay);
 

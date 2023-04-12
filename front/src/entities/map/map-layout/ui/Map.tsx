@@ -10,12 +10,12 @@ import {
 import { invoke } from "@shared/lib";
 import {
   Callback,
-  CommonEvent,
   ListenersInjector,
   MapStore,
   MapInjector,
   InteractionsStore,
   Interactions,
+  CommonEvents,
 } from "@shared/misc";
 
 import { wrapper } from "./map.module.scss";
@@ -61,8 +61,8 @@ const Map = ({ children, toPrint }: Props) => {
     };
 
     if (map) {
-      const injector: ListenersInjector<CommonEvent> = new MapInjector(map);
-      cleanPointerEvent = injector.addEventListener("pointermove");
+      const injector: ListenersInjector<CommonEvents> = new MapInjector(map);
+      cleanPointerEvent = injector.addEventListener(CommonEvents.pointermove);
     }
 
     return () => {
