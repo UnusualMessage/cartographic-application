@@ -17,7 +17,7 @@ import { OrganizationsStore, GeozonesStore } from "@entities/business";
 import { geozonesLayerId } from "@shared/constants";
 import {
   InteractionsStore,
-  InteractionType,
+  Interactions,
   FeaturesStore,
   MapStore,
 } from "@shared/misc";
@@ -26,7 +26,7 @@ import { PolygonFilled, TextFileInput } from "@shared/ui";
 const Draw = () => {
   const interaction = InteractionsStore.type;
 
-  const onSelect = (value: InteractionType) => {
+  const onSelect = (value: Interactions) => {
     InteractionsStore.type = value;
   };
 
@@ -95,9 +95,9 @@ const Draw = () => {
         onChange={onSelect}
         value={interaction}
         options={[
-          { value: "none", label: <StopFilled /> },
-          { value: "cursor", label: <SendOutlined /> },
-          { value: "geozones", label: <PolygonFilled /> },
+          { value: Interactions.none, label: <StopFilled /> },
+          { value: Interactions.cursor, label: <SendOutlined /> },
+          { value: Interactions.geozones, label: <PolygonFilled /> },
         ]}
         bordered={false}
       />

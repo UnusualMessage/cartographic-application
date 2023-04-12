@@ -11,7 +11,7 @@ import {
   ModifyStore,
   SelectStore,
   SnapStore,
-  InteractionType,
+  Interactions,
 } from "@shared/misc";
 
 const Drawing = () => {
@@ -39,12 +39,15 @@ const Drawing = () => {
     return SnapStore.setup(source, map);
   };
 
-  const allowedTypes: InteractionType[] = ["cursor", "geozones"];
+  const allowedInteractions: Interactions[] = [
+    Interactions.cursor,
+    Interactions.geozones,
+  ];
 
-  useInteraction(addDrawInteraction, allowedTypes, props);
-  useInteraction(addModifyInteraction, allowedTypes, props);
-  useInteraction(addSelectInteraction, allowedTypes, props);
-  useInteraction(addSnapInteraction, allowedTypes, props);
+  useInteraction(addDrawInteraction, allowedInteractions, props);
+  useInteraction(addModifyInteraction, allowedInteractions, props);
+  useInteraction(addSelectInteraction, allowedInteractions, props);
+  useInteraction(addSnapInteraction, allowedInteractions, props);
 
   return <></>;
 };

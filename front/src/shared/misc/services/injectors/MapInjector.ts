@@ -2,6 +2,7 @@ import { Map, MapBrowserEvent } from "ol";
 import { Coordinate } from "ol/coordinate";
 import { Pixel } from "ol/pixel";
 
+import { Interactions } from "../../enums";
 import {
   FeaturesStore,
   InteractionsStore,
@@ -48,7 +49,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       const pixel: Pixel = this._map.getEventPixel(e);
       const cursor: Coordinate = this._map.getCoordinateFromPixel(pixel);
 
-      if (InteractionsStore.type === "cursor") {
+      if (InteractionsStore.type === Interactions.cursor) {
         ContextMenuStore.show(cursor);
       }
     };

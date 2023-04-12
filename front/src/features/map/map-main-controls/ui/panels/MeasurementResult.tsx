@@ -1,7 +1,11 @@
 import { Typography } from "antd";
 import { observer } from "mobx-react-lite";
 
-import { MeasurementStore, InteractionsStore } from "@shared/misc";
+import {
+  MeasurementStore,
+  InteractionsStore,
+  Interactions,
+} from "@shared/misc";
 import { Panel } from "entities/map";
 
 const { Text } = Typography;
@@ -11,13 +15,13 @@ const MeasurementResult = () => {
   let text;
 
   switch (drawType) {
-    case "measure-area":
+    case Interactions.area:
       text = <Text strong>{`Площадь: ${MeasurementStore.area}`}</Text>;
       break;
-    case "measure-coordinate":
+    case Interactions.coordinate:
       text = <Text strong>{MeasurementStore.coordinate}</Text>;
       break;
-    case "measure-length":
+    case Interactions.length:
       text = <Text strong>{`Расстояние: ${MeasurementStore.distance}`}</Text>;
       break;
     default:

@@ -19,14 +19,14 @@ import {
   opened,
   closed,
 } from "./resize.module.scss";
-import { ResizeType } from "../../misc";
+import { Resizes } from "../../misc";
 
 interface Props {
   start: MouseEventHandler;
   isResizing: boolean;
   hidden: boolean;
   onClick: MouseEventHandler;
-  type: ResizeType;
+  type: Resizes;
 }
 
 const Resize = ({ start, hidden, isResizing, type, onClick }: Props) => {
@@ -36,13 +36,13 @@ const Resize = ({ start, hidden, isResizing, type, onClick }: Props) => {
   const lineClasses = classNames({
     [line]: true,
     [active]: isResizing,
-    [width]: type === ResizeType.width,
-    [height]: type === ResizeType.height,
+    [width]: type === Resizes.width,
+    [height]: type === Resizes.height,
   });
 
   const buttonClasses = classNames({
-    [buttonHorizontal]: type === ResizeType.height,
-    [buttonVertical]: type === ResizeType.width,
+    [buttonHorizontal]: type === Resizes.height,
+    [buttonVertical]: type === Resizes.width,
     [opened]: switchActive,
     [closed]: !switchActive,
   });
@@ -50,13 +50,13 @@ const Resize = ({ start, hidden, isResizing, type, onClick }: Props) => {
   let icon: ReactNode;
 
   if (hidden) {
-    if (type === ResizeType.width) {
+    if (type === Resizes.width) {
       icon = <RightOutlined />;
     } else {
       icon = <UpOutlined />;
     }
   } else {
-    if (type === ResizeType.width) {
+    if (type === Resizes.width) {
       icon = <LeftOutlined />;
     } else {
       icon = <DownOutlined />;

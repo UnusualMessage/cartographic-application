@@ -9,6 +9,7 @@ import {
   ControlsStore,
   MeasurementStore,
   MapControls,
+  Interactions,
 } from "@shared/misc";
 import { LineStringFilled, Condition } from "@shared/ui";
 
@@ -29,7 +30,7 @@ const Distance = ({ buttonType }: Props) => {
 
   const onClick = () => {
     ControlsStore.currentMapControl = MapControls.measurement;
-    switchDrawType(interaction, "measure-length");
+    switchDrawType(interaction, Interactions.length);
     MeasurementStore.reset();
   };
 
@@ -38,7 +39,7 @@ const Distance = ({ buttonType }: Props) => {
       <Button
         className={classes}
         icon={<LineStringFilled />}
-        type={interaction === "measure-length" ? "primary" : buttonType}
+        type={interaction === Interactions.length ? "primary" : buttonType}
         onClick={onClick}
       />
     </Condition>

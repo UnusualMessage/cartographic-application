@@ -10,6 +10,7 @@ import {
   ControlsStore,
   MeasurementStore,
   MapControls,
+  Interactions,
 } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
@@ -30,7 +31,7 @@ const Coordinate = ({ buttonType }: Props) => {
 
   const onClick = () => {
     ControlsStore.currentMapControl = MapControls.measurement;
-    switchDrawType(interaction, "measure-coordinate");
+    switchDrawType(interaction, Interactions.coordinate);
     MeasurementStore.reset();
   };
 
@@ -39,7 +40,7 @@ const Coordinate = ({ buttonType }: Props) => {
       <Button
         className={classes}
         icon={<AimOutlined />}
-        type={interaction === "measure-coordinate" ? "primary" : buttonType}
+        type={interaction === Interactions.coordinate ? "primary" : buttonType}
         onClick={onClick}
       />
     </Condition>

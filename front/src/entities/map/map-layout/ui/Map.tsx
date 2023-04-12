@@ -15,6 +15,7 @@ import {
   MapStore,
   MapInjector,
   InteractionsStore,
+  Interactions,
 } from "@shared/misc";
 
 import { wrapper } from "./map.module.scss";
@@ -28,7 +29,7 @@ const Map = ({ children, toPrint }: Props) => {
   const map = MapStore.map;
   const type = InteractionsStore.type;
 
-  if (type === "none") {
+  if (type === Interactions.none) {
     MapStore.setDefaultCursor();
   } else {
     MapStore.setCrosshairCursor();

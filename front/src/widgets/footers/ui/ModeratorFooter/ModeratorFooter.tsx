@@ -1,13 +1,13 @@
 import { PropsWithChildren } from "react";
 
 import { useResizing } from "@shared/lib";
-import { ResizeType } from "@shared/misc";
+import { Resizes } from "@shared/misc";
 import Resize from "@shared/ui/Resize";
 
 import { content, wrapper } from "./footer.module.scss";
 
 const ModeratorFooter = ({ children }: PropsWithChildren) => {
-  const type = ResizeType.height;
+  const type = Resizes.height;
 
   const props = {
     type: type,

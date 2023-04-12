@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import LayerGroup from "ol/layer/Group";
 
-import { BaseLayers, WeatherLayers } from "../../types";
+import { BaseLayers, WeatherLayers } from "../../enums";
 
 class LayersStore {
   private _layerGroups: LayerGroup[];

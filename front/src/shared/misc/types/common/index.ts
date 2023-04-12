@@ -1,4 +1,3 @@
-export { ResizeType } from "./ResizeType";
 export type { Reference, References } from "./Reference";
 export type { Report, Reports } from "./Report";
 export type { GeocoderFeature } from "./GeocoderFeature";

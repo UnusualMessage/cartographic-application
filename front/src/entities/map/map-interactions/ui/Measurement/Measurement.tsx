@@ -8,6 +8,7 @@ import {
   MapStore,
   InteractionsStore,
   DrawStore,
+  Interactions,
 } from "@shared/misc";
 
 const Measurement = () => {
@@ -21,7 +22,7 @@ const Measurement = () => {
 
   useInteraction(
     addInteraction,
-    ["measure-coordinate", "measure-length", "measure-area"],
+    [Interactions.coordinate, Interactions.length, Interactions.area],
     { source, map, type }
   );
 

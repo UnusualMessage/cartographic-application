@@ -10,7 +10,7 @@ import {
   MapControls,
   DrawerStore,
   FullScreenStore,
-  InteractionType,
+  Interactions,
   LayersService,
 } from "@shared/misc";
 
@@ -23,7 +23,7 @@ const DrawerMenu = () => {
   const active = FullScreenStore.active;
   const { navigateWithQuery } = useQueryNavigate();
 
-  const switchType = (type: InteractionType) => {
+  const switchType = (type: Interactions) => {
     LayersService.clearVectorLayer(measurementLayerId);
     InteractionsStore.type = type;
   };
@@ -38,27 +38,27 @@ const DrawerMenu = () => {
     switch (type) {
       case "measure-coordinate":
         switchControl(MapControls.measurement);
-        switchType(type);
+        switchType(Interactions.coordinate);
         break;
       case "measure-length":
         switchControl(MapControls.measurement);
-        switchType(type);
+        switchType(Interactions.length);
         break;
       case "measure-area":
         switchControl(MapControls.measurement);
-        switchType(type);
+        switchType(Interactions.area);
         break;
       case "none":
         switchControl(MapControls.edit);
-        switchType(type);
+        switchType(Interactions.none);
         break;
       case "cursor":
         switchControl(MapControls.edit);
-        switchType(type);
+        switchType(Interactions.cursor);
         break;
       case "geozones":
         switchControl(MapControls.edit);
-        switchType(type);
+        switchType(Interactions.geozones);
         break;
       case "full-screen":
         FullScreenStore.enter();

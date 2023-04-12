@@ -2,6 +2,7 @@ import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
 
+import { Interactions } from "../../enums";
 import { InteractionsStore, FeaturesStore } from "../../stores";
 import type {
   ListenersInjector,
@@ -48,7 +49,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
       const feature = event.feature;
       feature.setId(uuid());
 
-      if (type === "geozones") {
+      if (type === Interactions.geozones) {
         FeaturesStore.addFeature(feature);
       }
     };

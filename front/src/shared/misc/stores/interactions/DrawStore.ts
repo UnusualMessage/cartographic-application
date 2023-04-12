@@ -10,18 +10,14 @@ import {
   getDrawAreaStyle,
   getGeozoneStyle,
 } from "../../../lib";
+import { Interactions } from "../../enums";
 import {
   LengthMeasurementInjector,
   DrawInjector,
   CoordinateMeasurementInjector,
   AreaMeasurementInjector,
 } from "../../services";
-import {
-  ListenersInjector,
-  Callback,
-  DrawEvent,
-  InteractionType,
-} from "../../types";
+import { ListenersInjector, Callback, DrawEvent } from "../../types";
 
 class DrawStore {
   private _draw?: Draw;
@@ -33,8 +29,8 @@ class DrawStore {
     makeAutoObservable(this);
   }
 
-  public setup(type: InteractionType, source: VectorSource, map: Map | null) {
-    if (type === "none" || type === "cursor") {
+  public setup(type: Interactions, source: VectorSource, map: Map | null) {
+    if (type === Interactions.none || type === Interactions.cursor) {
       return;
     }
 
@@ -45,15 +41,15 @@ class DrawStore {
     let draw: Draw;
 
     switch (type) {
-      case "measure-area":
+      case Interactions.area:
         draw = this.getAreaMeasurementDraw(source);
         break;
 
-      case "measure-length":
+      case Interactions.length:
         draw = this.getLengthMeasurementDraw(source);
         break;
 
-      case "measure-coordinate":
+      case Interactions.coordinate:
         draw = this.getCoordinateMeasurementDraw(source);
         break;
       default:

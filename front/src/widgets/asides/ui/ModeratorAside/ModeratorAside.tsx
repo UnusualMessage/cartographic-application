@@ -1,13 +1,13 @@
 import React, { PropsWithChildren } from "react";
 
 import { useResizing } from "@shared/lib";
-import { ResizeType } from "@shared/misc";
+import { Resizes } from "@shared/misc";
 import { Resize } from "@shared/ui";
 
 import { content, wrapper } from "./aside.module.scss";
 
 const ModeratorAside = ({ children }: PropsWithChildren) => {
-  const type = ResizeType.width;
+  const type = Resizes.width;
 
   const props = {
     type: type,
