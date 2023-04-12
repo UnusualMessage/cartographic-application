@@ -1,19 +1,19 @@
 import { makeAutoObservable } from "mobx";
 import LayerGroup from "ol/layer/Group";
 
-import { BaseLayer, WeatherLayer } from "../../types";
+import { BaseLayers, WeatherLayers } from "../../types";
 
 class LayersStore {
   private _layerGroups: LayerGroup[];
 
-  private _baseLayerType: BaseLayer;
-  private _weatherLayerType: WeatherLayer;
+  private _baseLayerType: BaseLayers;
+  private _weatherLayerType: WeatherLayers;
 
   constructor() {
     this._layerGroups = [];
 
-    this._baseLayerType = "osm";
-    this._weatherLayerType = "none";
+    this._baseLayerType = BaseLayers.osm;
+    this._weatherLayerType = WeatherLayers.none;
 
     makeAutoObservable(this);
   }

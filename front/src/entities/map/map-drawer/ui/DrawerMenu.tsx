@@ -7,7 +7,7 @@ import { useQueryNavigate } from "@shared/lib";
 import {
   ControlsStore,
   InteractionsStore,
-  MapControl,
+  MapControls,
   DrawerStore,
   FullScreenStore,
   InteractionType,
@@ -28,7 +28,7 @@ const DrawerMenu = () => {
     InteractionsStore.type = type;
   };
 
-  const switchControl = (type: MapControl) => {
+  const switchControl = (type: MapControls) => {
     ControlsStore.currentMapControl = type;
   };
 
@@ -37,27 +37,27 @@ const DrawerMenu = () => {
 
     switch (type) {
       case "measure-coordinate":
-        switchControl("measurement");
+        switchControl(MapControls.measurement);
         switchType(type);
         break;
       case "measure-length":
-        switchControl("measurement");
+        switchControl(MapControls.measurement);
         switchType(type);
         break;
       case "measure-area":
-        switchControl("measurement");
+        switchControl(MapControls.measurement);
         switchType(type);
         break;
       case "none":
-        switchControl("edit");
+        switchControl(MapControls.edit);
         switchType(type);
         break;
       case "cursor":
-        switchControl("edit");
+        switchControl(MapControls.edit);
         switchType(type);
         break;
       case "geozones":
-        switchControl("edit");
+        switchControl(MapControls.edit);
         switchType(type);
         break;
       case "full-screen":
@@ -66,8 +66,14 @@ const DrawerMenu = () => {
       case "print":
         navigateWithQuery("../print", "x", "y", "z");
         break;
-      default:
-        switchControl(type as MapControl);
+      case "share":
+        switchControl(MapControls.share);
+        break;
+      case "search":
+        switchControl(MapControls.search);
+        break;
+      case "layers":
+        switchControl(MapControls.layers);
     }
 
     DrawerStore.hide();

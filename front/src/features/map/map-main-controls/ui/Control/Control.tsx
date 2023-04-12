@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
-import { ControlsStore } from "@shared/misc";
+import { ControlsStore, MapControls } from "@shared/misc";
 import { Title } from "entities/map";
 
 import { wrapper, header } from "./control.module.scss";
@@ -24,26 +24,26 @@ const Control = () => {
   let label = "";
 
   switch (controlType) {
-    case "measurement":
+    case MapControls.measurement:
       control = <Measure />;
       label = "Измерение";
       panel = <MeasurementResult />;
       break;
-    case "share":
+    case MapControls.share:
       label = "Поделиться";
       panel = <ShareResult />;
       break;
-    case "edit":
+    case MapControls.edit:
       control = <Draw />;
       panel = <DrawResult />;
       label = "Рисование";
       break;
-    case "layers":
+    case MapControls.layers:
       control = <Layers />;
       panel = <LayersResult />;
       label = "Слои";
       break;
-    case "search":
+    case MapControls.search:
       control = <Search />;
       break;
   }

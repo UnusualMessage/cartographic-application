@@ -2,7 +2,7 @@ import { Radio, RadioChangeEvent, Typography } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { baseLayers } from "@shared/assets";
-import { LayersStore, BaseLayer } from "@shared/misc";
+import { LayersStore, BaseLayers } from "@shared/misc";
 
 import { wrapper } from "./switches.module.scss";
 
@@ -10,7 +10,7 @@ const { Text } = Typography;
 
 const BaseLayersSwitch = () => {
   const choose = (e: RadioChangeEvent) => {
-    LayersStore.baseLayerType = e.target.value as BaseLayer;
+    LayersStore.baseLayerType = e.target.value as BaseLayers;
   };
 
   return (

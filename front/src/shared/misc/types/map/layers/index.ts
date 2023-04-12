@@ -1,2 +1,2 @@
-export type { BaseLayer } from "./BaseLayer";
-export type { WeatherLayer } from "./WeatherLayer";
+export { BaseLayers } from "./BaseLayers";
+export { WeatherLayers } from "./WeatherLayers";
