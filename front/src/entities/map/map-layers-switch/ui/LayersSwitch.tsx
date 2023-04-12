@@ -1,3 +1,4 @@
+import { Collapse } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
@@ -11,8 +12,9 @@ import {
   VectorLayersSwitch,
   BaseLayersSwitch,
   WeatherLayersSwitch,
-  BordersLayersSwitch,
 } from "./switches";
+
+const { Panel } = Collapse;
 
 const LayersSwitch = () => {
   const context = useContext(SchemaTemplateContext);
@@ -25,12 +27,19 @@ const LayersSwitch = () => {
 
   return (
     <Condition truthy={context?.fastControls?.layers}>
-      <div className={classes}>
-        <BaseLayersSwitch />
-        <WeatherLayersSwitch />
-        <BordersLayersSwitch />
-        <VectorLayersSwitch />
-      </div>
+      <Collapse className={classes} size={"small"} ghost>
+        <Panel key={"Подложка"} header={"Подложка"}>
+          <BaseLayersSwitch />
+        </Panel>
+
+        <Panel key={"Погода"} header={"Погода"}>
+          <WeatherLayersSwitch />
+        </Panel>
+
+        <Panel header={"Векторные"} key={"Векторные"}>
+          <VectorLayersSwitch />
+        </Panel>
+      </Collapse>
     </Condition>
   );
 };

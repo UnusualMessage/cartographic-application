@@ -1,5 +1,5 @@
 import { DownOutlined } from "@ant-design/icons";
-import { Tree, Typography } from "antd";
+import { Tree } from "antd";
 import VectorLayer from "ol/layer/Vector";
 import { useState, Key } from "react";
 
@@ -13,7 +13,6 @@ import { MapStore } from "@shared/misc";
 import { vectorLayersNodes } from "../../model";
 
 const { DirectoryTree } = Tree;
-const { Text } = Typography;
 
 const switchLayerFrom = (first: Key[], second: Key[]) => {
   for (const key of first) {
@@ -45,21 +44,18 @@ const VectorLayersSwitch = () => {
   };
 
   return (
-    <>
-      <Text strong>Векторные</Text>
-      <DirectoryTree
-        treeData={vectorLayersNodes}
-        checkedKeys={checkedKeys}
-        onCheck={onCheck as any}
-        defaultExpandAll
-        checkable
-        showLine
-        selectable={false}
-        expandAction={false}
-        autoExpandParent={false}
-        switcherIcon={<DownOutlined />}
-      />
-    </>
+    <DirectoryTree
+      treeData={vectorLayersNodes}
+      checkedKeys={checkedKeys}
+      onCheck={onCheck as any}
+      defaultExpandAll
+      checkable
+      showLine
+      selectable={false}
+      expandAction={false}
+      autoExpandParent={false}
+      switcherIcon={<DownOutlined />}
+    />
   );
 };
 
