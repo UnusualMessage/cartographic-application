@@ -46,10 +46,6 @@ const Draw = () => {
       const organization = OrganizationsStore.organization;
 
       if (geometry && organization) {
-        const id = feature.getId() ?? uuid();
-
-        geometry.getCoordinates();
-
         const title = "Новая геозона";
 
         void GeozonesStore.add({
