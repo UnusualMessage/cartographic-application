@@ -6,3 +6,4 @@ export * from "./map-interactions";
 export * from "./map-layers-switch";
 export * from "./map-view";
 export * from "./map-drawer";
+export * from "./map-geocoder";
