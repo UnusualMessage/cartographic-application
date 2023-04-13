@@ -2,19 +2,21 @@ import {
   PauseOutlined,
   StepForwardOutlined,
   FieldTimeOutlined,
-  DesktopOutlined,
-  FileAddOutlined,
-  SettingOutlined,
   BellOutlined,
   LogoutOutlined,
 } from "@ant-design/icons";
 import { Button, Typography, Space, Badge } from "antd";
 import { observer } from "mobx-react-lite";
-import { Link } from "react-router-dom";
 
 import { AuthStore } from "@entities/auth";
 import { OrganizationsStore } from "@entities/business";
-import { about, routes } from "@shared/assets";
+import {
+  ToMonitoring,
+  ToReferences,
+  ToReports,
+  ToSettings,
+} from "@entities/links";
+import { about } from "@shared/assets";
 import { UpdateStore } from "@shared/misc";
 import { TractorFilled } from "@shared/ui";
 
@@ -33,23 +35,9 @@ const ModeratorHeader = () => {
           </Title>
         </Space>
 
-        <Link to={routes.current.path}>
-          <Button icon={<DesktopOutlined />} size={"large"} type={"text"}>
-            Мониторинг
-          </Button>
-        </Link>
-
-        <Link to={routes.references.path}>
-          <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
-            Справочники
-          </Button>
-        </Link>
-
-        <Link to={routes.reports.path}>
-          <Button icon={<FileAddOutlined />} size={"large"} type={"text"}>
-            Отчеты
-          </Button>
-        </Link>
+        <ToMonitoring type={"text"} relative text={"Мониторинг"} />
+        <ToReferences />
+        <ToReports />
       </Space>
 
       <Space className={container}>
@@ -74,14 +62,7 @@ const ModeratorHeader = () => {
       </Space>
 
       <Space className={container}>
-        <Button
-          icon={<SettingOutlined />}
-          size={"large"}
-          type={"text"}
-          disabled
-        >
-          Настройки
-        </Button>
+        <ToSettings />
 
         <Badge count={100} size={"small"} offset={[-20, 10]}>
           <Button icon={<BellOutlined />} type={"text"} size={"large"} />
