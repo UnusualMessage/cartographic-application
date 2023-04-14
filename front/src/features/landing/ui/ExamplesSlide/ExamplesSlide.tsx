@@ -12,6 +12,7 @@ const ExamplesSlide = () => {
     <Slide
       anchorId={"examples"}
       prevId={"features"}
+      nextId={"order"}
       image={"/images/features/analytics.jpg"}
     >
       <Title style={{ color: "#f5f5f5" }} level={1}>
