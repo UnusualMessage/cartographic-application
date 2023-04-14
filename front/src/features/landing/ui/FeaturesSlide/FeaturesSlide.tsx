@@ -12,7 +12,7 @@ const FeaturesSlide = () => {
     <Slide
       anchorId={"features"}
       prevId={"title"}
-      image={"/images/features.jpg"}
+      image={"/images/features/analytics.jpg"}
     >
       <Title style={{ color: "#f5f5f5" }} level={1}>
         {featuresSlideText.title}

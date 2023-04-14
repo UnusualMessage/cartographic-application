@@ -1,8 +1,7 @@
-import { ArrowUpOutlined, ArrowDownOutlined } from "@ant-design/icons";
-import classNames from "classnames";
-import { PropsWithChildren } from "react";
+import { PropsWithChildren, WheelEventHandler } from "react";
 
-import { wrapper, content, up, down, link } from "./slide.module.scss";
+import { wrapper, content } from "./slide.module.scss";
+import ToSlide from "../ToSlide";
 
 interface Props extends PropsWithChildren {
   anchorId: string;
@@ -12,32 +11,38 @@ interface Props extends PropsWithChildren {
 }
 
 const Slide = ({ anchorId, prevId, nextId, image, children }: Props) => {
-  const prev = prevId ? (
-    <a href={`#${prevId}`} className={classNames(link, up)} title={"Назад"}>
-      <ArrowUpOutlined style={{ fontSize: "32px", color: "#1677ff" }} />
-    </a>
-  ) : (
-    <></>
-  );
-  const next = nextId ? (
-    <a href={`#${nextId}`} className={classNames(link, down)} title={"Вперед"}>
-      <ArrowDownOutlined style={{ fontSize: "32px", color: "#1677ff" }} />
-    </a>
-  ) : (
-    <></>
-  );
+  const onWheel: WheelEventHandler = (e) => {
+    const link = document.createElement("a") as HTMLAnchorElement;
+
+    if (e.deltaY > 0) {
+      if (!nextId) {
+        return;
+      }
+
+      link.href = `#${nextId}`;
+    } else {
+      if (!prevId) {
+        return;
+      }
+
+      link.href = `#${prevId}`;
+    }
+
+    link.click();
+  };
 
   return (
     <div
       id={anchorId}
       className={wrapper}
+      onWheel={onWheel}
       style={{
         backgroundImage: `url('${image}')`,
       }}
     >
-      {prev}
+      <ToSlide id={prevId} type={"prev"} />
       <div className={content}>{children}</div>
-      {next}
+      <ToSlide id={nextId} type={"next"} />
     </div>
   );
 };

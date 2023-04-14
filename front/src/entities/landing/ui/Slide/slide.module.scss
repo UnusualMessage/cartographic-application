@@ -7,30 +7,6 @@
   background-size: cover;
   background-position: center;
 
-  .link {
-    height: 32px;
-
-    position: absolute;
-    z-index: 2;
-    left: 0;
-
-    width: 100%;
-
-    text-align: center;
-
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  .up {
-    top: 0;
-  }
-
-  .down {
-    bottom: 0;
-  }
-
   .content {
     display: flex;
     flex-direction: column;

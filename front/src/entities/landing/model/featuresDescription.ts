@@ -6,7 +6,7 @@ export const featuresDescription = [
     title: "Учет транспортных работ",
     description:
       "Ведение оперативных планов и графиков смен, создание индивидуальных и групповых отчетов, привязка информации о перевозимом грузе",
-    image: "/images/accounting.jpg",
+    image: "/images/features/analytics.jpg",
   },
 
   {
@@ -14,7 +14,7 @@ export const featuresDescription = [
     title: "Мониторинг техники",
     description:
       "Контроль перемещений и результативности работ онлайн, статистика простоев, выявление несанкционированных выгрузок и сливов топлива",
-    image: "/images/equipment.jpg",
+    image: "/images/features/monitoring.jpg",
   },
 
   {
@@ -22,7 +22,7 @@ export const featuresDescription = [
     title: "Помощник агронома",
     description:
       "Контроль здоровья полей и растений: индекс вегетативности на основе снимков ndvi, дифференцированное внесение, мониторинг погоды, оцифровка обследований почвы",
-    image: "/images/agronom.jpg",
+    image: "/images/features/analytics.jpg",
   },
 
   {
@@ -30,7 +30,7 @@ export const featuresDescription = [
     title: "Кадастровый учет",
     description:
       "Повышение эффективности земельного банка, контроль сроков договоров аренды, автоматическое определение пересекающихся участков",
-    image: "/images/map.jpg",
+    image: "/images/features/analytics.jpg",
   },
 
   {
@@ -38,7 +38,7 @@ export const featuresDescription = [
     title: "Отчетность и аналитика",
     description:
       "Получение и отслеживание ключевых показателей по агрооперациям в режиме реального времени, понятный вид отображения данных, разнообразие отчетных форм",
-    image: "/images/analytics.jpg",
+    image: "/images/features/analytics.jpg",
   },
 
   {
@@ -46,6 +46,6 @@ export const featuresDescription = [
     title: "Скаутинг",
     description:
       "Мобильное приложение и инструментарий для проведения полевых обследований и контроля состояния полей и растений",
-    image: "/images/features.jpg",
+    image: "/images/features/analytics.jpg",
   },
 ];
