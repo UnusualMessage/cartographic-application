@@ -3,7 +3,7 @@ import {
   FeaturesSlide,
   ExamplesSlide,
   OrderSlide,
-} from "@features/landing";
+} from "@features/layout";
 import { Slides } from "@widgets/wrappers";
 
 const Landing = () => {

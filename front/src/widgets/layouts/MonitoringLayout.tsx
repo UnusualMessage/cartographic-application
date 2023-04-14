@@ -1,12 +1,13 @@
 import { Outlet } from "react-router-dom";
 
-import { MonitoringHeader as Header } from "../headers";
+import { MonitoringHeader } from "@features/layout";
+
 import { Body, Main } from "../wrappers";
 
 const MonitoringLayout = () => {
   return (
     <Body>
-      <Header />
+      <MonitoringHeader />
       <Main>
         <Outlet />
       </Main>

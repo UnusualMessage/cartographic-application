@@ -6,7 +6,6 @@ import { BaseLayers } from "../../../../misc";
 export const createBaseSource = (type: BaseLayers) => {
   let source;
   const maxSourceZoom = 19;
-  const zIndex = -1;
 
   switch (type) {
     case BaseLayers.otm:

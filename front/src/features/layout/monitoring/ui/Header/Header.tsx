@@ -24,7 +24,7 @@ import { container, logo, wrapper } from "./header.module.scss";
 
 const { Text, Title } = Typography;
 
-const MonitoringHeader = () => {
+const Header = () => {
   return (
     <Space className={wrapper}>
       <Space className={container}>
@@ -84,4 +84,4 @@ const MonitoringHeader = () => {
   );
 };
 
-export default observer(MonitoringHeader);
+export default observer(Header);

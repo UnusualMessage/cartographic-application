@@ -6,7 +6,7 @@ import { Resize } from "@shared/ui";
 
 import { content, wrapper } from "./aside.module.scss";
 
-const MonitoringAside = ({ children }: PropsWithChildren) => {
+const Aside = ({ children }: PropsWithChildren) => {
   const type = Resizes.width;
 
   const props = {
@@ -35,4 +35,4 @@ const MonitoringAside = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default MonitoringAside;
+export default Aside;

@@ -5,10 +5,10 @@ import React from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
+import { MonitoringAside } from "@features/layout";
 import { isObjectKey } from "@shared/lib";
 import { Group, Reference } from "@shared/misc";
 import { Tree, Loader } from "@shared/ui";
-import { MonitoringAside as Aside } from "@widgets/asides";
 import { Content } from "@widgets/wrappers";
 
 import { referenceNodes, references } from "./model";
@@ -44,9 +44,9 @@ const ReferencesTree = () => {
 const References = () => {
   return (
     <React.Suspense fallback={<Loader />}>
-      <Aside>
+      <MonitoringAside>
         <ReferencesTree />
-      </Aside>
+      </MonitoringAside>
       <Content>
         <Outlet />
       </Content>

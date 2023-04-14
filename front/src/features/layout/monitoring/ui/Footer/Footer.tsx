@@ -6,7 +6,7 @@ import { Resize } from "@shared/ui";
 
 import { content, wrapper } from "./footer.module.scss";
 
-const MonitoringFooter = ({ children }: PropsWithChildren) => {
+const Footer = ({ children }: PropsWithChildren) => {
   const type = Resizes.height;
 
   const props = {
@@ -31,4 +31,4 @@ const MonitoringFooter = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default MonitoringFooter;
+export default Footer;

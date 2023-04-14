@@ -17,7 +17,9 @@ const PrintSchema = () => {
     <Body>
       <SchemaTemplateContext.Provider value={printTemplate}>
         <Map toPrint={true}>
-          <View />
+          <View>
+            <View.Memo />
+          </View>
           <ContextMenu />
           <Tooltip />
           <MainControls />
