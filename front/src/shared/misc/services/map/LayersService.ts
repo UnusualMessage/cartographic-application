@@ -1,13 +1,21 @@
 import BaseLayer from "ol/layer/Base";
 import LayerGroup from "ol/layer/Group";
+import TileLayer from "ol/layer/Tile";
 import VectorLayer from "ol/layer/Vector";
+import TileSource from "ol/source/Tile";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
-import { createBaseLayer, createWeatherLayer } from "../../../lib";
-import { LayersStore, MapStore } from "../../stores";
+import { MapStore } from "../../stores";
 
 class LayersService {
+  public createTileLayer(zIndex?: number, source?: TileSource) {
+    return new TileLayer({
+      source: source,
+      zIndex: zIndex,
+    });
+  }
+
   public createVectorLayer(
     source: VectorSource,
     id: string,
@@ -15,7 +23,7 @@ class LayersService {
     minZoom?: number,
     maxZoom?: number
   ) {
-    const layer = new VectorLayer({
+    return new VectorLayer({
       source: source,
       style: style,
       renderBuffer: 1000,
@@ -25,32 +33,10 @@ class LayersService {
         id: id,
       },
     });
-
-    MapStore.addLayer(layer);
-    return layer;
   }
 
   public addLayerGroup(group: LayerGroup) {
-    MapStore.addLayer(group);
     return group;
-  }
-
-  public createBaseLayer() {
-    const type = LayersStore.baseLayerType;
-    const layer = createBaseLayer(type);
-
-    MapStore.addLayer(layer);
-
-    return layer;
-  }
-
-  public createWeatherLayer() {
-    const type = LayersStore.weatherLayerType;
-    const layer = createWeatherLayer(type);
-
-    MapStore.addLayer(layer);
-
-    return layer;
   }
 
   public clearVectorLayer(id: string) {

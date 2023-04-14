@@ -1,10 +1,9 @@
-import TileLayer from "ol/layer/Tile";
 import { XYZ } from "ol/source";
 
 import { weatherLayers } from "../../../../assets";
 import { WeatherLayers } from "../../../../misc";
 
-export const createWeatherLayer = (type: WeatherLayers) => {
+export const createWeatherSource = (type: WeatherLayers) => {
   let source;
 
   switch (type) {
@@ -41,7 +40,5 @@ export const createWeatherLayer = (type: WeatherLayers) => {
       break;
   }
 
-  return new TileLayer({
-    source: source,
-  });
+  return source;
 };

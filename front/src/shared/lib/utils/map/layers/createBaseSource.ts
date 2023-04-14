@@ -1,10 +1,9 @@
-import TileLayer from "ol/layer/Tile";
 import { XYZ, OSM, BingMaps } from "ol/source";
 
 import { baseLayers } from "../../../../assets";
 import { BaseLayers } from "../../../../misc";
 
-export const createBaseLayer = (type: BaseLayers) => {
+export const createBaseSource = (type: BaseLayers) => {
   let source;
   const maxSourceZoom = 19;
   const zIndex = -1;
@@ -68,8 +67,5 @@ export const createBaseLayer = (type: BaseLayers) => {
       break;
   }
 
-  return new TileLayer({
-    source: source,
-    zIndex: zIndex,
-  });
+  return source;
 };

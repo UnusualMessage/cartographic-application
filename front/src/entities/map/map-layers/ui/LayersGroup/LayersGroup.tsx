@@ -3,7 +3,6 @@ import { PropsWithChildren } from "react";
 
 import { GroupContext } from "@shared/constants";
 import { useLayer } from "@shared/lib";
-import { LayersService } from "@shared/misc";
 
 interface Props extends PropsWithChildren {
   id: string;
@@ -13,7 +12,7 @@ const LayersGroup = ({ id, children }: Props) => {
   const group = new LayerGroup();
   group.set("id", id);
 
-  useLayer(() => LayersService.addLayerGroup(group), [id, group]);
+  useLayer(() => group, [id, group]);
 
   return (
     <GroupContext.Provider value={group}>{children}</GroupContext.Provider>
