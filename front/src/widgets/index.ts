@@ -1,6 +1,5 @@
 export { default as Overlays } from "./Overlays";
-export { default as Layout } from "./Layout";
-
+export * as layouts from "./layouts";
 export * as wrappers from "./wrappers";
 export * as asides from "./asides";
 export * as footers from "./footers";

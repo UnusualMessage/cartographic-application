@@ -6,7 +6,7 @@ import {
 } from "@ant-design/icons";
 import { MenuProps } from "antd";
 
-export const mapMenu: MenuProps["items"] = [
+export const menu: MenuProps["items"] = [
   {
     label: "Редактирование",
     type: "group",

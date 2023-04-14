@@ -8,7 +8,7 @@ import { v4 as uuid } from "uuid";
 import { isObjectKey } from "@shared/lib";
 import { Group, Reference } from "@shared/misc";
 import { Tree, Loader } from "@shared/ui";
-import { ModeratorAside as Aside } from "@widgets/asides";
+import { MonitoringAside as Aside } from "@widgets/asides";
 import { Content } from "@widgets/wrappers";
 
 import { reportsNodes, reports } from "./model";

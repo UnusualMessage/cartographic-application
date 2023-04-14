@@ -1,1 +1,3 @@
-export * from "./ui";
+import MonitoringHeader from "./MonitoringHeader";
+
+export { MonitoringHeader };

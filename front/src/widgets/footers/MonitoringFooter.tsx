@@ -2,11 +2,11 @@ import { PropsWithChildren } from "react";
 
 import { useResizing } from "@shared/lib";
 import { Resizes } from "@shared/misc";
-import Resize from "@shared/ui/Resize";
+import { Resize } from "@shared/ui";
 
 import { content, wrapper } from "./footer.module.scss";
 
-const ModeratorFooter = ({ children }: PropsWithChildren) => {
+const MonitoringFooter = ({ children }: PropsWithChildren) => {
   const type = Resizes.height;
 
   const props = {
@@ -31,4 +31,4 @@ const ModeratorFooter = ({ children }: PropsWithChildren) => {
   );
 };
 
-export default ModeratorFooter;
+export default MonitoringFooter;

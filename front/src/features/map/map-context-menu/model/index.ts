@@ -1,1 +1,1 @@
-export { mapMenu } from "./mapMenu";
+export { menu as mapMenu } from "./menu";

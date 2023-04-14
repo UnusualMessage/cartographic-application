@@ -9,13 +9,12 @@ import { routes } from "@shared/assets";
 import { isObjectKey } from "@shared/lib";
 import { Reference, Report } from "@shared/misc";
 import { EmptyPage } from "@shared/ui";
-import { Layout } from "@widgets/index";
+import { MonitoringLayout } from "@widgets/layouts";
 
 const Monitoring = lazy(() => import("@pages/Monitoring"));
 const References = lazy(() => import("@pages/References"));
 const Reports = lazy(() => import("@pages/Reports"));
 const Print = lazy(() => import("@pages/PrintSchema"));
-const Home = lazy(() => import("@pages/Admin/Home"));
 const Landing = lazy(() => import("@pages/Landing"));
 
 const references: Reference[] = [];
@@ -58,7 +57,7 @@ export const router = createBrowserRouter([
         path: routes.monitoring.path,
         element: (
           <RequireAuthentication roles={[1, 2, 4]}>
-            <Layout />
+            <MonitoringLayout />
           </RequireAuthentication>
         ),
         errorElement: <EmptyPage />,
@@ -92,22 +91,6 @@ export const router = createBrowserRouter([
             }),
           },
         ],
-      },
-    ],
-  },
-
-  {
-    path: routes.root.path + routes.admin.path,
-    element: (
-      <RequireAuthentication roles={[8]}>
-        <Layout />
-      </RequireAuthentication>
-    ),
-    errorElement: <EmptyPage />,
-    children: [
-      {
-        path: "",
-        element: <Home />,
       },
     ],
   },

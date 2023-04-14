@@ -11,8 +11,8 @@ import {
 import { defaultTemplate } from "@shared/assets";
 import { SchemaTemplateContext } from "@shared/constants";
 import { Loader } from "@shared/ui";
-import { ModeratorAside as Aside } from "@widgets/asides";
-import { ModeratorFooter as Footer } from "@widgets/footers";
+import { MonitoringAside as Aside } from "@widgets/asides";
+import { MonitoringFooter as Footer } from "@widgets/footers";
 import { Overlays } from "@widgets/index";
 import { EntitiesTabs, InfoTabs } from "@widgets/tabs";
 import { Content } from "@widgets/wrappers";

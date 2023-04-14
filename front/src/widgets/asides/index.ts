@@ -1,1 +1,3 @@
-export * from "./ui";
+import MonitoringAside from "./MonitoringAside";
+
+export { MonitoringAside };
