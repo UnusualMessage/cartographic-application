@@ -12,7 +12,7 @@ const LayersGroup = ({ id, children }: Props) => {
   const group = new LayerGroup();
   group.set("id", id);
 
-  useLayer(() => group, [id, group]);
+  useLayer(() => group, undefined, [id, group]);
 
   return (
     <GroupContext.Provider value={group}>{children}</GroupContext.Provider>

@@ -9,7 +9,9 @@ interface Props {
 }
 
 const TileLayer = ({ source, zIndex }: Props) => {
-  useLayer(() => LayersService.createTileLayer(zIndex, source), [source]);
+  useLayer(() => LayersService.createTileLayer(zIndex, source), undefined, [
+    source,
+  ]);
 
   return <></>;
 };
