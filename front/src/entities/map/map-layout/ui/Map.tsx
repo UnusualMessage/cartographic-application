@@ -25,13 +25,14 @@ import { fullscreen, wrapper } from "./map.module.scss";
 interface Props extends PropsWithChildren {
   toPrint?: boolean;
   canFullscreen?: boolean;
+  canZoom?: boolean;
 }
 
 const onChange = (state: boolean) => {
   FullScreenStore.active = state;
 };
 
-const Map = ({ children, toPrint, canFullscreen }: Props) => {
+const Map = ({ children, toPrint, canFullscreen, canZoom }: Props) => {
   const mapRef = useRef<HTMLDivElement>(null);
   const map = MapStore.map;
   const type = InteractionsStore.type;
@@ -45,7 +46,7 @@ const Map = ({ children, toPrint, canFullscreen }: Props) => {
 
   useLayoutEffect(() => {
     if (mapRef.current) {
-      MapStore.initMap(mapRef.current);
+      MapStore.initMap(mapRef.current, canZoom);
     }
 
     return () => {

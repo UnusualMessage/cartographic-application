@@ -1,6 +1,8 @@
 import * as jspdf from "jspdf";
 import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
+import { never } from "ol/events/condition";
+import { MouseWheelZoom, DragPan } from "ol/interaction";
 import BaseLayer from "ol/layer/Base";
 
 import { Dimensions } from "../../types";
@@ -55,15 +57,20 @@ class MapStore {
     this.setCursor("default");
   }
 
-  public initMap(target: HTMLDivElement, view?: View) {
+  public initMap(target: HTMLDivElement, canZoom?: boolean) {
     if (this._map) {
       this._map.setTarget(target);
     } else {
+      const options = canZoom ? {} : { condition: never };
+
+      const zoomInteraction = new MouseWheelZoom(options);
+      const dragInteraction = new DragPan();
+
       this._map = new Map({
         target: target,
-        view: view,
         layers: [],
         controls: [],
+        interactions: [dragInteraction, zoomInteraction],
       });
     }
   }

@@ -16,7 +16,7 @@ const PrintSchema = () => {
   return (
     <Body>
       <SchemaTemplateContext.Provider value={printTemplate}>
-        <Map toPrint={true}>
+        <Map toPrint={true} canZoom>
           <View>
             <View.Memo />
           </View>

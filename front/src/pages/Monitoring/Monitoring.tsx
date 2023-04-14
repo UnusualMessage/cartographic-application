@@ -25,7 +25,7 @@ const Monitoring = () => {
       </MonitoringAside>
       <Content>
         <SchemaTemplateContext.Provider value={defaultTemplate}>
-          <Map canFullscreen={true}>
+          <Map canFullscreen canZoom>
             <View>
               <View.Memo />
             </View>
