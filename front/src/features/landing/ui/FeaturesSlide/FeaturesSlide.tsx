@@ -1,9 +1,9 @@
 import { Typography } from "antd";
 import React from "react";
 
-import { Slide, FeaturesList } from "@entities/landing";
+import { Slide, OverflowList } from "@entities/landing";
 
-import { featuresSlideText } from "../../model";
+import { featuresSlideText, featuresSlideItems } from "../../model";
 
 const { Title } = Typography;
 
@@ -12,12 +12,13 @@ const FeaturesSlide = () => {
     <Slide
       anchorId={"features"}
       prevId={"title"}
+      nextId={"examples"}
       image={"/images/features/analytics.jpg"}
     >
       <Title style={{ color: "#f5f5f5" }} level={1}>
         {featuresSlideText.title}
       </Title>
-      <FeaturesList />
+      <OverflowList items={featuresSlideItems} />
     </Slide>
   );
 };

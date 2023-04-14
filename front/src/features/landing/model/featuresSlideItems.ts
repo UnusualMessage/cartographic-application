@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-export const featuresDescription = [
+export const featuresSlideItems = [
   {
     id: uuid(),
     title: "Учет транспортных работ",

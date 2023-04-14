@@ -1,4 +1,4 @@
-import FeaturesList from "./FeaturesList";
+import OverflowList from "./OverflowList";
 import Slide from "./Slide";
 
-export { Slide, FeaturesList };
+export { Slide, OverflowList };

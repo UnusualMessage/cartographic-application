@@ -1,4 +1,9 @@
-import { TitleSlide, FeaturesSlide } from "@features/landing";
+import {
+  TitleSlide,
+  FeaturesSlide,
+  ExamplesSlide,
+  OrderSlide,
+} from "@features/landing";
 import { Slides } from "@widgets/wrappers";
 
 const Landing = () => {
@@ -6,6 +11,8 @@ const Landing = () => {
     <Slides>
       <TitleSlide />
       <FeaturesSlide />
+      <ExamplesSlide />
+      <OrderSlide />
     </Slides>
   );
 };

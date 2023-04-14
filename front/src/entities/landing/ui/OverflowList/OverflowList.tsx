@@ -2,17 +2,17 @@ import { Card } from "antd";
 import React from "react";
 
 import { wrapper, item, image as imageStyle } from "./list.module.scss";
-import { featuresDescription } from "../../model";
 
 const { Meta } = Card;
 
-interface FeatureProps {
+interface ItemProps {
+  id: string;
   title: string;
   description: string;
   image: string;
 }
 
-const Feature = ({ title, description, image }: FeatureProps) => {
+const Item = ({ title, description, image }: ItemProps) => {
   return (
     <Card
       className={item}
@@ -23,14 +23,18 @@ const Feature = ({ title, description, image }: FeatureProps) => {
   );
 };
 
-const FeaturesList = () => {
+interface Props {
+  items: ItemProps[];
+}
+
+const OverflowList = ({ items }: Props) => {
   return (
     <div className={wrapper}>
-      {featuresDescription.map((feature) => (
-        <Feature key={feature.id} {...feature} />
+      {items.map((item) => (
+        <Item key={item.id} {...item} />
       ))}
     </div>
   );
 };
 
-export default FeaturesList;
+export default OverflowList;
