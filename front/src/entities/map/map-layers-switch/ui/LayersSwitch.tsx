@@ -1,4 +1,4 @@
-import { Collapse } from "antd";
+import { Collapse, Space } from "antd";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 import { useContext } from "react";
@@ -8,11 +8,7 @@ import { ControlsStore } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
 import { visible, wrapper } from "./switch.module.scss";
-import {
-  VectorLayersSwitch,
-  BaseLayersSwitch,
-  WeatherLayersSwitch,
-} from "./switches";
+import { switches } from "../model";
 
 const { Panel } = Collapse;
 
@@ -25,20 +21,28 @@ const LayersSwitch = () => {
     [visible]: open,
   });
 
+  const renderItems = () => {
+    return switches.map((item) => {
+      return (
+        <Panel
+          key={item.title}
+          header={
+            <Space align={"center"}>
+              {item.icon}
+              {item.title}
+            </Space>
+          }
+        >
+          {item.component}
+        </Panel>
+      );
+    });
+  };
+
   return (
     <Condition truthy={context?.fastControls?.layers}>
       <Collapse className={classes} size={"small"} ghost>
-        <Panel key={"Подложка"} header={"Подложка"}>
-          <BaseLayersSwitch />
-        </Panel>
-
-        <Panel key={"Погода"} header={"Погода"}>
-          <WeatherLayersSwitch />
-        </Panel>
-
-        <Panel header={"Векторные"} key={"Векторные"}>
-          <VectorLayersSwitch />
-        </Panel>
+        {renderItems()}
       </Collapse>
     </Condition>
   );

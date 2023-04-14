@@ -4,6 +4,7 @@ import {
   transportLayerId,
   geozonesLayerId,
   measurementLayerId,
+  vectorsLayerId,
 } from "@shared/constants";
 import { Node } from "@shared/misc";
 import { LayersFilled } from "@shared/ui";
@@ -11,7 +12,7 @@ import { LayersFilled } from "@shared/ui";
 export const vectorLayersNodes: Node[] = [
   {
     title: "Векторные слои",
-    key: "vector-layers",
+    key: vectorsLayerId,
     icon: <></>,
     children: [
       {
