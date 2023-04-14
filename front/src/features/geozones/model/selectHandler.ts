@@ -2,7 +2,7 @@ import { centerOfMass } from "@turf/turf";
 import { TreeProps } from "antd/es/tree";
 
 import { GeozonesStore } from "@entities/business";
-import { TabsStore, ViewStore } from "@shared/misc";
+import { TabsStore, ViewService } from "@shared/misc";
 
 export const selectHandler: TreeProps["onSelect"] = async (keys, info) => {
   const node = info.selectedNodes[0];
@@ -18,7 +18,7 @@ export const selectHandler: TreeProps["onSelect"] = async (keys, info) => {
       const geozone = await GeozonesStore.getById(node.key.toString());
 
       if (geozone) {
-        ViewStore.centerWithZoomTo(13)(
+        ViewService.centerWithZoomTo(13)(
           centerOfMass(geozone.feature).geometry.coordinates
         );
       }

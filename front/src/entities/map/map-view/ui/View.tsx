@@ -1,52 +1,24 @@
-import { debounce } from "lodash";
-import { observer } from "mobx-react-lite";
-import { toFixed } from "ol/math";
-import { fromLonLat, toLonLat } from "ol/proj";
-import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useEffect, PropsWithChildren, useMemo } from "react";
 
-import { MapStore, ViewStore } from "@shared/misc";
+import { ViewContext } from "@shared/constants";
+import { MapStore, ViewService } from "@shared/misc";
 
-const View = () => {
-  const [viewParams, setViewParams] = useSearchParams();
+import Memo from "./modules/Memo";
+
+const View = ({ children }: PropsWithChildren) => {
+  const view = useMemo(() => ViewService.createView(), []);
 
   useEffect(() => {
-    const x = viewParams.get("x") ?? "0";
-    const y = viewParams.get("y") ?? "0";
-    const zoom = viewParams.get("z") ?? "1";
-
-    const center = fromLonLat([Number(x), Number(y)]);
-    const createdView = ViewStore.createView(Number(zoom), center);
-
-    const onViewChange = debounce(() => {
-      let center = createdView.getCenter();
-      const zoom = createdView.getZoom();
-
-      if (!center || !zoom) {
-        return;
-      }
-
-      center = toLonLat(center);
-      const searchParams = new URLSearchParams();
-
-      searchParams.append("x", toFixed(center[0], 2).toString());
-      searchParams.append("y", toFixed(center[1], 2).toString());
-      searchParams.append("z", toFixed(zoom, 2).toString());
-
-      setViewParams(searchParams);
-    }, 100);
-
-    createdView.on(["change:center", "change:resolution"], onViewChange);
-
-    MapStore.addView(createdView);
+    MapStore.addView(view);
 
     return () => {
-      createdView.un(["change:center", "change:resolution"], onViewChange);
-      ViewStore.dispose();
+      MapStore.disposeView();
     };
-  }, []);
+  }, [view]);
 
-  return <></>;
+  return <ViewContext.Provider value={view}>{children}</ViewContext.Provider>;
 };
 
-export default observer(View);
+View.Memo = Memo;
+
+export default View;

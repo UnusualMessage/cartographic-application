@@ -145,6 +145,10 @@ class MapStore {
     this._map?.setView(view);
   }
 
+  public disposeView() {
+    this._map?.getView().dispose();
+  }
+
   public addLayer(layer: BaseLayer) {
     this._map?.addLayer(layer);
   }

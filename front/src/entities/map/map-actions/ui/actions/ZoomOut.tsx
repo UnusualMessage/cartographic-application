@@ -3,7 +3,7 @@ import { Button } from "antd";
 import { useContext } from "react";
 
 import { SchemaTemplateContext } from "@shared/constants";
-import { ViewStore } from "@shared/misc";
+import { ViewService } from "@shared/misc";
 import { Condition } from "@shared/ui";
 
 import { wrapper } from "./action.module.scss";
@@ -16,7 +16,7 @@ const ZoomOut = () => {
       <Button
         className={wrapper}
         icon={<ZoomOutOutlined />}
-        onClick={() => ViewStore.zoomOut()}
+        onClick={() => ViewService.zoomOut()}
       />
     </Condition>
   );

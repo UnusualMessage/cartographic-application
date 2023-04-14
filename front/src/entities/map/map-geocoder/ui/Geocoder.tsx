@@ -4,7 +4,7 @@ import { Coordinate } from "ol/coordinate";
 import { fromLonLat } from "ol/proj";
 import { useState, ReactNode } from "react";
 
-import { ViewStore } from "@shared/misc";
+import { ViewService } from "@shared/misc";
 
 import { GeocoderService } from "../model";
 
@@ -46,7 +46,7 @@ const Geocoder = () => {
   };
 
   const handleSelect = (value: string, item: Option) => {
-    ViewStore.centerWithZoomTo(12)(fromLonLat(item.value));
+    ViewService.centerWithZoomTo(12)(fromLonLat(item.value));
     setValue(value);
   };
 
