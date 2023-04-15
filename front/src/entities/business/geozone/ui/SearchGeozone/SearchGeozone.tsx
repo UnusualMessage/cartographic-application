@@ -3,7 +3,7 @@ import { Select } from "antd";
 import { Coordinate } from "ol/coordinate";
 import { useState, ReactNode } from "react";
 
-import { ViewStore } from "@shared/misc";
+import { ViewService } from "@shared/misc";
 
 import { GeozonesStore } from "../../model";
 
@@ -38,7 +38,7 @@ const SearchGeozone = () => {
   };
 
   const handleSelect = (value: string, item: Option) => {
-    ViewStore.centerWithZoomTo(12)(item.value);
+    ViewService.centerWithZoomTo(12)(item.value);
     setValue(value);
   };
 

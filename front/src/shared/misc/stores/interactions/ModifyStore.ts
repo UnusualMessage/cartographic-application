@@ -5,8 +5,9 @@ import { Modify } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
 import { invoke } from "../../../lib";
+import { ModifyEvents } from "../../enums";
 import { ModifyInjector } from "../../services";
-import { ListenersInjector, ModifyEvent, Callback } from "../../types";
+import { ListenersInjector, Callback } from "../../types";
 
 class ModifyStore {
   private _modify?: Modify;
@@ -26,11 +27,11 @@ class ModifyStore {
       condition: altKeyOnly,
     });
 
-    const modifyInjector: ListenersInjector<ModifyEvent> = new ModifyInjector(
+    const modifyInjector: ListenersInjector<ModifyEvents> = new ModifyInjector(
       modify
     );
 
-    this._cleanup = modifyInjector.addEventListener("modifystart");
+    this._cleanup = modifyInjector.addEventListener(ModifyEvents.modifystart);
 
     map?.addInteraction(modify);
 

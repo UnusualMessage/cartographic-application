@@ -1,18 +1,18 @@
 import { makeAutoObservable } from "mobx";
 
-import { MapControl } from "../../types";
+import { MapControls } from "../../enums";
 
 class ControlsStore {
   private _layersPanelActive: boolean;
 
-  private _currentMapControl: MapControl;
+  private _currentMapControl: MapControls;
   private _currentSearchCategory: "geozones" | "equipment" | "geocoder";
   private _currentLayerCategory: "weather" | "base" | "vector";
 
   constructor() {
     this._layersPanelActive = false;
 
-    this._currentMapControl = "search";
+    this._currentMapControl = MapControls.search;
     this._currentSearchCategory = "equipment";
     this._currentLayerCategory = "base";
 

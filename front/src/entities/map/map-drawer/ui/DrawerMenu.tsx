@@ -6,12 +6,12 @@ import { measurementLayerId } from "@shared/constants";
 import { useQueryNavigate } from "@shared/lib";
 import {
   ControlsStore,
-  LayersStore,
   InteractionsStore,
-  MapControl,
+  MapControls,
   DrawerStore,
   FullScreenStore,
-  InteractionType,
+  Interactions,
+  LayersService,
 } from "@shared/misc";
 
 import { drawerMenu } from "../model";
@@ -23,12 +23,12 @@ const DrawerMenu = () => {
   const active = FullScreenStore.active;
   const { navigateWithQuery } = useQueryNavigate();
 
-  const switchType = (type: InteractionType) => {
-    LayersStore.clearVectorLayer(measurementLayerId);
+  const switchType = (type: Interactions) => {
+    LayersService.clearVectorLayer(measurementLayerId);
     InteractionsStore.type = type;
   };
 
-  const switchControl = (type: MapControl) => {
+  const switchControl = (type: MapControls) => {
     ControlsStore.currentMapControl = type;
   };
 
@@ -37,28 +37,28 @@ const DrawerMenu = () => {
 
     switch (type) {
       case "measure-coordinate":
-        switchControl("measurement");
-        switchType(type);
+        switchControl(MapControls.measurement);
+        switchType(Interactions.coordinate);
         break;
       case "measure-length":
-        switchControl("measurement");
-        switchType(type);
+        switchControl(MapControls.measurement);
+        switchType(Interactions.length);
         break;
       case "measure-area":
-        switchControl("measurement");
-        switchType(type);
+        switchControl(MapControls.measurement);
+        switchType(Interactions.area);
         break;
       case "none":
-        switchControl("edit");
-        switchType(type);
+        switchControl(MapControls.edit);
+        switchType(Interactions.none);
         break;
       case "cursor":
-        switchControl("edit");
-        switchType(type);
+        switchControl(MapControls.edit);
+        switchType(Interactions.cursor);
         break;
       case "geozones":
-        switchControl("edit");
-        switchType(type);
+        switchControl(MapControls.edit);
+        switchType(Interactions.geozones);
         break;
       case "full-screen":
         FullScreenStore.enter();
@@ -66,8 +66,14 @@ const DrawerMenu = () => {
       case "print":
         navigateWithQuery("../print", "x", "y", "z");
         break;
-      default:
-        switchControl(type as MapControl);
+      case "share":
+        switchControl(MapControls.share);
+        break;
+      case "search":
+        switchControl(MapControls.search);
+        break;
+      case "layers":
+        switchControl(MapControls.layers);
     }
 
     DrawerStore.hide();

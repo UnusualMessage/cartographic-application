@@ -5,7 +5,7 @@ import { Ref, useRef, useEffect, MouseEvent } from "react";
 
 import { measurementLayerId } from "@shared/constants";
 import { clean } from "@shared/lib";
-import { MapStore, TooltipStore, Callback, LayersStore } from "@shared/misc";
+import { MapStore, TooltipStore, Callback, LayersService } from "@shared/misc";
 
 import { hidden } from "./tooltip.module.scss";
 
@@ -13,7 +13,7 @@ const onClose = (e: MouseEvent<HTMLElement>) => {
   e.preventDefault();
 
   TooltipStore.hide();
-  LayersStore.clearVectorLayer(measurementLayerId);
+  LayersService.clearVectorLayer(measurementLayerId);
 };
 
 const Tooltip = () => {

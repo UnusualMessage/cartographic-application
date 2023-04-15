@@ -3,7 +3,7 @@ import { Button, Select } from "antd";
 import { observer } from "mobx-react-lite";
 
 import { SearchEquipment, SearchGeozone } from "@entities/business";
-import { Geocoder } from "@entities/geocoder";
+import { Geocoder } from "@entities/map";
 import { ControlsStore } from "@shared/misc";
 
 const Search = () => {

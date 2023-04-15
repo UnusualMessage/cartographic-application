@@ -1,21 +1,21 @@
 import { Feature, toWgs84 } from "@turf/turf";
 
-import { Geozone, GeometryType } from "@shared/misc";
+import { Geozone, Projections } from "@shared/misc";
 
 import { GeozonesStore } from "./index";
 
 export const convertGeozone = (
   geozone: Geozone,
-  type: GeometryType
+  projection: Projections
 ): Feature => {
   let geometry;
 
-  switch (type) {
-    case "3857":
+  switch (projection) {
+    case Projections.EPSG3857:
       geometry = geozone.feature?.geometry;
       break;
 
-    case "4326":
+    case Projections.EPSG4326:
       geometry = toWgs84(geozone.feature?.geometry);
       break;
   }
@@ -27,7 +27,7 @@ export const convertGeozone = (
   };
 };
 
-export const convertGeozones = (type: GeometryType): Feature[] => {
+export const convertGeozones = (type: Projections): Feature[] => {
   const geozones = GeozonesStore.geozones;
 
   const features: Feature[] = [];

@@ -1,2 +1,2 @@
-export { createWeatherLayer } from "./createWeatherLayer";
-export { createBaseLayer } from "./createBaseLayer";
+export { createWeatherSource } from "./createWeatherSource";
+export { createBaseSource } from "./createBaseSource";

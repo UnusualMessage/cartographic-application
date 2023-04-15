@@ -1,14 +1,21 @@
 import BaseLayer from "ol/layer/Base";
 import LayerGroup from "ol/layer/Group";
+import TileLayer from "ol/layer/Tile";
 import VectorLayer from "ol/layer/Vector";
+import TileSource from "ol/source/Tile";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
 
-import { createBaseLayer, createWeatherLayer } from "../../../lib";
-import { LayersStore, MapStore } from "../../stores";
-import type { BaseLayer as BaseLayerType, WeatherLayer } from "../../types";
+import { MapStore } from "../../stores";
 
 class LayersService {
+  public createTileLayer(zIndex?: number, source?: TileSource) {
+    return new TileLayer({
+      source: source,
+      zIndex: zIndex,
+    });
+  }
+
   public createVectorLayer(
     source: VectorSource,
     id: string,
@@ -16,7 +23,7 @@ class LayersService {
     minZoom?: number,
     maxZoom?: number
   ) {
-    const layer = new VectorLayer({
+    return new VectorLayer({
       source: source,
       style: style,
       renderBuffer: 1000,
@@ -26,45 +33,25 @@ class LayersService {
         id: id,
       },
     });
-
-    LayersStore.addVectorLayer(layer);
-    MapStore.addLayer(layer);
-    return layer;
   }
 
   public addLayerGroup(group: LayerGroup) {
-    MapStore.addLayer(group);
-    LayersStore.addLayerGroup(group);
     return group;
   }
 
-  public createBaseLayer(type: BaseLayerType) {
-    const layer = createBaseLayer(type);
-    MapStore.addLayer(layer);
-    return layer;
-  }
+  public clearVectorLayer(id: string) {
+    const layer = MapStore.getLayerById(id);
 
-  public createWeatherLayer(type: WeatherLayer) {
-    const layer = createWeatherLayer(type);
-    MapStore.addLayer(layer);
-    return layer;
-  }
-
-  public removeGroupLayer(id: string) {
-    const group = LayersStore.getLayerGroupById(id);
-
-    if (group) {
-      this.removeLayer(group);
-      LayersStore.removeLayerGroup(id);
+    if (layer instanceof VectorLayer<VectorSource>) {
+      layer.getSource().clear();
     }
   }
 
   public removeVectorLayer(id: string) {
-    const layer = LayersStore.getVectorLayerById(id);
+    const layer = MapStore.getLayerById(id);
 
-    if (layer) {
+    if (layer instanceof VectorLayer) {
       this.removeLayer(layer);
-      LayersStore.removeVectorLayer(id);
     }
   }
 

@@ -1,18 +1,19 @@
 import { Select } from "ol/interaction";
 
+import { SelectEvents } from "../../enums";
 import { FeaturesStore } from "../../stores";
-import type { ListenersInjector, SelectEvent } from "../../types";
+import type { ListenersInjector } from "../../types";
 
-class SelectInjector implements ListenersInjector<SelectEvent> {
+class SelectInjector implements ListenersInjector<SelectEvents> {
   private _select: Select;
 
   constructor(select: Select) {
     this._select = select;
   }
 
-  public addEventListener(event: SelectEvent) {
+  public addEventListener(event: SelectEvents) {
     switch (event) {
-      case "select":
+      case SelectEvents.select:
         return this.addSelect();
     }
   }

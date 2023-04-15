@@ -5,23 +5,23 @@ import { useEffect } from "react";
 import type {
   AddInteractionCallback,
   Callback,
-  InteractionType,
+  Interactions,
 } from "../../misc";
 import { invoke } from "../utils";
 
 interface Props {
   source?: VectorSource;
   map?: Map;
-  type: InteractionType;
+  type: Interactions;
 }
 
 export const useInteraction = (
   callback: AddInteractionCallback,
-  allowedTypes: InteractionType[],
+  allowedInteractions: Interactions[],
   { source, map, type }: Props
 ) => {
   useEffect(() => {
-    if (!allowedTypes.includes(type)) {
+    if (!allowedInteractions.includes(type)) {
       return;
     }
 

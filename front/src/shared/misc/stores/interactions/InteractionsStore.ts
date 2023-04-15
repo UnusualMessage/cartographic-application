@@ -1,13 +1,13 @@
 import { makeAutoObservable } from "mobx";
 
-import { InteractionType } from "../../types";
+import { Interactions } from "../../enums";
 
 class InteractionsStore {
-  private _type: InteractionType;
+  private _type: Interactions;
   private _interacting: boolean;
 
   constructor() {
-    this._type = "none";
+    this._type = Interactions.none;
     this._interacting = false;
 
     makeAutoObservable(this);

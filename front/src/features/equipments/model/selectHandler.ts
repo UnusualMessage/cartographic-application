@@ -1,7 +1,7 @@
 import { TreeProps } from "antd/es/tree";
 
 import { EquipmentStore } from "@entities/business";
-import { TabsStore, ViewStore } from "@shared/misc";
+import { TabsStore, ViewService } from "@shared/misc";
 
 export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
   const node = info.selectedNodes[0];
@@ -21,7 +21,7 @@ export const selectHandler: TreeProps["onSelect"] = (keys, info) => {
       const equipment = EquipmentStore.getById(node.key.toString());
       equipment.then((value) => {
         if (value) {
-          ViewStore.centerWithZoomTo(15)(value.feature.geometry.coordinates);
+          ViewService.centerWithZoomTo(15)(value.feature.geometry.coordinates);
         }
       });
   }

@@ -2,26 +2,24 @@ import { Draw } from "ol/interaction";
 import { DrawEvent } from "ol/interaction/Draw";
 import { v4 as uuid } from "uuid";
 
+import { Interactions, DrawEvents } from "../../enums";
 import { InteractionsStore, FeaturesStore } from "../../stores";
-import type {
-  ListenersInjector,
-  DrawEvent as DrawEventType,
-} from "../../types";
+import type { ListenersInjector } from "../../types";
 
-class DrawInjector implements ListenersInjector<DrawEventType> {
+class DrawInjector implements ListenersInjector<DrawEvents> {
   private _draw: Draw;
 
   constructor(draw: Draw) {
     this._draw = draw;
   }
 
-  public addEventListener(event: DrawEventType) {
+  public addEventListener(event: DrawEvents) {
     switch (event) {
-      case "drawstart":
+      case DrawEvents.drawstart:
         return this.addDrawStart();
-      case "drawabort":
+      case DrawEvents.drawabort:
         return this.addDrawAbort();
-      case "drawend":
+      case DrawEvents.drawend:
         return this.addDrawEnd();
     }
   }
@@ -48,7 +46,7 @@ class DrawInjector implements ListenersInjector<DrawEventType> {
       const feature = event.feature;
       feature.setId(uuid());
 
-      if (type === "geozones") {
+      if (type === Interactions.geozones) {
         FeaturesStore.addFeature(feature);
       }
     };

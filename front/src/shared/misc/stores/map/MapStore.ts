@@ -1,6 +1,8 @@
 import * as jspdf from "jspdf";
 import { makeAutoObservable } from "mobx";
 import { Map, View } from "ol";
+import { never } from "ol/events/condition";
+import { MouseWheelZoom, DragPan } from "ol/interaction";
 import BaseLayer from "ol/layer/Base";
 
 import { Dimensions } from "../../types";
@@ -34,6 +36,15 @@ class MapStore {
   }
 
   public dispose() {
+    const layers = this._map?.getLayers().getArray();
+
+    if (layers) {
+      for (const layer of layers) {
+        layer.dispose();
+      }
+    }
+
+    this._map?.getLayers().dispose();
     this._map?.dispose();
     this._map = undefined;
   }
@@ -46,15 +57,20 @@ class MapStore {
     this.setCursor("default");
   }
 
-  public initMap(target: HTMLDivElement, view?: View) {
+  public initMap(target: HTMLDivElement, canZoom?: boolean) {
     if (this._map) {
       this._map.setTarget(target);
     } else {
+      const options = canZoom ? {} : { condition: never };
+
+      const zoomInteraction = new MouseWheelZoom(options);
+      const dragInteraction = new DragPan();
+
       this._map = new Map({
         target: target,
-        view: view,
         layers: [],
         controls: [],
+        interactions: [dragInteraction, zoomInteraction],
       });
     }
   }
@@ -136,8 +152,19 @@ class MapStore {
     this._map?.setView(view);
   }
 
+  public disposeView() {
+    this._map?.getView().dispose();
+  }
+
   public addLayer(layer: BaseLayer) {
     this._map?.addLayer(layer);
+  }
+
+  public getLayerById(id: string) {
+    return this._map
+      ?.getLayers()
+      .getArray()
+      .find((layer) => layer.get("id") === id);
   }
 
   public removeLayer(layer: BaseLayer) {

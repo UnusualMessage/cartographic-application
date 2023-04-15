@@ -16,6 +16,10 @@ export const formRenderer = <T extends FieldValues>(
   return (
     <>
       {fields.map((field) => {
+        if (field.hidden) {
+          return <Fragment key={`input-${field.label}`} />;
+        }
+
         const props = {
           key: `input-${field.label}`,
           label: field.label,
@@ -25,10 +29,6 @@ export const formRenderer = <T extends FieldValues>(
           rules: field.rules,
           control,
         };
-
-        if (field.hidden) {
-          return <Fragment key={`input-${field.label}`} />;
-        }
 
         switch (field.type) {
           case "text":

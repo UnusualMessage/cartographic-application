@@ -1,24 +1,22 @@
 import { Translate } from "ol/interaction";
 import { TranslateEvent } from "ol/interaction/Translate";
 
+import { TranslateEvents } from "../../enums";
 import { FeaturesStore } from "../../stores";
-import type {
-  ListenersInjector,
-  TranslateEvent as TranslateEventType,
-} from "../../types";
+import type { ListenersInjector } from "../../types";
 
-class TranslateInjector implements ListenersInjector<TranslateEventType> {
+class TranslateInjector implements ListenersInjector<TranslateEvents> {
   private _translate: Translate;
 
   constructor(translate: Translate) {
     this._translate = translate;
   }
 
-  public addEventListener(event: TranslateEventType) {
+  public addEventListener(event: TranslateEvents) {
     switch (event) {
-      case "translateend":
+      case TranslateEvents.translateend:
         return this.addTranslateEnd();
-      case "translatestart":
+      case TranslateEvents.translatestart:
         return this.addTranslateStart();
     }
   }

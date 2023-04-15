@@ -1,13 +1,21 @@
-import { WfsVectorLayer, LayersGroup } from "@entities/map";
-import { bordersIds, bordersLayerId } from "@shared/constants";
-import { borderStyle } from "@shared/lib";
+import { LayersGroup, VectorLayer } from "@entities/map";
+import { bordersLayerId } from "@shared/constants";
+import { getBorderStyle } from "@shared/lib";
+
+import { borderSources } from "../../model";
 
 const BordersLayer = () => {
   return (
     <LayersGroup id={bordersLayerId}>
-      {bordersIds.map((id) => {
+      {borderSources.map((item) => {
         return (
-          <WfsVectorLayer key={`wfs-layer-${id}`} id={id} style={borderStyle} />
+          <VectorLayer
+            key={item.id}
+            id={item.id}
+            source={item.source}
+            style={getBorderStyle}
+            zoom={{ min: item.minZoom, max: item.maxZoom }}
+          />
         );
       })}
     </LayersGroup>

@@ -1,9 +1,11 @@
+import VectorLayer from "ol/layer/Vector";
+
 import { geozonesLayerId } from "../../../constants";
 import {
-  LayersStore,
   FeaturesStore,
   SelectStore,
   ContextMenuStore,
+  MapStore,
 } from "../../stores";
 
 class ContextMenuService {
@@ -19,10 +21,10 @@ class ContextMenuService {
   }
 
   public insert() {
-    const layer = LayersStore.getVectorLayerById(geozonesLayerId);
+    const layer = MapStore.getLayerById(geozonesLayerId);
     const coordinates = ContextMenuStore.coordinates;
 
-    if (coordinates && layer) {
+    if (coordinates && layer instanceof VectorLayer) {
       FeaturesStore.insertCopiedFeatures(layer, coordinates);
     }
 
@@ -30,9 +32,9 @@ class ContextMenuService {
   }
 
   public remove() {
-    const layer = LayersStore.getVectorLayerById(geozonesLayerId);
+    const layer = MapStore.getLayerById(geozonesLayerId);
 
-    if (layer) {
+    if (layer instanceof VectorLayer) {
       FeaturesStore.removeSelectedFeatures(layer);
     }
 

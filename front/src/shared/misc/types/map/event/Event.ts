@@ -1,14 +1,16 @@
-import { CommonEvent } from "./CommonEvent";
-import { DragBoxEvent } from "./DragBoxEvent";
-import { DrawEvent } from "./DrawEvent";
-import { ModifyEvent } from "./ModifyEvent";
-import { SelectEvent } from "./SelectEvent";
-import { TranslateEvent } from "./TranslateEvent";
+import {
+  CommonEvents,
+  DrawEvents,
+  DragBoxEvents,
+  ModifyEvents,
+  SelectEvents,
+  TranslateEvents,
+} from "../../../enums";
 
 export type Event =
-  | DragBoxEvent
-  | CommonEvent
-  | SelectEvent
-  | DrawEvent
-  | ModifyEvent
-  | TranslateEvent;
+  | CommonEvents
+  | DrawEvents
+  | DragBoxEvents
+  | ModifyEvents
+  | SelectEvents
+  | TranslateEvents;

@@ -1,5 +1,7 @@
+import React from "react";
+
 import { StatusesChart } from "@entities/business";
-import { TabPage } from "@entities/info-tabs-page";
+import { TabPage } from "@shared/ui";
 
 const StatusesTab = () => {
   return (

@@ -1,55 +1,42 @@
-import {
-  Feature as IFeature,
-  Point as IPoint,
-  Polygon as IPolygon,
-} from "@turf/helpers";
-import { Feature } from "ol";
-import { Polygon, Point } from "ol/geom";
 import VectorSource from "ol/source/Vector";
 import { StyleLike } from "ol/style/Style";
-import { memo, PropsWithChildren, useEffect, useMemo } from "react";
+import { PropsWithChildren, useContext } from "react";
 
-import { SourceContext } from "@shared/constants";
+import { SourceContext, GroupContext } from "@shared/constants";
+import { useLayer } from "@shared/lib";
 import { LayersService } from "@shared/misc";
+
+import Drawing from "./modules/Drawing";
+import Measurement from "./modules/Measurement";
+
+interface Zoom {
+  max?: number;
+  min?: number;
+}
 
 interface Props extends PropsWithChildren {
   id: string;
-  features?: (IFeature<IPoint | IPolygon> | undefined)[];
+  source: VectorSource;
   style?: StyleLike;
+  zoom?: Zoom;
 }
 
-const VectorLayer = ({ children, id, style, features }: Props) => {
-  const vectorSource = useMemo(() => {
-    return new VectorSource({
-      features: features?.map((feature) => {
-        const newFeature = new Feature();
+const VectorLayer = ({ children, id, source, style, zoom }: Props) => {
+  const group = useContext(GroupContext);
 
-        switch (feature?.geometry.type) {
-          case "Point":
-            newFeature.setGeometry(new Point(feature.geometry.coordinates));
-            break;
-          case "Polygon":
-            newFeature.setGeometry(new Polygon(feature.geometry.coordinates));
-        }
-
-        return newFeature;
-      }),
-    });
-  }, [features]);
-
-  useEffect(() => {
-    LayersService.createVectorLayer(vectorSource, id, style);
-
-    return () => {
-      LayersService.removeVectorLayer(id);
-    };
-  }, [vectorSource]);
+  useLayer(
+    () =>
+      LayersService.createVectorLayer(source, id, style, zoom?.min, zoom?.max),
+    group,
+    [source]
+  );
 
   return (
-    <SourceContext.Provider value={vectorSource}>
-      {children}
-    </SourceContext.Provider>
+    <SourceContext.Provider value={source}>{children}</SourceContext.Provider>
   );
 };
 
-export default memo(VectorLayer);
+VectorLayer.Drawing = Drawing;
+VectorLayer.Measurement = Measurement;
+
+export default VectorLayer;
