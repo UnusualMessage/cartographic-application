@@ -1,6 +1,7 @@
 export * as map from "./map";
 
 export * as edit from "./edit";
+export * as layout from "./layout";
 
 export * as geozones from "./geozones";
 export * as employees from "./employees";

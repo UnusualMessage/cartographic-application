@@ -10,18 +10,13 @@ import VectorSource from "ol/source/Vector";
 
 import InteractionsStore from "./InteractionsStore";
 import { invoke, getSelectStyle } from "../../../lib";
+import { DragBoxEvents, SelectEvents, TranslateEvents } from "../../enums";
 import {
   DragBoxInjector,
   SelectInjector,
   TranslateInjector,
 } from "../../services";
-import {
-  Callback,
-  ListenersInjector,
-  DragBoxEvent,
-  SelectEvent,
-  TranslateEvent,
-} from "../../types";
+import { Callback, ListenersInjector } from "../../types";
 
 interface ComplexCleanup {
   dragBox: Callback[];
@@ -73,24 +68,30 @@ class SelectStore {
       },
     });
 
-    const dragBoxInjector: ListenersInjector<DragBoxEvent> =
+    const dragBoxInjector: ListenersInjector<DragBoxEvents> =
       new DragBoxInjector(dragBox, select, source);
 
-    const selectInjector: ListenersInjector<SelectEvent> = new SelectInjector(
+    const selectInjector: ListenersInjector<SelectEvents> = new SelectInjector(
       select
     );
 
-    const translateInjector: ListenersInjector<TranslateEvent> =
+    const translateInjector: ListenersInjector<TranslateEvents> =
       new TranslateInjector(translate);
 
-    this._cleanup.select.push(selectInjector.addEventListener("select"));
-    this._cleanup.dragBox.push(dragBoxInjector.addEventListener("boxstart"));
-    this._cleanup.dragBox.push(dragBoxInjector.addEventListener("boxend"));
-    this._cleanup.translate.push(
-      translateInjector.addEventListener("translatestart")
+    this._cleanup.select.push(
+      selectInjector.addEventListener(SelectEvents.select)
+    );
+    this._cleanup.dragBox.push(
+      dragBoxInjector.addEventListener(DragBoxEvents.boxstart)
+    );
+    this._cleanup.dragBox.push(
+      dragBoxInjector.addEventListener(DragBoxEvents.boxend)
     );
     this._cleanup.translate.push(
-      translateInjector.addEventListener("translateend")
+      translateInjector.addEventListener(TranslateEvents.translatestart)
+    );
+    this._cleanup.translate.push(
+      translateInjector.addEventListener(TranslateEvents.translateend)
     );
 
     map.addInteraction(select);

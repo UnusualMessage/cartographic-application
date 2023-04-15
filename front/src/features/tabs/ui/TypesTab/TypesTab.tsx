@@ -1,6 +1,6 @@
 import { TypesChart } from "@entities/business";
-import { TabPage } from "@entities/info-tabs-page";
 import { types } from "@shared/assets";
+import { TabPage } from "@shared/ui";
 
 const TypesTab = () => {
   return (

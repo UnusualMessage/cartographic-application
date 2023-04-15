@@ -2,14 +2,15 @@ import { Map, MapBrowserEvent } from "ol";
 import { Coordinate } from "ol/coordinate";
 import { Pixel } from "ol/pixel";
 
+import { Interactions, CommonEvents } from "../../enums";
 import {
   FeaturesStore,
   InteractionsStore,
   ContextMenuStore,
 } from "../../stores";
-import type { CommonEvent, ListenersInjector } from "../../types";
+import type { ListenersInjector } from "../../types";
 
-class MapInjector implements ListenersInjector<CommonEvent> {
+class MapInjector implements ListenersInjector<CommonEvents> {
   private _map: Map;
   private _canvas: HTMLCanvasElement | undefined;
 
@@ -18,13 +19,13 @@ class MapInjector implements ListenersInjector<CommonEvent> {
     this._canvas = canvas;
   }
 
-  public addEventListener(event: CommonEvent) {
+  public addEventListener(event: CommonEvents) {
     switch (event) {
-      case "click":
+      case CommonEvents.click:
         return this.addMapClick();
-      case "contextmenu":
+      case CommonEvents.contextmenu:
         return this.addMapContextMenu();
-      case "pointermove":
+      case CommonEvents.pointermove:
         return this.addPointerMove();
     }
   }
@@ -48,7 +49,7 @@ class MapInjector implements ListenersInjector<CommonEvent> {
       const pixel: Pixel = this._map.getEventPixel(e);
       const cursor: Coordinate = this._map.getCoordinateFromPixel(pixel);
 
-      if (InteractionsStore.type === "cursor") {
+      if (InteractionsStore.type === Interactions.cursor) {
         ContextMenuStore.show(cursor);
       }
     };

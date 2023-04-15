@@ -1,10 +1,11 @@
 import { DragBox, Select } from "ol/interaction";
 import VectorSource from "ol/source/Vector";
 
+import { DragBoxEvents } from "../../enums";
 import { FeaturesStore } from "../../stores";
-import type { ListenersInjector, DragBoxEvent } from "../../types";
+import type { ListenersInjector } from "../../types";
 
-class DragBoxInjector implements ListenersInjector<DragBoxEvent> {
+class DragBoxInjector implements ListenersInjector<DragBoxEvents> {
   private _dragBox: DragBox;
   private _select: Select;
   private _source: VectorSource;
@@ -15,11 +16,11 @@ class DragBoxInjector implements ListenersInjector<DragBoxEvent> {
     this._source = source;
   }
 
-  public addEventListener(event: DragBoxEvent) {
+  public addEventListener(event: DragBoxEvents) {
     switch (event) {
-      case "boxstart":
+      case DragBoxEvents.boxstart:
         return this.addDragBoxOnStart();
-      case "boxend":
+      case DragBoxEvents.boxend:
         return this.addDragBoxOnEnd();
     }
   }

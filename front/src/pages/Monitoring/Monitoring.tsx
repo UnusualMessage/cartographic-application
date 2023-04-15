@@ -1,11 +1,18 @@
 import React from "react";
 
+import { Map, View } from "@entities/map";
+import { MonitoringAside, MonitoringFooter } from "@features/layout";
+import {
+  ContextMenu,
+  Tooltip,
+  MainControls,
+  FastControls,
+  Layers,
+} from "@features/map";
 import { defaultTemplate } from "@shared/assets";
 import { SchemaTemplateContext } from "@shared/constants";
 import { Loader } from "@shared/ui";
-import { ModeratorAside as Aside } from "@widgets/asides";
-import { ModeratorFooter as Footer } from "@widgets/footers";
-import { Overlays, Schema } from "@widgets/index";
+import { Overlays } from "@widgets/index";
 import { EntitiesTabs, InfoTabs } from "@widgets/tabs";
 import { Content } from "@widgets/wrappers";
 
@@ -13,16 +20,25 @@ const Monitoring = () => {
   return (
     <React.Suspense fallback={<Loader />}>
       <Overlays />
-      <Aside>
+      <MonitoringAside>
         <EntitiesTabs />
-      </Aside>
+      </MonitoringAside>
       <Content>
         <SchemaTemplateContext.Provider value={defaultTemplate}>
-          <Schema />
+          <Map canFullscreen canZoom>
+            <View>
+              <View.Memo />
+            </View>
+            <ContextMenu />
+            <Tooltip />
+            <MainControls />
+            <FastControls />
+            <Layers />
+          </Map>
         </SchemaTemplateContext.Provider>
-        <Footer>
+        <MonitoringFooter>
           <InfoTabs />
-        </Footer>
+        </MonitoringFooter>
       </Content>
     </React.Suspense>
   );

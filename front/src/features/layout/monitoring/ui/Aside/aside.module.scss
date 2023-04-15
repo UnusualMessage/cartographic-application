@@ -1,0 +1,30 @@
+@use "/src/shared/styles/constants" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+
+  width: 350px;
+  height: 100%;
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    width: calc(100% - $resize-size);
+    height: 100%;
+  }
+
+  .collapse {
+    width: $resize-size;
+    height: 100%;
+
+    background: $border-color;
+    cursor: col-resize;
+
+    &:hover {
+      background: #4C90F0;
+    }
+  }
+}

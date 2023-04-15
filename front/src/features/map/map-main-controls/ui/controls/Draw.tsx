@@ -5,34 +5,35 @@ import {
   SaveOutlined,
 } from "@ant-design/icons";
 import { Polygon as IPolygon } from "@turf/helpers";
-import { Feature as IFeature, FeatureCollection, toMercator } from "@turf/turf";
+import { FeatureCollection, toMercator } from "@turf/turf";
 import { Space, Select, Button, message } from "antd";
 import { observer } from "mobx-react-lite";
 import { Feature } from "ol";
 import { Polygon } from "ol/geom";
+import VectorLayer from "ol/layer/Vector";
 import { v4 as uuid } from "uuid";
 
 import { OrganizationsStore, GeozonesStore } from "@entities/business";
 import { geozonesLayerId } from "@shared/constants";
 import {
   InteractionsStore,
-  InteractionType,
+  Interactions,
   FeaturesStore,
-  LayersStore,
+  MapStore,
 } from "@shared/misc";
 import { PolygonFilled, TextFileInput } from "@shared/ui";
 
 const Draw = () => {
   const interaction = InteractionsStore.type;
 
-  const onSelect = (value: InteractionType) => {
+  const onSelect = (value: Interactions) => {
     InteractionsStore.type = value;
   };
 
   const clear = () => {
-    const layer = LayersStore.getVectorLayerById(geozonesLayerId);
+    const layer = MapStore.getLayerById(geozonesLayerId);
 
-    if (layer) {
+    if (layer instanceof VectorLayer) {
       FeaturesStore.clear(layer);
     }
   };
@@ -45,21 +46,9 @@ const Draw = () => {
       const organization = OrganizationsStore.organization;
 
       if (geometry && organization) {
-        const id = feature.getId() ?? uuid();
-
-        const savedFeature: IFeature<IPolygon> = {
-          id: id,
-          type: "Feature",
-          geometry: {
-            type: "Polygon",
-            coordinates: geometry.getCoordinates(),
-          },
-          properties: {},
-        };
-
         const title = "Новая геозона";
 
-        GeozonesStore.add({
+        void GeozonesStore.add({
           title: title,
           organizationId: organization.id,
         });
@@ -80,9 +69,9 @@ const Draw = () => {
       newFeature.setId(uuid());
       newFeature.setGeometry(new Polygon(feature.geometry.coordinates));
 
-      const layer = LayersStore.getVectorLayerById(geozonesLayerId);
+      const layer = MapStore.getLayerById(geozonesLayerId);
 
-      if (layer) {
+      if (layer instanceof VectorLayer) {
         FeaturesStore.addFeatureToLayer(newFeature, layer);
       }
     }
@@ -94,9 +83,9 @@ const Draw = () => {
         onChange={onSelect}
         value={interaction}
         options={[
-          { value: "none", label: <StopFilled /> },
-          { value: "cursor", label: <SendOutlined /> },
-          { value: "geozones", label: <PolygonFilled /> },
+          { value: Interactions.none, label: <StopFilled /> },
+          { value: Interactions.cursor, label: <SendOutlined /> },
+          { value: Interactions.geozones, label: <PolygonFilled /> },
         ]}
         bordered={false}
       />

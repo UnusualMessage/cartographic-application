@@ -8,6 +8,8 @@ import {
   InteractionsStore,
   ControlsStore,
   MeasurementStore,
+  MapControls,
+  Interactions,
 } from "@shared/misc";
 import { PolygonFilled, Condition } from "@shared/ui";
 
@@ -27,8 +29,8 @@ const Area = ({ buttonType }: Props) => {
   });
 
   const onClick = () => {
-    ControlsStore.currentMapControl = "measurement";
-    switchDrawType(interaction, "measure-area");
+    ControlsStore.currentMapControl = MapControls.measurement;
+    switchDrawType(interaction, Interactions.area);
     MeasurementStore.reset();
   };
 
@@ -37,7 +39,7 @@ const Area = ({ buttonType }: Props) => {
       <Button
         className={classes}
         icon={<PolygonFilled />}
-        type={interaction === "measure-area" ? "primary" : buttonType}
+        type={interaction === Interactions.area ? "primary" : buttonType}
         onClick={onClick}
       />
     </Condition>

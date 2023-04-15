@@ -1,23 +1,25 @@
 import { Draw } from "ol/interaction";
 
 import { measurementLayerId } from "../../../../constants";
-import { InteractionsStore, TooltipStore, LayersStore } from "../../../stores";
-import { ListenersInjector, DrawEvent as DrawEventType } from "../../../types";
+import { DrawEvents } from "../../../enums";
+import { InteractionsStore, TooltipStore } from "../../../stores";
+import { ListenersInjector } from "../../../types";
+import { LayersService } from "../../map";
 
-class LengthMeasurementInjector implements ListenersInjector<DrawEventType> {
+class LengthMeasurementInjector implements ListenersInjector<DrawEvents> {
   private _draw: Draw;
 
   constructor(draw: Draw) {
     this._draw = draw;
   }
 
-  public addEventListener(event: DrawEventType) {
+  public addEventListener(event: DrawEvents) {
     switch (event) {
-      case "drawstart":
+      case DrawEvents.drawstart:
         return this.addDrawStart();
-      case "drawabort":
+      case DrawEvents.drawabort:
         return this.addDrawAbort();
-      case "drawend":
+      case DrawEvents.drawend:
         return this.addDrawEnd();
     }
   }
@@ -25,7 +27,7 @@ class LengthMeasurementInjector implements ListenersInjector<DrawEventType> {
   private addDrawStart() {
     const onDrawStart = () => {
       InteractionsStore.startInteraction();
-      LayersStore.clearVectorLayer(measurementLayerId);
+      LayersService.clearVectorLayer(measurementLayerId);
     };
 
     this._draw.on("drawstart", onDrawStart);
